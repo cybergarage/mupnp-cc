@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyberGarage>
+	<MediaServer>
+		<ContentDirectory>
+			<DirectoryList>
+				<Directory>
+					<Name>All Photos</Name>
+					<Path>images</Path>
+				</Directory>
+			</DirectoryList>
+		</ContentDirectory>
+	</MediaServer>
+</CyberGarage>
