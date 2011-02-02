@@ -1,0 +1,145 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: CyberLink - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\SATOSH~1\LOCALS~1\Temp\RSP120.tmp" を作成し、次の内容を記録します
+[
+/nologo /MTd /W3 /Gm /GR /GX /ZI /Od /I "../../../include" /D "_DEBUG" /D "WIN32" /D "_MBCS" /D "_LIB" /D "USE_XMLPARSER_EXPAT" /Fp"Debug/CyberLink.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\src\CyberLink\src\cybergarage\xml\xerces\XercesParser.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\SATOSH~1\LOCALS~1\Temp\RSP120.tmp" 
+一時ﾌｧｲﾙ "C:\DOCUME~1\SATOSH~1\LOCALS~1\Temp\RSP121.tmp" を作成し、次の内容を記録します
+[
+/nologo /out:"CyberLink.lib" 
+.\Debug\Action.obj
+.\Debug\ActionData.obj
+.\Debug\ActionList.obj
+.\Debug\ActionRequest.obj
+.\Debug\ActionResponse.obj
+.\Debug\Advertiser.obj
+.\Debug\AllowedValue.obj
+.\Debug\AllowedValueList.obj
+.\Debug\AllowedValueRange.obj
+.\Debug\Argument.obj
+.\Debug\ArgumentList.obj
+.\Debug\AttributeList.obj
+.\Debug\BufferedReader.obj
+.\Debug\ControlPoint.obj
+.\Debug\ControlRequest.obj
+.\Debug\ControlResponse.obj
+.\Debug\DatagramSocket.obj
+.\Debug\Date.obj
+.\Debug\Debug.obj
+.\Debug\Device.obj
+.\Debug\DeviceData.obj
+.\Debug\DeviceList.obj
+.\Debug\Disposer.obj
+.\Debug\ExpatParser.obj
+.\Debug\File.obj
+.\Debug\FileInputStream.obj
+.\Debug\FileList.obj
+.\Debug\HostInterface.obj
+.\Debug\HTTP.obj
+.\Debug\HTTPDate.obj
+.\Debug\HTTPHeader.obj
+.\Debug\HTTPMUSocket.obj
+.\Debug\HTTPPacket.obj
+.\Debug\HTTPRequest.obj
+.\Debug\HTTPResponse.obj
+.\Debug\HTTPServer.obj
+.\Debug\HTTPServerList.obj
+.\Debug\HTTPServerThread.obj
+.\Debug\HTTPSocket.obj
+.\Debug\HTTPStatus.obj
+.\Debug\HTTPUSocket.obj
+.\Debug\Icon.obj
+.\Debug\IconList.obj
+.\Debug\MAN.obj
+.\Debug\MulticastSocket.obj
+.\Debug\Mutex.obj
+.\Debug\Node.obj
+.\Debug\NodeList.obj
+.\Debug\NotifyRequest.obj
+.\Debug\NT.obj
+.\Debug\NTS.obj
+.\Debug\Parser.obj
+.\Debug\PropertyList.obj
+.\Debug\QueryRequest.obj
+.\Debug\QueryResponse.obj
+.\Debug\RenewSubscriber.obj
+.\Debug\ServerSocket.obj
+.\Debug\Service.obj
+.\Debug\ServiceData.obj
+.\Debug\ServiceList.obj
+.\Debug\ServiceStateTable.obj
+.\Debug\SOAP.obj
+.\Debug\SOAPRequest.obj
+.\Debug\SOAPResponse.obj
+.\Debug\Socket.obj
+.\Debug\SocketImp.obj
+.\Debug\SocketInputStream.obj
+.\Debug\SocketUtil.obj
+.\Debug\SSDP.obj
+.\Debug\SSDPNotifySocket.obj
+.\Debug\SSDPNotifySocketList.obj
+.\Debug\SSDPPacket.obj
+.\Debug\SSDPResponse.obj
+.\Debug\SSDPSearchResponseSocket.obj
+.\Debug\SSDPSearchResponseSocketList.obj
+.\Debug\SSDPSearchSocket.obj
+.\Debug\SSDPSearchSocketList.obj
+.\Debug\ST.obj
+.\Debug\StateVariable.obj
+.\Debug\StateVariableData.obj
+.\Debug\StringBufferInputStream.obj
+.\Debug\StringReader.obj
+.\Debug\StringTokenizer.obj
+.\Debug\StringUtil.obj
+.\Debug\Subscriber.obj
+.\Debug\Subscription.obj
+.\Debug\SubscriptionRequest.obj
+.\Debug\Thread.obj
+.\Debug\TimeUtil.obj
+.\Debug\UniDatabase.obj
+.\Debug\UniMySQL.obj
+.\Debug\UPnP.obj
+.\Debug\UPnPStatus.obj
+.\Debug\URI.obj
+.\Debug\URL.obj
+.\Debug\USN.obj
+.\Debug\XercesParser.obj
+.\Debug\XML.obj
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe -lib @C:\DOCUME~1\SATOSH~1\LOCALS~1\Temp\RSP121.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+XercesParser.cpp
+ﾗｲﾌﾞﾗﾘを作成中...
+<h3>
+--------------------構成: Clock - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\DOCUME~1\SATOSH~1\LOCALS~1\Temp\RSP122.tmp" を作成し、次の内容を記録します
+[
+Iphlpapi.lib wsock32.lib ws2_32.lib xerces-c_2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib libexpat.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Clock.pdb" /debug /machine:I386 /out:"Debug/Clock.exe" /pdbtype:sept 
+.\Debug\Clock.obj
+.\Debug\ClockDevice.obj
+.\Debug\ClockMain.obj
+.\Debug\Clock.res
+..\..\..\..\lib\win32\vc60\CyberLink.lib
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe @C:\DOCUME~1\SATOSH~1\LOCALS~1\Temp\RSP122.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ﾘﾝｸ中...
+
+
+
+<h3>結果</h3>
+Clock.exe - ｴﾗｰ 0、警告 0
+</pre>
+</body>
+</html>

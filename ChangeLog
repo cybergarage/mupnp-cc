@@ -1,0 +1,169 @@
+2010-02-22 Satoshi Konno <skonno@cybergarage.org>
+	* Fixed some errors to compile normally using GCC v4.4.1 on Ubuntu 9.10.
+
+2009-06-09 Satoshi Konno <skonno@cybergarage.org>
+	* Fixed some misspelt methods such as Device::*Manufacturer() and *ManufacturerURL() .
+
+2005-12-31 Satoshi Konno <skonno@cybergarage.org>
+	* Added String2LongLong(), LongLong2String() and LongLong2HexString().
+	* Changed cg_net_gethostinterfaces() not to bind the MAC address interface on QNX platform.
+	* Disabled POSIX library checking in the configure script.
+	* Fixed to ignore 64 bit functions on Cygwin or MigGW platforms.
+	* Changed MediaServer to load the description from the memory data instead of the file.
+	* Changed httpRequestRecieved() not to ignore HEAD requests.
+	* Added File::save().
+	* Fixed include/Makefile.am to install cybergarage/io/Reader.h normally.
+	* Added MediaGate::setName() and getName(). These are instances for the freindly name.
+	* Added getNode(name, value) to Node and NodeList class for iTunes Library.
+	* Added Node::isValue() for iTunes Library.
+
+2005-10-13 Satoshi Konno <skonno@cybergarage.org>
+
+	* v.1.7.1
+	* Changed HTTPRequest::post() to add a HOST headedr before the posting.
+	* Changed HTTPSocket::post() to add a Date headedr to the HTTPResponse before the posting.
+	* Fixed HTTPPacket::set() to parse the chunk size as a hex string.
+	* Fixed HTTPPacket::post() to output the chunk size as a hex string.
+	* Fixed HTTPSocket::post() to output the chunk size as a hex string.
+	* Fixed a bug of Device::getParentDevice() to return the parent device normally.
+	* Changed XML::EscapeXMLChars() to process the '&' character at first for libxml2.
+	* Changed DatagramSocket::bind() to set the specified address and port whether the binding is failed.
+	* Fixed some bugs to parser the name spaces using libxml2.
+	* Changed the configure to run 'make install' normally.
+
+2005-05-27 Satoshi Konno <skonno@cybergarage.org>
+
+	* v.1.7
+	* Changed some headers to compile normally on cygwin and mingw.
+	* Added support for Expat XML parser.
+	* Added support for HTTP chunked stream to CyberHTTP.
+	* Fixed StateVariable::setValue() to set blank value when a null value is specified.
+	* Fixed XML::EscapeXMLChars() to convert from "'" to "&apos;" instead of "\".
+	* Changed Socket::send() to retry when the packet is not sent normally.
+	* Changed StateVariable::getAllowedValueList() and AllowedValueList::getAllowedValue() to use AllowedValue instead of std::string as the member.
+	* Fixed Device::getNotifyDeviceNT() to return the UDN when the device is not root device.
+	* Changed httpPostRequestRecieved() to return the bad request when the post request isn't the SOAP action.
+	* Added Device::loadDescription(const char *) to load the description from memory.
+	* Added Service::loadSCPD() to load the description from memory.
+	* Added a exclusive access control to Device::getDescriptionData().
+	* Removed Service::setDescriptionURL() and Service::getDescriptionURL().
+	* Changed httpGetRequestRecieved() to return the description stream using Device::getDescriptionData() and Service::getSCPDData() at first.
+	* Changed Thread::start() and stop() to virtual method for overriding in the sub class.
+	* Changed Device::deviceSearchResponse() answer with USN:UDN::<device-type> when request ST is device type.
+	* Changed Device::getDescriptionData() and Service::getSCPDData() to add a XML declaration at first line.
+	* Added a new Device::setActionListener() and serQueryListner() to include the sub devices.
+	* Changed ActionRequest::getActionName() to return when the delimiter is not found.
+	* Added support for gcc 4.0.
+
+2004-11-13 Satoshi Konno <skonno@cybergarage.org>
+
+	* v.1.6
+	* Added support HTTP v1.1 connection.
+	* Added HEAD and Content-Range headers for HTTP connection.
+	* Fixed ControlPoint::removeExpiredDevices() to remove using the device array.
+	* Fixed HTTPRequest::getHeader() and getHTTPVersion() no to return "HTTP/HTTP/version".
+	* Added HTTPRequest::isHeadRequest().* Added HTTPPacket::setContentRange() and getContentRange().
+	* Changed HTTPRequest::post(HTTPResponse*) not to close the connection.
+	* Changed HTTPRequest::post(const char *, int) to add a connection header to close.	
+	* Added a isOnlyHeader parameter to HTTPSocket::post().
+	* Added a updateWithContentLength parameter to HTTPPacket::setContent().
+	* Changed to HTTPPacket::set() not to change the header of Content-Length.
+	* Changed HTTPServer::accept() to set a default timeout, HTTP.DEFAULT_TIMEOUT, to the socket.
+	* Added SocketImp::setTimeout().* Added HTTPPacket::init() and read().
+	* Added HTTPRequest::isKeepAlive().
+	* Added skip() to IntputStream, SocketInputStrean and FileInputStream.
+	* Added HTTPStatus::isSuccessful() and HTTPRequest::isSuccessfule().
+	* Added some patches for FreeBSD.* Removed a SOAP header from DIDLite::output().
+	* Added support for Range header to HTTPPacket::getContentRange().
+	* Added a MYNAME header to SSDP messages.
+	* Changed socket functions to ignore SIGPIPE signal.
+	* Added a fix to HTTPRequest::post() when the last position of Content-Range header is 0.
+	* Added a Content-Range header to the response in HTTPRequest::post().
+	* Changed the status code for the Content-Range request in HTTPRequest::post().
+	* Added to check the range of Content-Range request in HTTPRequest::post().
+	* Added support the intinite time and fixed a bug in Subscriber::isExpired().
+	* Fixed a bug when Service::notify() removes the expired devices().
+	* Fixed SSDPPacket::isRootDevice() to check the ST header.
+	* Added Device::getStateVariable(serviceType, name).
+	* Changed XML::output() to use short notation when the tag value is null.
+	* Changed SSDP message to set the TTL as four.* Changed StateVariable::setValue() to update and send the event when the value is not equal to the current value.
+
+2004-08-10 Satoshi Konno <skonno@cybergarage.org>
+
+	* v.1.5
+	* Added support for Intel NMPR.
+	* Added Device::setNMPRMode() and isNMPRMode().
+	* Changed to advertise every 25%-50% of the periodic notification cycle for NMPR.
+	* Added Device::setWirelessMode() and isWirelessMode().
+	* Changed Device::start() to send a bye-bye before the announce for NMPR.
+	* Changed Device::annouce(), byebye() and deviceSearchReceived() to send the SSDP messsage four times when the NMPR and the Wireless mode are true.
+	* Fixed Device::announce() and byebye() to send the upnp::rootdevice message despite embedded devices.
+	* Fixed Device::getRootNode() to return the root node when the device is embedded.
+	* Fixed Service::announce() to set the root device URL to the LOCATION field.
+	* Added ControlPoint::renewSubscriberService().
+	* Changed ControlPoint::start() to create renew subscriber thread when the NMPR mode is true.
+	* Changed Action::postControlAction() to set the status code to the UPnPStatus.
+	* Changed StateVariable::postQuerylAction() to set the status code to the UPnPStatus.
+	* Added Device::getParentDevice();
+	* Changed Service::notify() to remove the expired subscribers and not to remove the invalid response subscribers for NMPR.
+
+2004-06-13 Satoshi Konno <skonno@cybergarage.org>
+
+	* v.1.4.1
+	* Added a sample for AV MediaServer, CyberMediaGate.
+	* Changed HTTPRequest::post(HTTPResponse *) to close the socket stream from the server.
+	* Changed HTTPPacket::getHeader() to compare using string::equals().
+	* Added I18N support for SORPRequest and SOAPResponse classes.
+	* Fixed invalide SERVER field of SSDP and HTTP response on Unix Plathome.
+	* Changed SubscriptionRequest::setServie() to get the host address from the SSDP Location field when the URLBase is null.
+
+2004-05-12 Satoshi Konno <skonno@cybergarage.org>
+
+	* v1.4
+	* Fixed to set HTTP v1.1 to SSDPRequest and SSDPResponse class.
+	* Fixed setRequestHost() for Sony's UPnP stack when the URLBase has the path.
+	* Changed to update the UDN only when the field is null.
+	* Fixed Service::getDeviceList() to public method.
+	* Fixed URI::getProtocol() to retuen the name without "://".
+	* Added some methods for StateVariable to get the AlloedValueList and the AllowedValueRange.
+	* Changed the upnpdump sample to pring all descovered devices.
+	* Fixed Praser::parse() to read under the buffer size.
+	* Fixed Subscription::GetTimeout() to return the valid value.
+	* Fixed Subscription::toTimeoutHeaderString() to set the valid value instead of the invalid URL value.
+	* Fixed to initialize members of ActionData such as the action listener and the control response.
+	* Added start(const char *target, int mx) and start(const char *target) to ControlPoint.
+	* Added Device::isDeviceType().
+	* Fixed Argument::initArgumentList() to share a argument node in three Argument when the argument lists are initialized.
+	* Fixed Argument::getArgument(name) to return the valid pointer. 
+	* Added StateVariable::hasAllowedValueList() and hasAllowedValueRange().
+
+2004-03-11 Satoshi Konno <skonno@cybergarage.org>
+
+	* v1.3.2
+	* Fixed a HTTP server bug to return v1.1 instead of v1.0.
+	* Added a null line to SSDP messages for Intel UPnP tools.
+	* Added a header of xml version to setConetent() in SOAPRequest and SOPAResponse.
+	* Changed to use the control URL when it is absolute.  
+	* Changed to get URLBase from the SSDP packet when the URLBase is null and the control URL is not absolute. 
+	* Fixed a interval time of the advertiser on Unix Platform.
+	* Added Xcode projects on MacOSX.
+
+2004-01-13  Satoshi Konno <skonno@cybergarage.org>
+
+	* v1.3
+	* Improved the HTTP server using multithreading.
+	* Updated a udn field by a generated uuid automatically.
+	* Added Device::setActionListener() and Device::setQueryListener().
+	* Added Service::setActionListener().
+	* Added a Content-Length header to subscription responces.
+	* Added Action::setAgumentValue(String name, int value).
+	* Added Agument::setValue(int value).
+	* Added Action::getAgumentIntegerValue().
+	* Added Agument::getIntegerValue().
+	* Added automatic device advertiser
+	* Added automatic device disposer that remove expired devices from the control point.
+	* Changed action listener and query listener to return user error messages.
+
+2003-10-02 Satoshi Konno <skonno@cybergarage.org>
+
+        * The first release.
