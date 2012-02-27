@@ -16,6 +16,9 @@
 *		- Chaged XMLCh2Char() to return the value using string buffer.
 *	05/19/04
 *		- Changed the header include order for Cygwin.
+* 	02/26/12
+* 		- Michael Cheng <mcheng827@gmail.com>
+* 		- Fixed memory leak
 *
 ******************************************************************/
 
@@ -149,15 +152,15 @@ Node *XMLParse(InputSource &inSrc)
 {
 	Node *root = NULL;
 		
-	XercesDOMParser *parser = new XercesDOMParser();
+	XercesDOMParser parser;
 	/*
 	parser->setDoSchema(false);
 	parser->setDoValidation(false);
 	parser->setValidationScheme(XercesDOMParser::Val_Never);
 	*/
 	try {
-		parser->parse(inSrc);
-		xercesc::DOMDocument *doc = parser->getDocument();
+		parser.parse(inSrc);
+		xercesc::DOMDocument *doc = parser.getDocument();
 		if (doc == NULL)
 			return NULL;
 		DOMElement *docElem = doc->getDocumentElement();

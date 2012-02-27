@@ -14,6 +14,9 @@
 *		- Added pthread_detach() to stop() for Unix platform.
 *	09/19/04
 *		- Changed start() to set the PTHREAD_CREATE_DETACHED attribure on Unix platform.
+* 	02/27/12
+* 		- Michael Cheng <mcheng89@gmail.com>
+* 		- Added CloseHandle() for Windows platform
 *
 ******************************************************************/
 
@@ -157,6 +160,7 @@ bool Thread::stop()
 #if defined(WIN32) && !defined(ITRON)
 		TerminateThread(hThread, 0);
 		WaitForSingleObject(hThread, INFINITE);
+		CloseHandle(hThread);
 #elif defined(BTRON)
 		ter_tsk(taskID);
 #elif defined(ITRON)
