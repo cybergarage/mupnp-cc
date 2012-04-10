@@ -244,6 +244,13 @@ int CyberNet::GetHostAddresses(NetworkInterfaceList &netIfList)
 	if (getifaddrs(&ifaddr) != 0)
 		return 0;
 	while (ifaddr != NULL) {
+        
+        // Thanks for Ricardo Rivldo (04/10/12) 
+        if (!ifaddr->ifa_addr){
+			ifaddr = ifaddr->ifa_next;
+			continue;
+		}
+        
 		// Thanks for Tobias.Gansen (01/15/06)
 		if(ifaddr->ifa_addr->sa_family != AF_INET){
 			ifaddr = ifaddr->ifa_next;

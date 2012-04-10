@@ -1,3 +1,7 @@
+2012-04-10 Satoshi Konno <skonno@cybergarage.org>
+    * Thanks for Ricardo Rivldo
+    * Fixed CyberNet::GetHostAddresses() for some reason, vmware and virtualbox \"virtual\" interfaces does not return ifa_addr.
+
 2010-02-22 Satoshi Konno <skonno@cybergarage.org>
 	* Fixed some errors to compile normally using GCC v4.4.1 on Ubuntu 9.10.
 
