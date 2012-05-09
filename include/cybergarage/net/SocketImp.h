@@ -35,10 +35,6 @@
 
 #include <string>
 
-#ifndef HAVE_SOCKLEN_T
-typedef int socklen_t;
-#endif
-
 #if (!defined(WIN32) && !defined(__CYGWIN__)) || defined(ITRON)
 #if defined(BTRON) || defined(TENGINE) 
 typedef W SOCKET;
