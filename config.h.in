@@ -3,9 +3,6 @@
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #undef HAVE_ARPA_INET_H
 
-/* Define to 1 if you have the <dlfcn.h> header file. */
-#undef HAVE_DLFCN_H
-
 /* Define to 1 if you have the <expat.h> header file. */
 #undef HAVE_EXPAT_H
 
@@ -123,10 +120,6 @@
 /* Define to 1 if you have the <xercesc/util/XercesVersion.hpp> header file.
    */
 #undef HAVE_XERCESC_UTIL_XERCESVERSION_HPP
-
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
-#undef LT_OBJDIR
 
 /* Name of package */
 #undef PACKAGE

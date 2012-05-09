@@ -69,7 +69,7 @@ AC_LANG_CPLUSPLUS
 #if [ test $CYGWIN = yes || test $MINGW = yes ]; then
   #AC_LIBTOOL_WIN32_DLL
   #AM_DISABLE_STATIC
-  AC_PROG_LIBTOOL
+  #AC_PROG_LIBTOOL
   AC_CHECK_LIB([ws2_32],[main])
   #AC_CHECK_LIB([iphlpapi],[main])
 #fi

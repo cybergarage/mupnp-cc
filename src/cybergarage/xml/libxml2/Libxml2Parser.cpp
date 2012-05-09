@@ -124,10 +124,10 @@ Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
     xmlNodePtr child = cur->xmlChildrenNode;
     while ( child != NULL ) {
 
-      Node *newChildNode = convertToCLinkFormat( doc, child, depth  1 );
-      if ( newChildNode ) {
-	newNode->addNode( newChildNode );
-      }
+    Node *newChildNode = convertToCLinkFormat( doc, child, 1);
+    if ( newChildNode ) {
+        newNode->addNode( newChildNode );
+    }
 
       child = child->next;
     }
