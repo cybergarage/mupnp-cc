@@ -15,7 +15,6 @@ clink_header = \
 	cybergarage/util/Vector.h \
 	cybergarage/io/BufferedReader.h \
 	cybergarage/io/File.h \
-	cybergarage/io/FileInputStream.h \
 	cybergarage/io/InputStream.h \
 	cybergarage/io/InputStreamReader.h \
 	cybergarage/io/LineNumberReader.h \
@@ -207,6 +206,6 @@ clink_media_header = \
 ########################################
 
 nobase_include_HEADERS = \
-	$(clink_header) \
-	$(clink_media_header)
+	$(clink_header)
+#	$(clink_media_header)
 
