@@ -49,7 +49,7 @@ PROGRAMS = $(noinst_PROGRAMS)
 am_mediagate_OBJECTS = MediaGateMain.$(OBJEXT) MediaGate.$(OBJEXT) \
 	InputUtil.$(OBJEXT)
 mediagate_OBJECTS = $(am_mediagate_OBJECTS)
-mediagate_DEPENDENCIES = ../../../../lib/unix/libclink.a
+mediagate_DEPENDENCIES = ../../../../lib/unix/libclink++.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -175,7 +175,7 @@ mediagate_SOURCES = \
 	../MediaGate.cpp \
 	../../../common/InputUtil.cpp
 
-mediagate_LDADD = ../../../../lib/unix/libclink.a @XML_LIBS@
+mediagate_LDADD = ../../../../lib/unix/libclink++.a @XML_LIBS@
 all: all-am
 
 .SUFFIXES:

@@ -1,4 +1,4 @@
-lib_LIBRARIES = libclink.a
+lib_LIBRARIES = libclink++.a
 
 INCLUDES = -I$(top_srcdir)/include @XML_CFLAGS@
 
@@ -223,7 +223,7 @@ clink_media_source = \
 # Library
 ########################################
 
-libclink_a_SOURCES = \
+libclink___a_SOURCES = \
 	$(clink_source) \
 	$(clink_media_source)
 

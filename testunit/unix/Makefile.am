@@ -17,4 +17,4 @@ clinktestunit_SOURCES = \
 	../TestMediaServer.cpp \
 	../UPnPTestCase.cpp 
 
-clinktestunit_LDADD = ../../lib/unix/libclink.a -lcppunit -ldl @XML_LIBS@
+clinktestunit_LDADD = ../../lib/unix/libclink++.a -lcppunit -ldl @XML_LIBS@

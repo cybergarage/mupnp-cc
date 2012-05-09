@@ -1,4 +1,5 @@
 2012-05-09 Satoshi Konno <skonno@cybergarage.org>
+	* Changed library name as libclink++ on Unix platform.
 	* Fixed a bug to use --enable-libxml2 normally on Ubuntu 10.4.
 	* Changed configure not to install header files in cybergarage/upnp/media.
 

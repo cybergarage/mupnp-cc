@@ -10,5 +10,5 @@ upnpdump_SOURCES = \
 	../CtrlPoint.cpp \
 	../../common/InputUtil.cpp
 
-upnpdump_LDADD = ../../../lib/unix/libclink.a @XML_LIBS@
+upnpdump_LDADD = ../../../lib/unix/libclink++.a @XML_LIBS@
 

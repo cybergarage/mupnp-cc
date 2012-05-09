@@ -49,7 +49,7 @@ PROGRAMS = $(noinst_PROGRAMS)
 am_upnpdump_OBJECTS = upnpdump.$(OBJEXT) CtrlPoint.$(OBJEXT) \
 	InputUtil.$(OBJEXT)
 upnpdump_OBJECTS = $(am_upnpdump_OBJECTS)
-upnpdump_DEPENDENCIES = ../../../lib/unix/libclink.a
+upnpdump_DEPENDENCIES = ../../../lib/unix/libclink++.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -174,7 +174,7 @@ upnpdump_SOURCES = \
 	../CtrlPoint.cpp \
 	../../common/InputUtil.cpp
 
-upnpdump_LDADD = ../../../lib/unix/libclink.a @XML_LIBS@
+upnpdump_LDADD = ../../../lib/unix/libclink++.a @XML_LIBS@
 all: all-am
 
 .SUFFIXES:

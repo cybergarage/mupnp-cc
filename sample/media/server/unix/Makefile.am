@@ -11,4 +11,4 @@ mediagate_SOURCES = \
 	../MediaGate.cpp \
 	../../../common/InputUtil.cpp
 
-mediagate_LDADD = ../../../../lib/unix/libclink.a @XML_LIBS@
+mediagate_LDADD = ../../../../lib/unix/libclink++.a @XML_LIBS@

@@ -67,8 +67,8 @@ am__installdirs = "$(DESTDIR)$(libdir)"
 LIBRARIES = $(lib_LIBRARIES)
 AR = ar
 ARFLAGS = cru
-libclink_a_AR = $(AR) $(ARFLAGS)
-libclink_a_LIBADD =
+libclink___a_AR = $(AR) $(ARFLAGS)
+libclink___a_LIBADD =
 am__objects_1 = Date.$(OBJEXT) Debug.$(OBJEXT) Mutex.$(OBJEXT) \
 	StringTokenizer.$(OBJEXT) StringUtil.$(OBJEXT) \
 	Thread.$(OBJEXT) TimeUtil.$(OBJEXT) BufferedReader.$(OBJEXT) \
@@ -133,8 +133,8 @@ am__objects_2 = ConnectionInfo.$(OBJEXT) ConnectionInfoList.$(OBJEXT) \
 	TitleSearchCap.$(OBJEXT) DCDateSortCap.$(OBJEXT) \
 	DCTitleSortCap.$(OBJEXT) UPnPClassSortCap.$(OBJEXT) \
 	MediaPlayer.$(OBJEXT)
-am_libclink_a_OBJECTS = $(am__objects_1) $(am__objects_2)
-libclink_a_OBJECTS = $(am_libclink_a_OBJECTS)
+am_libclink___a_OBJECTS = $(am__objects_1) $(am__objects_2)
+libclink___a_OBJECTS = $(am_libclink___a_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -144,8 +144,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(libclink_a_SOURCES)
-DIST_SOURCES = $(libclink_a_SOURCES)
+SOURCES = $(libclink___a_SOURCES)
+DIST_SOURCES = $(libclink___a_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -249,7 +249,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-lib_LIBRARIES = libclink.a
+lib_LIBRARIES = libclink++.a
 INCLUDES = -I$(top_srcdir)/include @XML_CFLAGS@
 
 ########################################
@@ -472,7 +472,7 @@ clink_media_source = \
 ########################################
 # Library
 ########################################
-libclink_a_SOURCES = \
+libclink___a_SOURCES = \
 	$(clink_source) \
 	$(clink_media_source)
 
@@ -542,10 +542,10 @@ uninstall-libLIBRARIES:
 
 clean-libLIBRARIES:
 	-test -z "$(lib_LIBRARIES)" || rm -f $(lib_LIBRARIES)
-libclink.a: $(libclink_a_OBJECTS) $(libclink_a_DEPENDENCIES) 
-	-rm -f libclink.a
-	$(libclink_a_AR) libclink.a $(libclink_a_OBJECTS) $(libclink_a_LIBADD)
-	$(RANLIB) libclink.a
+libclink++.a: $(libclink___a_OBJECTS) $(libclink___a_DEPENDENCIES) 
+	-rm -f libclink++.a
+	$(libclink___a_AR) libclink++.a $(libclink___a_OBJECTS) $(libclink___a_LIBADD)
+	$(RANLIB) libclink++.a
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

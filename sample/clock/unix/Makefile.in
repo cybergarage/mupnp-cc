@@ -49,7 +49,7 @@ PROGRAMS = $(noinst_PROGRAMS)
 am_upnpclock_OBJECTS = ClockMain.$(OBJEXT) Clock.$(OBJEXT) \
 	ClockDevice.$(OBJEXT) InputUtil.$(OBJEXT)
 upnpclock_OBJECTS = $(am_upnpclock_OBJECTS)
-upnpclock_DEPENDENCIES = ../../../lib/unix/libclink.a
+upnpclock_DEPENDENCIES = ../../../lib/unix/libclink++.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -175,7 +175,7 @@ upnpclock_SOURCES = \
 	../ClockDevice.cpp \
 	../../common/InputUtil.cpp
 
-upnpclock_LDADD = ../../../lib/unix/libclink.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
+upnpclock_LDADD = ../../../lib/unix/libclink++.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
 all: all-am
 
 .SUFFIXES:

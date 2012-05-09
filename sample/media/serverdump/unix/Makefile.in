@@ -48,7 +48,7 @@ CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
 am_serverdump_OBJECTS = serverdump.$(OBJEXT) InputUtil.$(OBJEXT)
 serverdump_OBJECTS = $(am_serverdump_OBJECTS)
-serverdump_DEPENDENCIES = ../../../../lib/unix/libclink.a
+serverdump_DEPENDENCIES = ../../../../lib/unix/libclink++.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -172,7 +172,7 @@ serverdump_SOURCES = \
 	../serverdump.cpp \
 	../../../common/InputUtil.cpp
 
-serverdump_LDADD = ../../../../lib/unix/libclink.a @XML_LIBS@
+serverdump_LDADD = ../../../../lib/unix/libclink++.a @XML_LIBS@
 all: all-am
 
 .SUFFIXES:
