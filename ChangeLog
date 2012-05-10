@@ -1,4 +1,5 @@
 2012-05-10 Satoshi Konno <skonno@cybergarage.org>
+	* Disabled XML::Local2Unicode on MacOSX because the iconv library has some problem.
 	* Fixed some compile errors using GCC v4.2 on MacOSX v10.7 and Ubuntu v10.4.
 	* Changed library name as libclink++ on Unix platform.
 	* Fixed a bug to use --enable-libxml2 normally.

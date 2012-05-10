@@ -119,7 +119,7 @@ UnicodeStr *CyberXML::XML::Local2Unicode(const char *str, int &outLen)
 	}
 	utf8str[outLen] = '\0';
 	return utf8str;
-#elif defined(HAVE_ICONV) || defined(HAVE_ICONV_H)
+#elif (defined(HAVE_ICONV) || defined(HAVE_ICONV_H)) && !defined(__APPLE__)
 	iconvMutex.lock();
 
 	char *cpbuf = strdup(str);
