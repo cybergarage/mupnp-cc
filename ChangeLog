@@ -1,6 +1,7 @@
-2012-05-09 Satoshi Konno <skonno@cybergarage.org>
+2012-05-10 Satoshi Konno <skonno@cybergarage.org>
+	* Fixed some compile errors using GCC v4.2 on MacOSX v10.7 and Ubuntu v10.4.
 	* Changed library name as libclink++ on Unix platform.
-	* Fixed a bug to use --enable-libxml2 normally on Ubuntu 10.4.
+	* Fixed a bug to use --enable-libxml2 normally.
 	* Changed configure not to install header files in cybergarage/upnp/media.
 
 2012-04-10 Satoshi Konno <skonno@cybergarage.org>
