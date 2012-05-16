@@ -1,3 +1,6 @@
+2012-05-16 Satoshi Konno <skonno@cybergarage.org>
+	* v.1.7.2
+
 2012-05-10 Satoshi Konno <skonno@cybergarage.org>
 	* Added a library project for XCode on MacOSX.
 	* Disabled XML::Local2Unicode on MacOSX because the iconv library has some problem.
@@ -30,7 +33,6 @@
 	* Added Node::isValue() for iTunes Library.
 
 2005-10-13 Satoshi Konno <skonno@cybergarage.org>
-
 	* v.1.7.1
 	* Changed HTTPRequest::post() to add a HOST headedr before the posting.
 	* Changed HTTPSocket::post() to add a Date headedr to the HTTPResponse before the posting.
