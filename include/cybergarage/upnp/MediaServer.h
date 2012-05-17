@@ -17,6 +17,5 @@
 #define _CLINK_MEDIASERVER_H_
 
 #include <cybergarage/upnp/CyberLink.h>
-#include <cybergarage/upnp/media/server/MediaServer.h>
 
 #endif

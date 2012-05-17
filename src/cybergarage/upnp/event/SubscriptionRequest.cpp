@@ -53,7 +53,9 @@ void SubscriptionRequest::setService(Service *service)
 	const char *eventSubURL = service->getEventSubURL();
 		
 	// Thanks for Giordano Sassaroli <sassarol@cefriel.it> (05/21/03)
-	setURI(eventSubURL, true);
+    string relativeURL;
+    HTTP::GetRelativeURL(eventSubURL, relativeURL);
+	setURI(relativeURL);
 
 	const char *urlBaseStr = "";
 

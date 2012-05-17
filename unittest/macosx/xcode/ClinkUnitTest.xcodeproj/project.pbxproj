@@ -11,7 +11,6 @@
 		214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */; };
 		214CE3651564D75400115E8A /* TestDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3601564D75400115E8A /* TestDevice.cpp */; };
 		214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3611564D75400115E8A /* TestHTTPServer.cpp */; };
-		214CE3671564D75400115E8A /* TestMediaServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3621564D75400115E8A /* TestMediaServer.cpp */; };
 		215D56C91564F33F00D7BDC0 /* UPnPDeviceTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */; };
 		215D56CA1564F33F00D7BDC0 /* UPnPMiscTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */; };
 		215D56D61564F41E00D7BDC0 /* liblibclink++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D56D31564F41200D7BDC0 /* liblibclink++.a */; };
@@ -51,11 +50,9 @@
 		214CE35A1564D75400115E8A /* TestCtrlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCtrlPoint.h; path = ../../TestCtrlPoint.h; sourceTree = "<group>"; };
 		214CE35B1564D75400115E8A /* TestDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDevice.h; path = ../../TestDevice.h; sourceTree = "<group>"; };
 		214CE35C1564D75400115E8A /* TestHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestHTTPServer.h; path = ../../TestHTTPServer.h; sourceTree = "<group>"; };
-		214CE35D1564D75400115E8A /* TestMediaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestMediaServer.h; path = ../../TestMediaServer.h; sourceTree = "<group>"; };
 		214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestCtrlPoint.cpp; path = ../../TestCtrlPoint.cpp; sourceTree = "<group>"; };
 		214CE3601564D75400115E8A /* TestDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestDevice.cpp; path = ../../TestDevice.cpp; sourceTree = "<group>"; };
 		214CE3611564D75400115E8A /* TestHTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestHTTPServer.cpp; path = ../../TestHTTPServer.cpp; sourceTree = "<group>"; };
-		214CE3621564D75400115E8A /* TestMediaServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestMediaServer.cpp; path = ../../TestMediaServer.cpp; sourceTree = "<group>"; };
 		215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPDeviceTests.cpp; path = ../../UPnPDeviceTests.cpp; sourceTree = "<group>"; };
 		215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPMiscTests.cpp; path = ../../UPnPMiscTests.cpp; sourceTree = "<group>"; };
 		215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libclink++.xcodeproj"; path = "../../../lib/macosx/xcode/libclink++.xcodeproj"; sourceTree = "<group>"; };
@@ -82,11 +79,9 @@
 				214CE35A1564D75400115E8A /* TestCtrlPoint.h */,
 				214CE35B1564D75400115E8A /* TestDevice.h */,
 				214CE35C1564D75400115E8A /* TestHTTPServer.h */,
-				214CE35D1564D75400115E8A /* TestMediaServer.h */,
 				214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */,
 				214CE3601564D75400115E8A /* TestDevice.cpp */,
 				214CE3611564D75400115E8A /* TestHTTPServer.cpp */,
-				214CE3621564D75400115E8A /* TestMediaServer.cpp */,
 				214CE34F1564C8FD00115E8A /* ClinkTestMain.cpp */,
 			);
 			name = Src;
@@ -196,7 +191,6 @@
 				214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */,
 				214CE3651564D75400115E8A /* TestDevice.cpp in Sources */,
 				214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */,
-				214CE3671564D75400115E8A /* TestMediaServer.cpp in Sources */,
 				215D56C91564F33F00D7BDC0 /* UPnPDeviceTests.cpp in Sources */,
 				215D56CA1564F33F00D7BDC0 /* UPnPMiscTests.cpp in Sources */,
 			);

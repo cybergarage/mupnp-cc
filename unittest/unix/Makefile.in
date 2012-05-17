@@ -33,8 +33,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-noinst_PROGRAMS = upnptv$(EXEEXT)
-subdir = examples/tv/unix
+noinst_PROGRAMS = clinktestunit$(EXEEXT)
+subdir = unittest/unix
 DIST_COMMON = $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -46,10 +46,12 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_upnptv_OBJECTS = TvMain.$(OBJEXT) TvDevice.$(OBJEXT) \
-	InputUtil.$(OBJEXT)
-upnptv_OBJECTS = $(am_upnptv_OBJECTS)
-upnptv_DEPENDENCIES = ../../../lib/unix/libclink++.a
+am_clinktestunit_OBJECTS = clinktestunit.$(OBJEXT) \
+	TestCtrlPoint.$(OBJEXT) TestDevice.$(OBJEXT) \
+	TestHTTPServer.$(OBJEXT) TestMediaServer.$(OBJEXT) \
+	UPnPTestCase.$(OBJEXT)
+clinktestunit_OBJECTS = $(am_clinktestunit_OBJECTS)
+clinktestunit_DEPENDENCIES = ../../lib/unix/libclink++.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -59,8 +61,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(upnptv_SOURCES)
-DIST_SOURCES = $(upnptv_SOURCES)
+SOURCES = $(clinktestunit_SOURCES)
+DIST_SOURCES = $(clinktestunit_SOURCES)
 HEADERS = $(noinst_HEADERS)
 ETAGS = etags
 CTAGS = ctags
@@ -165,16 +167,23 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-INCLUDES = -I$(top_srcdir)/include -I../ -I../../common @XML_CFLAGS@ @GTK_CFLAGS@ @GDK_IMLIB_CFLAGS@
+INCLUDES = -I$(top_srcdir)/include -I../ @XML_CFLAGS@
 noinst_HEADERS = \
-	../../common/InputUtil.h
+	../TestCtrlPoint.h \
+	../TestDevice.h \
+	../TestHTTPServer.h \
+	../TestMediaServer.h \
+	../UPnPTestCase.h
 
-upnptv_SOURCES = \
-	TvMain.cpp \
-	../TvDevice.cpp \
-	../../common/InputUtil.cpp
+clinktestunit_SOURCES = \
+	../clinktestunit.cpp \
+	../TestCtrlPoint.cpp \
+	../TestDevice.cpp \
+	../TestHTTPServer.cpp \
+	../TestMediaServer.cpp \
+	../UPnPTestCase.cpp 
 
-upnptv_LDADD = ../../../lib/unix/libclink++.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
+clinktestunit_LDADD = ../../lib/unix/libclink++.a -lcppunit -ldl @XML_LIBS@
 all: all-am
 
 .SUFFIXES:
@@ -188,9 +197,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign examples/tv/unix/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign unittest/unix/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign examples/tv/unix/Makefile
+	  $(AUTOMAKE) --foreign unittest/unix/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -212,9 +221,9 @@ $(am__aclocal_m4_deps):
 
 clean-noinstPROGRAMS:
 	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
-upnptv$(EXEEXT): $(upnptv_OBJECTS) $(upnptv_DEPENDENCIES) $(EXTRA_upnptv_DEPENDENCIES) 
-	@rm -f upnptv$(EXEEXT)
-	$(CXXLINK) $(upnptv_OBJECTS) $(upnptv_LDADD) $(LIBS)
+clinktestunit$(EXEEXT): $(clinktestunit_OBJECTS) $(clinktestunit_DEPENDENCIES) $(EXTRA_clinktestunit_DEPENDENCIES) 
+	@rm -f clinktestunit$(EXEEXT)
+	$(CXXLINK) $(clinktestunit_OBJECTS) $(clinktestunit_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -222,9 +231,12 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/InputUtil.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TvDevice.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TvMain.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestCtrlPoint.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestDevice.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestHTTPServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestMediaServer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UPnPTestCase.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/clinktestunit.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -240,33 +252,89 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-TvDevice.o: ../TvDevice.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TvDevice.o -MD -MP -MF $(DEPDIR)/TvDevice.Tpo -c -o TvDevice.o `test -f '../TvDevice.cpp' || echo '$(srcdir)/'`../TvDevice.cpp
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TvDevice.Tpo $(DEPDIR)/TvDevice.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TvDevice.cpp' object='TvDevice.o' libtool=no @AMDEPBACKSLASH@
+clinktestunit.o: ../clinktestunit.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT clinktestunit.o -MD -MP -MF $(DEPDIR)/clinktestunit.Tpo -c -o clinktestunit.o `test -f '../clinktestunit.cpp' || echo '$(srcdir)/'`../clinktestunit.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/clinktestunit.Tpo $(DEPDIR)/clinktestunit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../clinktestunit.cpp' object='clinktestunit.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TvDevice.o `test -f '../TvDevice.cpp' || echo '$(srcdir)/'`../TvDevice.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o clinktestunit.o `test -f '../clinktestunit.cpp' || echo '$(srcdir)/'`../clinktestunit.cpp
 
-TvDevice.obj: ../TvDevice.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TvDevice.obj -MD -MP -MF $(DEPDIR)/TvDevice.Tpo -c -o TvDevice.obj `if test -f '../TvDevice.cpp'; then $(CYGPATH_W) '../TvDevice.cpp'; else $(CYGPATH_W) '$(srcdir)/../TvDevice.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TvDevice.Tpo $(DEPDIR)/TvDevice.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TvDevice.cpp' object='TvDevice.obj' libtool=no @AMDEPBACKSLASH@
+clinktestunit.obj: ../clinktestunit.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT clinktestunit.obj -MD -MP -MF $(DEPDIR)/clinktestunit.Tpo -c -o clinktestunit.obj `if test -f '../clinktestunit.cpp'; then $(CYGPATH_W) '../clinktestunit.cpp'; else $(CYGPATH_W) '$(srcdir)/../clinktestunit.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/clinktestunit.Tpo $(DEPDIR)/clinktestunit.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../clinktestunit.cpp' object='clinktestunit.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TvDevice.obj `if test -f '../TvDevice.cpp'; then $(CYGPATH_W) '../TvDevice.cpp'; else $(CYGPATH_W) '$(srcdir)/../TvDevice.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o clinktestunit.obj `if test -f '../clinktestunit.cpp'; then $(CYGPATH_W) '../clinktestunit.cpp'; else $(CYGPATH_W) '$(srcdir)/../clinktestunit.cpp'; fi`
 
-InputUtil.o: ../../common/InputUtil.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT InputUtil.o -MD -MP -MF $(DEPDIR)/InputUtil.Tpo -c -o InputUtil.o `test -f '../../common/InputUtil.cpp' || echo '$(srcdir)/'`../../common/InputUtil.cpp
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/InputUtil.Tpo $(DEPDIR)/InputUtil.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../../common/InputUtil.cpp' object='InputUtil.o' libtool=no @AMDEPBACKSLASH@
+TestCtrlPoint.o: ../TestCtrlPoint.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestCtrlPoint.o -MD -MP -MF $(DEPDIR)/TestCtrlPoint.Tpo -c -o TestCtrlPoint.o `test -f '../TestCtrlPoint.cpp' || echo '$(srcdir)/'`../TestCtrlPoint.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestCtrlPoint.Tpo $(DEPDIR)/TestCtrlPoint.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestCtrlPoint.cpp' object='TestCtrlPoint.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o InputUtil.o `test -f '../../common/InputUtil.cpp' || echo '$(srcdir)/'`../../common/InputUtil.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestCtrlPoint.o `test -f '../TestCtrlPoint.cpp' || echo '$(srcdir)/'`../TestCtrlPoint.cpp
 
-InputUtil.obj: ../../common/InputUtil.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT InputUtil.obj -MD -MP -MF $(DEPDIR)/InputUtil.Tpo -c -o InputUtil.obj `if test -f '../../common/InputUtil.cpp'; then $(CYGPATH_W) '../../common/InputUtil.cpp'; else $(CYGPATH_W) '$(srcdir)/../../common/InputUtil.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/InputUtil.Tpo $(DEPDIR)/InputUtil.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../../common/InputUtil.cpp' object='InputUtil.obj' libtool=no @AMDEPBACKSLASH@
+TestCtrlPoint.obj: ../TestCtrlPoint.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestCtrlPoint.obj -MD -MP -MF $(DEPDIR)/TestCtrlPoint.Tpo -c -o TestCtrlPoint.obj `if test -f '../TestCtrlPoint.cpp'; then $(CYGPATH_W) '../TestCtrlPoint.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestCtrlPoint.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestCtrlPoint.Tpo $(DEPDIR)/TestCtrlPoint.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestCtrlPoint.cpp' object='TestCtrlPoint.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o InputUtil.obj `if test -f '../../common/InputUtil.cpp'; then $(CYGPATH_W) '../../common/InputUtil.cpp'; else $(CYGPATH_W) '$(srcdir)/../../common/InputUtil.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestCtrlPoint.obj `if test -f '../TestCtrlPoint.cpp'; then $(CYGPATH_W) '../TestCtrlPoint.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestCtrlPoint.cpp'; fi`
+
+TestDevice.o: ../TestDevice.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestDevice.o -MD -MP -MF $(DEPDIR)/TestDevice.Tpo -c -o TestDevice.o `test -f '../TestDevice.cpp' || echo '$(srcdir)/'`../TestDevice.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestDevice.Tpo $(DEPDIR)/TestDevice.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestDevice.cpp' object='TestDevice.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestDevice.o `test -f '../TestDevice.cpp' || echo '$(srcdir)/'`../TestDevice.cpp
+
+TestDevice.obj: ../TestDevice.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestDevice.obj -MD -MP -MF $(DEPDIR)/TestDevice.Tpo -c -o TestDevice.obj `if test -f '../TestDevice.cpp'; then $(CYGPATH_W) '../TestDevice.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestDevice.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestDevice.Tpo $(DEPDIR)/TestDevice.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestDevice.cpp' object='TestDevice.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestDevice.obj `if test -f '../TestDevice.cpp'; then $(CYGPATH_W) '../TestDevice.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestDevice.cpp'; fi`
+
+TestHTTPServer.o: ../TestHTTPServer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestHTTPServer.o -MD -MP -MF $(DEPDIR)/TestHTTPServer.Tpo -c -o TestHTTPServer.o `test -f '../TestHTTPServer.cpp' || echo '$(srcdir)/'`../TestHTTPServer.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestHTTPServer.Tpo $(DEPDIR)/TestHTTPServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestHTTPServer.cpp' object='TestHTTPServer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestHTTPServer.o `test -f '../TestHTTPServer.cpp' || echo '$(srcdir)/'`../TestHTTPServer.cpp
+
+TestHTTPServer.obj: ../TestHTTPServer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestHTTPServer.obj -MD -MP -MF $(DEPDIR)/TestHTTPServer.Tpo -c -o TestHTTPServer.obj `if test -f '../TestHTTPServer.cpp'; then $(CYGPATH_W) '../TestHTTPServer.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestHTTPServer.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestHTTPServer.Tpo $(DEPDIR)/TestHTTPServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestHTTPServer.cpp' object='TestHTTPServer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestHTTPServer.obj `if test -f '../TestHTTPServer.cpp'; then $(CYGPATH_W) '../TestHTTPServer.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestHTTPServer.cpp'; fi`
+
+TestMediaServer.o: ../TestMediaServer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestMediaServer.o -MD -MP -MF $(DEPDIR)/TestMediaServer.Tpo -c -o TestMediaServer.o `test -f '../TestMediaServer.cpp' || echo '$(srcdir)/'`../TestMediaServer.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestMediaServer.Tpo $(DEPDIR)/TestMediaServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestMediaServer.cpp' object='TestMediaServer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestMediaServer.o `test -f '../TestMediaServer.cpp' || echo '$(srcdir)/'`../TestMediaServer.cpp
+
+TestMediaServer.obj: ../TestMediaServer.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestMediaServer.obj -MD -MP -MF $(DEPDIR)/TestMediaServer.Tpo -c -o TestMediaServer.obj `if test -f '../TestMediaServer.cpp'; then $(CYGPATH_W) '../TestMediaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestMediaServer.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/TestMediaServer.Tpo $(DEPDIR)/TestMediaServer.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../TestMediaServer.cpp' object='TestMediaServer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestMediaServer.obj `if test -f '../TestMediaServer.cpp'; then $(CYGPATH_W) '../TestMediaServer.cpp'; else $(CYGPATH_W) '$(srcdir)/../TestMediaServer.cpp'; fi`
+
+UPnPTestCase.o: ../UPnPTestCase.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT UPnPTestCase.o -MD -MP -MF $(DEPDIR)/UPnPTestCase.Tpo -c -o UPnPTestCase.o `test -f '../UPnPTestCase.cpp' || echo '$(srcdir)/'`../UPnPTestCase.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/UPnPTestCase.Tpo $(DEPDIR)/UPnPTestCase.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../UPnPTestCase.cpp' object='UPnPTestCase.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o UPnPTestCase.o `test -f '../UPnPTestCase.cpp' || echo '$(srcdir)/'`../UPnPTestCase.cpp
+
+UPnPTestCase.obj: ../UPnPTestCase.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT UPnPTestCase.obj -MD -MP -MF $(DEPDIR)/UPnPTestCase.Tpo -c -o UPnPTestCase.obj `if test -f '../UPnPTestCase.cpp'; then $(CYGPATH_W) '../UPnPTestCase.cpp'; else $(CYGPATH_W) '$(srcdir)/../UPnPTestCase.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/UPnPTestCase.Tpo $(DEPDIR)/UPnPTestCase.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../UPnPTestCase.cpp' object='UPnPTestCase.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o UPnPTestCase.obj `if test -f '../UPnPTestCase.cpp'; then $(CYGPATH_W) '../UPnPTestCase.cpp'; else $(CYGPATH_W) '$(srcdir)/../UPnPTestCase.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

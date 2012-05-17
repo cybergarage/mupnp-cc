@@ -58,7 +58,9 @@ void ControlRequest::setRequestHost(Service *service)
 		}
 	}
 
-	setURI(ctrlURL.c_str(), true);
+    string relativeURL;
+    HTTP::GetRelativeURL(ctrlURL, relativeURL);
+	setURI(relativeURL);
 
 	std::string reqHostBuf;
 	std::string requestHostBuf;
