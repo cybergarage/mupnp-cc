@@ -47,7 +47,7 @@
 
 using namespace std;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -70,7 +70,7 @@ typedef struct _ExpatData {
 	Node *currNode;
 } ExpatData;
 
-static void XMLCALL ExpatElementStart(void *userData, const char *el, const char **attr)
+static void XMLCALL ExpatElementStart(void *userData, const std::string &el, const std::string &*attr)
 {
 	ExpatData *expatData = (ExpatData *)userData;
 
@@ -92,7 +92,7 @@ static void XMLCALL ExpatElementStart(void *userData, const char *el, const char
 	expatData->currNode = node;
 }
 
-static void XMLCALL ExpatElementEnd(void *userData, const char *el)
+static void XMLCALL ExpatElementEnd(void *userData, const std::string &el)
 {
 	ExpatData *expatData = (ExpatData *)userData;
 	if (expatData->currNode != NULL)
@@ -111,7 +111,7 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 //	parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const char *data, int len)
+Node *Parser::parse(const std::string &data, int len)
 {
 	XML_Parser p = XML_ParserCreate(NULL);
 	if (!p)

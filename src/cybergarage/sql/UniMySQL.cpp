@@ -14,14 +14,14 @@
 ******************************************************************/
 
 #include <cybergarage/sql/UniMySQL.h>
-#include <cybergarage/util/Date.h>
+#include <uhttp/util/Date.h>
 #include <iostream>
 
 #ifdef SUPPORT_MYSQL
 
 using namespace std;
 using namespace CyberSQL;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 //////////////////////////////////////////////////////////////////////////
 // Constructor
@@ -96,10 +96,10 @@ bool UniMySQL::isConnected()
 
 const char *UniMySQL::getConnectionErrorMessage()
 {
-	return (const char *)mysql_error(&mySQL);
+	return (const std::string &)mysql_error(&mySQL);
 }
 
-bool UniMySQL::query(const char *sql)
+bool UniMySQL::query(const std::string &sql)
 {
 	if (res != NULL)
 		mysql_free_result(res);
@@ -131,12 +131,12 @@ int UniMySQL::getResultSetNum()
 
 const char *UniMySQL::getQueryStatusMessage()
 {
-	return (const char *)mysql_error(&mySQL);
+	return (const std::string &)mysql_error(&mySQL);
 }
 
 const char *UniMySQL::getQueryErrorMessage()
 {
-	return (const char *)mysql_error(&mySQL);
+	return (const std::string &)mysql_error(&mySQL);
 }
 
 bool UniMySQL::fetch()

@@ -19,7 +19,7 @@
 #include <cybergarage/upnp/media/server/ContentDirectory.h>
 #include <cybergarage/upnp/media/server/ConnectionManager.h>
 #include <cybergarage/upnp/media/server/object/item/mythtv/MythRecordedItemNode.h>
-#include <cybergarage/io/File.h>
+#include <uhttp/io/File.h>
 #include <string>
 #include <sstream>
 

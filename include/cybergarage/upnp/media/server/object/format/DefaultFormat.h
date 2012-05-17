@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_DEFAULTFORMT_H_
 #define _CLINK_MEDIA_DEFAULTFORMT_H_
 
-#include <cybergarage/io/File.h>
+#include <uhttp/io/File.h>
 #include <cybergarage/upnp/media/server/object/Format.h>
 #include <cybergarage/upnp/media/server/object/FormatObject.h>
 
@@ -30,7 +30,7 @@ class DefaultFormat : public Format, public FormatObject
 
 private:
 
-	CyberIO::File *file;
+	uHTTP::File *file;
 		
 	////////////////////////////////////////////////
 	// Constroctor
@@ -43,7 +43,7 @@ public:
 		setFile(NULL);
 	}
 
-	DefaultFormat(CyberIO::File *file)
+	DefaultFormat(uHTTP::File *file)
 	{
 		setFile(file);
 	}
@@ -54,12 +54,12 @@ public:
 
 public:
 
-	void setFile(CyberIO::File *f)
+	void setFile(uHTTP::File *f)
 	{
 		file = f;
 	}
 
-	CyberIO::File *getFile()
+	uHTTP::File *getFile()
 	{
 		return file;
 	}
@@ -70,12 +70,12 @@ public:
 
 public:
 
-	virtual bool equals(CyberIO::File *file)
+	virtual bool equals(uHTTP::File *file)
 	{
 		return true;
 	}
 	
-	virtual FormatObject *createObject(CyberIO::File *file)
+	virtual FormatObject *createObject(uHTTP::File *file)
 	{
 		return new DefaultFormat(file);
 	}

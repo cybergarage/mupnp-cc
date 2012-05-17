@@ -79,11 +79,11 @@ const char *ActionRequest::getActionName(std::string &buf)
 	const char *name = node->getName();
 	if (name == NULL)
 		return "";
-	CyberUtil::String nameStr = name;
+	uHTTP::String nameStr(name);
 	int idx = nameStr.indexOf(CyberSOAP::SOAP::DELIM)+1;
 	if (idx < 0)
 		return "";
-	CyberUtil::String actName;
+	uHTTP::String actName;
 	buf = nameStr.substring(idx, nameStr.length(), actName);
 	return buf.c_str();
 }
@@ -148,6 +148,6 @@ Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *acti
 
 ActionResponse *ActionRequest::post(ActionResponse *actionRes)
 {
-	postMessage(getRequestHost(), getRequestPort(), actionRes);
+    postMessage(getRequestHost(), getRequestPort(), actionRes);
 	return actionRes;
 }

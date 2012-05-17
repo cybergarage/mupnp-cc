@@ -43,9 +43,7 @@ public:
 		return name.c_str();
 	}
 
-	void setName(const char *val) {
-		if (val == NULL)
-			val = "";
+	void setName(const std::string &val) {
 		name = val;
 	}
 
@@ -57,9 +55,7 @@ public:
 		return value.c_str();
 	}
 
-	void setValue(const char *val) {
-		if (val == NULL)
-			val = "";
+	void setValue(const std::string &val) {
 		value = val;
 	}
 };

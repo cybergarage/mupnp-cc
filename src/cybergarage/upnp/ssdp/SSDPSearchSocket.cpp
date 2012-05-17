@@ -30,7 +30,7 @@ SSDPSearchSocket::SSDPSearchSocket()
 {
 }
 
-SSDPSearchSocket::SSDPSearchSocket(const char *bindAddr)
+SSDPSearchSocket::SSDPSearchSocket(const std::string &bindAddr)
 {
 	open(bindAddr);
 }
@@ -45,11 +45,11 @@ SSDPSearchSocket::~SSDPSearchSocket()
 //	Constructor
 ////////////////////////////////////////////////
 
-bool SSDPSearchSocket::open(const char *bindAddr)
+bool SSDPSearchSocket::open(const std::string &bindAddr)
 {
 	const char *addr = SSDP::ADDRESS;
 	useIPv6Address = false;
-	if (CyberNet::IsIPv6Address(bindAddr) == true) {
+	if (uHTTP::IsIPv6Address(bindAddr) == true) {
 		addr = SSDP::GetIPv6Address();
 		useIPv6Address = true;
 	}

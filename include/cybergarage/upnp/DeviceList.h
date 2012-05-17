@@ -16,13 +16,13 @@
 #ifndef _CLINK_DEVICELIST_H_
 #define _CLINK_DEVICELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class Device;
 
-class DeviceList : public CyberUtil::Vector
+class DeviceList : public uHTTP::Vector
 {
 public:
 	////////////////////////////////////////////////

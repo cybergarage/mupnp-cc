@@ -70,7 +70,7 @@ public:
 
 public:
 
-	Argument *getArgument(const char *name)
+	Argument *getArgument(const std::string &name)
 	{
 		return action->getArgument(name);
 	}
@@ -129,12 +129,12 @@ public:
 
 public:
 
-	void setBrowseFlag(const char *browseFlag)
+	void setBrowseFlag(const std::string &browseFlag)
 	{
 		action->setArgumentValue(BROWSE_FLAG, browseFlag);
 	}
 	
-	void setObjectID(const char *objectID)
+	void setObjectID(const std::string &objectID)
 	{
 		action->setArgumentValue(OBJECT_ID, objectID);
 	}
@@ -149,12 +149,12 @@ public:
 		action->setArgumentValue(REQUESTED_COUNT, count);
 	}
 	
-	void setFilter(const char *filter)
+	void setFilter(const std::string &filter)
 	{
 		action->setArgumentValue(FILTER, filter);
 	}
 
-	void setSortCriteria(const char *sortCaiteria)
+	void setSortCriteria(const std::string &sortCaiteria)
 	{
 		action->setArgumentValue(SORT_CRITERIA, sortCaiteria);
 	}
@@ -165,7 +165,7 @@ public:
 
 public:
 
-	void setResult(const char *value)
+	void setResult(const std::string &value)
 	{
 		action->setArgumentValue(RESULT, value);
 	}

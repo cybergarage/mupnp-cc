@@ -53,10 +53,10 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint)
 	
 bool SSDPSearchResponseSocketList::open(int port)
 {
-	int nHostAddrs = CyberNet::GetNHostAddresses();
+	int nHostAddrs = uHTTP::GetNHostAddresses();
 	for (int n=0; n<nHostAddrs; n++) {
 		string bindAddr;
-		CyberNet::GetHostAddress(n, bindAddr);
+		uHTTP::GetHostAddress(n, bindAddr);
 		SSDPSearchResponseSocket *socket = new SSDPSearchResponseSocket(bindAddr.c_str(), port);
 		add(socket);
 	}
@@ -108,7 +108,7 @@ bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req)
 		const char *bindAddr = sock->getLocalAddress();
 		req->setLocalAddress(bindAddr);
 		const char *ssdpAddr = SSDP::ADDRESS;
-		if (CyberNet::IsIPv6Address(bindAddr) == true)
+		if (uHTTP::IsIPv6Address(bindAddr) == true)
 			ssdpAddr = SSDP::GetIPv6Address();
 		//sock.joinGroup(ssdpAddr, SSDP.PORT, bindAddr);
 		if (sock->post(ssdpAddr, SSDP::PORT, req) == false)

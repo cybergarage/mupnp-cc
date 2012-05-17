@@ -16,8 +16,8 @@
 #ifndef _CLINK_DEVICEDATA_H_
 #define _CLINK_DEVICEDATA_H_
 
-#include <cybergarage/http/HTTPServerList.h>
-#include <cybergarage/util/ListenerList.h>
+#include <uhttp/http/HTTPServerList.h>
+#include <uhttp/util/ListenerList.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchSocketList.h>
 #include <cybergarage/upnp/device/Advertiser.h>
 #include <cybergarage/xml/NodeData.h>
@@ -38,8 +38,8 @@ class DeviceData : public CyberXML::NodeData
 	int leaseTime;
 	int httpPort;
 
-	CyberHTTP::HTTPServerList httpServerList;		
-	CyberUtil::ListenerList controlActionListenerList;
+	uHTTP::HTTPServerList httpServerList;		
+	uHTTP::ListenerList controlActionListenerList;
 
 	SSDPSearchSocketList ssdpSearchSocketList;
 	SSDPPacket ssdpPacket;
@@ -78,11 +78,11 @@ public:
 		return descriptionURI.c_str();
 	}
 
-	void setDescriptionFile(const char *descriptionFile) {
+	void setDescriptionFile(const std::string &descriptionFile) {
 		this->descriptionFile = descriptionFile;
 	}
 
-	void setDescriptionURI(const char *descriptionURI) {
+	void setDescriptionURI(const std::string &descriptionURI) {
 		this->descriptionURI = descriptionURI;
 	}
 
@@ -94,7 +94,7 @@ public:
 		return location.c_str();
 	}
 
-	void setLocation(const char *location) {
+	void setLocation(const std::string &location) {
 		this->location = location;
 	}
 
@@ -114,7 +114,7 @@ public:
 	//	HTTPServer 
 	////////////////////////////////////////////////
 
-	CyberHTTP::HTTPServerList *getHTTPServerList() {
+	uHTTP::HTTPServerList *getHTTPServerList() {
 		return &httpServerList;
 	}
 
@@ -134,7 +134,7 @@ public:
 	// controlActionListenerList
 	////////////////////////////////////////////////
 
-	CyberUtil::ListenerList &getControlActionListenerList() {
+	uHTTP::ListenerList &getControlActionListenerList() {
 		return controlActionListenerList;
 	}
 

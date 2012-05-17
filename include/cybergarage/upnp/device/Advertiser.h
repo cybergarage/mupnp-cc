@@ -16,13 +16,13 @@
 #ifndef _CLINK_ADVERTISER_H_
 #define _CLINK_ADVERTISER_H_
 
-#include <cybergarage/util/Thread.h>
+#include <uhttp/util/Thread.h>
 
 namespace CyberLink {
 
 class Device;
 
-class Advertiser : public CyberUtil::Thread
+class Advertiser : public uHTTP::Thread
 {
 	////////////////////////////////////////////////
 	//	Constructor

@@ -21,8 +21,8 @@
 #include <string>
 #include <cybergarage/xml/XML.h>
 #include <cybergarage/xml/Node.h>
-#include <cybergarage/io/File.h>
-#include <cybergarage/net/URL.h>
+#include <uhttp/io/File.h>
+#include <uhttp/net/URL.h>
 #include <cybergarage/xml/ParserException.h>
 
 namespace CyberXML {
@@ -46,16 +46,16 @@ public:
 	////////////////////////////////////////////////
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	Node *parse(CyberIO::File *file);
+	Node *parse(uHTTP::File *file);
 #endif
 
-	Node *parse(CyberNet::URL *url);
+	Node *parse(uHTTP::URL *url);
 	
-	Node *parse(const char *data, int len);
+	Node *parse(const std::string &data, int len);
 
-	Node *parse(const char *data)
+	Node *parse(const std::string &data)
 	{
-		return parse(data, (int)strlen(data));
+		return parse(data, data.length());
 	}
 	
 	Node *parse(std::string *data)
@@ -65,7 +65,7 @@ public:
 	
 	Node *parse(UnicodeStr *data, int len)
 	{
-		return parse((const char *)data, len);
+		return parse((const std::string &)data, len);
 	}
 };
 

@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_SEARCHCRITERIALIST_H_
 #define _CLINK_MEDIA_SEARCHCRITERIALIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/SearchCriteria.h>
 
 namespace CyberLink {
@@ -24,7 +24,7 @@ namespace CyberLink {
 class SearchCapList;
 class ContentNode;
 
-class SearchCriteriaList : public CyberUtil::Vector
+class SearchCriteriaList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor

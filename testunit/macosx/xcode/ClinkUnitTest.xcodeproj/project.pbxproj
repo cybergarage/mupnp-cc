@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		214CE3501564C8FD00115E8A /* ClinkTestMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE34F1564C8FD00115E8A /* ClinkTestMain.cpp */; };
+		214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */; };
+		214CE3651564D75400115E8A /* TestDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3601564D75400115E8A /* TestDevice.cpp */; };
+		214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3611564D75400115E8A /* TestHTTPServer.cpp */; };
+		214CE3671564D75400115E8A /* TestMediaServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3621564D75400115E8A /* TestMediaServer.cpp */; };
+		215D56C91564F33F00D7BDC0 /* UPnPDeviceTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */; };
+		215D56CA1564F33F00D7BDC0 /* UPnPMiscTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */; };
+		215D56D61564F41E00D7BDC0 /* liblibclink++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D56D31564F41200D7BDC0 /* liblibclink++.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		215D56D21564F41200D7BDC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 219C21ED155C7877003ABA46;
+			remoteInfo = "libclink++";
+		};
+		215D56D41564F41A00D7BDC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 219C21EC155C7877003ABA46;
+			remoteInfo = "libclink++";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		216397DF1564C6D100CF258B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		214CE34F1564C8FD00115E8A /* ClinkTestMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClinkTestMain.cpp; path = ../../ClinkTestMain.cpp; sourceTree = "<group>"; };
+		214CE35A1564D75400115E8A /* TestCtrlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCtrlPoint.h; path = ../../TestCtrlPoint.h; sourceTree = "<group>"; };
+		214CE35B1564D75400115E8A /* TestDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDevice.h; path = ../../TestDevice.h; sourceTree = "<group>"; };
+		214CE35C1564D75400115E8A /* TestHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestHTTPServer.h; path = ../../TestHTTPServer.h; sourceTree = "<group>"; };
+		214CE35D1564D75400115E8A /* TestMediaServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestMediaServer.h; path = ../../TestMediaServer.h; sourceTree = "<group>"; };
+		214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestCtrlPoint.cpp; path = ../../TestCtrlPoint.cpp; sourceTree = "<group>"; };
+		214CE3601564D75400115E8A /* TestDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestDevice.cpp; path = ../../TestDevice.cpp; sourceTree = "<group>"; };
+		214CE3611564D75400115E8A /* TestHTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestHTTPServer.cpp; path = ../../TestHTTPServer.cpp; sourceTree = "<group>"; };
+		214CE3621564D75400115E8A /* TestMediaServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestMediaServer.cpp; path = ../../TestMediaServer.cpp; sourceTree = "<group>"; };
+		215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPDeviceTests.cpp; path = ../../UPnPDeviceTests.cpp; sourceTree = "<group>"; };
+		215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPMiscTests.cpp; path = ../../UPnPMiscTests.cpp; sourceTree = "<group>"; };
+		215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libclink++.xcodeproj"; path = "../../../lib/macosx/xcode/libclink++.xcodeproj"; sourceTree = "<group>"; };
+		216397E11564C6D100CF258B /* ClinkUnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ClinkUnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		216397DE1564C6D100CF258B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				215D56D61564F41E00D7BDC0 /* liblibclink++.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		214CE34E1564C8C900115E8A /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */,
+				215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */,
+				214CE35A1564D75400115E8A /* TestCtrlPoint.h */,
+				214CE35B1564D75400115E8A /* TestDevice.h */,
+				214CE35C1564D75400115E8A /* TestHTTPServer.h */,
+				214CE35D1564D75400115E8A /* TestMediaServer.h */,
+				214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */,
+				214CE3601564D75400115E8A /* TestDevice.cpp */,
+				214CE3611564D75400115E8A /* TestHTTPServer.cpp */,
+				214CE3621564D75400115E8A /* TestMediaServer.cpp */,
+				214CE34F1564C8FD00115E8A /* ClinkTestMain.cpp */,
+			);
+			name = Src;
+			sourceTree = "<group>";
+		};
+		214CE3691564D87500115E8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		215D56CC1564F41100D7BDC0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				215D56D31564F41200D7BDC0 /* liblibclink++.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		216397D61564C6D100CF258B = {
+			isa = PBXGroup;
+			children = (
+				214CE34E1564C8C900115E8A /* Src */,
+				214CE3691564D87500115E8A /* Frameworks */,
+				216397E21564C6D100CF258B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		216397E21564C6D100CF258B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				216397E11564C6D100CF258B /* ClinkUnitTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		216397E01564C6D100CF258B /* ClinkUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 216397EB1564C6D100CF258B /* Build configuration list for PBXNativeTarget "ClinkUnitTest" */;
+			buildPhases = (
+				216397DD1564C6D100CF258B /* Sources */,
+				216397DE1564C6D100CF258B /* Frameworks */,
+				216397DF1564C6D100CF258B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				215D56D51564F41A00D7BDC0 /* PBXTargetDependency */,
+			);
+			name = ClinkUnitTest;
+			productName = ClinkUnitTest;
+			productReference = 216397E11564C6D100CF258B /* ClinkUnitTest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		216397D81564C6D100CF258B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 216397DB1564C6D100CF258B /* Build configuration list for PBXProject "ClinkUnitTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 216397D61564C6D100CF258B;
+			productRefGroup = 216397E21564C6D100CF258B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 215D56CC1564F41100D7BDC0 /* Products */;
+					ProjectRef = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				216397E01564C6D100CF258B /* ClinkUnitTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		215D56D31564F41200D7BDC0 /* liblibclink++.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "liblibclink++.a";
+			remoteRef = 215D56D21564F41200D7BDC0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		216397DD1564C6D100CF258B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				214CE3501564C8FD00115E8A /* ClinkTestMain.cpp in Sources */,
+				214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */,
+				214CE3651564D75400115E8A /* TestDevice.cpp in Sources */,
+				214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */,
+				214CE3671564D75400115E8A /* TestMediaServer.cpp in Sources */,
+				215D56C91564F33F00D7BDC0 /* UPnPDeviceTests.cpp in Sources */,
+				215D56CA1564F33F00D7BDC0 /* UPnPMiscTests.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		215D56D51564F41A00D7BDC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libclink++";
+			targetProxy = 215D56D41564F41A00D7BDC0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		216397E91564C6D100CF258B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/opt/local/include,
+					../../../include/,
+				);
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lboost_unit_test_framework",
+					"-luhttp++",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		216397EA1564C6D100CF258B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/opt/local/include,
+					../../../include/,
+				);
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-lboost_unit_test_framework",
+					"-luhttp++",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		216397EC1564C6D100CF258B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				OTHER_LDFLAGS = (
+					"-lboost_unit_test_framework",
+					"-luhttp++",
+					"-lxml2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		216397ED1564C6D100CF258B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = /opt/local/lib;
+				OTHER_LDFLAGS = (
+					"-lboost_unit_test_framework",
+					"-luhttp++",
+					"-lxml2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		216397DB1564C6D100CF258B /* Build configuration list for PBXProject "ClinkUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				216397E91564C6D100CF258B /* Debug */,
+				216397EA1564C6D100CF258B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		216397EB1564C6D100CF258B /* Build configuration list for PBXNativeTarget "ClinkUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				216397EC1564C6D100CF258B /* Debug */,
+				216397ED1564C6D100CF258B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 216397D81564C6D100CF258B /* Project object */;
+}

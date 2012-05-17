@@ -16,19 +16,19 @@
 #ifndef _CLINK_HTTPMUSOCKET_H_
 #define _CLINK_HTTPMUSOCKET_H_
 
-#include <cybergarage/net/MulticastSocket.h>
-#include <cybergarage/net/InetSocketAddress.h>
-#include <cybergarage/net/NetworkInterface.h>
-#include <cybergarage/http/HTTPRequest.h>
+#include <uhttp/net/MulticastSocket.h>
+#include <uhttp/net/InetSocketAddress.h>
+#include <uhttp/net/NetworkInterface.h>
+#include <uhttp/http/HTTPRequest.h>
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
 
 class HTTPMUSocket
 {
-	CyberNet::InetSocketAddress ssdpMultiGroup;
-	CyberNet::MulticastSocket ssdpMultiSock;
-	//CyberNet::NetworkInterface ssdpMultiIf;
+	uHTTP::InetSocketAddress ssdpMultiGroup;
+	uHTTP::MulticastSocket ssdpMultiSock;
+	//uHTTP::NetworkInterface ssdpMultiIf;
 	SSDPPacket recvPacket;
 
 public:
@@ -39,7 +39,7 @@ public:
 	
 	HTTPMUSocket();
 	
-	HTTPMUSocket(const char *addr, int port, const char *bindAddr);
+	HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr);
 
 	~HTTPMUSocket();
 
@@ -56,26 +56,26 @@ public:
 	//	open/close
 	////////////////////////////////////////////////
 
-	bool open(const char *addr, int port, const char *bindAddr);
+	bool open(const std::string &addr, int port, const std::string &bindAddr);
 	bool close();
 
 	////////////////////////////////////////////////
 	//	send
 	////////////////////////////////////////////////
 
-	bool send(const char *msg, const char *bindAddr = "", int bindPort = -1);
+	bool send(const std::string &msg, const std::string &bindAddr = "", int bindPort = -1);
 
 	////////////////////////////////////////////////
 	//	post (HTTPRequest)
 	////////////////////////////////////////////////
 
-	bool post(CyberHTTP::HTTPRequest *req, const char *bindAddr, int bindPort)
+	bool post(uHTTP::HTTPRequest *req, const std::string &bindAddr, int bindPort)
 	{
 		std::string reqStr;
 		return send(req->toString(reqStr), bindAddr, bindPort);
 	}
 
-	bool post(CyberHTTP::HTTPRequest *req)
+	bool post(uHTTP::HTTPRequest *req)
 	{
 		std::string reqStr;
 		return send(req->toString(reqStr));

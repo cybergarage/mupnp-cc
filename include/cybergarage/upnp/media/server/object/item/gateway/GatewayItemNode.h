@@ -16,15 +16,15 @@
 #ifndef _CLINK_MEDIA_GATEWAYITEMNODE_H_
 #define _CLINK_MEDIA_GATEWAYITEMNODE_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/io/FileInputStream.h>
+#include <uhttp/io/File.h>
+#include <uhttp/io/FileInputStream.h>
 #include <cybergarage/upnp/media/server/object/item/ItemNode.h>
 
 namespace CyberLink {
 
 class GatewayItemNode : public ItemNode
 {
-	CyberIO::File *itemFile;
+	uHTTP::File *itemFile;
 
 	////////////////////////////////////////////////
 	// Constroctor
@@ -40,12 +40,12 @@ public:
 	
 public:
 
-	void setFile(CyberIO::File *file)
+	void setFile(uHTTP::File *file)
 	{
 		itemFile = file;
 	}
 	
-	CyberIO::File *getFile()
+	uHTTP::File *getFile()
 	{
 		return itemFile;
 	}
@@ -55,7 +55,7 @@ public:
 		return itemFile->lastModified();
 	}
 	
-	bool equals(CyberIO::File *file)
+	bool equals(uHTTP::File *file)
 	{
 		if (itemFile == NULL)
 			return false;
@@ -75,7 +75,7 @@ public:
 		return itemFile->length();
 	}
 
-	CyberIO::InputStream *getContentInputStream();
+	uHTTP::InputStream *getContentInputStream();
 
 	const char *getMimeType();
 };

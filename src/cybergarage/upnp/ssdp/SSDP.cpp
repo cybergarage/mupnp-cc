@@ -27,7 +27,7 @@ static string ssdpIPv6Address;
 //	SSDP Address for IPv6
 ////////////////////////////////////////////////
 
-void CyberLink::SSDP::SetIPv6Address(const char *addr)
+void CyberLink::SSDP::SetIPv6Address(const std::string &addr)
 {
 	ssdpIPv6Address = addr;
 }
@@ -43,9 +43,9 @@ const char *CyberLink::SSDP::GetIPv6Address()
 //	LeaseTime
 ////////////////////////////////////////////////
 	
-int CyberLink::SSDP::GetLeaseTime(const char *cacheCnt)
+int CyberLink::SSDP::GetLeaseTime(const std::string &cacheCnt)
 {
-	char *eqStrPos = strchr((char *)cacheCnt, '=');
+	char *eqStrPos = strchr((char *)cacheCnt.c_str(), '=');
 	if (eqStrPos == NULL)
 		return 0;
 	return atoi((eqStrPos + 1));

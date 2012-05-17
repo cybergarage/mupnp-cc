@@ -24,8 +24,8 @@ namespace USN {
 
 const char ROOTDEVICE[] = "upnp:rootdevice";
 	
-bool IsRootDevice(const char *usnValue);
-const char *GetUDN(const char *usnValue, std::string &udn);
+bool IsRootDevice(const std::string &usnValue);
+const char *GetUDN(const std::string &usnValue, std::string &udn);
 
 }
 

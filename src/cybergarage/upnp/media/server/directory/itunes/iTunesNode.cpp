@@ -17,11 +17,11 @@
 
 #include <cybergarage/upnp/media/server/directory/itunes/iTunesNode.h>
 
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Methods
@@ -39,7 +39,7 @@ iTunesNode::~iTunesNode()
 //	getKeyValue
 ////////////////////////////////////////////////
 
-const char *iTunesNode::getKeyValue(const char *keyName)
+const char *iTunesNode::getKeyValue(const std::string &keyName)
 {
 	Node *node = getNode();
 	if (node == NULL)
@@ -69,7 +69,7 @@ const char *iTunesNode::getKeyValue(const char *keyName)
 //	getKeyInteger
 ////////////////////////////////////////////////
 
-int iTunesNode::getKeyInteger(const char *keyName)
+int iTunesNode::getKeyInteger(const std::string &keyName)
 {
 	const char *keyValue = getKeyValue(keyName);
 	if (keyValue == NULL)
@@ -81,7 +81,7 @@ int iTunesNode::getKeyInteger(const char *keyName)
 //	getKeyLong
 ////////////////////////////////////////////////
 
-long iTunesNode::getKeyLong(const char *keyName)
+long iTunesNode::getKeyLong(const std::string &keyName)
 {
 	const char *keyValue = getKeyValue(keyName);
 	if (keyValue == NULL)

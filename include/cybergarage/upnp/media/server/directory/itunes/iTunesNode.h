@@ -65,9 +65,9 @@ public:
 
 public:
 
-	const char *getKeyValue(const char *keyName);
-	int getKeyInteger(const char *keyName);
-	long getKeyLong(const char *keyName);
+	const char *getKeyValue(const std::string &keyName);
+	int getKeyInteger(const std::string &keyName);
+	long getKeyLong(const std::string &keyName);
 
 };
 

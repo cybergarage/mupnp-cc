@@ -46,19 +46,19 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/StateVariable.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/AllowedValue.h>
 #include <cybergarage/upnp/control/QueryListener.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberLink;
-using namespace CyberHTTP;
+using namespace uHTTP;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constants
@@ -132,12 +132,12 @@ void StateVariable::initAllowedValueRange()
 //	Value
 ////////////////////////////////////////////////
 
-void StateVariable::setValue(const char *value)
+void StateVariable::setValue(const std::string &value)
 {
 	// Thnaks for Tho Beisch (11/09/04)
 	string currValue = getStateVariableData()->getValue();
 	// Thnaks for Tho Rick Keiner (11/18/04)
-	if (value != NULL && currValue.compare(value) == 0)
+	if (currValue.compare(value.c_str()) == 0)
 			return;
 
 	getStateVariableData()->setValue(value);

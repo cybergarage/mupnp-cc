@@ -16,7 +16,7 @@
 #ifndef _CLINK_HTTPUSOCKET_H_
 #define _CLINK_HTTPUSOCKET_H_
 
-#include <cybergarage/net/DatagramSocket.h>
+#include <uhttp/net/DatagramSocket.h>
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
@@ -24,7 +24,7 @@ namespace CyberLink {
 class HTTPUSocket 
 {
 
-	CyberNet::DatagramSocket ssdpUniSock;
+	uHTTP::DatagramSocket ssdpUniSock;
 	SSDPPacket recvPacket;
 
 public:
@@ -35,7 +35,7 @@ public:
 
 	HTTPUSocket();
 	
-	HTTPUSocket(const char *bindAddr, int port);
+	HTTPUSocket(const std::string &bindAddr, int port);
 
 	~HTTPUSocket();
 
@@ -43,7 +43,7 @@ public:
 	//	open
 	////////////////////////////////////////////////
 	
-	bool open(int bindPort = -1, const char *bindAddr = "");
+	bool open(int bindPort = -1, const std::string &bindAddr = "");
 
 	////////////////////////////////////////////////
 	//	close
@@ -55,7 +55,7 @@ public:
 	//	DatagramSocket
 	////////////////////////////////////////////////
 
-	CyberNet::DatagramSocket &getDatagramSocket()
+	uHTTP::DatagramSocket &getDatagramSocket()
 	{
 		return ssdpUniSock;
 	}
@@ -73,7 +73,7 @@ public:
 	//	post/receive
 	////////////////////////////////////////////////
 	
-	bool post(const char *addr, int port, const char *msg);
+	bool post(const std::string &addr, int port, const std::string &msg);
 	SSDPPacket *receive();
 
 };

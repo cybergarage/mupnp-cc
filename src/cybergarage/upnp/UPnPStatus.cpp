@@ -13,7 +13,7 @@
 *	
 ******************************************************************/
 
-#include <cybergarage/http/HTTP.h>
+#include <uhttp/http/HTTP.h>
 #include <cybergarage/upnp/UPnPStatus.h>
 	
 const char *CyberLink::UPnP::StatusCode2String(int code)

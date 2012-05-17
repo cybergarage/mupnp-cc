@@ -52,9 +52,9 @@ const char VERSION_HEADER[] = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
 CyberXML::Node *CreateEnvelopeBodyNode();
 
-const char *GetHeader(const char *content, std::string &header);
-const char *GetEncording(const char *content, std::string &encording);
-bool IsEncording(const char *content, const char *encType);
+const char *GetHeader(const std::string &content, std::string &header);
+const char *GetEncording(const std::string &content, std::string &encording);
+bool IsEncording(const std::string &content, const std::string &encType);
 
 }
 

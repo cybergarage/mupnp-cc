@@ -51,10 +51,8 @@ bool ContentPropertyList::removeContentProperty(ContentProperty *prop)
 	return ret;
 }
 
-ContentProperty *ContentPropertyList::getContentProperty(const char *name) 
+ContentProperty *ContentPropertyList::getContentProperty(const std::string &name) 
 {
-	if (name == NULL)
-		return NULL;
 	std::string nameStr = name;
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {

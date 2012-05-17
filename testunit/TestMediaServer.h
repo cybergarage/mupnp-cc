@@ -14,7 +14,7 @@
 #include <cybergarage/upnp/MediaServer.h>
 
 using namespace CyberLink;
-using namespace CyberHTTP;
+using namespace uHTTP;
 
 const char MEDIA_SERVER_DESCRIPTION_FILE_NAME[] = "testMediaServer/description.xml";
 

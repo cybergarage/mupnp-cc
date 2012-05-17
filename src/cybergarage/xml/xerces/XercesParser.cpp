@@ -33,7 +33,7 @@
 //	Header Files
 ////////////////////////////////////////////////
 
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/util/Mutex.h>
 #include <cybergarage/xml/Parser.h>
 
 #include <xercesc/dom/DOM.hpp>
@@ -50,7 +50,7 @@
 using namespace std;
 using namespace xercesc;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -178,7 +178,7 @@ Node *XMLParse(InputSource &inSrc)
 //	parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const char *data, int len)
+Node *Parser::parse(const std::string &data, int len)
 {
 	try {
 		/*

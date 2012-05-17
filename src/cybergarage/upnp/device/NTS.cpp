@@ -14,21 +14,17 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/device/NTS.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 	
-bool CyberLink::NTS::IsAlive(const char *ntsValue)
+bool CyberLink::NTS::IsAlive(const std::string &ntsValue)
 {
-	if (ntsValue == NULL)
-		return false;
-	CyberUtil::String ntsStr = ntsValue;
+	uHTTP::String ntsStr = ntsValue;
 	return ntsStr.startsWith(ALIVE);
 }
 
-bool CyberLink::NTS::IsByeBye(const char *ntsValue)
+bool CyberLink::NTS::IsByeBye(const std::string &ntsValue)
 {
-	if (ntsValue == NULL)
-		return false;
-	CyberUtil::String ntsStr = ntsValue;
+	uHTTP::String ntsStr = ntsValue;
 	return ntsStr.startsWith(BYEBYE);
 }
 

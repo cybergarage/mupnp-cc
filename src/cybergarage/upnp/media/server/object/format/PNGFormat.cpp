@@ -28,7 +28,7 @@ PNGFormat::PNGFormat()
 {
 }
 	
-PNGFormat::PNGFormat(CyberIO::File *file)
+PNGFormat::PNGFormat(uHTTP::File *file)
 {
 	setFile(file);
 }
@@ -37,7 +37,7 @@ PNGFormat::PNGFormat(CyberIO::File *file)
 // Abstract Methods
 ////////////////////////////////////////////////
 	
-bool PNGFormat::equals(CyberIO::File *file)
+bool PNGFormat::equals(uHTTP::File *file)
 {
 	if (file == NULL)
 		return false;

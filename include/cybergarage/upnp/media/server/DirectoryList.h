@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_DIRECTORYLIST_H_
 #define _CLINK_MEDIA_DIRECTORYLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/Directory.h>
 
 namespace CyberLink {
 
-class DirectoryList : public CyberUtil::Vector
+class DirectoryList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	// Constrictor
@@ -49,7 +49,7 @@ public:
 		return (Directory *)Vector::get(n);
 	}
 
-	Directory *getDirectory(const char *name);
+	Directory *getDirectory(const std::string &name);
 
 	////////////////////////////////////////////////
 	// clear

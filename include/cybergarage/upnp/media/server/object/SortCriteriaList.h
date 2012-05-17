@@ -17,11 +17,11 @@
 #define _CLINK_MEDIA_SORTCRITERIONLIST_H_
 
 #include <string>
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
-class SortCriteriaList : public CyberUtil::Vector
+class SortCriteriaList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor

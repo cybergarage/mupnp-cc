@@ -16,11 +16,11 @@
 #ifndef _CLINK_DEVICE_H_
 #define _CLINK_DEVICE_H_
 
-#include <cybergarage/http/HTTPRequestListener.h>
-#include <cybergarage/util/StringUtil.h>
-#include <cybergarage/util/TimeUtil.h>
+#include <uhttp/http/HTTPRequestListener.h>
+#include <uhttp/util/StringUtil.h>
+#include <uhttp/util/TimeUtil.h>
 #include <cybergarage/xml/Node.h>
-#include <cybergarage/io/File.h>
+#include <uhttp/io/File.h>
 #include <cybergarage/upnp/UPnP.h>
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/DeviceList.h>
@@ -36,13 +36,13 @@
 #include <cybergarage/upnp/event/SubscriptionRequest.h>
 #include <cybergarage/upnp/event/SubscriptionResponse.h>
 #include <cybergarage/upnp/device/Advertiser.h>
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/util/Mutex.h>
 
 #include <sstream>
 
 namespace CyberLink {
 
-class Device : public CyberHTTP::HTTPRequestListener, public SearchListener
+class Device : public uHTTP::HTTPRequestListener, public SearchListener
 {
 	CyberXML::Node *rootNode;
 	CyberXML::Node *deviceNode;
@@ -58,7 +58,7 @@ class Device : public CyberHTTP::HTTPRequestListener, public SearchListener
 
 	std::string devUUID;
 
-	CyberUtil::Mutex mutex;
+	uHTTP::Mutex mutex;
 
 	bool wirelessMode;
 
@@ -120,8 +120,8 @@ public:
 	Device(CyberXML::Node *root, CyberXML::Node *device);
 	Device(CyberXML::Node *device);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	Device(CyberIO::File *descriptionFile);
-	Device(const char *descriptionFileName);
+	Device(uHTTP::File *descriptionFile);
+	Device(const std::string &descriptionFileName);
 #endif
 
 private:
@@ -188,7 +188,7 @@ public:
 
 private:
 
-	void setUUID(const char *uuid)
+	void setUUID(const std::string &uuid)
 	{
 		devUUID = uuid;
 	}
@@ -252,7 +252,7 @@ public:
 
 public:
 
-	void setDescriptionFile(const char *file)
+	void setDescriptionFile(const std::string &file)
 	{
 		getDeviceData()->setDescriptionFile(file);
 	}
@@ -262,7 +262,7 @@ public:
 		return getDeviceData()->getDescriptionFile();
 	}
 
-	void setDescriptionURI(const char *uri)
+	void setDescriptionURI(const std::string &uri)
 	{
 		getDeviceData()->setDescriptionURI(uri);
 	}
@@ -272,12 +272,12 @@ public:
 		return getDeviceData()->getDescriptionURI();
 	}
 
-	bool isDescriptionURI(const char *uri)
+	bool isDescriptionURI(const std::string &uri)
 	{
 		const char *descriptionURI = getDescriptionURI();
-		if (uri == NULL || descriptionURI == NULL)
+		if (descriptionURI == NULL)
 			return false;
-		CyberUtil::String descriptionURIStr = descriptionURI;
+		uHTTP::String descriptionURIStr(descriptionURI);
 		return descriptionURIStr.equals(uri);
 	}
 
@@ -286,14 +286,14 @@ public:
 		const char *descriptionFileName = getDescriptionFile();
 		if (descriptionFileName == NULL)
 			return "";
-		CyberIO::File descriptionFile(descriptionFileName);
+		uHTTP::File descriptionFile(descriptionFileName);
 		buf = descriptionFile.getAbsoluteFile()->getParent();
 		return buf.c_str();
 	}
 
-	bool loadDescription(const char *descString);
+	bool loadDescription(const std::string &descString);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	bool loadDescription(CyberIO::File *file);
+	bool loadDescription(uHTTP::File *file);
 #endif
 
 private:
@@ -340,7 +340,7 @@ public:
 	//	Location 
 	////////////////////////////////////////////////
 
-	void setLocation(const char *value)
+	void setLocation(const std::string &value)
 	{
 		getDeviceData()->setLocation(value);
 	}
@@ -384,9 +384,9 @@ public:
 
 private:
 
-	void setURLBase(const char *value);
+	void setURLBase(const std::string &value);
 
-	void updateURLBase(const char *host);
+	void updateURLBase(const std::string &host);
 
 public:
 
@@ -396,7 +396,7 @@ public:
 	//	deviceType
 	////////////////////////////////////////////////
 
-	void setDeviceType(const char *value)
+	void setDeviceType(const std::string &value)
 	{
 		getDeviceNode()->setNode(DEVICE_TYPE, value);
 	}
@@ -406,13 +406,13 @@ public:
 		return getDeviceNode()->getNodeValue(DEVICE_TYPE);
 	}
 
-	bool isDeviceType(const char *value);
+	bool isDeviceType(const std::string &value);
 
 	////////////////////////////////////////////////
 	//	friendlyName
 	////////////////////////////////////////////////
 
-	void setFriendlyName(const char *value)
+	void setFriendlyName(const std::string &value)
 	{
 		getDeviceNode()->setNode(FRIENDLY_NAME, value);
 	}
@@ -426,7 +426,7 @@ public:
 	//	manufacture
 	////////////////////////////////////////////////
 	
-	void setManufacturer(const char *value)
+	void setManufacturer(const std::string &value)
 	{
 		getDeviceNode()->setNode(MANUFACTURER, value);
 	}
@@ -440,7 +440,7 @@ public:
 	//	manufactureURL
 	////////////////////////////////////////////////
 
-	void setManufacturerURL(const char *value)
+	void setManufacturerURL(const std::string &value)
 	{
 		getDeviceNode()->setNode(MANUFACTURER_URL, value);
 	}
@@ -454,7 +454,7 @@ public:
 	//	modelDescription
 	////////////////////////////////////////////////
 
-	void setModelDescription(const char *value)
+	void setModelDescription(const std::string &value)
 	{
 		getDeviceNode()->setNode(MODEL_DESCRIPTION, value);
 	}
@@ -468,7 +468,7 @@ public:
 	//	modelName
 	////////////////////////////////////////////////
 
-	void setModelName(const char *value)
+	void setModelName(const std::string &value)
 	{
 		getDeviceNode()->setNode(MODEL_NAME, value);
 	}
@@ -482,7 +482,7 @@ public:
 	//	modelNumber
 	////////////////////////////////////////////////
 
-	void setModelNumber(const char *value)
+	void setModelNumber(const std::string &value)
 	{
 		getDeviceNode()->setNode(MODEL_NUMBER, value);
 	}
@@ -496,7 +496,7 @@ public:
 	//	modelURL
 	////////////////////////////////////////////////
 
-	void setModelURL(const char *value)
+	void setModelURL(const std::string &value)
 	{
 		getDeviceNode()->setNode(MODEL_URL, value);
 	}
@@ -510,7 +510,7 @@ public:
 	//	serialNumber
 	////////////////////////////////////////////////
 
-	void setSerialNumber(const char *value)
+	void setSerialNumber(const std::string &value)
 	{
 		getDeviceNode()->setNode(SERIAL_NUMBER, value);
 	}
@@ -524,7 +524,7 @@ public:
 	//	UDN
 	////////////////////////////////////////////////
 
-	void setUDN(const char *value)
+	void setUDN(const std::string &value)
 	{
 		getDeviceNode()->setNode(UDN, value);
 	}
@@ -549,7 +549,7 @@ public:
 	//	UPC
 	////////////////////////////////////////////////
 
-	void setUPC(const char *value)
+	void setUPC(const std::string &value)
 	{
 		getDeviceNode()->setNode(UPC, value);
 	}
@@ -563,7 +563,7 @@ public:
 	//	presentationURL
 	////////////////////////////////////////////////
 
-	void setPresentationURL(const char *value)
+	void setPresentationURL(const std::string &value)
 	{
 		getDeviceNode()->setNode(presentationURL, value);
 	}
@@ -588,10 +588,10 @@ public:
 		return &deviceList;
 	}
 
-	bool isDevice(const char *name);
+	bool isDevice(const std::string &name);
 	
-	Device *getDevice(const char *name);
-	Device *getDeviceByDescriptionURI(const char *uri);
+	Device *getDevice(const std::string &name);
+	Device *getDeviceByDescriptionURI(const std::string &uri);
 	
 	////////////////////////////////////////////////
 	//	serviceList
@@ -608,14 +608,14 @@ public:
 		return &serviceList;
 	}
 
-	Service *getService(const char *name);
-	Service *getSubscriberService(const char *uuid);
+	Service *getService(const std::string &name);
+	Service *getSubscriberService(const std::string &uuid);
 
 public:
 
-	Service *getServiceBySCPDURL(const char *searchUrl);
-	Service *getServiceByControlURL(const char *searchUrl);
-	Service *getServiceByEventSubURL(const char *searchUrl);
+	Service *getServiceBySCPDURL(const std::string &searchUrl);
+	Service *getServiceByControlURL(const std::string &searchUrl);
+	Service *getServiceByEventSubURL(const std::string &searchUrl);
 
 	////////////////////////////////////////////////
 	//	StateVariable
@@ -623,8 +623,8 @@ public:
 
 public:
 	
-	StateVariable *getStateVariable(const char *serviceType, const char *name);
-	StateVariable *getStateVariable(const char *name);
+	StateVariable *getStateVariable(const std::string &serviceType, const std::string &name);
+	StateVariable *getStateVariable(const std::string &name);
 
 	////////////////////////////////////////////////
 	//	Action
@@ -632,7 +632,7 @@ public:
 
 public:
 
-	Action *getAction(const char *name);
+	Action *getAction(const std::string &name);
 
 	////////////////////////////////////////////////
 	//	iconList
@@ -663,7 +663,7 @@ public:
 
 public:
 
-	const char *getLocationURL(const char *host, std::string &buf);
+	const char *getLocationURL(const std::string &host, std::string &buf);
 
 private:
 
@@ -676,10 +676,10 @@ public:
 
 	static void notifyWait();
 
-	void announce(const char *bindAddr);
+	void announce(const std::string &bindAddr);
 	void announce();
 	
-	void byebye(const char *bindAddr);
+	void byebye(const std::string &bindAddr);
 	void byebye();
 
 	////////////////////////////////////////////////
@@ -688,7 +688,7 @@ public:
 
 public:
 
-	bool postSearchResponse(SSDPPacket *ssdpPacket, const char *st, const char *usn);
+	bool postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn);
 	void deviceSearchResponse(SSDPPacket *ssdpPacket);
 	void deviceSearchReceived(SSDPPacket *ssdpPacket);
 
@@ -708,13 +708,13 @@ public:
 		return getDeviceData()->getHTTPPort();
 	}
 
-	void httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 private:
 
-	const char *getDescriptionData(const char *host, std::string &buf);
-	void httpGetRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
-	void httpPostRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+	const char *getDescriptionData(const std::string &host, std::string &buf);
+	void httpGetRequestRecieved(uHTTP::HTTPRequest *httpReq);
+	void httpPostRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 	////////////////////////////////////////////////
 	//	SOAP
@@ -722,8 +722,8 @@ private:
 
 private:
 
-	void soapBadActionRecieved(CyberHTTP::HTTPRequest *soapReq);
-	void soapActionRecieved(CyberHTTP::HTTPRequest *soapReq);
+	void soapBadActionRecieved(uHTTP::HTTPRequest *soapReq);
+	void soapActionRecieved(uHTTP::HTTPRequest *soapReq);
 
 	////////////////////////////////////////////////
 	//	controlAction
@@ -754,7 +754,7 @@ private:
 
 public:
 
-	CyberHTTP::HTTPServerList *getHTTPServerList() 
+	uHTTP::HTTPServerList *getHTTPServerList() 
 	{
 		return getDeviceData()->getHTTPServerList();
 	}

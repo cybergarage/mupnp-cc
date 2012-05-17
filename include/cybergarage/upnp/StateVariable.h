@@ -16,8 +16,8 @@
 #ifndef _CLINK_STATEVARIABLE_H_
 #define _CLINK_STATEVARIABLE_H_
 
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/upnp/UPnPStatus.h>
 #include <cybergarage/upnp/AllowedValueList.h>
@@ -154,7 +154,7 @@ public:
 
 public:
 
-	void setName(const char *value)
+	void setName(const std::string &value)
 	{
 		getStateVariableNode()->setNode(NAME, value);
 	}
@@ -170,7 +170,7 @@ public:
 
 public:
 
-	void setDataType(const char *value)
+	void setDataType(const std::string &value)
 	{
 		getStateVariableNode()->setNode(DATATYPE, value);
 	}
@@ -196,7 +196,7 @@ public:
 		const char *state = getStateVariableNode()->getAttributeValue(SENDEVENTS);
 		if (state == NULL)
 			return false;
-		CyberUtil::String stateStr = state;
+		uHTTP::String stateStr(state);
 		if (stateStr.equalsIgnoreCase(SENDEVENTS_YES) == true)
 			return true;
 		return false;
@@ -225,7 +225,7 @@ public:
 
 public:
 
-	void setValue(const char *value);
+	void setValue(const std::string &value);
 	void setValue(int value);
 	void setValue(long value);
 
@@ -295,7 +295,7 @@ public:
 
 public:
 
-	void setStatus(int code, const char *descr)
+	void setStatus(int code, const std::string &descr)
 	{
 		upnpStatus.setCode(code);
 		upnpStatus.setDescription(descr);

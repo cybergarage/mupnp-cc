@@ -49,7 +49,7 @@ public:
 		return 0;
 	}
 
-	CyberIO::InputStream *getContentInputStream()
+	uHTTP::InputStream *getContentInputStream()
 	{
 		return NULL;
 	}

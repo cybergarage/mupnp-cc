@@ -16,6 +16,8 @@
 #ifndef _CSQL_UNI_DATEBASE_H_
 #define _CSQL_UNI_DATEBASE_H_
 
+#include <string>
+
 namespace CyberSQL {
 
 class UniDatabase
@@ -44,7 +46,7 @@ public:
 	virtual bool isConnected() = 0;
 	virtual const char *getConnectionErrorMessage() = 0;
 
-	virtual bool query(const char *sql) = 0;
+	virtual bool query(const std::string &sql) = 0;
 	virtual bool getQueryStatus() = 0;
 	virtual const char *getQueryStatusMessage() = 0;
 	virtual const char *getQueryErrorMessage() = 0;

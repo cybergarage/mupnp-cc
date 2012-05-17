@@ -22,7 +22,7 @@
 #include <cybergarage/upnp/ssdp/SSDPRequest.h>
 #include <cybergarage/upnp/device/ST.h>
 #include <cybergarage/upnp/device/MAN.h>
-#include <cybergarage/net/HostInterface.h>
+#include <uhttp/net/HostInterface.h>
 #include <cybergarage/upnp/event/SubscriptionResponse.h>
 
 namespace CyberLink {
@@ -34,12 +34,12 @@ public:
 	//	Constructor
 	////////////////////////////////////////////////
 
-	SSDPSearchRequest(const char *serachTarget, int mx)
+	SSDPSearchRequest(const std::string &serachTarget, int mx)
 	{
 		init(serachTarget, mx);
 	}
 	
-	SSDPSearchRequest(const char *serachTarget)
+	SSDPSearchRequest(const std::string &serachTarget)
 	{
 		init(serachTarget, SSDP::DEFAULT_MSEARCH_MX);
 	}
@@ -51,18 +51,18 @@ public:
 
 private:
 
-	void init(const char *serachTarget, int mx)
+	void init(const std::string &serachTarget, int mx)
 	{
-		setMethod(CyberHTTP::HTTP::M_SEARCH);
+		setMethod(uHTTP::HTTP::M_SEARCH);
 		setURI("*");
 
-		setHeader(CyberHTTP::HTTP::ST, serachTarget);
-		setHeader(CyberHTTP::HTTP::MX, mx);
+		setHeader(uHTTP::HTTP::ST, serachTarget);
+		setHeader(uHTTP::HTTP::MX, mx);
 		std::string man;
 		man = "\"";
 		man += MAN::DISCOVER;
 		man += "\"";
-		setHeader(CyberHTTP::HTTP::MAN, man.c_str());
+		setHeader(uHTTP::HTTP::MAN, man.c_str());
 	}
 
 	////////////////////////////////////////////////
@@ -71,10 +71,10 @@ private:
 
 public:
 	
-	void setLocalAddress(const char *bindAddr)
+	void setLocalAddress(const std::string &bindAddr)
 	{
 		const char *ssdpAddr = SSDP::ADDRESS;
-		if (CyberNet::IsIPv6Address(bindAddr) == true)
+		if (uHTTP::IsIPv6Address(bindAddr) == true)
 			ssdpAddr = SSDP::GetIPv6Address();
 		setHost(ssdpAddr, SSDP::PORT);
 	}

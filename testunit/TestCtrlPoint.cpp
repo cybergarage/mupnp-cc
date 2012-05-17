@@ -16,11 +16,11 @@
 ******************************************************************/
 
 #include "TestCtrlPoint.h"
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 #include <iostream>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constructor

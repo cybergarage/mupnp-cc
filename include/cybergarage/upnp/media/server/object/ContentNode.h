@@ -116,7 +116,7 @@ public:
 		return (ContentNode *)getNode(index);
 	}
 
-	ContentNode *getContentNode(const char *name) 
+	ContentNode *getContentNode(const std::string &name) 
 	{
 		return (ContentNode *)getNode(name);
 	}
@@ -143,7 +143,7 @@ public:
 		return propList.getContentProperty(index);
 	}
 
-	ContentProperty *getProperty(const char *name) 
+	ContentProperty *getProperty(const std::string &name) 
 	{
 		return propList.getContentProperty(name);
 	}
@@ -156,7 +156,7 @@ public:
 		propList.insertContentProperty(prop, index);
 	}
 
-	void addProperty(const char *name, const char *value) {
+	void addProperty(const std::string &name, const std::string &value) {
 		ContentProperty *prop = new ContentProperty(name, value);
 		addProperty(prop);
 	}
@@ -165,7 +165,7 @@ public:
 		return propList.removeContentProperty(prop);
 	}
 
-	bool removeProperty(const char *name) {
+	bool removeProperty(const std::string &name) {
 		return removeProperty(getProperty(name));
 	}
 
@@ -182,7 +182,7 @@ public:
 
 public:
 
-	void setProperty(const char *name, const char *value) {
+	void setProperty(const std::string &name, const std::string &value) {
 		ContentProperty *prop = getProperty(name);
 		if (prop != NULL) {
 			prop->setValue(value);
@@ -192,35 +192,35 @@ public:
 		addProperty(prop);
 	}
 
-	void setProperty(const char *name, int value) {
+	void setProperty(const std::string &name, int value) {
 		std::ostringstream valBuf;
 		valBuf << value;
 		std::string valStr = valBuf.str();
 		setProperty(name, valStr.c_str());
 	}
 
-	void setProperty(const char *name, long value) {
+	void setProperty(const std::string &name, long value) {
 		std::ostringstream valBuf;
 		valBuf << value;
 		std::string valStr = valBuf.str();
 		setProperty(name, valStr.c_str());
 	}
 
-	const char *getPropertyValue(const char *name) {
+	const char *getPropertyValue(const std::string &name) {
 		ContentProperty *prop = getProperty(name);
 		if (prop != NULL)
 			return prop->getValue();
 		return "";
 	}
 
-	int getPropertyIntegerValue(const char *name) {
+	int getPropertyIntegerValue(const std::string &name) {
 		const char *val = getPropertyValue(name);
 		if (val == NULL)
 			return 0;
 		return atoi(val);
 	}
 
-	long getPropertyLongValue(const char *name) {
+	long getPropertyLongValue(const std::string &name) {
 		const char *val = getPropertyValue(name);
 		if (val == NULL)
 			return 0;
@@ -233,7 +233,7 @@ public:
 
 public:
 
-	void setPropertyAttribure(const char *propName, const char *attrName, const char *value) 
+	void setPropertyAttribure(const std::string &propName, const std::string &attrName, const std::string &value) 
 	{
 		ContentProperty *prop = getProperty(propName);
 		if (prop == NULL) {
@@ -243,7 +243,7 @@ public:
 		prop->setAttribute(attrName, value);
 	}
 
-	const char *getPropertyAttribureValue(const char *propName, const char *attrName) 
+	const char *getPropertyAttribureValue(const std::string &propName, const std::string &attrName) 
 	{
 		ContentProperty *prop = getProperty(propName);
 		if (prop != NULL)
@@ -257,7 +257,7 @@ public:
 
 public:
 
-	ContentNode *findContentNodeByID(const char *conId);
+	ContentNode *findContentNodeByID(const std::string &conId);
 	
 	////////////////////////////////////////////////
 	// ID
@@ -270,7 +270,7 @@ public:
 		setAttribute(ID, conId);
 	}
 
-	void setID(const char *conId)
+	void setID(const std::string &conId)
 	{
 		setAttribute(ID, conId);
 	}
@@ -291,7 +291,7 @@ public:
 		setAttribute(PARENT_ID, parentId);
 	}
 	
-	void setParentID(const char *parentId)
+	void setParentID(const std::string &parentId)
 	{
 		setAttribute(PARENT_ID, parentId);
 	}
@@ -323,7 +323,7 @@ public:
 	
 public:
 
-	void setTitle(const char *title)
+	void setTitle(const std::string &title)
 	{
 		setProperty(DC::TITLE, title);
 	}
@@ -339,7 +339,7 @@ public:
 
 public:
 
-	void setUPnPClass(const char *title)
+	void setUPnPClass(const std::string &title)
 	{
 		setProperty(UPnP::CLASS, title);
 	}
@@ -355,7 +355,7 @@ public:
 
 public:
 
-	void setWriteStatus(const char *status)
+	void setWriteStatus(const std::string &status)
 	{
 		setProperty(UPnP::WRITE_STATUS, status);
 	}

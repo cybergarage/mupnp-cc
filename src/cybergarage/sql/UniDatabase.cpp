@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#include <cybergarage/util/Date.h>
+#include <uhttp/util/Date.h>
 #include <cybergarage/sql/UniDatabase.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 using namespace CyberSQL;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 //////////////////////////////////////////////////////////////////////////
 // Constructor

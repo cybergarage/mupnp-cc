@@ -21,7 +21,7 @@
 #include <cybergarage/xml/Node.h>
 
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 NodeList::NodeList() 
 {
@@ -64,26 +64,21 @@ Node *NodeList::getNode(int n)
 	return (Node *)Vector::get(n);
 }
 
-Node *NodeList::getNode(const char *name) 
+Node *NodeList::getNode(const std::string &name) 
 {
-	if (name == NULL)
-		return NULL;
-		
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {
 		Node *node = getNode(n);
 		const char *nodeName = node->getName();
+        std::cout << name << " " << nodeName << std::endl;
 		if (StringEquals(name, nodeName) == true)
 			return node;
 	}
 	return NULL;
 }
 
-Node *NodeList::getEndsWith(const char *name) 
+Node *NodeList::getEndsWith(const std::string &name) 
 {
-	if (name == NULL)
-		return NULL;
-
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {
 		Node *node = getNode(n);
@@ -96,11 +91,8 @@ Node *NodeList::getEndsWith(const char *name)
 	return NULL;
 }
 
-Node *NodeList::getNode(const char *name, const char *value) 
+Node *NodeList::getNode(const std::string &name, const std::string &value) 
 {
-	if (name == NULL)
-		return NULL;
-		
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {
 		Node *node = getNode(n);

@@ -50,14 +50,14 @@ Node::Node()
 	setParentNode(NULL);
 }
 
-Node::Node(const char *name) 
+Node::Node(const std::string &name) 
 {
 	userData = NULL;
 	setParentNode(NULL);
 	setName(name);
 }
 
-Node::Node(const char *ns, const char *name) 
+Node::Node(const std::string &ns, const std::string &name) 
 {
 	userData = NULL;
 	setParentNode(NULL);
@@ -110,7 +110,7 @@ void Node::setValue(int val)
 //	Attribute (Extention)
 ////////////////////////////////////////////////
 
-void Node::setAttribute(const char * name, const char * value)
+void Node::setAttribute(const std::string & name, const std::string & value)
 {
 	Attribute *attr = getAttribute(name);
 	if (attr != NULL) {
@@ -121,7 +121,7 @@ void Node::setAttribute(const char * name, const char * value)
 	addAttribute(attr);
 }
 
-void Node::setAttribute(const char *name, int value)
+void Node::setAttribute(const std::string &name, int value)
 {
 #ifndef NO_USE_OSTRINGSTREAM
 	std::ostringstream os;
@@ -140,7 +140,7 @@ void Node::setAttribute(const char *name, int value)
 #endif
 }
 
-const char *Node::getAttributeValue(const char * name)
+const char *Node::getAttributeValue(const std::string & name)
 {
 	Attribute *attr = getAttribute(name);
 	if (attr != NULL)
@@ -148,7 +148,7 @@ const char *Node::getAttributeValue(const char * name)
 	return "";
 }
 
-int Node::getAttributeIntegerValue(const char *name)
+int Node::getAttributeIntegerValue(const std::string &name)
 {
 	std::string val = getAttributeValue(name);
 	return atoi(val.c_str());

@@ -16,13 +16,13 @@
 #ifndef _CLINK_SERVICELIST_H_
 #define _CLINK_SERVICELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class Service;
 
-class ServiceList : public CyberUtil::Vector
+class ServiceList : public uHTTP::Vector
 {
 public:
 	////////////////////////////////////////////////

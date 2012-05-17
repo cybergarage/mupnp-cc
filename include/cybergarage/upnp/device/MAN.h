@@ -24,7 +24,7 @@ namespace MAN {
 
 const char DISCOVER[] = "ssdp:discover";
 	
-bool IsDiscover(const char *value);
+bool IsDiscover(const std::string &value);
 
 }
 

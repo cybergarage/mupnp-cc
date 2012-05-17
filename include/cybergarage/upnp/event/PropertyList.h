@@ -16,13 +16,13 @@
 #ifndef _CLINK_PROPERTYLIST_H_
 #define _CLINK_PROPERTYLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class Property;
 
-class PropertyList : public CyberUtil::Vector 
+class PropertyList : public uHTTP::Vector 
 {
 public:
 

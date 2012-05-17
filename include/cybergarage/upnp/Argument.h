@@ -18,7 +18,7 @@
 
 #include <stdlib.h>
 
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/upnp/xml/ArgumentData.h>
 
@@ -73,7 +73,7 @@ public:
 
 	Argument();
 	Argument(CyberXML::Node *servNode, CyberXML::Node *argNode);
-	Argument(const char *name, const char *value);
+	Argument(const std::string &name, const std::string &value);
 
 	~Argument();
 
@@ -90,7 +90,7 @@ public:
 	//	name
 	////////////////////////////////////////////////
 
-	void setName(const char *value)
+	void setName(const std::string &value)
 	{
 		getArgumentNode()->setNode(NAME, value);
 	}
@@ -104,7 +104,7 @@ public:
 	//	direction
 	////////////////////////////////////////////////
 
-	void setDirection(const char *value)
+	void setDirection(const std::string &value)
 	{
 		getArgumentNode()->setNode(DIRECTION, value);
 	}
@@ -119,7 +119,7 @@ public:
 		const char *dir = getDirection();
 		if (dir == NULL)
 			return false;
-		CyberUtil::String dirStr = dir;
+		uHTTP::String dirStr(dir);
 		return dirStr.equalsIgnoreCase(IN_DIR);
 	}
 
@@ -132,7 +132,7 @@ public:
 	//	relatedStateVariable
 	////////////////////////////////////////////////
 
-	void setRelatedStateVariableName(const char *value)
+	void setRelatedStateVariableName(const std::string &value)
 	{
 		getArgumentNode()->setNode(RELATED_STATE_VARIABLE, value);
 	}
@@ -163,7 +163,7 @@ public:
 	//	value
 	////////////////////////////////////////////////
 
-	void setValue(const char *value)
+	void setValue(const std::string &value)
 	{
 		getArgumentData()->setValue(value);
 	}

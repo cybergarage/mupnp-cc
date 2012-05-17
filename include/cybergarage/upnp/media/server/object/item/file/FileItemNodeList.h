@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_FILEITEMNODELIST_H_
 #define _CLINK_MEDIA_FILEITEMNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/item/file/FileItemNode.h>
 
 namespace CyberLink {
 
-class FileItemNodeList : public CyberUtil::Vector
+class FileItemNodeList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor
@@ -49,7 +49,7 @@ public:
 		return (FileItemNode *)Vector::get(n);
 	}
 	
-	FileItemNode *getItemNode(CyberIO::File *file);
+	FileItemNode *getItemNode(uHTTP::File *file);
 
 	////////////////////////////////////////////////
 	//	clear

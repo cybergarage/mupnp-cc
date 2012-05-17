@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_GATEWAY_DIRECTORY_H_
 #define _CLINK_MEDIA_GATEWAY_DIRECTORY_H_
 
-#include <cybergarage/io/File.h>
+#include <uhttp/io/File.h>
 #include <cybergarage/upnp/media/server/Directory.h>
 #include <cybergarage/upnp/media/server/object/item/file/FileItemNode.h>
 #include <cybergarage/upnp/media/server/object/item/file/FileItemNodeList.h>
@@ -31,7 +31,7 @@ class GatewayDirectory : public Directory
 	
 public:
 
-	GatewayDirectory(const char *name);
+	GatewayDirectory(const std::string &name);
 	
 	////////////////////////////////////////////////
 	// update

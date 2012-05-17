@@ -14,10 +14,10 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/ControlPoint.h>
-#include <cybergarage/util/TimeUtil.h>
+#include <uhttp/util/TimeUtil.h>
 
 using namespace CyberLink;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constants

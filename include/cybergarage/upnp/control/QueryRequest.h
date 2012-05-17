@@ -40,7 +40,7 @@ public:
 	{
 	}
 
-	QueryRequest(CyberHTTP::HTTPRequest *httpReq)
+	QueryRequest(uHTTP::HTTPRequest *httpReq)
 	{
 		set(httpReq);
 	}

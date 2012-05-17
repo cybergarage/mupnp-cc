@@ -14,7 +14,7 @@
 *		- Ralf G. R. Bergs <Ralf@Ber.gs>, Inma Marin Lopez <inma@dif.um.es>.
 *		- Added XML header, <?xml version=\"1.0\"?> to setContent().
 *	04/25/04
-*		- Added postMessage(const char *host, int port, SOAPResponse *soapRes);
+*		- Added postMessage(const std::string &host, int port, SOAPResponse *soapRes);
 *	05/19/04
 *		- Changed the header include order for Cygwin.
 *	05/26/04
@@ -27,11 +27,11 @@
 ******************************************************************/
 
 #include <cybergarage/soap/SOAPRequest.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Parser.h>
 
 using namespace CyberSOAP;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberXML;
 using namespace std;
 
@@ -42,11 +42,11 @@ using namespace std;
 SOAPRequest::SOAPRequest()
 {
 	setContentType(CyberXML::XML::CONTENT_TYPE);
-	setMethod(CyberHTTP::HTTP::POST);
+	setMethod(uHTTP::HTTP::POST);
 	setRootNode(NULL);
 }
 
-SOAPRequest::SOAPRequest(CyberHTTP::HTTPRequest *httpReq)
+SOAPRequest::SOAPRequest(uHTTP::HTTPRequest *httpReq)
 {
 	set(httpReq);
 	setRootNode(NULL);
@@ -62,25 +62,25 @@ SOAPRequest::~SOAPRequest()
 // SOAPACTION
 ////////////////////////////////////////////////
 
-bool SOAPRequest::isSOAPAction(const char *value)
+bool SOAPRequest::isSOAPAction(const std::string &value)
 {
 	const char *headerValue = getHeaderValue(SOAPACTION);
 	if (headerValue == NULL)
 		return false;
-	if (CyberUtil::StringEquals(headerValue, value) == true)
+	if (uHTTP::StringEquals(headerValue, value) == true)
 		return true;
 	std::string buf;
 	const char *soapAction = getSOAPAction(buf);
 	if (soapAction == NULL)
 		return false;
-	return CyberUtil::StringEquals(soapAction, value);
+	return uHTTP::StringEquals(soapAction, value);
 }
 
 ////////////////////////////////////////////////
 //	parseMessage
 ////////////////////////////////////////////////
 
-CyberXML::Node *SOAPRequest::parseMessage(const char *content, int contentLen)
+CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, int contentLen)
 {
 	if (contentLen <= 0)
 		return NULL;
@@ -124,7 +124,7 @@ CyberXML::Node *SOAPRequest::getRootNode()
 //	post
 ////////////////////////////////////////////////
 
-SOAPResponse *SOAPRequest::postMessage(const char *host, int port, SOAPResponse *soapRes)
+SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPResponse *soapRes)
 {
 	post(host, port, soapRes);
 

@@ -31,7 +31,7 @@ public:
 	{
 	}
 
-	Attribute(const char *name, const char *value) 
+	Attribute(const std::string &name, const std::string &value) 
 	{
 		setName(name);
 		setValue(value);
@@ -41,7 +41,7 @@ public:
 	//	name
 	////////////////////////////////////////////////
 
-	void setName(const char *val) 
+	void setName(const std::string &val) 
 	{
 		name = val;
 	}
@@ -55,7 +55,7 @@ public:
 	//	value
 	////////////////////////////////////////////////
 
-	void setValue(const char *val) 
+	void setValue(const std::string &val) 
 	{
 		value = val;
 	}

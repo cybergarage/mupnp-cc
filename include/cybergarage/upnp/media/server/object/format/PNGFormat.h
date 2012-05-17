@@ -29,7 +29,7 @@ class PNGFormat : public ImageFormat
 public:
 
 	PNGFormat();
-	PNGFormat(CyberIO::File *file);
+	PNGFormat(uHTTP::File *file);
 
 	////////////////////////////////////////////////
 	// Abstract Methods
@@ -37,9 +37,9 @@ public:
 	
 public:
 
-	bool equals(CyberIO::File *file);
+	bool equals(uHTTP::File *file);
 	
-	FormatObject *createObject(CyberIO::File *file)
+	FormatObject *createObject(uHTTP::File *file)
 	{
 		return new PNGFormat(file);
 	}

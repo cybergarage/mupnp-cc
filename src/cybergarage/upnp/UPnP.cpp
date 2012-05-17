@@ -20,15 +20,15 @@
 *	08/01/04
 *		- Added <stdio.h> for sprintf() for gcc 2.95.3.
 *	03/08/05
-*		- Changed GetServerName() not to use iostream and use CyberHTTP::GetServerName().
+*		- Changed GetServerName() not to use iostream and use uHTTP::GetServerName().
 *
 ******************************************************************/
 
-#include <cybergarage/net/HostInterface.h>
+#include <uhttp/net/HostInterface.h>
 #include <cybergarage/upnp/UPnP.h>
 #include <cybergarage/upnp/Icon.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
-#include <cybergarage/http/HTTPServer.h>
+#include <uhttp/http/HTTPServer.h>
 
 #include <stdio.h>
 #include <time.h>
@@ -48,7 +48,7 @@ using namespace CyberLink;
 	
 const char *UPnP::GetServerName(std::string &buf)
 {
-	CyberHTTP::GetServerName(buf);
+	uHTTP::GetServerName(buf);
 	buf += " UPnP/";
 	buf += UPnP::VER;
 	buf += " ";
@@ -85,17 +85,17 @@ void UPnP::SetEnable(int value)
 	switch (value) {
 	case USE_ONLY_IPV6_ADDR:
 		{
-			CyberNet::HostInterface::USE_ONLY_IPV6_ADDR = true;
+			uHTTP::HostInterface::USE_ONLY_IPV6_ADDR = true;
 		}
 		break;	
 	case USE_ONLY_IPV4_ADDR:
 		{
-			CyberNet::HostInterface::USE_ONLY_IPV4_ADDR = true;
+			uHTTP::HostInterface::USE_ONLY_IPV4_ADDR = true;
 		}
 		break;	
 	case USE_LOOPBACK_ADDR:
 		{
-			CyberNet::HostInterface::USE_LOOPBACK_ADDR = true;
+			uHTTP::HostInterface::USE_LOOPBACK_ADDR = true;
 		}
 		break;	
 	case USE_IPV6_LINK_LOCAL_SCOPE:
@@ -131,17 +131,17 @@ void UPnP::SetDisable(int value)
 	switch (value) {
 	case USE_ONLY_IPV6_ADDR:
 		{
-			CyberNet::HostInterface::USE_ONLY_IPV6_ADDR = false;
+			uHTTP::HostInterface::USE_ONLY_IPV6_ADDR = false;
 		}
 		break;	
 	case USE_ONLY_IPV4_ADDR:
 		{
-			CyberNet::HostInterface::USE_ONLY_IPV4_ADDR = false;
+			uHTTP::HostInterface::USE_ONLY_IPV4_ADDR = false;
 		}
 		break;	
 	case USE_LOOPBACK_ADDR:
 		{
-			CyberNet::HostInterface::USE_LOOPBACK_ADDR = false;
+			uHTTP::HostInterface::USE_LOOPBACK_ADDR = false;
 		}
 		break;	
 	}
@@ -152,15 +152,15 @@ bool UPnP::IsEnabled(int value)
 	switch (value) {
 	case USE_ONLY_IPV6_ADDR:
 		{
-			return CyberNet::HostInterface::USE_ONLY_IPV6_ADDR;
+			return uHTTP::HostInterface::USE_ONLY_IPV6_ADDR;
 		}
 	case USE_ONLY_IPV4_ADDR:
 		{
-			return CyberNet::HostInterface::USE_ONLY_IPV4_ADDR;
+			return uHTTP::HostInterface::USE_ONLY_IPV4_ADDR;
 		}
 	case USE_LOOPBACK_ADDR:
 		{
-			return CyberNet::HostInterface::USE_LOOPBACK_ADDR;
+			return uHTTP::HostInterface::USE_LOOPBACK_ADDR;
 		}
 	}
 	return false;

@@ -19,7 +19,7 @@
 #include <cybergarage/upnp/control/ActionListener.h>
 #include <cybergarage/upnp/control/QueryListener.h>
 #include <cybergarage/upnp/media/server/ConnectionInfoList.h>
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/util/Mutex.h>
 
 namespace CyberLink {
 
@@ -29,7 +29,7 @@ class ContentDirectory;
 class ConnectionManager : public ActionListener, public QueryListener
 {
 	MediaServer *mediaServer;
-	CyberUtil::Mutex mutex;
+	uHTTP::Mutex mutex;
 	int maxConnectionID;
 	ConnectionInfoList conInfoList;
 	

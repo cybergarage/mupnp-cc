@@ -36,11 +36,8 @@ ID3FrameList::~ID3FrameList()
 // get*
 ////////////////////////////////////////////////
 
-ID3Frame *ID3FrameList::getFrame(const char *name) 
+ID3Frame *ID3FrameList::getFrame(const std::string &name) 
 {
-	if (name == NULL)
-		return NULL;
-	
 	string nameStr = name;
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {
@@ -51,7 +48,7 @@ ID3Frame *ID3FrameList::getFrame(const char *name)
 	return NULL;
 }
 
-unsigned char *ID3FrameList::getFrameData(const char *name) 
+unsigned char *ID3FrameList::getFrameData(const std::string &name) 
 {
 	ID3Frame *frame = getFrame(name);
 	if (frame == NULL)
@@ -59,7 +56,7 @@ unsigned char *ID3FrameList::getFrameData(const char *name)
 	return frame->getData();
 }
 
-const char *ID3FrameList::getFrameData(const char *name, std::string &buf) 
+const char *ID3FrameList::getFrameData(const std::string &name, std::string &buf) 
 {
 	ID3Frame *frame = getFrame(name);
 	if (frame == NULL)
@@ -67,7 +64,7 @@ const char *ID3FrameList::getFrameData(const char *name, std::string &buf)
 	return frame->getData(buf);
 }
 
-const char *ID3FrameList::getFrameStringData(const char *name, std::string &buf) 
+const char *ID3FrameList::getFrameStringData(const std::string &name, std::string &buf) 
 {
 	ID3Frame *frame = getFrame(name);
 	if (frame == NULL)

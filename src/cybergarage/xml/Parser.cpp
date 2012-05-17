@@ -23,9 +23,9 @@
 #include <string.h>
 #include <string>
 
-#include <cybergarage/net/HostInterface.h>
+#include <uhttp/net/HostInterface.h>
 #include <cybergarage/xml/Parser.h>
-#include <cybergarage/http/HTTPRequest.h>
+#include <uhttp/http/HTTPRequest.h>
 
 #if !defined(WIN32) && !defined(HAVE_FOPEN) && !defined(TENGINE) && !defined(ITRON) && !defined(BTRON)
 #include <fcntl.h>
@@ -34,8 +34,8 @@
 
 using namespace std;
 using namespace CyberXML;
-using namespace CyberHTTP;
-using namespace CyberUtil;
+using namespace uHTTP;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////t
 //	parse (File)
@@ -43,7 +43,7 @@ using namespace CyberUtil;
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-Node *Parser::parse(CyberIO::File *file)
+Node *Parser::parse(uHTTP::File *file)
 {
 	const char *filename = file->getName();
 #if defined(WIN32) || defined(HAVE_FOPEN)
@@ -86,7 +86,7 @@ Node *Parser::parse(CyberIO::File *file)
 //	parse (URL)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(CyberNet::URL *url)
+Node *Parser::parse(uHTTP::URL *url)
 {
 	const char *host = url->getHost();
 	int port = url->getPort();

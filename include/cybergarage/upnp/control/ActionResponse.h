@@ -17,7 +17,7 @@
 #define _CLINK_ACTIONRESPONSE_H_
 
 #include <cybergarage/upnp/control/ControlResponse.h>
-#include <cybergarage/http/HTTPStatus.h>
+#include <uhttp/http/HTTPStatus.h>
 #include <cybergarage/upnp/ArgumentList.h>
 
 #include <sstream>

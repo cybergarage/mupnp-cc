@@ -16,6 +16,8 @@
 #ifndef _CLINK_NT_H_
 #define _CLINK_NT_H_
 
+#include <string>
+
 namespace CyberLink {
 
 namespace NT {
@@ -23,7 +25,7 @@ namespace NT {
 const char ROOTDEVICE[] = "upnp:rootdevice";
 const char EVENT[] = "upnp:event";
 	
-bool IsRootDevice(const char *usnValue);
+bool IsRootDevice(const std::string &usnValue);
 
 }
 

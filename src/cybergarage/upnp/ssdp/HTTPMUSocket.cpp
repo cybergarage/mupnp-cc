@@ -17,11 +17,11 @@
 ******************************************************************/
 
 #include <time.h>
-#include <cybergarage/net/HostInterface.h>
+#include <uhttp/net/HostInterface.h>
 #include <cybergarage/upnp/ssdp/HTTPMUSocket.h>
 
 using namespace CyberLink;
-using namespace CyberNet;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -31,7 +31,7 @@ HTTPMUSocket::HTTPMUSocket()
 {
 }
 
-HTTPMUSocket::HTTPMUSocket(const char *addr, int port, const char *bindAddr)
+HTTPMUSocket::HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr)
 {
 	open(addr, port, bindAddr);
 }
@@ -49,13 +49,13 @@ HTTPMUSocket::~HTTPMUSocket()
 //	open/close
 ////////////////////////////////////////////////
 
-bool HTTPMUSocket::open(const char *addr, int port, const char *bindAddr)
+bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bindAddr)
 {
 	ssdpMultiGroup.setAddress(addr);
 	ssdpMultiGroup.setPort(port);
 	//ssdpMultiIf.setAddress(bindAddr);
 
-	const char *msockBindAddr = bindAddr;
+	const char *msockBindAddr = bindAddr.c_str();
 	if (ssdpMultiSock.bind(port, msockBindAddr) == false)
 		return false;
 	if (ssdpMultiSock.joinGroup(addr, bindAddr) == false) {
@@ -77,10 +77,10 @@ bool HTTPMUSocket::close()
 //	reveive
 ////////////////////////////////////////////////
 
-bool HTTPMUSocket::send(const char *msg, const char *bindAddr, int bindPort)
+bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int bindPort)
 {
 	MulticastSocket msock;
-	if ((bindAddr != NULL) && (0 < bindPort))
+	if ((0 < bindAddr.length()) && (0 < bindPort))
 			msock.bind(bindPort, bindAddr);
 	DatagramPacket dgmPacket(msg, &ssdpMultiGroup);
 	// Thnaks for Tho Beisch (11/09/04)

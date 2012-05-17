@@ -17,7 +17,7 @@
 #define _CLINK_MEDIA_DIRECTORY_H_
 
 #include <cybergarage/upnp/media/server/object/container/ContainerNode.h>
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/util/Mutex.h>
 
 namespace CyberLink {
 
@@ -25,7 +25,7 @@ class Directory : public ContainerNode
 {
 private:
 
-	CyberUtil::Mutex *mutex;
+	uHTTP::Mutex *mutex;
 
 	////////////////////////////////////////////////
 	// Constructor
@@ -33,14 +33,14 @@ private:
 	
 public:
 
-	Directory(ContentDirectory *cdir, const char *name)
+	Directory(ContentDirectory *cdir, const std::string &name)
 	{
 		setContentDirectory(cdir);
 		setFriendlyName(name);
-		mutex = new CyberUtil::Mutex();
+		mutex = new uHTTP::Mutex();
 	}
 
-	Directory(const char *name)
+	Directory(const std::string &name)
 	{
 		setContentDirectory(NULL);
 		setFriendlyName(name);
@@ -53,7 +53,7 @@ public:
 
 public:
 
-	void setFriendlyName(const char *name)
+	void setFriendlyName(const std::string &name)
 	{
 		setTitle(name);
 	}

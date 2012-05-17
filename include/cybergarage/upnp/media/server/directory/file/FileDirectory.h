@@ -17,7 +17,7 @@
 #define _CLINK_MEDIA_FILE_DIRECTORY_H_
 
 #include <string>
-#include <cybergarage/io/File.h>
+#include <uhttp/io/File.h>
 #include <cybergarage/upnp/media/server/Directory.h>
 #include <cybergarage/upnp/media/server/object/item/file/FileItemNode.h>
 #include <cybergarage/upnp/media/server/object/item/file/FileItemNodeList.h>
@@ -34,7 +34,7 @@ class FileDirectory : public Directory
 	
 public:
 
-	FileDirectory(const char *name, const char *path);
+	FileDirectory(const std::string &name, const std::string &path);
 	
 	////////////////////////////////////////////////
 	// Path
@@ -42,7 +42,7 @@ public:
 
 public:
 
-	void setPath(const char *value)
+	void setPath(const std::string &value)
 	{
 		path = value;		
 	}
@@ -58,8 +58,8 @@ public:
 
 private:
 
-	bool updateItemNode(FileItemNode *itemNode, CyberIO::File *file);
-	FileItemNode *createCompareItemNode(CyberIO::File *file);
+	bool updateItemNode(FileItemNode *itemNode, uHTTP::File *file);
+	FileItemNode *createCompareItemNode(uHTTP::File *file);
 	
 	////////////////////////////////////////////////
 	// FileList
@@ -67,7 +67,7 @@ private:
 
 private:
 
-	int getDirectoryItemNodeList(CyberIO::File *dirFile, FileItemNodeList &itemNodeList);
+	int getDirectoryItemNodeList(uHTTP::File *dirFile, FileItemNodeList &itemNodeList);
 	int getCurrentDirectoryItemNodeList(FileItemNodeList &fileNodeList);
 
 	////////////////////////////////////////////////
@@ -76,7 +76,7 @@ private:
 
 private:
 
-	FileItemNode *getItemNode(CyberIO::File *file);
+	FileItemNode *getItemNode(uHTTP::File *file);
 
 	void addItemNode(FileItemNode *itemNode)
 	{

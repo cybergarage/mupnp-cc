@@ -7,45 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2184A831155C7A0600D1E138 /* HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A742155C7A0600D1E138 /* HTML.h */; };
-		2184A832155C7A0600D1E138 /* HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A743155C7A0600D1E138 /* HTTP.h */; };
-		2184A833155C7A0600D1E138 /* HTTPDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A744155C7A0600D1E138 /* HTTPDate.h */; };
-		2184A834155C7A0600D1E138 /* HTTPHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A745155C7A0600D1E138 /* HTTPHeader.h */; };
-		2184A835155C7A0600D1E138 /* HTTPPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A746155C7A0600D1E138 /* HTTPPacket.h */; };
-		2184A836155C7A0600D1E138 /* HTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A747155C7A0600D1E138 /* HTTPRequest.h */; };
-		2184A837155C7A0600D1E138 /* HTTPRequestListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A748155C7A0600D1E138 /* HTTPRequestListener.h */; };
-		2184A838155C7A0600D1E138 /* HTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A749155C7A0600D1E138 /* HTTPResponse.h */; };
-		2184A839155C7A0600D1E138 /* HTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A74A155C7A0600D1E138 /* HTTPServer.h */; };
-		2184A83A155C7A0600D1E138 /* HTTPServerList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A74B155C7A0600D1E138 /* HTTPServerList.h */; };
-		2184A83B155C7A0600D1E138 /* HTTPServerThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A74C155C7A0600D1E138 /* HTTPServerThread.h */; };
-		2184A83C155C7A0600D1E138 /* HTTPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A74D155C7A0600D1E138 /* HTTPSocket.h */; };
-		2184A83D155C7A0600D1E138 /* HTTPStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A74E155C7A0600D1E138 /* HTTPStatus.h */; };
-		2184A83E155C7A0600D1E138 /* Parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A74F155C7A0600D1E138 /* Parameter.h */; };
-		2184A83F155C7A0600D1E138 /* ParameterList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A750155C7A0600D1E138 /* ParameterList.h */; };
-		2184A840155C7A0600D1E138 /* BufferedReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A752155C7A0600D1E138 /* BufferedReader.h */; };
-		2184A841155C7A0600D1E138 /* File.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A753155C7A0600D1E138 /* File.h */; };
-		2184A842155C7A0600D1E138 /* FileInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A754155C7A0600D1E138 /* FileInputStream.h */; };
-		2184A843155C7A0600D1E138 /* FileList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A755155C7A0600D1E138 /* FileList.h */; };
-		2184A844155C7A0600D1E138 /* InputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A756155C7A0600D1E138 /* InputStream.h */; };
-		2184A845155C7A0600D1E138 /* InputStreamReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A757155C7A0600D1E138 /* InputStreamReader.h */; };
-		2184A846155C7A0600D1E138 /* LineNumberReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A758155C7A0600D1E138 /* LineNumberReader.h */; };
-		2184A847155C7A0600D1E138 /* Reader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A759155C7A0600D1E138 /* Reader.h */; };
-		2184A848155C7A0600D1E138 /* StringBufferInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A75A155C7A0600D1E138 /* StringBufferInputStream.h */; };
-		2184A849155C7A0600D1E138 /* StringReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A75B155C7A0600D1E138 /* StringReader.h */; };
-		2184A84A155C7A0600D1E138 /* DatagramPacket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A75D155C7A0600D1E138 /* DatagramPacket.h */; };
-		2184A84B155C7A0600D1E138 /* DatagramSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A75E155C7A0600D1E138 /* DatagramSocket.h */; };
-		2184A84C155C7A0600D1E138 /* HostInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A75F155C7A0600D1E138 /* HostInterface.h */; };
-		2184A84D155C7A0600D1E138 /* InetSocketAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A760155C7A0600D1E138 /* InetSocketAddress.h */; };
-		2184A84E155C7A0600D1E138 /* MulticastSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A761155C7A0600D1E138 /* MulticastSocket.h */; };
-		2184A84F155C7A0600D1E138 /* NetworkInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A762155C7A0600D1E138 /* NetworkInterface.h */; };
-		2184A850155C7A0600D1E138 /* NetworkInterfaceList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A763155C7A0600D1E138 /* NetworkInterfaceList.h */; };
-		2184A851155C7A0600D1E138 /* ServerSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A764155C7A0600D1E138 /* ServerSocket.h */; };
-		2184A852155C7A0600D1E138 /* Socket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A765155C7A0600D1E138 /* Socket.h */; };
-		2184A853155C7A0600D1E138 /* SocketImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A766155C7A0600D1E138 /* SocketImp.h */; };
-		2184A854155C7A0600D1E138 /* SocketInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A767155C7A0600D1E138 /* SocketInputStream.h */; };
-		2184A855155C7A0600D1E138 /* SocketUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A768155C7A0600D1E138 /* SocketUtil.h */; };
-		2184A856155C7A0600D1E138 /* URI.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A769155C7A0600D1E138 /* URI.h */; };
-		2184A857155C7A0600D1E138 /* URL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76A155C7A0600D1E138 /* URL.h */; };
 		2184A858155C7A0600D1E138 /* SOAP.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76C155C7A0600D1E138 /* SOAP.h */; };
 		2184A859155C7A0600D1E138 /* SOAPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76D155C7A0600D1E138 /* SOAPRequest.h */; };
 		2184A85A155C7A0600D1E138 /* SOAPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76E155C7A0600D1E138 /* SOAPResponse.h */; };
@@ -196,16 +157,6 @@
 		2184A8EB155C7A0600D1E138 /* DeviceData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A81A155C7A0600D1E138 /* DeviceData.h */; };
 		2184A8EC155C7A0600D1E138 /* ServiceData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A81B155C7A0600D1E138 /* ServiceData.h */; };
 		2184A8ED155C7A0600D1E138 /* StateVariableData.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A81C155C7A0600D1E138 /* StateVariableData.h */; };
-		2184A8EE155C7A0600D1E138 /* Date.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A81E155C7A0600D1E138 /* Date.h */; };
-		2184A8EF155C7A0600D1E138 /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A81F155C7A0600D1E138 /* Debug.h */; };
-		2184A8F0155C7A0600D1E138 /* Exception.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A820155C7A0600D1E138 /* Exception.h */; };
-		2184A8F1155C7A0600D1E138 /* ListenerList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A821155C7A0600D1E138 /* ListenerList.h */; };
-		2184A8F2155C7A0600D1E138 /* Mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A822155C7A0600D1E138 /* Mutex.h */; };
-		2184A8F3155C7A0600D1E138 /* StringTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A823155C7A0600D1E138 /* StringTokenizer.h */; };
-		2184A8F4155C7A0600D1E138 /* StringUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A824155C7A0600D1E138 /* StringUtil.h */; };
-		2184A8F5155C7A0600D1E138 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A825155C7A0600D1E138 /* Thread.h */; };
-		2184A8F6155C7A0600D1E138 /* TimeUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A826155C7A0600D1E138 /* TimeUtil.h */; };
-		2184A8F7155C7A0600D1E138 /* Vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A827155C7A0600D1E138 /* Vector.h */; };
 		2184A8F8155C7A0600D1E138 /* Attribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A829155C7A0600D1E138 /* Attribute.h */; };
 		2184A8F9155C7A0600D1E138 /* AttributeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A82A155C7A0600D1E138 /* AttributeList.h */; };
 		2184A8FA155C7A0600D1E138 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A82B155C7A0600D1E138 /* Node.h */; };
@@ -214,33 +165,6 @@
 		2184A8FD155C7A0600D1E138 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A82E155C7A0600D1E138 /* Parser.h */; };
 		2184A8FE155C7A0600D1E138 /* ParserException.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A82F155C7A0600D1E138 /* ParserException.h */; };
 		2184A8FF155C7A0600D1E138 /* XML.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A830155C7A0600D1E138 /* XML.h */; };
-		2184A9C1155C7A2800D1E138 /* HTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A903155C7A2800D1E138 /* HTTP.cpp */; };
-		2184A9C2155C7A2800D1E138 /* HTTPDate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A904155C7A2800D1E138 /* HTTPDate.cpp */; };
-		2184A9C3155C7A2800D1E138 /* HTTPHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A905155C7A2800D1E138 /* HTTPHeader.cpp */; };
-		2184A9C4155C7A2800D1E138 /* HTTPPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A906155C7A2800D1E138 /* HTTPPacket.cpp */; };
-		2184A9C5155C7A2800D1E138 /* HTTPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A907155C7A2800D1E138 /* HTTPRequest.cpp */; };
-		2184A9C6155C7A2800D1E138 /* HTTPResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A908155C7A2800D1E138 /* HTTPResponse.cpp */; };
-		2184A9C7155C7A2800D1E138 /* HTTPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A909155C7A2800D1E138 /* HTTPServer.cpp */; };
-		2184A9C8155C7A2800D1E138 /* HTTPServerList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A90A155C7A2800D1E138 /* HTTPServerList.cpp */; };
-		2184A9C9155C7A2800D1E138 /* HTTPServerThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A90B155C7A2800D1E138 /* HTTPServerThread.cpp */; };
-		2184A9CA155C7A2800D1E138 /* HTTPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A90C155C7A2800D1E138 /* HTTPSocket.cpp */; };
-		2184A9CB155C7A2800D1E138 /* HTTPStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A90D155C7A2800D1E138 /* HTTPStatus.cpp */; };
-		2184A9CC155C7A2800D1E138 /* BufferedReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A90F155C7A2800D1E138 /* BufferedReader.cpp */; };
-		2184A9CD155C7A2800D1E138 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A910155C7A2800D1E138 /* File.cpp */; };
-		2184A9CE155C7A2800D1E138 /* FileInputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A911155C7A2800D1E138 /* FileInputStream.cpp */; };
-		2184A9CF155C7A2800D1E138 /* FileList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A912155C7A2800D1E138 /* FileList.cpp */; };
-		2184A9D0155C7A2800D1E138 /* StringBufferInputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A913155C7A2800D1E138 /* StringBufferInputStream.cpp */; };
-		2184A9D1155C7A2800D1E138 /* StringReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A914155C7A2800D1E138 /* StringReader.cpp */; };
-		2184A9D2155C7A2800D1E138 /* DatagramSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A916155C7A2800D1E138 /* DatagramSocket.cpp */; };
-		2184A9D3155C7A2800D1E138 /* HostInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A917155C7A2800D1E138 /* HostInterface.cpp */; };
-		2184A9D4155C7A2800D1E138 /* MulticastSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A918155C7A2800D1E138 /* MulticastSocket.cpp */; };
-		2184A9D5155C7A2800D1E138 /* ServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A919155C7A2800D1E138 /* ServerSocket.cpp */; };
-		2184A9D6155C7A2800D1E138 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A91A155C7A2800D1E138 /* Socket.cpp */; };
-		2184A9D7155C7A2800D1E138 /* SocketImp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A91B155C7A2800D1E138 /* SocketImp.cpp */; };
-		2184A9D8155C7A2800D1E138 /* SocketInputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A91C155C7A2800D1E138 /* SocketInputStream.cpp */; };
-		2184A9D9155C7A2800D1E138 /* SocketUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A91D155C7A2800D1E138 /* SocketUtil.cpp */; };
-		2184A9DA155C7A2800D1E138 /* URI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A91E155C7A2800D1E138 /* URI.cpp */; };
-		2184A9DB155C7A2800D1E138 /* URL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A91F155C7A2800D1E138 /* URL.cpp */; };
 		2184A9DC155C7A2800D1E138 /* SOAP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A921155C7A2800D1E138 /* SOAP.cpp */; };
 		2184A9DD155C7A2800D1E138 /* SOAPRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A922155C7A2800D1E138 /* SOAPRequest.cpp */; };
 		2184A9DE155C7A2800D1E138 /* SOAPResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A923155C7A2800D1E138 /* SOAPResponse.cpp */; };
@@ -355,13 +279,6 @@
 		2184AA4B155C7A2800D1E138 /* DeviceData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9AA155C7A2800D1E138 /* DeviceData.cpp */; };
 		2184AA4C155C7A2800D1E138 /* ServiceData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9AB155C7A2800D1E138 /* ServiceData.cpp */; };
 		2184AA4D155C7A2800D1E138 /* StateVariableData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9AC155C7A2800D1E138 /* StateVariableData.cpp */; };
-		2184AA4E155C7A2800D1E138 /* Date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9AE155C7A2800D1E138 /* Date.cpp */; };
-		2184AA4F155C7A2800D1E138 /* Debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9AF155C7A2800D1E138 /* Debug.cpp */; };
-		2184AA50155C7A2800D1E138 /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B0155C7A2800D1E138 /* Mutex.cpp */; };
-		2184AA51155C7A2800D1E138 /* StringTokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B1155C7A2800D1E138 /* StringTokenizer.cpp */; };
-		2184AA52155C7A2800D1E138 /* StringUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B2155C7A2800D1E138 /* StringUtil.cpp */; };
-		2184AA53155C7A2800D1E138 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B3155C7A2800D1E138 /* Thread.cpp */; };
-		2184AA54155C7A2800D1E138 /* TimeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B4155C7A2800D1E138 /* TimeUtil.cpp */; };
 		2184AA55155C7A2800D1E138 /* AttributeList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B6155C7A2800D1E138 /* AttributeList.cpp */; };
 		2184AA56155C7A2800D1E138 /* ExpatParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9B8155C7A2800D1E138 /* ExpatParser.cpp */; };
 		2184AA57155C7A2800D1E138 /* Libxml2Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2184A9BA155C7A2800D1E138 /* Libxml2Parser.cpp */; };
@@ -373,45 +290,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2184A742155C7A0600D1E138 /* HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTML.h; sourceTree = "<group>"; };
-		2184A743155C7A0600D1E138 /* HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTP.h; sourceTree = "<group>"; };
-		2184A744155C7A0600D1E138 /* HTTPDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDate.h; sourceTree = "<group>"; };
-		2184A745155C7A0600D1E138 /* HTTPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPHeader.h; sourceTree = "<group>"; };
-		2184A746155C7A0600D1E138 /* HTTPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPPacket.h; sourceTree = "<group>"; };
-		2184A747155C7A0600D1E138 /* HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequest.h; sourceTree = "<group>"; };
-		2184A748155C7A0600D1E138 /* HTTPRequestListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestListener.h; sourceTree = "<group>"; };
-		2184A749155C7A0600D1E138 /* HTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPResponse.h; sourceTree = "<group>"; };
-		2184A74A155C7A0600D1E138 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPServer.h; sourceTree = "<group>"; };
-		2184A74B155C7A0600D1E138 /* HTTPServerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPServerList.h; sourceTree = "<group>"; };
-		2184A74C155C7A0600D1E138 /* HTTPServerThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPServerThread.h; sourceTree = "<group>"; };
-		2184A74D155C7A0600D1E138 /* HTTPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPSocket.h; sourceTree = "<group>"; };
-		2184A74E155C7A0600D1E138 /* HTTPStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPStatus.h; sourceTree = "<group>"; };
-		2184A74F155C7A0600D1E138 /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
-		2184A750155C7A0600D1E138 /* ParameterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterList.h; sourceTree = "<group>"; };
-		2184A752155C7A0600D1E138 /* BufferedReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferedReader.h; sourceTree = "<group>"; };
-		2184A753155C7A0600D1E138 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
-		2184A754155C7A0600D1E138 /* FileInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileInputStream.h; sourceTree = "<group>"; };
-		2184A755155C7A0600D1E138 /* FileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileList.h; sourceTree = "<group>"; };
-		2184A756155C7A0600D1E138 /* InputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputStream.h; sourceTree = "<group>"; };
-		2184A757155C7A0600D1E138 /* InputStreamReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputStreamReader.h; sourceTree = "<group>"; };
-		2184A758155C7A0600D1E138 /* LineNumberReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberReader.h; sourceTree = "<group>"; };
-		2184A759155C7A0600D1E138 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reader.h; sourceTree = "<group>"; };
-		2184A75A155C7A0600D1E138 /* StringBufferInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringBufferInputStream.h; sourceTree = "<group>"; };
-		2184A75B155C7A0600D1E138 /* StringReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringReader.h; sourceTree = "<group>"; };
-		2184A75D155C7A0600D1E138 /* DatagramPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatagramPacket.h; sourceTree = "<group>"; };
-		2184A75E155C7A0600D1E138 /* DatagramSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatagramSocket.h; sourceTree = "<group>"; };
-		2184A75F155C7A0600D1E138 /* HostInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostInterface.h; sourceTree = "<group>"; };
-		2184A760155C7A0600D1E138 /* InetSocketAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InetSocketAddress.h; sourceTree = "<group>"; };
-		2184A761155C7A0600D1E138 /* MulticastSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MulticastSocket.h; sourceTree = "<group>"; };
-		2184A762155C7A0600D1E138 /* NetworkInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInterface.h; sourceTree = "<group>"; };
-		2184A763155C7A0600D1E138 /* NetworkInterfaceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInterfaceList.h; sourceTree = "<group>"; };
-		2184A764155C7A0600D1E138 /* ServerSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSocket.h; sourceTree = "<group>"; };
-		2184A765155C7A0600D1E138 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
-		2184A766155C7A0600D1E138 /* SocketImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketImp.h; sourceTree = "<group>"; };
-		2184A767155C7A0600D1E138 /* SocketInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketInputStream.h; sourceTree = "<group>"; };
-		2184A768155C7A0600D1E138 /* SocketUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketUtil.h; sourceTree = "<group>"; };
-		2184A769155C7A0600D1E138 /* URI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URI.h; sourceTree = "<group>"; };
-		2184A76A155C7A0600D1E138 /* URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URL.h; sourceTree = "<group>"; };
 		2184A76C155C7A0600D1E138 /* SOAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAP.h; sourceTree = "<group>"; };
 		2184A76D155C7A0600D1E138 /* SOAPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAPRequest.h; sourceTree = "<group>"; };
 		2184A76E155C7A0600D1E138 /* SOAPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAPResponse.h; sourceTree = "<group>"; };
@@ -562,16 +440,6 @@
 		2184A81A155C7A0600D1E138 /* DeviceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceData.h; sourceTree = "<group>"; };
 		2184A81B155C7A0600D1E138 /* ServiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceData.h; sourceTree = "<group>"; };
 		2184A81C155C7A0600D1E138 /* StateVariableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateVariableData.h; sourceTree = "<group>"; };
-		2184A81E155C7A0600D1E138 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
-		2184A81F155C7A0600D1E138 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
-		2184A820155C7A0600D1E138 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		2184A821155C7A0600D1E138 /* ListenerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenerList.h; sourceTree = "<group>"; };
-		2184A822155C7A0600D1E138 /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mutex.h; sourceTree = "<group>"; };
-		2184A823155C7A0600D1E138 /* StringTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringTokenizer.h; sourceTree = "<group>"; };
-		2184A824155C7A0600D1E138 /* StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtil.h; sourceTree = "<group>"; };
-		2184A825155C7A0600D1E138 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
-		2184A826155C7A0600D1E138 /* TimeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeUtil.h; sourceTree = "<group>"; };
-		2184A827155C7A0600D1E138 /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		2184A829155C7A0600D1E138 /* Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attribute.h; sourceTree = "<group>"; };
 		2184A82A155C7A0600D1E138 /* AttributeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeList.h; sourceTree = "<group>"; };
 		2184A82B155C7A0600D1E138 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
@@ -580,33 +448,6 @@
 		2184A82E155C7A0600D1E138 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		2184A82F155C7A0600D1E138 /* ParserException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserException.h; sourceTree = "<group>"; };
 		2184A830155C7A0600D1E138 /* XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML.h; sourceTree = "<group>"; };
-		2184A903155C7A2800D1E138 /* HTTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTP.cpp; sourceTree = "<group>"; };
-		2184A904155C7A2800D1E138 /* HTTPDate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPDate.cpp; sourceTree = "<group>"; };
-		2184A905155C7A2800D1E138 /* HTTPHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPHeader.cpp; sourceTree = "<group>"; };
-		2184A906155C7A2800D1E138 /* HTTPPacket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPPacket.cpp; sourceTree = "<group>"; };
-		2184A907155C7A2800D1E138 /* HTTPRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPRequest.cpp; sourceTree = "<group>"; };
-		2184A908155C7A2800D1E138 /* HTTPResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPResponse.cpp; sourceTree = "<group>"; };
-		2184A909155C7A2800D1E138 /* HTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPServer.cpp; sourceTree = "<group>"; };
-		2184A90A155C7A2800D1E138 /* HTTPServerList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPServerList.cpp; sourceTree = "<group>"; };
-		2184A90B155C7A2800D1E138 /* HTTPServerThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPServerThread.cpp; sourceTree = "<group>"; };
-		2184A90C155C7A2800D1E138 /* HTTPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPSocket.cpp; sourceTree = "<group>"; };
-		2184A90D155C7A2800D1E138 /* HTTPStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPStatus.cpp; sourceTree = "<group>"; };
-		2184A90F155C7A2800D1E138 /* BufferedReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BufferedReader.cpp; sourceTree = "<group>"; };
-		2184A910155C7A2800D1E138 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = File.cpp; sourceTree = "<group>"; };
-		2184A911155C7A2800D1E138 /* FileInputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileInputStream.cpp; sourceTree = "<group>"; };
-		2184A912155C7A2800D1E138 /* FileList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileList.cpp; sourceTree = "<group>"; };
-		2184A913155C7A2800D1E138 /* StringBufferInputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringBufferInputStream.cpp; sourceTree = "<group>"; };
-		2184A914155C7A2800D1E138 /* StringReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringReader.cpp; sourceTree = "<group>"; };
-		2184A916155C7A2800D1E138 /* DatagramSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DatagramSocket.cpp; sourceTree = "<group>"; };
-		2184A917155C7A2800D1E138 /* HostInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HostInterface.cpp; sourceTree = "<group>"; };
-		2184A918155C7A2800D1E138 /* MulticastSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MulticastSocket.cpp; sourceTree = "<group>"; };
-		2184A919155C7A2800D1E138 /* ServerSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerSocket.cpp; sourceTree = "<group>"; };
-		2184A91A155C7A2800D1E138 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
-		2184A91B155C7A2800D1E138 /* SocketImp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketImp.cpp; sourceTree = "<group>"; };
-		2184A91C155C7A2800D1E138 /* SocketInputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketInputStream.cpp; sourceTree = "<group>"; };
-		2184A91D155C7A2800D1E138 /* SocketUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketUtil.cpp; sourceTree = "<group>"; };
-		2184A91E155C7A2800D1E138 /* URI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = URI.cpp; sourceTree = "<group>"; };
-		2184A91F155C7A2800D1E138 /* URL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = URL.cpp; sourceTree = "<group>"; };
 		2184A921155C7A2800D1E138 /* SOAP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SOAP.cpp; sourceTree = "<group>"; };
 		2184A922155C7A2800D1E138 /* SOAPRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SOAPRequest.cpp; sourceTree = "<group>"; };
 		2184A923155C7A2800D1E138 /* SOAPResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SOAPResponse.cpp; sourceTree = "<group>"; };
@@ -721,13 +562,6 @@
 		2184A9AA155C7A2800D1E138 /* DeviceData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceData.cpp; sourceTree = "<group>"; };
 		2184A9AB155C7A2800D1E138 /* ServiceData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceData.cpp; sourceTree = "<group>"; };
 		2184A9AC155C7A2800D1E138 /* StateVariableData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateVariableData.cpp; sourceTree = "<group>"; };
-		2184A9AE155C7A2800D1E138 /* Date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Date.cpp; sourceTree = "<group>"; };
-		2184A9AF155C7A2800D1E138 /* Debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Debug.cpp; sourceTree = "<group>"; };
-		2184A9B0155C7A2800D1E138 /* Mutex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mutex.cpp; sourceTree = "<group>"; };
-		2184A9B1155C7A2800D1E138 /* StringTokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringTokenizer.cpp; sourceTree = "<group>"; };
-		2184A9B2155C7A2800D1E138 /* StringUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringUtil.cpp; sourceTree = "<group>"; };
-		2184A9B3155C7A2800D1E138 /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
-		2184A9B4155C7A2800D1E138 /* TimeUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeUtil.cpp; sourceTree = "<group>"; };
 		2184A9B6155C7A2800D1E138 /* AttributeList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AttributeList.cpp; sourceTree = "<group>"; };
 		2184A9B8155C7A2800D1E138 /* ExpatParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpatParser.cpp; sourceTree = "<group>"; };
 		2184A9BA155C7A2800D1E138 /* Libxml2Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Libxml2Parser.cpp; sourceTree = "<group>"; };
@@ -761,77 +595,13 @@
 		2184A740155C7A0600D1E138 /* cybergarage */ = {
 			isa = PBXGroup;
 			children = (
-				2184A741155C7A0600D1E138 /* http */,
-				2184A751155C7A0600D1E138 /* io */,
-				2184A75C155C7A0600D1E138 /* net */,
 				2184A76B155C7A0600D1E138 /* soap */,
 				2184A76F155C7A0600D1E138 /* sql */,
 				2184A772155C7A0600D1E138 /* upnp */,
-				2184A81D155C7A0600D1E138 /* util */,
 				2184A828155C7A0600D1E138 /* xml */,
 			);
 			name = cybergarage;
 			path = ../../../include/cybergarage;
-			sourceTree = "<group>";
-		};
-		2184A741155C7A0600D1E138 /* http */ = {
-			isa = PBXGroup;
-			children = (
-				2184A742155C7A0600D1E138 /* HTML.h */,
-				2184A743155C7A0600D1E138 /* HTTP.h */,
-				2184A744155C7A0600D1E138 /* HTTPDate.h */,
-				2184A745155C7A0600D1E138 /* HTTPHeader.h */,
-				2184A746155C7A0600D1E138 /* HTTPPacket.h */,
-				2184A747155C7A0600D1E138 /* HTTPRequest.h */,
-				2184A748155C7A0600D1E138 /* HTTPRequestListener.h */,
-				2184A749155C7A0600D1E138 /* HTTPResponse.h */,
-				2184A74A155C7A0600D1E138 /* HTTPServer.h */,
-				2184A74B155C7A0600D1E138 /* HTTPServerList.h */,
-				2184A74C155C7A0600D1E138 /* HTTPServerThread.h */,
-				2184A74D155C7A0600D1E138 /* HTTPSocket.h */,
-				2184A74E155C7A0600D1E138 /* HTTPStatus.h */,
-				2184A74F155C7A0600D1E138 /* Parameter.h */,
-				2184A750155C7A0600D1E138 /* ParameterList.h */,
-			);
-			path = http;
-			sourceTree = "<group>";
-		};
-		2184A751155C7A0600D1E138 /* io */ = {
-			isa = PBXGroup;
-			children = (
-				2184A752155C7A0600D1E138 /* BufferedReader.h */,
-				2184A753155C7A0600D1E138 /* File.h */,
-				2184A754155C7A0600D1E138 /* FileInputStream.h */,
-				2184A755155C7A0600D1E138 /* FileList.h */,
-				2184A756155C7A0600D1E138 /* InputStream.h */,
-				2184A757155C7A0600D1E138 /* InputStreamReader.h */,
-				2184A758155C7A0600D1E138 /* LineNumberReader.h */,
-				2184A759155C7A0600D1E138 /* Reader.h */,
-				2184A75A155C7A0600D1E138 /* StringBufferInputStream.h */,
-				2184A75B155C7A0600D1E138 /* StringReader.h */,
-			);
-			path = io;
-			sourceTree = "<group>";
-		};
-		2184A75C155C7A0600D1E138 /* net */ = {
-			isa = PBXGroup;
-			children = (
-				2184A75D155C7A0600D1E138 /* DatagramPacket.h */,
-				2184A75E155C7A0600D1E138 /* DatagramSocket.h */,
-				2184A75F155C7A0600D1E138 /* HostInterface.h */,
-				2184A760155C7A0600D1E138 /* InetSocketAddress.h */,
-				2184A761155C7A0600D1E138 /* MulticastSocket.h */,
-				2184A762155C7A0600D1E138 /* NetworkInterface.h */,
-				2184A763155C7A0600D1E138 /* NetworkInterfaceList.h */,
-				2184A764155C7A0600D1E138 /* ServerSocket.h */,
-				2184A765155C7A0600D1E138 /* Socket.h */,
-				2184A766155C7A0600D1E138 /* SocketImp.h */,
-				2184A767155C7A0600D1E138 /* SocketInputStream.h */,
-				2184A768155C7A0600D1E138 /* SocketUtil.h */,
-				2184A769155C7A0600D1E138 /* URI.h */,
-				2184A76A155C7A0600D1E138 /* URL.h */,
-			);
-			path = net;
 			sourceTree = "<group>";
 		};
 		2184A76B155C7A0600D1E138 /* soap */ = {
@@ -1205,23 +975,6 @@
 			path = xml;
 			sourceTree = "<group>";
 		};
-		2184A81D155C7A0600D1E138 /* util */ = {
-			isa = PBXGroup;
-			children = (
-				2184A81E155C7A0600D1E138 /* Date.h */,
-				2184A81F155C7A0600D1E138 /* Debug.h */,
-				2184A820155C7A0600D1E138 /* Exception.h */,
-				2184A821155C7A0600D1E138 /* ListenerList.h */,
-				2184A822155C7A0600D1E138 /* Mutex.h */,
-				2184A823155C7A0600D1E138 /* StringTokenizer.h */,
-				2184A824155C7A0600D1E138 /* StringUtil.h */,
-				2184A825155C7A0600D1E138 /* Thread.h */,
-				2184A826155C7A0600D1E138 /* TimeUtil.h */,
-				2184A827155C7A0600D1E138 /* Vector.h */,
-			);
-			path = util;
-			sourceTree = "<group>";
-		};
 		2184A828155C7A0600D1E138 /* xml */ = {
 			isa = PBXGroup;
 			children = (
@@ -1248,65 +1001,13 @@
 		2184A901155C7A2800D1E138 /* cybergarage */ = {
 			isa = PBXGroup;
 			children = (
-				2184A902155C7A2800D1E138 /* http */,
-				2184A90E155C7A2800D1E138 /* io */,
-				2184A915155C7A2800D1E138 /* net */,
 				2184A920155C7A2800D1E138 /* soap */,
 				2184A924155C7A2800D1E138 /* sql */,
 				2184A927155C7A2800D1E138 /* upnp */,
-				2184A9AD155C7A2800D1E138 /* util */,
 				2184A9B5155C7A2800D1E138 /* xml */,
 			);
 			name = cybergarage;
 			path = ../../../src/cybergarage;
-			sourceTree = "<group>";
-		};
-		2184A902155C7A2800D1E138 /* http */ = {
-			isa = PBXGroup;
-			children = (
-				2184A903155C7A2800D1E138 /* HTTP.cpp */,
-				2184A904155C7A2800D1E138 /* HTTPDate.cpp */,
-				2184A905155C7A2800D1E138 /* HTTPHeader.cpp */,
-				2184A906155C7A2800D1E138 /* HTTPPacket.cpp */,
-				2184A907155C7A2800D1E138 /* HTTPRequest.cpp */,
-				2184A908155C7A2800D1E138 /* HTTPResponse.cpp */,
-				2184A909155C7A2800D1E138 /* HTTPServer.cpp */,
-				2184A90A155C7A2800D1E138 /* HTTPServerList.cpp */,
-				2184A90B155C7A2800D1E138 /* HTTPServerThread.cpp */,
-				2184A90C155C7A2800D1E138 /* HTTPSocket.cpp */,
-				2184A90D155C7A2800D1E138 /* HTTPStatus.cpp */,
-			);
-			path = http;
-			sourceTree = "<group>";
-		};
-		2184A90E155C7A2800D1E138 /* io */ = {
-			isa = PBXGroup;
-			children = (
-				2184A90F155C7A2800D1E138 /* BufferedReader.cpp */,
-				2184A910155C7A2800D1E138 /* File.cpp */,
-				2184A911155C7A2800D1E138 /* FileInputStream.cpp */,
-				2184A912155C7A2800D1E138 /* FileList.cpp */,
-				2184A913155C7A2800D1E138 /* StringBufferInputStream.cpp */,
-				2184A914155C7A2800D1E138 /* StringReader.cpp */,
-			);
-			path = io;
-			sourceTree = "<group>";
-		};
-		2184A915155C7A2800D1E138 /* net */ = {
-			isa = PBXGroup;
-			children = (
-				2184A916155C7A2800D1E138 /* DatagramSocket.cpp */,
-				2184A917155C7A2800D1E138 /* HostInterface.cpp */,
-				2184A918155C7A2800D1E138 /* MulticastSocket.cpp */,
-				2184A919155C7A2800D1E138 /* ServerSocket.cpp */,
-				2184A91A155C7A2800D1E138 /* Socket.cpp */,
-				2184A91B155C7A2800D1E138 /* SocketImp.cpp */,
-				2184A91C155C7A2800D1E138 /* SocketInputStream.cpp */,
-				2184A91D155C7A2800D1E138 /* SocketUtil.cpp */,
-				2184A91E155C7A2800D1E138 /* URI.cpp */,
-				2184A91F155C7A2800D1E138 /* URL.cpp */,
-			);
-			path = net;
 			sourceTree = "<group>";
 		};
 		2184A920155C7A2800D1E138 /* soap */ = {
@@ -1636,20 +1337,6 @@
 			path = xml;
 			sourceTree = "<group>";
 		};
-		2184A9AD155C7A2800D1E138 /* util */ = {
-			isa = PBXGroup;
-			children = (
-				2184A9AE155C7A2800D1E138 /* Date.cpp */,
-				2184A9AF155C7A2800D1E138 /* Debug.cpp */,
-				2184A9B0155C7A2800D1E138 /* Mutex.cpp */,
-				2184A9B1155C7A2800D1E138 /* StringTokenizer.cpp */,
-				2184A9B2155C7A2800D1E138 /* StringUtil.cpp */,
-				2184A9B3155C7A2800D1E138 /* Thread.cpp */,
-				2184A9B4155C7A2800D1E138 /* TimeUtil.cpp */,
-			);
-			path = util;
-			sourceTree = "<group>";
-		};
 		2184A9B5155C7A2800D1E138 /* xml */ = {
 			isa = PBXGroup;
 			children = (
@@ -1713,45 +1400,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2184A831155C7A0600D1E138 /* HTML.h in Headers */,
-				2184A832155C7A0600D1E138 /* HTTP.h in Headers */,
-				2184A833155C7A0600D1E138 /* HTTPDate.h in Headers */,
-				2184A834155C7A0600D1E138 /* HTTPHeader.h in Headers */,
-				2184A835155C7A0600D1E138 /* HTTPPacket.h in Headers */,
-				2184A836155C7A0600D1E138 /* HTTPRequest.h in Headers */,
-				2184A837155C7A0600D1E138 /* HTTPRequestListener.h in Headers */,
-				2184A838155C7A0600D1E138 /* HTTPResponse.h in Headers */,
-				2184A839155C7A0600D1E138 /* HTTPServer.h in Headers */,
-				2184A83A155C7A0600D1E138 /* HTTPServerList.h in Headers */,
-				2184A83B155C7A0600D1E138 /* HTTPServerThread.h in Headers */,
-				2184A83C155C7A0600D1E138 /* HTTPSocket.h in Headers */,
-				2184A83D155C7A0600D1E138 /* HTTPStatus.h in Headers */,
-				2184A83E155C7A0600D1E138 /* Parameter.h in Headers */,
-				2184A83F155C7A0600D1E138 /* ParameterList.h in Headers */,
-				2184A840155C7A0600D1E138 /* BufferedReader.h in Headers */,
-				2184A841155C7A0600D1E138 /* File.h in Headers */,
-				2184A842155C7A0600D1E138 /* FileInputStream.h in Headers */,
-				2184A843155C7A0600D1E138 /* FileList.h in Headers */,
-				2184A844155C7A0600D1E138 /* InputStream.h in Headers */,
-				2184A845155C7A0600D1E138 /* InputStreamReader.h in Headers */,
-				2184A846155C7A0600D1E138 /* LineNumberReader.h in Headers */,
-				2184A847155C7A0600D1E138 /* Reader.h in Headers */,
-				2184A848155C7A0600D1E138 /* StringBufferInputStream.h in Headers */,
-				2184A849155C7A0600D1E138 /* StringReader.h in Headers */,
-				2184A84A155C7A0600D1E138 /* DatagramPacket.h in Headers */,
-				2184A84B155C7A0600D1E138 /* DatagramSocket.h in Headers */,
-				2184A84C155C7A0600D1E138 /* HostInterface.h in Headers */,
-				2184A84D155C7A0600D1E138 /* InetSocketAddress.h in Headers */,
-				2184A84E155C7A0600D1E138 /* MulticastSocket.h in Headers */,
-				2184A84F155C7A0600D1E138 /* NetworkInterface.h in Headers */,
-				2184A850155C7A0600D1E138 /* NetworkInterfaceList.h in Headers */,
-				2184A851155C7A0600D1E138 /* ServerSocket.h in Headers */,
-				2184A852155C7A0600D1E138 /* Socket.h in Headers */,
-				2184A853155C7A0600D1E138 /* SocketImp.h in Headers */,
-				2184A854155C7A0600D1E138 /* SocketInputStream.h in Headers */,
-				2184A855155C7A0600D1E138 /* SocketUtil.h in Headers */,
-				2184A856155C7A0600D1E138 /* URI.h in Headers */,
-				2184A857155C7A0600D1E138 /* URL.h in Headers */,
 				2184A858155C7A0600D1E138 /* SOAP.h in Headers */,
 				2184A859155C7A0600D1E138 /* SOAPRequest.h in Headers */,
 				2184A85A155C7A0600D1E138 /* SOAPResponse.h in Headers */,
@@ -1902,16 +1550,6 @@
 				2184A8EB155C7A0600D1E138 /* DeviceData.h in Headers */,
 				2184A8EC155C7A0600D1E138 /* ServiceData.h in Headers */,
 				2184A8ED155C7A0600D1E138 /* StateVariableData.h in Headers */,
-				2184A8EE155C7A0600D1E138 /* Date.h in Headers */,
-				2184A8EF155C7A0600D1E138 /* Debug.h in Headers */,
-				2184A8F0155C7A0600D1E138 /* Exception.h in Headers */,
-				2184A8F1155C7A0600D1E138 /* ListenerList.h in Headers */,
-				2184A8F2155C7A0600D1E138 /* Mutex.h in Headers */,
-				2184A8F3155C7A0600D1E138 /* StringTokenizer.h in Headers */,
-				2184A8F4155C7A0600D1E138 /* StringUtil.h in Headers */,
-				2184A8F5155C7A0600D1E138 /* Thread.h in Headers */,
-				2184A8F6155C7A0600D1E138 /* TimeUtil.h in Headers */,
-				2184A8F7155C7A0600D1E138 /* Vector.h in Headers */,
 				2184A8F8155C7A0600D1E138 /* Attribute.h in Headers */,
 				2184A8F9155C7A0600D1E138 /* AttributeList.h in Headers */,
 				2184A8FA155C7A0600D1E138 /* Node.h in Headers */,
@@ -1973,33 +1611,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2184A9C1155C7A2800D1E138 /* HTTP.cpp in Sources */,
-				2184A9C2155C7A2800D1E138 /* HTTPDate.cpp in Sources */,
-				2184A9C3155C7A2800D1E138 /* HTTPHeader.cpp in Sources */,
-				2184A9C4155C7A2800D1E138 /* HTTPPacket.cpp in Sources */,
-				2184A9C5155C7A2800D1E138 /* HTTPRequest.cpp in Sources */,
-				2184A9C6155C7A2800D1E138 /* HTTPResponse.cpp in Sources */,
-				2184A9C7155C7A2800D1E138 /* HTTPServer.cpp in Sources */,
-				2184A9C8155C7A2800D1E138 /* HTTPServerList.cpp in Sources */,
-				2184A9C9155C7A2800D1E138 /* HTTPServerThread.cpp in Sources */,
-				2184A9CA155C7A2800D1E138 /* HTTPSocket.cpp in Sources */,
-				2184A9CB155C7A2800D1E138 /* HTTPStatus.cpp in Sources */,
-				2184A9CC155C7A2800D1E138 /* BufferedReader.cpp in Sources */,
-				2184A9CD155C7A2800D1E138 /* File.cpp in Sources */,
-				2184A9CE155C7A2800D1E138 /* FileInputStream.cpp in Sources */,
-				2184A9CF155C7A2800D1E138 /* FileList.cpp in Sources */,
-				2184A9D0155C7A2800D1E138 /* StringBufferInputStream.cpp in Sources */,
-				2184A9D1155C7A2800D1E138 /* StringReader.cpp in Sources */,
-				2184A9D2155C7A2800D1E138 /* DatagramSocket.cpp in Sources */,
-				2184A9D3155C7A2800D1E138 /* HostInterface.cpp in Sources */,
-				2184A9D4155C7A2800D1E138 /* MulticastSocket.cpp in Sources */,
-				2184A9D5155C7A2800D1E138 /* ServerSocket.cpp in Sources */,
-				2184A9D6155C7A2800D1E138 /* Socket.cpp in Sources */,
-				2184A9D7155C7A2800D1E138 /* SocketImp.cpp in Sources */,
-				2184A9D8155C7A2800D1E138 /* SocketInputStream.cpp in Sources */,
-				2184A9D9155C7A2800D1E138 /* SocketUtil.cpp in Sources */,
-				2184A9DA155C7A2800D1E138 /* URI.cpp in Sources */,
-				2184A9DB155C7A2800D1E138 /* URL.cpp in Sources */,
 				2184A9DC155C7A2800D1E138 /* SOAP.cpp in Sources */,
 				2184A9DD155C7A2800D1E138 /* SOAPRequest.cpp in Sources */,
 				2184A9DE155C7A2800D1E138 /* SOAPResponse.cpp in Sources */,
@@ -2114,13 +1725,6 @@
 				2184AA4B155C7A2800D1E138 /* DeviceData.cpp in Sources */,
 				2184AA4C155C7A2800D1E138 /* ServiceData.cpp in Sources */,
 				2184AA4D155C7A2800D1E138 /* StateVariableData.cpp in Sources */,
-				2184AA4E155C7A2800D1E138 /* Date.cpp in Sources */,
-				2184AA4F155C7A2800D1E138 /* Debug.cpp in Sources */,
-				2184AA50155C7A2800D1E138 /* Mutex.cpp in Sources */,
-				2184AA51155C7A2800D1E138 /* StringTokenizer.cpp in Sources */,
-				2184AA52155C7A2800D1E138 /* StringUtil.cpp in Sources */,
-				2184AA53155C7A2800D1E138 /* Thread.cpp in Sources */,
-				2184AA54155C7A2800D1E138 /* TimeUtil.cpp in Sources */,
 				2184AA55155C7A2800D1E138 /* AttributeList.cpp in Sources */,
 				2184AA56155C7A2800D1E138 /* ExpatParser.cpp in Sources */,
 				2184AA57155C7A2800D1E138 /* Libxml2Parser.cpp in Sources */,

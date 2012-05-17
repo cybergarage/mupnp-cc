@@ -26,7 +26,7 @@ JPEGFormat::JPEGFormat()
 {
 }
 	
-JPEGFormat::JPEGFormat(CyberIO::File *file)
+JPEGFormat::JPEGFormat(uHTTP::File *file)
 {
 	setFile(file);
 }
@@ -35,7 +35,7 @@ JPEGFormat::JPEGFormat(CyberIO::File *file)
 // Abstract Methods
 ////////////////////////////////////////////////
 	
-bool JPEGFormat::equals(CyberIO::File *file)
+bool JPEGFormat::equals(uHTTP::File *file)
 {
 	if (file == NULL)
 		return false;

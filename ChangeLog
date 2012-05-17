@@ -1,3 +1,7 @@
+2012-05-xx Satoshi Konno <skonno@cybergarage.org>
+	* Changed to use uHTTP for C++.
+	* Changed to use boost::testunit instead of cppunit.
+
 2012-05-16 Satoshi Konno <skonno@cybergarage.org>
 	* v.1.7.2
 

@@ -16,14 +16,14 @@
 #ifndef _CLINK_MEDIA_FORMATLIST_H_
 #define _CLINK_MEDIA_FORMATLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/io/File.h>
+#include <uhttp/util/Vector.h>
+#include <uhttp/io/File.h>
 
 namespace CyberLink {
 
 class Format;
 
-class FormatList : public CyberUtil::Vector
+class FormatList : public uHTTP::Vector
 {
 
 public:
@@ -51,9 +51,9 @@ public:
 		return (Format *)Vector::get(n);
 	}
 
-	Format *getFormat(const char *type);
+	Format *getFormat(const std::string &type);
 
-	Format *getFormat(CyberIO::File *file);
+	Format *getFormat(uHTTP::File *file);
 
 	////////////////////////////////////////////////
 	// clear

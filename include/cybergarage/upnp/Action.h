@@ -24,7 +24,7 @@
 #include <cybergarage/upnp/xml/ActionData.h>
 #include <cybergarage/upnp/ArgumentList.h>
 #include <cybergarage/upnp/control/ActionListener.h>
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/util/Mutex.h>
 
 #include <sstream>
 
@@ -43,7 +43,7 @@ class Action
 
 	UPnPStatus upnpStatus;
 
-	CyberUtil::Mutex mutex;
+	uHTTP::Mutex mutex;
 
 	////////////////////////////////////////////////
 	//	Constants
@@ -115,7 +115,7 @@ public:
 	//	name
 	////////////////////////////////////////////////
 
-	void setName(const char *value)
+	void setName(const std::string &value)
 	{
 		getActionNode()->setNode(Action::NAME, value);
 	}
@@ -151,14 +151,14 @@ public:
 		return argumentOutList;
 	}
 
-	Argument *getArgument(const char *name);
+	Argument *getArgument(const std::string &name);
 
 	void setArgumentValues(ArgumentList *argList)
 	{
 		getArgumentList()->set(argList);
 	}
 	
-	void setArgumentValue(const char *name, const char *value)
+	void setArgumentValue(const std::string &name, const std::string &value)
 	{
 		Argument *arg = getArgument(name);
 		if (arg == NULL)
@@ -166,7 +166,7 @@ public:
 		arg->setValue(value);
 	}
 
-	void setArgumentValue(const char *name, int value)
+	void setArgumentValue(const std::string &name, int value)
 	{
 		Argument *arg = getArgument(name);
 		if (arg == NULL)
@@ -174,7 +174,7 @@ public:
 		arg->setValue(value);
 	}
 
-	const char *getArgumentValue(const char *name)
+	const char *getArgumentValue(const std::string &name)
 	{
 		Argument *arg = getArgument(name);
 		if (arg == NULL)
@@ -182,7 +182,7 @@ public:
 		return arg->getValue();
 	}
 
-	int getArgumentIntegerValue(const char *name)
+	int getArgumentIntegerValue(const std::string &name)
 	{
 		Argument *arg = getArgument(name);
 		if (arg == NULL)
@@ -254,7 +254,7 @@ public:
 
 public:
 
-	void setStatus(int code, const char *descr)
+	void setStatus(int code, const std::string &descr)
 	{
 		upnpStatus.setCode(code);
 		upnpStatus.setDescription(descr);

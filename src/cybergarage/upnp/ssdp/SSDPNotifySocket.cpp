@@ -22,11 +22,11 @@ using namespace CyberLink;
 //	post (SSDPNotifySocket)
 ////////////////////////////////////////////////
 
-SSDPNotifySocket::SSDPNotifySocket(const char *bindAddr)
+SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr)
 {
 	const char *addr = SSDP::ADDRESS;
 	useIPv6Address = false;
-	if (CyberNet::IsIPv6Address(bindAddr) == true) {
+	if (uHTTP::IsIPv6Address(bindAddr) == true) {
 		addr = SSDP::GetIPv6Address();
 		useIPv6Address = true;
 	}

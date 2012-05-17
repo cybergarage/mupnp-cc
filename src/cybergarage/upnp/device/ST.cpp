@@ -20,15 +20,13 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/device/ST.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 
-bool CyberLink::ST::IsAllDevice(const char *value)
+bool CyberLink::ST::IsAllDevice(const std::string &value)
 {
-	if (value == NULL)
-		return false;
 	String valStr = value;
 	if (valStr.equals(ALL_DEVICE) == true)
 		return true;
@@ -39,10 +37,8 @@ bool CyberLink::ST::IsAllDevice(const char *value)
 	return valStr.equals(quoteStr.c_str());
 }
 
-bool CyberLink::ST::IsRootDevice(const char *value)
+bool CyberLink::ST::IsRootDevice(const std::string &value)
 {
-	if (value == NULL)
-		return false;
 	String valStr = value;
 	if (valStr.equals(ROOT_DEVICE) == true)
 		return true;
@@ -53,10 +49,8 @@ bool CyberLink::ST::IsRootDevice(const char *value)
 	return valStr.equals(quoteStr.c_str());
 }
 
-bool CyberLink::ST::IsUUIDDevice(const char *value)
+bool CyberLink::ST::IsUUIDDevice(const std::string &value)
 {
-	if (value == NULL)
-		return false;
 	String valStr = value;
 	if (valStr.startsWith(UUID_DEVICE) == true)
 		return true;
@@ -67,10 +61,8 @@ bool CyberLink::ST::IsUUIDDevice(const char *value)
 	return valStr.startsWith(quoteStr.c_str());
 }
 
-bool CyberLink::ST::IsURNDevice(const char *value)
+bool CyberLink::ST::IsURNDevice(const std::string &value)
 {
-	if (value == NULL)
-		return false;
 	String valStr = value;
 	if (valStr.startsWith(URN_DEVICE) == true)
 		return true;
@@ -81,10 +73,8 @@ bool CyberLink::ST::IsURNDevice(const char *value)
 	return valStr.startsWith(quoteStr.c_str());
 }
 
-bool CyberLink::ST::IsURNService(const char *value)
+bool CyberLink::ST::IsURNService(const std::string &value)
 {
-	if (value == NULL)
-		return false;
 	String valStr = value;
 	if (valStr.startsWith(URN_SERVICE) == true)
 		return true;

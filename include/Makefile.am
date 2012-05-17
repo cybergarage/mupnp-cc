@@ -3,54 +3,6 @@
 ########################################
 
 clink_header = \
-	cybergarage/util/Date.h \
-	cybergarage/util/Debug.h \
-	cybergarage/util/Exception.h \
-	cybergarage/util/ListenerList.h \
-	cybergarage/util/Mutex.h \
-	cybergarage/util/StringTokenizer.h \
-	cybergarage/util/StringUtil.h \
-	cybergarage/util/Thread.h \
-	cybergarage/util/TimeUtil.h \
-	cybergarage/util/Vector.h \
-	cybergarage/io/BufferedReader.h \
-	cybergarage/io/File.h \
-	cybergarage/io/InputStream.h \
-	cybergarage/io/InputStreamReader.h \
-	cybergarage/io/LineNumberReader.h \
-	cybergarage/io/StringBufferInputStream.h \
-	cybergarage/io/FileInputStream.h \
-	cybergarage/io/Reader.h \
-	cybergarage/io/StringReader.h \
-	cybergarage/net/DatagramPacket.h \
-	cybergarage/net/DatagramSocket.h \
-	cybergarage/net/HostInterface.h \
-	cybergarage/net/InetSocketAddress.h \
-	cybergarage/net/MulticastSocket.h \
-	cybergarage/net/NetworkInterface.h \
-	cybergarage/net/NetworkInterfaceList.h \
-	cybergarage/net/ServerSocket.h \
-	cybergarage/net/Socket.h \
-	cybergarage/net/SocketImp.h \
-	cybergarage/net/SocketInputStream.h \
-	cybergarage/net/SocketUtil.h \
-	cybergarage/net/URI.h \
-	cybergarage/net/URL.h \
-	cybergarage/http/HTML.h \
-	cybergarage/http/HTTP.h \
-	cybergarage/http/HTTPDate.h \
-	cybergarage/http/HTTPHeader.h \
-	cybergarage/http/HTTPPacket.h \
-	cybergarage/http/HTTPRequest.h \
-	cybergarage/http/HTTPRequestListener.h \
-	cybergarage/http/HTTPResponse.h \
-	cybergarage/http/HTTPServer.h \
-	cybergarage/http/HTTPServerList.h \
-	cybergarage/http/HTTPServerThread.h \
-	cybergarage/http/HTTPSocket.h \
-	cybergarage/http/HTTPStatus.h \
-	cybergarage/http/Parameter.h \
-	cybergarage/http/ParameterList.h \
 	cybergarage/sql/UniDatabase.h \
 	cybergarage/sql/UniMySQL.h \
 	cybergarage/xml/Attribute.h \

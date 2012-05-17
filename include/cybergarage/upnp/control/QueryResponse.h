@@ -64,7 +64,7 @@ public:
 
 private:
 
-	CyberXML::Node *createResponseNode(const char *value);
+	CyberXML::Node *createResponseNode(const std::string &value);
 };
 
 }

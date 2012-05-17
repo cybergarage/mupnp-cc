@@ -74,15 +74,12 @@
 #include <cybergarage/upnp/control/QueryRequest.h>
 #include <cybergarage/upnp/control/QueryListener.h>
 #include <cybergarage/xml/Parser.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 #include <string>
 
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberNet;
-using namespace CyberIO;
-using namespace CyberHTTP;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace std;
 
 ////////////////////////////////////////////////
@@ -146,7 +143,7 @@ void Service::initActionList()
 	} 
 }
 
-CyberLink::Action *Service::getAction(const char *actionName)
+CyberLink::Action *Service::getAction(const std::string &actionName)
 {
 	ActionList *actionList = getActionList();
 	int nActions = actionList->size();
@@ -186,7 +183,7 @@ void Service::initServiceStateTable()
 	} 
 }
 
-StateVariable *Service::getStateVariable(const char *name)
+StateVariable *Service::getStateVariable(const std::string &name)
 {
 	ServiceStateTable *stateTable = getServiceStateTable();
 	int tableSize = stateTable->size();
@@ -206,7 +203,7 @@ StateVariable *Service::getStateVariable(const char *name)
 //	SCPD node
 ////////////////////////////////////////////////
 
-CyberXML::Node *Service::getSCPDNode(CyberNet::URL *url)
+CyberXML::Node *Service::getSCPDNode(uHTTP::URL *url)
 {
 	CyberXML::Parser parser;
 	return parser.parse(url);
@@ -214,7 +211,7 @@ CyberXML::Node *Service::getSCPDNode(CyberNet::URL *url)
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-CyberXML::Node *Service::getSCPDNode(CyberIO::File *file)
+CyberXML::Node *Service::getSCPDNode(uHTTP::File *file)
 {
 	CyberXML::Parser parser;
 	return parser.parse(file);
@@ -222,7 +219,7 @@ CyberXML::Node *Service::getSCPDNode(CyberIO::File *file)
 
 #endif
 
-CyberXML::Node *Service::getSCPDNode(const char *description)
+CyberXML::Node *Service::getSCPDNode(const std::string &description)
 {
 	CyberXML::Parser parser;
 	return parser.parse(description);
@@ -311,7 +308,7 @@ const char *Service::getSCPDData(string &buf)
 //	Load SCPD
 ////////////////////////////////////////////////
 
-bool Service::loadSCPD(const char *description)
+bool Service::loadSCPD(const std::string &description)
 {
 	Node *scpdNode = NULL;
 
@@ -342,7 +339,7 @@ bool Service::loadSCPD(const char *description)
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-bool Service::loadSCPD(CyberIO::File *file)
+bool Service::loadSCPD(uHTTP::File *file)
 {
 	string description;
 
@@ -379,7 +376,7 @@ bool Service::notify(Subscriber *sub, StateVariable *stateVar)
 	NotifyRequest notifyReq;
 	notifyReq.setRequest(sub, varName, value);
 	
-	CyberHTTP::HTTPResponse *res = notifyReq.post(host, port);
+	uHTTP::HTTPResponse *res = notifyReq.post(host, port);
 	if (res->isSuccessful() == false)
 		return false;
 			
@@ -457,7 +454,7 @@ const char *Service::getNotifyServiceTypeUSN(string &buf)
 	return  buf.c_str();
 }
 
-void Service::announce(const char *bindAddr)
+void Service::announce(const std::string &bindAddr)
 {
 	// uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
 	
@@ -485,7 +482,7 @@ void Service::announce(const char *bindAddr)
 	ssdpSock.post(&ssdpReq);
 }
 
-void Service::byebye(const char *bindAddr)
+void Service::byebye(const std::string &bindAddr)
 {
 	// uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
 		
@@ -522,10 +519,8 @@ void Service::setQueryListener(QueryListener *listener)
 ////////////////////////////////////////////////
 	
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/03/03)
-bool Service::isURL(const char *referenceUrl, const char *url)
+bool Service::isURL(const std::string &referenceUrl, const std::string &url)
 {
-	if (referenceUrl == NULL || url == NULL)
-		return false;
 	bool ret = StringEquals(referenceUrl, url);
 	if (ret == true)
 		return true;
@@ -556,7 +551,7 @@ void Service::removeSubscriber(Subscriber *sub)
 	unlock();
 }
 
-Subscriber *Service::getSubscriberBySID(const char *name)
+Subscriber *Service::getSubscriberBySID(const std::string &name)
 {
 	SubscriberList *subList = getSubscriberList();
 	Subscriber *findSub = NULL;
@@ -579,7 +574,7 @@ Subscriber *Service::getSubscriberBySID(const char *name)
 	return findSub;
 }
 
-Subscriber *Service::getSubscriberByDeliveryURL(const char *name)
+Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name)
 {
 	SubscriberList *subList = getSubscriberList();
 	Subscriber *findSub = NULL;

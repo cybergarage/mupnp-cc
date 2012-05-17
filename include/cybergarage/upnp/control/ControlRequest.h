@@ -37,7 +37,7 @@ public:
 	{
 	}
 
-	ControlRequest(CyberHTTP::HTTPRequest *httpReq)
+	ControlRequest(uHTTP::HTTPRequest *httpReq)
 	{
 		set(httpReq);
 	}

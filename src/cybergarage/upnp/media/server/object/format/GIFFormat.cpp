@@ -27,7 +27,7 @@ GIFFormat::GIFFormat()
 {
 }
 	
-GIFFormat::GIFFormat(CyberIO::File *file)
+GIFFormat::GIFFormat(uHTTP::File *file)
 {
 	setFile(file);
 }
@@ -36,7 +36,7 @@ GIFFormat::GIFFormat(CyberIO::File *file)
 // Abstract Methods
 ////////////////////////////////////////////////
 	
-bool GIFFormat::equals(CyberIO::File *file)
+bool GIFFormat::equals(uHTTP::File *file)
 {
 	if (file == NULL)
 		return false;

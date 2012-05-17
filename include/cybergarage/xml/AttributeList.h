@@ -16,12 +16,12 @@
 #ifndef _CXML_ATTRIBUTELIST_H_
 #define _CXML_ATTRIBUTELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/xml/Attribute.h>
 
 namespace CyberXML {
 
-class AttributeList : public CyberUtil::Vector
+class AttributeList : public uHTTP::Vector
 {
 
 	////////////////////////////////////////////////
@@ -50,7 +50,7 @@ public:
 		return (Attribute *)Vector::get(n);
 	}
 
-	Attribute *getAttribute(const char *name);
+	Attribute *getAttribute(const std::string &name);
 
 
 	////////////////////////////////////////////////

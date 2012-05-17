@@ -62,7 +62,7 @@ public:
 
 	const char *getConnectionErrorMessage();
 
-	bool query(const char *sql);
+	bool query(const std::string &sql);
 	bool getQueryStatus();
 	const char *getQueryStatusMessage();
 	const char *getQueryErrorMessage();

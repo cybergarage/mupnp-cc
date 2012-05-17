@@ -30,11 +30,11 @@
 #include <cybergarage/upnp/media/server/object/SortCriteriaList.h>
 #include <cybergarage/upnp/media/server/object/SearchCriteriaList.h>
 
-#include <cybergarage/util/Debug.h>
-#include <cybergarage/util/TimeUtil.h>
-#include <cybergarage/http/HTTPStatus.h>
-#include <cybergarage/util/StringTokenizer.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/Debug.h>
+#include <uhttp/util/TimeUtil.h>
+#include <uhttp/http/HTTPStatus.h>
+#include <uhttp/util/StringTokenizer.h>
+#include <uhttp/util/StringUtil.h>
 
 #include <cybergarage/upnp/media/server/object/SortCap.h>
 #include <cybergarage/upnp/media/server/object/sort/UPnPClassSortCap.h>
@@ -48,9 +48,8 @@
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberUtil;
-using namespace CyberHTTP;
-using namespace CyberIO;
+using namespace uHTTP;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -638,7 +637,7 @@ bool ContentDirectory::removeDirectory(Directory *dir)
 	return true;
 }
 
-bool ContentDirectory::removeDirectory(const char *name)
+bool ContentDirectory::removeDirectory(const std::string &name)
 {
 	Directory *dir = dirList.getDirectory(name);
 	if (dir == NULL)
@@ -763,14 +762,12 @@ void ContentDirectory::sortContentNodeList(ContentNode *conNode[], int nConNode,
 	}
 }
 
-int ContentDirectory::getSortCriteriaArray(const char *sortCriteria, SortCriteriaList &sortCriList)
+int ContentDirectory::getSortCriteriaArray(const std::string &sortCriteria, SortCriteriaList &sortCriList)
 {
 	sortCriList.clear();
-	if (sortCriteria == NULL)
-		return 0;
-	int sortCriteriaLen = (int)strlen(sortCriteria);
+	int sortCriteriaLen = (int)strlen(sortCriteria.c_str());
 	char *sortCriteriaBuf = new char[sortCriteriaLen+1];
-	strcpy(sortCriteriaBuf, sortCriteria);
+	strcpy(sortCriteriaBuf, sortCriteria.c_str());
 	char *seps = ", ";
 	StringTokenizer toknizer(sortCriteriaBuf, seps);
 	while( toknizer.hasMoreTokens() == true) {
@@ -783,12 +780,9 @@ int ContentDirectory::getSortCriteriaArray(const char *sortCriteria, SortCriteri
 }
 
 
-ContentNodeList *ContentDirectory::sortContentNodeList(ContentNodeList *contentNodeList, const char *sortCriteria, ContentNodeList &sortedContentNodeList)
+ContentNodeList *ContentDirectory::sortContentNodeList(ContentNodeList *contentNodeList, const std::string &sortCriteria, ContentNodeList &sortedContentNodeList)
 {
-	if (sortCriteria == NULL)
-		return contentNodeList;
-	string sortCriteriaStr = sortCriteria;
-	if (sortCriteriaStr.length() <= 0)
+	if (sortCriteria.length() <= 0)
 		return contentNodeList;
 
 	int n;
@@ -876,11 +870,9 @@ bool ContentDirectory::browseDirectChildrenActionReceived(BrowseAction *action)
 // Search
 ////////////////////////////////////////////////
 
-int ContentDirectory::getSearchCriteriaList(const char *searchStr, SearchCriteriaList &searchList)
+int ContentDirectory::getSearchCriteriaList(const std::string &searchStr, SearchCriteriaList &searchList)
 {
-	if (searchStr == NULL)
-		return searchList.size();
-	if (strcmp(searchStr, "*") == 0)
+	if (strcmp(searchStr.c_str(), "*") == 0)
 		return searchList.size();
 
 	StringTokenizer searchCriTokenizer(searchStr, SearchCriteria::WCHARS);
@@ -984,7 +976,7 @@ bool ContentDirectory::queryControlReceived(StateVariable *stateVar)
 //	HTTP Server
 ////////////////////////////////////////////////
 
-void ContentDirectory::contentExportRequestRecieved(CyberHTTP::HTTPRequest *httpReq)
+void ContentDirectory::contentExportRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
 	if (Debug::isOn())
 		httpReq->print();
@@ -1082,7 +1074,7 @@ int ContentDirectory::getHTTPPort()
 	return getMediaServer()->getHTTPPort();
 }			
 	
-const char *ContentDirectory::getContentExportURL(const char *id, std::string &url)
+const char *ContentDirectory::getContentExportURL(const std::string &id, std::string &url)
 {
 	ostringstream urlBuf;
 	urlBuf << "http://" << getInterfaceAddress() << ":" << getHTTPPort() << CONTENT_EXPORT_URI << "?" << CONTENT_ID << "=" << id;
@@ -1090,7 +1082,7 @@ const char *ContentDirectory::getContentExportURL(const char *id, std::string &u
 	return url.c_str();
 }			
 
-const char *ContentDirectory::getContentImportURL(const char *id, std::string &url)
+const char *ContentDirectory::getContentImportURL(const std::string &id, std::string &url)
 {
 	ostringstream urlBuf;
 	urlBuf << "http://" << getInterfaceAddress() << ":" << getHTTPPort() << CONTENT_IMPORT_URI << "?" << CONTENT_ID << "=" << id;

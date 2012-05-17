@@ -23,7 +23,7 @@
 #ifdef SUPPORT_ITUNES
 
 #include <string>
-#include <cybergarage/io/File.h>
+#include <uhttp/io/File.h>
 #include <cybergarage/xml/Parser.h>
 #include <cybergarage/upnp/media/server/directory/itunes/iTunesTrackList.h>
 #include <cybergarage/upnp/media/server/directory/itunes/iTunesPlaylistList.h>

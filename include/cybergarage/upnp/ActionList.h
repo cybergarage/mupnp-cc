@@ -16,13 +16,13 @@
 #ifndef _CLINK_ACTIONLIST_H_
 #define _CLINK_ACTIONLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class Action;
 
-class ActionList : public CyberUtil::Vector 
+class ActionList : public uHTTP::Vector 
 {
 public:
 

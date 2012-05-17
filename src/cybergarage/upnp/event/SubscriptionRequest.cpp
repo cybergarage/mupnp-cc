@@ -27,15 +27,14 @@
 #include <sstream>
 
 #include <cybergarage/upnp/event/SubscriptionRequest.h>
-#include <cybergarage/http/HTTP.h>
+#include <uhttp/http/HTTP.h>
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/Service.h>
-#include <cybergarage/net/URL.h>
+#include <uhttp/net/URL.h>
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberHTTP;
-using namespace CyberNet;
+using namespace uHTTP;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
@@ -90,7 +89,7 @@ void SubscriptionRequest::setService(Service *service)
 	setRequestPort(reqPort);
 }
 
-void SubscriptionRequest::setSubscribeRequest(Service *service, const char *callback, long timeout)
+void SubscriptionRequest::setSubscribeRequest(Service *service, const std::string &callback, long timeout)
 {
 	setMethod(Subscription::SUBSCRIBE_METHOD);
 	setService(service);
@@ -99,7 +98,7 @@ void SubscriptionRequest::setSubscribeRequest(Service *service, const char *call
 	setTimeout(timeout);
 }
 
-void SubscriptionRequest::setRenewRequest(Service *service, const char *uuid, long timeout)
+void SubscriptionRequest::setRenewRequest(Service *service, const std::string &uuid, long timeout)
 {
 	setMethod(Subscription::SUBSCRIBE_METHOD);
 	setService(service);

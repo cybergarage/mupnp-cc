@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_ID3FORMAT_H_
 #define _CLINK_MEDIA_ID3FORMAT_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/io/InputStream.h>
+#include <uhttp/io/File.h>
+#include <uhttp/io/InputStream.h>
 #include <cybergarage/upnp/media/server/object/format/AudioFormat.h>
 #include <cybergarage/upnp/media/server/object/format/ID3FrameList.h>
 #include <string>
@@ -56,7 +56,7 @@ private:
 public:
 
 	ID3Format();
-	ID3Format(CyberIO::File *file);
+	ID3Format(uHTTP::File *file);
 
 	~ID3Format();
 
@@ -66,8 +66,8 @@ public:
 
 private:
 
-	bool loadHeader(CyberIO::InputStream *inputStream);
-	bool loadHeader(CyberIO::File *file);
+	bool loadHeader(uHTTP::InputStream *inputStream);
+	bool loadHeader(uHTTP::File *file);
 
 	////////////////////////////////////////////////
 	// Header
@@ -122,17 +122,17 @@ private:
 
 public:
 
-	unsigned char *getFrameData(const char *name)
+	unsigned char *getFrameData(const std::string &name)
 	{
 		return frameList.getFrameData(name);
 	}
 
-	const char *getFrameData(const char *name, std::string &buf)
+	const char *getFrameData(const std::string &name, std::string &buf)
 	{
 		return frameList.getFrameData(name, buf);
 	}
 	
-	const char *getFrameStringData(const char *name, std::string &buf)
+	const char *getFrameStringData(const std::string &name, std::string &buf)
 	{
 		return frameList.getFrameStringData(name, buf);
 	}
@@ -143,9 +143,9 @@ public:
 
 public:
 
-	bool equals(CyberIO::File *file);
+	bool equals(uHTTP::File *file);
 
-	FormatObject *createObject(CyberIO::File *file)
+	FormatObject *createObject(uHTTP::File *file)
 	{
 		return new ID3Format(file);
 	}

@@ -20,7 +20,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/util/Date.h>
+#include <uhttp/util/Date.h>
 #include <cybergarage/upnp/media/server/object/item/ItemNode.h>
 
 #include <string>
@@ -30,7 +30,7 @@
 #include <stdio.h>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberLink;
 using namespace CyberXML;
 
@@ -134,7 +134,7 @@ long ItemNode::getDateTime()
 // Res
 ////////////////////////////////////////////////
 
-void ItemNode::setResource(const char *url, const char *protocolInfo, CyberXML::AttributeList *attrList)
+void ItemNode::setResource(const std::string &url, const std::string &protocolInfo, CyberXML::AttributeList *attrList)
 {
 	setProperty(DIDLLite::RES, url);
 	

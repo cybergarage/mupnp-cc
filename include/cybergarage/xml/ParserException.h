@@ -16,15 +16,15 @@
 #ifndef _CXML_PARSEREXCEPTION_H_
 #define _CXML_PARSEREXCEPTION_H_
 
-#include <cybergarage/util/Exception.h>
+#include <uhttp/util/Exception.h>
 
 namespace CyberXML {
 
-class ParserException : public CyberUtil::Exception
+class ParserException : public uHTTP::Exception
 {
 public:
 
-	ParserException(const char *msg) : Exception(msg)
+	ParserException(const std::string &msg) : Exception(msg)
 	{
 	}
 	

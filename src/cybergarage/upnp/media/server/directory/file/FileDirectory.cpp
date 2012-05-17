@@ -20,21 +20,21 @@
 #include <cybergarage/upnp/media/server/object/Format.h>
 #include <cybergarage/upnp/media/server/object/FormatObject.h>
 #include <cybergarage/upnp/media/server/directory/file/FileDirectory.h>
-#include <cybergarage/io/FileList.h>
+#include <uhttp/io/FileList.h>
 
 #include <typeinfo>
 #include <sstream>
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberIO;
+using namespace uHTTP;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
 	
-FileDirectory::FileDirectory(const char *name, const char *path) : Directory(name)
+FileDirectory::FileDirectory(const std::string &name, const std::string &path) : Directory(name)
 {
 	setPath(path);
 }
@@ -43,7 +43,7 @@ FileDirectory::FileDirectory(const char *name, const char *path) : Directory(nam
 // create/updateItemNode
 ////////////////////////////////////////////////
 
-bool FileDirectory::updateItemNode(FileItemNode *itemNode,  CyberIO::File *file)
+bool FileDirectory::updateItemNode(FileItemNode *itemNode,  uHTTP::File *file)
 {
 	Format *format = getContentDirectory()->getFormat(file);
 	if (format == NULL)
@@ -97,7 +97,7 @@ bool FileDirectory::updateItemNode(FileItemNode *itemNode,  CyberIO::File *file)
 	return true;
 }
 
-FileItemNode *FileDirectory::createCompareItemNode(CyberIO::File *file)
+FileItemNode *FileDirectory::createCompareItemNode(uHTTP::File *file)
 {
 	Format *format = getContentDirectory()->getFormat(file);
 	if (format == NULL)
@@ -111,7 +111,7 @@ FileItemNode *FileDirectory::createCompareItemNode(CyberIO::File *file)
 // FileList
 ////////////////////////////////////////////////
 	
-int FileDirectory::getDirectoryItemNodeList(CyberIO::File *dirFile, FileItemNodeList &itemNodeList)
+int FileDirectory::getDirectoryItemNodeList(uHTTP::File *dirFile, FileItemNodeList &itemNodeList)
 {
 	FileList fileList;
 	int fileCnt = dirFile->listFiles(fileList);
@@ -143,7 +143,7 @@ int FileDirectory::getCurrentDirectoryItemNodeList(FileItemNodeList &itemNodeLis
 // updateItemNodeList
 ////////////////////////////////////////////////
 	
-FileItemNode *FileDirectory::getItemNode(CyberIO::File *file)
+FileItemNode *FileDirectory::getItemNode(uHTTP::File *file)
 {
 	int nContents = getNContentNodes();
 	for (int n=0; n<nContents; n++) {

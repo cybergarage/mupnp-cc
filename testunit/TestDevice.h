@@ -14,7 +14,7 @@
 #include <cybergarage/upnp/CyberLink.h>
 
 using namespace CyberLink;
-using namespace CyberHTTP;
+using namespace uHTTP;
 
 const char DESCRIPTION_FILE_NAME[] = "testDevice/description.xml";
 const char PRESENTATION_URI[] = "/presentation";

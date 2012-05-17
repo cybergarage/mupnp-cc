@@ -14,8 +14,8 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
-#include <cybergarage/util/Date.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Date.h>
+#include <uhttp/util/Debug.h>
 #include <sstream>
 
 #ifdef HAVE_CONFIG_H
@@ -25,7 +25,7 @@
 #ifdef SUPPORT_MYTHTV
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberLink;
 
 ////////////////////////////////////////////////

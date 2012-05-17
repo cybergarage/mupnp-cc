@@ -18,7 +18,7 @@
 #include <cybergarage/upnp/media/server/object/item/gateway/GatewayItemNode.h>
 
 using namespace CyberLink;
-using namespace CyberIO;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constroctor
@@ -41,7 +41,7 @@ const char *GatewayItemNode::getContent(std::string &buf)
 	return buf.c_str();
 }
 
-CyberIO::InputStream *GatewayItemNode::getContentInputStream()
+uHTTP::InputStream *GatewayItemNode::getContentInputStream()
 {
 	if (itemFile == NULL)
 		return NULL;
@@ -51,7 +51,7 @@ CyberIO::InputStream *GatewayItemNode::getContentInputStream()
 const char *GatewayItemNode::getMimeType()
 {
 	ContentDirectory *cdir = getContentDirectory();
-	CyberIO::File *itemFile = getFile();
+	uHTTP::File *itemFile = getFile();
 	Format *itemFormat = cdir->getFormat(itemFile);
 	if (itemFormat == NULL) {
 		return "*/*";

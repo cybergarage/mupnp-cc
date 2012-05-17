@@ -111,7 +111,7 @@ public:
 	
 public:
 
-	void setProtocolInfo(const char *value)
+	void setProtocolInfo(const std::string &value)
 	{
 		protocolInfo = value;
 	}
@@ -127,7 +127,7 @@ public:
 	
 public:
 
-	void setPeerConnectionManager(const char *value)
+	void setPeerConnectionManager(const std::string &value)
 	{
 		peerConnectionManager = value;
 	}
@@ -159,7 +159,7 @@ public:
 	
 public:
 
-	void setDirection(const char *value)
+	void setDirection(const std::string &value)
 	{
 		direction = value;
 	}
@@ -175,7 +175,7 @@ public:
 	
 public:
 
-	void setStatus(const char *value)
+	void setStatus(const std::string &value)
 	{
 		status = value;
 	}

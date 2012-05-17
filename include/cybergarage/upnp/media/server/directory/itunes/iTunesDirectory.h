@@ -37,7 +37,7 @@ class iTunesDirectory : public Directory
 	
 public:
 
-	iTunesDirectory(const char *name);
+	iTunesDirectory(const std::string &name);
 	~iTunesDirectory();
 	
 	////////////////////////////////////////////////

@@ -16,13 +16,13 @@
 #ifndef _CLINK_MEDIA_ID3FRAMELIST_H_
 #define _CLINK_MEDIA_ID3FRAMELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/format/ID3Frame.h>
 #include <string>
 
 namespace CyberLink {
 
-class ID3FrameList : public CyberUtil::Vector
+class ID3FrameList : public uHTTP::Vector
 {
 	
 	////////////////////////////////////////////////
@@ -45,10 +45,10 @@ public:
 		return (ID3Frame *)get(n);
 	}
 
-	ID3Frame *getFrame(const char *name);
-	unsigned char *getFrameData(const char *name);
-	const char *getFrameData(const char *name, std::string &buf);
-	const char *getFrameStringData(const char *name, std::string &buf);
+	ID3Frame *getFrame(const std::string &name);
+	unsigned char *getFrameData(const std::string &name);
+	const char *getFrameData(const std::string &name, std::string &buf);
+	const char *getFrameStringData(const std::string &name, std::string &buf);
 
 	////////////////////////////////////////////////
 	// clear

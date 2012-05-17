@@ -16,16 +16,14 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/device/MAN.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 
-bool CyberLink::MAN::IsDiscover(const char *value)
+bool CyberLink::MAN::IsDiscover(const std::string &value)
 {
-	if (value == NULL)
-		return false;
-	CyberUtil::String manStr = value;
+	uHTTP::String manStr = value;
 	if (manStr.equals(DISCOVER) == true)
 		return true;
 	string quoteDiscoverStr;

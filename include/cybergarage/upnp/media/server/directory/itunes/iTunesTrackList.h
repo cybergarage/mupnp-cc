@@ -22,12 +22,12 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/directory/itunes/iTunesTrack.h>
 
 namespace CyberLink {
 
-class iTunesTrackList : public CyberUtil::Vector
+class iTunesTrackList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor

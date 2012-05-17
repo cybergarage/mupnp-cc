@@ -21,7 +21,6 @@
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberNet;
 
 ////////////////////////////////////////////////
 // Constants
@@ -79,7 +78,7 @@ MediaServer::MediaServer() : Device()
 	// Netwroking initialization		
 	UPnP::SetEnable(UPnP::USE_ONLY_IPV4_ADDR);
 	string firstIf;
-	GetHostAddress(0, firstIf);
+    uHTTP::GetHostAddress(0, firstIf);
 	setInterfaceAddress(firstIf.c_str());
 	setHTTPPort(DEFAULT_HTTP_PORT);
 
@@ -109,7 +108,7 @@ MediaServer::~MediaServer()
 // HttpRequestListner (Overridded)
 ////////////////////////////////////////////////
 	
-void MediaServer::httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq)
+void MediaServer::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
 	string uri;
 	httpReq->getURI(uri);

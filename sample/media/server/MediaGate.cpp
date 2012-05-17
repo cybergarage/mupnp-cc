@@ -17,8 +17,8 @@
 
 #include "MediaGate.h"
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/io/File.h>
+#include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Parser.h>
 #include <cybergarage/upnp/media/server/object/format/GIFFormat.h>
 #include <cybergarage/upnp/media/server/object/format/JPEGFormat.h>
@@ -30,9 +30,8 @@
 #include <fstream>
 
 using namespace std;
-using namespace CyberIO;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants

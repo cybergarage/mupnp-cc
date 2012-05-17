@@ -74,12 +74,12 @@
 ******************************************************************/
 
 
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/net/URL.h>
-#include <cybergarage/util/Debug.h>
-#include <cybergarage/util/TimeUtil.h>
-#include <cybergarage/http/HTTPDate.h>
-#include <cybergarage/io/File.h>
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/net/URL.h>
+#include <uhttp/util/Debug.h>
+#include <uhttp/util/TimeUtil.h>
+#include <uhttp/http/HTTPDate.h>
+#include <uhttp/io/File.h>
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/UPnPStatus.h>
@@ -94,13 +94,11 @@
 #include <iostream>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberHTTP;
-using namespace CyberNet;
+using namespace uHTTP;
 using namespace CyberSOAP;
-using namespace CyberIO;
 
 ////////////////////////////////////////////////
 //	Constants
@@ -191,7 +189,7 @@ void Device::initChildList()
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-Device::Device(CyberIO::File *descriptionFile)
+Device::Device(uHTTP::File *descriptionFile)
 {
 	setLocalRootDeviceFlag(true);
 	rootNode = NULL;
@@ -202,13 +200,13 @@ Device::Device(CyberIO::File *descriptionFile)
 		throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
 }
 
-Device::Device(const char *descriptionFileName)
+Device::Device(const std::string &descriptionFileName)
 {
 	setLocalRootDeviceFlag(true);
 	rootNode = NULL;
 	deviceNode = NULL;
 	initUUID();
-	CyberIO::File descriptionFile(descriptionFileName);
+	uHTTP::File descriptionFile(descriptionFileName);
 	bool ret = loadDescription(&descriptionFile);
 	if (ret == false)
 		throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
@@ -259,7 +257,7 @@ bool Device::isNMPRMode()
 //	URL Base
 ////////////////////////////////////////////////
 
-void Device::setURLBase(const char *value)
+void Device::setURLBase(const std::string &value)
 {
 	if (isRootDevice() == true) {
 		Node *node = getRootNode()->getNode(URLBASE_NAME);
@@ -276,7 +274,7 @@ void Device::setURLBase(const char *value)
 	}
 }
 
-void Device::updateURLBase(const char *host)
+void Device::updateURLBase(const std::string &host)
 {
 	string urlBase;
 	GetHostURL(host, getHTTPPort(), "", urlBase);
@@ -309,10 +307,8 @@ Device::~Device()
 //	isDeviceType
 ////////////////////////////////////////////////
 
-bool Device::isDeviceType(const char *value)
+bool Device::isDeviceType(const std::string &value)
 {
-	if (value == NULL)
-		return false;
 	string valueStr = value;
 	return (valueStr.compare(getDeviceType()) == 0) ? true : false;
 }
@@ -422,10 +418,10 @@ DeviceData *Device::getDeviceData()
 }
 
 ////////////////////////////////////////////////
-//	Description
+//	loadDescription
 ////////////////////////////////////////////////
 
-bool Device::loadDescription(const char *description)
+bool Device::loadDescription(const std::string &description)
 {
 	try {
 		Parser parser;
@@ -468,7 +464,7 @@ bool Device::loadDescription(const char *description)
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-bool Device::loadDescription(CyberIO::File *file)
+bool Device::loadDescription(uHTTP::File *file)
 {
 	string description;
 
@@ -519,10 +515,8 @@ void Device::initDeviceList()
 	} 
 }
 
-bool Device::isDevice(const char *name)
+bool Device::isDevice(const std::string &name)
 {
-	if (name == NULL)
-		return false;
 	String nameStr = name;
 	if (nameStr.endsWith(getUDN()) == true)
 		return true;
@@ -533,7 +527,7 @@ bool Device::isDevice(const char *name)
 	return false;
 }
 	
-Device *Device::getDevice(const char *name)
+Device *Device::getDevice(const std::string &name)
 {
 	DeviceList *devList = getDeviceList();
 	int devCnt = devList->size();
@@ -548,7 +542,7 @@ Device *Device::getDevice(const char *name)
 	return NULL;
 }
 
-Device *Device::getDeviceByDescriptionURI(const char *uri)
+Device *Device::getDeviceByDescriptionURI(const std::string &uri)
 {
 	DeviceList *devList = getDeviceList();
 	int devCnt = devList->size();
@@ -586,7 +580,7 @@ void Device::initServiceList()
 	} 
 }
 
-Service *Device::getService(const char *name)
+Service *Device::getService(const std::string &name)
 {
 	int n;
 
@@ -610,7 +604,7 @@ Service *Device::getService(const char *name)
 	return NULL;
 }
 
-Service *Device::getServiceBySCPDURL(const char *searchUrl)
+Service *Device::getServiceBySCPDURL(const std::string &searchUrl)
 {
 	int n;
 	ServiceList *serviceList = getServiceList();
@@ -633,7 +627,7 @@ Service *Device::getServiceBySCPDURL(const char *searchUrl)
 	return NULL;
 }
 
-Service *Device::getServiceByControlURL(const char *searchUrl)
+Service *Device::getServiceByControlURL(const std::string &searchUrl)
 {
 	int n;
 	ServiceList *serviceList = getServiceList();
@@ -656,7 +650,7 @@ Service *Device::getServiceByControlURL(const char *searchUrl)
 	return NULL;
 }
 
-Service *Device::getServiceByEventSubURL(const char *searchUrl)
+Service *Device::getServiceByEventSubURL(const std::string &searchUrl)
 {
 	int n;
 	ServiceList *serviceList = getServiceList();
@@ -679,7 +673,7 @@ Service *Device::getServiceByEventSubURL(const char *searchUrl)
 	return NULL;
 }
 
-Service *Device::getSubscriberService(const char *uuid)
+Service *Device::getSubscriberService(const std::string &uuid)
 {
 	int n;
 	String uuidStr = uuid;
@@ -708,22 +702,17 @@ Service *Device::getSubscriberService(const char *uuid)
 //	StateVariable
 ////////////////////////////////////////////////
 
-StateVariable *Device::getStateVariable(const char* serviceType, const char *name)
+StateVariable *Device::getStateVariable(const std::string &serviceType, const std::string &name)
 {
 	int n;
-	string serviceTypeStr;
-	if (serviceType != NULL)
-		serviceTypeStr = serviceType;
 
 	ServiceList *serviceList = getServiceList();
 	int serviceCnt = serviceList->size();
 	for (n=0; n<serviceCnt; n++) {
 		Service *service = serviceList->getService(n);
 		// Thanks for Theo Beisch (11/09/04)
-		if (serviceType != NULL) {
-			if (serviceTypeStr.compare(service->getServiceType()) != 0)
+        if (serviceType.compare(service->getServiceType()) != 0)
 				continue;
-		}
 		StateVariable *stateVar = service->getStateVariable(name);
 		if (stateVar != NULL)
 			return stateVar;
@@ -741,7 +730,7 @@ StateVariable *Device::getStateVariable(const char* serviceType, const char *nam
 	return NULL;
 }
 
-StateVariable *Device::getStateVariable(const char *name)
+StateVariable *Device::getStateVariable(const std::string &name)
 {
 	return getStateVariable(NULL, name);
 }
@@ -750,10 +739,10 @@ StateVariable *Device::getStateVariable(const char *name)
 //	Action
 ////////////////////////////////////////////////
 
-CyberLink::Action *Device::getAction(const char *name)
+CyberLink::Action *Device::getAction(const std::string &name)
 {
 	int n;
-	CyberUtil::String nameStr= name;
+	uHTTP::String nameStr= name;
 
 	ServiceList *serviceList = getServiceList();
 	int serviceCnt = serviceList->size();
@@ -812,12 +801,12 @@ void Device::initIconList()
 
 void Device::notifyWait()
 {
-	CyberUtil::WaitRandom(DEFAULT_DISCOVERY_WAIT_TIME);
+	uHTTP::WaitRandom(DEFAULT_DISCOVERY_WAIT_TIME);
 }
 
-const char *Device::getLocationURL(const char *host, std::string &buf)
+const char *Device::getLocationURL(const std::string &host, std::string &buf)
 {
-	return CyberNet::GetHostURL(host, getHTTPPort(), getDescriptionURI(), buf);
+	return uHTTP::GetHostURL(host, getHTTPPort(), getDescriptionURI(), buf);
 }
 
 const char *Device::getNotifyDeviceNT(std::string &buf)
@@ -852,7 +841,7 @@ const char *Device::getNotifyDeviceTypeUSN(std::string &buf)
 	return buf.c_str();
 }
 
-void Device::announce(const char *bindAddr)
+void Device::announce(const std::string &bindAddr)
 {
 	string devLocationBuf;
 	const char *devLocation = getLocationURL(bindAddr, devLocationBuf);
@@ -908,11 +897,11 @@ void Device::announce()
 {
 	notifyWait();
 
-	int nHostAddrs = CyberNet::GetNHostAddresses();
+	int nHostAddrs = uHTTP::GetNHostAddresses();
 	for (int n=0; n<nHostAddrs; n++) {
 		std::string bindAddrBuf;
-		const char *bindAddr = CyberNet::GetHostAddress(n, bindAddrBuf);
-		if (CyberUtil::StringHasData(bindAddr) == false)
+		const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrBuf);
+		if (uHTTP::StringHasData(bindAddr) == false)
 			continue;
 		int ssdpCount = getSSDPAnnounceCount();
 		for (int i=0; i<ssdpCount; i++)
@@ -920,7 +909,7 @@ void Device::announce()
 	}
 }
 	
-void Device::byebye(const char *bindAddr)
+void Device::byebye(const std::string &bindAddr)
 {
 	int n;
 	SSDPNotifySocket ssdpSock(bindAddr);
@@ -966,11 +955,11 @@ void Device::byebye(const char *bindAddr)
 
 void Device::byebye()
 {
-	int nHostAddrs = CyberNet::GetNHostAddresses();
+	int nHostAddrs = uHTTP::GetNHostAddresses();
 	for (int n=0; n<nHostAddrs; n++) {
 		std::string bindAddrBuf;
-		const char *bindAddr = CyberNet::GetHostAddress(n, bindAddrBuf);
-		if (CyberUtil::StringHasData(bindAddr) == false)
+		const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrBuf);
+		if (uHTTP::StringHasData(bindAddr) == false)
 			continue;
 		int ssdpCount = getSSDPAnnounceCount();
 		for (int i=0; i<ssdpCount; i++)
@@ -982,7 +971,7 @@ void Device::byebye()
 //	Search
 ////////////////////////////////////////////////
 
-bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const char *st, const char *usn)
+bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn)
 {
 	const char *localAddr = ssdpPacket->getLocalAddress();
 	Device *rootDev = getRootDevice();
@@ -1000,7 +989,7 @@ bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const char *st, const ch
 	ssdpRes.setMYNAME(getFriendlyName());
 
 	int mx = ssdpPacket->getMX();
-	CyberUtil::WaitRandom(mx * 1000);
+	uHTTP::WaitRandom(mx * 1000);
 		
 	const char *remoteAddr = ssdpPacket->getRemoteAddress();
 	int remotePort = ssdpPacket->getRemotePort();
@@ -1084,7 +1073,7 @@ void Device::deviceSearchReceived(SSDPPacket *ssdpPacket)
 //	HTTP Server	
 ////////////////////////////////////////////////
 
-void Device::httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq)
+void Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
 	if (Debug::isOn() == true)
 		httpReq->print();
@@ -1119,7 +1108,7 @@ void Device::httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq)
 //	HTTP Server	
 ////////////////////////////////////////////////
 
-const char *Device::getDescriptionData(const char *host, string &buf)
+const char *Device::getDescriptionData(const std::string &host, string &buf)
 {
 	lock();
 	if (isNMPRMode() == false)
@@ -1292,7 +1281,7 @@ void Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
 		return;
 	}
 	if (subReq->hasCallback() == false && subReq->hasSID() == false) {
-		upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+		upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
 		return;
 	}
 
@@ -1314,7 +1303,7 @@ void Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
 		return;
 	}
 		
-	upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+	upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
 }
 
 void Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
@@ -1350,7 +1339,7 @@ void Device::deviceEventRenewSubscriptionRecieved(Service *service, Subscription
 	Subscriber *sub = service->getSubscriberBySID(sid);
 
 	if (sub == NULL) {
-		upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+		upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
 		return;
 	}
 
@@ -1372,7 +1361,7 @@ void Device::deviceEventUnsubscriptionRecieved(Service *service, SubscriptionReq
 
 	Subscriber *sub = service->getSubscriberBySID(sid);
 	if (sub == NULL) {
-		upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+		upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
 		return;
 	}
 

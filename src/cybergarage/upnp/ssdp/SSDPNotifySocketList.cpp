@@ -19,7 +19,7 @@
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberNet;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constructor

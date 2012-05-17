@@ -22,10 +22,8 @@ using namespace CyberLink;
 // Constants
 ////////////////////////////////////////////////
 
-Format *FormatList::getFormat(const char *type) 
+Format *FormatList::getFormat(const std::string &type) 
 {
-	if (type == NULL)
-		return NULL;
 	std::string typeStr = type;
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {
@@ -40,7 +38,7 @@ Format *FormatList::getFormat(const char *type)
 // Constants
 ////////////////////////////////////////////////
 
-Format *FormatList::getFormat(CyberIO::File *file) 
+Format *FormatList::getFormat(uHTTP::File *file) 
 {
 	if (file == NULL)
 		return NULL;

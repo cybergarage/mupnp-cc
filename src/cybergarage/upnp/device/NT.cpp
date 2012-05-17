@@ -14,12 +14,10 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/device/NT.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
-bool CyberLink::NT::IsRootDevice(const char *ntValue)
+bool CyberLink::NT::IsRootDevice(const std::string &ntValue)
 {
-	if (ntValue == NULL)
-		return false;
-	CyberUtil::String ntStr = ntValue;
+	uHTTP::String ntStr = ntValue;
 	return ntStr.startsWith(ROOTDEVICE);
 }

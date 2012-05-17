@@ -60,7 +60,7 @@ public:
 
 public:
 	
-	void setFaultResponse(int errCode, const char *errDescr);
+	void setFaultResponse(int errCode, const std::string &errDescr);
 	void setFaultResponse(int errCode)
 	{
 		setFaultResponse(errCode, UPnP::StatusCode2String(errCode));
@@ -68,7 +68,7 @@ public:
 
 private:
 	
-	CyberXML::Node *createFaultResponseNode(int errCode, const char *errDescr);
+	CyberXML::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
 
 	////////////////////////////////////////////////
 	//	UPnP Error

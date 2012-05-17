@@ -47,16 +47,16 @@
 #endif
 
 #include <cybergarage/xml/XML.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 #ifndef WIN32
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/util/Mutex.h>
 #endif
 
 #include <stdio.h>
 
 using namespace std;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 #ifndef WIN32
 static Mutex iconvMutex;
@@ -66,7 +66,7 @@ static Mutex iconvMutex;
 //	EscapeXMLChars
 ////////////////////////////////////////////////
 
-const char *CyberXML::XML::EscapeXMLChars(const char *in, std::string &out)
+const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &out)
 {
 	out = in;
 	
@@ -92,7 +92,7 @@ const char *CyberXML::XML::EscapeXMLChars(std::string &in, std::string &out)
 //	Local2Unicode
 ////////////////////////////////////////////////
 
-UnicodeStr *CyberXML::XML::Local2Unicode(const char *str, int &outLen)
+UnicodeStr *CyberXML::XML::Local2Unicode(const std::string &str, int &outLen)
 {
 #if defined(WIN32) || defined(__CYGWIN__)
 	// ANSI -> Unicode
@@ -170,9 +170,9 @@ UnicodeStr *CyberXML::XML::Local2Unicode(const char *str, int &outLen)
 
 	return unistr;
 #else
-	outLen = strlen(str);
+	outLen = strlen(str.c_str());
 	UnicodeStr *utf8str = new UnicodeStr[outLen+1];
-	memcpy(utf8str, str, outLen);
+	memcpy(utf8str, str.c_str(), outLen);
 	utf8str[outLen] = '\0';
 	return utf8str;
 #endif

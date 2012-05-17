@@ -25,10 +25,8 @@ using namespace CyberLink;
 // Constants
 ////////////////////////////////////////////////
 
-SearchCap *SearchCapList::getSearchCap(const char *propertyName) 
+SearchCap *SearchCapList::getSearchCap(const std::string &propertyName) 
 {
-	if (propertyName == NULL)
-		return NULL;
 	string propertyNameStr = propertyName;
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {

@@ -48,7 +48,7 @@ public:
 	{
 	}
 
-	NotifyRequest(CyberHTTP::HTTPRequest *httpReq)
+	NotifyRequest(uHTTP::HTTPRequest *httpReq)
 	{
 		set(httpReq);
 	}
@@ -59,9 +59,9 @@ public:
 
 public:
 
-	void setNT(const char *value)
+	void setNT(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::NT, value);
+		setHeader(uHTTP::HTTP::NT, value);
 	}
 
 	////////////////////////////////////////////////
@@ -70,9 +70,9 @@ public:
 
 public:
 
-	void setNTS(const char *value)
+	void setNTS(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::NTS, value);
+		setHeader(uHTTP::HTTP::NTS, value);
 	}
 
 	////////////////////////////////////////////////
@@ -81,15 +81,15 @@ public:
 
 public:
 
-	void setSID(const char *sid)
+	void setSID(const std::string &sid)
 	{
 		std::string buf;
-		setHeader(CyberHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
+		setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
 	}
 
 	const char *getSID(std::string &buf)
 	{
-		return Subscription::GetSID(getHeaderValue(CyberHTTP::HTTP::SID), buf);
+		return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
 	}
 
 	////////////////////////////////////////////////
@@ -100,12 +100,12 @@ public:
 
 	void setSEQ(long value)
 	{
-		setHeader(CyberHTTP::HTTP::SEQ, value);
+		setHeader(uHTTP::HTTP::SEQ, value);
 	}
 
 	long getSEQ()
 	{
-		return getLongHeaderValue(CyberHTTP::HTTP::SEQ);
+		return getLongHeaderValue(uHTTP::HTTP::SEQ);
 	}
 
 	////////////////////////////////////////////////
@@ -114,11 +114,11 @@ public:
 
 public:
 
-	bool setRequest(Subscriber *sub, const char *varName, const char *value);
+	bool setRequest(Subscriber *sub, const std::string &varName, const std::string &value);
 
 private:
 	
-	CyberXML::Node *createPropertySetNode(const char *varName, const char *value);
+	CyberXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
 
 	CyberXML::Node *getVariableNode();
 

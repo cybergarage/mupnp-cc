@@ -16,6 +16,8 @@
 #ifndef _CLINK_NTS_H_
 #define _CLINK_NTS_H_
 
+#include <string>
+
 namespace CyberLink {
 
 namespace NTS {
@@ -24,8 +26,8 @@ const char ALIVE[] = "ssdp:alive";
 const char BYEBYE[] = "ssdp:byebye";
 const char PROPCHANGE[] = "upnp:propchange";
 	
-bool IsAlive(const char *ntsValue);
-bool IsByeBye(const char *ntsValue);
+bool IsAlive(const std::string &ntsValue);
+bool IsByeBye(const std::string &ntsValue);
 
 }
 

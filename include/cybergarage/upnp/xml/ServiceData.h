@@ -18,7 +18,7 @@
 #ifndef _CLINK_SERVICEDATA_H_
 #define _CLINK_SERVICEDATA_H_
 
-#include <cybergarage/util/ListenerList.h>
+#include <uhttp/util/ListenerList.h>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/xml/NodeData.h>
 #include <cybergarage/upnp/event/SubscriberList.h>
@@ -37,7 +37,7 @@ class ServiceData : public CyberXML::NodeData
 	std::string sid;
 	long timeout;
 
-	CyberUtil::ListenerList controlActionListenerList;
+	uHTTP::ListenerList controlActionListenerList;
 	SubscriberList subscriberList;
 
 	CyberXML::Node *scpdNode;
@@ -72,7 +72,7 @@ public:
 	// controlActionListenerList
 	////////////////////////////////////////////////
 
-	CyberUtil::ListenerList *getControlActionListenerList() {
+	uHTTP::ListenerList *getControlActionListenerList() {
 		return &controlActionListenerList;
 	}
 
@@ -102,7 +102,7 @@ public:
 		return sid.c_str();
 	}
 
-	void setSID(const char *value) {
+	void setSID(const std::string &value) {
 		sid = value;
 	}
 

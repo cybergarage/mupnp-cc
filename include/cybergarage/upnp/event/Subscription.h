@@ -35,15 +35,15 @@ const char UNSUBSCRIBE_METHOD[] = "UNSUBSCRIBE";
 ////////////////////////////////////////////////
 	
 const char *toTimeoutHeaderString(long time, std::string &buf);
-long GetTimeout(const char *headerValue);
+long GetTimeout(const std::string &headerValue);
 
 ////////////////////////////////////////////////
 //	SID
 ////////////////////////////////////////////////
 
 const char *CreateSID(std::string &buf);
-const char *toSIDHeaderString(const char *sid, std::string &buf);
-const char *GetSID(const char *headerValue, std::string &buf);
+const char *toSIDHeaderString(const std::string &sid, std::string &buf);
+const char *GetSID(const std::string &headerValue, std::string &buf);
 
 }
 

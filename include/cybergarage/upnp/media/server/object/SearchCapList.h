@@ -16,13 +16,13 @@
 #ifndef _CLINK_MEDIA_SEARCHCAPLIST_H_
 #define _CLINK_MEDIA_SEARCHCAPLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class SearchCap;
 
-class SearchCapList : public CyberUtil::Vector 
+class SearchCapList : public uHTTP::Vector 
 {
 
 public:
@@ -50,7 +50,7 @@ public:
 		return (SearchCap*)Vector::get(n);
 	}
 
-	SearchCap *getSearchCap(const char *propertyName) ;
+	SearchCap *getSearchCap(const std::string &propertyName) ;
 
 	////////////////////////////////////////////////
 	// clear

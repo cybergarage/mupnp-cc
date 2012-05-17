@@ -16,9 +16,9 @@
 #ifndef _CSOAP_SOAPREQUEST_H_
 #define _CSOAP_SOAPREQUEST_H_
 
-#include <cybergarage/http/HTTPRequest.h>
-#include <cybergarage/http/HTTPResponse.h>
-#include <cybergarage/http/HTTP.h>
+#include <uhttp/http/HTTPRequest.h>
+#include <uhttp/http/HTTPResponse.h>
+#include <uhttp/http/HTTP.h>
 #include <cybergarage/soap/SOAP.h>
 #include <cybergarage/soap/SOAPResponse.h>
 #include <cybergarage/xml/Node.h>
@@ -27,7 +27,7 @@ namespace CyberSOAP {
 
 const char SOAPACTION[] = "SOAPACTION";
 
-class SOAPRequest : public CyberHTTP::HTTPRequest
+class SOAPRequest : public uHTTP::HTTPRequest
 {
 
 	CyberXML::Node *rootNode;
@@ -40,7 +40,7 @@ class SOAPRequest : public CyberHTTP::HTTPRequest
 public:
 
 	SOAPRequest();
-	SOAPRequest(CyberHTTP::HTTPRequest *httpReq);
+	SOAPRequest(uHTTP::HTTPRequest *httpReq);
 
 	~SOAPRequest();
 
@@ -50,7 +50,7 @@ public:
 
 public:
 
-	void setSOAPAction(const char *action)
+	void setSOAPAction(const std::string &action)
 	{
 		setStringHeader(SOAPACTION, action);
 	}
@@ -60,7 +60,7 @@ public:
 		return getStringHeaderValue(SOAPACTION, buf);
 	}
 
-	bool isSOAPAction(const char *value);
+	bool isSOAPAction(const std::string &value);
  
 	////////////////////////////////////////////////
 	//	Header
@@ -84,7 +84,7 @@ public:
 		return SOAP::GetEncording(getContent(), buf);
 	}
 
-	bool isEncording(const char *encType)
+	bool isEncording(const std::string &encType)
 	{
 		return SOAP::IsEncording(getContent(), encType);
 	}
@@ -95,13 +95,13 @@ public:
 
 private:
 
-	CyberXML::Node *parseMessage(const char *content, int contentLen);
+	CyberXML::Node *parseMessage(const std::string &content, int contentLen);
 
 public:
 
-	SOAPResponse *postMessage(const char *host, int port, SOAPResponse *soapRes);
+	SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
 
-	SOAPResponse *postMessage(const char *host, int port)
+	SOAPResponse *postMessage(const std::string &host, int port)
 	{
 		return postMessage(host, port, &soapRes);
 	}

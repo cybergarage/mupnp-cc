@@ -17,7 +17,7 @@
 #define _CLINK_DESCRIPTON_H_
 
 #include <sstream>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 namespace CyberLink {
 

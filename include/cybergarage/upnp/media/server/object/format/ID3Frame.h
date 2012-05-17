@@ -58,7 +58,7 @@ public:
 
 public:
 
-	void setID(const char *val) {
+	void setID(const std::string &val) {
 		frameId = val;
 	}
 

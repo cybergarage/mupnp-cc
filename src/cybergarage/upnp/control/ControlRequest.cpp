@@ -28,16 +28,15 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/control/ControlRequest.h>
-#include <cybergarage/net/URL.h>
-#include <cybergarage/http/HTTP.h>
+#include <uhttp/net/URL.h>
+#include <uhttp/http/HTTP.h>
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/Service.h>
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberNet;
 using namespace CyberXML;
-using namespace CyberHTTP;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	setRequest

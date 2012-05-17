@@ -38,7 +38,7 @@ const char *MythDirectory::NAME = "MythTV";
 // Constructor
 ////////////////////////////////////////////////
 	
-MythDirectory::MythDirectory(const char *name) : Directory(name)
+MythDirectory::MythDirectory(const std::string &name) : Directory(name)
 {
 }
 

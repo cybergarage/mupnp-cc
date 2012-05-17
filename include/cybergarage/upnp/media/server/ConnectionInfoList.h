@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_CONNECTIONINFOLIST_H_
 #define _CLINK_MEDIA_CONNECTIONINFOLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/ConnectionInfo.h>
 
 namespace CyberLink {
 
-class ConnectionInfoList : public CyberUtil::Vector
+class ConnectionInfoList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	// Constrictor

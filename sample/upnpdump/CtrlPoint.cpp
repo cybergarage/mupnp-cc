@@ -79,7 +79,7 @@ void CtrlPoint::deviceSearchResponseReceived(SSDPPacket *packet)
 // eventNotifyReceived
 ////////////////////////////////////////////////
 
-void CtrlPoint::eventNotifyReceived(const char *uuid, long seq, const char *name, const char *value)
+void CtrlPoint::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
 {
 	cout << "event notify : uuid = " << uuid << ", seq = " << seq << ", name = " << name << ", value =" << value << endl; 
 }

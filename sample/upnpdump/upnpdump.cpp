@@ -30,9 +30,10 @@
 #include <ctype.h>
 #endif
 
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 
 using namespace std;
+using namespace uHTTP;
 
 /////////////////////////////////////////////////////////////////////////////////
 // main
@@ -51,7 +52,7 @@ int main(int argc, char* argv[])
 {
 	//UPnP::SetEnable(UPnP::USE_ONLY_IPV6_ADDR);
 
-	CyberUtil::Debug::on();
+	Debug::on();
 
 	PrintKeyMessage();
 

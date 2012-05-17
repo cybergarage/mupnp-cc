@@ -21,12 +21,12 @@ using namespace CyberLink;
 //	Methods
 ////////////////////////////////////////////////
 
-iTunesItemNode *iTunesItemNodeList::getItemNode(CyberIO::File *file)
+iTunesItemNode *iTunesItemNodeList::getItemNode(uHTTP::File *file)
 {
 	int itemNodeCnt = size();
 	for (int n=0; n<itemNodeCnt; n++) {
 		iTunesItemNode *itemNode = getiTunesItemNode(n);
-		CyberIO::File *itemNodeFile = itemNode->getFile();
+		uHTTP::File *itemNodeFile = itemNode->getFile();
 		if (itemNodeFile == NULL)
 			continue;
 		if (itemNode->equals(file) == true)

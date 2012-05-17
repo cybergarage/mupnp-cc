@@ -16,13 +16,13 @@
 #ifndef _CLINK_DISPOSER_H_
 #define _CLINK_DISPOSER_H_
 
-#include <cybergarage/util/Thread.h>
+#include <uhttp/util/Thread.h>
 
 namespace CyberLink {
 
 class ControlPoint;
 
-class Disposer : public CyberUtil::Thread
+class Disposer : public uHTTP::Thread
 {
 	////////////////////////////////////////////////
 	//	Constructor

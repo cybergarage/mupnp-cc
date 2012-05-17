@@ -31,13 +31,13 @@ const char IPV6_ADMINISTRATIVE_ADDRESS[] = "FF04::C";
 const char IPV6_SITE_LOCAL_ADDRESS[] = "FF05::C";
 const char IPV6_GLOBAL_ADDRESS[] = "FF0E::C";
 
-void SetIPv6Address(const char *addr);
+void SetIPv6Address(const std::string &addr);
 const char *GetIPv6Address();
 
 const int DEFAULT_MSEARCH_MX = 3;
 const int RECV_MESSAGE_BUFSIZE = 1024;
 
-int GetLeaseTime(const char *cacheCont);
+int GetLeaseTime(const std::string &cacheCont);
 
 }
 

@@ -70,7 +70,7 @@ public:
 	//	mimeType
 	////////////////////////////////////////////////
 
-	void setMimeType(const char *value)
+	void setMimeType(const std::string &value)
 	{
 		getIconNode()->setNode(MIME_TYPE, value);
 	}
@@ -84,7 +84,7 @@ public:
 	//	width
 	////////////////////////////////////////////////
 
-	void setWidth(const char *value)
+	void setWidth(const std::string &value)
 	{
 		getIconNode()->setNode(WIDTH, value);
 	}
@@ -98,7 +98,7 @@ public:
 	//	height
 	////////////////////////////////////////////////
 
-	void setHeight(const char *value)
+	void setHeight(const std::string &value)
 	{
 		getIconNode()->setNode(HEIGHT, value);
 	}
@@ -112,7 +112,7 @@ public:
 	//	depth
 	////////////////////////////////////////////////
 
-	void setDepth(const char *value)
+	void setDepth(const std::string &value)
 	{
 		getIconNode()->setNode(DEPTH, value);
 	}
@@ -126,7 +126,7 @@ public:
 	//	URL
 	////////////////////////////////////////////////
 
-	void setURL(const char *value)
+	void setURL(const std::string &value)
 	{
 		getIconNode()->setNode(URL, value);
 	}

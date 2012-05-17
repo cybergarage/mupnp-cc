@@ -16,13 +16,13 @@
 #ifndef _CLINK_SSDPRESPONSE_H_
 #define _CLINK_SSDPRESPONSE_H_
 
-#include <cybergarage/http/HTTPResponse.h>
-#include <cybergarage/http/HTTP.h>
+#include <uhttp/http/HTTPResponse.h>
+#include <uhttp/http/HTTP.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
 
 namespace CyberLink {
 
-class SSDPResponse : public CyberHTTP::HTTPResponse
+class SSDPResponse : public uHTTP::HTTPResponse
 {
 
 public:
@@ -33,63 +33,63 @@ public:
 	
 	SSDPResponse()
 	{
-		setVersion(CyberHTTP::HTTP::VER_11);
+		setVersion(uHTTP::HTTP::VER_11);
 	}
 
 	////////////////////////////////////////////////
 	//	ST (SearchTarget)
 	////////////////////////////////////////////////
 
-	void setST(const char *value)
+	void setST(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::ST, value);
+		setHeader(uHTTP::HTTP::ST, value);
 	}
 
 	const char *getST()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::ST);
+		return getHeaderValue(uHTTP::HTTP::ST);
 	}
 
 	////////////////////////////////////////////////
 	//	Location
 	////////////////////////////////////////////////
 
-	void setLocation(const char *value)
+	void setLocation(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::LOCATION, value);
+		setHeader(uHTTP::HTTP::LOCATION, value);
 	}
 
 	const char *getLocation()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::LOCATION);
+		return getHeaderValue(uHTTP::HTTP::LOCATION);
 	}
 
 	////////////////////////////////////////////////
 	//	USN
 	////////////////////////////////////////////////
 
-	void setUSN(const char *value)
+	void setUSN(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::USN, value);
+		setHeader(uHTTP::HTTP::USN, value);
 	}
 
 	const char *getUSN()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::USN);
+		return getHeaderValue(uHTTP::HTTP::USN);
 	}
 
 	////////////////////////////////////////////////
 	//	MYNAME
 	////////////////////////////////////////////////
 	
-	void setMYNAME(const char *value)
+	void setMYNAME(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::MYNAME, value);
+		setHeader(uHTTP::HTTP::MYNAME, value);
 	}
 
 	const char *getMYNAME()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::MYNAME);
+		return getHeaderValue(uHTTP::HTTP::MYNAME);
 	}
 
 	////////////////////////////////////////////////

@@ -17,7 +17,7 @@
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/media/server/ContentDirectory.h>
 #include <cybergarage/upnp/media/server/ConnectionManager.h>
-#include <cybergarage/net/HostInterface.h>
+#include <uhttp/net/HostInterface.h>
 
 namespace CyberLink {
 
@@ -54,7 +54,7 @@ public:
 	
 public:
 
-	void setName(const char *name)
+	void setName(const std::string &name)
 	{
 		setFriendlyName(name);
 	}
@@ -91,7 +91,7 @@ public:
 		getContentDirectory()->addDirectory(dir);
 	}
 	
-	void removeContentDirectory(const char *name)
+	void removeContentDirectory(const std::string &name)
 	{
 		getContentDirectory()->removeDirectory(name);
 	}
@@ -128,14 +128,14 @@ public:
 
 public:
 
-	void setInterfaceAddress(const char *ifaddr)
+	void setInterfaceAddress(const std::string &ifaddr)
 	{
-		CyberNet::SetHostInterface(ifaddr);
+		uHTTP::SetHostInterface(ifaddr);
 	}
 
 	const char *getInterfaceAddress()
 	{
-		return CyberNet::GetHostInterface();
+		return uHTTP::GetHostInterface();
 	}			
 
 	////////////////////////////////////////////////
@@ -144,7 +144,7 @@ public:
 
 public:
 
-	void httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 	////////////////////////////////////////////////
 	// start/stop (Overided)

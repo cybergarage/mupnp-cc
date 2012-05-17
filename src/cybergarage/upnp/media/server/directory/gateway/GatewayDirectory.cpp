@@ -20,21 +20,19 @@
 #include <cybergarage/upnp/media/server/object/Format.h>
 #include <cybergarage/upnp/media/server/object/FormatObject.h>
 #include <cybergarage/upnp/media/server/directory/gateway/GatewayDirectory.h>
-#include <cybergarage/io/FileList.h>
 
 #include <typeinfo>
 #include <sstream>
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberIO;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
 	
-GatewayDirectory::GatewayDirectory(const char *name) : Directory(name)
+GatewayDirectory::GatewayDirectory(const std::string &name) : Directory(name)
 {
 }
 

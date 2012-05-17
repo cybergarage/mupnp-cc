@@ -18,19 +18,19 @@
 
 #include <string>
 
-#include <cybergarage/util/ListenerList.h>
-#include <cybergarage/util/Thread.h>
-#include <cybergarage/net/HostInterface.h>
+#include <uhttp/util/ListenerList.h>
+#include <uhttp/util/Thread.h>
+#include <uhttp/net/HostInterface.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
 #include <cybergarage/upnp/ssdp/HTTPMUSocket.h>
 #include <cybergarage/upnp/device/SearchListener.h>
 
 namespace CyberLink {
 
-class SSDPSearchSocket : public HTTPMUSocket, public CyberUtil::Thread
+class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread
 {
 	bool useIPv6Address;
-	CyberUtil::ListenerList deviceSearchListenerList;
+	uHTTP::ListenerList deviceSearchListenerList;
 
 	////////////////////////////////////////////////
 	//	Constructor
@@ -39,7 +39,7 @@ class SSDPSearchSocket : public HTTPMUSocket, public CyberUtil::Thread
 public:
 
 	SSDPSearchSocket();
-	SSDPSearchSocket(const char *bindAddr);
+	SSDPSearchSocket(const std::string &bindAddr);
 	~SSDPSearchSocket();
 
 	////////////////////////////////////////////////
@@ -48,7 +48,7 @@ public:
 
 public:
 
-	bool open(const char *bindAddr);
+	bool open(const std::string &bindAddr);
 
 	////////////////////////////////////////////////
 	//	deviceSearch

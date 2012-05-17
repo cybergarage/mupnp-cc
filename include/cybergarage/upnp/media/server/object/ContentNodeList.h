@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_CONTENTNODELIST_H_
 #define _CLINK_MEDIA_CONTENTNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/ContentNode.h>
 
 namespace CyberLink {
 
-class ContentNodeList : public CyberUtil::Vector
+class ContentNodeList : public uHTTP::Vector
 {
 	bool delElemFlag;
 
@@ -52,7 +52,7 @@ public:
 		return (ContentNode *)Vector::get(n);
 	}
 
-	ContentNode *getContentNode(const char *name);
+	ContentNode *getContentNode(const std::string &name);
 
 	////////////////////////////////////////////////
 	//	clear

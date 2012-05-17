@@ -10,13 +10,12 @@
 
 #include "TestHTTPServer.h"
 
-#include <cybergarage/io/StringBufferInputStream.h>
+#include <uhttp/io/StringBufferInputStream.h>
 #include <iostream>
 #include <sstream>
 
 using namespace std;
-using namespace CyberHTTP;
-using namespace CyberIO;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -65,7 +64,7 @@ void TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest *httpReq)
 	httpReq->post(&httpRes);
 }
 
-void TestHTTPServer::httpChunkedStreamRequestRecieved(CyberHTTP::HTTPRequest *httpReq)
+void TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
 		HTTPResponse httpRes;
 		httpRes.setTransferEncoding(HTTP::CHUNKED);

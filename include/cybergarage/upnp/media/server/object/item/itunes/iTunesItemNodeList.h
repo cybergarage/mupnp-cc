@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_ITUNESITEMNODELIST_H_
 #define _CLINK_MEDIA_ITUNESITEMNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/item/itunes/iTunesItemNode.h>
 
 namespace CyberLink {
 
-class iTunesItemNodeList : public CyberUtil::Vector
+class iTunesItemNodeList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor
@@ -49,7 +49,7 @@ public:
 		return (iTunesItemNode *)Vector::get(n);
 	}
 	
-	iTunesItemNode *getItemNode(CyberIO::File *file);
+	iTunesItemNode *getItemNode(uHTTP::File *file);
 
 	////////////////////////////////////////////////
 	//	clear

@@ -37,7 +37,7 @@
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 char tvImgFileName[] = "images/tv.jpg";
 char tvOnImgFileName[] = "images/tvon.jpg";

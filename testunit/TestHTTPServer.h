@@ -14,7 +14,7 @@
 #include <string>
 #include <cybergarage/upnp/CyberLink.h>
 
-class TestHTTPServer : public CyberHTTP::HTTPServer, public CyberHTTP::HTTPRequestListener
+class TestHTTPServer : public uHTTP::HTTPServer, public uHTTP::HTTPRequestListener
 {
 public:
 
@@ -41,9 +41,9 @@ public:
 	// HttpRequestListner
 	////////////////////////////////////////////////
 
-	void httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
-	void httpInputStreamRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
-	void httpChunkedStreamRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
+	void httpInputStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
+	void httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 	////////////////////////////////////////////////
 	// update

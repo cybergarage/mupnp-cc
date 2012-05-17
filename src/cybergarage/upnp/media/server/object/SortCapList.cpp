@@ -25,10 +25,8 @@ using namespace CyberLink;
 // Constants
 ////////////////////////////////////////////////
 
-SortCap *SortCapList::getSortCap(const char *type) 
+SortCap *SortCapList::getSortCap(const std::string &type) 
 {
-	if (type == NULL)
-		return NULL;
 	string typeStr = type;
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {

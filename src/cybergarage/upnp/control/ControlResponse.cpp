@@ -21,7 +21,7 @@
 using namespace std;
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberHTTP;
+using namespace uHTTP;
 using namespace CyberSOAP;
 
 ////////////////////////////////////////////////
@@ -35,7 +35,7 @@ const char *ControlResponse::FAULT_STRING = "UPnPError";
 //	FaultResponse
 ////////////////////////////////////////////////
 
-void ControlResponse::setFaultResponse(int errCode, const char *errDescr)
+void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr)
 {
 	setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
 	
@@ -47,7 +47,7 @@ void ControlResponse::setFaultResponse(int errCode, const char *errDescr)
 	setContent(envNode);
 }
 
-Node *ControlResponse::createFaultResponseNode(int errCode, const char *errDescr)
+Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &errDescr)
 {
 	// <s:Fault>
 	string faultNodeName;

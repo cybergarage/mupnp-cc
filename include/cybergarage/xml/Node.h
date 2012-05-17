@@ -43,9 +43,9 @@ public:
 	
 	Node();
 
-	Node(const char *name);
+	Node(const std::string &name);
 
-	Node(const char *ns, const char *name);
+	Node(const std::string &ns, const std::string &name);
 
 	virtual ~Node();
 
@@ -82,12 +82,12 @@ public:
 	//	name
 	////////////////////////////////////////////////
 
-	void setName(const char *val) 
+	void setName(const std::string &val) 
 	{
 		name = val;
 	}
 
-	void setName(const char *ns, const char *val) 
+	void setName(const std::string &ns, const std::string &val) 
 	{
 		name = ns;
 		name += ":";
@@ -99,7 +99,7 @@ public:
 		return name.c_str();
 	}
 
-	bool isName(const char *val)
+	bool isName(const std::string &val)
 	{
 		return (name.compare(val) == 0) ? true : false;
 	}
@@ -108,7 +108,7 @@ public:
 	//	value (set)
 	////////////////////////////////////////////////
 
-	void setValue(const char *val)
+	void setValue(const std::string &val)
 	{
 		value = val;
 	}
@@ -120,7 +120,7 @@ public:
 		return value.c_str();
 	}
 
-	bool isValue(const char *val)
+	bool isValue(const std::string &val)
 	{
 		return (value.compare(val) == 0) ? true : false;
 	}
@@ -129,12 +129,12 @@ public:
 	//	value (add)
 	////////////////////////////////////////////////
 
-	void addValue(const char *val)
+	void addValue(const std::string &val)
 	{
 		value.append(val);
 	}
 
-	void addValue(const char *val, int len)
+	void addValue(const std::string &val, int len)
 	{
 		value.append(val, 0, len);
 	}
@@ -151,7 +151,7 @@ public:
 		return attrList.getAttribute(index);
 	}
 
-	Attribute *getAttribute(const char * name)
+	Attribute *getAttribute(const std::string & name)
 	{
 		return attrList.getAttribute(name);
 	}
@@ -164,7 +164,7 @@ public:
 		attrList.insertAttribute(attr, index);
 	}
 
-	void addAttribute(const char * name, const char * value) {
+	void addAttribute(const std::string & name, const std::string & value) {
 		Attribute *attr = new Attribute(name, value);
 		addAttribute(attr);
 	}
@@ -173,7 +173,7 @@ public:
 		return attrList.removeAttribute(attr);
 	}
 
-	bool removeAttribute(const char * name) {
+	bool removeAttribute(const std::string & name) {
 		return removeAttribute(getAttribute(name));
 	}
 
@@ -190,19 +190,19 @@ public:
 
 public:
 
-	void setAttribute(const char * name, const char * value);
+	void setAttribute(const std::string & name, const std::string & value);
 
-	void setAttribute(const char *name, int value);
+	void setAttribute(const std::string &name, int value);
 
-	const char *getAttributeValue(const char * name);
+	const char *getAttributeValue(const std::string & name);
 
-	int getAttributeIntegerValue(const char *name);
+	int getAttributeIntegerValue(const std::string &name);
 
 	////////////////////////////////////////////////
 	//	Attribute (xmlns)
 	////////////////////////////////////////////////
 
-	void setNameSpace(const char * ns, const char * val)
+	void setNameSpace(const std::string & ns, const std::string & val)
 	{
 		std::string nspace;
 		nspace = "xmlns:";
@@ -222,17 +222,17 @@ public:
 		return nodeList.getNode(index);
 	}
 
-	Node *getNode(const char * name)
+	Node *getNode(const std::string & name)
 	{
 		return nodeList.getNode(name);
 	}
 
-	Node *getNode(const char * name, const char *value)
+	Node *getNode(const std::string & name, const std::string &value)
 	{
 		return nodeList.getNode(name, value);
 	}
 
-	Node *getNodeEndsWith(const char * name)
+	Node *getNodeEndsWith(const std::string & name)
 	{
 		return nodeList.getEndsWith(name);
 	}
@@ -252,7 +252,7 @@ public:
 		return nodeList.removeNode(node);
 	}
 
-	bool removeNode(const char * name) {
+	bool removeNode(const std::string & name) {
 		return nodeList.removeNode(getNode(name));
 	}
 
@@ -272,7 +272,7 @@ public:
 	//	Element (Child Node)
 	////////////////////////////////////////////////
 
-	void setNode(const char * name, const char * value) {
+	void setNode(const std::string & name, const std::string & value) {
 		Node *node = getNode(name);
 		if (node != NULL) {
 			node->setValue(value);
@@ -283,7 +283,7 @@ public:
 		addNode(node);
 	}
 
-	const char *getNodeValue(const char * name) {
+	const char *getNodeValue(const std::string & name) {
 		Node *node = getNode(name);
 		if (node != NULL)
 			return node->getValue();

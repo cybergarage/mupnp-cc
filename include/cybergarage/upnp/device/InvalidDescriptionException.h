@@ -16,20 +16,20 @@
 #ifndef _CLINK_INVALIDDESCRIPTIONEXCEPTION_H_
 #define _CLINK_INVALIDDESCRIPTIONEXCEPTION_H_
 
-#include <cybergarage/util/Exception.h>
+#include <uhttp/util/Exception.h>
 
 namespace CyberLink {
 
 const char INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND[] = "File not found";
 
-class InvalidDescriptionException : public CyberUtil::Exception
+class InvalidDescriptionException : public uHTTP::Exception
 {
 
 	std::string errMsg;
 	
 public:
 
-	InvalidDescriptionException(const char *msg) : Exception(msg)
+	InvalidDescriptionException(const std::string &msg) : Exception(msg)
 	{
 	}
 

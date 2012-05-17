@@ -43,7 +43,7 @@ public:
 	{
 	}
 
-	ActionRequest(CyberHTTP::HTTPRequest *httpReq)
+	ActionRequest(uHTTP::HTTPRequest *httpReq)
 	{
 		set(httpReq);
 		initArgumentList();

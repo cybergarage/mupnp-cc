@@ -27,8 +27,8 @@
 #include <cybergarage/upnp/media/server/object/item/ItemNodeList.h>
 #include <cybergarage/upnp/control/ActionListener.h>
 #include <cybergarage/upnp/control/QueryListener.h>
-#include <cybergarage/util/Mutex.h>
-#include <cybergarage/util/Thread.h>
+#include <uhttp/util/Mutex.h>
+#include <uhttp/util/Thread.h>
 
 #include <string>
 
@@ -39,11 +39,11 @@ class RootNode;
 class SortCriteriaList;
 class SearchCriteriaList;
 
-class ContentDirectory : public CyberUtil::Thread, public ActionListener, public QueryListener
+class ContentDirectory : public uHTTP::Thread, public ActionListener, public QueryListener
 {
 	MediaServer *mediaServer;
 
-	CyberUtil::Mutex	mutex;
+	uHTTP::Mutex	mutex;
 
 	int systemUpdateID;
 	int maxContentID;
@@ -202,7 +202,7 @@ public:
 		return true;
 	}
 
-	Format *getFormat(CyberIO::File *file)
+	Format *getFormat(uHTTP::File *file)
 	{
 		return formatList.getFormat(file);
 	}
@@ -239,7 +239,7 @@ public:
 		return sortCapList.getSortCap(n);
 	}
 	
-	SortCap *getSortCap(const char *type)
+	SortCap *getSortCap(const std::string &type)
 	{
 		return sortCapList.getSortCap(type);
 	}
@@ -277,7 +277,7 @@ public:
 		return searchCapList.getSearchCap(n);
 	}
 	
-	SearchCap *getSearchCap(const char *type)
+	SearchCap *getSearchCap(const std::string &type)
 	{
 		return searchCapList.getSearchCap(type);
 	}
@@ -304,7 +304,7 @@ public:
 	bool addDirectory(Directory *dir);
 
 	bool removeDirectory(Directory *dir);
-	bool removeDirectory(const char *name);
+	bool removeDirectory(const std::string &name);
 	bool removeDirectory(int n);
 
 	int getNDirectories()
@@ -323,7 +323,7 @@ public:
 
 public:
 
-	ContentNode *findContentNodeByID(const char *conId)
+	ContentNode *findContentNodeByID(const std::string &conId)
 	{
 		return getRootNode()->findContentNodeByID(conId);		
 	}
@@ -360,9 +360,9 @@ private:
 
 	void sortContentNodeList(ContentNode *conNode[], int nConNode, SortCap *sortCap, bool ascSeq);
 
-	int getSortCriteriaArray(const char *sortCriteria, SortCriteriaList &sortCriList);
+	int getSortCriteriaArray(const std::string &sortCriteria, SortCriteriaList &sortCriList);
 	
-	ContentNodeList *sortContentNodeList(ContentNodeList *contentNodeList, const char *sortCriteria, ContentNodeList &sortedContentNodeList);
+	ContentNodeList *sortContentNodeList(ContentNodeList *contentNodeList, const std::string &sortCriteria, ContentNodeList &sortedContentNodeList);
 	
 	////////////////////////////////////////////////
 	// Browse (DirectChildren)
@@ -378,7 +378,7 @@ private:
 	
 public:
 
-	int getSearchCriteriaList(const char *searchStr, SearchCriteriaList &searchList);
+	int getSearchCriteriaList(const std::string &searchStr, SearchCriteriaList &searchList);
 	int getSearchContentList(ContentNode *node, SearchCriteriaList *searchCriList, SearchCapList *searchCapList, ContentNodeList &contentNodeList);
 	bool searchActionReceived(SearchAction *action);
 
@@ -396,7 +396,7 @@ public:
 
 public:
 
-	void contentExportRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+	void contentExportRequestRecieved(uHTTP::HTTPRequest *httpReq);
 	
 	////////////////////////////////////////////////
 	// Content URL
@@ -408,9 +408,9 @@ public:
 
 	int getHTTPPort();
 	
-	const char *getContentExportURL(const char *conId, std::string &url);
+	const char *getContentExportURL(const std::string &conId, std::string &url);
 
-	const char *getContentImportURL(const char *conId, std::string &url);
+	const char *getContentImportURL(const std::string &conId, std::string &url);
 
 	////////////////////////////////////////////////
 	// run

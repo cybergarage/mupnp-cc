@@ -16,12 +16,12 @@
 #ifndef _CLINK_ICONLIST_H_
 #define _CLINK_ICONLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/Icon.h>
 
 namespace CyberLink{
 
-class IconList : public CyberUtil::Vector
+class IconList : public uHTTP::Vector
 {
 
 public:

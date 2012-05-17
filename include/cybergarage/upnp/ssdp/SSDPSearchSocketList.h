@@ -16,14 +16,14 @@
 #ifndef _CLINK_SSDPSEARCHSOCKETLIST_H_
 #define _CLINK_SSDPSEARCHSOCKETLIST_H_
 
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/Vector.h>
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchSocket.h>
 #include <cybergarage/upnp/device/SearchListener.h>
 
 namespace CyberLink {
 
-class SSDPSearchSocketList : public CyberUtil::Vector 
+class SSDPSearchSocketList : public uHTTP::Vector 
 {
 	////////////////////////////////////////////////
 	//	Constructor

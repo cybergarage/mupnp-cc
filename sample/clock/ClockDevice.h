@@ -15,7 +15,7 @@
 #include "Clock.h"
 
 using namespace CyberLink;
-using namespace CyberHTTP;
+using namespace uHTTP;
 
 const char CLOCK_DESCRIPTION_FILE_NAME[] = "description/description.xml";
 const char CLOCK_PRESENTATION_URI[] = "/presentation";

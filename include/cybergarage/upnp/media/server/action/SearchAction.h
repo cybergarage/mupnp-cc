@@ -67,7 +67,7 @@ public:
 
 public:
 
-	Argument *getArgument(const char *name)
+	Argument *getArgument(const std::string &name)
 	{
 		return action->getArgument(name);
 	}
@@ -115,12 +115,12 @@ public:
 
 public:
 
-	void getContainerID(const char *containerID)
+	void getContainerID(const std::string &containerID)
 	{
 		action->setArgumentValue(CONTAINER_ID, containerID);
 	}
 
-	void setSearchCriteria(const char *searchCaiteria)
+	void setSearchCriteria(const std::string &searchCaiteria)
 	{
 		action->setArgumentValue(SEARCH_CRITERIA, searchCaiteria);
 	}
@@ -135,12 +135,12 @@ public:
 		action->setArgumentValue(REQUESTED_COUNT, count);
 	}
 	
-	void setFilter(const char *filter)
+	void setFilter(const std::string &filter)
 	{
 		action->setArgumentValue(FILTER, filter);
 	}
 
-	void setSortCriteria(const char *sortCaiteria)
+	void setSortCriteria(const std::string &sortCaiteria)
 	{
 		action->setArgumentValue(SORT_CRITERIA, sortCaiteria);
 	}
@@ -151,7 +151,7 @@ public:
 
 public:
 
-	void setResult(const char *value)
+	void setResult(const std::string &value)
 	{
 		action->setArgumentValue(RESULT, value);
 	}

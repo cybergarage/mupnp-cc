@@ -227,7 +227,7 @@ void TVDevice::deviceSearchResponseReceived(SSDPPacket *packet)
 // eventNotifyReceived
 ////////////////////////////////////////////////
 
-void TVDevice::eventNotifyReceived(const char *uuid, long seq, const char *name, const char *value)
+void TVDevice::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
 {
 		cout << "eventNotifyReceived : " << uuid << ", " << seq << ", " << name << ", " << value << endl;
 		

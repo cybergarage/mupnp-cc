@@ -30,7 +30,7 @@ using namespace CyberXML;
 // Constructor
 ////////////////////////////////////////////////
 	
-iTunesDirectory::iTunesDirectory(const char *name) : Directory(name)
+iTunesDirectory::iTunesDirectory(const std::string &name) : Directory(name)
 {
 	iTunesLib = NULL;
 }

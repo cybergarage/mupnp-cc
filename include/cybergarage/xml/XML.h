@@ -27,10 +27,10 @@ namespace XML {
 const char VERSION_HEADER[] = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 const char CONTENT_TYPE[] = "text/xml; charset=\"utf-8\"";
 
-const char *EscapeXMLChars(const char *in, std::string &out);
+const char *EscapeXMLChars(const std::string &in, std::string &out);
 const char *EscapeXMLChars(std::string &in, std::string &out);
 
-UnicodeStr *Local2Unicode(const char *str, int &len);
+UnicodeStr *Local2Unicode(const std::string &str, int &len);
 const char *Unicode2Local(UnicodeStr *str, int &len);
 
 }

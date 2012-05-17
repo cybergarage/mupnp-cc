@@ -79,7 +79,7 @@ public:
 
 public:
 
-	void setValue(const char *value)
+	void setValue(const std::string &value)
 	{
 		getAllowedValueNode()->setValue(value);
 	}

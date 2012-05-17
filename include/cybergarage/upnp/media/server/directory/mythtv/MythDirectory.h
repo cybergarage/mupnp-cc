@@ -44,7 +44,7 @@ public:
 
 public:
 
-	MythDirectory(const char *name);
+	MythDirectory(const std::string &name);
 	MythDirectory();
 	
 	////////////////////////////////////////////////

@@ -45,7 +45,7 @@ void ArgumentList::clear()
 //	Methods
 ////////////////////////////////////////////////
 
-Argument *ArgumentList::getArgument(const char *name)
+Argument *ArgumentList::getArgument(const std::string &name)
 {
 	int nArgs = size();
 	for (int n=0; n<nArgs; n++) {
@@ -53,7 +53,7 @@ Argument *ArgumentList::getArgument(const char *name)
 		const char *argName = arg->getName();
 		if (argName == NULL)
 			continue;
-		CyberUtil::String argNameStr = argName;
+		uHTTP::String argNameStr(argName);
 		if (argNameStr.equals(name) == true)
 			return arg;
 	}

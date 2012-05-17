@@ -16,15 +16,15 @@
 #ifndef _CLINK_SSDPNOTIFYSOCKETLIST_H_
 #define _CLINK_SSDPNOTIFYSOCKETLIST_H_
 
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/Vector.h>
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
 
 namespace CyberLink {
 
 class ControlPoint;
 
-class SSDPNotifySocketList : public CyberUtil::Vector 
+class SSDPNotifySocketList : public uHTTP::Vector 
 {
 	////////////////////////////////////////////////
 	//	Constructor

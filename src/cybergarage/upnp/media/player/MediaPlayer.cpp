@@ -20,7 +20,7 @@
 #include <cybergarage/upnp/media/player/action/BrowseResultNode.h>
 #include <cybergarage/xml/XML.h>
 #include <cybergarage/xml/Parser.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 
 #include <string>
 #include <fstream>
@@ -28,9 +28,8 @@
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberNet;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -125,12 +124,9 @@ const char *sortCaiteria)
 // Content
 ////////////////////////////////////////////////
 
-int MediaPlayer::getContentDirectory(ContentNode *parentNode, Device *dev, const char *objectID)
+int MediaPlayer::getContentDirectory(ContentNode *parentNode, Device *dev, const std::string &objectID)
 {
-	if (objectID == NULL)
-		return 0;
-
-	CyberXML::Node *resultNode = browseDirectChildren(dev, objectID, "*", 0, 0, "");
+	CyberXML::Node *resultNode = browseDirectChildren(dev, objectID.c_str(), "*", 0, 0, "");
 	if (resultNode == NULL)
 		return 0;
 

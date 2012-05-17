@@ -52,8 +52,8 @@ public:
 		return value.c_str();
 	}
 
-	void setValue(const char *val) {
-		value = (val != NULL) ? val : "";
+	void setValue(const std::string &val) {
+		value = val;
 	}
 
 	////////////////////////////////////////////////

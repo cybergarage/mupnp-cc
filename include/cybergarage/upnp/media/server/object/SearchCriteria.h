@@ -97,7 +97,7 @@ public:
 
 public:
 
-	void setProperty(const char * val)
+	void setProperty(const std::string & val)
 	{
 		property = val;
 	}
@@ -113,7 +113,7 @@ public:
 
 public:
 
-	void setOperation(const char * val)
+	void setOperation(const std::string & val)
 	{
 		operation = val;
 	}
@@ -179,7 +179,7 @@ public:
 
 public:
 
-	void setValue(const char * val)
+	void setValue(const std::string & val)
 	{
 		value = val;
 	}
@@ -205,7 +205,7 @@ public:
 
 public:
 
-	void setLogic(const char * val)
+	void setLogic(const std::string & val)
 	{
 		logic = val;
 	}

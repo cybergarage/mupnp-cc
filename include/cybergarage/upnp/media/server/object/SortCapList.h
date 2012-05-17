@@ -16,13 +16,13 @@
 #ifndef _CLINK_MEDIA_SORTCAPLIST_H_
 #define _CLINK_MEDIA_SORTCAPLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class SortCap;
 
-class SortCapList : public CyberUtil::Vector 
+class SortCapList : public uHTTP::Vector 
 {
 
 public:
@@ -50,7 +50,7 @@ public:
 		return (SortCap*)Vector::get(n);
 	}
 
-	SortCap *getSortCap(const char *type) ;
+	SortCap *getSortCap(const std::string &type) ;
 
 	////////////////////////////////////////////////
 	// clear

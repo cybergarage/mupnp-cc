@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_CONTENTPROPERTYLIST_H_
 #define _CLINK_MEDIA_CONTENTPROPERTYLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/ContentProperty.h>
 
 namespace CyberLink {
 
-class ContentPropertyList : public CyberUtil::Vector 
+class ContentPropertyList : public uHTTP::Vector 
 {
 
 	////////////////////////////////////////////////
@@ -49,7 +49,7 @@ public:
 		return (ContentProperty*)Vector::get(n);
 	}
 
-	ContentProperty *getContentProperty(const char *name);
+	ContentProperty *getContentProperty(const std::string &name);
 
 	////////////////////////////////////////////////
 	// clear

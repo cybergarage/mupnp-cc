@@ -53,10 +53,10 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener)
 	
 bool SSDPSearchSocketList::open() 
 {
-	int nHostAddrs = CyberNet::GetNHostAddresses();
+	int nHostAddrs = uHTTP::GetNHostAddresses();
 	for (int n=0; n<nHostAddrs; n++) {
 		std::string bindAddrStr;
-		const char *bindAddr = CyberNet::GetHostAddress(n, bindAddrStr);
+		const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrStr);
 		SSDPSearchSocket *ssdpSearchSocket = new SSDPSearchSocket(bindAddr);
 		add(ssdpSearchSocket);
 	}

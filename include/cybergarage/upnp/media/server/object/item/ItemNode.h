@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_ITEMNODE_H_
 #define _CLINK_MEDIA_ITEMNODE_H_
 
-#include <cybergarage/io/InputStream.h>
-#include <cybergarage/util/Vector.h>
+#include <uhttp/io/InputStream.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/xml/AttributeList.h>
 #include <cybergarage/upnp/media/server/DC.h>
 #include <cybergarage/upnp/media/server/UPnP.h>
@@ -76,7 +76,7 @@ public:
 
 public:
 
-	void setDate(const char *value)
+	void setDate(const std::string &value)
 	{
 		setProperty(DC::DATE, value);
 	}
@@ -96,7 +96,7 @@ public:
 	
 public:
 
-	void setCreator(const char *name)
+	void setCreator(const std::string &name)
 	{
 		setProperty(DC::CREATOR, name);
 	}
@@ -112,7 +112,7 @@ public:
 	
 public:
 
-	void setStorageMedium(const char *value)
+	void setStorageMedium(const std::string &value)
 	{
 		setProperty(UPnP::STORAGE_MEDIUM, value);
 	}
@@ -144,9 +144,9 @@ public:
 	
 public:
 
-	void setResource(const char *url, const char *protocolInfo, CyberXML::AttributeList *attrList);
+	void setResource(const std::string &url, const std::string &protocolInfo, CyberXML::AttributeList *attrList);
 
-	void setResource(const char *url, const char *protocolInfo)
+	void setResource(const std::string &url, const std::string &protocolInfo)
 	{
 		CyberXML::AttributeList attrList;
 		setResource(url, protocolInfo, &attrList);
@@ -172,7 +172,7 @@ public:
 
 	//virtual const char *getContent() = 0;
 	virtual long getContentLength() = 0;
-	virtual CyberIO::InputStream *getContentInputStream() = 0;
+	virtual uHTTP::InputStream *getContentInputStream() = 0;
 	virtual const char *getMimeType() = 0;
 	
 };

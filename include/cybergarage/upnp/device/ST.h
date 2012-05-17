@@ -28,11 +28,11 @@ const char UUID_DEVICE[] = "uuid";
 const char URN_DEVICE[] = "urn:schemas-upnp-org:device:";
 const char URN_SERVICE[] = "urn:schemas-upnp-org:service:";
 
-bool IsAllDevice(const char *value);
-bool IsRootDevice(const char *value);
-bool IsUUIDDevice(const char *value);
-bool IsURNDevice(const char *value);
-bool IsURNService(const char *value);
+bool IsAllDevice(const std::string &value);
+bool IsRootDevice(const std::string &value);
+bool IsUUIDDevice(const std::string &value);
+bool IsURNDevice(const std::string &value);
+bool IsURNService(const std::string &value);
 
 }
 

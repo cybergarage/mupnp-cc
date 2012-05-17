@@ -86,7 +86,7 @@ public:
 
 public:
 
-	void setMinimum(const char *value)
+	void setMinimum(const std::string &value)
 	{
 		getAllowedValueRangeNode()->setNode(MINIMUM, value);
 	}
@@ -102,7 +102,7 @@ public:
 
 public:
 
-	void setMaximum(const char *value)
+	void setMaximum(const std::string &value)
 	{
 		getAllowedValueRangeNode()->setNode(MAXIMUM, value);
 	}
@@ -118,7 +118,7 @@ public:
 
 public:
 
-	void setStep(const char *value)
+	void setStep(const std::string &value)
 	{
 		getAllowedValueRangeNode()->setNode(STEP, value);
 	}

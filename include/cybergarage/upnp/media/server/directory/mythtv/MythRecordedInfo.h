@@ -59,7 +59,7 @@ public:
 
 public:
 
-	void setRecordFilePrefix(const char *value)
+	void setRecordFilePrefix(const std::string &value)
 	{
 		recordFilePrefix = value;
 	}
@@ -75,7 +75,7 @@ public:
 
 public:
 
-	void setCategory(const char *value) {
+	void setCategory(const std::string &value) {
 		category = value;
 	}
 
@@ -103,7 +103,7 @@ public:
 		
 public:
 
-	void setDescription(const char *value) {
+	void setDescription(const std::string &value) {
 		description = value;
 	}
 	
@@ -131,7 +131,7 @@ public:
 	
 public:
 
-	void setRecGroup(const char *value) {
+	void setRecGroup(const std::string &value) {
 		recGroup = value;
 	}
 	
@@ -173,7 +173,7 @@ public:
 	
 public:
 
-	void setTitle(const char *value) {
+	void setTitle(const std::string &value) {
 		title = value;
 	}
 	
@@ -187,7 +187,7 @@ public:
 	
 public:
 
-	void setSubTitle(const char *value) {
+	void setSubTitle(const std::string &value) {
 		subTitle = value;
 	}
 

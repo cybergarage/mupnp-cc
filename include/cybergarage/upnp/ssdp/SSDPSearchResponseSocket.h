@@ -16,7 +16,7 @@
 #ifndef _CLINK_SSDPSEARCHRESPONSESYSOCKET_H_
 #define _CLINK_SSDPSEARCHRESPONSESYSOCKET_H_
 
-#include <cybergarage/util/Thread.h>
+#include <uhttp/util/Thread.h>
 #include <cybergarage/upnp/ssdp/HTTPUSocket.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchResponse.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchRequest.h>
@@ -25,7 +25,7 @@ namespace CyberLink {
 
 class ControlPoint;
 
-class SSDPSearchResponseSocket : public HTTPUSocket, public CyberUtil::Thread
+class SSDPSearchResponseSocket : public HTTPUSocket, public uHTTP::Thread
 {
 	ControlPoint *controlPoint;
 
@@ -35,7 +35,7 @@ public:
 	////////////////////////////////////////////////
 
 	SSDPSearchResponseSocket();
-	SSDPSearchResponseSocket(const char *bindAddr, int port);
+	SSDPSearchResponseSocket(const std::string &bindAddr, int port);
 	~SSDPSearchResponseSocket();
 
 	////////////////////////////////////////////////
@@ -62,7 +62,7 @@ public:
 	//	post
 	////////////////////////////////////////////////
 
-	bool post(const char *addr, int port, SSDPSearchResponse *res)
+	bool post(const std::string &addr, int port, SSDPSearchResponse *res)
 	{
 		std::string headerStr;
 		return HTTPUSocket::post(addr, port, res->getHeader(headerStr));
@@ -72,7 +72,7 @@ public:
 	//	post
 	////////////////////////////////////////////////
 
-	bool post(const char *addr, int port, SSDPSearchRequest *req)
+	bool post(const std::string &addr, int port, SSDPSearchRequest *req)
 	{
 		std::string buf;
 		return HTTPUSocket::post(addr, port, req->toString(buf));

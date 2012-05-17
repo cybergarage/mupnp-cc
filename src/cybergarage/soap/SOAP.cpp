@@ -20,12 +20,12 @@
 #include <sstream>
 #include <string.h>
 #include <cybergarage/soap/SOAP.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace std;
 using namespace CyberXML;
 using namespace CyberSOAP;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	CreateEnvelopeBodyNode
@@ -66,16 +66,15 @@ CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode()
 //	Header
 ////////////////////////////////////////////////
 
-const char *CyberSOAP::SOAP::GetHeader(const char *content, std::string &header)
+const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &header)
 {
 	header = "";
-	if (content == NULL || strlen(content) <= 0)
+	if (content.length() <= 0)
 		return header.c_str();
-	string contentStr = content;
-	string::size_type gtIdx = contentStr.find(">");
+	string::size_type gtIdx = content.find(">");
 	if (gtIdx == string::npos)
 		return header.c_str();
-	header = contentStr.substr(0, gtIdx+1);
+	header = content.substr(0, gtIdx+1);
 	return header.c_str();
 }
 
@@ -83,7 +82,7 @@ const char *CyberSOAP::SOAP::GetHeader(const char *content, std::string &header)
 //	Encoding
 ////////////////////////////////////////////////
 
-const char *CyberSOAP::SOAP::GetEncording(const char *content, std::string &encording)
+const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::string &encording)
 {
 	encording = "";
 	string header;
@@ -101,7 +100,7 @@ const char *CyberSOAP::SOAP::GetEncording(const char *content, std::string &enco
 	return encording.c_str();
 }
 
-bool CyberSOAP::SOAP::IsEncording(const char *content, const char *encType)
+bool CyberSOAP::SOAP::IsEncording(const std::string &content, const std::string &encType)
 {
 	string enc;
 	SOAP::GetEncording(content, enc);

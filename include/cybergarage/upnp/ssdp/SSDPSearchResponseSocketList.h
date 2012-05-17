@@ -16,8 +16,8 @@
 #ifndef _CLINK_SSDPSEARCHRESPONSESYSOCKETLIST_H_
 #define _CLINK_SSDPSEARCHRESPONSESYSOCKETLIST_H_
 
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/Vector.h>
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocket.h>
 
@@ -25,7 +25,7 @@ namespace CyberLink {
 
 class ControlPoint;
 
-class SSDPSearchResponseSocketList : public CyberUtil::Vector 
+class SSDPSearchResponseSocketList : public uHTTP::Vector 
 {
 	////////////////////////////////////////////////
 	//	Constructor

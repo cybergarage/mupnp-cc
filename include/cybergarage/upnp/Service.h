@@ -18,6 +18,10 @@
 #ifndef _CLINK_SERVICE_H_
 #define _CLINK_SERVICE_H_
 
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/io/File.h>
+#include <uhttp/net/URL.h>
+
 #include <cybergarage/upnp/xml/DeviceData.h>
 #include <cybergarage/upnp/ActionList.h>
 #include <cybergarage/upnp/StateVariable.h>
@@ -27,13 +31,10 @@
 #include <cybergarage/upnp/event/SubscriberList.h>
 #include <cybergarage/upnp/control/QueryRequest.h>
 #include <cybergarage/upnp/control/ActionListener.h>
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/Mutex.h>
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/Mutex.h>
+#include <uhttp/util/Vector.h>
+#include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
-#include <cybergarage/io/File.h>
-#include <cybergarage/net/URL.h>
 
 namespace CyberLink {
 
@@ -46,7 +47,7 @@ class Service
 	ActionList actionList;
 	ServiceStateTable serviceStateTable;
 
-	CyberUtil::Mutex mutex;
+	uHTTP::Mutex mutex;
 
 public:
 	////////////////////////////////////////////////
@@ -159,7 +160,7 @@ public:
 
 public:
 
-	void setServiceType(const char *value)
+	void setServiceType(const std::string &value)
 	{
 		getServiceNode()->setNode(SERVICE_TYPE, value);
 	}
@@ -175,7 +176,7 @@ public:
 
 public:
 
-	void setServiceID(const char *value)
+	void setServiceID(const std::string &value)
 	{
 		getServiceNode()->setNode(SERVICE_ID, value);
 	}
@@ -191,7 +192,7 @@ public:
 
 private:
 
-	bool isURL(const char *referenceUrl, const char *url);
+	bool isURL(const std::string &referenceUrl, const std::string &url);
 
 	////////////////////////////////////////////////
 	//	SCPDURL
@@ -199,7 +200,7 @@ private:
 
 public:
 
-	void setSCPDURL(const char *value)
+	void setSCPDURL(const std::string &value)
 	{
 		getServiceNode()->setNode(SCPDURL, value);
 	}
@@ -209,7 +210,7 @@ public:
 		return getServiceNode()->getNodeValue(SCPDURL);
 	}
 
-	bool isSCPDURL(const char *url)
+	bool isSCPDURL(const std::string &url)
 	{
 		return isURL(getSCPDURL(), url);
 	}
@@ -222,7 +223,7 @@ public:
 
 public:
 
-	void setControlURL(const char *value)
+	void setControlURL(const std::string &value)
 	{
 		getServiceNode()->setNode(CONTROL_URL, value);
 	}
@@ -232,7 +233,7 @@ public:
 		return getServiceNode()->getNodeValue(CONTROL_URL);
 	}
 
-	bool isControlURL(const char *url)
+	bool isControlURL(const std::string &url)
 	{
 		return isURL(getControlURL(), url);
 	}
@@ -243,7 +244,7 @@ public:
 
 public:
 
-	void setEventSubURL(const char *value)
+	void setEventSubURL(const std::string &value)
 	{
 		getServiceNode()->setNode(EVENT_SUB_URL, value);
 	}
@@ -253,7 +254,7 @@ public:
 		return getServiceNode()->getNodeValue(EVENT_SUB_URL);
 	}
 
-	bool isEventSubURL(const char *url)
+	bool isEventSubURL(const std::string &url)
 	{
 		return isURL(getEventSubURL(), url);
 	}
@@ -264,17 +265,17 @@ public:
 
 public:
 
-	bool loadSCPD(const char *descString);
+	bool loadSCPD(const std::string &descString);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	bool loadSCPD(CyberIO::File *file);
+	bool loadSCPD(uHTTP::File *file);
 #endif
 
 private:
-	CyberXML::Node *getSCPDNode(CyberNet::URL *url);
+	CyberXML::Node *getSCPDNode(uHTTP::URL *url);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	CyberXML::Node *getSCPDNode(CyberIO::File *file);
+	CyberXML::Node *getSCPDNode(uHTTP::File *file);
 #endif
-	CyberXML::Node *getSCPDNode(const char *description);
+	CyberXML::Node *getSCPDNode(const std::string &description);
 	CyberXML::Node *getSCPDNode();
 
 public:
@@ -293,7 +294,7 @@ public:
 		return &actionList;
 	}
 
-	Action *getAction(const char *actionName);
+	Action *getAction(const std::string &actionName);
 	
 	////////////////////////////////////////////////
 	//	serviceStateTable
@@ -310,9 +311,9 @@ public:
 		return &serviceStateTable;
 	}
 
-	StateVariable *getStateVariable(const char *name);
+	StateVariable *getStateVariable(const std::string &name);
 	
-	bool hasStateVariable(const char *name)
+	bool hasStateVariable(const std::string &name)
 	{
 		return (getStateVariable(name) != NULL) ? true : false;
 	}
@@ -321,11 +322,9 @@ public:
 	//	isService
 	////////////////////////////////////////////////
 	
-	bool isService(const char *name)
+	bool isService(const std::string &name)
 	{
-		if (name == NULL)
-				return false;
-		CyberUtil::String nameStr = name;
+		uHTTP::String nameStr(name);
 		if (nameStr.endsWith(getServiceType()) == true)
 			return true;
 		if (nameStr.endsWith(getServiceID()) == true)
@@ -361,8 +360,8 @@ private:
 
 public:
 
-	void announce(const char *bindAddr);
-	void byebye(const char *bindAddr);
+	void announce(const std::string &bindAddr);
+	void byebye(const std::string &bindAddr);
 
 	////////////////////////////////////////////////
 	//	serviceSearchResponse	
@@ -394,8 +393,8 @@ public:
 	void addSubscriber(Subscriber *sub);
 	void removeSubscriber(Subscriber *sub);
 
-	Subscriber *getSubscriberBySID(const char *name);
-	Subscriber *getSubscriberByDeliveryURL(const char *name);
+	Subscriber *getSubscriberBySID(const std::string &name);
+	Subscriber *getSubscriberByDeliveryURL(const std::string &name);
 
 private:
 	
@@ -415,7 +414,7 @@ public:
 		return getServiceData()->getSID();
 	}
 
-	void setSID(const char *sid) 
+	void setSID(const std::string &sid) 
 	{
 		getServiceData()->setSID(sid);
 	}
@@ -428,7 +427,7 @@ public:
 	
 	bool hasSID()
 	{
-		return CyberUtil::StringHasData(getSID());
+		return uHTTP::StringHasData(getSID());
 	}		
 
 	bool isSubscribed()

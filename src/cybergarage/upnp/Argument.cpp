@@ -24,11 +24,11 @@
 
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/Argument.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constants
@@ -58,7 +58,7 @@ Argument::Argument(CyberXML::Node *servNode, CyberXML::Node *argNode)
 	serviceNode = servNode;
 }
 
-Argument::Argument(const char *name, const char *value)
+Argument::Argument(const std::string &name, const std::string &value)
 {
 	argumentNode = &defaultArgumentNode;
 	serviceNode = &defaultServiceNode;

@@ -18,7 +18,7 @@
 #include <iostream>
 
 #include "MediaGate.h"
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 
 
 #include <stdio.h>
@@ -36,7 +36,7 @@
 using namespace std;
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 static const char *VERBOSE_ARG = "-v";
 

@@ -18,14 +18,14 @@
 #include <string>
 #include <sstream>
 
-#include <cybergarage/io/FileInputStream.h>
+#include <uhttp/io/FileInputStream.h>
 #include <cybergarage/upnp/media/server/object/item/ItemNode.h>
 #include <cybergarage/upnp/media/server/object/format/ID3Format.h>
 
 using namespace std;
-using namespace CyberIO;
 using namespace CyberXML;
 using namespace CyberLink;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -49,7 +49,7 @@ ID3Format::ID3Format()
 	frameHeader = new unsigned char[FRAME_HEADER_SIZE];
 }
 	
-ID3Format::ID3Format(CyberIO::File *file)
+ID3Format::ID3Format(uHTTP::File *file)
 {
 	setFile(file);
 	header = new unsigned char[HEADER_SIZE];
@@ -69,7 +69,7 @@ ID3Format::~ID3Format()
 // loadHeader
 ////////////////////////////////////////////////
 
-bool ID3Format::loadHeader(CyberIO::InputStream *in)
+bool ID3Format::loadHeader(uHTTP::InputStream *in)
 {
 	// Reading a main header
 	in->read(header, HEADER_SIZE);
@@ -114,7 +114,7 @@ bool ID3Format::loadHeader(CyberIO::InputStream *in)
 	return true;
 }
 	
-bool ID3Format::loadHeader(CyberIO::File *file)
+bool ID3Format::loadHeader(uHTTP::File *file)
 {
 	FileInputStream *fin = new FileInputStream(file, File::O_BINARY);
 	bool ret = loadHeader(fin);
@@ -174,7 +174,7 @@ int ID3Format::getFrameFlag(unsigned char *frameHeader)
 // Abstract Methods
 ////////////////////////////////////////////////
 
-bool ID3Format::equals(CyberIO::File *file)
+bool ID3Format::equals(uHTTP::File *file)
 {
 	if (file == NULL)
 		return false;
@@ -205,7 +205,7 @@ bool ID3Format::equals(CyberIO::File *file)
 
 int ID3Format::getAttributeList(CyberXML::AttributeList &attrList)
 {
-	File *file = getFile();
+    uHTTP::File *file = getFile();
 	if (file == NULL)
 		return attrList.size();
 

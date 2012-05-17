@@ -16,13 +16,13 @@
 #ifndef _CLINK_SERVICESTATETABLE_H_
 #define _CLINK_SERVICESTATETABLE_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 
 namespace CyberLink {
 
 class StateVariable;
 
-class ServiceStateTable : public CyberUtil::Vector 
+class ServiceStateTable : public uHTTP::Vector 
 {
 public:
 	////////////////////////////////////////////////

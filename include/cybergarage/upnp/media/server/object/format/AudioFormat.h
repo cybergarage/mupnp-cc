@@ -33,7 +33,7 @@ public:
 		setFile(NULL);
 	}
 	
-	AudioFormat(CyberIO::File *file)
+	AudioFormat(uHTTP::File *file)
 	{
 		setFile(file);
 	}
@@ -44,8 +44,8 @@ public:
 	
 public:
 
-	virtual bool equals(CyberIO::File *file) = 0;
-	virtual FormatObject *createObject(CyberIO::File *file) = 0;
+	virtual bool equals(uHTTP::File *file) = 0;
+	virtual FormatObject *createObject(uHTTP::File *file) = 0;
 	virtual const char *getMimeType() = 0;
 	
 	const char *getMediaClass()

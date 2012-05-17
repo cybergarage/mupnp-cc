@@ -53,7 +53,7 @@ public:
 
 public:
 
-	bool open(const char *host)
+	bool open(const std::string &host)
 	{
 		return UniMySQL::open(host, PORT, NAME, USER, PASSWD);
 	}

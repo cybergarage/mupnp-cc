@@ -17,12 +17,12 @@
 #define _CLINK_ALLOWEDVALUELIST_H_
 
 #include <string>
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/AllowedValue.h>
 
 namespace CyberLink {
 
-class AllowedValueList : public CyberUtil::Vector 
+class AllowedValueList : public uHTTP::Vector 
 {
 	////////////////////////////////////////////////
 	//	Constants

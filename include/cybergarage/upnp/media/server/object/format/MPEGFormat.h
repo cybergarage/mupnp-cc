@@ -29,7 +29,7 @@ class MPEGFormat : public MovieFormat
 public:
 
 	MPEGFormat();
-	MPEGFormat(CyberIO::File *file);
+	MPEGFormat(uHTTP::File *file);
 
 	////////////////////////////////////////////////
 	// Abstract Methods
@@ -37,9 +37,9 @@ public:
 	
 public:
 
-	bool equals(CyberIO::File *file);
+	bool equals(uHTTP::File *file);
 	
-	FormatObject *createObject(CyberIO::File *file)
+	FormatObject *createObject(uHTTP::File *file)
 	{
 		return new MPEGFormat(file);
 	}

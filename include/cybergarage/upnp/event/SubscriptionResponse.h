@@ -16,7 +16,7 @@
 #ifndef _CLINK_SUBSCRIPTIONRESPONSE_H_
 #define _CLINK_SUBSCRIPTIONRESPONSE_H_
 
-#include <cybergarage/http/HTTPResponse.h>
+#include <uhttp/http/HTTPResponse.h>
 #include <cybergarage/upnp/UPnP.h>
 #include <cybergarage/upnp/event/Subscription.h>
 
@@ -24,7 +24,7 @@
 
 namespace CyberLink {
 
-class SubscriptionResponse : public CyberHTTP::HTTPResponse
+class SubscriptionResponse : public uHTTP::HTTPResponse
 {
 	////////////////////////////////////////////////
 	//	Constructor
@@ -38,7 +38,7 @@ public:
 		setServer(UPnP::GetServerName(serverName));
 	}
 
-	SubscriptionResponse(CyberHTTP::HTTPResponse *httpRes)
+	SubscriptionResponse(uHTTP::HTTPResponse *httpRes)
 	{
 		set(httpRes);
 	}
@@ -73,15 +73,15 @@ public:
 
 public:
 
-	void setSID(const char *sid)
+	void setSID(const std::string &sid)
 	{
 		std::string buf;
-		setHeader(CyberHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
+		setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
 	}
 
 	const char *getSID(std::string &buf)
 	{
-		return Subscription::GetSID(getHeaderValue(CyberHTTP::HTTP::SID), buf);
+		return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
 	}
 
 	////////////////////////////////////////////////
@@ -93,12 +93,12 @@ public:
 	void setTimeout(long value)
 	{
 		std::string buf;
-		setHeader(CyberHTTP::HTTP::TIMEOUT, Subscription::toTimeoutHeaderString(value, buf));
+		setHeader(uHTTP::HTTP::TIMEOUT, Subscription::toTimeoutHeaderString(value, buf));
 	}
 
 	long getTimeout()
 	{
-		return Subscription::GetTimeout(getHeaderValue(CyberHTTP::HTTP::TIMEOUT));
+		return Subscription::GetTimeout(getHeaderValue(uHTTP::HTTP::TIMEOUT));
 	}
 };
 

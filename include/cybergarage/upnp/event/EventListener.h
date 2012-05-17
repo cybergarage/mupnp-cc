@@ -21,7 +21,7 @@ namespace CyberLink {
 class EventListener
 {
 public:
-	virtual void eventNotifyReceived(const char *uuid, long seq, const char *varName, const char *value) = 0;
+	virtual void eventNotifyReceived(const std::string &uuid, long seq, const std::string &varName, const std::string &value) = 0;
 };
 
 }

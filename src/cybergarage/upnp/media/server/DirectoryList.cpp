@@ -21,10 +21,8 @@ using namespace CyberLink;
 // getDirectory
 ////////////////////////////////////////////////
 
-Directory *DirectoryList::getDirectory(const char *name)
+Directory *DirectoryList::getDirectory(const std::string &name)
 {
-	if (name == NULL)
-		return NULL;
 	std::string nameStr = name;
 	int dirCnt = (int)size();
 	for (int n=0; n<dirCnt; n++) {

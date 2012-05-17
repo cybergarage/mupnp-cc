@@ -55,7 +55,7 @@
 
 using namespace std;
 using namespace CyberLink;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 char clockImgFileName[] = "images/clock.jpg";
 char szTitle[] = "CyberLink Clock Device";

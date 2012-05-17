@@ -82,6 +82,12 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS([arpa/inet.h limits.h netdb.h netinet/in.h stdlib.h string.h sys/param.h sys/socket.h unistd.h])
 
 ##############################
+# Checks for uHTTP libraries.
+##############################
+
+AC_CHECK_LIB([uhttp++],[main],,[AC_MSG_ERROR(CyberLink needs uHTTP for C++)])
+
+##############################
 # Checks for Expat libraries.
 ##############################
 

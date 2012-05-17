@@ -17,7 +17,7 @@
 
 #include <cybergarage/upnp/media/player/MediaPlayer.h>
 #include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 
 #include <iostream>
 
@@ -37,7 +37,7 @@
 using namespace std;
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 /////////////////////////////////////////////////////////////////////////////////
 // PrintMessage

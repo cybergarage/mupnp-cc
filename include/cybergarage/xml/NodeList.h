@@ -16,14 +16,14 @@
 #ifndef _CXML_NODELIST_H_
 #define _CXML_NODELIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/Vector.h>
+#include <uhttp/util/StringUtil.h>
 
 namespace CyberXML {
 
 class Node;
 
-class NodeList : public CyberUtil::Vector
+class NodeList : public uHTTP::Vector
 {
 
 	////////////////////////////////////////////////
@@ -46,9 +46,9 @@ public:
 	bool insertNode(Node *node, int index);
 
 	Node *getNode(int n);
-	Node *getNode(const char *name);
-	Node *getEndsWith(const char *name);
-	Node *getNode(const char *name, const char *value);
+	Node *getNode(const std::string &name);
+	Node *getEndsWith(const std::string &name);
+	Node *getNode(const std::string &name, const std::string &value);
 
 	////////////////////////////////////////////////
 	//	clear

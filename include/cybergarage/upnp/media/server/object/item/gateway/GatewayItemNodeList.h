@@ -16,12 +16,12 @@
 #ifndef _CLINK_MEDIA_GATEWAYITEMNODELIST_H_
 #define _CLINK_MEDIA_GATEWAYITEMNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/item/gateway/GatewayItemNode.h>
 
 namespace CyberLink {
 
-class GatewayItemNodeList : public CyberUtil::Vector
+class GatewayItemNodeList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor

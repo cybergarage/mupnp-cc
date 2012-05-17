@@ -16,12 +16,12 @@
 #ifndef _CLINK_SUBSCRIBERLIST_H_
 #define _CLINK_SUBSCRIBERLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/event/Subscriber.h>
 
 namespace CyberLink {
 
-class SubscriberList : public CyberUtil::Vector 
+class SubscriberList : public uHTTP::Vector 
 {
 	////////////////////////////////////////////////
 	//	Constructor

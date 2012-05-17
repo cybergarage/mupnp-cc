@@ -16,13 +16,13 @@
 #ifndef _CLINK_RENEWSUBSCRIBER_H_
 #define _CLINK_RENEWSUBSCRIBER_H_
 
-#include <cybergarage/util/Thread.h>
+#include <uhttp/util/Thread.h>
 
 namespace CyberLink {
 
 class ControlPoint;
 
-class RenewSubscriber : public CyberUtil::Thread
+class RenewSubscriber : public uHTTP::Thread
 {
 public:
 

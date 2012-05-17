@@ -16,7 +16,7 @@
 ******************************************************************/
 
 #include <cybergarage/xml/AttributeList.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 using namespace CyberXML;
 
@@ -52,15 +52,12 @@ bool AttributeList::removeAttribute(Attribute *attr)
 	return ret;
 }
 	
-Attribute *AttributeList::getAttribute(const char *name) 
+Attribute *AttributeList::getAttribute(const std::string &name) 
 {
-	if (name == NULL)
-		return NULL;
-		
 	int nLists = size(); 
 	for (int n=0; n<nLists; n++) {
 		Attribute *elem = getAttribute(n);
-		if (CyberUtil::StringEquals(name, elem->getName()) == true)
+		if (uHTTP::StringEquals(name, elem->getName()) == true)
 			return elem;
 	}
 	return NULL;

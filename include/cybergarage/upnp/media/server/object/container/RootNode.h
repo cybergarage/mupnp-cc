@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_ROOTNODE_H_
 #define _CLINK_MEDIA_ROOTNODE_H_
 
-#include <cybergarage/util/Mutex.h>
-#include <cybergarage/util/Thread.h>
+#include <uhttp/util/Mutex.h>
+#include <uhttp/util/Thread.h>
 #include <cybergarage/upnp/control/ActionListener.h>
 #include <cybergarage/upnp/control/QueryListener.h>
 #include <cybergarage/upnp/media/server/object/container/ContainerNode.h>

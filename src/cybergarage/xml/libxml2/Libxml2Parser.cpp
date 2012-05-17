@@ -37,7 +37,7 @@
 
 using namespace std;
 using namespace CyberXML;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -91,7 +91,7 @@ Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
       key = xmlNodeListGetString( doc, cur->xmlChildrenNode, 1 );
     } 
     if ( key ) {
-      newNode->setValue( (const char *) key );
+      newNode->setValue( (const std::string &) key );
       xmlFree( key );
     }
     
@@ -99,7 +99,7 @@ Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
     xmlAttrPtr prop = cur->properties;
     while ( prop ) {
       xmlChar *attrValue = xmlNodeListGetString( doc, prop->xmlChildrenNode, 1 );
-      newNode->setAttribute( (const char *) prop->name, (const char *) attrValue );
+      newNode->setAttribute( (const std::string &) prop->name, (const std::string &) attrValue );
       xmlFree( attrValue );
 
       prop = prop->next;
@@ -112,9 +112,9 @@ Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
       nsBuf = "xmlns";
       if ( nsDef->prefix ) {
 	nsBuf = ":";
-	nsBuf = (const char *) nsDef->prefix;
+	nsBuf = (const std::string &) nsDef->prefix;
       }
-      newNode->setAttribute( nsBuf.c_str(), (const char *) nsDef->href );
+      newNode->setAttribute( nsBuf.c_str(), (const std::string &) nsDef->href );
 
       nsDef = nsDef->next;
     }
@@ -142,10 +142,10 @@ Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
 //	parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const char *data, int len)
+Node *Parser::parse(const std::string &data, int len)
 {
   // First, parse the XML memory buffer ito a DOM object
-  xmlDocPtr doc = xmlParseMemory( data, len );
+  xmlDocPtr doc = xmlParseMemory( data.c_str(), len );
   if ( doc == NULL ) {
     cout << "XML file parsing failed:" << endl;
     cout << data << endl;

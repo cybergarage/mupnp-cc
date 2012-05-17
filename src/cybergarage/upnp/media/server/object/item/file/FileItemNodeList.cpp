@@ -21,12 +21,12 @@ using namespace CyberLink;
 //	Methods
 ////////////////////////////////////////////////
 
-FileItemNode *FileItemNodeList::getItemNode(CyberIO::File *file)
+FileItemNode *FileItemNodeList::getItemNode(uHTTP::File *file)
 {
 	int itemNodeCnt = size();
 	for (int n=0; n<itemNodeCnt; n++) {
 		FileItemNode *itemNode = getFileItemNode(n);
-		CyberIO::File *itemNodeFile = itemNode->getFile();
+		uHTTP::File *itemNodeFile = itemNode->getFile();
 		if (itemNodeFile == NULL)
 			continue;
 		if (itemNode->equals(file) == true)

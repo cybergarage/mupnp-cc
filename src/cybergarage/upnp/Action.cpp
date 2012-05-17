@@ -29,15 +29,15 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/Action.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 #include <cybergarage/upnp/Service.h>
 
 #include <string>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberLink;
-using namespace CyberHTTP;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constants
@@ -115,7 +115,7 @@ void Action::initArgumentList()
 	} 
 }
 
-Argument *Action::getArgument(const char *name)
+Argument *Action::getArgument(const std::string &name)
 {
 	ArgumentList *argList = getArgumentList();
 	int nArgs = argList->size();

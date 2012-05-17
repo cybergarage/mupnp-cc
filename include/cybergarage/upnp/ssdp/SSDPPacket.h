@@ -21,9 +21,9 @@
 #include <iostream>
 #include <string>
 
-#include <cybergarage/net/DatagramPacket.h>
-#include <cybergarage/http/HTTP.h>
-#include <cybergarage/http/HTTPHeader.h>
+#include <uhttp/net/DatagramPacket.h>
+#include <uhttp/http/HTTP.h>
+#include <uhttp/http/HTTPHeader.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
 #include <cybergarage/upnp/device/NTS.h>
 #include <cybergarage/upnp/device/MAN.h>
@@ -35,7 +35,7 @@ namespace CyberLink {
 
 class SSDPPacket 
 {
-	CyberNet::DatagramPacket	dgmPacket;
+	uHTTP::DatagramPacket	dgmPacket;
 	std::string localAddr;
 	long timeStamp;
 
@@ -55,12 +55,12 @@ public:
 	
 public:
 
-	void setDatagramPacket(CyberNet::DatagramPacket *packet)
+	void setDatagramPacket(uHTTP::DatagramPacket *packet)
 	{
 		dgmPacket.set(packet);
 	}
 
-	CyberNet::DatagramPacket &getDatagramPacket()
+	uHTTP::DatagramPacket &getDatagramPacket()
 	{
 		return dgmPacket;
 	}
@@ -71,9 +71,9 @@ public:
 	
 public:
 
-	void setLocalAddress(const char * addr)
+	void setLocalAddress(const std::string & addr)
 	{
-		localAddr = (addr != NULL) ? addr : "";
+		localAddr = addr;
 	}
 	
 	const char *getLocalAddress()
@@ -132,52 +132,52 @@ public:
 
 	const char *getHost(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::HOST, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::HOST, buf);
 	}
 
 	const char *getCacheControl(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::CACHE_CONTROL, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::CACHE_CONTROL, buf);
 	}
 	
 	const char *getLocation(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::LOCATION, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::LOCATION, buf);
 	}
 
 	const char *getMAN(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::MAN, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::MAN, buf);
 	}
 
 	const char *getST(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::ST, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::ST, buf);
 	}
 
 	const char *getNT(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::NT, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::NT, buf);
 	}
 
 	const char *getNTS(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::NTS, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::NTS, buf);
 	}
 
 	const char *getServer(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::SERVER, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::SERVER, buf);
 	}
 
 	const char *getUSN(std::string &buf)
 	{
-		return CyberHTTP::HTTPHeaderGetValue(getData(), CyberHTTP::HTTP::USN, buf);
+		return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::USN, buf);
 	}
 
 	int getMX()
 	{
-		return CyberHTTP::HTTPHeaderGetIntegerValue(getData(), CyberHTTP::HTTP::MX);
+		return uHTTP::HTTPHeaderGetIntegerValue(getData(), uHTTP::HTTP::MX);
 	}
 
 	////////////////////////////////////////////////

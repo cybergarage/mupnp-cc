@@ -96,7 +96,7 @@ public:
 
 private:
 
-	int getContentDirectory(ContentNode *parentNode, Device *dev, const char *objectID);
+	int getContentDirectory(ContentNode *parentNode, Device *dev, const std::string &objectID);
 
 };
 

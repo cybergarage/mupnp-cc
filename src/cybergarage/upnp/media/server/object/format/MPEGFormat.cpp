@@ -18,9 +18,9 @@
 #include <sstream>
 
 using namespace std;
-using namespace CyberIO;
 using namespace CyberXML;
 using namespace CyberLink;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constructor
@@ -30,7 +30,7 @@ MPEGFormat::MPEGFormat()
 {
 }
 	
-MPEGFormat::MPEGFormat(CyberIO::File *file)
+MPEGFormat::MPEGFormat(uHTTP::File *file)
 {
 	setFile(file);
 }
@@ -39,7 +39,7 @@ MPEGFormat::MPEGFormat(CyberIO::File *file)
 // equals
 ////////////////////////////////////////////////
 	
-bool MPEGFormat::equals(CyberIO::File *file)
+bool MPEGFormat::equals(uHTTP::File *file)
 {
 	if (file == NULL)
 		return false;

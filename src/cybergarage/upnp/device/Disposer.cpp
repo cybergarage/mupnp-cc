@@ -15,7 +15,7 @@
 
 #include <cybergarage/upnp/ControlPoint.h>
 #include <cybergarage/upnp/device/Disposer.h>
-#include <cybergarage/util/TimeUtil.h>
+#include <uhttp/util/TimeUtil.h>
 
 using namespace CyberLink;
 
@@ -29,7 +29,7 @@ void Disposer::run()
 	long monitorInterval = ctrlp->getExpiredDeviceMonitoringInterval() * 1000;
 	
 	while (isRunnable() == true) {
-		CyberUtil::Wait(monitorInterval);
+		uHTTP::Wait(monitorInterval);
 		ctrlp->removeExpiredDevices();
 		//ctrlp->print();
 	}

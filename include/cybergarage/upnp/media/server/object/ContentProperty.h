@@ -41,7 +41,7 @@ public:
 	{
 	}
 
-	ContentProperty(const char *name, const char *value) 
+	ContentProperty(const std::string &name, const std::string &value) 
 	{
 		setName(name);
 		setValue(value);
@@ -53,7 +53,7 @@ public:
 
 public:
 
-	void setName(const char *val) 
+	void setName(const std::string &val) 
 	{
 		name = val;
 	}
@@ -69,7 +69,7 @@ public:
 
 public:
 
-	void setValue(const char *val) 
+	void setValue(const std::string &val) 
 	{
 		value = val;
 	}
@@ -93,7 +93,7 @@ public:
 		return attrList.getAttribute(index);
 	}
 
-	CyberXML::Attribute *getAttribute(const char *name) 
+	CyberXML::Attribute *getAttribute(const std::string &name) 
 	{
 		return attrList.getAttribute(name);
 	}
@@ -106,7 +106,7 @@ public:
 		attrList.insertAttribute(attr, index);
 	}
 
-	void addAttribute(const char *name, const char *value) {
+	void addAttribute(const std::string &name, const std::string &value) {
 		CyberXML::Attribute *attr = new CyberXML::Attribute(name, value);
 		addAttribute(attr);
 	}
@@ -115,7 +115,7 @@ public:
 		return attrList.removeAttribute(attr);
 	}
 
-	bool removeAttribute(const char *name) {
+	bool removeAttribute(const std::string &name) {
 		return removeAttribute(getAttribute(name));
 	}
 
@@ -132,7 +132,7 @@ public:
 
 public:
 
-	void setAttribute(const char *name, const char *value) {
+	void setAttribute(const std::string &name, const std::string &value) {
 		CyberXML::Attribute *attr = getAttribute(name);
 		if (attr != NULL) {
 			attr->setValue(value);
@@ -142,21 +142,21 @@ public:
 		addAttribute(attr);
 	}
 
-	void setAttribute(const char *name, int value) {
+	void setAttribute(const std::string &name, int value) {
 		std::ostringstream valBuf;
 		valBuf << value;
 		std::string valStr = valBuf.str();
 		setAttribute(name, valStr.c_str());
 	}
 
-	const char *getAttributeValue(const char *name) {
+	const char *getAttributeValue(const std::string &name) {
 		CyberXML::Attribute *attr = getAttribute(name);
 		if (attr != NULL)
 			return attr->getValue();
 		return "";
 	}
 
-	int getAttributeIntegerValue(const char *name) {
+	int getAttributeIntegerValue(const std::string &name) {
 		const char *val = getAttributeValue(name);
 		if (val == NULL)
 			return 0;

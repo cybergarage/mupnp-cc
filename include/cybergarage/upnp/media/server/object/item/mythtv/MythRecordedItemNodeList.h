@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODELIST_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/object/item/mythtv/MythRecordedItemNode.h>
 
 #ifdef HAVE_CONFIG_H
@@ -27,7 +27,7 @@
 
 namespace CyberLink {
 
-class MythRecordedItemNodeList : public CyberUtil::Vector
+class MythRecordedItemNodeList : public uHTTP::Vector
 {
 	bool delElemFlag;
 

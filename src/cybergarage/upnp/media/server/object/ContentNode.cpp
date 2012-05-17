@@ -106,14 +106,10 @@ bool ContentNode::hasItemNodes()
 //	findContentNodeBy*
 ////////////////////////////////////////////////
 
-ContentNode *ContentNode::findContentNodeByID(const char *id)
+ContentNode *ContentNode::findContentNodeByID(const std::string &id)
 {
-	if (id == NULL)
-		return NULL;
-
-	string idStr = id;
 	const char *nodeID = getID();
-	if (idStr.compare(nodeID) == 0)
+	if (id.compare(nodeID) == 0)
 		return this;
 
 	int nodeCnt = getNContentNodes();

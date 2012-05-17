@@ -16,8 +16,8 @@
 #ifndef _CLINK_SUBSCRIPTIONREQUEST_H_
 #define _CLINK_SUBSCRIPTIONREQUEST_H_
 
-#include <cybergarage/http/HTTPRequest.h>
-#include <cybergarage/http/HTTP.h>
+#include <uhttp/http/HTTPRequest.h>
+#include <uhttp/http/HTTP.h>
 #include <cybergarage/upnp/event/Subscription.h>
 #include <cybergarage/upnp/device/NT.h>
 #include <cybergarage/upnp/event/SubscriptionRequest.h>
@@ -29,7 +29,7 @@ namespace CyberLink {
 
 class Service;
 
-class SubscriptionRequest : public CyberHTTP::HTTPRequest
+class SubscriptionRequest : public uHTTP::HTTPRequest
 {
 	SubscriptionResponse subRes;
 
@@ -43,7 +43,7 @@ public:
 	{
 	}
 
-	SubscriptionRequest(CyberHTTP::HTTPRequest *httpReq)
+	SubscriptionRequest(uHTTP::HTTPRequest *httpReq)
 	{
 		set(httpReq);
 	}
@@ -58,8 +58,8 @@ private:
 
 public:
 
-	void setSubscribeRequest(Service *service, const char *callback, long timeout);
-	void setRenewRequest(Service *service, const char *uuid, long timeout);
+	void setSubscribeRequest(Service *service, const std::string &callback, long timeout);
+	void setRenewRequest(Service *service, const std::string &uuid, long timeout);
 	void setUnsubscribeRequest(Service *service);
 
 	////////////////////////////////////////////////
@@ -68,14 +68,14 @@ public:
 
 public:
 
-	void setNT(const char *value)
+	void setNT(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::NT, value);
+		setHeader(uHTTP::HTTP::NT, value);
 	}
 
 	const char *getNT()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::NT);
+		return getHeaderValue(uHTTP::HTTP::NT);
 	}
 	
 	////////////////////////////////////////////////
@@ -89,14 +89,14 @@ private:
 
 public:
 
-	void setCallback(const char *value)
+	void setCallback(const std::string &value)
 	{
-		setStringHeader(CyberHTTP::HTTP::CALBACK, value, CALLBACK_START_WITH, CALLBACK_END_WITH);
+		setStringHeader(uHTTP::HTTP::CALBACK, value, CALLBACK_START_WITH, CALLBACK_END_WITH);
 	}
 	
 	const char *getCallback(std::string &buf)
 	{
-		return getStringHeaderValue(CyberHTTP::HTTP::CALBACK, CALLBACK_START_WITH, CALLBACK_END_WITH, buf);
+		return getStringHeaderValue(uHTTP::HTTP::CALBACK, CALLBACK_START_WITH, CALLBACK_END_WITH, buf);
 	}
 
 	bool hasCallback()
@@ -112,15 +112,15 @@ public:
 
 public:
 
-	void setSID(const char *sid)
+	void setSID(const std::string &sid)
 	{
 		std::string buf;
-		setHeader(CyberHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
+		setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
 	}
 
 	const char *getSID(std::string &buf)
 	{
-		return Subscription::GetSID(getHeaderValue(CyberHTTP::HTTP::SID), buf);
+		return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
 	}
 	
 	bool hasSID()
@@ -139,12 +139,12 @@ public:
 	void setTimeout(long value)
 	{
 		std::string buf;
-		setHeader(CyberHTTP::HTTP::TIMEOUT, Subscription::toTimeoutHeaderString(value, buf));
+		setHeader(uHTTP::HTTP::TIMEOUT, Subscription::toTimeoutHeaderString(value, buf));
 	}
 
 	long getTimeout()
 	{
-		return Subscription::GetTimeout(getHeaderValue(CyberHTTP::HTTP::TIMEOUT));
+		return Subscription::GetTimeout(getHeaderValue(uHTTP::HTTP::TIMEOUT));
 	}
 
 	////////////////////////////////////////////////
@@ -166,7 +166,7 @@ public:
 
 	SubscriptionResponse *post()
 	{
-		CyberHTTP::HTTPResponse *httpRes = HTTPRequest::post(getRequestHost(), getRequestPort());
+		uHTTP::HTTPResponse *httpRes = HTTPRequest::post(getRequestHost(), getRequestPort());
 		subRes.set(httpRes);
 		return &subRes;
 	}

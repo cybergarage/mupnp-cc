@@ -47,7 +47,7 @@ public:
 		setDescription("");	
 	}
 
-	UPnPStatus(int code, const char *desc)
+	UPnPStatus(int code, const std::string &desc)
 	{
 		setCode(code);
 		setDescription(desc);	
@@ -59,7 +59,7 @@ public:
 		this->code = code;
 	}
 
-	void setDescription(const char *description) {
+	void setDescription(const std::string &description) {
 		this->description = description;
 	}
 

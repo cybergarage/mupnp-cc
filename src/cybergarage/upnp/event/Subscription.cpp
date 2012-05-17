@@ -20,7 +20,7 @@
 
 #include <cybergarage/upnp/UPnP.h>
 #include <cybergarage/upnp/event/Subscription.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 #include <stdio.h>
 #include <time.h>
@@ -28,7 +28,7 @@
 #include <string>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
@@ -47,7 +47,7 @@ const char *CyberLink::Subscription::toTimeoutHeaderString(long time, std::strin
 	return buf.c_str();
 }
 
-long CyberLink::Subscription::GetTimeout(const char *headerValue)
+long CyberLink::Subscription::GetTimeout(const std::string &headerValue)
 {
 	string headerValueStr = headerValue;
 	string::size_type minusIdx = headerValueStr.find('-');
@@ -78,17 +78,15 @@ const char *CyberLink::Subscription::CreateSID(std::string &buf)
 	return buf.c_str();
 }
 
-const char *Subscription::toSIDHeaderString(const char *id, std::string &buf)
+const char *Subscription::toSIDHeaderString(const std::string &id, std::string &buf)
 {
 	buf = Subscription::UUID;
 	buf.append(id);
 	return buf.c_str();
 }
 
-const char *CyberLink::Subscription::GetSID(const char *headerValue, std::string &buf)
+const char *CyberLink::Subscription::GetSID(const std::string &headerValue, std::string &buf)
 {
-	if (headerValue == NULL)
-		return "";
 	std::string uuid = Subscription::UUID;
 	std::string headerValueStr = headerValue;
 	buf = headerValueStr.substr(uuid.length(), headerValueStr.length());

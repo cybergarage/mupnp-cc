@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDINFOLIST_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDINFOLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <uhttp/util/Vector.h>
 #include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
 
 #ifdef HAVE_CONFIG_H
@@ -27,7 +27,7 @@
 
 namespace CyberLink {
 
-class MythRecordedInfoList : public CyberUtil::Vector
+class MythRecordedInfoList : public uHTTP::Vector
 {
 	////////////////////////////////////////////////
 	//	Constructor

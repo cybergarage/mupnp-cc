@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*	CyberUtil for C++
+*	uHTTP for C++
 *
 *	Copyright (C) Satoshi Konno 2002-2003
 *
@@ -25,7 +25,7 @@
 *		  setDeviceDisposer()/getDeviceDisposer()
 *	04/20/04
 *		- Added the following methods.
-*		  start(const char *target, int mx) and start(const char *target).
+*		  start(const std::string &target, int mx) and start(const std::string &target).
 *	04/28/04
 *		- Added a remove node list and clean() to delete removed devices..
 *		- Added lockDeviceList() and unlockDeviceList().
@@ -45,7 +45,7 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/ControlPoint.h>
-#include <cybergarage/util/Debug.h>
+#include <uhttp/util/Debug.h>
 #include <cybergarage/xml/Parser.h>
 
 #include <iostream>
@@ -53,9 +53,7 @@
 using namespace std;
 using namespace CyberLink;
 using namespace CyberXML;
-using namespace CyberNet;
-using namespace CyberHTTP;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 //	Constants
@@ -117,7 +115,7 @@ void ControlPoint::initDeviceList()
 	unlock();
  }
 
-Device *ControlPoint::getDevice(const char *name)
+Device *ControlPoint::getDevice(const std::string &name)
 {
 	DeviceList *devList = getDeviceList();
 	int nDevs = devList->size();
@@ -207,7 +205,7 @@ void ControlPoint::removeDevice(Device *dev)
 	removeDevice(dev->getRootNode());
 }
 
-void ControlPoint::removeDevice(const char *name)
+void ControlPoint::removeDevice(const std::string &name)
 {
 	Device *dev = getDevice(name);
 	removeDevice(dev);
@@ -330,7 +328,7 @@ void ControlPoint::searchResponseReceived(SSDPPacket *packet)
 //	M-SEARCH
 ////////////////////////////////////////////////
 
-void ControlPoint::search(const char *target, int mx)
+void ControlPoint::search(const std::string &target, int mx)
 {
 	SSDPSearchRequest msReq(target, mx);
 	SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
@@ -408,7 +406,7 @@ bool ControlPoint::subscribe(Service *service, long timeout)
 	return ret;
 }
 
-bool ControlPoint::subscribe(Service *service, const char *uuid, long timeout)
+bool ControlPoint::subscribe(Service *service, const std::string &uuid, long timeout)
 {
 	SubscriptionRequest subReq;
 	subReq.setRenewRequest(service, uuid, timeout);
@@ -519,7 +517,7 @@ void ControlPoint::renewSubscriberService()
 //	run	
 ////////////////////////////////////////////////
 
-bool ControlPoint::start(const char *target, int mx)
+bool ControlPoint::start(const std::string &target, int mx)
 {
 	stop();
 

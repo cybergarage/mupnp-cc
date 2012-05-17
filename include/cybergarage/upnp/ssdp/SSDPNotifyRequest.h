@@ -31,7 +31,7 @@ public:
 	
 	SSDPNotifyRequest()
 	{
-		setMethod(CyberHTTP::HTTP::NOTIFY);
+		setMethod(uHTTP::HTTP::NOTIFY);
 		setURI("*");
 	}
 };

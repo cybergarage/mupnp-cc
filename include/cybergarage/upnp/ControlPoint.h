@@ -16,12 +16,12 @@
 #ifndef _CLINK_CONTROLPOINT_H_
 #define _CLINK_CONTROLPOINT_H_
 
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/ListenerList.h>
-#include <cybergarage/util/Mutex.h>
+#include <uhttp/net/HostInterface.h>
+#include <uhttp/util/ListenerList.h>
+#include <uhttp/util/Mutex.h>
 #include <cybergarage/xml/NodeList.h>
-#include <cybergarage/http/HTTPRequestListener.h>
-#include <cybergarage/http/HTTPServerList.h>
+#include <uhttp/http/HTTPRequestListener.h>
+#include <uhttp/http/HTTPServerList.h>
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 #include <cybergarage/upnp/ssdp/SSDPNotifySocketList.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocketList.h>
@@ -35,7 +35,7 @@
 
 namespace CyberLink {
 
-class ControlPoint : public CyberHTTP::HTTPRequestListener
+class ControlPoint : public uHTTP::HTTPRequestListener
 {
 	SSDPNotifySocketList ssdpNotifySocketList;
 	SSDPSearchResponseSocketList ssdpSearchResponseSocketList;
@@ -47,17 +47,17 @@ class ControlPoint : public CyberHTTP::HTTPRequestListener
 	CyberXML::NodeList  devNodeList;
 	CyberXML::NodeList  removedDevNodeList;
 
-	CyberUtil::ListenerList deviceNotifyListenerList;
-	CyberUtil::ListenerList deviceSearchResponseListenerList;
-	CyberUtil::ListenerList deviceChangeListenerList;
+	uHTTP::ListenerList deviceNotifyListenerList;
+	uHTTP::ListenerList deviceSearchResponseListenerList;
+	uHTTP::ListenerList deviceChangeListenerList;
 
-	CyberUtil::Mutex mutex;
+	uHTTP::Mutex mutex;
 	DeviceList deviceList;
 
 	int searchMx;
 
-	CyberHTTP::HTTPServerList httpServerList;
-	CyberUtil::ListenerList eventListenerList;
+	uHTTP::HTTPServerList httpServerList;
+	uHTTP::ListenerList eventListenerList;
 
 	std::string eventSubURI;
 
@@ -174,9 +174,9 @@ public:
 		return &deviceList;
 	}
 
-	Device *getDevice(const char *name);
+	Device *getDevice(const std::string &name);
 
-	bool hasDevice(const char *name)
+	bool hasDevice(const std::string &name)
 	{
 		return (getDevice(name) != NULL) ? true : false;
 	}
@@ -185,7 +185,7 @@ private:
 
 	void removeDevice(CyberXML::Node *rootNode);
 	void removeDevice(Device *device);
-	void removeDevice(const char *name);
+	void removeDevice(const std::string &name);
 	void removeDevice(SSDPPacket *packet);
 
 	////////////////////////////////////////////////
@@ -301,9 +301,9 @@ public:
 		searchMx = mx;
 	}
 
-	void search(const char *target, int mx);
+	void search(const std::string &target, int mx);
 
-	void search(const char *target)
+	void search(const std::string &target)
 	{
 		search(target, SSDP::DEFAULT_MSEARCH_MX);
 	}
@@ -319,12 +319,12 @@ public:
 
 private:
 
-	CyberHTTP::HTTPServerList *getHTTPServerList()
+	uHTTP::HTTPServerList *getHTTPServerList()
 	{
 		return &httpServerList;
 	}
 
-	void httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 	////////////////////////////////////////////////
 	//	Event Listener 
@@ -342,7 +342,7 @@ public:
 		eventListenerList.remove(listener);
 	}		
 
-	void performEventListener(const char *uuid, long seq, const char *name, const char *value)
+	void performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value)
 	{
 		int listenerSize = eventListenerList.size();
 		for (int n=0; n<listenerSize; n++) {
@@ -362,16 +362,16 @@ public:
 		return eventSubURI.c_str();
 	}
 
-	void setEventSubURI(const char *url)
+	void setEventSubURI(const std::string &url)
 	{
 		eventSubURI = url;
 	}
 
 private:
 
-	const char *getEventSubCallbackURL(const char *host, std::string &buf)
+	const char *getEventSubCallbackURL(const std::string &host, std::string &buf)
 	{
-		return CyberNet::GetHostURL(host, getHTTPPort(), getEventSubURI(), buf);
+		return uHTTP::GetHostURL(host, getHTTPPort(), getEventSubURI(), buf);
 	}
 
 public:
@@ -383,9 +383,9 @@ public:
 		return subscribe(service, Subscription::INFINITE_VALUE);
 	}
 
-	bool subscribe(Service *service, const char *uuid, long timeout);
+	bool subscribe(Service *service, const std::string &uuid, long timeout);
 
-	bool subscribe(Service *service, const char *uuid)
+	bool subscribe(Service *service, const std::string &uuid)
 	{
 		return subscribe(service, uuid, Subscription::INFINITE_VALUE);
 	}
@@ -411,7 +411,7 @@ public:
 
 public:
 
-	Service *getSubscriberService(const char *uuid)
+	Service *getSubscriberService(const std::string &uuid)
 	{
 		DeviceList *devList = getDeviceList();
 		int devCnt = devList->size();
@@ -458,9 +458,9 @@ public:
 
 public:
 
-	bool start(const char *target, int mx);
+	bool start(const std::string &target, int mx);
 
-	bool start(const char *target)
+	bool start(const std::string &target)
 	{
 		return start(target, SSDP::DEFAULT_MSEARCH_MX);
 	}

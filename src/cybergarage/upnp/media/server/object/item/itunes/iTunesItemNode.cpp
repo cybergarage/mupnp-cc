@@ -18,7 +18,7 @@
 #include <cybergarage/upnp/media/server/object/item/itunes/iTunesItemNode.h>
 
 using namespace CyberLink;
-using namespace CyberIO;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constroctor
@@ -41,7 +41,7 @@ const char *iTunesItemNode::getContent(std::string &buf)
 	return buf.c_str();
 }
 
-CyberIO::InputStream *iTunesItemNode::getContentInputStream()
+uHTTP::InputStream *iTunesItemNode::getContentInputStream()
 {
 	if (itemFile == NULL)
 		return NULL;
@@ -51,7 +51,7 @@ CyberIO::InputStream *iTunesItemNode::getContentInputStream()
 const char *iTunesItemNode::getMimeType()
 {
 	ContentDirectory *cdir = getContentDirectory();
-	CyberIO::File *itemFile = getFile();
+	uHTTP::File *itemFile = getFile();
 	Format *itemFormat = cdir->getFormat(itemFile);
 	if (itemFormat == NULL) {
 		return "*/*";

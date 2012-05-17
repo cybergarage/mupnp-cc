@@ -41,7 +41,7 @@ public:
 		return value.c_str();
 	}
 
-	void setValue(const char *val)
+	void setValue(const std::string &val)
 	{
 		value = val;
 	}

@@ -16,13 +16,13 @@
 #ifndef _CLINK_ARGUMENTLIST_H_
 #define _CLINK_ARGUMENTLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/Vector.h>
+#include <uhttp/util/StringUtil.h>
 #include <cybergarage/upnp/Argument.h>
 
 namespace CyberLink {
 
-class ArgumentList : public CyberUtil::Vector 
+class ArgumentList : public uHTTP::Vector 
 {
 	bool delElemFlag;
 
@@ -69,7 +69,7 @@ public:
 		return (Argument *)get(n);
 	}
 
-	Argument *getArgument(const char *name);
+	Argument *getArgument(const std::string &name);
 
 	////////////////////////////////////////////////
 	//	Methods

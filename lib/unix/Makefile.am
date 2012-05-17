@@ -7,41 +7,6 @@ INCLUDES = -I$(top_srcdir)/include @XML_CFLAGS@
 ########################################
 
 clink_source = \
-	../../src/cybergarage/util/Date.cpp \
-	../../src/cybergarage/util/Debug.cpp \
-	../../src/cybergarage/util/Mutex.cpp \
-	../../src/cybergarage/util/StringTokenizer.cpp \
-	../../src/cybergarage/util/StringUtil.cpp \
-	../../src/cybergarage/util/Thread.cpp \
-	../../src/cybergarage/util/TimeUtil.cpp \
-	../../src/cybergarage/io/BufferedReader.cpp \
-	../../src/cybergarage/io/File.cpp \
-	../../src/cybergarage/io/FileList.cpp \
-	../../src/cybergarage/io/FileInputStream.cpp \
-	../../src/cybergarage/io/FileInputStream.cpp \
-	../../src/cybergarage/io/StringBufferInputStream.cpp \
-	../../src/cybergarage/io/StringReader.cpp \
-	../../src/cybergarage/net/DatagramSocket.cpp \
-	../../src/cybergarage/net/HostInterface.cpp \
-	../../src/cybergarage/net/MulticastSocket.cpp \
-	../../src/cybergarage/net/ServerSocket.cpp \
-	../../src/cybergarage/net/Socket.cpp \
-	../../src/cybergarage/net/SocketImp.cpp \
-	../../src/cybergarage/net/SocketInputStream.cpp \
-	../../src/cybergarage/net/SocketUtil.cpp \
-	../../src/cybergarage/net/URI.cpp \
-	../../src/cybergarage/net/URL.cpp \
-	../../src/cybergarage/http/HTTP.cpp \
-	../../src/cybergarage/http/HTTPDate.cpp \
-	../../src/cybergarage/http/HTTPHeader.cpp \
-	../../src/cybergarage/http/HTTPPacket.cpp \
-	../../src/cybergarage/http/HTTPRequest.cpp \
-	../../src/cybergarage/http/HTTPResponse.cpp \
-	../../src/cybergarage/http/HTTPServer.cpp \
-	../../src/cybergarage/http/HTTPServerList.cpp \
-	../../src/cybergarage/http/HTTPServerThread.cpp \
-	../../src/cybergarage/http/HTTPSocket.cpp \
-	../../src/cybergarage/http/HTTPStatus.cpp \
 	../../src/cybergarage/sql/UniDatabase.cpp \
 	../../src/cybergarage/sql/UniMySQL.cpp \
 	../../src/cybergarage/xml/AttributeList.cpp \

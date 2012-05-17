@@ -16,13 +16,13 @@
 #ifndef _CSOAP_SOAPRESPONSE_H_
 #define _CSOAP_SOAPRESPONSE_H_
 
-#include <cybergarage/http/HTTPResponse.h>
+#include <uhttp/http/HTTPResponse.h>
 #include <cybergarage/xml/XML.h>
 #include <cybergarage/soap/SOAP.h>
 
 namespace CyberSOAP {
 
-class SOAPResponse : public CyberHTTP::HTTPResponse
+class SOAPResponse : public uHTTP::HTTPResponse
 {
 
 	CyberXML::Node *rootNode;
@@ -36,7 +36,7 @@ public:
 	SOAPResponse();
 
 	/*
-	SOAPResponse(CyberHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes)
+	SOAPResponse(uHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes)
 	SOAPResponse(SOAPResponse *soapRes) : HTTPResponse(soapRes)
 	*/
 
@@ -64,7 +64,7 @@ public:
 		return SOAP::GetEncording(getContent(), buf);
 	}
 
-	bool isEncording(const char *encType)
+	bool isEncording(const std::string &encType)
 	{
 		return SOAP::IsEncording(getContent(), encType);
 	}
@@ -111,7 +111,7 @@ public:
 		return envNode->getNodeEndsWith(SOAP::BODY);
 	}
 
-	CyberXML::Node *getMethodResponseNode(const char * name)
+	CyberXML::Node *getMethodResponseNode(const std::string & name)
 	{
 		CyberXML::Node *bodyNode = getBodyNode();
 		if (bodyNode == NULL)

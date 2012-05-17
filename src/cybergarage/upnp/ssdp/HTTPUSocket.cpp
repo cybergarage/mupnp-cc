@@ -31,7 +31,7 @@ HTTPUSocket::HTTPUSocket()
 	open();
 }
 	
-HTTPUSocket::HTTPUSocket(const char *bindAddr, int port)
+HTTPUSocket::HTTPUSocket(const std::string &bindAddr, int port)
 {
 	open(port, bindAddr);
 }
@@ -45,7 +45,7 @@ HTTPUSocket::~HTTPUSocket()
 //	open
 ////////////////////////////////////////////////
 	
-bool HTTPUSocket::open(int bindPort, const char *bindAddr)
+bool HTTPUSocket::open(int bindPort, const std::string &bindAddr)
 {
 	close();
 	return ssdpUniSock.bind(bindPort, bindAddr);
@@ -65,7 +65,7 @@ bool HTTPUSocket::close()
 //	post
 ////////////////////////////////////////////////
 
-bool HTTPUSocket::post(const char *addr, int port, const char *msg)
+bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg)
 {
 	ssdpUniSock.send(addr, port, msg);
 	return true;

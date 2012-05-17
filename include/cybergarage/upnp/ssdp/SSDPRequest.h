@@ -21,15 +21,15 @@
 #ifndef _CLINK_SSDPREQUEST_H_
 #define _CLINK_SSDPREQUEST_H_
 
-#include <cybergarage/http/HTTP.h>
-#include <cybergarage/http/HTTPRequest.h>
+#include <uhttp/http/HTTP.h>
+#include <uhttp/http/HTTPRequest.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
 
-#include <cybergarage/util/StringUtil.h>
+#include <uhttp/util/StringUtil.h>
 
 namespace CyberLink {
 
-class SSDPRequest : public CyberHTTP::HTTPRequest
+class SSDPRequest : public uHTTP::HTTPRequest
 {
 
 public:
@@ -40,63 +40,63 @@ public:
 	
 	SSDPRequest()
 	{
-		setVersion(CyberHTTP::HTTP::VER_11);
+		setVersion(uHTTP::HTTP::VER_11);
 	}
 
 	////////////////////////////////////////////////
 	//	NT
 	////////////////////////////////////////////////
 
-	void setNT(const char *value)
+	void setNT(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::NT, value);
+		setHeader(uHTTP::HTTP::NT, value);
 	}
 
 	const char *getNT()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::NT);
+		return getHeaderValue(uHTTP::HTTP::NT);
 	}
 
 	////////////////////////////////////////////////
 	//	NTS
 	////////////////////////////////////////////////
 
-	void setNTS(const char *value)
+	void setNTS(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::NTS, value);
+		setHeader(uHTTP::HTTP::NTS, value);
 	}
 
 	const char *getNTS()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::NTS);
+		return getHeaderValue(uHTTP::HTTP::NTS);
 	}
 
 	////////////////////////////////////////////////
 	//	Location
 	////////////////////////////////////////////////
 
-	void setLocation(const char *value)
+	void setLocation(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::LOCATION, value);
+		setHeader(uHTTP::HTTP::LOCATION, value);
 	}
 
 	const char *getLocation()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::LOCATION);
+		return getHeaderValue(uHTTP::HTTP::LOCATION);
 	}
 
 	////////////////////////////////////////////////
 	//	USN
 	////////////////////////////////////////////////
 
-	void setUSN(const char *value)
+	void setUSN(const std::string &value)
 	{
-		setHeader(CyberHTTP::HTTP::USN, value);
+		setHeader(uHTTP::HTTP::USN, value);
 	}
 
 	const char *getUSN()
 	{
-		return getHeaderValue(CyberHTTP::HTTP::USN);
+		return getHeaderValue(uHTTP::HTTP::USN);
 	}
 
 	////////////////////////////////////////////////
@@ -108,13 +108,13 @@ public:
 		std::string leaseTime;
 		std::string buf;
 		leaseTime = "max-age=";
-		leaseTime += CyberUtil::Integer2String(value, buf);
-		setHeader(CyberHTTP::HTTP::CACHE_CONTROL,  leaseTime.c_str());
+		leaseTime += uHTTP::Integer2String(value, buf);
+		setHeader(uHTTP::HTTP::CACHE_CONTROL,  leaseTime.c_str());
 	}
 
 	int getLeaseTime()
 	{
-		const char *cacheCtrl = getHeaderValue(CyberHTTP::HTTP::CACHE_CONTROL);
+		const char *cacheCtrl = getHeaderValue(uHTTP::HTTP::CACHE_CONTROL);
 		return SSDP::GetLeaseTime(cacheCtrl);
 	}
 };

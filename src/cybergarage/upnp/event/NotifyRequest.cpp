@@ -47,7 +47,7 @@ const char *NotifyRequest::PROPERTYSET = "propertyset";
 //	PropetySet
 ////////////////////////////////////////////////
 
-bool NotifyRequest::setRequest(Subscriber *sub, const char *varName, const char *value)
+bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, const std::string &value)
 {
 	//const char *callback = sub->getDeliveryURL();
 	const char *sid = sub->getSID();
@@ -56,7 +56,7 @@ bool NotifyRequest::setRequest(Subscriber *sub, const char *varName, const char 
 	const char *path = sub->getDeliveryPath();
 	int port = sub->getDeliveryPort();
 
-	setMethod(CyberHTTP::HTTP::NOTIFY);
+	setMethod(uHTTP::HTTP::NOTIFY);
 	setURI(path);
 	setHost(host, port);
 	setNT(NT::EVENT);
@@ -72,7 +72,7 @@ bool NotifyRequest::setRequest(Subscriber *sub, const char *varName, const char 
 }
 
 
-CyberXML::Node *NotifyRequest::createPropertySetNode(const char *varName, const char *value)
+CyberXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value)
 {
 	string propSetXmlNs;
 	//propSetXmlNs.append(XMLNS)
