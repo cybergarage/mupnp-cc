@@ -439,6 +439,9 @@ bool Device::loadDescription(const std::string &description)
 	if (rootNode == NULL)
 		return false;
 
+	if (Debug::isOn() == true)
+        rootNode->print();
+    
 	deviceNode = rootNode->getNode(Device::ELEM_NAME);
 	if (deviceNode == NULL)
 		return false;
@@ -711,8 +714,10 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
 	for (n=0; n<serviceCnt; n++) {
 		Service *service = serviceList->getService(n);
 		// Thanks for Theo Beisch (11/09/04)
-        if (serviceType.compare(service->getServiceType()) != 0)
-				continue;
+        if (0 < serviceType.length()) {
+            if (serviceType.compare(service->getServiceType()) != 0)
+                continue;
+        }
 		StateVariable *stateVar = service->getStateVariable(name);
 		if (stateVar != NULL)
 			return stateVar;
@@ -732,7 +737,7 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
 
 StateVariable *Device::getStateVariable(const std::string &name)
 {
-	return getStateVariable(NULL, name);
+	return getStateVariable("", name);
 }
 
 ////////////////////////////////////////////////
@@ -1135,9 +1140,6 @@ void Device::httpGetRequestRecieved(HTTPRequest *httpReq)
 		return;
 	}
 			
-	string rootPathBuf;
-	const char *rootPath = getDescriptionFilePath(rootPathBuf);
-	
 	string fileByteBuf;
 	const char *fileByte = "";
 

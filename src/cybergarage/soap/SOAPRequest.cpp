@@ -86,21 +86,7 @@ CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, int conten
 		return NULL;
 
 	Parser xmlParser;
-	
-	Node *retNode =	retNode = xmlParser.parse(content, contentLen);
-	if (retNode != NULL)
-		return retNode;
-		
-	if (SOAP::IsEncording(content, SOAP::UTF_8) == true) {
-		int uniContentLen;
-		UnicodeStr *uniContentStr = XML::Local2Unicode(content, uniContentLen);
-		if (uniContentStr != NULL) {
-			retNode = xmlParser.parse(uniContentStr, uniContentLen);
-			delete []uniContentStr;
-		}
-	}
-
-	return retNode;
+    return xmlParser.parse(content, contentLen);
 }
 
 ////////////////////////////////////////////////

@@ -1,8 +1,12 @@
 2012-05-xx Satoshi Konno <skonno@cybergarage.org>
 	* Changed to use uHTTP for C++.
 	* Changed to use boost::testunit instead of cppunit.
-    * Removed header and source files for UPnP/AV
-    * Removed WIN32 and T-Engine projects.
+	* Removed header and source files for UPnP/AV
+    	* Removed WIN32 and T-Engine projects.
+	* Removed Node::toUnicodeString() and XML::Local2Unicode().
+	* Fixed Node::setAttribute() to set the specified value when the attribute is null.
+	* Fixed Service::getSCPDNode() to return null when the URLBase and the Location are null. 
+	* Fixed libxml2 parser using the latest functions.
 
 2012-05-16 Satoshi Konno <skonno@cybergarage.org>
 	* v.1.7.2

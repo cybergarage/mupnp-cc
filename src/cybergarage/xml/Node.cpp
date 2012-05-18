@@ -110,15 +110,14 @@ void Node::setValue(int val)
 //	Attribute (Extention)
 ////////////////////////////////////////////////
 
-void Node::setAttribute(const std::string & name, const std::string & value)
+void Node::setAttribute(const std::string & name, const std::string &value)
 {
 	Attribute *attr = getAttribute(name);
-	if (attr != NULL) {
-		attr->setValue(value);
-		return;
+	if (attr == NULL) {
+        attr = new Attribute(name, value);
+        addAttribute(attr);
 	}
-	attr = new Attribute(name, value);
-	addAttribute(attr);
+    attr->setValue(value);
 }
 
 void Node::setAttribute(const std::string &name, int value)
@@ -278,21 +277,6 @@ const char *Node::toString(std::string &buf, bool hasChildNode)
 #else
 	output(buf, 0, hasChildNode);
 #endif
-	return buf.c_str();
-}
-
-////////////////////////////////////////////////
-//	toUnicodeString
-////////////////////////////////////////////////
-
-const char *Node::toUnicodeString(std::string &buf, bool hasChildNode)
-{
-	string localStr;
-	toString(localStr, hasChildNode);
-	int outLen;
-	UnicodeStr *uniStr = XML::Local2Unicode(localStr.c_str(), outLen);
-	buf = (char *)uniStr;
-	delete []uniStr;
 	return buf.c_str();
 }
 

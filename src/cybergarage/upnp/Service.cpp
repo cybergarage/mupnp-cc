@@ -247,12 +247,15 @@ Node *Service::getSCPDNode()
 	string urlBaseStr = rootDev->getURLBase();
 	// Thanks for Steven Yen (2003/09/03)
 	if (urlBaseStr.length() <= 0) {
-			const char *location = rootDev->getLocation();
-			string locationHost;
-			HTTP::GetHost(location, locationHost);
-			int locationPort = HTTP::GetPort(location);
-			HTTP::GetRequestHostURL(locationHost.c_str(), locationPort, urlBaseStr);
+        string location = rootDev->getLocation();
+        if (location.length() <= 0)
+            return NULL;
+        string locationHost;
+        HTTP::GetHost(location, locationHost);
+        int locationPort = HTTP::GetPort(location);
+        HTTP::GetRequestHostURL(locationHost.c_str(), locationPort, urlBaseStr);
 	}
+    
 	string scpdURLStrBuf;
 	scpdURLStr = HTTP::GetRelativeURL(scpdURLStr, scpdURLStrBuf);
 	string newScpdURLStr;

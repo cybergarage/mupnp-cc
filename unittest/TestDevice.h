@@ -16,7 +16,6 @@
 using namespace CyberLink;
 using namespace uHTTP;
 
-const char DESCRIPTION_FILE_NAME[] = "testDevice/description.xml";
 const char PRESENTATION_URI[] = "/presentation";
 
 class TestDevice : public Device, public ActionListener, public QueryListener

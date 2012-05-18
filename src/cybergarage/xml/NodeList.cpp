@@ -70,7 +70,6 @@ Node *NodeList::getNode(const std::string &name)
 	for (int n=0; n<nLists; n++) {
 		Node *node = getNode(n);
 		const char *nodeName = node->getName();
-        std::cout << name << " " << nodeName << std::endl;
 		if (StringEquals(name, nodeName) == true)
 			return node;
 	}

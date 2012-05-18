@@ -85,7 +85,7 @@ void TestCtrlPoint::deviceSearchResponseReceived(SSDPPacket *packet)
 // eventNotifyReceived
 ////////////////////////////////////////////////
 
-void TestCtrlPoint::eventNotifyReceived(const char *uuid, long seq, const char *name, const char *value)
+void TestCtrlPoint::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
 {
 	if (Debug::isOn() == true)
 		cout << "event notify : uuid = " << uuid << ", seq = " << seq << ", name = " << name << ", value =" << value << endl; 

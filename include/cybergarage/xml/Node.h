@@ -333,8 +333,6 @@ public:
 
 	const char *toString(std::string &buf, bool hasChildNode = true);
 
-	const char *toUnicodeString(std::string &buf, bool hasChildNode = true);
-
 	void print(bool hasChildNode = true);
 
 };

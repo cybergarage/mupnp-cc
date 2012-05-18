@@ -55,87 +55,73 @@ Parser::~Parser()
 //	convertToCLinkFormat
 ////////////////////////////////////////////////
 
-Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
+static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
 {
-  if ( cur == NULL ) {
-    // This should never happen...
-    cout << "convertToCLinkFormat: This should never happen!" << endl;
-    exit( 0 );
-    return NULL;
-  }
+    if ( cur == NULL ) {
+        // This should never happen...
+        cout << "convertToCLinkFormat: This should never happen!" << endl;
+        exit( 0 );
+        return NULL;
+    }
 
-  if ( depth > 12 ) {
-    cout << "convertToCLinkFormat: Recursion depth > 10. Are you sure this is OK!?" << endl;
-    return NULL;
-  }
+    if ( depth > 12 ) {
+        cout << "convertToCLinkFormat: Recursion depth > 10. Are you sure this is OK!?" << endl;
+        return NULL;
+    }
   
-  // We are only interested in XML_ELEMENT_NODEs.
-  // Note, that the resulting Node tree will only contain them...
-  if ( cur->type == XML_ELEMENT_NODE ) {
+    // We are only interested in XML_ELEMENT_NODEs.
+    // Note, that the resulting Node tree will only contain them...
+    if ( cur->type != XML_ELEMENT_NODE )
+        return NULL;
     
     Node *newNode = new Node();
       
     // Set name and value for the new node.
-    string nameBuf;
+    string nodeName;
     if ( cur->ns && cur->ns->prefix ) {
-      // Add the namespace prefix to the element name
-      nameBuf = (const char*) cur->ns->prefix;
-      nameBuf = ":";
+        // Add the namespace prefix to the element name
+        nodeName = (const char *)cur->ns->prefix;
+        nodeName += ":";
     }
-    nameBuf = (const char*) cur->name;
+    nodeName += (const char*) cur->name;
+    newNode->setName(nodeName);
 
-    newNode->setName( nameBuf.c_str() );
-
-    xmlChar *key = NULL;
-    if ( cur->xmlChildrenNode ) {
-      key = xmlNodeListGetString( doc, cur->xmlChildrenNode, 1 );
-    } 
-    if ( key ) {
-      newNode->setValue( (const std::string &) key );
-      xmlFree( key );
-    }
-    
+    string nodeValue = (const char *)xmlNodeGetContent(cur);
+    newNode->setValue(nodeValue);
+      
     // Get attribute declarations (if any) and copy to newNode
     xmlAttrPtr prop = cur->properties;
     while ( prop ) {
-      xmlChar *attrValue = xmlNodeListGetString( doc, prop->xmlChildrenNode, 1 );
-      newNode->setAttribute( (const std::string &) prop->name, (const std::string &) attrValue );
-      xmlFree( attrValue );
-
-      prop = prop->next;
+        xmlChar *attrValue = xmlNodeListGetString( doc, prop->xmlChildrenNode, 1 );
+        newNode->setAttribute( (const std::string &) prop->name, (const std::string &) attrValue );
+        xmlFree( attrValue );
+        prop = prop->next;
     }
 
     // Also add namespace declarations to the attribute list
     xmlNsPtr nsDef = cur->nsDef;
     while ( nsDef ) {
-      string nsBuf;
-      nsBuf = "xmlns";
-      if ( nsDef->prefix ) {
-	nsBuf = ":";
-	nsBuf = (const std::string &) nsDef->prefix;
-      }
-      newNode->setAttribute( nsBuf.c_str(), (const std::string &) nsDef->href );
-
-      nsDef = nsDef->next;
+        string spaceName = "xmlns";
+        if (nsDef->prefix) {
+            spaceName += ":";
+            spaceName += (const char *)nsDef->prefix;
+        }
+        string spaceValue = (const char *)nsDef->href;
+        newNode->setAttribute(spaceName, spaceValue);
+        nsDef = nsDef->next;
     }
-  
 
     // Then convert (recursively) all the children of the current node
     xmlNodePtr child = cur->xmlChildrenNode;
     while ( child != NULL ) {
-
-    Node *newChildNode = convertToCLinkFormat( doc, child, 1);
-    if ( newChildNode ) {
-        newNode->addNode( newChildNode );
-    }
-
-      child = child->next;
+        Node *newChildNode = convertToCLinkFormat( doc, child, 1);
+        if ( newChildNode ) {
+            newNode->addNode( newChildNode );
+        }
+        child = child->next;
     }
 
     return newNode;
-  }
-
-  return NULL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
