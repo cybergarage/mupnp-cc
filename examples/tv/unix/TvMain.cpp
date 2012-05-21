@@ -20,7 +20,7 @@
 #endif
 
 #include "TvDevice.h"
-#include <cybergarage/util/TimeUtil.h>
+#include <uhttp/util/TimeUtil.h>
 
 #include <string>
 #include <iostream>

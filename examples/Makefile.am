@@ -1,1 +1,2 @@
-SUBDIRS = upnpdump clock tv media
+SUBDIRS = upnpdump clock tv
+

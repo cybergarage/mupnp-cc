@@ -12,114 +12,13 @@
 #include <boost/thread.hpp>
 
 #include <cybergarage/upnp/CyberLink.h>
-#include <cybergarage/util/TimeUtil.h>
+#include <uhttp/util/TimeUtil.h>
 
 #include "TestDevice.h"
 #include "TestCtrlPoint.h"
 
 using namespace CyberLink;
 using namespace std;
-
-//////////////////////////////////////////////////////////////////////
-// testDevice
-//////////////////////////////////////////////////////////////////////
-
-const std::string UPNP_TEST_DEVICE_DESCR = 
-"<?xml version=\"1.0\" ?>\n" 
-"<root xmlns=\"urn:schemas-upnp-org:device-1-0\">"
-"	<specVersion>"
-"		<major>1</major>"
-"		<minor>0</minor>"
-"	</specVersion>"
-"	<device>"
-"		<deviceType>urn:schemas-upnp-org:device:clock:1</deviceType>"
-"		<friendlyName>CyberGarage Clock Device</friendlyName>"
-"		<manufacture>CyberGarage</manufacture>"
-"		<manufactureURL>http://www.cybergarage.org</manufactureURL>"
-"		<modelDescription>CyberUPnP Clock Device</modelDescription>"
-"		<modelName>Clock</modelName>"
-"		<modelNumber>1.0</modelNumber>"
-"		<modelURL>http://www.cybergarage.org</modelURL>"
-"		<serialNumber>1234567890</serialNumber>"
-"		<UDN>uuid:cybergarageClockDevice</UDN>"
-"		<UPC>123456789012</UPC>"
-"		<iconList>"
-"			<icon>"
-"				<mimetype>image/gif</mimetype>"
-"				<width>48</width>"
-"				<height>32</height>" 
-"				<depth>8</depth>"
-"				<url>icon.gif</url>"
-"			</icon>"
-"		</iconList>"
-"		<serviceList>"
-"			<service>"
-"				<serviceType>urn:schemas-upnp-org:service:timer:1</serviceType>"
-"				<serviceId>urn:schemas-upnp-org:serviceId:timer:1</serviceId>"
-"				<SCPDURL>/service/timer/description.xml</SCPDURL>"
-"				<controlURL>/service/timer/control</controlURL>"
-"				<eventSubURL>/service/timer/eventSub</eventSubURL>"
-"			</service>"
-"		</serviceList>"
-"		<presentationURL>http://www.cybergarage.org</presentationURL>"
-"	</device>"
-"</root>";
-
-const std::string UPNP_TEST_SERVICE_DESCR = 
-"<?xml version=\"1.0\"?>\n"
-"<scpd xmlns=\"urn:schemas-upnp-org:service-1-0\" >"
-"	<specVersion>"
-"		<major>1</major>"
-"		<minor>0</minor>"
-"	</specVersion>"
-"	<actionList>"
-"		<action>"
-"			<name>SetTime</name>"
-"			<argumentList>"
-"				<argument>"
-"					<name>NewTime</name>"
-"					<relatedStateVariable>Time</relatedStateVariable>"
-"					<direction>in</direction>"
-"				</argument>"
-"				<argument>"
-"					<name>Result</name>"
-"					<relatedStateVariable>Result</relatedStateVariable>"
-"					<direction>out</direction>"
-"				</argument>"
-"			</argumentList>"
-"		</action>"
-"		<action>"
-"			<name>GetTime</name>"
-"			<argumentList>"
-"				<argument>"
-"					<name>CurrentTime</name>"
-"					<relatedStateVariable>Time</relatedStateVariable>"
-"					<direction>out</direction>"
-"				</argument>"
-"			</argumentList>"
-"		</action>"
-"	</actionList>"
-"	<serviceStateTable>"
-"		<stateVariable sendEvents=\"yes\">"
-"			<name>Time</name>"
-"			<dataType>string</dataType>"
-"		</stateVariable>"
-"		<stateVariable sendEvents=\"no\">"
-"			<name>Result</name>"
-"			<dataType>string</dataType>"
-"		</stateVariable>"
-"	</serviceStateTable>"
-"</scpd>";
-
-const std::string UPNP_TEST_DEVICE_TYPE = "urn:schemas-upnp-org:device:test:1";
-
-BOOST_AUTO_TEST_CASE(DeveiceDescriptionParceTest)
-{
-	Device *dev = new Device();
-	BOOST_CHECK(dev->loadDescription(UPNP_TEST_DEVICE_DESCR));
-	BOOST_CHECK(strcmp(dev->getDeviceType(), "urn:schemas-upnp-org:device:clock:1") == 0);
-	delete dev;
-}
 
 //////////////////////////////////////////////////////////////////////
 // testDevice
@@ -154,11 +53,17 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 	TestCtrlPoint *ctrlp = new TestCtrlPoint();
 	ctrlp->start();
 
+#if defined(CLINKCC_CHK_SEARCH_DEVICE)
+
+	/////////////////////////////
+	// Search Device
+	/////////////////////////////
+    
     Wait((5 * 1000));
     
 	Device *ctrlpDev = ctrlp->getDevice("CyberGarageCountDevice");
 	BOOST_CHECK(ctrlpDev != NULL);
-
+    
 	/////////////////////////////
 	// Action Test
 	/////////////////////////////
@@ -181,6 +86,8 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 	BOOST_CHECK(ctrlpCountService != NULL);
 	BOOST_CHECK(ctrlp->subscribe(ctrlpCountService) == true);
 	BOOST_CHECK(ctrlp->unsubscribe(ctrlpCountService) == true);
+    
+#endif
 
 	/////////////////////////////
 	// Exit
