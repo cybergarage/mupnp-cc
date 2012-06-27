@@ -92,9 +92,11 @@ static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
     // Get attribute declarations (if any) and copy to newNode
     xmlAttrPtr prop = cur->properties;
     while ( prop ) {
-        xmlChar *attrValue = xmlNodeListGetString( doc, prop->xmlChildrenNode, 1 );
-        newNode->setAttribute( (const std::string &) prop->name, (const std::string &) attrValue );
-        xmlFree( attrValue );
+        std::string propName = (const char *)prop->name;
+        xmlChar *attrChar = xmlNodeListGetString( doc, prop->xmlChildrenNode, 1 );
+        std::string attrValue = (const char *)attrChar;
+        newNode->setAttribute(propName, attrValue);
+        xmlFree(attrChar);
         prop = prop->next;
     }
 

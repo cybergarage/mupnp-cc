@@ -6,7 +6,8 @@
 	* Removed Node::toUnicodeString() and XML::Local2Unicode().
 	* Fixed Node::setAttribute() to set the specified value when the attribute is null.
 	* Fixed Service::getSCPDNode() to return null when the URLBase and the Location are null. 
-	* Fixed libxml2 parser using the latest functions.
+	* Changed libxml2 parser using the latest functions.
+	* Fixed a bug convertToCLinkFormat of libxml2 parser.
 
 2012-05-16 Satoshi Konno <skonno@cybergarage.org>
 	* v.1.7.2
