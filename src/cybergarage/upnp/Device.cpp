@@ -1083,13 +1083,6 @@ void Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 	if (Debug::isOn() == true)
 		httpReq->print();
 
-	/*
-	string buf;
-	httpReq->toString(buf);
-	Debug::on();
-	Debug::message(buf.c_str(), "httpRequestRecieved.log");
-	*/
-	
 	if (httpReq->isGetRequest() == true || httpReq->isHeadRequest()) {
 		httpGetRequestRecieved(httpReq);
 		return;

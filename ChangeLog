@@ -1,4 +1,7 @@
-2012-05-xx Satoshi Konno <skonno@cybergarage.org>
+2012-09-02 Satoshi Konno <skonno@cybergarage.org>
+	* Improved Socket::connect() to ignore SIGPIPE on MacOSX 10.7.
+
+2012-05-30 Satoshi Konno <skonno@cybergarage.org>
 	* Changed to use uHTTP for C++.
 	* Changed to use boost::testunit instead of cppunit.
 	* Removed header and source files for UPnP/AV
