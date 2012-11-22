@@ -560,11 +560,11 @@ Subscriber *Service::getSubscriberBySID(const std::string &name)
 	Subscriber *findSub = NULL;
 	lock();
 	int subListCnt = subList->size();
-	cout << "subListCnt = " << subListCnt << endl;
+	//cout << "subListCnt = " << subListCnt << endl;
 	for (int n=0; n<subListCnt; n++) {
 		Subscriber *sub = subList->getSubscriber(n);
 		const char *sid = sub->getSID();
-		cout << "[" << n << "] = " << sid << endl;
+		//cout << "[" << n << "] = " << sid << endl;
 		if (sid == NULL)
 			continue;
 		string sidStr = sid;
