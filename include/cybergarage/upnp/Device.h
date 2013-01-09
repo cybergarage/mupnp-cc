@@ -246,6 +246,10 @@ public:
 	
 	DeviceData *getDeviceData();
 
+	bool hasDeviceData() {
+        return (getDeviceData() ? true : false);
+    }
+
 	////////////////////////////////////////////////
 	//	Description
 	////////////////////////////////////////////////

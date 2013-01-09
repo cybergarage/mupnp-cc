@@ -332,7 +332,9 @@ int Device::getLeaseTime()
 	SSDPPacket *packet = getSSDPPacket();
 	if (packet != NULL)
 		return packet->getLeaseTime();
-	return getDeviceData()->getLeaseTime();
+    if (hasDeviceData())
+        return getDeviceData()->getLeaseTime();
+    return 0;
 }
 
 ////////////////////////////////////////////////
@@ -351,6 +353,8 @@ bool Device::isExpired()
 {
 	long elipsedTime = getElapsedTime();
 	long leaseTime = getLeaseTime() + UPnP::DEFAULT_EXPIRED_DEVICE_EXTRA_TIME;
+    if (leaseTime < 0)
+        return false;
 	if (leaseTime < elipsedTime)
 		return true;
 	return false;

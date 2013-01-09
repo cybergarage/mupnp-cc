@@ -53,8 +53,6 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 	TestCtrlPoint *ctrlp = new TestCtrlPoint();
 	ctrlp->start();
 
-#if defined(CLINKCC_CHK_SEARCH_DEVICE)
-
 	/////////////////////////////
 	// Search Device
 	/////////////////////////////
@@ -86,8 +84,6 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 	BOOST_CHECK(ctrlpCountService != NULL);
 	BOOST_CHECK(ctrlp->subscribe(ctrlpCountService) == true);
 	BOOST_CHECK(ctrlp->unsubscribe(ctrlpCountService) == true);
-    
-#endif
 
 	/////////////////////////////
 	// Exit

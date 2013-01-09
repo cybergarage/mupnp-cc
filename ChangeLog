@@ -1,3 +1,7 @@
+2013-01-09 Satoshi Konno <skonno@cybergarage.org>
+	* Added Device::hasDeviceData().
+	* Fixed Device::getLeaseTime() not to abort when the device data is null.
+
 2012-09-02 Satoshi Konno <skonno@cybergarage.org>
 	* Improved Socket::connect() to ignore SIGPIPE on MacOSX 10.7.
 
