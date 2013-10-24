@@ -16,13 +16,8 @@
 #ifndef _CLINK_STATEVARIABLE_H_
 #define _CLINK_STATEVARIABLE_H_
 
-<<<<<<< HEAD
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/StringUtil.h>
-=======
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/StringUtil.h>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/upnp/UPnPStatus.h>
 #include <cybergarage/upnp/AllowedValueList.h>
@@ -31,13 +26,8 @@
 #include <cybergarage/upnp/xml/StateVariableData.h>
 #include <cybergarage/upnp/control/QueryResponse.h>
 #include <cybergarage/upnp/control/QueryRequest.h>
-<<<<<<< HEAD
 
 #include <sstream>
-=======
-
-#include <sstream>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 namespace CyberLink {
 
@@ -164,11 +154,7 @@ public:
 
 public:
 
-<<<<<<< HEAD
 	void setName(const std::string &value)
-=======
-	void setName(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getStateVariableNode()->setNode(NAME, value);
 	}
@@ -184,11 +170,7 @@ public:
 
 public:
 
-<<<<<<< HEAD
 	void setDataType(const std::string &value)
-=======
-	void setDataType(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getStateVariableNode()->setNode(DATATYPE, value);
 	}
@@ -214,11 +196,7 @@ public:
 		const char *state = getStateVariableNode()->getAttributeValue(SENDEVENTS);
 		if (state == NULL)
 			return false;
-<<<<<<< HEAD
 		uHTTP::String stateStr(state);
-=======
-		CyberUtil::String stateStr = state;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		if (stateStr.equalsIgnoreCase(SENDEVENTS_YES) == true)
 			return true;
 		return false;
@@ -247,11 +225,7 @@ public:
 
 public:
 
-<<<<<<< HEAD
 	void setValue(const std::string &value);
-=======
-	void setValue(const char *value);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	void setValue(int value);
 	void setValue(long value);
 
@@ -321,11 +295,7 @@ public:
 
 public:
 
-<<<<<<< HEAD
 	void setStatus(int code, const std::string &descr)
-=======
-	void setStatus(int code, const char *descr)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		upnpStatus.setCode(code);
 		upnpStatus.setDescription(descr);

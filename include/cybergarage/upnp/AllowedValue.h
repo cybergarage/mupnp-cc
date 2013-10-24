@@ -79,11 +79,7 @@ public:
 
 public:
 
-<<<<<<< HEAD
 	void setValue(const std::string &value)
-=======
-	void setValue(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getAllowedValueNode()->setValue(value);
 	}

@@ -18,11 +18,7 @@
 
 #include <stdlib.h>
 
-<<<<<<< HEAD
 #include <uhttp/util/StringUtil.h>
-=======
-#include <cybergarage/util/StringUtil.h>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/upnp/xml/ArgumentData.h>
 
@@ -77,11 +73,7 @@ public:
 
 	Argument();
 	Argument(CyberXML::Node *servNode, CyberXML::Node *argNode);
-<<<<<<< HEAD
 	Argument(const std::string &name, const std::string &value);
-=======
-	Argument(const char *name, const char *value);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	~Argument();
 
@@ -98,11 +90,7 @@ public:
 	//	name
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 	void setName(const std::string &value)
-=======
-	void setName(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getArgumentNode()->setNode(NAME, value);
 	}
@@ -116,11 +104,7 @@ public:
 	//	direction
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 	void setDirection(const std::string &value)
-=======
-	void setDirection(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getArgumentNode()->setNode(DIRECTION, value);
 	}
@@ -135,11 +119,7 @@ public:
 		const char *dir = getDirection();
 		if (dir == NULL)
 			return false;
-<<<<<<< HEAD
 		uHTTP::String dirStr(dir);
-=======
-		CyberUtil::String dirStr = dir;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		return dirStr.equalsIgnoreCase(IN_DIR);
 	}
 
@@ -152,11 +132,7 @@ public:
 	//	relatedStateVariable
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 	void setRelatedStateVariableName(const std::string &value)
-=======
-	void setRelatedStateVariableName(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getArgumentNode()->setNode(RELATED_STATE_VARIABLE, value);
 	}
@@ -187,11 +163,7 @@ public:
 	//	value
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 	void setValue(const std::string &value)
-=======
-	void setValue(const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getArgumentData()->setValue(value);
 	}

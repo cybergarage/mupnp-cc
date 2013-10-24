@@ -3,12 +3,6 @@
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #undef HAVE_ARPA_INET_H
 
-<<<<<<< HEAD
-=======
-/* Define to 1 if you have the <dlfcn.h> header file. */
-#undef HAVE_DLFCN_H
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 /* Define to 1 if you have the <expat.h> header file. */
 #undef HAVE_EXPAT_H
 
@@ -36,7 +30,6 @@
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-<<<<<<< HEAD
 /* Define to 1 if you have the `boost_filesystem' library
    (-lboost_filesystem). */
 #undef HAVE_LIBBOOST_FILESYSTEM
@@ -48,8 +41,6 @@
    (-lboost_unit_test_framework). */
 #undef HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK
 
-=======
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 /* Define to 1 if you have the `expat' library (-lexpat). */
 #undef HAVE_LIBEXPAT
 
@@ -59,12 +50,9 @@
 /* Define to 1 if you have the `pthread' library (-lpthread). */
 #undef HAVE_LIBPTHREAD
 
-<<<<<<< HEAD
 /* Define to 1 if you have the `uhttp++' library (-luhttp++). */
 #undef HAVE_LIBUHTTP__
 
-=======
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 /* Define to 1 if you have the `ws2_32' library (-lws2_32). */
 #undef HAVE_LIBWS2_32
 
@@ -147,13 +135,6 @@
    */
 #undef HAVE_XERCESC_UTIL_XERCESVERSION_HPP
 
-<<<<<<< HEAD
-=======
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
-#undef LT_OBJDIR
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 /* Name of package */
 #undef PACKAGE
 
@@ -178,15 +159,6 @@
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
-<<<<<<< HEAD
-=======
-/* MYSQL */
-#undef SUPPORT_MYSQL
-
-/* MYTHTV */
-#undef SUPPORT_MYTHTV
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 /* Define to 1 if your <sys/time.h> declares `struct tm'. */
 #undef TM_IN_SYS_TIME
 

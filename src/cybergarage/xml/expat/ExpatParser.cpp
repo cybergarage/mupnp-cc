@@ -10,13 +10,8 @@
 *
 *	11/29/04
 *		- first revision
-<<<<<<< HEAD
 *	06/14/05
 *		- Changed ExpatCharacterData() to use Node::addValue() instead of Node::setValue().
-=======
-*	06/14/05
-*		- Changed ExpatCharacterData() to use Node::addValue() instead of Node::setValue().
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 *
 ******************************************************************/
 
@@ -52,11 +47,7 @@
 
 using namespace std;
 using namespace CyberXML;
-<<<<<<< HEAD
 using namespace uHTTP;
-=======
-using namespace CyberUtil;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -79,11 +70,7 @@ typedef struct _ExpatData {
 	Node *currNode;
 } ExpatData;
 
-<<<<<<< HEAD
 static void XMLCALL ExpatElementStart(void *userData, const std::string &el, const std::string &*attr)
-=======
-static void XMLCALL ExpatElementStart(void *userData, const char *el, const char **attr)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	ExpatData *expatData = (ExpatData *)userData;
 
@@ -105,11 +92,7 @@ static void XMLCALL ExpatElementStart(void *userData, const char *el, const char
 	expatData->currNode = node;
 }
 
-<<<<<<< HEAD
 static void XMLCALL ExpatElementEnd(void *userData, const std::string &el)
-=======
-static void XMLCALL ExpatElementEnd(void *userData, const char *el)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	ExpatData *expatData = (ExpatData *)userData;
 	if (expatData->currNode != NULL)
@@ -119,11 +102,7 @@ static void XMLCALL ExpatElementEnd(void *userData, const char *el)
 static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int len)
 {
 	ExpatData *expatData = (ExpatData *)userData;
-<<<<<<< HEAD
 
-=======
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	if (expatData->currNode != NULL)
 		expatData->currNode->addValue(s, len);
 }
@@ -132,11 +111,7 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 //	parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-<<<<<<< HEAD
 Node *Parser::parse(const std::string &data, int len)
-=======
-Node *Parser::parse(const char *data, int len)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	XML_Parser p = XML_ParserCreate(NULL);
 	if (!p)

@@ -19,11 +19,7 @@
 #include <time.h>
 #include <string>
 #include <limits.h>
-<<<<<<< HEAD
 #include <uhttp/net/URL.h>
-=======
-#include <cybergarage/net/URL.h>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 namespace CyberLink {
 
@@ -32,11 +28,7 @@ class Subscriber
 	std::string SID;
 	std::string ifAddr;
 	
-<<<<<<< HEAD
 	uHTTP::URL deliveryURL;
-=======
-	CyberNet::URL deliveryURL;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	
 	long timeOut;
 	long notifyCount;
@@ -58,11 +50,7 @@ public:
 		return SID.c_str();
 	}
 
-<<<<<<< HEAD
 	void setSID(const std::string &sid) {
-=======
-	void setSID(const char *sid) {
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		SID = sid;
 	}
 
@@ -70,11 +58,7 @@ public:
 	//	deliveryURL
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 	void setInterfaceAddress(const std::string &addr)
-=======
-	void setInterfaceAddress(const char *addr)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		ifAddr = addr;
 	}
@@ -92,11 +76,7 @@ public:
 		return deliveryURL.getSting();
 	}
 
-<<<<<<< HEAD
 	void setDeliveryURL(const std::string &url)
-=======
-	void setDeliveryURL(const char *url)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		deliveryURL.setString(url);
 	}

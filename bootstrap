@@ -5,11 +5,7 @@ fi
 if [ ! -d autom4te.cache ]; then
 	rm -rf autom4te.cache/*
 fi
-<<<<<<< HEAD
 #libtoolize --automake --force --copy
-=======
-libtoolize --automake --force --copy
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 aclocal
 autoheader
 automake --foreign --add-missing --copy

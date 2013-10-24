@@ -33,7 +33,6 @@ const char VER[]= "1.0";
 
 const int SERVER_RETRY_COUNT = 100;
 const int DEFAULT_EXPIRED_DEVICE_EXTRA_TIME = 60;
-<<<<<<< HEAD
 
 const char INMPR03[]= "INMPR03";
 const char INMPR03_VER[]= "1.0";
@@ -45,19 +44,6 @@ const char XML_DECLARATION[] = "<?xml version=\"1.0\"?>";
 //	Functions
 ////////////////////////////////////////////////
 
-=======
-
-const char INMPR03[]= "INMPR03";
-const char INMPR03_VER[]= "1.0";
-const int INMPR03_DISCOVERY_OVER_WIRELESS_COUNT = 4;
-
-const char XML_DECLARATION[] = "<?xml version=\"1.0\"?>";
-
-////////////////////////////////////////////////
-//	Functions
-////////////////////////////////////////////////
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 const char *GetServerName(std::string &buf);
 const char *CreateUUID(std::string &buf);
 

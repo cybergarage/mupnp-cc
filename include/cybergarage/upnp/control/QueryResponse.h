@@ -64,11 +64,7 @@ public:
 
 private:
 
-<<<<<<< HEAD
 	CyberXML::Node *createResponseNode(const std::string &value);
-=======
-	CyberXML::Node *createResponseNode(const char *value);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 };
 
 }

@@ -3,60 +3,6 @@
 ########################################
 
 clink_header = \
-<<<<<<< HEAD
-=======
-	cybergarage/util/Date.h \
-	cybergarage/util/Debug.h \
-	cybergarage/util/Exception.h \
-	cybergarage/util/ListenerList.h \
-	cybergarage/util/Mutex.h \
-	cybergarage/util/StringTokenizer.h \
-	cybergarage/util/StringUtil.h \
-	cybergarage/util/Thread.h \
-	cybergarage/util/TimeUtil.h \
-	cybergarage/util/Vector.h \
-	cybergarage/io/BufferedReader.h \
-	cybergarage/io/File.h \
-	cybergarage/io/FileInputStream.h \
-	cybergarage/io/InputStream.h \
-	cybergarage/io/InputStreamReader.h \
-	cybergarage/io/LineNumberReader.h \
-	cybergarage/io/StringBufferInputStream.h \
-	cybergarage/io/FileInputStream.h \
-	cybergarage/io/Reader.h \
-	cybergarage/io/StringReader.h \
-	cybergarage/net/DatagramPacket.h \
-	cybergarage/net/DatagramSocket.h \
-	cybergarage/net/HostInterface.h \
-	cybergarage/net/InetSocketAddress.h \
-	cybergarage/net/MulticastSocket.h \
-	cybergarage/net/NetworkInterface.h \
-	cybergarage/net/NetworkInterfaceList.h \
-	cybergarage/net/ServerSocket.h \
-	cybergarage/net/Socket.h \
-	cybergarage/net/SocketImp.h \
-	cybergarage/net/SocketInputStream.h \
-	cybergarage/net/SocketUtil.h \
-	cybergarage/net/URI.h \
-	cybergarage/net/URL.h \
-	cybergarage/http/HTML.h \
-	cybergarage/http/HTTP.h \
-	cybergarage/http/HTTPDate.h \
-	cybergarage/http/HTTPHeader.h \
-	cybergarage/http/HTTPPacket.h \
-	cybergarage/http/HTTPRequest.h \
-	cybergarage/http/HTTPRequestListener.h \
-	cybergarage/http/HTTPResponse.h \
-	cybergarage/http/HTTPServer.h \
-	cybergarage/http/HTTPServerList.h \
-	cybergarage/http/HTTPServerThread.h \
-	cybergarage/http/HTTPSocket.h \
-	cybergarage/http/HTTPStatus.h \
-	cybergarage/http/Parameter.h \
-	cybergarage/http/ParameterList.h \
-	cybergarage/sql/UniDatabase.h \
-	cybergarage/sql/UniMySQL.h \
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	cybergarage/xml/Attribute.h \
 	cybergarage/xml/AttributeList.h \
 	cybergarage/xml/Node.h \
@@ -141,82 +87,9 @@ clink_header = \
 	cybergarage/upnp/xml/StateVariableData.h
 
 ########################################
-<<<<<<< HEAD
-=======
-# CyberLink (Media)
-########################################
-
-clink_media_header = \
-	cybergarage/upnp/media/server/ConnectionInfo.h \
-	cybergarage/upnp/media/server/ConnectionInfoList.h \
-	cybergarage/upnp/media/server/ConnectionManager.h \
-	cybergarage/upnp/media/server/ContentDirectory.h \
-	cybergarage/upnp/media/server/DC.h \
-	cybergarage/upnp/media/server/Directory.h \
-	cybergarage/upnp/media/server/DirectoryList.h \
-	cybergarage/upnp/media/server/MediaServer.h \
-	cybergarage/upnp/media/server/UPnP.h \
-	cybergarage/upnp/media/server/action/BrowseAction.h \
-	cybergarage/upnp/media/server/action/SearchAction.h \
-	cybergarage/upnp/media/server/directory/file/FileDirectory.h \
-	cybergarage/upnp/media/server/directory/mythtv/MythDatabase.h \
-	cybergarage/upnp/media/server/directory/mythtv/MythDirectory.h \
-	cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfo.h \
-	cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfoList.h \
-	cybergarage/upnp/media/server/object/ContentNode.h \
-	cybergarage/upnp/media/server/object/ContentNodeList.h \
-	cybergarage/upnp/media/server/object/ContentProperty.h \
-	cybergarage/upnp/media/server/object/ContentPropertyList.h \
-	cybergarage/upnp/media/server/object/DIDLLite.h \
-	cybergarage/upnp/media/server/object/DIDLLiteNode.h \
-	cybergarage/upnp/media/server/object/Format.h \
-	cybergarage/upnp/media/server/object/FormatList.h \
-	cybergarage/upnp/media/server/object/FormatObject.h \
-	cybergarage/upnp/media/server/object/SearchCapList.h \
-	cybergarage/upnp/media/server/object/SearchCriteriaList.h \
-	cybergarage/upnp/media/server/object/SearchCriteria.h \
-	cybergarage/upnp/media/server/object/SearchCriteriaList.h \
-	cybergarage/upnp/media/server/object/SortCap.h \
-	cybergarage/upnp/media/server/object/SortCapList.h \
-	cybergarage/upnp/media/server/object/SortCriteriaList.h \
-	cybergarage/upnp/media/server/object/container/ContainerNode.h \
-	cybergarage/upnp/media/server/object/container/RootNode.h \
-	cybergarage/upnp/media/server/object/format/AudioFormat.h \
-	cybergarage/upnp/media/server/object/format/DefaultFormat.h \
-	cybergarage/upnp/media/server/object/format/ID3Format.h \
-	cybergarage/upnp/media/server/object/format/ID3Frame.h \
-	cybergarage/upnp/media/server/object/format/ID3FrameList.h \
-	cybergarage/upnp/media/server/object/format/GIFFormat.h \
-	cybergarage/upnp/media/server/object/format/ImageFormat.h \
-	cybergarage/upnp/media/server/object/format/JPEGFormat.h \
-	cybergarage/upnp/media/server/object/format/MovieFormat.h \
-	cybergarage/upnp/media/server/object/format/MPEGFormat.h \
-	cybergarage/upnp/media/server/object/format/PNGFormat.h \
-	cybergarage/upnp/media/server/object/item/ItemNode.h \
-	cybergarage/upnp/media/server/object/item/ItemNodeList.h \
-	cybergarage/upnp/media/server/object/item/file/FileItemNode.h \
-	cybergarage/upnp/media/server/object/item/file/FileItemNodeList.h \
-	cybergarage/upnp/media/server/object/item/mythtv/MythRecordedItemNode.h \
-	cybergarage/upnp/media/server/object/item/mythtv/MythRecordedItemNodeList.h \
-	cybergarage/upnp/media/server/object/search/IdSearchCap.h \
-	cybergarage/upnp/media/server/object/search/TitleSearchCap.h \
-	cybergarage/upnp/media/server/object/sort/DCDateSortCap.h \
-	cybergarage/upnp/media/server/object/sort/DCTitleSortCap.h \
-	cybergarage/upnp/media/server/object/sort/UPnPClassSortCap.h \
-	cybergarage/upnp/media/player/MediaPlayer.h \
-	cybergarage/upnp/media/player/action/BrowseResult.h \
-	cybergarage/upnp/media/player/action/BrowseResultNode.h
-
-########################################
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 # Library
 ########################################
 
 nobase_include_HEADERS = \
-<<<<<<< HEAD
 	$(clink_header)
-=======
-	$(clink_header) \
-	$(clink_media_header)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 

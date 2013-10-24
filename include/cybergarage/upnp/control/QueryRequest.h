@@ -40,11 +40,7 @@ public:
 	{
 	}
 
-<<<<<<< HEAD
 	QueryRequest(uHTTP::HTTPRequest *httpReq)
-=======
-	QueryRequest(CyberHTTP::HTTPRequest *httpReq)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		set(httpReq);
 	}

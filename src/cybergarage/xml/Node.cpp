@@ -50,22 +50,14 @@ Node::Node()
 	setParentNode(NULL);
 }
 
-<<<<<<< HEAD
 Node::Node(const std::string &name) 
-=======
-Node::Node(const char *name) 
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	userData = NULL;
 	setParentNode(NULL);
 	setName(name);
 }
 
-<<<<<<< HEAD
 Node::Node(const std::string &ns, const std::string &name) 
-=======
-Node::Node(const char *ns, const char *name) 
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	userData = NULL;
 	setParentNode(NULL);
@@ -118,7 +110,6 @@ void Node::setValue(int val)
 //	Attribute (Extention)
 ////////////////////////////////////////////////
 
-<<<<<<< HEAD
 void Node::setAttribute(const std::string & name, const std::string &value)
 {
 	Attribute *attr = getAttribute(name);
@@ -130,20 +121,6 @@ void Node::setAttribute(const std::string & name, const std::string &value)
 }
 
 void Node::setAttribute(const std::string &name, int value)
-=======
-void Node::setAttribute(const char * name, const char * value)
-{
-	Attribute *attr = getAttribute(name);
-	if (attr != NULL) {
-		attr->setValue(value);
-		return;
-	}
-	attr = new Attribute(name, value);
-	addAttribute(attr);
-}
-
-void Node::setAttribute(const char *name, int value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 #ifndef NO_USE_OSTRINGSTREAM
 	std::ostringstream os;
@@ -162,11 +139,7 @@ void Node::setAttribute(const char *name, int value)
 #endif
 }
 
-<<<<<<< HEAD
 const char *Node::getAttributeValue(const std::string & name)
-=======
-const char *Node::getAttributeValue(const char * name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	Attribute *attr = getAttribute(name);
 	if (attr != NULL)
@@ -174,11 +147,7 @@ const char *Node::getAttributeValue(const char * name)
 	return "";
 }
 
-<<<<<<< HEAD
 int Node::getAttributeIntegerValue(const std::string &name)
-=======
-int Node::getAttributeIntegerValue(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	std::string val = getAttributeValue(name);
 	return atoi(val.c_str());
@@ -312,24 +281,6 @@ const char *Node::toString(std::string &buf, bool hasChildNode)
 }
 
 ////////////////////////////////////////////////
-<<<<<<< HEAD
-=======
-//	toUnicodeString
-////////////////////////////////////////////////
-
-const char *Node::toUnicodeString(std::string &buf, bool hasChildNode)
-{
-	string localStr;
-	toString(localStr, hasChildNode);
-	int outLen;
-	UnicodeStr *uniStr = XML::Local2Unicode(localStr.c_str(), outLen);
-	buf = (char *)uniStr;
-	delete []uniStr;
-	return buf.c_str();
-}
-
-////////////////////////////////////////////////
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 //	print
 ////////////////////////////////////////////////
 

@@ -16,21 +16,12 @@
 #ifndef _CLINK_CONTROLPOINT_H_
 #define _CLINK_CONTROLPOINT_H_
 
-<<<<<<< HEAD
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/ListenerList.h>
 #include <uhttp/util/Mutex.h>
 #include <cybergarage/xml/NodeList.h>
 #include <uhttp/http/HTTPRequestListener.h>
 #include <uhttp/http/HTTPServerList.h>
-=======
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/ListenerList.h>
-#include <cybergarage/util/Mutex.h>
-#include <cybergarage/xml/NodeList.h>
-#include <cybergarage/http/HTTPRequestListener.h>
-#include <cybergarage/http/HTTPServerList.h>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 #include <cybergarage/upnp/ssdp/SSDPNotifySocketList.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocketList.h>
@@ -38,7 +29,6 @@
 #include <cybergarage/upnp/device/SearchResponseListener.h>
 #include <cybergarage/upnp/device/NotifyListener.h>
 #include <cybergarage/upnp/device/Disposer.h>
-<<<<<<< HEAD
 #include <cybergarage/upnp/device/DeviceChangeListener.h>
 #include <cybergarage/upnp/event/EventListener.h>
 #include <cybergarage/upnp/control/RenewSubscriber.h>
@@ -46,15 +36,6 @@
 namespace CyberLink {
 
 class ControlPoint : public uHTTP::HTTPRequestListener
-=======
-#include <cybergarage/upnp/device/DeviceChangeListener.h>
-#include <cybergarage/upnp/event/EventListener.h>
-#include <cybergarage/upnp/control/RenewSubscriber.h>
-
-namespace CyberLink {
-
-class ControlPoint : public CyberHTTP::HTTPRequestListener
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	SSDPNotifySocketList ssdpNotifySocketList;
 	SSDPSearchResponseSocketList ssdpSearchResponseSocketList;
@@ -66,44 +47,25 @@ class ControlPoint : public CyberHTTP::HTTPRequestListener
 	CyberXML::NodeList  devNodeList;
 	CyberXML::NodeList  removedDevNodeList;
 
-<<<<<<< HEAD
 	uHTTP::ListenerList deviceNotifyListenerList;
 	uHTTP::ListenerList deviceSearchResponseListenerList;
 	uHTTP::ListenerList deviceChangeListenerList;
 
 	uHTTP::Mutex mutex;
-=======
-	CyberUtil::ListenerList deviceNotifyListenerList;
-	CyberUtil::ListenerList deviceSearchResponseListenerList;
-	CyberUtil::ListenerList deviceChangeListenerList;
-
-	CyberUtil::Mutex mutex;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	DeviceList deviceList;
 
 	int searchMx;
 
-<<<<<<< HEAD
 	uHTTP::HTTPServerList httpServerList;
 	uHTTP::ListenerList eventListenerList;
-=======
-	CyberHTTP::HTTPServerList httpServerList;
-	CyberUtil::ListenerList eventListenerList;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	std::string eventSubURI;
 
 	Disposer *deviceDisposer;
 	long expiredDeviceMonitoringInterval;
-<<<<<<< HEAD
 
 	bool nmprMode;
 	RenewSubscriber *renewSubscriber;
-=======
-
-	bool nmprMode;
-	RenewSubscriber *renewSubscriber;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 public:
 
@@ -141,13 +103,8 @@ private:
 	//	Constructor
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 public:
 
-=======
-public:
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	ControlPoint(int ssdpPort = DEFAULT_SSDP_PORT, int httpPort = DEFAULT_EVENTSUB_PORT);
 	virtual ~ControlPoint();
 
@@ -155,13 +112,8 @@ public:
 	//	Port (SSDP)
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 public:
 
-=======
-public:
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	int getSSDPPort() {
 		return ssdpPort;
 	}
@@ -174,13 +126,8 @@ public:
 	//	Port (EventSub)
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 public:
 
-=======
-public:
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	int getHTTPPort() {
 		return httpPort;
 	}
@@ -189,7 +136,6 @@ public:
 		httpPort = port;
 	}
 	
-<<<<<<< HEAD
 	////////////////////////////////////////////////
 	//	NMPR
 	////////////////////////////////////////////////
@@ -206,24 +152,6 @@ public:
 		return nmprMode;
 	}
 
-=======
-	////////////////////////////////////////////////
-	//	NMPR
-	////////////////////////////////////////////////
-
-public:
-
-	void setNMPRMode(bool flag)
-	{
-		nmprMode = flag;
-	}
-
-	bool isNMPRMode()
-	{
-		return nmprMode;
-	}
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	////////////////////////////////////////////////
 	//	Device List
 	////////////////////////////////////////////////
@@ -246,15 +174,9 @@ public:
 		return &deviceList;
 	}
 
-<<<<<<< HEAD
 	Device *getDevice(const std::string &name);
 
 	bool hasDevice(const std::string &name)
-=======
-	Device *getDevice(const char *name);
-
-	bool hasDevice(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return (getDevice(name) != NULL) ? true : false;
 	}
@@ -263,11 +185,7 @@ private:
 
 	void removeDevice(CyberXML::Node *rootNode);
 	void removeDevice(Device *device);
-<<<<<<< HEAD
 	void removeDevice(const std::string &name);
-=======
-	void removeDevice(const char *name);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	void removeDevice(SSDPPacket *packet);
 
 	////////////////////////////////////////////////
@@ -324,13 +242,8 @@ public:
 	//	SearchResponse
 	////////////////////////////////////////////////
 
-<<<<<<< HEAD
 public:
 
-=======
-public:
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	void addSearchResponseListener(SearchResponseListener *listener)
 	{
 		deviceSearchResponseListenerList.add(listener);
@@ -343,7 +256,6 @@ public:
 
 	void performSearchResponseListener(SSDPPacket *ssdpPacket);
 
-<<<<<<< HEAD
 	////////////////////////////////////////////////
 	//  DeviceChangeListener
 	//  Thanks for Oliver Newell (2004/10/16)
@@ -364,39 +276,12 @@ public:
 	void performAddDeviceListener(Device *dev);
 	void performRemoveDeviceListener(Device *dev);
 
-=======
-	////////////////////////////////////////////////
-	//  DeviceChangeListener
-	//  Thanks for Oliver Newell (2004/10/16)
-	////////////////////////////////////////////////
-
-public:
-
-	void addDeviceChangeListener(DeviceChangeListener *listener)
-	{
-		deviceChangeListenerList.add(listener);
-	}		
-
-	void removeDeviceChangeListener(DeviceChangeListener *listener)
-	{
-		deviceChangeListenerList.remove(listener);
-	}		
-
-	void performAddDeviceListener(Device *dev);
-	void performRemoveDeviceListener(Device *dev);
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	////////////////////////////////////////////////
 	//	SSDPPacket
 	////////////////////////////////////////////////
 	
-<<<<<<< HEAD
 public:
 
-=======
-public:
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	void notifyReceived(SSDPPacket *packet);
 	void searchResponseReceived(SSDPPacket *packet);
 
@@ -416,15 +301,9 @@ public:
 		searchMx = mx;
 	}
 
-<<<<<<< HEAD
 	void search(const std::string &target, int mx);
 
 	void search(const std::string &target)
-=======
-	void search(const char *target, int mx);
-
-	void search(const char *target)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		search(target, SSDP::DEFAULT_MSEARCH_MX);
 	}
@@ -440,20 +319,12 @@ public:
 
 private:
 
-<<<<<<< HEAD
 	uHTTP::HTTPServerList *getHTTPServerList()
-=======
-	CyberHTTP::HTTPServerList *getHTTPServerList()
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return &httpServerList;
 	}
 
-<<<<<<< HEAD
 	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
-=======
-	void httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	////////////////////////////////////////////////
 	//	Event Listener 
@@ -471,11 +342,7 @@ public:
 		eventListenerList.remove(listener);
 	}		
 
-<<<<<<< HEAD
 	void performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value)
-=======
-	void performEventListener(const char *uuid, long seq, const char *name, const char *value)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		int listenerSize = eventListenerList.size();
 		for (int n=0; n<listenerSize; n++) {
@@ -495,26 +362,16 @@ public:
 		return eventSubURI.c_str();
 	}
 
-<<<<<<< HEAD
 	void setEventSubURI(const std::string &url)
-=======
-	void setEventSubURI(const char *url)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		eventSubURI = url;
 	}
 
 private:
 
-<<<<<<< HEAD
 	const char *getEventSubCallbackURL(const std::string &host, std::string &buf)
 	{
 		return uHTTP::GetHostURL(host, getHTTPPort(), getEventSubURI(), buf);
-=======
-	const char *getEventSubCallbackURL(const char *host, std::string &buf)
-	{
-		return CyberNet::GetHostURL(host, getHTTPPort(), getEventSubURI(), buf);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	}
 
 public:
@@ -526,15 +383,9 @@ public:
 		return subscribe(service, Subscription::INFINITE_VALUE);
 	}
 
-<<<<<<< HEAD
 	bool subscribe(Service *service, const std::string &uuid, long timeout);
 
 	bool subscribe(Service *service, const std::string &uuid)
-=======
-	bool subscribe(Service *service, const char *uuid, long timeout);
-
-	bool subscribe(Service *service, const char *uuid)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return subscribe(service, uuid, Subscription::INFINITE_VALUE);
 	}
@@ -560,11 +411,7 @@ public:
 
 public:
 
-<<<<<<< HEAD
 	Service *getSubscriberService(const std::string &uuid)
-=======
-	Service *getSubscriberService(const char *uuid)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		DeviceList *devList = getDeviceList();
 		int devCnt = devList->size();
@@ -577,7 +424,6 @@ public:
 		return NULL;
 	}
 	
-<<<<<<< HEAD
 	////////////////////////////////////////////////
 	//	getSubscriberService	
 	////////////////////////////////////////////////
@@ -606,51 +452,15 @@ public:
 		return renewSubscriber;	
 	}
 
-=======
-	////////////////////////////////////////////////
-	//	getSubscriberService	
-	////////////////////////////////////////////////
-
-public:
-
-	void renewSubscriberService(Device *dev, long timeout);
-	void renewSubscriberService(long timeout);
-	void renewSubscriberService();
-	
-	////////////////////////////////////////////////
-	//	Subscriber
-	////////////////////////////////////////////////
-	
-public:
-
-	void setRenewSubscriber(RenewSubscriber *sub)
-	{
-		if (renewSubscriber != NULL)
-			delete renewSubscriber;
-		renewSubscriber = sub;
-	}
-	
-	RenewSubscriber *getRenewSubscriber()
-	{
-		return renewSubscriber;	
-	}
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	////////////////////////////////////////////////
 	//	run	
 	////////////////////////////////////////////////
 
 public:
 
-<<<<<<< HEAD
 	bool start(const std::string &target, int mx);
 
 	bool start(const std::string &target)
-=======
-	bool start(const char *target, int mx);
-
-	bool start(const char *target)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return start(target, SSDP::DEFAULT_MSEARCH_MX);
 	}

@@ -1,10 +1,6 @@
 /******************************************************************
 *
-<<<<<<< HEAD
 *	uHTTP for C++
-=======
-*	CyberUtil for C++
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 *
 *	Copyright (C) Satoshi Konno 2002-2003
 *
@@ -29,16 +25,11 @@
 *		  setDeviceDisposer()/getDeviceDisposer()
 *	04/20/04
 *		- Added the following methods.
-<<<<<<< HEAD
 *		  start(const std::string &target, int mx) and start(const std::string &target).
-=======
-*		  start(const char *target, int mx) and start(const char *target).
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 *	04/28/04
 *		- Added a remove node list and clean() to delete removed devices..
 *		- Added lockDeviceList() and unlockDeviceList().
 *		- Added lockSubscriberList() and unlockSubscriberList().
-<<<<<<< HEAD
 *	06/23/04
 *		- Added setNMPRMode() and isNMPRMode().
 *	07/08/04
@@ -50,45 +41,19 @@
 *		- Oliver Newell <newell@media-rush.com>
 *		- Added this class to allow ControlPoint applications to be notified when 
 *		  the ControlPoint base class adds/removes a UPnP device
-=======
-*	06/23/04
-*		- Added setNMPRMode() and isNMPRMode().
-*	07/08/04
-*		- Added renewSubscriberService().
-*		- Changed start() to create renew subscriber thread when the NMPR mode is true.
-*	08/17/04
-*		- Fixed removeExpiredDevices() to remove using the device array.
-*	10/16/04
-*		- Oliver Newell <newell@media-rush.com>
-*		- Added this class to allow ControlPoint applications to be notified when 
-*		  the ControlPoint base class adds/removes a UPnP device
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 *
 ******************************************************************/
 
 #include <cybergarage/upnp/ControlPoint.h>
-<<<<<<< HEAD
 #include <uhttp/util/Debug.h>
 #include <cybergarage/xml/Parser.h>
 
 #include <iostream>
-=======
-#include <cybergarage/util/Debug.h>
-#include <cybergarage/xml/Parser.h>
-
-#include <iostream>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 using namespace std;
 using namespace CyberLink;
 using namespace CyberXML;
-<<<<<<< HEAD
 using namespace uHTTP;
-=======
-using namespace CyberNet;
-using namespace CyberHTTP;
-using namespace CyberUtil;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	Constants
@@ -111,15 +76,9 @@ ControlPoint::ControlPoint(int ssdpPort, int httpPort)
 	setEventSubURI(DEFAULT_EVENTSUB_URI);
 	deviceDisposer = NULL;
 	setExpiredDeviceMonitoringInterval(DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL);
-<<<<<<< HEAD
 	setNMPRMode(false);
 	renewSubscriber = NULL;
 
-=======
-	setNMPRMode(false);
-	renewSubscriber = NULL;
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 ControlPoint::~ControlPoint()
@@ -156,11 +115,7 @@ void ControlPoint::initDeviceList()
 	unlock();
  }
 
-<<<<<<< HEAD
 Device *ControlPoint::getDevice(const std::string &name)
-=======
-Device *ControlPoint::getDevice(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	DeviceList *devList = getDeviceList();
 	int nDevs = devList->size();
@@ -221,15 +176,9 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket)
 	addDevice(rootNode);
 
 	initDeviceList();
-<<<<<<< HEAD
 
 	// Thanks for Oliver Newell (2004/10/16)
 	performAddDeviceListener( rootDev );
-=======
-
-	// Thanks for Oliver Newell (2004/10/16)
-	performAddDeviceListener( rootDev );
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 ////////////////////////////////////////////////
@@ -250,7 +199,6 @@ void ControlPoint::removeDevice(Device *dev)
 {
 	if (dev == NULL)
 		return;
-<<<<<<< HEAD
 	// Thanks for Oliver Newell (2004/10/16)
 	if(dev->isRootDevice() == true)
 		performRemoveDeviceListener(dev);
@@ -258,15 +206,6 @@ void ControlPoint::removeDevice(Device *dev)
 }
 
 void ControlPoint::removeDevice(const std::string &name)
-=======
-	// Thanks for Oliver Newell (2004/10/16)
-	if(dev->isRootDevice() == true)
-		performRemoveDeviceListener(dev);
-	removeDevice(dev->getRootNode());
-}
-
-void ControlPoint::removeDevice(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	Device *dev = getDevice(name);
 	removeDevice(dev);
@@ -288,7 +227,6 @@ void ControlPoint::removeDevice(SSDPPacket *packet)
 ////////////////////////////////////////////////
 	
 void ControlPoint::removeExpiredDevices()
-<<<<<<< HEAD
 {
 	int n;
 	DeviceList *devList = getDeviceList();
@@ -296,31 +234,15 @@ void ControlPoint::removeExpiredDevices()
 	Device **dev = new (Device(*[devCnt]));
 	for (n=0; n<devCnt; n++)
 		dev[n] = devList->getDevice(n);
-=======
-{
-	int n;
-	DeviceList *devList = getDeviceList();
-	int devCnt = devList->size();
-	Device **dev = new (Device(*[devCnt]));
-	for (n=0; n<devCnt; n++)
-		dev[n] = devList->getDevice(n);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	for (n=0; n<devCnt; n++) {
 		if (dev[n]->isExpired() == true) {
 			string msg = "Expired device = ";
 			msg += dev[n]->getFriendlyName();
 			Debug::message(msg.c_str());
-<<<<<<< HEAD
 			Node *rootNode = dev[n]->getRootNode();
 			removeDevice(rootNode);
 		}
 	}
-=======
-			Node *rootNode = dev[n]->getRootNode();
-			removeDevice(rootNode);
-		}
-	}
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	delete []dev;
 	initDeviceList();
 }
@@ -329,7 +251,6 @@ void ControlPoint::clean()
 {
 	removedDevNodeList.clear();
 }
-<<<<<<< HEAD
 
 ////////////////////////////////////////////////
 //	Notify
@@ -380,58 +301,6 @@ void ControlPoint::performRemoveDeviceListener(Device *dev)
 		listener->deviceRemoved( dev );
 	}
 }
-=======
-
-////////////////////////////////////////////////
-//	Notify
-////////////////////////////////////////////////
-		
-void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket)
-{
-	int listenerSize = deviceNotifyListenerList.size();
-	for (int n=0; n<listenerSize; n++) {
-		NotifyListener *listener = (NotifyListener *)deviceNotifyListenerList.get(n);
-		listener->deviceNotifyReceived(ssdpPacket);
-	}
-}
-
-////////////////////////////////////////////////
-//	SearchResponse
-////////////////////////////////////////////////
-
-void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket)
-{
-	int listenerSize = deviceSearchResponseListenerList.size();
-	for (int n=0; n<listenerSize; n++) {
-		SearchResponseListener *listener = (SearchResponseListener *)deviceSearchResponseListenerList.get(n);
-		listener->deviceSearchResponseReceived(ssdpPacket);
-	}
-}
-
-
-////////////////////////////////////////////////
-//	DeviceChangeListener
-//  Thanks for Oliver Newell (2004/10/16)
-////////////////////////////////////////////////
-
-void ControlPoint::performAddDeviceListener(Device *dev)
-{
-	int listenerSize = deviceChangeListenerList.size();
-	for (int n=0; n<listenerSize; n++) {
-		DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
-		listener->deviceAdded(dev);
-	}
-}
-
-void ControlPoint::performRemoveDeviceListener(Device *dev)
-{
-	int listenerSize = deviceChangeListenerList.size();
-	for (int n=0; n<listenerSize; n++) {
-		DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
-		listener->deviceRemoved( dev );
-	}
-}
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	SSDPPacket
@@ -459,11 +328,7 @@ void ControlPoint::searchResponseReceived(SSDPPacket *packet)
 //	M-SEARCH
 ////////////////////////////////////////////////
 
-<<<<<<< HEAD
 void ControlPoint::search(const std::string &target, int mx)
-=======
-void ControlPoint::search(const char *target, int mx)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	SSDPSearchRequest msReq(target, mx);
 	SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
@@ -521,19 +386,11 @@ bool ControlPoint::subscribe(Service *service, long timeout)
 	SubscriptionRequest subReq;
 	string callbackURLBuf;
 	subReq.setSubscribeRequest(service, getEventSubCallbackURL(ifAddress, callbackURLBuf), timeout);
-<<<<<<< HEAD
 	if (Debug::isOn() == true)
 		subReq.print();	
 	SubscriptionResponse *subRes = subReq.post();
 	if (Debug::isOn() == true)
 		subRes->print();	
-=======
-	if (Debug::isOn() == true)
-		subReq.print();	
-	SubscriptionResponse *subRes = subReq.post();
-	if (Debug::isOn() == true)
-		subRes->print();	
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	bool ret = false;
 	if (subRes->isSuccessful() == true) {
 		string sidBuf;
@@ -549,11 +406,7 @@ bool ControlPoint::subscribe(Service *service, long timeout)
 	return ret;
 }
 
-<<<<<<< HEAD
 bool ControlPoint::subscribe(Service *service, const std::string &uuid, long timeout)
-=======
-bool ControlPoint::subscribe(Service *service, const char *uuid, long timeout)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	SubscriptionRequest subReq;
 	subReq.setRenewRequest(service, uuid, timeout);
@@ -583,19 +436,11 @@ bool ControlPoint::unsubscribe(Service *service)
 {
 	SubscriptionRequest subReq;
 	subReq.setUnsubscribeRequest(service);
-<<<<<<< HEAD
 	if (Debug::isOn() == true)
 		subReq.print();	
 	SubscriptionResponse *subRes = subReq.post();
 	if (Debug::isOn() == true)
 		subRes->print();	
-=======
-	if (Debug::isOn() == true)
-		subReq.print();	
-	SubscriptionResponse *subRes = subReq.post();
-	if (Debug::isOn() == true)
-		subRes->print();	
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	if (subRes->isSuccessful() == true) {
 		service->clearSID();
 		return true;
@@ -622,7 +467,6 @@ void ControlPoint::unsubscribe(Device *device)
 		unsubscribe(cdev);
 	}		
 }
-<<<<<<< HEAD
 
 ////////////////////////////////////////////////
 //	getSubscriberService	
@@ -668,63 +512,12 @@ void ControlPoint::renewSubscriberService()
 {
 	renewSubscriberService(Subscription::INFINITE_VALUE);
 }
-=======
-
-////////////////////////////////////////////////
-//	getSubscriberService	
-////////////////////////////////////////////////
-
-void ControlPoint::renewSubscriberService(Device *dev, long timeout)
-{
-	int n;
-
-	ServiceList *serviceList = dev->getServiceList();
-	int serviceCnt = serviceList->size();
-	for (n=0; n<serviceCnt; n++) {
-		Service *service = serviceList->getService(n);
-		if (service->isSubscribed() == false)
-			continue;
-		const char *sid = service->getSID();
-		bool isRenewed = subscribe(service, sid, timeout);
-		if (isRenewed == false)
-			subscribe(service, timeout);
-	}
-		
-	DeviceList *cdevList = dev->getDeviceList();
-	int cdevCnt = cdevList->size();
-	for (n=0; n<cdevCnt; n++) {
-		Device *cdev = cdevList->getDevice(n);
-		renewSubscriberService(cdev, timeout);
-	}
-}
-	
-void ControlPoint::renewSubscriberService(long timeout)
-{
-	lock();
-	DeviceList *devList = getDeviceList();
-	int devCnt = devList->size();
-	for (int n=0; n<devCnt; n++) {
-		Device *dev = devList->getDevice(n);
-		renewSubscriberService(dev, timeout);
-	}
-	unlock();
-}
-	
-void ControlPoint::renewSubscriberService()
-{
-	renewSubscriberService(Subscription::INFINITE_VALUE);
-}
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	run	
 ////////////////////////////////////////////////
 
-<<<<<<< HEAD
 bool ControlPoint::start(const std::string &target, int mx)
-=======
-bool ControlPoint::start(const char *target, int mx)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	stop();
 
@@ -786,7 +579,6 @@ bool ControlPoint::start(const char *target, int mx)
 	setDeviceDisposer(disposer);
 	disposer->start();
 
-<<<<<<< HEAD
 	////////////////////////////////////////
 	// Subscriber
 	////////////////////////////////////////
@@ -797,18 +589,6 @@ bool ControlPoint::start(const char *target, int mx)
 		renewSub->start();
 	}
 
-=======
-	////////////////////////////////////////
-	// Subscriber
-	////////////////////////////////////////
-		
-	if (isNMPRMode() == true) {
-		RenewSubscriber *renewSub = new RenewSubscriber(this);
-		setRenewSubscriber(renewSub);
-		renewSub->start();
-	}
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	return true;
 }
 	
@@ -835,7 +615,6 @@ bool ControlPoint::stop()
 	httpServerList->close();
 	httpServerList->clear();
 
-<<<<<<< HEAD
 	////////////////////////////////////////
 	// Disposer
 	////////////////////////////////////////
@@ -856,28 +635,6 @@ bool ControlPoint::stop()
 		setRenewSubscriber(NULL);
 	}
 
-=======
-	////////////////////////////////////////
-	// Disposer
-	////////////////////////////////////////
-
-	Disposer *disposer = getDeviceDisposer();
-	if (disposer != NULL) {
-		disposer->stop();
-		setDeviceDisposer(NULL);
-	}
-	
-	////////////////////////////////////////
-	// Subscriber
-	////////////////////////////////////////
-		
-	RenewSubscriber *renewSub = getRenewSubscriber();
-	if (renewSub != NULL) {
-		renewSub->stop();
-		setRenewSubscriber(NULL);
-	}
-
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	return true;
 }
 

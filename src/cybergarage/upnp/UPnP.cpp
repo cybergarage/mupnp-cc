@@ -20,7 +20,6 @@
 *	08/01/04
 *		- Added <stdio.h> for sprintf() for gcc 2.95.3.
 *	03/08/05
-<<<<<<< HEAD
 *		- Changed GetServerName() not to use iostream and use uHTTP::GetServerName().
 *
 ******************************************************************/
@@ -30,17 +29,6 @@
 #include <cybergarage/upnp/Icon.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>
 #include <uhttp/http/HTTPServer.h>
-=======
-*		- Changed GetServerName() not to use iostream and use CyberHTTP::GetServerName().
-*
-******************************************************************/
-
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/upnp/UPnP.h>
-#include <cybergarage/upnp/Icon.h>
-#include <cybergarage/upnp/ssdp/SSDP.h>
-#include <cybergarage/http/HTTPServer.h>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 #include <stdio.h>
 #include <time.h>
@@ -60,11 +48,7 @@ using namespace CyberLink;
 	
 const char *UPnP::GetServerName(std::string &buf)
 {
-<<<<<<< HEAD
 	uHTTP::GetServerName(buf);
-=======
-	CyberHTTP::GetServerName(buf);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	buf += " UPnP/";
 	buf += UPnP::VER;
 	buf += " ";
@@ -101,29 +85,17 @@ void UPnP::SetEnable(int value)
 	switch (value) {
 	case USE_ONLY_IPV6_ADDR:
 		{
-<<<<<<< HEAD
 			uHTTP::HostInterface::USE_ONLY_IPV6_ADDR = true;
-=======
-			CyberNet::HostInterface::USE_ONLY_IPV6_ADDR = true;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 		break;	
 	case USE_ONLY_IPV4_ADDR:
 		{
-<<<<<<< HEAD
 			uHTTP::HostInterface::USE_ONLY_IPV4_ADDR = true;
-=======
-			CyberNet::HostInterface::USE_ONLY_IPV4_ADDR = true;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 		break;	
 	case USE_LOOPBACK_ADDR:
 		{
-<<<<<<< HEAD
 			uHTTP::HostInterface::USE_LOOPBACK_ADDR = true;
-=======
-			CyberNet::HostInterface::USE_LOOPBACK_ADDR = true;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 		break;	
 	case USE_IPV6_LINK_LOCAL_SCOPE:
@@ -159,29 +131,17 @@ void UPnP::SetDisable(int value)
 	switch (value) {
 	case USE_ONLY_IPV6_ADDR:
 		{
-<<<<<<< HEAD
 			uHTTP::HostInterface::USE_ONLY_IPV6_ADDR = false;
-=======
-			CyberNet::HostInterface::USE_ONLY_IPV6_ADDR = false;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 		break;	
 	case USE_ONLY_IPV4_ADDR:
 		{
-<<<<<<< HEAD
 			uHTTP::HostInterface::USE_ONLY_IPV4_ADDR = false;
-=======
-			CyberNet::HostInterface::USE_ONLY_IPV4_ADDR = false;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 		break;	
 	case USE_LOOPBACK_ADDR:
 		{
-<<<<<<< HEAD
 			uHTTP::HostInterface::USE_LOOPBACK_ADDR = false;
-=======
-			CyberNet::HostInterface::USE_LOOPBACK_ADDR = false;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 		break;	
 	}
@@ -192,7 +152,6 @@ bool UPnP::IsEnabled(int value)
 	switch (value) {
 	case USE_ONLY_IPV6_ADDR:
 		{
-<<<<<<< HEAD
 			return uHTTP::HostInterface::USE_ONLY_IPV6_ADDR;
 		}
 	case USE_ONLY_IPV4_ADDR:
@@ -202,17 +161,6 @@ bool UPnP::IsEnabled(int value)
 	case USE_LOOPBACK_ADDR:
 		{
 			return uHTTP::HostInterface::USE_LOOPBACK_ADDR;
-=======
-			return CyberNet::HostInterface::USE_ONLY_IPV6_ADDR;
-		}
-	case USE_ONLY_IPV4_ADDR:
-		{
-			return CyberNet::HostInterface::USE_ONLY_IPV4_ADDR;
-		}
-	case USE_LOOPBACK_ADDR:
-		{
-			return CyberNet::HostInterface::USE_LOOPBACK_ADDR;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 	}
 	return false;

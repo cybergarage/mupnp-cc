@@ -74,23 +74,12 @@
 #include <cybergarage/upnp/control/QueryRequest.h>
 #include <cybergarage/upnp/control/QueryListener.h>
 #include <cybergarage/xml/Parser.h>
-<<<<<<< HEAD
 #include <uhttp/util/Debug.h>
-=======
-#include <cybergarage/util/Debug.h>
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <string>
 
 using namespace CyberLink;
 using namespace CyberXML;
-<<<<<<< HEAD
 using namespace uHTTP;
-=======
-using namespace CyberNet;
-using namespace CyberIO;
-using namespace CyberHTTP;
-using namespace CyberUtil;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 using namespace std;
 
 ////////////////////////////////////////////////
@@ -154,11 +143,7 @@ void Service::initActionList()
 	} 
 }
 
-<<<<<<< HEAD
 CyberLink::Action *Service::getAction(const std::string &actionName)
-=======
-CyberLink::Action *Service::getAction(const char *actionName)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	ActionList *actionList = getActionList();
 	int nActions = actionList->size();
@@ -198,11 +183,7 @@ void Service::initServiceStateTable()
 	} 
 }
 
-<<<<<<< HEAD
 StateVariable *Service::getStateVariable(const std::string &name)
-=======
-StateVariable *Service::getStateVariable(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	ServiceStateTable *stateTable = getServiceStateTable();
 	int tableSize = stateTable->size();
@@ -222,11 +203,7 @@ StateVariable *Service::getStateVariable(const char *name)
 //	SCPD node
 ////////////////////////////////////////////////
 
-<<<<<<< HEAD
 CyberXML::Node *Service::getSCPDNode(uHTTP::URL *url)
-=======
-CyberXML::Node *Service::getSCPDNode(CyberNet::URL *url)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	CyberXML::Parser parser;
 	return parser.parse(url);
@@ -234,11 +211,7 @@ CyberXML::Node *Service::getSCPDNode(CyberNet::URL *url)
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-<<<<<<< HEAD
 CyberXML::Node *Service::getSCPDNode(uHTTP::File *file)
-=======
-CyberXML::Node *Service::getSCPDNode(CyberIO::File *file)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	CyberXML::Parser parser;
 	return parser.parse(file);
@@ -246,11 +219,7 @@ CyberXML::Node *Service::getSCPDNode(CyberIO::File *file)
 
 #endif
 
-<<<<<<< HEAD
 CyberXML::Node *Service::getSCPDNode(const std::string &description)
-=======
-CyberXML::Node *Service::getSCPDNode(const char *description)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	CyberXML::Parser parser;
 	return parser.parse(description);
@@ -278,7 +247,6 @@ Node *Service::getSCPDNode()
 	string urlBaseStr = rootDev->getURLBase();
 	// Thanks for Steven Yen (2003/09/03)
 	if (urlBaseStr.length() <= 0) {
-<<<<<<< HEAD
         string location = rootDev->getLocation();
         if (location.length() <= 0)
             return NULL;
@@ -288,14 +256,6 @@ Node *Service::getSCPDNode()
         HTTP::GetRequestHostURL(locationHost.c_str(), locationPort, urlBaseStr);
 	}
     
-=======
-			const char *location = rootDev->getLocation();
-			string locationHost;
-			HTTP::GetHost(location, locationHost);
-			int locationPort = HTTP::GetPort(location);
-			HTTP::GetRequestHostURL(locationHost.c_str(), locationPort, urlBaseStr);
-	}
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	string scpdURLStrBuf;
 	scpdURLStr = HTTP::GetRelativeURL(scpdURLStr, scpdURLStrBuf);
 	string newScpdURLStr;
@@ -351,11 +311,7 @@ const char *Service::getSCPDData(string &buf)
 //	Load SCPD
 ////////////////////////////////////////////////
 
-<<<<<<< HEAD
 bool Service::loadSCPD(const std::string &description)
-=======
-bool Service::loadSCPD(const char *description)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	Node *scpdNode = NULL;
 
@@ -386,11 +342,7 @@ bool Service::loadSCPD(const char *description)
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-<<<<<<< HEAD
 bool Service::loadSCPD(uHTTP::File *file)
-=======
-bool Service::loadSCPD(CyberIO::File *file)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	string description;
 
@@ -427,11 +379,7 @@ bool Service::notify(Subscriber *sub, StateVariable *stateVar)
 	NotifyRequest notifyReq;
 	notifyReq.setRequest(sub, varName, value);
 	
-<<<<<<< HEAD
 	uHTTP::HTTPResponse *res = notifyReq.post(host, port);
-=======
-	CyberHTTP::HTTPResponse *res = notifyReq.post(host, port);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	if (res->isSuccessful() == false)
 		return false;
 			
@@ -509,11 +457,7 @@ const char *Service::getNotifyServiceTypeUSN(string &buf)
 	return  buf.c_str();
 }
 
-<<<<<<< HEAD
 void Service::announce(const std::string &bindAddr)
-=======
-void Service::announce(const char *bindAddr)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	// uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
 	
@@ -541,11 +485,7 @@ void Service::announce(const char *bindAddr)
 	ssdpSock.post(&ssdpReq);
 }
 
-<<<<<<< HEAD
 void Service::byebye(const std::string &bindAddr)
-=======
-void Service::byebye(const char *bindAddr)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	// uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
 		
@@ -582,15 +522,8 @@ void Service::setQueryListener(QueryListener *listener)
 ////////////////////////////////////////////////
 	
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/03/03)
-<<<<<<< HEAD
 bool Service::isURL(const std::string &referenceUrl, const std::string &url)
 {
-=======
-bool Service::isURL(const char *referenceUrl, const char *url)
-{
-	if (referenceUrl == NULL || url == NULL)
-		return false;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	bool ret = StringEquals(referenceUrl, url);
 	if (ret == true)
 		return true;
@@ -621,29 +554,17 @@ void Service::removeSubscriber(Subscriber *sub)
 	unlock();
 }
 
-<<<<<<< HEAD
 Subscriber *Service::getSubscriberBySID(const std::string &name)
-=======
-Subscriber *Service::getSubscriberBySID(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	SubscriberList *subList = getSubscriberList();
 	Subscriber *findSub = NULL;
 	lock();
 	int subListCnt = subList->size();
-<<<<<<< HEAD
 	//cout << "subListCnt = " << subListCnt << endl;
 	for (int n=0; n<subListCnt; n++) {
 		Subscriber *sub = subList->getSubscriber(n);
 		const char *sid = sub->getSID();
 		//cout << "[" << n << "] = " << sid << endl;
-=======
-	cout << "subListCnt = " << subListCnt << endl;
-	for (int n=0; n<subListCnt; n++) {
-		Subscriber *sub = subList->getSubscriber(n);
-		const char *sid = sub->getSID();
-		cout << "[" << n << "] = " << sid << endl;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		if (sid == NULL)
 			continue;
 		string sidStr = sid;
@@ -656,11 +577,7 @@ Subscriber *Service::getSubscriberBySID(const char *name)
 	return findSub;
 }
 
-<<<<<<< HEAD
 Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name)
-=======
-Subscriber *Service::getSubscriberByDeliveryURL(const char *name)
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	SubscriberList *subList = getSubscriberList();
 	Subscriber *findSub = NULL;

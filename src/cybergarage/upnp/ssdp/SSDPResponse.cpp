@@ -26,21 +26,12 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/ssdp/SSDPResponse.h>
-<<<<<<< HEAD
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;
 using namespace CyberLink;
 using namespace uHTTP;
 using namespace uHTTP;
-=======
-#include <cybergarage/util/StringUtil.h>
-
-using namespace std;
-using namespace CyberLink;
-using namespace CyberHTTP;
-using namespace CyberUtil;
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	CacheControl
@@ -52,20 +43,12 @@ void SSDPResponse::setLeaseTime(int value)
 	string leaseTimeStr;
 	leaseTimeStr= "max-age=";
 	leaseTimeStr.append(Integer2String(value, valueStr));
-<<<<<<< HEAD
 	setHeader(uHTTP::HTTP::CACHE_CONTROL, leaseTimeStr.c_str());
-=======
-	setHeader(CyberHTTP::HTTP::CACHE_CONTROL, leaseTimeStr.c_str());
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 int SSDPResponse::getLeaseTime()
 {
-<<<<<<< HEAD
 	const char *cacheCtrl = getHeaderValue(uHTTP::HTTP::CACHE_CONTROL);
-=======
-	const char *cacheCtrl = getHeaderValue(CyberHTTP::HTTP::CACHE_CONTROL);
->>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	return SSDP::GetLeaseTime(cacheCtrl);
 }
 
