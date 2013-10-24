@@ -38,7 +38,11 @@ SOAPResponse::SOAPResponse()
 }
 
 /*
+<<<<<<< HEAD
 SOAPResponse(uHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes)
+=======
+SOAPResponse(CyberHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	rootNode = NULL;
 	setRootNode(SOAP::CreateEnvelopeBodyNode());

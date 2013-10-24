@@ -10,6 +10,7 @@
 *
 *	07/15/03
 *		- first revision
+<<<<<<< HEAD
 *	01/05/04
 *		- Added UPnP status methods.
 *		- Changed about new ActionListener interface.
@@ -46,6 +47,44 @@ using namespace uHTTP;
 const char *Action::ELEM_NAME = "action";
 const char *Action::NAME = "name";
 
+=======
+*	01/05/04
+*		- Added UPnP status methods.
+*		- Changed about new ActionListener interface.
+*	01/05/04
+*		- Added clearOutputAgumentValues() to initialize the output values before calling performActionListener().
+*	04/23/04
+*		- Fixed initArgumentList() to share a argument node in three Argument when the argument lists are initialized.
+*		- Fixed getArgument(name) to return the valid pointer. 
+*	04/26/04
+*		- Changed postControlAction() to get the return value using the ActionResponse.
+*	05/19/04
+*		- Changed the header include order for Cygwin.
+*	07/09/04
+*		- Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net>
+*		- Changed postControlAction() to set the status code to the UPnPStatus.
+*
+******************************************************************/
+
+#include <cybergarage/upnp/Action.h>
+#include <cybergarage/util/Debug.h>
+#include <cybergarage/upnp/Service.h>
+
+#include <string>
+
+using namespace std;
+using namespace CyberUtil;
+using namespace CyberLink;
+using namespace CyberHTTP;
+
+////////////////////////////////////////////////
+//	Constants
+////////////////////////////////////////////////
+
+const char *Action::ELEM_NAME = "action";
+const char *Action::NAME = "name";
+
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 ////////////////////////////////////////////////
 //	Constructor
 ////////////////////////////////////////////////
@@ -57,6 +96,7 @@ Action::Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode)
 
 	initArgumentList();
 }
+<<<<<<< HEAD
 
 Action::Action(Action *action)
 {
@@ -85,6 +125,36 @@ Service *Action::getService()
 		return NULL;
 	return data->getService();
 }
+=======
+
+Action::Action(Action *action)
+{
+	this->serviceNode = action->getServiceNode();
+	this->actionNode = action->getActionNode();
+
+	initArgumentList();
+}
+
+Action::~Action()
+{
+	delete argumentList;
+	delete argumentInList;
+	delete argumentOutList;
+}
+
+////////////////////////////////////////////////
+//	getService
+////////////////////////////////////////////////
+
+Service *Action::getService()
+{
+	CyberXML::Node *node = getServiceNode();
+	ServiceData *data = (ServiceData *)node->getUserData();
+	if (data == NULL)
+		return NULL;
+	return data->getService();
+}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	argumentList
@@ -93,6 +163,7 @@ Service *Action::getService()
 void Action::initArgumentList()
 {
 	argumentList = new ArgumentList(true);
+<<<<<<< HEAD
 	argumentInList = new ArgumentList(false);
 	argumentOutList = new ArgumentList(false);
 
@@ -100,6 +171,15 @@ void Action::initArgumentList()
 	CyberXML::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
 	if (serviceNode == NULL || argumentListNode == NULL)
 		return;
+=======
+	argumentInList = new ArgumentList(false);
+	argumentOutList = new ArgumentList(false);
+
+	CyberXML::Node *serviceNode = getServiceNode();
+	CyberXML::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
+	if (serviceNode == NULL || argumentListNode == NULL)
+		return;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	int nodeCnt = argumentListNode->getNNodes();
 	for (int n=0; n<nodeCnt; n++) {
@@ -107,6 +187,7 @@ void Action::initArgumentList()
 		if (Argument::isArgumentNode(argNode) == false)
 			continue;
 		Argument *arg = new Argument(serviceNode, argNode);
+<<<<<<< HEAD
 		argumentList->add(arg);
 		if (arg->isInDirection() == true) 
 			argumentInList->add(arg);
@@ -140,6 +221,41 @@ void Action::clearOutputAgumentValues()
 		arg->setValue("");
 	}
 }
+=======
+		argumentList->add(arg);
+		if (arg->isInDirection() == true) 
+			argumentInList->add(arg);
+		if (arg->isOutDirection() == true)
+			argumentOutList->add(arg);
+	} 
+}
+
+Argument *Action::getArgument(const char *name)
+{
+	ArgumentList *argList = getArgumentList();
+	int nArgs = argList->size();
+	for (int n=0; n<nArgs; n++) {
+		Argument *arg = argList->getArgument(n);
+		const char *argName = arg->getName();
+		if (argName == NULL)
+			continue;
+		string argNameStr = argName;
+		if (argNameStr.compare(name) == 0)
+			return arg;
+	}
+	return NULL;
+}
+
+void Action::clearOutputAgumentValues()
+{
+	ArgumentList *outArgList = getOutputArgumentList();
+	int nArgs = outArgList->size();
+	for (int n=0; n<nArgs; n++) {
+		Argument *arg = outArgList->getArgument(n);
+		arg->setValue("");
+	}
+}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	controlAction
@@ -151,6 +267,7 @@ bool Action::performActionListener(ActionRequest *actionReq)
 	if (listener == NULL)
 		return false;
 	ActionResponse actionRes;
+<<<<<<< HEAD
 	setStatus(UPnP::INVALID_ACTION);
 	clearOutputAgumentValues();
 	if (listener->actionControlReceived(this) == true) {
@@ -160,6 +277,17 @@ bool Action::performActionListener(ActionRequest *actionReq)
 		UPnPStatus *upnpStatus = getStatus();
 		actionRes.setFaultResponse(upnpStatus->getCode(), upnpStatus->getDescription());
 	}
+=======
+	setStatus(UPnP::INVALID_ACTION);
+	clearOutputAgumentValues();
+	if (listener->actionControlReceived(this) == true) {
+		actionRes.setResponse(this);
+	}
+	else {
+		UPnPStatus *upnpStatus = getStatus();
+		actionRes.setFaultResponse(upnpStatus->getCode(), upnpStatus->getDescription());
+	}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	if (Debug::isOn() == true)
 		actionRes.print();
 	ControlRequest *ctrlReq = actionReq;
@@ -179,6 +307,7 @@ bool Action::postControlAction()
 	ctrlReq.setRequest(this, actionInputArgList);
 	if (Debug::isOn() == true)
 		ctrlReq.print();
+<<<<<<< HEAD
 	ActionResponse *ctrlRes = new ActionResponse();
 	ctrlReq.post(ctrlRes);
 	if (Debug::isOn() == true)
@@ -186,6 +315,15 @@ bool Action::postControlAction()
 	setControlResponse(ctrlRes);
 	// Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net> (07/09/04)
 	int statCode = ctrlRes->getStatusCode();
+=======
+	ActionResponse *ctrlRes = new ActionResponse();
+	ctrlReq.post(ctrlRes);
+	if (Debug::isOn() == true)
+		ctrlRes->print();
+	setControlResponse(ctrlRes);
+	// Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net> (07/09/04)
+	int statCode = ctrlRes->getStatusCode();
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	setStatus(statCode);
 	if (ctrlRes->isSuccessful() == false)
 		return false;

@@ -16,9 +16,15 @@
 #ifndef _CSOAP_SOAPREQUEST_H_
 #define _CSOAP_SOAPREQUEST_H_
 
+<<<<<<< HEAD
 #include <uhttp/http/HTTPRequest.h>
 #include <uhttp/http/HTTPResponse.h>
 #include <uhttp/http/HTTP.h>
+=======
+#include <cybergarage/http/HTTPRequest.h>
+#include <cybergarage/http/HTTPResponse.h>
+#include <cybergarage/http/HTTP.h>
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/soap/SOAP.h>
 #include <cybergarage/soap/SOAPResponse.h>
 #include <cybergarage/xml/Node.h>
@@ -27,7 +33,11 @@ namespace CyberSOAP {
 
 const char SOAPACTION[] = "SOAPACTION";
 
+<<<<<<< HEAD
 class SOAPRequest : public uHTTP::HTTPRequest
+=======
+class SOAPRequest : public CyberHTTP::HTTPRequest
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 
 	CyberXML::Node *rootNode;
@@ -40,7 +50,11 @@ class SOAPRequest : public uHTTP::HTTPRequest
 public:
 
 	SOAPRequest();
+<<<<<<< HEAD
 	SOAPRequest(uHTTP::HTTPRequest *httpReq);
+=======
+	SOAPRequest(CyberHTTP::HTTPRequest *httpReq);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	~SOAPRequest();
 
@@ -50,7 +64,11 @@ public:
 
 public:
 
+<<<<<<< HEAD
 	void setSOAPAction(const std::string &action)
+=======
+	void setSOAPAction(const char *action)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		setStringHeader(SOAPACTION, action);
 	}
@@ -60,7 +78,11 @@ public:
 		return getStringHeaderValue(SOAPACTION, buf);
 	}
 
+<<<<<<< HEAD
 	bool isSOAPAction(const std::string &value);
+=======
+	bool isSOAPAction(const char *value);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
  
 	////////////////////////////////////////////////
 	//	Header
@@ -84,7 +106,11 @@ public:
 		return SOAP::GetEncording(getContent(), buf);
 	}
 
+<<<<<<< HEAD
 	bool isEncording(const std::string &encType)
+=======
+	bool isEncording(const char *encType)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return SOAP::IsEncording(getContent(), encType);
 	}
@@ -95,6 +121,7 @@ public:
 
 private:
 
+<<<<<<< HEAD
 	CyberXML::Node *parseMessage(const std::string &content, int contentLen);
 
 public:
@@ -102,6 +129,15 @@ public:
 	SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
 
 	SOAPResponse *postMessage(const std::string &host, int port)
+=======
+	CyberXML::Node *parseMessage(const char *content, int contentLen);
+
+public:
+
+	SOAPResponse *postMessage(const char *host, int port, SOAPResponse *soapRes);
+
+	SOAPResponse *postMessage(const char *host, int port)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return postMessage(host, port, &soapRes);
 	}

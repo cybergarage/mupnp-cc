@@ -27,7 +27,11 @@
 #include <sstream>
 
 using namespace std;
+<<<<<<< HEAD
 using namespace uHTTP;
+=======
+using namespace CyberHTTP;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 using namespace CyberLink;
 using namespace CyberXML;
 using namespace CyberSOAP;
@@ -53,7 +57,11 @@ ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes)
 
 void ActionResponse::setResponse(CyberLink::Action *action)
 {
+<<<<<<< HEAD
 	setStatusCode(uHTTP::HTTP::OK_REQUEST);
+=======
+	setStatusCode(CyberHTTP::HTTP::OK_REQUEST);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	
 	CyberXML::Node *bodyNode = getBodyNode();
 	CyberXML::Node *resNode = createResponseNode(action);

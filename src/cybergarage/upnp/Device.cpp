@@ -50,6 +50,7 @@
 *	03/30/05
 *		- Added a  exclusive access control to Device::getDescriptionData().
 *		- Added Devuce::getServiceBySCPDURL().
+<<<<<<< HEAD
 *	03/31/05
 *		- Changed httpGetRequestRecieved() to return the description stream using
 *		  Device::getDescriptionData() and Service::getSCPDData() at first.
@@ -68,10 +69,31 @@
 *	07/24/05
 *		- Thanks for Stefano Lenzi <kismet-sl@users.sourceforge.net>
 *		- Fixed a bug of getParentDevice() to return the parent device normally.
+=======
+*	03/31/05
+*		- Changed httpGetRequestRecieved() to return the description stream using
+*		  Device::getDescriptionData() and Service::getSCPDData() at first.
+*	04/25/05
+*		- Thanks for Mikael Hakman <mhakman@dkab.net>
+*		- Changed announce() and byebye() to close the socket after the posting.
+*	04/25/05
+*		- Thanks for Mikael Hakman <mhakman@dkab.net>
+*		- Changed deviceSearchResponse() answer with USN:UDN::<device-type> when request ST is device type.
+* 	04/25/05
+*		- Thanks for Mikael Hakman <mhakman@dkab.net>
+* 		- Changed getDescriptionData() to add a XML declaration at first line.
+* 	04/25/05
+*		- Thanks for Mikael Hakman <mhakman@dkab.net>
+*		- Added a new setActionListener() and serQueryListner() to include the sub devices. 
+*	07/24/05
+*		- Thanks for Stefano Lenzi <kismet-sl@users.sourceforge.net>
+*		- Fixed a bug of getParentDevice() to return the parent device normally.
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 *	02/21/06
 *		- Changed httpRequestRecieved() not to ignore HEAD requests.
 *
 ******************************************************************/
+<<<<<<< HEAD
 
 
 #include <uhttp/net/HostInterface.h>
@@ -80,6 +102,16 @@
 #include <uhttp/util/TimeUtil.h>
 #include <uhttp/http/HTTPDate.h>
 #include <uhttp/io/File.h>
+=======
+
+
+#include <cybergarage/net/HostInterface.h>
+#include <cybergarage/net/URL.h>
+#include <cybergarage/util/Debug.h>
+#include <cybergarage/util/TimeUtil.h>
+#include <cybergarage/http/HTTPDate.h>
+#include <cybergarage/io/File.h>
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/UPnPStatus.h>
@@ -94,11 +126,21 @@
 #include <iostream>
 
 using namespace std;
+<<<<<<< HEAD
 using namespace uHTTP;
 using namespace CyberLink;
 using namespace CyberXML;
 using namespace uHTTP;
 using namespace CyberSOAP;
+=======
+using namespace CyberUtil;
+using namespace CyberLink;
+using namespace CyberXML;
+using namespace CyberHTTP;
+using namespace CyberNet;
+using namespace CyberSOAP;
+using namespace CyberIO;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	Constants
@@ -160,6 +202,7 @@ Device::Device(CyberXML::Node *device)
 	initDeviceData();
 	initChildList();
 }
+<<<<<<< HEAD
 
 void Device::initUUID()
 {
@@ -190,6 +233,38 @@ void Device::initChildList()
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
 Device::Device(uHTTP::File *descriptionFile)
+=======
+
+void Device::initUUID()
+{
+	string uuid;
+	setUUID(UPnP::CreateUUID(uuid));
+}
+
+void Device::initDeviceData()
+{
+	rootDevice = NULL;
+	parentDevice = NULL;
+	DeviceData *data = getDeviceData();
+	if (data != NULL)
+		data->setDevice(this);
+}
+
+void Device::initChildList()
+{
+	initDeviceList();
+	initServiceList();
+	initIconList();
+}
+
+////////////////////////////////////////////////
+//	Constructor (File)
+////////////////////////////////////////////////
+
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+
+Device::Device(CyberIO::File *descriptionFile)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	setLocalRootDeviceFlag(true);
 	rootNode = NULL;
@@ -200,19 +275,32 @@ Device::Device(uHTTP::File *descriptionFile)
 		throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
 }
 
+<<<<<<< HEAD
 Device::Device(const std::string &descriptionFileName)
+=======
+Device::Device(const char *descriptionFileName)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	setLocalRootDeviceFlag(true);
 	rootNode = NULL;
 	deviceNode = NULL;
 	initUUID();
+<<<<<<< HEAD
 	uHTTP::File descriptionFile(descriptionFileName);
+=======
+	CyberIO::File descriptionFile(descriptionFileName);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	bool ret = loadDescription(&descriptionFile);
 	if (ret == false)
 		throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
 }
+<<<<<<< HEAD
 
 #endif
+=======
+
+#endif
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	Member
@@ -257,7 +345,11 @@ bool Device::isNMPRMode()
 //	URL Base
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 void Device::setURLBase(const std::string &value)
+=======
+void Device::setURLBase(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	if (isRootDevice() == true) {
 		Node *node = getRootNode()->getNode(URLBASE_NAME);
@@ -274,7 +366,11 @@ void Device::setURLBase(const std::string &value)
 	}
 }
 
+<<<<<<< HEAD
 void Device::updateURLBase(const std::string &host)
+=======
+void Device::updateURLBase(const char *host)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	string urlBase;
 	GetHostURL(host, getHTTPPort(), "", urlBase);
@@ -307,8 +403,15 @@ Device::~Device()
 //	isDeviceType
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 bool Device::isDeviceType(const std::string &value)
 {
+=======
+bool Device::isDeviceType(const char *value)
+{
+	if (value == NULL)
+		return false;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	string valueStr = value;
 	return (valueStr.compare(getDeviceType()) == 0) ? true : false;
 }
@@ -332,9 +435,13 @@ int Device::getLeaseTime()
 	SSDPPacket *packet = getSSDPPacket();
 	if (packet != NULL)
 		return packet->getLeaseTime();
+<<<<<<< HEAD
     if (hasDeviceData())
         return getDeviceData()->getLeaseTime();
     return 0;
+=======
+	return getDeviceData()->getLeaseTime();
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 ////////////////////////////////////////////////
@@ -353,8 +460,11 @@ bool Device::isExpired()
 {
 	long elipsedTime = getElapsedTime();
 	long leaseTime = getLeaseTime() + UPnP::DEFAULT_EXPIRED_DEVICE_EXTRA_TIME;
+<<<<<<< HEAD
     if (leaseTime < 0)
         return false;
+=======
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	if (leaseTime < elipsedTime)
 		return true;
 	return false;
@@ -422,10 +532,17 @@ DeviceData *Device::getDeviceData()
 }
 
 ////////////////////////////////////////////////
+<<<<<<< HEAD
 //	loadDescription
 ////////////////////////////////////////////////
 
 bool Device::loadDescription(const std::string &description)
+=======
+//	Description
+////////////////////////////////////////////////
+
+bool Device::loadDescription(const char *description)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	try {
 		Parser parser;
@@ -436,21 +553,32 @@ bool Device::loadDescription(const std::string &description)
 		msg = "Couldn't load description";
 		Debug::warning(msg);
 		Debug::warning(e);
+<<<<<<< HEAD
 		//throw InvalidDescriptionException(msg.c_str()); 
+=======
+		//throw InvalidDescriptionException(msg.c_str()); 
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		return false;
 	}
 
 	if (rootNode == NULL)
 		return false;
 
+<<<<<<< HEAD
 	if (Debug::isOn() == true)
         rootNode->print();
     
+=======
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	deviceNode = rootNode->getNode(Device::ELEM_NAME);
 	if (deviceNode == NULL)
 		return false;
 		
+<<<<<<< HEAD
 	setDescriptionFile("");
+=======
+	setDescriptionFile("");
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	setDescriptionURI(DEFAULT_DESCRIPTION_URI);
 	setLeaseTime(DEFAULT_LEASE_TIME);
 	setHTTPPort(HTTP_DEFAULT_PORT);
@@ -459,6 +587,7 @@ bool Device::loadDescription(const std::string &description)
 	if (hasUDN() == false)
 		updateUDN();
 
+<<<<<<< HEAD
 	initDeviceData();
 	initChildList();
 
@@ -498,6 +627,47 @@ bool Device::loadDescription(uHTTP::File *file)
 }
 
 #endif
+=======
+	initDeviceData();
+	initChildList();
+
+	return true;
+}
+
+////////////////////////////////////////////////
+//	Description (File)
+////////////////////////////////////////////////
+
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+
+bool Device::loadDescription(CyberIO::File *file)
+{
+	string description;
+
+	if (file->load(description) == false) {
+		string msg;
+		msg += "Couldn't load description file (";
+		msg += file->getName();
+		msg += ")";
+		Debug::warning(msg);
+		//throw InvalidDescriptionException(msg.c_str()); 
+		return false;
+	}
+
+	if (loadDescription(description.c_str()) == false)
+		return false;
+
+	setDescriptionFile(file->getName());
+
+	// initialize childlist again
+	initDeviceData();
+	initChildList();
+
+	return true;
+}
+
+#endif
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	deviceList
@@ -522,8 +692,15 @@ void Device::initDeviceList()
 	} 
 }
 
+<<<<<<< HEAD
 bool Device::isDevice(const std::string &name)
 {
+=======
+bool Device::isDevice(const char *name)
+{
+	if (name == NULL)
+		return false;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	String nameStr = name;
 	if (nameStr.endsWith(getUDN()) == true)
 		return true;
@@ -534,7 +711,11 @@ bool Device::isDevice(const std::string &name)
 	return false;
 }
 	
+<<<<<<< HEAD
 Device *Device::getDevice(const std::string &name)
+=======
+Device *Device::getDevice(const char *name)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	DeviceList *devList = getDeviceList();
 	int devCnt = devList->size();
@@ -548,6 +729,7 @@ Device *Device::getDevice(const std::string &name)
 	}
 	return NULL;
 }
+<<<<<<< HEAD
 
 Device *Device::getDeviceByDescriptionURI(const std::string &uri)
 {
@@ -563,6 +745,23 @@ Device *Device::getDeviceByDescriptionURI(const std::string &uri)
 	}
 	return NULL;
 }
+=======
+
+Device *Device::getDeviceByDescriptionURI(const char *uri)
+{
+	DeviceList *devList = getDeviceList();
+	int devCnt = devList->size();
+	for (int n=0; n<devCnt; n++) {
+		Device *dev = devList->getDevice(n);
+		if (dev->isDescriptionURI(uri) == true)
+			return dev;
+		Device *cdev = dev->getDeviceByDescriptionURI(uri);
+		if (cdev != NULL)
+			return cdev;
+	}
+	return NULL;
+}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	serviceList
@@ -587,7 +786,11 @@ void Device::initServiceList()
 	} 
 }
 
+<<<<<<< HEAD
 Service *Device::getService(const std::string &name)
+=======
+Service *Device::getService(const char *name)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	int n;
 
@@ -611,7 +814,11 @@ Service *Device::getService(const std::string &name)
 	return NULL;
 }
 
+<<<<<<< HEAD
 Service *Device::getServiceBySCPDURL(const std::string &searchUrl)
+=======
+Service *Device::getServiceBySCPDURL(const char *searchUrl)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	int n;
 	ServiceList *serviceList = getServiceList();
@@ -634,7 +841,11 @@ Service *Device::getServiceBySCPDURL(const std::string &searchUrl)
 	return NULL;
 }
 
+<<<<<<< HEAD
 Service *Device::getServiceByControlURL(const std::string &searchUrl)
+=======
+Service *Device::getServiceByControlURL(const char *searchUrl)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	int n;
 	ServiceList *serviceList = getServiceList();
@@ -657,7 +868,11 @@ Service *Device::getServiceByControlURL(const std::string &searchUrl)
 	return NULL;
 }
 
+<<<<<<< HEAD
 Service *Device::getServiceByEventSubURL(const std::string &searchUrl)
+=======
+Service *Device::getServiceByEventSubURL(const char *searchUrl)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	int n;
 	ServiceList *serviceList = getServiceList();
@@ -680,7 +895,11 @@ Service *Device::getServiceByEventSubURL(const std::string &searchUrl)
 	return NULL;
 }
 
+<<<<<<< HEAD
 Service *Device::getSubscriberService(const std::string &uuid)
+=======
+Service *Device::getSubscriberService(const char *uuid)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	int n;
 	String uuidStr = uuid;
@@ -709,19 +928,35 @@ Service *Device::getSubscriberService(const std::string &uuid)
 //	StateVariable
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 StateVariable *Device::getStateVariable(const std::string &serviceType, const std::string &name)
 {
 	int n;
+=======
+StateVariable *Device::getStateVariable(const char* serviceType, const char *name)
+{
+	int n;
+	string serviceTypeStr;
+	if (serviceType != NULL)
+		serviceTypeStr = serviceType;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	ServiceList *serviceList = getServiceList();
 	int serviceCnt = serviceList->size();
 	for (n=0; n<serviceCnt; n++) {
 		Service *service = serviceList->getService(n);
 		// Thanks for Theo Beisch (11/09/04)
+<<<<<<< HEAD
         if (0 < serviceType.length()) {
             if (serviceType.compare(service->getServiceType()) != 0)
                 continue;
         }
+=======
+		if (serviceType != NULL) {
+			if (serviceTypeStr.compare(service->getServiceType()) != 0)
+				continue;
+		}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		StateVariable *stateVar = service->getStateVariable(name);
 		if (stateVar != NULL)
 			return stateVar;
@@ -739,19 +974,32 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
 	return NULL;
 }
 
+<<<<<<< HEAD
 StateVariable *Device::getStateVariable(const std::string &name)
 {
 	return getStateVariable("", name);
+=======
+StateVariable *Device::getStateVariable(const char *name)
+{
+	return getStateVariable(NULL, name);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 ////////////////////////////////////////////////
 //	Action
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 CyberLink::Action *Device::getAction(const std::string &name)
 {
 	int n;
 	uHTTP::String nameStr= name;
+=======
+CyberLink::Action *Device::getAction(const char *name)
+{
+	int n;
+	CyberUtil::String nameStr= name;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	ServiceList *serviceList = getServiceList();
 	int serviceCnt = serviceList->size();
@@ -810,12 +1058,21 @@ void Device::initIconList()
 
 void Device::notifyWait()
 {
+<<<<<<< HEAD
 	uHTTP::WaitRandom(DEFAULT_DISCOVERY_WAIT_TIME);
 }
 
 const char *Device::getLocationURL(const std::string &host, std::string &buf)
 {
 	return uHTTP::GetHostURL(host, getHTTPPort(), getDescriptionURI(), buf);
+=======
+	CyberUtil::WaitRandom(DEFAULT_DISCOVERY_WAIT_TIME);
+}
+
+const char *Device::getLocationURL(const char *host, std::string &buf)
+{
+	return CyberNet::GetHostURL(host, getHTTPPort(), getDescriptionURI(), buf);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 const char *Device::getNotifyDeviceNT(std::string &buf)
@@ -850,7 +1107,11 @@ const char *Device::getNotifyDeviceTypeUSN(std::string &buf)
 	return buf.c_str();
 }
 
+<<<<<<< HEAD
 void Device::announce(const std::string &bindAddr)
+=======
+void Device::announce(const char *bindAddr)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	string devLocationBuf;
 	const char *devLocation = getLocationURL(bindAddr, devLocationBuf);
@@ -882,9 +1143,15 @@ void Device::announce(const std::string &bindAddr)
 	ssdpReq.setUSN(devUSN.c_str());
 	ssdpSock.post(&ssdpReq);
 
+<<<<<<< HEAD
 	// Thanks for Mikael Hakman (04/25/05)
 	ssdpSock.close();
 
+=======
+	// Thanks for Mikael Hakman (04/25/05)
+	ssdpSock.close();
+
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	int n;
 
 	ServiceList *serviceList = getServiceList();
@@ -906,11 +1173,19 @@ void Device::announce()
 {
 	notifyWait();
 
+<<<<<<< HEAD
 	int nHostAddrs = uHTTP::GetNHostAddresses();
 	for (int n=0; n<nHostAddrs; n++) {
 		std::string bindAddrBuf;
 		const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrBuf);
 		if (uHTTP::StringHasData(bindAddr) == false)
+=======
+	int nHostAddrs = CyberNet::GetNHostAddresses();
+	for (int n=0; n<nHostAddrs; n++) {
+		std::string bindAddrBuf;
+		const char *bindAddr = CyberNet::GetHostAddress(n, bindAddrBuf);
+		if (CyberUtil::StringHasData(bindAddr) == false)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 			continue;
 		int ssdpCount = getSSDPAnnounceCount();
 		for (int i=0; i<ssdpCount; i++)
@@ -918,7 +1193,11 @@ void Device::announce()
 	}
 }
 	
+<<<<<<< HEAD
 void Device::byebye(const std::string &bindAddr)
+=======
+void Device::byebye(const char *bindAddr)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	int n;
 	SSDPNotifySocket ssdpSock(bindAddr);
@@ -944,9 +1223,15 @@ void Device::byebye(const std::string &bindAddr)
 	ssdpReq.setUSN(devUSN.c_str());
 	ssdpSock.post(&ssdpReq);
 
+<<<<<<< HEAD
 	// Thanks for Mikael Hakman (04/25/05)
 	ssdpSock.close();
 
+=======
+	// Thanks for Mikael Hakman (04/25/05)
+	ssdpSock.close();
+
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	ServiceList *serviceList = getServiceList();
 	int serviceCnt = serviceList->size();
 	for (n=0; n<serviceCnt; n++) {
@@ -964,11 +1249,19 @@ void Device::byebye(const std::string &bindAddr)
 
 void Device::byebye()
 {
+<<<<<<< HEAD
 	int nHostAddrs = uHTTP::GetNHostAddresses();
 	for (int n=0; n<nHostAddrs; n++) {
 		std::string bindAddrBuf;
 		const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrBuf);
 		if (uHTTP::StringHasData(bindAddr) == false)
+=======
+	int nHostAddrs = CyberNet::GetNHostAddresses();
+	for (int n=0; n<nHostAddrs; n++) {
+		std::string bindAddrBuf;
+		const char *bindAddr = CyberNet::GetHostAddress(n, bindAddrBuf);
+		if (CyberUtil::StringHasData(bindAddr) == false)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 			continue;
 		int ssdpCount = getSSDPAnnounceCount();
 		for (int i=0; i<ssdpCount; i++)
@@ -980,7 +1273,11 @@ void Device::byebye()
 //	Search
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn)
+=======
+bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const char *st, const char *usn)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	const char *localAddr = ssdpPacket->getLocalAddress();
 	Device *rootDev = getRootDevice();
@@ -998,7 +1295,11 @@ bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, c
 	ssdpRes.setMYNAME(getFriendlyName());
 
 	int mx = ssdpPacket->getMX();
+<<<<<<< HEAD
 	uHTTP::WaitRandom(mx * 1000);
+=======
+	CyberUtil::WaitRandom(mx * 1000);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		
 	const char *remoteAddr = ssdpPacket->getRemoteAddress();
 	int remotePort = ssdpPacket->getRemotePort();
@@ -1047,11 +1348,19 @@ void Device::deviceSearchResponse(SSDPPacket *ssdpPacket)
 	else if (ST::IsURNDevice(ssdpST.c_str()) == true) {
 		const char *devType= getDeviceType();
 		if (ssdpST.compare(devType) == 0) {
+<<<<<<< HEAD
 			// Thanks for Mikael Hakman (04/25/05)
 			devUSN = getUDN();
 			devUSN += "::";
 			devUSN += devType;
 			postSearchResponse(ssdpPacket, devType, devUSN.c_str());
+=======
+			// Thanks for Mikael Hakman (04/25/05)
+			devUSN = getUDN();
+			devUSN += "::";
+			devUSN += devType;
+			postSearchResponse(ssdpPacket, devType, devUSN.c_str());
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		}
 	}
 		
@@ -1082,11 +1391,25 @@ void Device::deviceSearchReceived(SSDPPacket *ssdpPacket)
 //	HTTP Server	
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 void Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
+=======
+void Device::httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	if (Debug::isOn() == true)
 		httpReq->print();
 
+<<<<<<< HEAD
+=======
+	/*
+	string buf;
+	httpReq->toString(buf);
+	Debug::on();
+	Debug::message(buf.c_str(), "httpRequestRecieved.log");
+	*/
+	
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	if (httpReq->isGetRequest() == true || httpReq->isHeadRequest()) {
 		httpGetRequestRecieved(httpReq);
 		return;
@@ -1110,12 +1433,17 @@ void Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 //	HTTP Server	
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 const char *Device::getDescriptionData(const std::string &host, string &buf)
+=======
+const char *Device::getDescriptionData(const char *host, string &buf)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	lock();
 	if (isNMPRMode() == false)
 		updateURLBase(host);
 	Node *rootNode = getRootNode();
+<<<<<<< HEAD
 	buf = "";
 	if (rootNode != NULL) {
 		string nodeBuf;
@@ -1123,6 +1451,15 @@ const char *Device::getDescriptionData(const std::string &host, string &buf)
 		buf = UPnP::XML_DECLARATION;
 		buf += "\n";
 		buf += rootNode->toString(nodeBuf);
+=======
+	buf = "";
+	if (rootNode != NULL) {
+		string nodeBuf;
+		// Thanks for Mikael Hakman (04/25/05)
+		buf = UPnP::XML_DECLARATION;
+		buf += "\n";
+		buf += rootNode->toString(nodeBuf);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	}
 	unlock();
 	return buf.c_str();
@@ -1137,16 +1474,28 @@ void Device::httpGetRequestRecieved(HTTPRequest *httpReq)
 		return;
 	}
 			
+<<<<<<< HEAD
 	string fileByteBuf;
 	const char *fileByte = "";
 
 	Device *embDev;
 	Service *embService;
+=======
+	string rootPathBuf;
+	const char *rootPath = getDescriptionFilePath(rootPathBuf);
+	
+	string fileByteBuf;
+	const char *fileByte = "";
+
+	Device *embDev;
+	Service *embService;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	if (isDescriptionURI(uri.c_str()) == true) {
 		const char *localAddr = httpReq->getLocalAddress();
 		fileByte = getDescriptionData(localAddr, fileByteBuf);
 	}
+<<<<<<< HEAD
 	else if ((embDev = getDeviceByDescriptionURI(uri.c_str())) != NULL) {
 		const char *localAddr = httpReq->getLocalAddress();
 		fileByte = embDev->getDescriptionData(localAddr, fileByteBuf);
@@ -1158,6 +1507,19 @@ void Device::httpGetRequestRecieved(HTTPRequest *httpReq)
 		httpReq->returnBadRequest();
 		return;
 	}
+=======
+	else if ((embDev = getDeviceByDescriptionURI(uri.c_str())) != NULL) {
+		const char *localAddr = httpReq->getLocalAddress();
+		fileByte = embDev->getDescriptionData(localAddr, fileByteBuf);
+	}
+	else if ((embService = getServiceBySCPDURL(uri.c_str())) != NULL) {
+		fileByte = embService->getSCPDData(fileByteBuf);
+	}
+	else {
+		httpReq->returnBadRequest();
+		return;
+	}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	HTTPResponse httpRes;
 	if (File::isXMLFileName(uri.c_str()) == true)
@@ -1280,7 +1642,11 @@ void Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
 		return;
 	}
 	if (subReq->hasCallback() == false && subReq->hasSID() == false) {
+<<<<<<< HEAD
 		upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
+=======
+		upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		return;
 	}
 
@@ -1302,7 +1668,11 @@ void Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
 		return;
 	}
 		
+<<<<<<< HEAD
 	upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
+=======
+	upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 }
 
 void Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
@@ -1338,7 +1708,11 @@ void Device::deviceEventRenewSubscriptionRecieved(Service *service, Subscription
 	Subscriber *sub = service->getSubscriberBySID(sid);
 
 	if (sub == NULL) {
+<<<<<<< HEAD
 		upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
+=======
+		upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		return;
 	}
 
@@ -1360,7 +1734,11 @@ void Device::deviceEventUnsubscriptionRecieved(Service *service, SubscriptionReq
 
 	Subscriber *sub = service->getSubscriberBySID(sid);
 	if (sub == NULL) {
+<<<<<<< HEAD
 		upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
+=======
+		upnpBadSubscriptionRecieved(subReq, CyberHTTP::HTTP::PRECONDITION_FAILED);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		return;
 	}
 
@@ -1470,6 +1848,7 @@ void Device::setQueryListener(QueryListener *listener)
 		Service->setQueryListener(listener);
 	}
 }
+<<<<<<< HEAD
 
 ////////////////////////////////////////////////
 //	Action/QueryListener
@@ -1502,3 +1881,37 @@ void Device::setQueryListener(QueryListener *listener, bool includeSubDevices)
 		}
 	}
 }
+=======
+
+////////////////////////////////////////////////
+//	Action/QueryListener
+////////////////////////////////////////////////
+
+// Thanks for Mikael Hakman (04/25/05)
+void Device::setActionListener(ActionListener *listener, bool includeSubDevices)
+{
+	setActionListener(listener);
+	if (includeSubDevices == true) {
+		DeviceList *devList = getDeviceList();
+		int devCnt = devList->size();
+		for (int n=0; n<devCnt; n++) {
+			Device *dev = devList->getDevice(n);
+			dev->setActionListener(listener, true);
+		}
+	}
+}
+
+// Thanks for Mikael Hakman (04/25/05)
+void Device::setQueryListener(QueryListener *listener, bool includeSubDevices)
+{
+	setQueryListener(listener);
+	if (includeSubDevices == true) {
+		DeviceList *devList = getDeviceList();
+		int devCnt = devList->size();
+		for (int n=0; n<devCnt; n++) {
+			Device *dev = devList->getDevice(n);
+			dev->setQueryListener(listener, true);
+		}
+	}
+}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2

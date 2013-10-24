@@ -18,10 +18,13 @@
 #ifndef _CLINK_SERVICE_H_
 #define _CLINK_SERVICE_H_
 
+<<<<<<< HEAD
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/io/File.h>
 #include <uhttp/net/URL.h>
 
+=======
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/upnp/xml/DeviceData.h>
 #include <cybergarage/upnp/ActionList.h>
 #include <cybergarage/upnp/StateVariable.h>
@@ -31,10 +34,20 @@
 #include <cybergarage/upnp/event/SubscriberList.h>
 #include <cybergarage/upnp/control/QueryRequest.h>
 #include <cybergarage/upnp/control/ActionListener.h>
+<<<<<<< HEAD
 #include <uhttp/util/Mutex.h>
 #include <uhttp/util/Vector.h>
 #include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
+=======
+#include <cybergarage/net/HostInterface.h>
+#include <cybergarage/util/Mutex.h>
+#include <cybergarage/util/Vector.h>
+#include <cybergarage/util/StringUtil.h>
+#include <cybergarage/xml/Node.h>
+#include <cybergarage/io/File.h>
+#include <cybergarage/net/URL.h>
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 namespace CyberLink {
 
@@ -47,7 +60,11 @@ class Service
 	ActionList actionList;
 	ServiceStateTable serviceStateTable;
 
+<<<<<<< HEAD
 	uHTTP::Mutex mutex;
+=======
+	CyberUtil::Mutex mutex;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 public:
 	////////////////////////////////////////////////
@@ -160,7 +177,11 @@ public:
 
 public:
 
+<<<<<<< HEAD
 	void setServiceType(const std::string &value)
+=======
+	void setServiceType(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getServiceNode()->setNode(SERVICE_TYPE, value);
 	}
@@ -176,7 +197,11 @@ public:
 
 public:
 
+<<<<<<< HEAD
 	void setServiceID(const std::string &value)
+=======
+	void setServiceID(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getServiceNode()->setNode(SERVICE_ID, value);
 	}
@@ -192,7 +217,11 @@ public:
 
 private:
 
+<<<<<<< HEAD
 	bool isURL(const std::string &referenceUrl, const std::string &url);
+=======
+	bool isURL(const char *referenceUrl, const char *url);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	////////////////////////////////////////////////
 	//	SCPDURL
@@ -200,7 +229,11 @@ private:
 
 public:
 
+<<<<<<< HEAD
 	void setSCPDURL(const std::string &value)
+=======
+	void setSCPDURL(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getServiceNode()->setNode(SCPDURL, value);
 	}
@@ -210,20 +243,33 @@ public:
 		return getServiceNode()->getNodeValue(SCPDURL);
 	}
 
+<<<<<<< HEAD
 	bool isSCPDURL(const std::string &url)
+=======
+	bool isSCPDURL(const char *url)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return isURL(getSCPDURL(), url);
 	}
 	
+<<<<<<< HEAD
 	const char *getSCPDData(std::string &buf);
 
+=======
+	const char *getSCPDData(std::string &buf);
+
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	////////////////////////////////////////////////
 	//	controlURL
 	////////////////////////////////////////////////
 
 public:
 
+<<<<<<< HEAD
 	void setControlURL(const std::string &value)
+=======
+	void setControlURL(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getServiceNode()->setNode(CONTROL_URL, value);
 	}
@@ -233,7 +279,11 @@ public:
 		return getServiceNode()->getNodeValue(CONTROL_URL);
 	}
 
+<<<<<<< HEAD
 	bool isControlURL(const std::string &url)
+=======
+	bool isControlURL(const char *url)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return isURL(getControlURL(), url);
 	}
@@ -244,7 +294,11 @@ public:
 
 public:
 
+<<<<<<< HEAD
 	void setEventSubURL(const std::string &value)
+=======
+	void setEventSubURL(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getServiceNode()->setNode(EVENT_SUB_URL, value);
 	}
@@ -254,7 +308,11 @@ public:
 		return getServiceNode()->getNodeValue(EVENT_SUB_URL);
 	}
 
+<<<<<<< HEAD
 	bool isEventSubURL(const std::string &url)
+=======
+	bool isEventSubURL(const char *url)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return isURL(getEventSubURL(), url);
 	}
@@ -265,6 +323,7 @@ public:
 
 public:
 
+<<<<<<< HEAD
 	bool loadSCPD(const std::string &descString);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 	bool loadSCPD(uHTTP::File *file);
@@ -276,6 +335,19 @@ private:
 	CyberXML::Node *getSCPDNode(uHTTP::File *file);
 #endif
 	CyberXML::Node *getSCPDNode(const std::string &description);
+=======
+	bool loadSCPD(const char *descString);
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+	bool loadSCPD(CyberIO::File *file);
+#endif
+
+private:
+	CyberXML::Node *getSCPDNode(CyberNet::URL *url);
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+	CyberXML::Node *getSCPDNode(CyberIO::File *file);
+#endif
+	CyberXML::Node *getSCPDNode(const char *description);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	CyberXML::Node *getSCPDNode();
 
 public:
@@ -294,7 +366,11 @@ public:
 		return &actionList;
 	}
 
+<<<<<<< HEAD
 	Action *getAction(const std::string &actionName);
+=======
+	Action *getAction(const char *actionName);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	
 	////////////////////////////////////////////////
 	//	serviceStateTable
@@ -311,9 +387,15 @@ public:
 		return &serviceStateTable;
 	}
 
+<<<<<<< HEAD
 	StateVariable *getStateVariable(const std::string &name);
 	
 	bool hasStateVariable(const std::string &name)
+=======
+	StateVariable *getStateVariable(const char *name);
+	
+	bool hasStateVariable(const char *name)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		return (getStateVariable(name) != NULL) ? true : false;
 	}
@@ -322,9 +404,17 @@ public:
 	//	isService
 	////////////////////////////////////////////////
 	
+<<<<<<< HEAD
 	bool isService(const std::string &name)
 	{
 		uHTTP::String nameStr(name);
+=======
+	bool isService(const char *name)
+	{
+		if (name == NULL)
+				return false;
+		CyberUtil::String nameStr = name;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		if (nameStr.endsWith(getServiceType()) == true)
 			return true;
 		if (nameStr.endsWith(getServiceID()) == true)
@@ -360,8 +450,13 @@ private:
 
 public:
 
+<<<<<<< HEAD
 	void announce(const std::string &bindAddr);
 	void byebye(const std::string &bindAddr);
+=======
+	void announce(const char *bindAddr);
+	void byebye(const char *bindAddr);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 	////////////////////////////////////////////////
 	//	serviceSearchResponse	
@@ -393,8 +488,13 @@ public:
 	void addSubscriber(Subscriber *sub);
 	void removeSubscriber(Subscriber *sub);
 
+<<<<<<< HEAD
 	Subscriber *getSubscriberBySID(const std::string &name);
 	Subscriber *getSubscriberByDeliveryURL(const std::string &name);
+=======
+	Subscriber *getSubscriberBySID(const char *name);
+	Subscriber *getSubscriberByDeliveryURL(const char *name);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 private:
 	
@@ -414,7 +514,11 @@ public:
 		return getServiceData()->getSID();
 	}
 
+<<<<<<< HEAD
 	void setSID(const std::string &sid) 
+=======
+	void setSID(const char *sid) 
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	{
 		getServiceData()->setSID(sid);
 	}
@@ -427,7 +531,11 @@ public:
 	
 	bool hasSID()
 	{
+<<<<<<< HEAD
 		return uHTTP::StringHasData(getSID());
+=======
+		return CyberUtil::StringHasData(getSID());
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	}		
 
 	bool isSubscribed()

@@ -46,11 +46,16 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/StateVariable.h>
+<<<<<<< HEAD
 #include <uhttp/util/Debug.h>
+=======
+#include <cybergarage/util/Debug.h>
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/AllowedValue.h>
 #include <cybergarage/upnp/control/QueryListener.h>
+<<<<<<< HEAD
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;
@@ -59,6 +64,16 @@ using namespace CyberLink;
 using namespace uHTTP;
 using namespace CyberXML;
 using namespace uHTTP;
+=======
+#include <cybergarage/util/StringUtil.h>
+
+using namespace std;
+using namespace CyberUtil;
+using namespace CyberLink;
+using namespace CyberHTTP;
+using namespace CyberXML;
+using namespace CyberUtil;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	Constants
@@ -132,12 +147,20 @@ void StateVariable::initAllowedValueRange()
 //	Value
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 void StateVariable::setValue(const std::string &value)
+=======
+void StateVariable::setValue(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	// Thnaks for Tho Beisch (11/09/04)
 	string currValue = getStateVariableData()->getValue();
 	// Thnaks for Tho Rick Keiner (11/18/04)
+<<<<<<< HEAD
 	if (currValue.compare(value.c_str()) == 0)
+=======
+	if (value != NULL && currValue.compare(value) == 0)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 			return;
 
 	getStateVariableData()->setValue(value);

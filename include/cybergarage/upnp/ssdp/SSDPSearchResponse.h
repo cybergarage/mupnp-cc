@@ -35,11 +35,19 @@ public:
 	
 	SSDPSearchResponse()
 	{
+<<<<<<< HEAD
 		setStatusCode(uHTTP::HTTP::OK_REQUEST);
 		setCacheControl(Device::DEFAULT_LEASE_TIME);
 		std::string buf;
 		setHeader(uHTTP::HTTP::SERVER, UPnP::GetServerName(buf));
 		setHeader(uHTTP::HTTP::EXT, "");
+=======
+		setStatusCode(CyberHTTP::HTTP::OK_REQUEST);
+		setCacheControl(Device::DEFAULT_LEASE_TIME);
+		std::string buf;
+		setHeader(CyberHTTP::HTTP::SERVER, UPnP::GetServerName(buf));
+		setHeader(CyberHTTP::HTTP::EXT, "");
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	}
 };
 

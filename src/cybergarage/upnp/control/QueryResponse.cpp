@@ -27,7 +27,11 @@ using namespace CyberXML;
 
 void QueryResponse::setResponse(StateVariable *stateVar)
 {
+<<<<<<< HEAD
 	setStatusCode(uHTTP::HTTP::OK_REQUEST);
+=======
+	setStatusCode(CyberHTTP::HTTP::OK_REQUEST);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 		
 	const char *value = stateVar->getValue();
 	CyberXML::Node *bodyNode = getBodyNode();
@@ -69,7 +73,11 @@ const char *QueryResponse::getReturnValue()
 //	setRequest
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 Node *QueryResponse::createResponseNode(const std::string &value)
+=======
+Node *QueryResponse::createResponseNode(const char *value)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	CyberXML::Node *queryResNode = new CyberXML::Node();
 	queryResNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE_RESPONSE);

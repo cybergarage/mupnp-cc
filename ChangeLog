@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2013-01-09 Satoshi Konno <skonno@cybergarage.org>
 	* Added Device::hasDeviceData().
 	* Fixed Device::getLeaseTime() not to abort when the device data is null.
@@ -31,6 +32,8 @@
 	* Thanks for Ricardo Rivldo
 	* Fixed CyberNet::GetHostAddresses() for some reason, vmware and virtualbox \"virtual\" interfaces does not return ifa_addr.
 
+=======
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 2010-02-22 Satoshi Konno <skonno@cybergarage.org>
 	* Fixed some errors to compile normally using GCC v4.4.1 on Ubuntu 9.10.
 
@@ -51,6 +54,10 @@
 	* Added Node::isValue() for iTunes Library.
 
 2005-10-13 Satoshi Konno <skonno@cybergarage.org>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	* v.1.7.1
 	* Changed HTTPRequest::post() to add a HOST headedr before the posting.
 	* Changed HTTPSocket::post() to add a Date headedr to the HTTPResponse before the posting.

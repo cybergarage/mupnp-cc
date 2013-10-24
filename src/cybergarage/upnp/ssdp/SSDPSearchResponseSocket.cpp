@@ -17,6 +17,7 @@
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocket.h>
 
 using namespace CyberLink;
+<<<<<<< HEAD
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -37,6 +38,28 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket()
 	stop();
 	close();
 }
+=======
+
+////////////////////////////////////////////////
+//	Constructor
+////////////////////////////////////////////////
+
+SSDPSearchResponseSocket::SSDPSearchResponseSocket()
+{
+	setControlPoint(NULL);
+}
+	
+SSDPSearchResponseSocket::SSDPSearchResponseSocket(const char *bindAddr, int port) : HTTPUSocket(bindAddr, port)
+{
+	setControlPoint(NULL);
+}
+
+SSDPSearchResponseSocket::~SSDPSearchResponseSocket()
+{
+	stop();
+	close();
+}
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	run	

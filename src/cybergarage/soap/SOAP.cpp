@@ -20,12 +20,20 @@
 #include <sstream>
 #include <string.h>
 #include <cybergarage/soap/SOAP.h>
+<<<<<<< HEAD
 #include <uhttp/util/StringUtil.h>
+=======
+#include <cybergarage/util/StringUtil.h>
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 using namespace std;
 using namespace CyberXML;
 using namespace CyberSOAP;
+<<<<<<< HEAD
 using namespace uHTTP;
+=======
+using namespace CyberUtil;
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 
 ////////////////////////////////////////////////
 //	CreateEnvelopeBodyNode
@@ -66,6 +74,7 @@ CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode()
 //	Header
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &header)
 {
 	header = "";
@@ -75,6 +84,18 @@ const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &
 	if (gtIdx == string::npos)
 		return header.c_str();
 	header = content.substr(0, gtIdx+1);
+=======
+const char *CyberSOAP::SOAP::GetHeader(const char *content, std::string &header)
+{
+	header = "";
+	if (content == NULL || strlen(content) <= 0)
+		return header.c_str();
+	string contentStr = content;
+	string::size_type gtIdx = contentStr.find(">");
+	if (gtIdx == string::npos)
+		return header.c_str();
+	header = contentStr.substr(0, gtIdx+1);
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 	return header.c_str();
 }
 
@@ -82,7 +103,11 @@ const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &
 //	Encoding
 ////////////////////////////////////////////////
 
+<<<<<<< HEAD
 const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::string &encording)
+=======
+const char *CyberSOAP::SOAP::GetEncording(const char *content, std::string &encording)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	encording = "";
 	string header;
@@ -100,7 +125,11 @@ const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::strin
 	return encording.c_str();
 }
 
+<<<<<<< HEAD
 bool CyberSOAP::SOAP::IsEncording(const std::string &content, const std::string &encType)
+=======
+bool CyberSOAP::SOAP::IsEncording(const char *content, const char *encType)
+>>>>>>> a1a830b7f4caaeafd5c2db44ad78fbb5b9f304b2
 {
 	string enc;
 	SOAP::GetEncording(content, enc);

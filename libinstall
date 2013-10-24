@@ -1,0 +1,3 @@
+#!/bin/sh
+cp -rfv include/cybergarage /usr/local/include
+cp -fv lib/unix/libclink.a /usr/local/lib
