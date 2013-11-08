@@ -95,7 +95,7 @@ public:
 
 private:
 
-	CyberXML::Node *parseMessage(const std::string &content, int contentLen);
+	CyberXML::Node *parseMessage(const std::string &content, size_t contentLen);
 
 public:
 

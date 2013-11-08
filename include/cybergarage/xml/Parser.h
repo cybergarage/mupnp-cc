@@ -51,7 +51,7 @@ public:
 
 	Node *parse(uHTTP::URL *url);
 	
-	Node *parse(const std::string &data, int len);
+	Node *parse(const std::string &data, size_t len);
 
 	Node *parse(const std::string &data)
 	{
@@ -60,10 +60,10 @@ public:
 	
 	Node *parse(std::string *data)
 	{
-		return parse(data->c_str(), (int)data->length());
+		return parse(data->c_str(), data->length());
 	}
 	
-	Node *parse(UnicodeStr *data, int len)
+	Node *parse(UnicodeStr *data, size_t len)
 	{
 		return parse((const std::string &)data, len);
 	}

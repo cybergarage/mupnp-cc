@@ -51,7 +51,7 @@ void ControlRequest::setRequestHost(Service *service)
 	if (0 < urlBase.length()){
 		URL url(urlBase.c_str());
 		string basePath = url.getPath();
-		int baseLen = basePath.length();
+		size_t baseLen = basePath.length();
 		if (0 < baseLen) {
 			if (1 < baseLen || (basePath.at(0) != '/'))
 				ctrlURL = basePath + ctrlURL;

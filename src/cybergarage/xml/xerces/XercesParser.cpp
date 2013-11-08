@@ -178,7 +178,7 @@ Node *XMLParse(InputSource &inSrc)
 //	parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, int len)
+Node *Parser::parse(const std::string &data, size_t len)
 {
 	try {
 		/*
@@ -186,7 +186,7 @@ Node *Parser::parse(const std::string &data, int len)
 		MemBufInputSource memIn((XMLByte *)xmlChars, XMLString::stringLen(xmlChars), "membuf", false);
 		XMLString::release(&xmlChars);
 		*/
-		MemBufInputSource memIn((XMLByte *)data, len, "membuf", false);
+		MemBufInputSource memIn((XMLByte *)data, (unsigned int )len, "membuf", false);
 		return XMLParse(memIn);
 	}
 	catch (const XMLException &toCatch) {

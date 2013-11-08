@@ -111,7 +111,7 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 //	parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, int len)
+Node *Parser::parse(const std::string &data, size_t len)
 {
 	XML_Parser p = XML_ParserCreate(NULL);
 	if (!p)
@@ -124,7 +124,7 @@ Node *Parser::parse(const std::string &data, int len)
 	XML_SetElementHandler(p, ExpatElementStart, ExpatElementEnd);
 	XML_SetCharacterDataHandler(p, ExpatCharacterData); 
 
-    int parseRet = XML_Parse(p, data, len, 1);
+    int parseRet = XML_Parse(p, data, (int)len, 1);
 	XML_ParserFree(p);
 
 	if (parseRet == 0 /*XML_STATUS_ERROR*/) {

@@ -80,7 +80,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value)
 //	parseMessage
 ////////////////////////////////////////////////
 
-CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, int contentLen)
+CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen)
 {
 	if (contentLen <= 0)
 		return NULL;
@@ -99,7 +99,7 @@ CyberXML::Node *SOAPRequest::getRootNode()
 		return rootNode;
 			
 	const char *content = getContent();
-	int contentLen = getContentLength();
+	size_t contentLen = getContentLength();
 
 	rootNode = parseMessage(content, contentLen);
 
