@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: HTTPMUSocket.h
+*  File: HTTPMUSocket.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/01/03
-*		- first revision
+*  07/01/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -26,66 +26,66 @@ namespace CyberLink {
 
 class HTTPMUSocket
 {
-	uHTTP::InetSocketAddress ssdpMultiGroup;
-	uHTTP::MulticastSocket ssdpMultiSock;
-	//uHTTP::NetworkInterface ssdpMultiIf;
-	SSDPPacket recvPacket;
+  uHTTP::InetSocketAddress ssdpMultiGroup;
+  uHTTP::MulticastSocket ssdpMultiSock;
+  //uHTTP::NetworkInterface ssdpMultiIf;
+  SSDPPacket recvPacket;
 
 public:
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	HTTPMUSocket();
-	
-	HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr);
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  HTTPMUSocket();
+  
+  HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr);
 
-	~HTTPMUSocket();
+  ~HTTPMUSocket();
 
-	////////////////////////////////////////////////
-	//	bindAddr
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  bindAddr
+  ////////////////////////////////////////////////
 
-	const char *getLocalAddress()
-	{
-		return ssdpMultiSock.getLocalAddress();
-	}
+  const char *getLocalAddress()
+  {
+    return ssdpMultiSock.getLocalAddress();
+  }
 
-	////////////////////////////////////////////////
-	//	open/close
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  open/close
+  ////////////////////////////////////////////////
 
-	bool open(const std::string &addr, int port, const std::string &bindAddr);
-	bool close();
+  bool open(const std::string &addr, int port, const std::string &bindAddr);
+  bool close();
 
-	////////////////////////////////////////////////
-	//	send
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  send
+  ////////////////////////////////////////////////
 
-	bool send(const std::string &msg, const std::string &bindAddr = "", int bindPort = -1);
+  bool send(const std::string &msg, const std::string &bindAddr = "", int bindPort = -1);
 
-	////////////////////////////////////////////////
-	//	post (HTTPRequest)
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  post (HTTPRequest)
+  ////////////////////////////////////////////////
 
-	bool post(uHTTP::HTTPRequest *req, const std::string &bindAddr, int bindPort)
-	{
-		std::string reqStr;
-		return send(req->toString(reqStr), bindAddr, bindPort);
-	}
+  bool post(uHTTP::HTTPRequest *req, const std::string &bindAddr, int bindPort)
+  {
+    std::string reqStr;
+    return send(req->toString(reqStr), bindAddr, bindPort);
+  }
 
-	bool post(uHTTP::HTTPRequest *req)
-	{
-		std::string reqStr;
-		return send(req->toString(reqStr));
-	}
+  bool post(uHTTP::HTTPRequest *req)
+  {
+    std::string reqStr;
+    return send(req->toString(reqStr));
+  }
 
-	////////////////////////////////////////////////
-	//	reveive
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  reveive
+  ////////////////////////////////////////////////
 
-	SSDPPacket *receive();
+  SSDPPacket *receive();
 };
 
 }

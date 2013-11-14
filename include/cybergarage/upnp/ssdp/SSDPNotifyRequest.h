@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPNotifyRequest.h
+*  File: SSDPNotifyRequest.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/10/03
-*		- first revision
+*  07/10/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,15 +25,15 @@ namespace CyberLink {
 class SSDPNotifyRequest : public  SSDPRequest
 {
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	SSDPNotifyRequest()
-	{
-		setMethod(uHTTP::HTTP::NOTIFY);
-		setURI("*");
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  SSDPNotifyRequest()
+  {
+    setMethod(uHTTP::HTTP::NOTIFY);
+    setURI("*");
+  }
 };
 
 }

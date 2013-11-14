@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionListener.h
+*  File: ActionListener.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/11/03
-*		- first revision
+*  07/11/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,7 +25,7 @@ class Action;
 class ActionListener
 {
 public:
-	virtual bool actionControlReceived(Action *action) = 0;
+  virtual bool actionControlReceived(Action *action) = 0;
 };
 
 }

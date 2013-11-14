@@ -1,16 +1,16 @@
 /******************************************************************
 *
-*	CyberLink for Java
+*  CyberLink for Java
 *
-*	Copyright (C) Satoshi Konno 2002-2004
+*  Copyright (C) Satoshi Konno 2002-2004
 *
-*	File: AllowedValueList.java
+*  File: AllowedValueList.java
 *
-*	Revision:
+*  Revision:
 *
-*	03/29/04
-*		- first revision.
-*	
+*  03/29/04
+*    - first revision.
+*  
 ******************************************************************/
 
 #ifndef _CLINK_ALLOWEDVALUELIST_H_
@@ -24,48 +24,48 @@ namespace CyberLink {
 
 class AllowedValueList : public uHTTP::Vector 
 {
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
 public:
 
-	static const char *ELEM_NAME;
+  static const char *ELEM_NAME;
 
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-
-public:
-
-	AllowedValueList() 
-	{
-	}
-
-	~AllowedValueList() 
-	{
-		clear();
-	}
-
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	void clear();
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
+  AllowedValueList() 
+  {
+  }
+
+  ~AllowedValueList() 
+  {
+    clear();
+  }
+
+  ////////////////////////////////////////////////
+  //  clear
+  ////////////////////////////////////////////////
+
 public:
 
-	AllowedValue *getAllowedValue(int n)
-	{
-		return (AllowedValue *)get(n);
-	}
+  void clear();
+  
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
+public:
+
+  AllowedValue *getAllowedValue(int n)
+  {
+    return (AllowedValue *)get(n);
+  }
 
 };
 

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Subscription.h
+*  File: Subscription.h
 *
-*	Revision;
+*  Revision;
 *
-*	08/10/03
-*		- first revision
+*  08/10/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -31,14 +31,14 @@ const char SUBSCRIBE_METHOD[] = "SUBSCRIBE";
 const char UNSUBSCRIBE_METHOD[] = "UNSUBSCRIBE";
 
 ////////////////////////////////////////////////
-//	Timeout
+//  Timeout
 ////////////////////////////////////////////////
-	
+  
 const char *toTimeoutHeaderString(long time, std::string &buf);
 long GetTimeout(const std::string &headerValue);
 
 ////////////////////////////////////////////////
-//	SID
+//  SID
 ////////////////////////////////////////////////
 
 const char *CreateSID(std::string &buf);

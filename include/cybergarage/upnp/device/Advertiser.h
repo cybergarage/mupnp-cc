@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Advertiser.h
+*  File: Advertiser.h
 *
-*	Revision;
+*  Revision;
 *
-*	12/25/03
-*		- first revision
+*  12/25/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,44 +24,44 @@ class Device;
 
 class Advertiser : public uHTTP::Thread
 {
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	Advertiser(Device *dev)
-	{
-		setDevice(dev);
-	}
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  Advertiser(Device *dev)
+  {
+    setDevice(dev);
+  }
+  
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
 private:
-	
-	Device *device;
+  
+  Device *device;
 
 public:
 
-	void setDevice(Device *dev)
-	{
-		device = dev;
-	}
-	
-	Device *getDevice()
-	{
-		return device;
-	}
+  void setDevice(Device *dev)
+  {
+    device = dev;
+  }
+  
+  Device *getDevice()
+  {
+    return device;
+  }
 
-	////////////////////////////////////////////////
-	//	Thread
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Thread
+  ////////////////////////////////////////////////
+  
 public:
 
-	void run();
+  void run();
 
 };
 

@@ -1,16 +1,16 @@
 /******************************************************************
 *
-*	CyberXML for C++
+*  CyberXML for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: XML.h
+*  File: XML.h
 *
-*	Revision;
+*  Revision;
 *
-*	03/23/03
-*		- first revision.
-*	
+*  03/23/03
+*    - first revision.
+*  
 ******************************************************************/
 
 #ifndef _CXML_XML_H_

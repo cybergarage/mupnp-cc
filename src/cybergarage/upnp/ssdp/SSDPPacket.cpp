@@ -1,20 +1,20 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2004
+*  Copyright (C) Satoshi Konno 2002-2004
 *
-*	File: SSDPPacket.h
+*  File: SSDPPacket.h
 *
-*	Revision;
+*  Revision;
 *
-*	06/05/03
-*		- first revision
-*	01/06/04
-*		- Added set() and isNull().
-*	11/01/04
-*		- Theo Beisch <theo.beisch@gmx.de>
-*		- Fixed isRootDevice() to check the ST header.
+*  06/05/03
+*    - first revision
+*  01/06/04
+*    - Added set() and isNull().
+*  11/01/04
+*    - Theo Beisch <theo.beisch@gmx.de>
+*    - Fixed isRootDevice() to check the ST header.
 *
 ******************************************************************/
 
@@ -24,32 +24,32 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Access Methods (Extension)
+//  Access Methods (Extension)
 ////////////////////////////////////////////////
 
 bool SSDPPacket::isRootDevice()
 {
-	std::string buf;
-	if (NT::IsRootDevice(getNT(buf)) == true)
-		return true;
-	if (ST::IsRootDevice(getST(buf)) == true)
-		return true;
-	return USN::IsRootDevice(getUSN(buf));
+  std::string buf;
+  if (NT::IsRootDevice(getNT(buf)) == true)
+    return true;
+  if (ST::IsRootDevice(getST(buf)) == true)
+    return true;
+  return USN::IsRootDevice(getUSN(buf));
 }
 
 ////////////////////////////////////////////////
-//	set
+//  set
 ////////////////////////////////////////////////
 
 void SSDPPacket::set(SSDPPacket *ssdpPacket)
 {
-	if (ssdpPacket == NULL) {
-		setLocalAddress("");
-		setTimeStamp(0);
-		setDatagramPacket(NULL);
-		return;
-	}
-	setLocalAddress(ssdpPacket->getLocalAddress());
-	setTimeStamp(ssdpPacket->getTimeStamp());
-	setDatagramPacket(&ssdpPacket->getDatagramPacket());
+  if (ssdpPacket == NULL) {
+    setLocalAddress("");
+    setTimeStamp(0);
+    setDatagramPacket(NULL);
+    return;
+  }
+  setLocalAddress(ssdpPacket->getLocalAddress());
+  setTimeStamp(ssdpPacket->getTimeStamp());
+  setDatagramPacket(&ssdpPacket->getDatagramPacket());
 }

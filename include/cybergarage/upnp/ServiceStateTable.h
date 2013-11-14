@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ServiceStateTable.h
+*  File: ServiceStateTable.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/21/03
-*		- first revision
+*  07/21/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,36 +25,36 @@ class StateVariable;
 class ServiceStateTable : public uHTTP::Vector 
 {
 public:
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-	static const char *ELEM_NAME;
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
+  static const char *ELEM_NAME;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	ServiceStateTable() 
-	{
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  ServiceStateTable() 
+  {
+  }
 
-	~ServiceStateTable() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
-	StateVariable *getStateVariable(int n)
-	{
-		return (StateVariable *)get(n);
-	}
+  ~ServiceStateTable() 
+  {
+    clear();
+  }
+  
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
+  StateVariable *getStateVariable(int n)
+  {
+    return (StateVariable *)get(n);
+  }
 
-	void clear();
+  void clear();
 };
 
 }

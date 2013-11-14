@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Subscriber.h
+*  File: Subscriber.h
 *
-*	Revision:
+*  Revision:
 *
-*	08/02/03
-*		- first revision
+*  08/02/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,119 +25,119 @@ namespace CyberLink {
 
 class Subscriber
 {
-	std::string SID;
-	std::string ifAddr;
-	
-	uHTTP::URL deliveryURL;
-	
-	long timeOut;
-	long notifyCount;
-	long subscriptionTime;
+  std::string SID;
+  std::string ifAddr;
+  
+  uHTTP::URL deliveryURL;
+  
+  long timeOut;
+  long notifyCount;
+  long subscriptionTime;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	Subscriber();
-	~Subscriber();
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  Subscriber();
+  ~Subscriber();
 
-	////////////////////////////////////////////////
-	//	SID
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  SID
+  ////////////////////////////////////////////////
 
-	const char *getSID() {
-		return SID.c_str();
-	}
+  const char *getSID() {
+    return SID.c_str();
+  }
 
-	void setSID(const std::string &sid) {
-		SID = sid;
-	}
+  void setSID(const std::string &sid) {
+    SID = sid;
+  }
 
-	////////////////////////////////////////////////
-	//	deliveryURL
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  deliveryURL
+  ////////////////////////////////////////////////
 
-	void setInterfaceAddress(const std::string &addr)
-	{
-		ifAddr = addr;
-	}
-	
-	const char *getInterfaceAddress()
-	{
-		return ifAddr.c_str();
-	}
-	
-	////////////////////////////////////////////////
-	//	deliveryURL
-	////////////////////////////////////////////////
+  void setInterfaceAddress(const std::string &addr)
+  {
+    ifAddr = addr;
+  }
+  
+  const char *getInterfaceAddress()
+  {
+    return ifAddr.c_str();
+  }
+  
+  ////////////////////////////////////////////////
+  //  deliveryURL
+  ////////////////////////////////////////////////
 
-	const char *getDeliveryURL() {
-		return deliveryURL.getSting();
-	}
+  const char *getDeliveryURL() {
+    return deliveryURL.getSting();
+  }
 
-	void setDeliveryURL(const std::string &url)
-	{
-		deliveryURL.setString(url);
-	}
+  void setDeliveryURL(const std::string &url)
+  {
+    deliveryURL.setString(url);
+  }
 
-	const char *getDeliveryHost() {
-		return deliveryURL.getHost();
-	}
+  const char *getDeliveryHost() {
+    return deliveryURL.getHost();
+  }
 
-	const char *getDeliveryPath() {
-		return deliveryURL.getPath();
-	}
+  const char *getDeliveryPath() {
+    return deliveryURL.getPath();
+  }
 
-	int getDeliveryPort() {
-		return deliveryURL.getPort();
-	}
-	
-	////////////////////////////////////////////////
-	//	Timeout
-	////////////////////////////////////////////////
+  int getDeliveryPort() {
+    return deliveryURL.getPort();
+  }
+  
+  ////////////////////////////////////////////////
+  //  Timeout
+  ////////////////////////////////////////////////
 
-	long getTimeOut() {
-		return timeOut;
-	}
+  long getTimeOut() {
+    return timeOut;
+  }
 
-	void setTimeOut(long value) {
-		timeOut = value;
-	}
+  void setTimeOut(long value) {
+    timeOut = value;
+  }
 
-	bool isExpired();
+  bool isExpired();
 
-	////////////////////////////////////////////////
-	//	SubscriptionTIme
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  SubscriptionTIme
+  ////////////////////////////////////////////////
 
-	long getSubscriptionTime() {
-		return subscriptionTime;
-	}
+  long getSubscriptionTime() {
+    return subscriptionTime;
+  }
 
-	void setSubscriptionTime(long time) {
-		subscriptionTime = time;
-	}
+  void setSubscriptionTime(long time) {
+    subscriptionTime = time;
+  }
 
-	////////////////////////////////////////////////
-	//	SEQ
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  SEQ
+  ////////////////////////////////////////////////
 
-	long getNotifyCount() {
-		return notifyCount;
-	}
+  long getNotifyCount() {
+    return notifyCount;
+  }
 
-	void setNotifyCount(int cnt) {
-		notifyCount = cnt;
-	}
+  void setNotifyCount(int cnt) {
+    notifyCount = cnt;
+  }
 
-	void incrementNotifyCount();
-	
-	////////////////////////////////////////////////
-	//	renew
-	////////////////////////////////////////////////
-	
-	void renew();
+  void incrementNotifyCount();
+  
+  ////////////////////////////////////////////////
+  //  renew
+  ////////////////////////////////////////////////
+  
+  void renew();
 
 };
 

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ArgumentList.h
+*  File: ArgumentList.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/21/03
-*		- first revision
+*  07/21/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,60 +24,60 @@ namespace CyberLink {
 
 class ArgumentList : public uHTTP::Vector 
 {
-	bool delElemFlag;
+  bool delElemFlag;
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
 public:
 
-	static const char *ELEM_NAME;
+  static const char *ELEM_NAME;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
 public:
 
-	ArgumentList(bool delElemFlag = true) 
-	{
-		this->delElemFlag = delElemFlag;
-	}
+  ArgumentList(bool delElemFlag = true) 
+  {
+    this->delElemFlag = delElemFlag;
+  }
 
-	~ArgumentList() 
-	{
-		clear();
-	}
+  ~ArgumentList() 
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  clear
+  ////////////////////////////////////////////////
 
 public:
 
-	void clear();
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
+  void clear();
+  
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
 public:
 
-	Argument *getArgument(int n)
-	{
-		return (Argument *)get(n);
-	}
+  Argument *getArgument(int n)
+  {
+    return (Argument *)get(n);
+  }
 
-	Argument *getArgument(const std::string &name);
+  Argument *getArgument(const std::string &name);
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
 public:
 
-	void set(ArgumentList *inArgList);
+  void set(ArgumentList *inArgList);
 };
 
 }

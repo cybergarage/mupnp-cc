@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPSearchResponseSocket.cpp
+*  File: SSDPSearchResponseSocket.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/14/03
-*		- first revision
+*  08/14/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -19,38 +19,38 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
 SSDPSearchResponseSocket::SSDPSearchResponseSocket()
 {
-	setControlPoint(NULL);
+  setControlPoint(NULL);
 }
-	
+  
 SSDPSearchResponseSocket::SSDPSearchResponseSocket(const std::string &bindAddr, int port) : HTTPUSocket(bindAddr, port)
 {
-	setControlPoint(NULL);
+  setControlPoint(NULL);
 }
 
 SSDPSearchResponseSocket::~SSDPSearchResponseSocket()
 {
-	stop();
-	close();
+  stop();
+  close();
 }
 
 ////////////////////////////////////////////////
-//	run	
+//  run  
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocket::run()
 {
-	ControlPoint *ctrlPoint = getControlPoint();
-	while (isRunnable() == true) {
-		//Thread.yield();
-		SSDPPacket *packet = receive();
-		if (packet == NULL)
-			continue;
-		if (ctrlPoint != NULL)
-			ctrlPoint->searchResponseReceived(packet); 
-	}
+  ControlPoint *ctrlPoint = getControlPoint();
+  while (isRunnable() == true) {
+    //Thread.yield();
+    SSDPPacket *packet = receive();
+    if (packet == NULL)
+      continue;
+    if (ctrlPoint != NULL)
+      ctrlPoint->searchResponseReceived(packet); 
+  }
 }

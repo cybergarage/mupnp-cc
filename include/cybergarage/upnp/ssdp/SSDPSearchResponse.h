@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPSearchRequest.h
+*  File: SSDPSearchRequest.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/10/03
-*		- first revision
+*  07/10/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -27,20 +27,20 @@ namespace CyberLink {
 class SSDPSearchResponse : public SSDPResponse
 {
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
-	
-	SSDPSearchResponse()
-	{
-		setStatusCode(uHTTP::HTTP::OK_REQUEST);
-		setCacheControl(Device::DEFAULT_LEASE_TIME);
-		std::string buf;
-		setHeader(uHTTP::HTTP::SERVER, UPnP::GetServerName(buf));
-		setHeader(uHTTP::HTTP::EXT, "");
-	}
+  
+  SSDPSearchResponse()
+  {
+    setStatusCode(uHTTP::HTTP::OK_REQUEST);
+    setCacheControl(Device::DEFAULT_LEASE_TIME);
+    std::string buf;
+    setHeader(uHTTP::HTTP::SERVER, UPnP::GetServerName(buf));
+    setHeader(uHTTP::HTTP::EXT, "");
+  }
 };
 
 }

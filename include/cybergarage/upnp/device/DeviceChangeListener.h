@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2004
+*  Copyright (C) Satoshi Konno 2002-2004
 *
-*	File: DeviceChangeListener.h
+*  File: DeviceChangeListener.h
 *
-*	Revision:
+*  Revision:
 *
-*	10/16/04
-*		- first revision
+*  10/16/04
+*    - first revision
 *
 ******************************************************************/
 
@@ -23,8 +23,8 @@ class Device;
 class DeviceChangeListener
 {
 public:
-	virtual void deviceAdded(Device *dev) = 0;
-	virtual void deviceRemoved(Device *dev) = 0;
+  virtual void deviceAdded(Device *dev) = 0;
+  virtual void deviceRemoved(Device *dev) = 0;
 };
 
 }

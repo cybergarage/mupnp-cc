@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Argument.h
+*  File: Argument.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/08/03
-*		- first revision
+*  07/08/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -29,156 +29,156 @@ class StateVariable;
 
 class Argument
 {
-	
-	CyberXML::Node *serviceNode;
-	CyberXML::Node *argumentNode;
+  
+  CyberXML::Node *serviceNode;
+  CyberXML::Node *argumentNode;
 
-	CyberXML::Node defaultArgumentNode;
-	CyberXML::Node defaultServiceNode;
-	
+  CyberXML::Node defaultArgumentNode;
+  CyberXML::Node defaultServiceNode;
+  
 public:
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
 
-	static const char *ELEM_NAME;
-	static const char *IN_DIR;
-	static const char *OUT_DIR;
-	static const char *NAME;
-	static const char *DIRECTION;
-	static const char *RELATED_STATE_VARIABLE;
+  static const char *ELEM_NAME;
+  static const char *IN_DIR;
+  static const char *OUT_DIR;
+  static const char *NAME;
+  static const char *DIRECTION;
+  static const char *RELATED_STATE_VARIABLE;
 
 public:
 
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
-	CyberXML::Node *getServiceNode()
-	{
-		return serviceNode;
-	}
+  CyberXML::Node *getServiceNode()
+  {
+    return serviceNode;
+  }
 
-	CyberXML::Node *getArgumentNode()
-	{
-		return argumentNode;
-	}
-	
-	Service *getService();
+  CyberXML::Node *getArgumentNode()
+  {
+    return argumentNode;
+  }
+  
+  Service *getService();
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	Argument();
-	Argument(CyberXML::Node *servNode, CyberXML::Node *argNode);
-	Argument(const std::string &name, const std::string &value);
+  Argument();
+  Argument(CyberXML::Node *servNode, CyberXML::Node *argNode);
+  Argument(const std::string &name, const std::string &value);
 
-	~Argument();
+  ~Argument();
 
-	////////////////////////////////////////////////
-	//	isArgumentNode
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  isArgumentNode
+  ////////////////////////////////////////////////
 
-	static bool isArgumentNode(CyberXML::Node *node)
-	{
-		return node->isName(Argument::ELEM_NAME);
-	}
+  static bool isArgumentNode(CyberXML::Node *node)
+  {
+    return node->isName(Argument::ELEM_NAME);
+  }
 
-	////////////////////////////////////////////////
-	//	name
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  name
+  ////////////////////////////////////////////////
 
-	void setName(const std::string &value)
-	{
-		getArgumentNode()->setNode(NAME, value);
-	}
+  void setName(const std::string &value)
+  {
+    getArgumentNode()->setNode(NAME, value);
+  }
 
-	const char *getName()
-	{
-		return getArgumentNode()->getNodeValue(NAME);
-	}
+  const char *getName()
+  {
+    return getArgumentNode()->getNodeValue(NAME);
+  }
 
-	////////////////////////////////////////////////
-	//	direction
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  direction
+  ////////////////////////////////////////////////
 
-	void setDirection(const std::string &value)
-	{
-		getArgumentNode()->setNode(DIRECTION, value);
-	}
+  void setDirection(const std::string &value)
+  {
+    getArgumentNode()->setNode(DIRECTION, value);
+  }
 
-	const char *getDirection()
-	{
-		return getArgumentNode()->getNodeValue(DIRECTION);
-	}
+  const char *getDirection()
+  {
+    return getArgumentNode()->getNodeValue(DIRECTION);
+  }
 
-	bool isInDirection()
-	{
-		const char *dir = getDirection();
-		if (dir == NULL)
-			return false;
-		uHTTP::String dirStr(dir);
-		return dirStr.equalsIgnoreCase(IN_DIR);
-	}
+  bool isInDirection()
+  {
+    const char *dir = getDirection();
+    if (dir == NULL)
+      return false;
+    uHTTP::String dirStr(dir);
+    return dirStr.equalsIgnoreCase(IN_DIR);
+  }
 
-	bool isOutDirection()
-	{
-		return !isInDirection();
-	}
-	
-	////////////////////////////////////////////////
-	//	relatedStateVariable
-	////////////////////////////////////////////////
+  bool isOutDirection()
+  {
+    return !isInDirection();
+  }
+  
+  ////////////////////////////////////////////////
+  //  relatedStateVariable
+  ////////////////////////////////////////////////
 
-	void setRelatedStateVariableName(const std::string &value)
-	{
-		getArgumentNode()->setNode(RELATED_STATE_VARIABLE, value);
-	}
+  void setRelatedStateVariableName(const std::string &value)
+  {
+    getArgumentNode()->setNode(RELATED_STATE_VARIABLE, value);
+  }
 
-	const char *getRelatedStateVariableName()
-	{
-		return getArgumentNode()->getNodeValue(RELATED_STATE_VARIABLE);
-	}
+  const char *getRelatedStateVariableName()
+  {
+    return getArgumentNode()->getNodeValue(RELATED_STATE_VARIABLE);
+  }
 
-	StateVariable *getRelatedStateVariable();
+  StateVariable *getRelatedStateVariable();
 
-	////////////////////////////////////////////////
-	//	UserData
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  UserData
+  ////////////////////////////////////////////////
 
-	ArgumentData *getArgumentData()
-	{
-		CyberXML::Node *node = getArgumentNode();
-		ArgumentData *userData = (ArgumentData *)node->getUserData();
-		if (userData == NULL) {
-			userData = new ArgumentData();
-			node->setUserData(userData);
-		}
-		return userData;
-	}
+  ArgumentData *getArgumentData()
+  {
+    CyberXML::Node *node = getArgumentNode();
+    ArgumentData *userData = (ArgumentData *)node->getUserData();
+    if (userData == NULL) {
+      userData = new ArgumentData();
+      node->setUserData(userData);
+    }
+    return userData;
+  }
 
-	////////////////////////////////////////////////
-	//	value
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  value
+  ////////////////////////////////////////////////
 
-	void setValue(const std::string &value)
-	{
-		getArgumentData()->setValue(value);
-	}
+  void setValue(const std::string &value)
+  {
+    getArgumentData()->setValue(value);
+  }
 
-	void setValue(int value);
+  void setValue(int value);
 
-	const char *getValue()
-	{
-		return getArgumentData()->getValue();
-	}
+  const char *getValue()
+  {
+    return getArgumentData()->getValue();
+  }
 
-	int getIntegerValue()
-	{
-		return atoi(getValue());
-	}
+  int getIntegerValue()
+  {
+    return atoi(getValue());
+  }
 
 };
 

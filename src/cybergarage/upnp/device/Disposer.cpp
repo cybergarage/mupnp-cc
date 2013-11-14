@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Disposer.cpp
+*  File: Disposer.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	01/06/04
-*		- first revision
+*  01/06/04
+*    - first revision
 *
 ******************************************************************/
 
@@ -20,18 +20,18 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Thread
+//  Thread
 ////////////////////////////////////////////////
-	
+  
 void Disposer::run() 
 {
-	ControlPoint *ctrlp = getControlPoint();
-	long monitorInterval = ctrlp->getExpiredDeviceMonitoringInterval() * 1000;
-	
-	while (isRunnable() == true) {
-		uHTTP::Wait(monitorInterval);
-		ctrlp->removeExpiredDevices();
-		//ctrlp->print();
-	}
+  ControlPoint *ctrlp = getControlPoint();
+  long monitorInterval = ctrlp->getExpiredDeviceMonitoringInterval() * 1000;
+  
+  while (isRunnable() == true) {
+    uHTTP::Wait(monitorInterval);
+    ctrlp->removeExpiredDevices();
+    //ctrlp->print();
+  }
 }
 

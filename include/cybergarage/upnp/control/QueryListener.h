@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: QueryListener.h
+*  File: QueryListener.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/11/03
-*		- first revision
+*  07/11/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,7 +25,7 @@ class StateVariable;
 class QueryListener
 {
 public:
-	virtual bool queryControlReceived(StateVariable *stateVar) = 0;
+  virtual bool queryControlReceived(StateVariable *stateVar) = 0;
 };
 
 }

@@ -1,19 +1,19 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ServiceData.cpp
+*  File: ServiceData.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	04/26/04
-*		- first revision
-*	01/06/04
-*		- Moved setQueryListener() and getQueryListener() to StateVariableData class.
-*	05/19/04
-*		- Changed the header include order for Cygwin.
+*  04/26/04
+*    - first revision
+*  01/06/04
+*    - Moved setQueryListener() and getQueryListener() to StateVariableData class.
+*  05/19/04
+*    - Changed the header include order for Cygwin.
 *
 ******************************************************************/
 
@@ -28,14 +28,14 @@ using namespace CyberLink;
 
 ServiceData::ServiceData() 
 {
-	service = NULL;
-	scpdNode = NULL;
+  service = NULL;
+  scpdNode = NULL;
 }
 
 ServiceData::~ServiceData() 
 {
-	if (scpdNode != NULL)
-		delete scpdNode;
+  if (scpdNode != NULL)
+    delete scpdNode;
 }
 
 ////////////////////////////////////////////////
@@ -44,8 +44,8 @@ ServiceData::~ServiceData()
 
 void ServiceData::setSCPDNode(CyberXML::Node *node)
 {
-	if (scpdNode != NULL)
-		delete scpdNode;
-	scpdNode = node;
+  if (scpdNode != NULL)
+    delete scpdNode;
+  scpdNode = node;
 }
 

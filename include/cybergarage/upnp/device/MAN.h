@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: MAN.h
+*  File: MAN.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/08/03
-*		- first revision
+*  07/08/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -23,7 +23,7 @@ namespace CyberLink {
 namespace MAN {
 
 const char DISCOVER[] = "ssdp:discover";
-	
+  
 bool IsDiscover(const std::string &value);
 
 }

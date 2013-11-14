@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberXML for C++
+*  CyberXML for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: NodeList.h
+*  File: NodeList.h
 *
-*	Revision;
+*  Revision;
 *
-*	05/19/03
-*		- first revision
+*  05/19/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -26,37 +26,37 @@ class Node;
 class NodeList : public uHTTP::Vector
 {
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	NodeList();
-	virtual ~NodeList();
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  NodeList();
+  virtual ~NodeList();
+  
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
 
 public:
 
-	bool addNode(Node *node);
-	bool removeNode(Node *node);
-	bool insertNode(Node *node, int index);
+  bool addNode(Node *node);
+  bool removeNode(Node *node);
+  bool insertNode(Node *node, int index);
 
-	Node *getNode(int n);
-	Node *getNode(const std::string &name);
-	Node *getEndsWith(const std::string &name);
-	Node *getNode(const std::string &name, const std::string &value);
+  Node *getNode(int n);
+  Node *getNode(const std::string &name);
+  Node *getEndsWith(const std::string &name);
+  Node *getNode(const std::string &name, const std::string &value);
 
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  clear
+  ////////////////////////////////////////////////
 
 public:
 
-	void clear();
+  void clear();
 };
 
 }

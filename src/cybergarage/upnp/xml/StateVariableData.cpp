@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: StateVariableData.cpp
+*  File: StateVariableData.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	04/26/04
-*		- first revision
+*  04/26/04
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,13 +24,13 @@ using namespace CyberLink;
 
 StateVariableData::StateVariableData() 
 {
-	queryRes = NULL;
+  queryRes = NULL;
 }
 
 StateVariableData::~StateVariableData()
 {
-	if (queryRes != NULL)
-		delete queryRes;
+  if (queryRes != NULL)
+    delete queryRes;
 }
 
 ////////////////////////////////////////////////
@@ -39,9 +39,9 @@ StateVariableData::~StateVariableData()
 
 void StateVariableData::setQueryResponse(QueryResponse *res) 
 {
-	if (queryRes != NULL)
-		delete queryRes;
-	queryRes = res;
+  if (queryRes != NULL)
+    delete queryRes;
+  queryRes = res;
 }
 
 

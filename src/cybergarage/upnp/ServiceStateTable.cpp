@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ServiceStateTable.cpp
+*  File: ServiceStateTable.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/13/03
-*		- first revision
+*  08/13/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -20,21 +20,21 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
 
 const char *ServiceStateTable::ELEM_NAME = "serviceStateTable";
 
 ////////////////////////////////////////////////
-//	Methods
+//  Methods
 ////////////////////////////////////////////////
 
  void ServiceStateTable::clear() 
 {
-	int nVars = size();
-	for (int n=0; n<nVars; n++) {
-		StateVariable *var = getStateVariable(n);
-		delete var;
-	}
-	Vector::clear();
+  int nVars = size();
+  for (int n=0; n<nVars; n++) {
+    StateVariable *var = getStateVariable(n);
+    delete var;
+  }
+  Vector::clear();
 }

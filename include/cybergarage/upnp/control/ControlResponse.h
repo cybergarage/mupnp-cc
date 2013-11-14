@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ControlResponse.h
+*  File: ControlResponse.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/29/03
-*		- first revision
+*  07/29/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -28,103 +28,103 @@ namespace CyberLink {
 
 class ControlResponse : public CyberSOAP::SOAPResponse
 {
-	UPnPStatus upnpErr;
+  UPnPStatus upnpErr;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	static const char *FAULT_CODE;
-	static const char *FAULT_STRING;
-
-public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	ControlResponse()
-	{
-		std::string serverName;
-		setServer(UPnP::GetServerName(serverName));
-	}
-
-	ControlResponse(CyberSOAP::SOAPResponse *soapRes)
-	{
-		set(soapRes);
-	}
-
-	////////////////////////////////////////////////
-	//	FaultResponse
-	////////////////////////////////////////////////
+  static const char *FAULT_CODE;
+  static const char *FAULT_STRING;
 
 public:
-	
-	void setFaultResponse(int errCode, const std::string &errDescr);
-	void setFaultResponse(int errCode)
-	{
-		setFaultResponse(errCode, UPnP::StatusCode2String(errCode));
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  ControlResponse()
+  {
+    std::string serverName;
+    setServer(UPnP::GetServerName(serverName));
+  }
+
+  ControlResponse(CyberSOAP::SOAPResponse *soapRes)
+  {
+    set(soapRes);
+  }
+
+  ////////////////////////////////////////////////
+  //  FaultResponse
+  ////////////////////////////////////////////////
+
+public:
+  
+  void setFaultResponse(int errCode, const std::string &errDescr);
+  void setFaultResponse(int errCode)
+  {
+    setFaultResponse(errCode, UPnP::StatusCode2String(errCode));
+  }
 
 private:
-	
-	CyberXML::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
+  
+  CyberXML::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
 
-	////////////////////////////////////////////////
-	//	UPnP Error
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  UPnP Error
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *getUPnPErrorNode()
-	{
-		CyberXML::Node *detailNode = getFaultDetailNode();
-		if (detailNode == NULL)
-			return NULL;
-		return detailNode->getNodeEndsWith(CyberSOAP::SOAP::UPNP_ERROR);
-	}
+  CyberXML::Node *getUPnPErrorNode()
+  {
+    CyberXML::Node *detailNode = getFaultDetailNode();
+    if (detailNode == NULL)
+      return NULL;
+    return detailNode->getNodeEndsWith(CyberSOAP::SOAP::UPNP_ERROR);
+  }
 
-	CyberXML::Node *getUPnPErrorCodeNode()
-	{
-		CyberXML::Node *errorNode = getUPnPErrorNode();
-		if (errorNode == NULL)
-			return NULL;
-		return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_CODE);
-	}
+  CyberXML::Node *getUPnPErrorCodeNode()
+  {
+    CyberXML::Node *errorNode = getUPnPErrorNode();
+    if (errorNode == NULL)
+      return NULL;
+    return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_CODE);
+  }
 
-	CyberXML::Node *getUPnPErrorDescriptionNode()
-	{
-		CyberXML::Node *errorNode = getUPnPErrorNode();
-		if (errorNode == NULL)
-			return NULL;
-		return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_DESCRIPTION);
-	}
+  CyberXML::Node *getUPnPErrorDescriptionNode()
+  {
+    CyberXML::Node *errorNode = getUPnPErrorNode();
+    if (errorNode == NULL)
+      return NULL;
+    return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_DESCRIPTION);
+  }
 
 public:
 
-	int getUPnPErrorCode()
-	{
-		CyberXML::Node *errorCodeNode = getUPnPErrorCodeNode();
-		if (errorCodeNode == NULL)
-			return -1;
-		const char *errorCodeStr = errorCodeNode->getValue();
-		return atoi(errorCodeStr);
-	}
+  int getUPnPErrorCode()
+  {
+    CyberXML::Node *errorCodeNode = getUPnPErrorCodeNode();
+    if (errorCodeNode == NULL)
+      return -1;
+    const char *errorCodeStr = errorCodeNode->getValue();
+    return atoi(errorCodeStr);
+  }
 
-	const char *getUPnPErrorDescription()
-	{
-		CyberXML::Node *errorDescNode = getUPnPErrorDescriptionNode();
-		if (errorDescNode == NULL)
-			return "";
-		return errorDescNode->getValue();
-	}
+  const char *getUPnPErrorDescription()
+  {
+    CyberXML::Node *errorDescNode = getUPnPErrorDescriptionNode();
+    if (errorDescNode == NULL)
+      return "";
+    return errorDescNode->getValue();
+  }
 
-	UPnPStatus *getUPnPError()
-	{
-		upnpErr.setCode(getUPnPErrorCode());
-		upnpErr.setDescription(getUPnPErrorDescription());
-		return &upnpErr;
-	}
+  UPnPStatus *getUPnPError()
+  {
+    upnpErr.setCode(getUPnPErrorCode());
+    upnpErr.setDescription(getUPnPErrorDescription());
+    return &upnpErr;
+  }
 
 };
 

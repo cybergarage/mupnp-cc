@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: NTS.h
+*  File: NTS.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/07/03
-*		- first revision
+*  07/07/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,7 +25,7 @@ namespace NTS {
 const char ALIVE[] = "ssdp:alive";
 const char BYEBYE[] = "ssdp:byebye";
 const char PROPCHANGE[] = "upnp:propchange";
-	
+  
 bool IsAlive(const std::string &ntsValue);
 bool IsByeBye(const std::string &ntsValue);
 

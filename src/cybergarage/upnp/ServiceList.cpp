@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: DeviceList.cpp
+*  File: DeviceList.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/13/03
-*		- first revision
+*  08/13/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -19,21 +19,21 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
 
 const char *ServiceList::ELEM_NAME = "serviceList";
 
 ////////////////////////////////////////////////
-//	Methods
+//  Methods
 ////////////////////////////////////////////////
 
  void ServiceList::clear() 
 {
-	int nService = size();
-	for (int n=0; n<nService; n++) {
-		Service *service = getService(n);
-		delete service;
-	}
-	Vector::clear();
+  int nService = size();
+  for (int n=0; n<nService; n++) {
+    Service *service = getService(n);
+    delete service;
+  }
+  Vector::clear();
 }

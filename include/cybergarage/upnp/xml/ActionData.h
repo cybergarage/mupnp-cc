@@ -1,17 +1,17 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionData.h
+*  File: ActionData.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/20/03
-*		- first revision
-*	04/19/04
-*		- Fixed to initialize the action listener and the control responce member.
+*  07/20/03
+*    - first revision
+*  04/19/04
+*    - Fixed to initialize the action listener and the control responce member.
 *
 ******************************************************************/
 
@@ -29,47 +29,47 @@ class ControlResponse;
 class ActionData : public CyberXML::NodeData
 {
 
-	ActionListener *actionListener;
-	ControlResponse *ctrlRes;
+  ActionListener *actionListener;
+  ControlResponse *ctrlRes;
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-
-public:
-
-	ActionData();
-
-	~ActionData();
-
-	////////////////////////////////////////////////
-	// ActionListener
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	ActionListener *getActionListener() 
-	{
-		return actionListener;
-	}
+  ActionData();
 
-	void setActionListener(ActionListener *listener) 
-	{
-		actionListener = listener;
-	}
+  ~ActionData();
 
-	////////////////////////////////////////////////
-	// ControlResponse
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // ActionListener
+  ////////////////////////////////////////////////
 
 public:
 
-	ControlResponse *getControlResponse() 
-	{
-		return ctrlRes;
-	}
+  ActionListener *getActionListener() 
+  {
+    return actionListener;
+  }
 
-	void setControlResponse(ControlResponse *res);
+  void setActionListener(ActionListener *listener) 
+  {
+    actionListener = listener;
+  }
+
+  ////////////////////////////////////////////////
+  // ControlResponse
+  ////////////////////////////////////////////////
+
+public:
+
+  ControlResponse *getControlResponse() 
+  {
+    return ctrlRes;
+  }
+
+  void setControlResponse(ControlResponse *res);
 };
 
 }

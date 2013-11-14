@@ -1,16 +1,16 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2004
+*  Copyright (C) Satoshi Konno 2002-2004
 *
-*	File: AllowedValueRange.h
+*  File: AllowedValueRange.h
 *
-*	Revision:
+*  Revision:
 *
-*	03/29/04
-*		- first revision.
-*	
+*  03/29/04
+*    - first revision.
+*  
 ******************************************************************/
 
 #include <cybergarage/upnp/AllowedValueRange.h>
@@ -18,9 +18,9 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
-	
+  
 const char *AllowedValueRange::ELEM_NAME = "allowedValueRange";
 
 const char *AllowedValueRange::MAXIMUM = "maximum";

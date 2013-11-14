@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionResponse.h
+*  File: ActionResponse.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/29/03
-*		- first revision
+*  07/29/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -28,40 +28,40 @@ class Action;
 
 class ActionResponse : public ControlResponse
 {
-	ArgumentList argList;
+  ArgumentList argList;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
 public:
 
-	ActionResponse();
-	ActionResponse(CyberSOAP::SOAPResponse *soapRes);
+  ActionResponse();
+  ActionResponse(CyberSOAP::SOAPResponse *soapRes);
 
-	////////////////////////////////////////////////
-	//	Response
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Response
+  ////////////////////////////////////////////////
 
 public:
 
-	void setResponse(Action *action);
+  void setResponse(Action *action);
 
 private:
 
-	CyberXML::Node *createResponseNode(Action *action);
+  CyberXML::Node *createResponseNode(Action *action);
 
-	////////////////////////////////////////////////
-	//	getResponse
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  getResponse
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *getActionResponseNode();
-	
+  CyberXML::Node *getActionResponseNode();
+  
 public:
 
-	ArgumentList *getResponse();
+  ArgumentList *getResponse();
 
 };
 

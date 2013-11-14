@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionList.cpp
+*  File: ActionList.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/13/03
-*		- first revision
+*  08/13/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -19,21 +19,21 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
 
 const char *CyberLink::ActionList::ELEM_NAME = "actionList";
 
 ////////////////////////////////////////////////
-//	Methods
+//  Methods
 ////////////////////////////////////////////////
 
  void ActionList::clear() 
 {
-	int nAct = size();
-	for (int n=0; n<nAct; n++) {
-		Action *act = getAction(n);
-		delete act;
-	}
-	Vector::clear();
+  int nAct = size();
+  for (int n=0; n<nAct; n++) {
+    Action *act = getAction(n);
+    delete act;
+  }
+  Vector::clear();
 }

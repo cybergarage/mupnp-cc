@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDP.h
+*  File: SSDP.h
 *
-*	Revision;
+*  Revision;
 *
-*	05/22/03
-*		- first revision
+*  05/22/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -21,7 +21,7 @@ namespace CyberLink {
 namespace SSDP {
 
 const int PORT = 1900;
-	
+  
 const char ADDRESS[] = "239.255.255.250";
 
 const char IPV6_IF_LOCAL_ADDRESS[] = "FF01::C";

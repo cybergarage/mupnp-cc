@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberXML for C++
+*  CyberXML for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Data.h
+*  File: Data.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/22/03
-*		- first revision
+*  07/22/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -22,31 +22,31 @@ class Node;
 
 class NodeData
 {
-	Node *node;
+  Node *node;
 
 public:
-	
-	NodeData()
-	{
-	}
+  
+  NodeData()
+  {
+  }
 
-	virtual ~NodeData()
-	{
-	}
+  virtual ~NodeData()
+  {
+  }
 
-	////////////////////////////////////////////////
-	// node
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // node
+  ////////////////////////////////////////////////
 
-	void setNode(CyberXML::Node *node)
-	{
-		this->node = node;
-	}
+  void setNode(CyberXML::Node *node)
+  {
+    this->node = node;
+  }
 
-	CyberXML::Node *getNode()
-	{
-		return node;
-	}
+  CyberXML::Node *getNode()
+  {
+    return node;
+  }
 
 };
 

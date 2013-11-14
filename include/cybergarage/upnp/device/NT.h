@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: NT.h
+*  File: NT.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/07/03
-*		- first revision
+*  07/07/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,7 +24,7 @@ namespace NT {
 
 const char ROOTDEVICE[] = "upnp:rootdevice";
 const char EVENT[] = "upnp:event";
-	
+  
 bool IsRootDevice(const std::string &usnValue);
 
 }

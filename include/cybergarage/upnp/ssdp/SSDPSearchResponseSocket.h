@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPSearchResponseSocket.h
+*  File: SSDPSearchResponseSocket.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/11/03
-*		- first revision
+*  07/11/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -27,56 +27,56 @@ class ControlPoint;
 
 class SSDPSearchResponseSocket : public HTTPUSocket, public uHTTP::Thread
 {
-	ControlPoint *controlPoint;
+  ControlPoint *controlPoint;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	SSDPSearchResponseSocket();
-	SSDPSearchResponseSocket(const std::string &bindAddr, int port);
-	~SSDPSearchResponseSocket();
+  SSDPSearchResponseSocket();
+  SSDPSearchResponseSocket(const std::string &bindAddr, int port);
+  ~SSDPSearchResponseSocket();
 
-	////////////////////////////////////////////////
-	//	ControlPoint	
-	////////////////////////////////////////////////
-	
-	void setControlPoint(ControlPoint *ctrlp)
-	{
-		controlPoint = ctrlp;
-	}
+  ////////////////////////////////////////////////
+  //  ControlPoint  
+  ////////////////////////////////////////////////
+  
+  void setControlPoint(ControlPoint *ctrlp)
+  {
+    controlPoint = ctrlp;
+  }
 
-	ControlPoint *getControlPoint()
-	{
-		return controlPoint;
-	}
+  ControlPoint *getControlPoint()
+  {
+    return controlPoint;
+  }
 
-	////////////////////////////////////////////////
-	//	run	
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  run  
+  ////////////////////////////////////////////////
 
-	void run();
-	
-	////////////////////////////////////////////////
-	//	post
-	////////////////////////////////////////////////
+  void run();
+  
+  ////////////////////////////////////////////////
+  //  post
+  ////////////////////////////////////////////////
 
-	bool post(const std::string &addr, int port, SSDPSearchResponse *res)
-	{
-		std::string headerStr;
-		return HTTPUSocket::post(addr, port, res->getHeader(headerStr));
-	}
+  bool post(const std::string &addr, int port, SSDPSearchResponse *res)
+  {
+    std::string headerStr;
+    return HTTPUSocket::post(addr, port, res->getHeader(headerStr));
+  }
 
-	////////////////////////////////////////////////
-	//	post
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  post
+  ////////////////////////////////////////////////
 
-	bool post(const std::string &addr, int port, SSDPSearchRequest *req)
-	{
-		std::string buf;
-		return HTTPUSocket::post(addr, port, req->toString(buf));
-	}
+  bool post(const std::string &addr, int port, SSDPSearchRequest *req)
+  {
+    std::string buf;
+    return HTTPUSocket::post(addr, port, req->toString(buf));
+  }
 };
 
 }

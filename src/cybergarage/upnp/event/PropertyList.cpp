@@ -1,17 +1,17 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: PropertyList.cpp
+*  File: PropertyList.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	09/08/03
-*		- first revision
-*	06/30/04
-*		- Added addProperty(), insertProperty() and removeProperty();
+*  09/08/03
+*    - first revision
+*  06/30/04
+*    - Added addProperty(), insertProperty() and removeProperty();
 *
 ******************************************************************/
 
@@ -26,38 +26,38 @@ PropertyList::PropertyList()
 
 PropertyList::~PropertyList() 
 {
-	clear();
+  clear();
 }
 
 bool PropertyList::addProperty(Property *prop) 
 {
-	if (prop == NULL)
-		return false;
-	return add(prop);
+  if (prop == NULL)
+    return false;
+  return add(prop);
 }
 
 bool PropertyList::insertProperty(Property *prop, int index) 
 {
-	if (prop == NULL)
-		return false;
-	return insertAt(prop, index);
+  if (prop == NULL)
+    return false;
+  return insertAt(prop, index);
 }
 
 bool PropertyList::removeProperty(Property *prop) 
 {
-	if (prop == NULL)
-		return false;
-	bool ret = remove(prop);
-	delete prop;
-	return ret;
+  if (prop == NULL)
+    return false;
+  bool ret = remove(prop);
+  delete prop;
+  return ret;
 }
 
  void PropertyList::clear() 
 {
-	int nProp = size();
-	for (int n=0; n<nProp; n++) {
-		Property *prop = getProperty(n);
-		delete prop;
-	}
-	Vector::clear();
+  int nProp = size();
+  for (int n=0; n<nProp; n++) {
+    Property *prop = getProperty(n);
+    delete prop;
+  }
+  Vector::clear();
 }

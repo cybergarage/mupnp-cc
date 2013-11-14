@@ -1,16 +1,16 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2004
+*  Copyright (C) Satoshi Konno 2002-2004
 *
-*	File: AllowedValueRange.h
+*  File: AllowedValueRange.h
 *
-*	Revision:
+*  Revision:
 *
-*	03/29/04
-*		- first revision.
-*	
+*  03/29/04
+*    - first revision.
+*  
 ******************************************************************/
 
 #ifndef _CLINK_ALLOWEDVALUERANGE_H_
@@ -22,111 +22,111 @@ namespace CyberLink{
 
 class AllowedValueRange
 {
-	CyberXML::Node *allowedValueRangeNode;
+  CyberXML::Node *allowedValueRangeNode;
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-
-public:
-	
-	static const char *ELEM_NAME;
-
-	static const char *MAXIMUM;
-	static const char *MINIMUM;
-	static const char *STEP;
-
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
 
 public:
+  
+  static const char *ELEM_NAME;
 
-	void setAllowedValueRangeNode(CyberXML::Node *node)
-	{
-		allowedValueRangeNode = node;
-	}
+  static const char *MAXIMUM;
+  static const char *MINIMUM;
+  static const char *STEP;
 
-	CyberXML::Node *getAllowedValueRangeNode()
-	{
-		return allowedValueRangeNode;
-	}
-
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-
-public:
-	
-	AllowedValueRange()
-	{
-		setAllowedValueRangeNode(NULL);
-	}
-
-	AllowedValueRange(CyberXML::Node *node)
-	{
-		setAllowedValueRangeNode(node);
-	}
-
-	////////////////////////////////////////////////
-	//	isIconNode
-	////////////////////////////////////////////////
+  
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
 public:
 
-	static bool isAllowedValueRangeNode(CyberXML::Node *node)
-	{
-		return node->isName(AllowedValueRange::ELEM_NAME);
-	}
+  void setAllowedValueRangeNode(CyberXML::Node *node)
+  {
+    allowedValueRangeNode = node;
+  }
 
-	////////////////////////////////////////////////
-	//	minimum
-	////////////////////////////////////////////////
+  CyberXML::Node *getAllowedValueRangeNode()
+  {
+    return allowedValueRangeNode;
+  }
+
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+
+public:
+  
+  AllowedValueRange()
+  {
+    setAllowedValueRangeNode(NULL);
+  }
+
+  AllowedValueRange(CyberXML::Node *node)
+  {
+    setAllowedValueRangeNode(node);
+  }
+
+  ////////////////////////////////////////////////
+  //  isIconNode
+  ////////////////////////////////////////////////
 
 public:
 
-	void setMinimum(const std::string &value)
-	{
-		getAllowedValueRangeNode()->setNode(MINIMUM, value);
-	}
+  static bool isAllowedValueRangeNode(CyberXML::Node *node)
+  {
+    return node->isName(AllowedValueRange::ELEM_NAME);
+  }
 
-	const char *getMinimum()
-	{
-		return getAllowedValueRangeNode()->getNodeValue(MINIMUM);
-	}
-
-	////////////////////////////////////////////////
-	//	maximum
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  minimum
+  ////////////////////////////////////////////////
 
 public:
 
-	void setMaximum(const std::string &value)
-	{
-		getAllowedValueRangeNode()->setNode(MAXIMUM, value);
-	}
+  void setMinimum(const std::string &value)
+  {
+    getAllowedValueRangeNode()->setNode(MINIMUM, value);
+  }
 
-	const char *getMaximum()
-	{
-		return getAllowedValueRangeNode()->getNodeValue(MAXIMUM);
-	}
+  const char *getMinimum()
+  {
+    return getAllowedValueRangeNode()->getNodeValue(MINIMUM);
+  }
 
-	////////////////////////////////////////////////
-	//	width
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  maximum
+  ////////////////////////////////////////////////
 
 public:
 
-	void setStep(const std::string &value)
-	{
-		getAllowedValueRangeNode()->setNode(STEP, value);
-	}
+  void setMaximum(const std::string &value)
+  {
+    getAllowedValueRangeNode()->setNode(MAXIMUM, value);
+  }
 
-	const char *getStep()
-	{
-		return getAllowedValueRangeNode()->getNodeValue(STEP);
-	}
+  const char *getMaximum()
+  {
+    return getAllowedValueRangeNode()->getNodeValue(MAXIMUM);
+  }
+
+  ////////////////////////////////////////////////
+  //  width
+  ////////////////////////////////////////////////
+
+public:
+
+  void setStep(const std::string &value)
+  {
+    getAllowedValueRangeNode()->setNode(STEP, value);
+  }
+
+  const char *getStep()
+  {
+    return getAllowedValueRangeNode()->getNodeValue(STEP);
+  }
 };
 
 }

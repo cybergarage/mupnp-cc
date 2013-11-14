@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: StateVariableData.h
+*  File: StateVariableData.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/20/03
-*		- first revision
+*  07/20/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -28,62 +28,62 @@ class QueryListener;
 class StateVariableData : public CyberXML::NodeData
 {
 
-	std::string value;
-	QueryResponse *queryRes;
-	QueryListener *queryListener;
+  std::string value;
+  QueryResponse *queryRes;
+  QueryListener *queryListener;
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-
-public:
-
-	StateVariableData();
-
-	~StateVariableData();
-
-	////////////////////////////////////////////////
-	// value
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	const char *getValue() {
-		return value.c_str();
-	}
+  StateVariableData();
 
-	void setValue(const std::string &val) {
-		value = val;
-	}
+  ~StateVariableData();
 
-	////////////////////////////////////////////////
-	// QueryListener
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // value
+  ////////////////////////////////////////////////
 
 public:
 
-	QueryListener *getQueryListener() 
-	{
-		return queryListener;
-	}
+  const char *getValue() {
+    return value.c_str();
+  }
 
-	void setQueryListener(QueryListener *listener) 
-	{
-		queryListener = listener;
-	}
+  void setValue(const std::string &val) {
+    value = val;
+  }
 
-	////////////////////////////////////////////////
-	// QueryResponse
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // QueryListener
+  ////////////////////////////////////////////////
 
 public:
 
-	QueryResponse *getQueryResponse() 
-	{
-		return queryRes;
-	}
+  QueryListener *getQueryListener() 
+  {
+    return queryListener;
+  }
 
-	void setQueryResponse(QueryResponse *res);
+  void setQueryListener(QueryListener *listener) 
+  {
+    queryListener = listener;
+  }
+
+  ////////////////////////////////////////////////
+  // QueryResponse
+  ////////////////////////////////////////////////
+
+public:
+
+  QueryResponse *getQueryResponse() 
+  {
+    return queryRes;
+  }
+
+  void setQueryResponse(QueryResponse *res);
 
 };
 

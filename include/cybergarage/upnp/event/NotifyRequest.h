@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: NotifyRequest.h
+*  File: NotifyRequest.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/08/03
-*		- first revision
+*  07/08/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -30,110 +30,110 @@ namespace CyberLink {
 
 class NotifyRequest : public CyberSOAP::SOAPRequest
 {
-	PropertyList propList;
+  PropertyList propList;
 
 public:
 
-	static const char *XMLNS;
-	static const char *PROPERTY;
-	static const char *PROPERTYSET;
+  static const char *XMLNS;
+  static const char *PROPERTY;
+  static const char *PROPERTYSET;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
 public:
 
-	NotifyRequest()
-	{
-	}
+  NotifyRequest()
+  {
+  }
 
-	NotifyRequest(uHTTP::HTTPRequest *httpReq)
-	{
-		set(httpReq);
-	}
+  NotifyRequest(uHTTP::HTTPRequest *httpReq)
+  {
+    set(httpReq);
+  }
 
-	////////////////////////////////////////////////
-	//	NT
-	////////////////////////////////////////////////
-
-public:
-
-	void setNT(const std::string &value)
-	{
-		setHeader(uHTTP::HTTP::NT, value);
-	}
-
-	////////////////////////////////////////////////
-	//	NTS
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  NT
+  ////////////////////////////////////////////////
 
 public:
 
-	void setNTS(const std::string &value)
-	{
-		setHeader(uHTTP::HTTP::NTS, value);
-	}
+  void setNT(const std::string &value)
+  {
+    setHeader(uHTTP::HTTP::NT, value);
+  }
 
-	////////////////////////////////////////////////
-	//	SID
-	////////////////////////////////////////////////
-
-public:
-
-	void setSID(const std::string &sid)
-	{
-		std::string buf;
-		setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
-	}
-
-	const char *getSID(std::string &buf)
-	{
-		return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
-	}
-
-	////////////////////////////////////////////////
-	//	SEQ
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  NTS
+  ////////////////////////////////////////////////
 
 public:
 
-	void setSEQ(long value)
-	{
-		setHeader(uHTTP::HTTP::SEQ, value);
-	}
+  void setNTS(const std::string &value)
+  {
+    setHeader(uHTTP::HTTP::NTS, value);
+  }
 
-	long getSEQ()
-	{
-		return getLongHeaderValue(uHTTP::HTTP::SEQ);
-	}
-
-	////////////////////////////////////////////////
-	//	Request
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  SID
+  ////////////////////////////////////////////////
 
 public:
 
-	bool setRequest(Subscriber *sub, const std::string &varName, const std::string &value);
+  void setSID(const std::string &sid)
+  {
+    std::string buf;
+    setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
+  }
+
+  const char *getSID(std::string &buf)
+  {
+    return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
+  }
+
+  ////////////////////////////////////////////////
+  //  SEQ
+  ////////////////////////////////////////////////
+
+public:
+
+  void setSEQ(long value)
+  {
+    setHeader(uHTTP::HTTP::SEQ, value);
+  }
+
+  long getSEQ()
+  {
+    return getLongHeaderValue(uHTTP::HTTP::SEQ);
+  }
+
+  ////////////////////////////////////////////////
+  //  Request
+  ////////////////////////////////////////////////
+
+public:
+
+  bool setRequest(Subscriber *sub, const std::string &varName, const std::string &value);
 
 private:
-	
-	CyberXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
+  
+  CyberXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
 
-	CyberXML::Node *getVariableNode();
+  CyberXML::Node *getVariableNode();
 
-	////////////////////////////////////////////////
-	//	Property
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Property
+  ////////////////////////////////////////////////
 
 private:
-	
-	Property *getProperty(CyberXML::Node *varNode);
+  
+  Property *getProperty(CyberXML::Node *varNode);
 
 public:
 
-	PropertyList *getPropertyList();
-	
+  PropertyList *getPropertyList();
+  
 };
 
 }

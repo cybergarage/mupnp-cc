@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionRequest.h
+*  File: ActionRequest.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/14/03
-*		- first revision
+*  07/14/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -30,74 +30,74 @@ class Action;
 class ActionRequest : public ControlRequest
 {
 
-	ArgumentList argumentList;
-	ActionResponse actionRes;
+  ArgumentList argumentList;
+  ActionResponse actionRes;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
 public:
 
-	ActionRequest()
-	{
-	}
+  ActionRequest()
+  {
+  }
 
-	ActionRequest(uHTTP::HTTPRequest *httpReq)
-	{
-		set(httpReq);
-		initArgumentList();
-	}
+  ActionRequest(uHTTP::HTTPRequest *httpReq)
+  {
+    set(httpReq);
+    initArgumentList();
+  }
 
-	////////////////////////////////////////////////
-	//	Action
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Action
+  ////////////////////////////////////////////////
 
 public:
 
-	CyberXML::Node *getActionNode();
+  CyberXML::Node *getActionNode();
 
-	const char *getActionName(std::string &buf);
+  const char *getActionName(std::string &buf);
 
 private:
 
-	void initArgumentList();
+  void initArgumentList();
 
 public:
 
-	ArgumentList *getArgumentList()
-	{
-		return &argumentList;
-	}
+  ArgumentList *getArgumentList()
+  {
+    return &argumentList;
+  }
 
-	////////////////////////////////////////////////
-	//	setRequest
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  setRequest
+  ////////////////////////////////////////////////
 
 public:
 
-	void setRequest(Action *action, ArgumentList *argList);
+  void setRequest(Action *action, ArgumentList *argList);
 
-	////////////////////////////////////////////////
-	//	Contents
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Contents
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
+  CyberXML::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
 
-	////////////////////////////////////////////////
-	//	post
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  post
+  ////////////////////////////////////////////////
 
 public:
 
-	ActionResponse *post(ActionResponse *actionRes);
+  ActionResponse *post(ActionResponse *actionRes);
 
-	ActionResponse *post()
-	{
-		return post(&actionRes);
-	}
+  ActionResponse *post()
+  {
+    return post(&actionRes);
+  }
 
 };
 

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: MediaServer.h
+*  File: MediaServer.h
 *
-*	Revision:
+*  Revision:
 *
-*	04/15/04
-*		- first revision
+*  04/15/04
+*    - first revision
 *
 ******************************************************************/
 

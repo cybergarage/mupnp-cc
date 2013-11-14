@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: InvalidDescriptionException.h
+*  File: InvalidDescriptionException.h
 *
-*	Revision:
+*  Revision:
 *
-*	08/30/03
-*		- first revision
+*  08/30/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,13 +25,13 @@ const char INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND[] = "File not found";
 class InvalidDescriptionException : public uHTTP::Exception
 {
 
-	std::string errMsg;
-	
+  std::string errMsg;
+  
 public:
 
-	InvalidDescriptionException(const std::string &msg) : Exception(msg)
-	{
-	}
+  InvalidDescriptionException(const std::string &msg) : Exception(msg)
+  {
+  }
 
 };
 

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberXML for C++
+*  CyberXML for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File:	Parser.h
+*  File:  Parser.h
 *
-*	Revision;
+*  Revision;
 *
-*	05/20/03
-*		- first revision
+*  05/20/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -34,39 +34,39 @@ class Parser
 
 public:
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	Parser();
-	~Parser();
+  Parser();
+  ~Parser();
 
-	////////////////////////////////////////////////
-	//	parse (File)
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  parse (File)
+  ////////////////////////////////////////////////
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	Node *parse(uHTTP::File *file);
+  Node *parse(uHTTP::File *file);
 #endif
 
-	Node *parse(uHTTP::URL *url);
-	
-	Node *parse(const std::string &data, size_t len);
+  Node *parse(uHTTP::URL *url);
+  
+  Node *parse(const std::string &data, size_t len);
 
-	Node *parse(const std::string &data)
-	{
-		return parse(data, data.length());
-	}
-	
-	Node *parse(std::string *data)
-	{
-		return parse(data->c_str(), data->length());
-	}
-	
-	Node *parse(UnicodeStr *data, size_t len)
-	{
-		return parse((const std::string &)data, len);
-	}
+  Node *parse(const std::string &data)
+  {
+    return parse(data, data.length());
+  }
+  
+  Node *parse(std::string *data)
+  {
+    return parse(data->c_str(), data->length());
+  }
+  
+  Node *parse(UnicodeStr *data, size_t len)
+  {
+    return parse((const std::string &)data, len);
+  }
 };
 
 }

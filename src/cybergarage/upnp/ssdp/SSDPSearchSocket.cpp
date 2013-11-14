@@ -1,19 +1,19 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPSearchSocket.cpp
+*  File: SSDPSearchSocket.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/14/03
-*		- first revision
-*	04/20/05
-*		- Mikael Hakman <mhakman@dkab.net>
-*		- Added close() in stop().
-*		- Added test for null return from receive() in run().
+*  08/14/03
+*    - first revision
+*  04/20/05
+*    - Mikael Hakman <mhakman@dkab.net>
+*    - Added close() in stop().
+*    - Added test for null return from receive() in run().
 *
 ******************************************************************/
 
@@ -23,7 +23,7 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
 SSDPSearchSocket::SSDPSearchSocket()
@@ -32,42 +32,42 @@ SSDPSearchSocket::SSDPSearchSocket()
 
 SSDPSearchSocket::SSDPSearchSocket(const std::string &bindAddr)
 {
-	open(bindAddr);
+  open(bindAddr);
 }
 
 SSDPSearchSocket::~SSDPSearchSocket()
 {
-	stop();
-	close();
+  stop();
+  close();
 }
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
 bool SSDPSearchSocket::open(const std::string &bindAddr)
 {
-	const char *addr = SSDP::ADDRESS;
-	useIPv6Address = false;
-	if (uHTTP::IsIPv6Address(bindAddr) == true) {
-		addr = SSDP::GetIPv6Address();
-		useIPv6Address = true;
-	}
-	return HTTPMUSocket::open(addr, SSDP::PORT, bindAddr);
+  const char *addr = SSDP::ADDRESS;
+  useIPv6Address = false;
+  if (uHTTP::IsIPv6Address(bindAddr) == true) {
+    addr = SSDP::GetIPv6Address();
+    useIPv6Address = true;
+  }
+  return HTTPMUSocket::open(addr, SSDP::PORT, bindAddr);
 }
 
 ////////////////////////////////////////////////
-//	run	
+//  run  
 ////////////////////////////////////////////////
 
 void SSDPSearchSocket::run()
 {
-	while (isRunnable() == true) {
-		//Thread.yield();
-		SSDPPacket *packet = receive();
-		if (packet == NULL)
-			continue;
-		if (packet->isDiscover() == true)
-			performSearchListener(packet);
-	}
+  while (isRunnable() == true) {
+    //Thread.yield();
+    SSDPPacket *packet = receive();
+    if (packet == NULL)
+      continue;
+    if (packet->isDiscover() == true)
+      performSearchListener(packet);
+  }
 }

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Device.h
+*  File: Device.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/10/03
-*		- first revision
+*  07/10/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -44,811 +44,811 @@ namespace CyberLink {
 
 class Device : public uHTTP::HTTPRequestListener, public SearchListener
 {
-	CyberXML::Node *rootNode;
-	CyberXML::Node *deviceNode;
+  CyberXML::Node *rootNode;
+  CyberXML::Node *deviceNode;
 
-	Device *rootDevice;
-	Device *parentDevice;
+  Device *rootDevice;
+  Device *parentDevice;
 
-	DeviceList deviceList;
-	ServiceList serviceList;
-	IconList iconList;
+  DeviceList deviceList;
+  ServiceList serviceList;
+  IconList iconList;
 
-	bool localRootDeviceFlag;
+  bool localRootDeviceFlag;
 
-	std::string devUUID;
+  std::string devUUID;
 
-	uHTTP::Mutex mutex;
+  uHTTP::Mutex mutex;
 
-	bool wirelessMode;
+  bool wirelessMode;
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
 public:
 
-	static const char *ELEM_NAME;
-	static const char *UPNP_ROOTDEVICE;
-	static const int DEFAULT_STARTUP_WAIT_TIME;
-	static const int DEFAULT_DISCOVERY_WAIT_TIME;
-	static const int DEFAULT_LEASE_TIME;
-	static const int HTTP_DEFAULT_PORT;
-	static const char *DEFAULT_DESCRIPTION_URI;
-	static const char *URLBASE_NAME;
-	static const char *DEVICE_TYPE;
-	static const char *FRIENDLY_NAME;
-	static const char *MANUFACTURER;
-	static const char *MANUFACTURER_URL;
-	static const char *MODEL_DESCRIPTION;
-	static const char *MODEL_NAME;
-	static const char *MODEL_NUMBER;
-	static const char *MODEL_URL;
-	static const char *SERIAL_NUMBER;
-	static const char *UDN;
-	static const char *UPC;
-	static const char *presentationURL;
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  static const char *ELEM_NAME;
+  static const char *UPNP_ROOTDEVICE;
+  static const int DEFAULT_STARTUP_WAIT_TIME;
+  static const int DEFAULT_DISCOVERY_WAIT_TIME;
+  static const int DEFAULT_LEASE_TIME;
+  static const int HTTP_DEFAULT_PORT;
+  static const char *DEFAULT_DESCRIPTION_URI;
+  static const char *URLBASE_NAME;
+  static const char *DEVICE_TYPE;
+  static const char *FRIENDLY_NAME;
+  static const char *MANUFACTURER;
+  static const char *MANUFACTURER_URL;
+  static const char *MODEL_DESCRIPTION;
+  static const char *MODEL_NAME;
+  static const char *MODEL_NUMBER;
+  static const char *MODEL_URL;
+  static const char *SERIAL_NUMBER;
+  static const char *UDN;
+  static const char *UPC;
+  static const char *presentationURL;
+  
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
 public:
 
-	CyberXML::Node *getRootNode();
+  CyberXML::Node *getRootNode();
 
-	CyberXML::Node *getDeviceNode()
-	{
-		return deviceNode;
-	}
+  CyberXML::Node *getDeviceNode()
+  {
+    return deviceNode;
+  }
 
-	void setRootNode(CyberXML::Node *node)
-	{
-		rootNode = node;
-	}
+  void setRootNode(CyberXML::Node *node)
+  {
+    rootNode = node;
+  }
 
-	void setDeviceNode(CyberXML::Node *node)
-	{
-		deviceNode = node;
-	}
-				
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  void setDeviceNode(CyberXML::Node *node)
+  {
+    deviceNode = node;
+  }
+        
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	Device();
-	Device(CyberXML::Node *root, CyberXML::Node *device);
-	Device(CyberXML::Node *device);
+  Device();
+  Device(CyberXML::Node *root, CyberXML::Node *device);
+  Device(CyberXML::Node *device);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	Device(uHTTP::File *descriptionFile);
-	Device(const std::string &descriptionFileName);
+  Device(uHTTP::File *descriptionFile);
+  Device(const std::string &descriptionFileName);
 #endif
 
 private:
 
-	void initUUID();
-	void initDeviceData();
-	void initChildList();
+  void initUUID();
+  void initDeviceData();
+  void initChildList();
 
 public:
 
-	virtual ~Device();
+  virtual ~Device();
 
-	////////////////////////////////////////////////
-	// Mutex
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  // Mutex
+  ////////////////////////////////////////////////
+  
 public:
 
-	void lock()
-	{
-		mutex.lock();
-	}
-	
-	void unlock()
-	{
-		mutex.unlock();
-	}
+  void lock()
+  {
+    mutex.lock();
+  }
+  
+  void unlock()
+  {
+    mutex.unlock();
+  }
 
-	////////////////////////////////////////////////
-	//	NMPR
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  NMPR
+  ////////////////////////////////////////////////
 
 public:
 
-	void setNMPRMode(bool flag);
-	bool isNMPRMode();
+  void setNMPRMode(bool flag);
+  bool isNMPRMode();
 
-	////////////////////////////////////////////////
-	//	Wireless
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Wireless
+  ////////////////////////////////////////////////
+  
 public:
 
-	void setWirelessMode(bool flag)
-	{
-		wirelessMode = flag;
-	}
+  void setWirelessMode(bool flag)
+  {
+    wirelessMode = flag;
+  }
 
-	bool isWirelessMode()
-	{
-		return wirelessMode;
-	}
-	
-	int getSSDPAnnounceCount()
-	{
-		if (isNMPRMode() == true && isWirelessMode() == true)
-			return UPnP::INMPR03_DISCOVERY_OVER_WIRELESS_COUNT;
-		return 1;
-	}
+  bool isWirelessMode()
+  {
+    return wirelessMode;
+  }
+  
+  int getSSDPAnnounceCount()
+  {
+    if (isNMPRMode() == true && isWirelessMode() == true)
+      return UPnP::INMPR03_DISCOVERY_OVER_WIRELESS_COUNT;
+    return 1;
+  }
 
-	////////////////////////////////////////////////
-	//	Device UUID
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Device UUID
+  ////////////////////////////////////////////////
 
 private:
 
-	void setUUID(const std::string &uuid)
-	{
-		devUUID = uuid;
-	}
+  void setUUID(const std::string &uuid)
+  {
+    devUUID = uuid;
+  }
 
-	const char *getUUID()
-	{
-		return devUUID.c_str();
-	}
+  const char *getUUID()
+  {
+    return devUUID.c_str();
+  }
 
-	void updateUDN()
-	{
-		std::string uuid;
-		uuid.append("uuid:");
-		uuid.append(getUUID());
-		setUDN(uuid.c_str());
-	}
-	
-	//////////////////////////////////////////////
-	//	Root Device
-	////////////////////////////////////////////////
+  void updateUDN()
+  {
+    std::string uuid;
+    uuid.append("uuid:");
+    uuid.append(getUUID());
+    setUDN(uuid.c_str());
+  }
+  
+  //////////////////////////////////////////////
+  //  Root Device
+  ////////////////////////////////////////////////
 
 private:
 
-	void setLocalRootDeviceFlag(bool flag)
-	{
-		localRootDeviceFlag = flag;
-	}
+  void setLocalRootDeviceFlag(bool flag)
+  {
+    localRootDeviceFlag = flag;
+  }
 
-	bool isLocalRootDevice()
-	{
-		return localRootDeviceFlag;
-	}
+  bool isLocalRootDevice()
+  {
+    return localRootDeviceFlag;
+  }
 
-	 ////////////////////////////////////////////////
-	//	Root Device
-	////////////////////////////////////////////////
-
-public:
-
-	Device *getRootDevice();
-
-	 ////////////////////////////////////////////////
-	//	Parent Device
-	////////////////////////////////////////////////
+   ////////////////////////////////////////////////
+  //  Root Device
+  ////////////////////////////////////////////////
 
 public:
 
-	Device *getParentDevice();
+  Device *getRootDevice();
 
-	////////////////////////////////////////////////
-	//	UserData
-	////////////////////////////////////////////////
+   ////////////////////////////////////////////////
+  //  Parent Device
+  ////////////////////////////////////////////////
 
 public:
-	
-	DeviceData *getDeviceData();
 
-	bool hasDeviceData() {
-        return (getDeviceData() ? true : false);
+  Device *getParentDevice();
+
+  ////////////////////////////////////////////////
+  //  UserData
+  ////////////////////////////////////////////////
+
+public:
+  
+  DeviceData *getDeviceData();
+
+  bool hasDeviceData() {
+    return (getDeviceData() ? true : false);
+  }
+
+  ////////////////////////////////////////////////
+  //  Description
+  ////////////////////////////////////////////////
+
+public:
+
+  void setDescriptionFile(const std::string &file)
+  {
+    getDeviceData()->setDescriptionFile(file);
+  }
+
+  const char *getDescriptionFile()
+  {
+    return getDeviceData()->getDescriptionFile();
+  }
+
+  void setDescriptionURI(const std::string &uri)
+  {
+    getDeviceData()->setDescriptionURI(uri);
+  }
+
+  const char *getDescriptionURI()
+  {
+    return getDeviceData()->getDescriptionURI();
+  }
+
+  bool isDescriptionURI(const std::string &uri)
+  {
+    const char *descriptionURI = getDescriptionURI();
+    if (descriptionURI == NULL)
+      return false;
+    uHTTP::String descriptionURIStr(descriptionURI);
+    return descriptionURIStr.equals(uri);
+  }
+
+  const char *getDescriptionFilePath(std::string &buf)
+  {
+    const char *descriptionFileName = getDescriptionFile();
+    if (descriptionFileName == NULL)
+      return "";
+    uHTTP::File descriptionFile(descriptionFileName);
+    buf = descriptionFile.getAbsoluteFile()->getParent();
+    return buf.c_str();
+  }
+
+  bool loadDescription(const std::string &descString);
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+  bool loadDescription(uHTTP::File *file);
+#endif
+
+private:
+
+  bool initializeLoadedDescription();
+
+  ////////////////////////////////////////////////
+  //  isDeviceNode
+  ////////////////////////////////////////////////
+
+public:
+
+  static bool isDeviceNode(CyberXML::Node *node)
+  {
+    return node->isName(Device::ELEM_NAME);
+  }
+  
+  ////////////////////////////////////////////////
+  //  Root Device
+  ////////////////////////////////////////////////
+
+  bool isRootDevice()
+  {
+    return (getRootNode() != NULL) ? true : false;
+  }
+  
+  ////////////////////////////////////////////////
+  //  Root Device
+  ////////////////////////////////////////////////
+
+  void setSSDPPacket(SSDPPacket *packet)
+  {
+    getDeviceData()->setSSDPPacket(packet);
+  }
+
+  SSDPPacket *getSSDPPacket()
+  {
+    if (isRootDevice() == false)
+      return NULL;
+    return getDeviceData()->getSSDPPacket();
+  }
+  
+  ////////////////////////////////////////////////
+  //  Location 
+  ////////////////////////////////////////////////
+
+  void setLocation(const std::string &value)
+  {
+    getDeviceData()->setLocation(value);
+  }
+
+  const char *getLocation()
+  {
+    SSDPPacket *packet = getSSDPPacket();
+    if (packet != NULL) {
+      std::string buf;
+      setLocation(packet->getLocation(buf));
     }
+    return getDeviceData()->getLocation();
+  }
 
-	////////////////////////////////////////////////
-	//	Description
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  LeaseTime 
+  ////////////////////////////////////////////////
 
 public:
 
-	void setDescriptionFile(const std::string &file)
-	{
-		getDeviceData()->setDescriptionFile(file);
-	}
+  void setLeaseTime(int value);
+  int getLeaseTime();
 
-	const char *getDescriptionFile()
-	{
-		return getDeviceData()->getDescriptionFile();
-	}
+  ////////////////////////////////////////////////
+  //  TimeStamp 
+  ////////////////////////////////////////////////
 
-	void setDescriptionURI(const std::string &uri)
-	{
-		getDeviceData()->setDescriptionURI(uri);
-	}
+public:
 
-	const char *getDescriptionURI()
-	{
-		return getDeviceData()->getDescriptionURI();
-	}
+  long getTimeStamp();
+  long getElapsedTime()
+  {
+    return time(NULL) - getTimeStamp();
+  }
 
-	bool isDescriptionURI(const std::string &uri)
-	{
-		const char *descriptionURI = getDescriptionURI();
-		if (descriptionURI == NULL)
-			return false;
-		uHTTP::String descriptionURIStr(descriptionURI);
-		return descriptionURIStr.equals(uri);
-	}
-
-	const char *getDescriptionFilePath(std::string &buf)
-	{
-		const char *descriptionFileName = getDescriptionFile();
-		if (descriptionFileName == NULL)
-			return "";
-		uHTTP::File descriptionFile(descriptionFileName);
-		buf = descriptionFile.getAbsoluteFile()->getParent();
-		return buf.c_str();
-	}
-
-	bool loadDescription(const std::string &descString);
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	bool loadDescription(uHTTP::File *file);
-#endif
+  bool isExpired();
+  
+  ////////////////////////////////////////////////
+  //  URL Base
+  ////////////////////////////////////////////////
 
 private:
 
-	bool initializeLoadedDescription();
+  void setURLBase(const std::string &value);
 
-	////////////////////////////////////////////////
-	//	isDeviceNode
-	////////////////////////////////////////////////
+  void updateURLBase(const std::string &host);
 
 public:
 
-	static bool isDeviceNode(CyberXML::Node *node)
-	{
-		return node->isName(Device::ELEM_NAME);
-	}
-	
-	////////////////////////////////////////////////
-	//	Root Device
-	////////////////////////////////////////////////
+  const char *getURLBase();
 
-	bool isRootDevice()
-	{
-		return (getRootNode() != NULL) ? true : false;
-	}
-	
-	////////////////////////////////////////////////
-	//	Root Device
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  deviceType
+  ////////////////////////////////////////////////
 
-	void setSSDPPacket(SSDPPacket *packet)
-	{
-		getDeviceData()->setSSDPPacket(packet);
-	}
+  void setDeviceType(const std::string &value)
+  {
+    getDeviceNode()->setNode(DEVICE_TYPE, value);
+  }
 
-	SSDPPacket *getSSDPPacket()
-	{
-		if (isRootDevice() == false)
-			return NULL;
-		return getDeviceData()->getSSDPPacket();
-	}
-	
-	////////////////////////////////////////////////
-	//	Location 
-	////////////////////////////////////////////////
+  const char *getDeviceType()
+  {
+    return getDeviceNode()->getNodeValue(DEVICE_TYPE);
+  }
 
-	void setLocation(const std::string &value)
-	{
-		getDeviceData()->setLocation(value);
-	}
+  bool isDeviceType(const std::string &value);
 
-	const char *getLocation()
-	{
-		SSDPPacket *packet = getSSDPPacket();
-		if (packet != NULL) {
-			std::string buf;
-			setLocation(packet->getLocation(buf));
-		}
-		return getDeviceData()->getLocation();
-	}
+  ////////////////////////////////////////////////
+  //  friendlyName
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	LeaseTime 
-	////////////////////////////////////////////////
+  void setFriendlyName(const std::string &value)
+  {
+    getDeviceNode()->setNode(FRIENDLY_NAME, value);
+  }
 
-public:
+  const char *getFriendlyName()
+  {
+    return getDeviceNode()->getNodeValue(FRIENDLY_NAME);
+  }
 
-	void setLeaseTime(int value);
-	int getLeaseTime();
+  ////////////////////////////////////////////////
+  //  manufacture
+  ////////////////////////////////////////////////
+  
+  void setManufacturer(const std::string &value)
+  {
+    getDeviceNode()->setNode(MANUFACTURER, value);
+  }
 
-	////////////////////////////////////////////////
-	//	TimeStamp 
-	////////////////////////////////////////////////
+  const char *getManufacturer()
+  {
+    return getDeviceNode()->getNodeValue(MANUFACTURER);
+  }
 
-public:
+  ////////////////////////////////////////////////
+  //  manufactureURL
+  ////////////////////////////////////////////////
 
-	long getTimeStamp();
-	long getElapsedTime()
-	{
-		return time(NULL) - getTimeStamp();
-	}
+  void setManufacturerURL(const std::string &value)
+  {
+    getDeviceNode()->setNode(MANUFACTURER_URL, value);
+  }
 
-	bool isExpired();
-	
-	////////////////////////////////////////////////
-	//	URL Base
-	////////////////////////////////////////////////
+  const char *getManufacturerURL()
+  {
+    return getDeviceNode()->getNodeValue(MANUFACTURER_URL);
+  }
+
+  ////////////////////////////////////////////////
+  //  modelDescription
+  ////////////////////////////////////////////////
+
+  void setModelDescription(const std::string &value)
+  {
+    getDeviceNode()->setNode(MODEL_DESCRIPTION, value);
+  }
+
+  const char *getModelDescription()
+  {
+    return getDeviceNode()->getNodeValue(MODEL_DESCRIPTION);
+  }
+
+  ////////////////////////////////////////////////
+  //  modelName
+  ////////////////////////////////////////////////
+
+  void setModelName(const std::string &value)
+  {
+    getDeviceNode()->setNode(MODEL_NAME, value);
+  }
+
+  const char *getModelName()
+  {
+    return getDeviceNode()->getNodeValue(MODEL_NAME);
+  }
+
+  ////////////////////////////////////////////////
+  //  modelNumber
+  ////////////////////////////////////////////////
+
+  void setModelNumber(const std::string &value)
+  {
+    getDeviceNode()->setNode(MODEL_NUMBER, value);
+  }
+
+  const char *getModelNumber()
+  {
+    return getDeviceNode()->getNodeValue(MODEL_NUMBER);
+  }
+
+  ////////////////////////////////////////////////
+  //  modelURL
+  ////////////////////////////////////////////////
+
+  void setModelURL(const std::string &value)
+  {
+    getDeviceNode()->setNode(MODEL_URL, value);
+  }
+
+  const char *getModelURL()
+  {
+    return getDeviceNode()->getNodeValue(MODEL_URL);
+  }
+
+  ////////////////////////////////////////////////
+  //  serialNumber
+  ////////////////////////////////////////////////
+
+  void setSerialNumber(const std::string &value)
+  {
+    getDeviceNode()->setNode(SERIAL_NUMBER, value);
+  }
+
+  const char *getSerialNumber()
+  {
+    return getDeviceNode()->getNodeValue(SERIAL_NUMBER);
+  }
+
+  ////////////////////////////////////////////////
+  //  UDN
+  ////////////////////////////////////////////////
+
+  void setUDN(const std::string &value)
+  {
+    getDeviceNode()->setNode(UDN, value);
+  }
+
+  const char *getUDN()
+  {
+    return getDeviceNode()->getNodeValue(UDN);
+  }
+
+  bool hasUDN()
+  {
+    const char *udn = getUDN();
+    if (udn == NULL)
+      return false;
+    std::string udnStr = udn;
+    if (udnStr.length() <= 0)
+      return false;
+    return true;
+  }
+
+  ////////////////////////////////////////////////
+  //  UPC
+  ////////////////////////////////////////////////
+
+  void setUPC(const std::string &value)
+  {
+    getDeviceNode()->setNode(UPC, value);
+  }
+
+  const char *getUPC()
+  {
+    return getDeviceNode()->getNodeValue(UPC);
+  }
+
+  ////////////////////////////////////////////////
+  //  presentationURL
+  ////////////////////////////////////////////////
+
+  void setPresentationURL(const std::string &value)
+  {
+    getDeviceNode()->setNode(presentationURL, value);
+  }
+
+  const char *getPresentationURL()
+  {
+    return getDeviceNode()->getNodeValue(presentationURL);
+  }
+
+  ////////////////////////////////////////////////
+  //  deviceList
+  ////////////////////////////////////////////////
 
 private:
 
-	void setURLBase(const std::string &value);
-
-	void updateURLBase(const std::string &host);
+  void initDeviceList();
 
 public:
 
-	const char *getURLBase();
+  DeviceList *getDeviceList()
+  {
+    return &deviceList;
+  }
 
-	////////////////////////////////////////////////
-	//	deviceType
-	////////////////////////////////////////////////
-
-	void setDeviceType(const std::string &value)
-	{
-		getDeviceNode()->setNode(DEVICE_TYPE, value);
-	}
-
-	const char *getDeviceType()
-	{
-		return getDeviceNode()->getNodeValue(DEVICE_TYPE);
-	}
-
-	bool isDeviceType(const std::string &value);
-
-	////////////////////////////////////////////////
-	//	friendlyName
-	////////////////////////////////////////////////
-
-	void setFriendlyName(const std::string &value)
-	{
-		getDeviceNode()->setNode(FRIENDLY_NAME, value);
-	}
-
-	const char *getFriendlyName()
-	{
-		return getDeviceNode()->getNodeValue(FRIENDLY_NAME);
-	}
-
-	////////////////////////////////////////////////
-	//	manufacture
-	////////////////////////////////////////////////
-	
-	void setManufacturer(const std::string &value)
-	{
-		getDeviceNode()->setNode(MANUFACTURER, value);
-	}
-
-	const char *getManufacturer()
-	{
-		return getDeviceNode()->getNodeValue(MANUFACTURER);
-	}
-
-	////////////////////////////////////////////////
-	//	manufactureURL
-	////////////////////////////////////////////////
-
-	void setManufacturerURL(const std::string &value)
-	{
-		getDeviceNode()->setNode(MANUFACTURER_URL, value);
-	}
-
-	const char *getManufacturerURL()
-	{
-		return getDeviceNode()->getNodeValue(MANUFACTURER_URL);
-	}
-
-	////////////////////////////////////////////////
-	//	modelDescription
-	////////////////////////////////////////////////
-
-	void setModelDescription(const std::string &value)
-	{
-		getDeviceNode()->setNode(MODEL_DESCRIPTION, value);
-	}
-
-	const char *getModelDescription()
-	{
-		return getDeviceNode()->getNodeValue(MODEL_DESCRIPTION);
-	}
-
-	////////////////////////////////////////////////
-	//	modelName
-	////////////////////////////////////////////////
-
-	void setModelName(const std::string &value)
-	{
-		getDeviceNode()->setNode(MODEL_NAME, value);
-	}
-
-	const char *getModelName()
-	{
-		return getDeviceNode()->getNodeValue(MODEL_NAME);
-	}
-
-	////////////////////////////////////////////////
-	//	modelNumber
-	////////////////////////////////////////////////
-
-	void setModelNumber(const std::string &value)
-	{
-		getDeviceNode()->setNode(MODEL_NUMBER, value);
-	}
-
-	const char *getModelNumber()
-	{
-		return getDeviceNode()->getNodeValue(MODEL_NUMBER);
-	}
-
-	////////////////////////////////////////////////
-	//	modelURL
-	////////////////////////////////////////////////
-
-	void setModelURL(const std::string &value)
-	{
-		getDeviceNode()->setNode(MODEL_URL, value);
-	}
-
-	const char *getModelURL()
-	{
-		return getDeviceNode()->getNodeValue(MODEL_URL);
-	}
-
-	////////////////////////////////////////////////
-	//	serialNumber
-	////////////////////////////////////////////////
-
-	void setSerialNumber(const std::string &value)
-	{
-		getDeviceNode()->setNode(SERIAL_NUMBER, value);
-	}
-
-	const char *getSerialNumber()
-	{
-		return getDeviceNode()->getNodeValue(SERIAL_NUMBER);
-	}
-
-	////////////////////////////////////////////////
-	//	UDN
-	////////////////////////////////////////////////
-
-	void setUDN(const std::string &value)
-	{
-		getDeviceNode()->setNode(UDN, value);
-	}
-
-	const char *getUDN()
-	{
-		return getDeviceNode()->getNodeValue(UDN);
-	}
-
-	bool hasUDN()
-	{
-		const char *udn = getUDN();
-		if (udn == NULL)
-			return false;
-		std::string udnStr = udn;
-		if (udnStr.length() <= 0)
-			return false;
-		return true;
-	}
-
-	////////////////////////////////////////////////
-	//	UPC
-	////////////////////////////////////////////////
-
-	void setUPC(const std::string &value)
-	{
-		getDeviceNode()->setNode(UPC, value);
-	}
-
-	const char *getUPC()
-	{
-		return getDeviceNode()->getNodeValue(UPC);
-	}
-
-	////////////////////////////////////////////////
-	//	presentationURL
-	////////////////////////////////////////////////
-
-	void setPresentationURL(const std::string &value)
-	{
-		getDeviceNode()->setNode(presentationURL, value);
-	}
-
-	const char *getPresentationURL()
-	{
-		return getDeviceNode()->getNodeValue(presentationURL);
-	}
-
-	////////////////////////////////////////////////
-	//	deviceList
-	////////////////////////////////////////////////
+  bool isDevice(const std::string &name);
+  
+  Device *getDevice(const std::string &name);
+  Device *getDeviceByDescriptionURI(const std::string &uri);
+  
+  ////////////////////////////////////////////////
+  //  serviceList
+  ////////////////////////////////////////////////
 
 private:
 
-	void initDeviceList();
+  void initServiceList();
 
 public:
 
-	DeviceList *getDeviceList()
-	{
-		return &deviceList;
-	}
+  ServiceList *getServiceList()
+  {
+    return &serviceList;
+  }
 
-	bool isDevice(const std::string &name);
-	
-	Device *getDevice(const std::string &name);
-	Device *getDeviceByDescriptionURI(const std::string &uri);
-	
-	////////////////////////////////////////////////
-	//	serviceList
-	////////////////////////////////////////////////
+  Service *getService(const std::string &name);
+  Service *getSubscriberService(const std::string &uuid);
+
+public:
+
+  Service *getServiceBySCPDURL(const std::string &searchUrl);
+  Service *getServiceByControlURL(const std::string &searchUrl);
+  Service *getServiceByEventSubURL(const std::string &searchUrl);
+
+  ////////////////////////////////////////////////
+  //  StateVariable
+  ////////////////////////////////////////////////
+
+public:
+  
+  StateVariable *getStateVariable(const std::string &serviceType, const std::string &name);
+  StateVariable *getStateVariable(const std::string &name);
+
+  ////////////////////////////////////////////////
+  //  Action
+  ////////////////////////////////////////////////
+
+public:
+
+  Action *getAction(const std::string &name);
+
+  ////////////////////////////////////////////////
+  //  iconList
+  ////////////////////////////////////////////////
 
 private:
 
-	void initServiceList();
+  void initIconList();
 
 public:
 
-	ServiceList *getServiceList()
-	{
-		return &serviceList;
-	}
+  IconList *getIconList()
+  {
+    return &iconList;
+  }
+  
+  Icon *getIcon(int n)
+  {
+    IconList *iconList = getIconList();
+    if (n < 0 && ((int)iconList->size()-1) < n)
+      return NULL;
+    return iconList->getIcon(n);
+  }
 
-	Service *getService(const std::string &name);
-	Service *getSubscriberService(const std::string &uuid);
-
-public:
-
-	Service *getServiceBySCPDURL(const std::string &searchUrl);
-	Service *getServiceByControlURL(const std::string &searchUrl);
-	Service *getServiceByEventSubURL(const std::string &searchUrl);
-
-	////////////////////////////////////////////////
-	//	StateVariable
-	////////////////////////////////////////////////
-
-public:
-	
-	StateVariable *getStateVariable(const std::string &serviceType, const std::string &name);
-	StateVariable *getStateVariable(const std::string &name);
-
-	////////////////////////////////////////////////
-	//	Action
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Notify
+  ////////////////////////////////////////////////
 
 public:
 
-	Action *getAction(const std::string &name);
-
-	////////////////////////////////////////////////
-	//	iconList
-	////////////////////////////////////////////////
+  const char *getLocationURL(const std::string &host, std::string &buf);
 
 private:
 
-	void initIconList();
+  const char *getNotifyDeviceNT(std::string &buf);
+  const char *getNotifyDeviceUSN(std::string &buf);
+  const char *getNotifyDeviceTypeNT(std::string &buf);
+  const char *getNotifyDeviceTypeUSN(std::string &buf);
 
 public:
 
-	IconList *getIconList()
-	{
-		return &iconList;
-	}
-	
-	Icon *getIcon(int n)
-	{
-		IconList *iconList = getIconList();
-		if (n < 0 && ((int)iconList->size()-1) < n)
-			return NULL;
-		return iconList->getIcon(n);
-	}
+  static void notifyWait();
 
-	////////////////////////////////////////////////
-	//	Notify
-	////////////////////////////////////////////////
+  void announce(const std::string &bindAddr);
+  void announce();
+  
+  void byebye(const std::string &bindAddr);
+  void byebye();
+
+  ////////////////////////////////////////////////
+  //  Search
+  ////////////////////////////////////////////////
 
 public:
 
-	const char *getLocationURL(const std::string &host, std::string &buf);
+  bool postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn);
+  void deviceSearchResponse(SSDPPacket *ssdpPacket);
+  void deviceSearchReceived(SSDPPacket *ssdpPacket);
+
+  ////////////////////////////////////////////////
+  //  HTTP Server  
+  ////////////////////////////////////////////////
+
+public:
+
+  void setHTTPPort(int port)
+  {
+    getDeviceData()->setHTTPPort(port);
+  }
+  
+  int getHTTPPort()
+  {
+    return getDeviceData()->getHTTPPort();
+  }
+
+  void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 private:
 
-	const char *getNotifyDeviceNT(std::string &buf);
-	const char *getNotifyDeviceUSN(std::string &buf);
-	const char *getNotifyDeviceTypeNT(std::string &buf);
-	const char *getNotifyDeviceTypeUSN(std::string &buf);
+  const char *getDescriptionData(const std::string &host, std::string &buf);
+  void httpGetRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  void httpPostRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
-public:
-
-	static void notifyWait();
-
-	void announce(const std::string &bindAddr);
-	void announce();
-	
-	void byebye(const std::string &bindAddr);
-	void byebye();
-
-	////////////////////////////////////////////////
-	//	Search
-	////////////////////////////////////////////////
-
-public:
-
-	bool postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn);
-	void deviceSearchResponse(SSDPPacket *ssdpPacket);
-	void deviceSearchReceived(SSDPPacket *ssdpPacket);
-
-	////////////////////////////////////////////////
-	//	HTTP Server	
-	////////////////////////////////////////////////
-
-public:
-
-	void setHTTPPort(int port)
-	{
-		getDeviceData()->setHTTPPort(port);
-	}
-	
-	int getHTTPPort()
-	{
-		return getDeviceData()->getHTTPPort();
-	}
-
-	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  ////////////////////////////////////////////////
+  //  SOAP
+  ////////////////////////////////////////////////
 
 private:
 
-	const char *getDescriptionData(const std::string &host, std::string &buf);
-	void httpGetRequestRecieved(uHTTP::HTTPRequest *httpReq);
-	void httpPostRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  void soapBadActionRecieved(uHTTP::HTTPRequest *soapReq);
+  void soapActionRecieved(uHTTP::HTTPRequest *soapReq);
 
-	////////////////////////////////////////////////
-	//	SOAP
-	////////////////////////////////////////////////
-
-private:
-
-	void soapBadActionRecieved(uHTTP::HTTPRequest *soapReq);
-	void soapActionRecieved(uHTTP::HTTPRequest *soapReq);
-
-	////////////////////////////////////////////////
-	//	controlAction
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  controlAction
+  ////////////////////////////////////////////////
 
 private:
 
-	void invalidActionControlRecieved(ControlRequest *ctlReq);
-	void deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service);
-	void deviceActionControlRecieved(ActionRequest *ctlReq, Service *service);
-	void deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service);
+  void invalidActionControlRecieved(ControlRequest *ctlReq);
+  void deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service);
+  void deviceActionControlRecieved(ActionRequest *ctlReq, Service *service);
+  void deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service);
 
-	////////////////////////////////////////////////
-	//	eventSubscribe
-	////////////////////////////////////////////////
-
-private:
-
-	void upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code);
-	void deviceEventSubscriptionRecieved(SubscriptionRequest *subReq);
-	void deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
-	void deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
-	void deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
-	
-	////////////////////////////////////////////////
-	//	Thread	
-	////////////////////////////////////////////////
-
-public:
-
-	uHTTP::HTTPServerList *getHTTPServerList() 
-	{
-		return getDeviceData()->getHTTPServerList();
-	}
-
-	SSDPSearchSocketList *getSSDPSearchSocketList() 
-	{
-		return getDeviceData()->getSSDPSearchSocketList();
-	}
-
-	void setAdvertiser(Advertiser *adv)
-	{
-		getDeviceData()->setAdvertiser(adv);
-	}
-
-	Advertiser *getAdvertiser()
-	{
-		return getDeviceData()->getAdvertiser();
-	}
-
-public:
-	
-	bool start();
-	bool stop()
-	{
-		return stop(true);
-	}
+  ////////////////////////////////////////////////
+  //  eventSubscribe
+  ////////////////////////////////////////////////
 
 private:
-	
-	bool stop(bool doByeBye);
 
-	////////////////////////////////////////////////
-	// Interface Address
-	////////////////////////////////////////////////
+  void upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code);
+  void deviceEventSubscriptionRecieved(SubscriptionRequest *subReq);
+  void deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
+  void deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
+  void deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
+  
+  ////////////////////////////////////////////////
+  //  Thread  
+  ////////////////////////////////////////////////
 
 public:
 
-	const char *getInterfaceAddress() 
-	{
-		SSDPPacket *ssdpPacket = getSSDPPacket();
-		if (ssdpPacket == NULL)
-			return "";
-		return ssdpPacket->getLocalAddress();
-	}
+  uHTTP::HTTPServerList *getHTTPServerList() 
+  {
+    return getDeviceData()->getHTTPServerList();
+  }
 
-	////////////////////////////////////////////////
-	// AcionListener
-	////////////////////////////////////////////////
-	
+  SSDPSearchSocketList *getSSDPSearchSocketList() 
+  {
+    return getDeviceData()->getSSDPSearchSocketList();
+  }
+
+  void setAdvertiser(Advertiser *adv)
+  {
+    getDeviceData()->setAdvertiser(adv);
+  }
+
+  Advertiser *getAdvertiser()
+  {
+    return getDeviceData()->getAdvertiser();
+  }
+
 public:
-	
-	void setActionListener(ActionListener *listener);
-	void setQueryListener(QueryListener *listener);
+  
+  bool start();
+  bool stop()
+  {
+    return stop(true);
+  }
 
-	////////////////////////////////////////////////
-	// AcionListener (includeSubDevices)
-	////////////////////////////////////////////////
-	
+private:
+  
+  bool stop(bool doByeBye);
+
+  ////////////////////////////////////////////////
+  // Interface Address
+  ////////////////////////////////////////////////
+
 public:
-	
-	void setActionListener(ActionListener *listener, bool includeSubDevices);
-	void setQueryListener(QueryListener *listener, bool includeSubDevices);
 
-	////////////////////////////////////////////////
-	//	output
-	////////////////////////////////////////////////
+  const char *getInterfaceAddress() 
+  {
+    SSDPPacket *ssdpPacket = getSSDPPacket();
+    if (ssdpPacket == NULL)
+      return "";
+    return ssdpPacket->getLocalAddress();
+  }
+
+  ////////////////////////////////////////////////
+  // AcionListener
+  ////////////////////////////////////////////////
+  
+public:
+  
+  void setActionListener(ActionListener *listener);
+  void setQueryListener(QueryListener *listener);
+
+  ////////////////////////////////////////////////
+  // AcionListener (includeSubDevices)
+  ////////////////////////////////////////////////
+  
+public:
+  
+  void setActionListener(ActionListener *listener, bool includeSubDevices);
+  void setQueryListener(QueryListener *listener, bool includeSubDevices);
+
+  ////////////////////////////////////////////////
+  //  output
+  ////////////////////////////////////////////////
 
 /*
-	public void output(PrintWriter ps) 
-	{
-		ps.println("deviceType = " + getDeviceType());
-		ps.println("freindlyName = " + getFriendlyName());
-		ps.println("presentationURL = " + getPresentationURL());
+  public void output(PrintWriter ps) 
+  {
+    ps.println("deviceType = " + getDeviceType());
+    ps.println("freindlyName = " + getFriendlyName());
+    ps.println("presentationURL = " + getPresentationURL());
 
-		DeviceList devList = getDeviceList();
-		ps.println("devList = " + devList.size());
-		
-		ServiceList serviceList = getServiceList();
-		ps.println("serviceList = " + serviceList.size());
+    DeviceList devList = getDeviceList();
+    ps.println("devList = " + devList.size());
+    
+    ServiceList serviceList = getServiceList();
+    ps.println("serviceList = " + serviceList.size());
 
-		IconList iconList = getIconList();
-		ps.println("iconList = " + iconList.size());
-	}
+    IconList iconList = getIconList();
+    ps.println("iconList = " + iconList.size());
+  }
 
-	public void print()
-	{
-		PrintWriter pr = new PrintWriter(System.out);
-		output(pr);
-		pr.flush();
-	}
+  public void print()
+  {
+    PrintWriter pr = new PrintWriter(System.out);
+    output(pr);
+    pr.flush();
+  }
 */
 };
 

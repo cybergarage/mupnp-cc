@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionList.h
+*  File: ActionList.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/05/03
-*		- first revision
+*  07/05/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -26,36 +26,36 @@ class ActionList : public uHTTP::Vector
 {
 public:
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-	static const char *ELEM_NAME;
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
+  static const char *ELEM_NAME;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	ActionList() 
-	{
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  ActionList() 
+  {
+  }
 
-	~ActionList() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
-	Action *getAction(int n)
-	{
-		return (Action*)get(n);
-	}
+  ~ActionList() 
+  {
+    clear();
+  }
+  
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
+  Action *getAction(int n)
+  {
+    return (Action*)get(n);
+  }
 
-	void clear();
+  void clear();
 };
 
 }

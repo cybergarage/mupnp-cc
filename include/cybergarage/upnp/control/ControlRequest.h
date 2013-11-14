@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ControlRequest.h
+*  File: ControlRequest.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/11/03
-*		- first revision
+*  07/11/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -29,40 +29,40 @@ class ControlRequest : public CyberSOAP::SOAPRequest
 {
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	ControlRequest()
-	{
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  ControlRequest()
+  {
+  }
 
-	ControlRequest(uHTTP::HTTPRequest *httpReq)
-	{
-		set(httpReq);
-	}
+  ControlRequest(uHTTP::HTTPRequest *httpReq)
+  {
+    set(httpReq);
+  }
 
-	////////////////////////////////////////////////
-	//	Query
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Query
+  ////////////////////////////////////////////////
 
-	bool isQueryControl()
-	{
-		return isSOAPAction(Control::QUERY_SOAPACTION);
-	}
-	
-	bool isActionControl()
-	{
-		return !isQueryControl();
-	}
+  bool isQueryControl()
+  {
+    return isSOAPAction(Control::QUERY_SOAPACTION);
+  }
+  
+  bool isActionControl()
+  {
+    return !isQueryControl();
+  }
 
-	////////////////////////////////////////////////
-	//	setRequest
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  setRequest
+  ////////////////////////////////////////////////
 
 protected:
-	
-	void setRequestHost(Service *service);
+  
+  void setRequestHost(Service *service);
 
 };
 

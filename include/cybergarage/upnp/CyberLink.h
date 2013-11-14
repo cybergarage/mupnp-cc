@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: CyberLink.h
+*  File: CyberLink.h
 *
-*	Revision;
+*  Revision;
 *
-*	08/18/03
-*		- first revision
+*  08/18/03
+*    - first revision
 *
 ******************************************************************/
 

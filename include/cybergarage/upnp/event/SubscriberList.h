@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SubscriberList.h
+*  File: SubscriberList.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/05/03
-*		- first revision
+*  07/05/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -23,49 +23,49 @@ namespace CyberLink {
 
 class SubscriberList : public uHTTP::Vector 
 {
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
 public:
 
-	SubscriberList() 
-	{
-	}
-	
-	~SubscriberList() 
-	{
-		clear();
-	}
+  SubscriberList() 
+  {
+  }
+  
+  ~SubscriberList() 
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
 public:
 
-	Subscriber *getSubscriber(int n)
-	{
-		return (Subscriber *)get(n);
-	}
+  Subscriber *getSubscriber(int n)
+  {
+    return (Subscriber *)get(n);
+  }
 
-	void clear() 
-	{
-		int nSub = size();
-		for (int n=0; n<nSub; n++) {
-			Subscriber *sub = getSubscriber(n);
-			delete sub;
-		}
-		Vector::clear();
-	}
+  void clear() 
+  {
+    int nSub = size();
+    for (int n=0; n<nSub; n++) {
+      Subscriber *sub = getSubscriber(n);
+      delete sub;
+    }
+    Vector::clear();
+  }
 
-	void remove(Subscriber *sub)
-	{
-		if (sub == NULL)
-				return;
-		Vector::remove(sub);
-		delete sub;
-	}
+  void remove(Subscriber *sub)
+  {
+    if (sub == NULL)
+        return;
+    Vector::remove(sub);
+    delete sub;
+  }
 };
 
 }

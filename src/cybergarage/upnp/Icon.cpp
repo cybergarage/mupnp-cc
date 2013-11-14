@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Icon.cpp
+*  File: Icon.cpp
 *
-*	Revision:
+*  Revision:
 *
-*	07/20/03
-*		- first revision
+*  07/20/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -18,7 +18,7 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
 
 const char *Icon::ELEM_NAME = "icon";

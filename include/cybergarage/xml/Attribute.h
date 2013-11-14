@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberXML for C++
+*  CyberXML for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Attribute.h
+*  File: Attribute.h
 *
-*	Revision;
+*  Revision;
 *
-*	04/22/03
-*		- first revision
+*  04/22/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -22,48 +22,48 @@ namespace CyberXML {
 
 class Attribute 
 {
-	std::string name; 
-	std::string value; 
+  std::string name; 
+  std::string value; 
 
 public:
 
-	Attribute() 
-	{
-	}
+  Attribute() 
+  {
+  }
 
-	Attribute(const std::string &name, const std::string &value) 
-	{
-		setName(name);
-		setValue(value);
-	}
+  Attribute(const std::string &name, const std::string &value) 
+  {
+    setName(name);
+    setValue(value);
+  }
 
-	////////////////////////////////////////////////
-	//	name
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  name
+  ////////////////////////////////////////////////
 
-	void setName(const std::string &val) 
-	{
-		name = val;
-	}
+  void setName(const std::string &val) 
+  {
+    name = val;
+  }
 
-	const char *getName() 
-	{
-		return name.c_str();
-	}
+  const char *getName() 
+  {
+    return name.c_str();
+  }
 
-	////////////////////////////////////////////////
-	//	value
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  value
+  ////////////////////////////////////////////////
 
-	void setValue(const std::string &val) 
-	{
-		value = val;
-	}
+  void setValue(const std::string &val) 
+  {
+    value = val;
+  }
 
-	const char *getValue() 
-	{
-		return value.c_str();
-	}
+  const char *getValue() 
+  {
+    return value.c_str();
+  }
 };
 
 }

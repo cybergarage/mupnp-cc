@@ -1,17 +1,17 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ActionData.cpp
+*  File: ActionData.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	04/26/04
-*		- first revision
-*	05/19/04
-*		- Changed the header include order for Cygwin.
+*  04/26/04
+*    - first revision
+*  05/19/04
+*    - Changed the header include order for Cygwin.
 *
 ******************************************************************/
 
@@ -27,14 +27,14 @@ using namespace CyberXML;
 
 ActionData::ActionData() 
 {
-	setActionListener(NULL);
-	ctrlRes = NULL;
+  setActionListener(NULL);
+  ctrlRes = NULL;
 }
 
 ActionData::~ActionData() 
 {
-	if (ctrlRes != NULL)
-		delete ctrlRes;
+  if (ctrlRes != NULL)
+    delete ctrlRes;
 }
 
 ////////////////////////////////////////////////
@@ -43,7 +43,7 @@ ActionData::~ActionData()
 
 void ActionData::setControlResponse(ControlResponse *res) 
 {
-	if (ctrlRes != NULL)
-		delete ctrlRes;
-	ctrlRes = res;
+  if (ctrlRes != NULL)
+    delete ctrlRes;
+  ctrlRes = res;
 }

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberSOAP for C++
+*  CyberSOAP for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SOAP.h
+*  File: SOAP.h
 *
-*	Revision;
+*  Revision;
 *
-*	05/21/03
-*		- first revision
+*  05/21/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -30,7 +30,7 @@ const char FAULT_CODE[] = "faultcode";
 const char FAULT_STRING[] = "faultstring";
 const char FAULTACTOR[] = "faultactor";
 const char DETAIL[] = "detail";
-		
+    
 const char RESULTSTATUS[] = "ResultStatus";
 const char UPNP_ERROR[] = "UPnPError";
 const char ERROR_CODE[] = "errorCode";
@@ -40,10 +40,10 @@ const char ERROR_DESCRIPTION[] = "errorDescription";
 const char XMLNS[] = "s";
 const char METHODNS[] = "u";
 const char DELIM[] = ":";
-	
+  
 const char XMLNS_URL[] = "http://schemas.xmlsoap.org/soap/envelope/";
 const char ENCSTYLE_URL[] = "http://schemas.xmlsoap.org/soap/encoding/";
-	
+  
 const char CONTENT_TYPE[] = "text/xml; charset=\"utf-8\"";
 
 const char ENCORDING[] = "encoding";

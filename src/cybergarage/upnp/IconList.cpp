@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: IconList.cpp
+*  File: IconList.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/15/03
-*		- first revision
+*  08/15/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -19,21 +19,21 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
 
 const char *IconList::ELEM_NAME = "iconList";
 
 ////////////////////////////////////////////////
-//	Methods
+//  Methods
 ////////////////////////////////////////////////
 
  void IconList::clear() 
 {
-	int nIcon = size();
-	for (int n=0; n<nIcon; n++) {
-		Icon *ico = getIcon(n);
-		delete ico;
-	}
-	Vector::clear();
+  int nIcon = size();
+  for (int n=0; n<nIcon; n++) {
+    Icon *ico = getIcon(n);
+    delete ico;
+  }
+  Vector::clear();
 }

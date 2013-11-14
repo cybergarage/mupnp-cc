@@ -1,17 +1,17 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Service.h
+*  File: Service.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/22/03
-*		- first revision
-*	03/30/05
-*		- Removed setDescriptionURL() and getDescriptionURL().
+*  07/22/03
+*    - first revision
+*  03/30/05
+*    - Removed setDescriptionURL() and getDescriptionURL().
 *
 ******************************************************************/
 
@@ -42,422 +42,422 @@ class Device;
 
 class Service
 {
-	CyberXML::Node *serviceNode;
-	
-	ActionList actionList;
-	ServiceStateTable serviceStateTable;
+  CyberXML::Node *serviceNode;
+  
+  ActionList actionList;
+  ServiceStateTable serviceStateTable;
 
-	uHTTP::Mutex mutex;
-
-public:
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-	static const char *ELEM_NAME;
-	static const char *SERVICE_TYPE;
-	static const char *SERVICE_ID;
-	static const char *SCPDURL;
-	static const char *CONTROL_URL;
-	static const char *EVENT_SUB_URL;
+  uHTTP::Mutex mutex;
 
 public:
-
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
-
-	CyberXML::Node *getServiceNode()
-	{
-		return serviceNode;
-	}
-
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
+  static const char *ELEM_NAME;
+  static const char *SERVICE_TYPE;
+  static const char *SERVICE_ID;
+  static const char *SCPDURL;
+  static const char *CONTROL_URL;
+  static const char *EVENT_SUB_URL;
 
 public:
 
-	Service(CyberXML::Node *node);
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
-	~Service();
+  CyberXML::Node *getServiceNode()
+  {
+    return serviceNode;
+  }
+
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+
+public:
+
+  Service(CyberXML::Node *node);
+
+  ~Service();
 
 private:
 
-	void initServiceData()
-	{
-		ServiceData *data = getServiceData();
-		if (data != NULL)
-			data->setService(this);
-	}
+  void initServiceData()
+  {
+    ServiceData *data = getServiceData();
+    if (data != NULL)
+      data->setService(this);
+  }
 
-	////////////////////////////////////////////////
-	// Mutex
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  // Mutex
+  ////////////////////////////////////////////////
+  
 public:
 
-	void lock()
-	{
-		mutex.lock();
-	}
-	
-	void unlock()
-	{
-		mutex.unlock();
-	}
+  void lock()
+  {
+    mutex.lock();
+  }
+  
+  void unlock()
+  {
+    mutex.unlock();
+  }
 
-	////////////////////////////////////////////////
-	//	isServiceNode
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  isServiceNode
+  ////////////////////////////////////////////////
 
 public:
 
-	static bool isServiceNode(CyberXML::Node *node)
-	{
-		return node->isName(Service::ELEM_NAME);
-	}
-	
-	////////////////////////////////////////////////
-	//	Device/Root Node
-	////////////////////////////////////////////////
+  static bool isServiceNode(CyberXML::Node *node)
+  {
+    return node->isName(Service::ELEM_NAME);
+  }
+  
+  ////////////////////////////////////////////////
+  //  Device/Root Node
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *getDeviceNode()
-	{
-		CyberXML::Node *node = getServiceNode()->getParentNode();
-		if (node == NULL)
-			return NULL;
-		return node->getParentNode();
-	}
+  CyberXML::Node *getDeviceNode()
+  {
+    CyberXML::Node *node = getServiceNode()->getParentNode();
+    if (node == NULL)
+      return NULL;
+    return node->getParentNode();
+  }
 
-	CyberXML::Node *getRootNode()
-	{
-		return getServiceNode()->getRootNode();
-	}
+  CyberXML::Node *getRootNode()
+  {
+    return getServiceNode()->getRootNode();
+  }
 
-	////////////////////////////////////////////////
-	//	Device
-	////////////////////////////////////////////////
-
-public:
-
-	Device *getDevice()
-	{
-		CyberXML::Node *node = getDeviceNode();
-		DeviceData *data = (DeviceData *)node->getUserData();
-		if (data == NULL)
-			return NULL;
-		return data->getDevice();
-	}
-
-	Device *getRootDevice();
-
-	////////////////////////////////////////////////
-	//	serviceType
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Device
+  ////////////////////////////////////////////////
 
 public:
 
-	void setServiceType(const std::string &value)
-	{
-		getServiceNode()->setNode(SERVICE_TYPE, value);
-	}
+  Device *getDevice()
+  {
+    CyberXML::Node *node = getDeviceNode();
+    DeviceData *data = (DeviceData *)node->getUserData();
+    if (data == NULL)
+      return NULL;
+    return data->getDevice();
+  }
 
-	const char *getServiceType()
-	{
-		return getServiceNode()->getNodeValue(SERVICE_TYPE);
-	}
+  Device *getRootDevice();
 
-	////////////////////////////////////////////////
-	//	serviceID
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  serviceType
+  ////////////////////////////////////////////////
 
 public:
 
-	void setServiceID(const std::string &value)
-	{
-		getServiceNode()->setNode(SERVICE_ID, value);
-	}
+  void setServiceType(const std::string &value)
+  {
+    getServiceNode()->setNode(SERVICE_TYPE, value);
+  }
 
-	const char *getServiceID()
-	{
-		return getServiceNode()->getNodeValue(SERVICE_ID);
-	}
+  const char *getServiceType()
+  {
+    return getServiceNode()->getNodeValue(SERVICE_TYPE);
+  }
 
-	////////////////////////////////////////////////
-	//	isURL
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  serviceID
+  ////////////////////////////////////////////////
+
+public:
+
+  void setServiceID(const std::string &value)
+  {
+    getServiceNode()->setNode(SERVICE_ID, value);
+  }
+
+  const char *getServiceID()
+  {
+    return getServiceNode()->getNodeValue(SERVICE_ID);
+  }
+
+  ////////////////////////////////////////////////
+  //  isURL
+  ////////////////////////////////////////////////
 
 private:
 
-	bool isURL(const std::string &referenceUrl, const std::string &url);
+  bool isURL(const std::string &referenceUrl, const std::string &url);
 
-	////////////////////////////////////////////////
-	//	SCPDURL
-	////////////////////////////////////////////////
-
-public:
-
-	void setSCPDURL(const std::string &value)
-	{
-		getServiceNode()->setNode(SCPDURL, value);
-	}
-
-	const char *getSCPDURL()
-	{
-		return getServiceNode()->getNodeValue(SCPDURL);
-	}
-
-	bool isSCPDURL(const std::string &url)
-	{
-		return isURL(getSCPDURL(), url);
-	}
-	
-	const char *getSCPDData(std::string &buf);
-
-	////////////////////////////////////////////////
-	//	controlURL
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  SCPDURL
+  ////////////////////////////////////////////////
 
 public:
 
-	void setControlURL(const std::string &value)
-	{
-		getServiceNode()->setNode(CONTROL_URL, value);
-	}
+  void setSCPDURL(const std::string &value)
+  {
+    getServiceNode()->setNode(SCPDURL, value);
+  }
 
-	const char *getControlURL()
-	{
-		return getServiceNode()->getNodeValue(CONTROL_URL);
-	}
+  const char *getSCPDURL()
+  {
+    return getServiceNode()->getNodeValue(SCPDURL);
+  }
 
-	bool isControlURL(const std::string &url)
-	{
-		return isURL(getControlURL(), url);
-	}
+  bool isSCPDURL(const std::string &url)
+  {
+    return isURL(getSCPDURL(), url);
+  }
+  
+  const char *getSCPDData(std::string &buf);
 
-	////////////////////////////////////////////////
-	//	eventSubURL
-	////////////////////////////////////////////////
-
-public:
-
-	void setEventSubURL(const std::string &value)
-	{
-		getServiceNode()->setNode(EVENT_SUB_URL, value);
-	}
-
-	const char *getEventSubURL()
-	{
-		return getServiceNode()->getNodeValue(EVENT_SUB_URL);
-	}
-
-	bool isEventSubURL(const std::string &url)
-	{
-		return isURL(getEventSubURL(), url);
-	}
-
-	////////////////////////////////////////////////
-	//	SCPD node
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  controlURL
+  ////////////////////////////////////////////////
 
 public:
 
-	bool loadSCPD(const std::string &descString);
+  void setControlURL(const std::string &value)
+  {
+    getServiceNode()->setNode(CONTROL_URL, value);
+  }
+
+  const char *getControlURL()
+  {
+    return getServiceNode()->getNodeValue(CONTROL_URL);
+  }
+
+  bool isControlURL(const std::string &url)
+  {
+    return isURL(getControlURL(), url);
+  }
+
+  ////////////////////////////////////////////////
+  //  eventSubURL
+  ////////////////////////////////////////////////
+
+public:
+
+  void setEventSubURL(const std::string &value)
+  {
+    getServiceNode()->setNode(EVENT_SUB_URL, value);
+  }
+
+  const char *getEventSubURL()
+  {
+    return getServiceNode()->getNodeValue(EVENT_SUB_URL);
+  }
+
+  bool isEventSubURL(const std::string &url)
+  {
+    return isURL(getEventSubURL(), url);
+  }
+
+  ////////////////////////////////////////////////
+  //  SCPD node
+  ////////////////////////////////////////////////
+
+public:
+
+  bool loadSCPD(const std::string &descString);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	bool loadSCPD(uHTTP::File *file);
+  bool loadSCPD(uHTTP::File *file);
 #endif
 
 private:
-	CyberXML::Node *getSCPDNode(uHTTP::URL *url);
+  CyberXML::Node *getSCPDNode(uHTTP::URL *url);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-	CyberXML::Node *getSCPDNode(uHTTP::File *file);
+  CyberXML::Node *getSCPDNode(uHTTP::File *file);
 #endif
-	CyberXML::Node *getSCPDNode(const std::string &description);
-	CyberXML::Node *getSCPDNode();
+  CyberXML::Node *getSCPDNode(const std::string &description);
+  CyberXML::Node *getSCPDNode();
 
 public:
-	////////////////////////////////////////////////
-	//	actionList
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  actionList
+  ////////////////////////////////////////////////
 
 private:
 
-	void initActionList();
+  void initActionList();
 
 public:
 
-	ActionList *getActionList()
-	{
-		return &actionList;
-	}
+  ActionList *getActionList()
+  {
+    return &actionList;
+  }
 
-	Action *getAction(const std::string &actionName);
-	
-	////////////////////////////////////////////////
-	//	serviceStateTable
-	////////////////////////////////////////////////
+  Action *getAction(const std::string &actionName);
+  
+  ////////////////////////////////////////////////
+  //  serviceStateTable
+  ////////////////////////////////////////////////
 
 private:
 
-	void initServiceStateTable();
+  void initServiceStateTable();
 
 public:
 
-	ServiceStateTable *getServiceStateTable()
-	{
-		return &serviceStateTable;
-	}
+  ServiceStateTable *getServiceStateTable()
+  {
+    return &serviceStateTable;
+  }
 
-	StateVariable *getStateVariable(const std::string &name);
-	
-	bool hasStateVariable(const std::string &name)
-	{
-		return (getStateVariable(name) != NULL) ? true : false;
-	}
+  StateVariable *getStateVariable(const std::string &name);
+  
+  bool hasStateVariable(const std::string &name)
+  {
+    return (getStateVariable(name) != NULL) ? true : false;
+  }
 
-	////////////////////////////////////////////////
-	//	isService
-	////////////////////////////////////////////////
-	
-	bool isService(const std::string &name)
-	{
-		uHTTP::String nameStr(name);
-		if (nameStr.endsWith(getServiceType()) == true)
-			return true;
-		if (nameStr.endsWith(getServiceID()) == true)
-			return true;
-		return false;
-	}
-	 
-	////////////////////////////////////////////////
-	//	UserData
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  isService
+  ////////////////////////////////////////////////
+  
+  bool isService(const std::string &name)
+  {
+    uHTTP::String nameStr(name);
+    if (nameStr.endsWith(getServiceType()) == true)
+      return true;
+    if (nameStr.endsWith(getServiceID()) == true)
+      return true;
+    return false;
+  }
+   
+  ////////////////////////////////////////////////
+  //  UserData
+  ////////////////////////////////////////////////
 
-	ServiceData *getServiceData()
-	{
-		CyberXML::Node *node = getServiceNode();
-		if (node == NULL)
-			return NULL;
-		ServiceData *userData = (ServiceData *)node->getUserData();
-		if (userData == NULL) {
-			userData = new ServiceData();
-			node->setUserData(userData);
-		}
-		return userData;
-	}
+  ServiceData *getServiceData()
+  {
+    CyberXML::Node *node = getServiceNode();
+    if (node == NULL)
+      return NULL;
+    ServiceData *userData = (ServiceData *)node->getUserData();
+    if (userData == NULL) {
+      userData = new ServiceData();
+      node->setUserData(userData);
+    }
+    return userData;
+  }
 
-	////////////////////////////////////////////////
-	//	Notify
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Notify
+  ////////////////////////////////////////////////
 
 private:
 
-	const char *getNotifyServiceTypeNT(std::string &buf);
-	const char *getNotifyServiceTypeUSN(std::string &buf);
+  const char *getNotifyServiceTypeNT(std::string &buf);
+  const char *getNotifyServiceTypeUSN(std::string &buf);
 
 public:
 
-	void announce(const std::string &bindAddr);
-	void byebye(const std::string &bindAddr);
+  void announce(const std::string &bindAddr);
+  void byebye(const std::string &bindAddr);
 
-	////////////////////////////////////////////////
-	//	serviceSearchResponse	
-	////////////////////////////////////////////////
-
-public:
-
-	bool serviceSearchResponse(SSDPPacket *ssdpPacket);
-
-	////////////////////////////////////////////////
-	//	queryAction
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  serviceSearchResponse  
+  ////////////////////////////////////////////////
 
 public:
 
-	void setQueryListener(QueryListener *listener);
+  bool serviceSearchResponse(SSDPPacket *ssdpPacket);
 
-	////////////////////////////////////////////////
-	//	Subscription
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  queryAction
+  ////////////////////////////////////////////////
 
 public:
 
-	SubscriberList *getSubscriberList() 
-	{
-		return getServiceData()->getSubscriberList();
-	}
+  void setQueryListener(QueryListener *listener);
 
-	void addSubscriber(Subscriber *sub);
-	void removeSubscriber(Subscriber *sub);
+  ////////////////////////////////////////////////
+  //  Subscription
+  ////////////////////////////////////////////////
 
-	Subscriber *getSubscriberBySID(const std::string &name);
-	Subscriber *getSubscriberByDeliveryURL(const std::string &name);
+public:
+
+  SubscriberList *getSubscriberList() 
+  {
+    return getServiceData()->getSubscriberList();
+  }
+
+  void addSubscriber(Subscriber *sub);
+  void removeSubscriber(Subscriber *sub);
+
+  Subscriber *getSubscriberBySID(const std::string &name);
+  Subscriber *getSubscriberByDeliveryURL(const std::string &name);
 
 private:
-	
-	bool notify(Subscriber *sub, StateVariable *stateVar);
+  
+  bool notify(Subscriber *sub, StateVariable *stateVar);
 
 public:
 
-	void notify(StateVariable *stateVar);
-	void notifyAllStateVariables();
-	
-	////////////////////////////////////////////////
-	// SID
-	////////////////////////////////////////////////
+  void notify(StateVariable *stateVar);
+  void notifyAllStateVariables();
+  
+  ////////////////////////////////////////////////
+  // SID
+  ////////////////////////////////////////////////
 
-	const char *getSID() 
-	{
-		return getServiceData()->getSID();
-	}
+  const char *getSID() 
+  {
+    return getServiceData()->getSID();
+  }
 
-	void setSID(const std::string &sid) 
-	{
-		getServiceData()->setSID(sid);
-	}
+  void setSID(const std::string &sid) 
+  {
+    getServiceData()->setSID(sid);
+  }
 
-	void clearSID()
-	{
-		setSID("");
-		setTimeout(0);
-	}
-	
-	bool hasSID()
-	{
-		return uHTTP::StringHasData(getSID());
-	}		
+  void clearSID()
+  {
+    setSID("");
+    setTimeout(0);
+  }
+  
+  bool hasSID()
+  {
+    return uHTTP::StringHasData(getSID());
+  }    
 
-	bool isSubscribed()
-	{
-		return hasSID();
-	}
-	
-	////////////////////////////////////////////////
-	// Timeout
-	////////////////////////////////////////////////
+  bool isSubscribed()
+  {
+    return hasSID();
+  }
+  
+  ////////////////////////////////////////////////
+  // Timeout
+  ////////////////////////////////////////////////
 
 public:
 
-	long getTimeout() 
-	{
-		return getServiceData()->getTimeout();
-	}
+  long getTimeout() 
+  {
+    return getServiceData()->getTimeout();
+  }
 
-	void setTimeout(long value) 
-	{
-		getServiceData()->setTimeout(value);
-	}
+  void setTimeout(long value) 
+  {
+    getServiceData()->setTimeout(value);
+  }
 
-	////////////////////////////////////////////////
-	// AcionListener
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  // AcionListener
+  ////////////////////////////////////////////////
+  
 public:
-	
-	void setActionListener(ActionListener *listener);
+  
+  void setActionListener(ActionListener *listener);
 
 };
 

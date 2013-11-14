@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Icon.h
+*  File: Icon.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/20/03
-*		- first revision
+*  07/20/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,117 +24,117 @@ namespace CyberLink {
 class Icon
 {
 
-	CyberXML::Node *iconNode;
+  CyberXML::Node *iconNode;
 
 public:
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-	static const char *ELEM_NAME;
-	static const char *MIME_TYPE;
-	static const char *WIDTH;
-	static const char *HEIGHT;
-	static const char *DEPTH;
-	static const char *URL;
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
+  static const char *ELEM_NAME;
+  static const char *MIME_TYPE;
+  static const char *WIDTH;
+  static const char *HEIGHT;
+  static const char *DEPTH;
+  static const char *URL;
+  
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
-	CyberXML::Node *getIconNode()
-	{
-		return iconNode;
-	}
-	
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  CyberXML::Node *getIconNode()
+  {
+    return iconNode;
+  }
+  
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	Icon(CyberXML::Node *node)
-	{
-		iconNode = node;
-	}
+  Icon(CyberXML::Node *node)
+  {
+    iconNode = node;
+  }
 
-	////////////////////////////////////////////////
-	//	isIconNode
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  isIconNode
+  ////////////////////////////////////////////////
 
-	static bool isIconNode(CyberXML::Node *node)
-	{
-		return node->isName(ELEM_NAME);
-	}
+  static bool isIconNode(CyberXML::Node *node)
+  {
+    return node->isName(ELEM_NAME);
+  }
 
-	////////////////////////////////////////////////
-	//	mimeType
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  mimeType
+  ////////////////////////////////////////////////
 
-	void setMimeType(const std::string &value)
-	{
-		getIconNode()->setNode(MIME_TYPE, value);
-	}
+  void setMimeType(const std::string &value)
+  {
+    getIconNode()->setNode(MIME_TYPE, value);
+  }
 
-	const char *getMimeType()
-	{
-		return getIconNode()->getNodeValue(MIME_TYPE);
-	}
+  const char *getMimeType()
+  {
+    return getIconNode()->getNodeValue(MIME_TYPE);
+  }
 
-	////////////////////////////////////////////////
-	//	width
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  width
+  ////////////////////////////////////////////////
 
-	void setWidth(const std::string &value)
-	{
-		getIconNode()->setNode(WIDTH, value);
-	}
+  void setWidth(const std::string &value)
+  {
+    getIconNode()->setNode(WIDTH, value);
+  }
 
-	const char *getWidth()
-	{
-		return getIconNode()->getNodeValue(WIDTH);
-	}
+  const char *getWidth()
+  {
+    return getIconNode()->getNodeValue(WIDTH);
+  }
 
-	////////////////////////////////////////////////
-	//	height
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  height
+  ////////////////////////////////////////////////
 
-	void setHeight(const std::string &value)
-	{
-		getIconNode()->setNode(HEIGHT, value);
-	}
+  void setHeight(const std::string &value)
+  {
+    getIconNode()->setNode(HEIGHT, value);
+  }
 
-	const char *getHeight()
-	{
-		return getIconNode()->getNodeValue(HEIGHT);
-	}
+  const char *getHeight()
+  {
+    return getIconNode()->getNodeValue(HEIGHT);
+  }
 
-	////////////////////////////////////////////////
-	//	depth
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  depth
+  ////////////////////////////////////////////////
 
-	void setDepth(const std::string &value)
-	{
-		getIconNode()->setNode(DEPTH, value);
-	}
+  void setDepth(const std::string &value)
+  {
+    getIconNode()->setNode(DEPTH, value);
+  }
 
-	const char *getDepth()
-	{
-		return getIconNode()->getNodeValue(DEPTH);
-	}
+  const char *getDepth()
+  {
+    return getIconNode()->getNodeValue(DEPTH);
+  }
 
-	////////////////////////////////////////////////
-	//	URL
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  URL
+  ////////////////////////////////////////////////
 
-	void setURL(const std::string &value)
-	{
-		getIconNode()->setNode(URL, value);
-	}
+  void setURL(const std::string &value)
+  {
+    getIconNode()->setNode(URL, value);
+  }
 
-	const char *getURL()
-	{
-		return getIconNode()->getNodeValue(URL);
-	}
+  const char *getURL()
+  {
+    return getIconNode()->getNodeValue(URL);
+  }
 };
 
 }

@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberXML for C++
+*  CyberXML for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File:	ParserException.h
+*  File:  ParserException.h
 *
-*	Revision;
+*  Revision;
 *
-*	08/30/03
-*		- first revision
+*  08/30/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,10 +24,10 @@ class ParserException : public uHTTP::Exception
 {
 public:
 
-	ParserException(const std::string &msg) : Exception(msg)
-	{
-	}
-	
+  ParserException(const std::string &msg) : Exception(msg)
+  {
+  }
+  
 };
 
 }

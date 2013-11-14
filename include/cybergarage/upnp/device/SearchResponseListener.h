@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SearchResponseListener.h
+*  File: SearchResponseListener.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/05/03
-*		- first revision
+*  07/05/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -23,7 +23,7 @@ namespace CyberLink {
 class SearchResponseListener
 {
 public:
-	virtual void deviceSearchResponseReceived(SSDPPacket *ssdpPacket) = 0;
+  virtual void deviceSearchResponseReceived(SSDPPacket *ssdpPacket) = 0;
 };
 
 }

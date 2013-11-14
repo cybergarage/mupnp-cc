@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDP.cpp
+*  File: SSDP.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	05/22/03
-*		- first revision
+*  05/22/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,29 +24,29 @@ using namespace CyberLink::SSDP;
 static string ssdpIPv6Address;
 
 ////////////////////////////////////////////////
-//	SSDP Address for IPv6
+//  SSDP Address for IPv6
 ////////////////////////////////////////////////
 
 void CyberLink::SSDP::SetIPv6Address(const std::string &addr)
 {
-	ssdpIPv6Address = addr;
+  ssdpIPv6Address = addr;
 }
 
 const char *CyberLink::SSDP::GetIPv6Address()
 {
-	if (ssdpIPv6Address.length() <= 0)
-		SetIPv6Address(IPV6_LINK_LOCAL_ADDRESS);
-	return ssdpIPv6Address.c_str();
+  if (ssdpIPv6Address.length() <= 0)
+    SetIPv6Address(IPV6_LINK_LOCAL_ADDRESS);
+  return ssdpIPv6Address.c_str();
 }
 
 ////////////////////////////////////////////////
-//	LeaseTime
+//  LeaseTime
 ////////////////////////////////////////////////
-	
+  
 int CyberLink::SSDP::GetLeaseTime(const std::string &cacheCnt)
 {
-	char *eqStrPos = strchr((char *)cacheCnt.c_str(), '=');
-	if (eqStrPos == NULL)
-		return 0;
-	return atoi((eqStrPos + 1));
+  char *eqStrPos = strchr((char *)cacheCnt.c_str(), '=');
+  if (eqStrPos == NULL)
+    return 0;
+  return atoi((eqStrPos + 1));
 }

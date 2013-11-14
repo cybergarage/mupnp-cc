@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: UPnP.h
+*  File: UPnP.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/10/03
-*		- first revision
+*  07/10/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -26,9 +26,9 @@ const char VER[]= "1.7";
 namespace UPnP {
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
-	
+  
 const char VER[]= "1.0";
 
 const int SERVER_RETRY_COUNT = 100;
@@ -41,16 +41,16 @@ const int INMPR03_DISCOVERY_OVER_WIRELESS_COUNT = 4;
 const char XML_DECLARATION[] = "<?xml version=\"1.0\"?>";
 
 ////////////////////////////////////////////////
-//	Functions
+//  Functions
 ////////////////////////////////////////////////
 
 const char *GetServerName(std::string &buf);
 const char *CreateUUID(std::string &buf);
 
 ////////////////////////////////////////////////
-//	Enable / Disable
+//  Enable / Disable
 ////////////////////////////////////////////////
-	
+  
 const int USE_ONLY_IPV6_ADDR = 1;
 const int USE_LOOPBACK_ADDR = 2;
 const int USE_IPV6_LINK_LOCAL_SCOPE = 3;

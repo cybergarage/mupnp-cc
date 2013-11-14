@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: RenewSubscriber.h
+*  File: RenewSubscriber.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/07/04
-*		- first revision
+*  07/07/04
+*    - first revision
 *
 ******************************************************************/
 
@@ -26,50 +26,50 @@ class RenewSubscriber : public uHTTP::Thread
 {
 public:
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
 
-	static const long INTERVAL;
+  static const long INTERVAL;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	RenewSubscriber(ControlPoint *ctrlp)
-	{
-		setControlPoint(ctrlp);
-	}
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  RenewSubscriber(ControlPoint *ctrlp)
+  {
+    setControlPoint(ctrlp);
+  }
+  
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
 private:
-	
-	ControlPoint *controlPoint;
+  
+  ControlPoint *controlPoint;
 
 public:
 
-	void setControlPoint(ControlPoint *ctrlp)
-	{
-		controlPoint = ctrlp;
-	}
-	
-	ControlPoint *getControlPoint()
-	{
-		return controlPoint;
-	}
+  void setControlPoint(ControlPoint *ctrlp)
+  {
+    controlPoint = ctrlp;
+  }
+  
+  ControlPoint *getControlPoint()
+  {
+    return controlPoint;
+  }
 
-	////////////////////////////////////////////////
-	//	Thread
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Thread
+  ////////////////////////////////////////////////
+  
 public:
 
-	void run();
+  void run();
 
 };
 

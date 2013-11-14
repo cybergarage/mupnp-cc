@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: NT.cpp
+*  File: NT.cpp
 *
-*	Revision:
+*  Revision:
 *
-*	07/07/03
-*		- first revision
+*  07/07/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -18,6 +18,6 @@
 
 bool CyberLink::NT::IsRootDevice(const std::string &ntValue)
 {
-	uHTTP::String ntStr = ntValue;
-	return ntStr.startsWith(ROOTDEVICE);
+  uHTTP::String ntStr = ntValue;
+  return ntStr.startsWith(ROOTDEVICE);
 }

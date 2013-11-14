@@ -1,18 +1,18 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: HTTPUSocket.cpp
+*  File: HTTPUSocket.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	06/30/03
-*		- first revision
-*	01/06/04
-*		- Oliver Newell <olivern@users.sourceforge.net>
-*		- Added to set a current timestamp when the packet are received.
+*  06/30/03
+*    - first revision
+*  01/06/04
+*    - Oliver Newell <olivern@users.sourceforge.net>
+*    - Added to set a current timestamp when the packet are received.
 *
 ******************************************************************/
 
@@ -23,65 +23,65 @@ using namespace CyberLink;
 
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
 HTTPUSocket::HTTPUSocket()
 {
-	open();
+  open();
 }
-	
+  
 HTTPUSocket::HTTPUSocket(const std::string &bindAddr, int port)
 {
-	open(port, bindAddr);
+  open(port, bindAddr);
 }
 
 HTTPUSocket::~HTTPUSocket()
 {
-	close();
+  close();
 }
 
 ////////////////////////////////////////////////
-//	open
+//  open
 ////////////////////////////////////////////////
-	
+  
 bool HTTPUSocket::open(int bindPort, const std::string &bindAddr)
 {
-	close();
-	return ssdpUniSock.bind(bindPort, bindAddr);
+  close();
+  return ssdpUniSock.bind(bindPort, bindAddr);
 }
 
 ////////////////////////////////////////////////
-//	close
+//  close
 ////////////////////////////////////////////////
 
 bool HTTPUSocket::close()
 {
-	ssdpUniSock.close();
-	return true;
+  ssdpUniSock.close();
+  return true;
 }
 
 ////////////////////////////////////////////////
-//	post
+//  post
 ////////////////////////////////////////////////
 
 bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg)
 {
-	ssdpUniSock.send(addr, port, msg);
-	return true;
+  ssdpUniSock.send(addr, port, msg);
+  return true;
 }
 
 ////////////////////////////////////////////////
-//	reveive
+//  reveive
 ////////////////////////////////////////////////
 
 SSDPPacket *HTTPUSocket::receive()
 {
-	recvPacket.setLocalAddress(getLocalAddress());
-	int nRecv = ssdpUniSock.receive(recvPacket.getDatagramPacket());
-	if (nRecv == 0)
-		return NULL;
-	recvPacket.setTimeStamp(time(NULL));
-	return &recvPacket;
+  recvPacket.setLocalAddress(getLocalAddress());
+  size_t nRecv = ssdpUniSock.receive(recvPacket.getDatagramPacket());
+  if (nRecv == 0)
+    return NULL;
+  recvPacket.setTimeStamp(time(NULL));
+  return &recvPacket;
 }
 

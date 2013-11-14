@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: USN.h
+*  File: USN.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/07/03
-*		- first revision
+*  07/07/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -23,7 +23,7 @@ namespace CyberLink {
 namespace USN {
 
 const char ROOTDEVICE[] = "upnp:rootdevice";
-	
+  
 bool IsRootDevice(const std::string &usnValue);
 const char *GetUDN(const std::string &usnValue, std::string &udn);
 

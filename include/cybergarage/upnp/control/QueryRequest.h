@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: QueryRequest.h
+*  File: QueryRequest.h
 *
-*	Revision;
+*  Revision;
 *
-*	08/13/03
-*		- first revision
+*  08/13/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -29,60 +29,60 @@ class StateVariable;
 
 class QueryRequest : public ControlRequest
 {
-	QueryResponse queryRes;
+  QueryResponse queryRes;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	QueryRequest()
-	{
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  QueryRequest()
+  {
+  }
 
-	QueryRequest(uHTTP::HTTPRequest *httpReq)
-	{
-		set(httpReq);
-	}
+  QueryRequest(uHTTP::HTTPRequest *httpReq)
+  {
+    set(httpReq);
+  }
 
-	////////////////////////////////////////////////
-	//	Qyery
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Qyery
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *getVarNameNode();
-	
+  CyberXML::Node *getVarNameNode();
+  
 public:
 
-	const char *getVarName();
+  const char *getVarName();
 
-	////////////////////////////////////////////////
-	//	setRequest
-	////////////////////////////////////////////////
-	
-	void setRequest(StateVariable *stateVar);
+  ////////////////////////////////////////////////
+  //  setRequest
+  ////////////////////////////////////////////////
+  
+  void setRequest(StateVariable *stateVar);
 
-	////////////////////////////////////////////////
-	//	Contents
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Contents
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *createContentNode(StateVariable *stateVar);
+  CyberXML::Node *createContentNode(StateVariable *stateVar);
 
-	////////////////////////////////////////////////
-	//	post
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  post
+  ////////////////////////////////////////////////
 
 public:
 
-	QueryResponse *post(QueryResponse *actionRes);
+  QueryResponse *post(QueryResponse *actionRes);
 
-	QueryResponse *post()
-	{
-		return post(&queryRes);
-	}
+  QueryResponse *post()
+  {
+    return post(&queryRes);
+  }
 
 };
 

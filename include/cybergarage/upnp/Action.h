@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Action.h
+*  File: Action.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/08/03
-*		- first revision
+*  07/08/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -34,241 +34,241 @@ class Service;
 
 class Action
 {
-	CyberXML::Node *serviceNode;
-	CyberXML::Node *actionNode;
-	
-	ArgumentList *argumentList;
-	ArgumentList *argumentInList;
-	ArgumentList *argumentOutList;
+  CyberXML::Node *serviceNode;
+  CyberXML::Node *actionNode;
+  
+  ArgumentList *argumentList;
+  ArgumentList *argumentInList;
+  ArgumentList *argumentOutList;
 
-	UPnPStatus upnpStatus;
+  UPnPStatus upnpStatus;
 
-	uHTTP::Mutex mutex;
+  uHTTP::Mutex mutex;
 
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
 
 public:
 
-	static const char *ELEM_NAME;
-	static const char *NAME;
+  static const char *ELEM_NAME;
+  static const char *NAME;
 
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
 private:
 
-	CyberXML::Node *getServiceNode()
-	{
-		return serviceNode;
-	}
+  CyberXML::Node *getServiceNode()
+  {
+    return serviceNode;
+  }
 
 public:
 
-	Service *getService();
-	
-	CyberXML::Node *getActionNode()
-	{
-		return actionNode;
-	}
-	
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  Service *getService();
+  
+  CyberXML::Node *getActionNode()
+  {
+    return actionNode;
+  }
+  
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode);
-	Action(Action *action);
+  Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode);
+  Action(Action *action);
 
-	~Action();
+  ~Action();
 
-	////////////////////////////////////////////////
-	// Mutex
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  // Mutex
+  ////////////////////////////////////////////////
+  
 public:
 
-	void lock()
-	{
-		mutex.lock();
-	}
-	
-	void unlock()
-	{
-		mutex.unlock();
-	}
+  void lock()
+  {
+    mutex.lock();
+  }
+  
+  void unlock()
+  {
+    mutex.unlock();
+  }
 
-	////////////////////////////////////////////////
-	//	isActionNode
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  isActionNode
+  ////////////////////////////////////////////////
 
-	static bool isActionNode(CyberXML::Node *node)
-	{
-		std::string nodeName = node->getName();
-		if (nodeName.compare(Action::ELEM_NAME) == 0)
-			return true;
-		return false;
-	}
+  static bool isActionNode(CyberXML::Node *node)
+  {
+    std::string nodeName = node->getName();
+    if (nodeName.compare(Action::ELEM_NAME) == 0)
+      return true;
+    return false;
+  }
 
-	////////////////////////////////////////////////
-	//	name
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  name
+  ////////////////////////////////////////////////
 
-	void setName(const std::string &value)
-	{
-		getActionNode()->setNode(Action::NAME, value);
-	}
+  void setName(const std::string &value)
+  {
+    getActionNode()->setNode(Action::NAME, value);
+  }
 
-	const char *getName()
-	{
-		return getActionNode()->getNodeValue(Action::NAME);
-	}
+  const char *getName()
+  {
+    return getActionNode()->getNodeValue(Action::NAME);
+  }
 
-	////////////////////////////////////////////////
-	//	argumentList
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  argumentList
+  ////////////////////////////////////////////////
 
 private:
 
-	void initArgumentList();
-	void clearOutputAgumentValues();
+  void initArgumentList();
+  void clearOutputAgumentValues();
 
 public:
 
-	ArgumentList *getArgumentList()
-	{
-		return argumentList;
-	}
+  ArgumentList *getArgumentList()
+  {
+    return argumentList;
+  }
 
-	ArgumentList *getInputArgumentList()
-	{
-		return argumentInList;
-	}
+  ArgumentList *getInputArgumentList()
+  {
+    return argumentInList;
+  }
 
-	ArgumentList *getOutputArgumentList()
-	{
-		return argumentOutList;
-	}
+  ArgumentList *getOutputArgumentList()
+  {
+    return argumentOutList;
+  }
 
-	Argument *getArgument(const std::string &name);
+  Argument *getArgument(const std::string &name);
 
-	void setArgumentValues(ArgumentList *argList)
-	{
-		getArgumentList()->set(argList);
-	}
-	
-	void setArgumentValue(const std::string &name, const std::string &value)
-	{
-		Argument *arg = getArgument(name);
-		if (arg == NULL)
-			return;
-		arg->setValue(value);
-	}
+  void setArgumentValues(ArgumentList *argList)
+  {
+    getArgumentList()->set(argList);
+  }
+  
+  void setArgumentValue(const std::string &name, const std::string &value)
+  {
+    Argument *arg = getArgument(name);
+    if (arg == NULL)
+      return;
+    arg->setValue(value);
+  }
 
-	void setArgumentValue(const std::string &name, int value)
-	{
-		Argument *arg = getArgument(name);
-		if (arg == NULL)
-			return;
-		arg->setValue(value);
-	}
+  void setArgumentValue(const std::string &name, int value)
+  {
+    Argument *arg = getArgument(name);
+    if (arg == NULL)
+      return;
+    arg->setValue(value);
+  }
 
-	const char *getArgumentValue(const std::string &name)
-	{
-		Argument *arg = getArgument(name);
-		if (arg == NULL)
-			return "";
-		return arg->getValue();
-	}
+  const char *getArgumentValue(const std::string &name)
+  {
+    Argument *arg = getArgument(name);
+    if (arg == NULL)
+      return "";
+    return arg->getValue();
+  }
 
-	int getArgumentIntegerValue(const std::string &name)
-	{
-		Argument *arg = getArgument(name);
-		if (arg == NULL)
-			return 0;
-		return arg->getIntegerValue();
-	}
-	
-	////////////////////////////////////////////////
-	//	UserData
-	////////////////////////////////////////////////
+  int getArgumentIntegerValue(const std::string &name)
+  {
+    Argument *arg = getArgument(name);
+    if (arg == NULL)
+      return 0;
+    return arg->getIntegerValue();
+  }
+  
+  ////////////////////////////////////////////////
+  //  UserData
+  ////////////////////////////////////////////////
 
-	ActionData *getActionData()
-	{
-		CyberXML::Node *node = getActionNode();
-		ActionData *userData = (ActionData *)node->getUserData();
-		if (userData == NULL) {
-			userData = new ActionData();
-			node->setUserData(userData);
-		}
-		return userData;
-	}
-	
-	////////////////////////////////////////////////
-	//	controlAction
-	////////////////////////////////////////////////
+  ActionData *getActionData()
+  {
+    CyberXML::Node *node = getActionNode();
+    ActionData *userData = (ActionData *)node->getUserData();
+    if (userData == NULL) {
+      userData = new ActionData();
+      node->setUserData(userData);
+    }
+    return userData;
+  }
+  
+  ////////////////////////////////////////////////
+  //  controlAction
+  ////////////////////////////////////////////////
 
-	ActionListener *getActionListener() 
-	{
-		return getActionData()->getActionListener();
-	}
+  ActionListener *getActionListener() 
+  {
+    return getActionData()->getActionListener();
+  }
 
-	void setActionListener(ActionListener *listener) 
-	{
-		getActionData()->setActionListener(listener);
-	}
+  void setActionListener(ActionListener *listener) 
+  {
+    getActionData()->setActionListener(listener);
+  }
 
-	bool performActionListener(ActionRequest *actionReq);
+  bool performActionListener(ActionRequest *actionReq);
 
-	////////////////////////////////////////////////
-	//	ActionControl
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  ActionControl
+  ////////////////////////////////////////////////
 
-	ControlResponse *getControlResponse() 
-	{
-		return getActionData()->getControlResponse();
-	}
+  ControlResponse *getControlResponse() 
+  {
+    return getActionData()->getControlResponse();
+  }
 
-	void setControlResponse(ControlResponse *res) 
-	{
-		getActionData()->setControlResponse(res);
-	}
-	
-	UPnPStatus *getControlStatus()
-	{
-		return getControlResponse()->getUPnPError();
-	}
+  void setControlResponse(ControlResponse *res) 
+  {
+    getActionData()->setControlResponse(res);
+  }
+  
+  UPnPStatus *getControlStatus()
+  {
+    return getControlResponse()->getUPnPError();
+  }
 
-	////////////////////////////////////////////////
-	//	postControlAction
-	////////////////////////////////////////////////
-
-public:
-
-	bool postControlAction();
-
-	////////////////////////////////////////////////
-	//	UPnPStatus
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  postControlAction
+  ////////////////////////////////////////////////
 
 public:
 
-	void setStatus(int code, const std::string &descr)
-	{
-		upnpStatus.setCode(code);
-		upnpStatus.setDescription(descr);
-	}
+  bool postControlAction();
 
-	void setStatus(int code)
-	{
-		setStatus(code, UPnP::StatusCode2String(code));
-	}
-	
-	UPnPStatus *getStatus()
-	{
-		return &upnpStatus;
-	}
+  ////////////////////////////////////////////////
+  //  UPnPStatus
+  ////////////////////////////////////////////////
+
+public:
+
+  void setStatus(int code, const std::string &descr)
+  {
+    upnpStatus.setCode(code);
+    upnpStatus.setDescription(descr);
+  }
+
+  void setStatus(int code)
+  {
+    setStatus(code, UPnP::StatusCode2String(code));
+  }
+  
+  UPnPStatus *getStatus()
+  {
+    return &upnpStatus;
+  }
 
 };
 

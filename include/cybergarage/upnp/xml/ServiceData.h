@@ -1,17 +1,17 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ServiceData.h
+*  File: ServiceData.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/20/03
-*		- first revision
-*	03/30/05
-*		- Removed setDescriptionURL() and getDescriptionURL().
+*  07/20/03
+*    - first revision
+*  03/30/05
+*    - Removed setDescriptionURL() and getDescriptionURL().
 *
 ******************************************************************/
 
@@ -32,93 +32,93 @@ class Service;
 
 class ServiceData : public CyberXML::NodeData
 {
-	Service *service;
+  Service *service;
 
-	std::string sid;
-	long timeout;
+  std::string sid;
+  long timeout;
 
-	uHTTP::ListenerList controlActionListenerList;
-	SubscriberList subscriberList;
+  uHTTP::ListenerList controlActionListenerList;
+  SubscriberList subscriberList;
 
-	CyberXML::Node *scpdNode;
-
-public:
-
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-
-	ServiceData();
-
-	~ServiceData();
-
-	////////////////////////////////////////////////
-	// Service
-	////////////////////////////////////////////////
+  CyberXML::Node *scpdNode;
 
 public:
 
-	void setService(Service *serv)
-	{
-		service = serv;
-	}
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	Service *getService()
-	{
-		return service;
-	}
+  ServiceData();
 
-	////////////////////////////////////////////////
-	// controlActionListenerList
-	////////////////////////////////////////////////
+  ~ServiceData();
 
-	uHTTP::ListenerList *getControlActionListenerList() {
-		return &controlActionListenerList;
-	}
+  ////////////////////////////////////////////////
+  // Service
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// scpdNode
-	////////////////////////////////////////////////
+public:
 
-	CyberXML::Node *getSCPDNode() {
-		return scpdNode;
-	}
+  void setService(Service *serv)
+  {
+    service = serv;
+  }
 
-	void setSCPDNode(CyberXML::Node *node);
+  Service *getService()
+  {
+    return service;
+  }
 
-	////////////////////////////////////////////////
-	// SubscriberList
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // controlActionListenerList
+  ////////////////////////////////////////////////
 
-	SubscriberList *getSubscriberList() {
-		return &subscriberList;
-	}
+  uHTTP::ListenerList *getControlActionListenerList() {
+    return &controlActionListenerList;
+  }
 
-	////////////////////////////////////////////////
-	// SID
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // scpdNode
+  ////////////////////////////////////////////////
 
-	const char *getSID() {
-		return sid.c_str();
-	}
+  CyberXML::Node *getSCPDNode() {
+    return scpdNode;
+  }
 
-	void setSID(const std::string &value) {
-		sid = value;
-	}
+  void setSCPDNode(CyberXML::Node *node);
 
-	////////////////////////////////////////////////
-	// Timeout
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // SubscriberList
+  ////////////////////////////////////////////////
 
-	long getTimeout() 
-	{
-		return timeout;
-	}
+  SubscriberList *getSubscriberList() {
+    return &subscriberList;
+  }
 
-	void setTimeout(long value) 
-	{
-		timeout = value;
-	}
+  ////////////////////////////////////////////////
+  // SID
+  ////////////////////////////////////////////////
+
+  const char *getSID() {
+    return sid.c_str();
+  }
+
+  void setSID(const std::string &value) {
+    sid = value;
+  }
+
+  ////////////////////////////////////////////////
+  // Timeout
+  ////////////////////////////////////////////////
+
+  long getTimeout() 
+  {
+    return timeout;
+  }
+
+  void setTimeout(long value) 
+  {
+    timeout = value;
+  }
 
 };
 

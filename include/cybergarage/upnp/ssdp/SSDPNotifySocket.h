@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPNotifySocket.h
+*  File: SSDPNotifySocket.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/11/03
-*		- first revision
+*  07/11/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -28,44 +28,44 @@ class ControlPoint;
 
 class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread
 {
-	ControlPoint *controlPoint;
-	bool useIPv6Address;
+  ControlPoint *controlPoint;
+  bool useIPv6Address;
 
 public:
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	SSDPNotifySocket(const std::string &bindAddr);
-	~SSDPNotifySocket();
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  SSDPNotifySocket(const std::string &bindAddr);
+  ~SSDPNotifySocket();
 
-	////////////////////////////////////////////////
-	//	ControlPoint	
-	////////////////////////////////////////////////
-	
-	void setControlPoint(ControlPoint *ctrlp)
-	{
-		controlPoint = ctrlp;
-	}
+  ////////////////////////////////////////////////
+  //  ControlPoint  
+  ////////////////////////////////////////////////
+  
+  void setControlPoint(ControlPoint *ctrlp)
+  {
+    controlPoint = ctrlp;
+  }
 
-	ControlPoint *getControlPoint()
-	{
-		return controlPoint;
-	}
+  ControlPoint *getControlPoint()
+  {
+    return controlPoint;
+  }
 
-	////////////////////////////////////////////////
-	//	post (SSDPNotifySocket)
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  post (SSDPNotifySocket)
+  ////////////////////////////////////////////////
 
-	bool post(SSDPNotifyRequest *req);
+  bool post(SSDPNotifyRequest *req);
 
-	////////////////////////////////////////////////
-	//	run	
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  run  
+  ////////////////////////////////////////////////
 
-	void run();
-	
+  void run();
+  
 };
 
 }

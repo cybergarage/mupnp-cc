@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: ServiceList.h
+*  File: ServiceList.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/22/03
-*		- first revision
+*  07/22/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,36 +25,36 @@ class Service;
 class ServiceList : public uHTTP::Vector
 {
 public:
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-	static const char *ELEM_NAME;
+  ////////////////////////////////////////////////
+  //  Constants
+  ////////////////////////////////////////////////
+  
+  static const char *ELEM_NAME;
 
 public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	ServiceList() 
-	{
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  ServiceList() 
+  {
+  }
 
-	~ServiceList() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
-	
-	Service *getService(int n)
-	{
-		return (Service *)get(n);
-	}
+  ~ServiceList() 
+  {
+    clear();
+  }
+  
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
+  
+  Service *getService(int n)
+  {
+    return (Service *)get(n);
+  }
 
-	void clear();
+  void clear();
 };
 
 }

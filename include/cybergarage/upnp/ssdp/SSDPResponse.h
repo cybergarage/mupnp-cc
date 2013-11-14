@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPResponse.h
+*  File: SSDPResponse.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/10/03
-*		- first revision
+*  07/10/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -27,84 +27,84 @@ class SSDPResponse : public uHTTP::HTTPResponse
 
 public:
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	SSDPResponse()
-	{
-		setVersion(uHTTP::HTTP::VER_11);
-	}
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
+  
+  SSDPResponse()
+  {
+    setVersion(uHTTP::HTTP::VER_11);
+  }
 
-	////////////////////////////////////////////////
-	//	ST (SearchTarget)
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  ST (SearchTarget)
+  ////////////////////////////////////////////////
 
-	void setST(const std::string &value)
-	{
-		setHeader(uHTTP::HTTP::ST, value);
-	}
+  void setST(const std::string &value)
+  {
+    setHeader(uHTTP::HTTP::ST, value);
+  }
 
-	const char *getST()
-	{
-		return getHeaderValue(uHTTP::HTTP::ST);
-	}
+  const char *getST()
+  {
+    return getHeaderValue(uHTTP::HTTP::ST);
+  }
 
-	////////////////////////////////////////////////
-	//	Location
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Location
+  ////////////////////////////////////////////////
 
-	void setLocation(const std::string &value)
-	{
-		setHeader(uHTTP::HTTP::LOCATION, value);
-	}
+  void setLocation(const std::string &value)
+  {
+    setHeader(uHTTP::HTTP::LOCATION, value);
+  }
 
-	const char *getLocation()
-	{
-		return getHeaderValue(uHTTP::HTTP::LOCATION);
-	}
+  const char *getLocation()
+  {
+    return getHeaderValue(uHTTP::HTTP::LOCATION);
+  }
 
-	////////////////////////////////////////////////
-	//	USN
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  USN
+  ////////////////////////////////////////////////
 
-	void setUSN(const std::string &value)
-	{
-		setHeader(uHTTP::HTTP::USN, value);
-	}
+  void setUSN(const std::string &value)
+  {
+    setHeader(uHTTP::HTTP::USN, value);
+  }
 
-	const char *getUSN()
-	{
-		return getHeaderValue(uHTTP::HTTP::USN);
-	}
+  const char *getUSN()
+  {
+    return getHeaderValue(uHTTP::HTTP::USN);
+  }
 
-	////////////////////////////////////////////////
-	//	MYNAME
-	////////////////////////////////////////////////
-	
-	void setMYNAME(const std::string &value)
-	{
-		setHeader(uHTTP::HTTP::MYNAME, value);
-	}
+  ////////////////////////////////////////////////
+  //  MYNAME
+  ////////////////////////////////////////////////
+  
+  void setMYNAME(const std::string &value)
+  {
+    setHeader(uHTTP::HTTP::MYNAME, value);
+  }
 
-	const char *getMYNAME()
-	{
-		return getHeaderValue(uHTTP::HTTP::MYNAME);
-	}
+  const char *getMYNAME()
+  {
+    return getHeaderValue(uHTTP::HTTP::MYNAME);
+  }
 
-	////////////////////////////////////////////////
-	//	CacheControl
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  CacheControl
+  ////////////////////////////////////////////////
 
-	void setLeaseTime(int value);
+  void setLeaseTime(int value);
 
-	int getLeaseTime();
+  int getLeaseTime();
 
-	////////////////////////////////////////////////
-	//	getHeader
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  getHeader
+  ////////////////////////////////////////////////
 
-	const char *getHeader(std::string &headerStr);
+  const char *getHeader(std::string &headerStr);
 
 };
 

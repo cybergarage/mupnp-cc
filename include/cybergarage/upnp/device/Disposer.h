@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Disposer.h
+*  File: Disposer.h
 *
-*	Revision;
+*  Revision;
 *
-*	01/06/04
-*		- first revision
+*  01/06/04
+*    - first revision
 *
 ******************************************************************/
 
@@ -24,44 +24,44 @@ class ControlPoint;
 
 class Disposer : public uHTTP::Thread
 {
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	Disposer(ControlPoint *ctrlp)
-	{
-		setControlPoint(ctrlp);
-	}
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  Disposer(ControlPoint *ctrlp)
+  {
+    setControlPoint(ctrlp);
+  }
+  
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
 private:
-	
-	ControlPoint *controlPoint;
+  
+  ControlPoint *controlPoint;
 
 public:
 
-	void setControlPoint(ControlPoint *ctrlp)
-	{
-		controlPoint = ctrlp;
-	}
-	
-	ControlPoint *getControlPoint()
-	{
-		return controlPoint;
-	}
+  void setControlPoint(ControlPoint *ctrlp)
+  {
+    controlPoint = ctrlp;
+  }
+  
+  ControlPoint *getControlPoint()
+  {
+    return controlPoint;
+  }
 
-	////////////////////////////////////////////////
-	//	Thread
-	////////////////////////////////////////////////
-	
+  ////////////////////////////////////////////////
+  //  Thread
+  ////////////////////////////////////////////////
+  
 public:
 
-	void run();
+  void run();
 
 };
 

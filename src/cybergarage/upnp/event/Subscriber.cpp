@@ -1,20 +1,20 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: Subscriber.cpp
+*  File: Subscriber.cpp
 *
-*	Revision:
+*  Revision:
 *
-*	08/02/03
-*		- first revision
-*	07/31/04
-*		- Added isExpired().
-*	10/26/04
-*		- Oliver Newell <newell@media-rush.com>
-*		- Added support the intinite time and fixed a bug in isExpired().
+*  08/02/03
+*    - first revision
+*  07/31/04
+*    - Added isExpired().
+*  10/26/04
+*    - Oliver Newell <newell@media-rush.com>
+*    - Added support the intinite time and fixed a bug in isExpired().
 *
 ******************************************************************/
 
@@ -24,58 +24,58 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
-	
+  
 Subscriber::Subscriber()
 {
-	renew();
+  renew();
 }
 
 Subscriber::~Subscriber()
 {
-	renew();
+  renew();
 }
 
 ////////////////////////////////////////////////
-//	SEQ
+//  SEQ
 ////////////////////////////////////////////////
 
 void Subscriber::incrementNotifyCount() 
 {
-	if (notifyCount == LONG_MAX) {
-		notifyCount = 1;
-		return;
-	}
-	notifyCount++;
+  if (notifyCount == LONG_MAX) {
+    notifyCount = 1;
+    return;
+  }
+  notifyCount++;
 }
-	
+  
 ////////////////////////////////////////////////
-//	Timeout
+//  Timeout
 ////////////////////////////////////////////////
 
 bool Subscriber::isExpired()
 {
-	long currTime = time(NULL);
-		
-	// Thanks for Oliver Newell (10/26/04)
-	if(timeOut == Subscription::INFINITE_VALUE) 
-		return false; 
-			
-	// Thanks for Oliver Newell (10/26/04)
-	long expiredTime = getSubscriptionTime() + getTimeOut()*1000;
-	if (expiredTime < currTime)
-		return true;
-			
-	return false;
+  long currTime = time(NULL);
+    
+  // Thanks for Oliver Newell (10/26/04)
+  if(timeOut == Subscription::INFINITE_VALUE) 
+    return false; 
+      
+  // Thanks for Oliver Newell (10/26/04)
+  long expiredTime = getSubscriptionTime() + getTimeOut()*1000;
+  if (expiredTime < currTime)
+    return true;
+      
+  return false;
 }
 
 ////////////////////////////////////////////////
-//	renew
+//  renew
 ////////////////////////////////////////////////
-	
+  
 void Subscriber::renew()
 {
-	setSubscriptionTime(time(NULL));
-	setNotifyCount(0);
+  setSubscriptionTime(time(NULL));
+  setNotifyCount(0);
 }

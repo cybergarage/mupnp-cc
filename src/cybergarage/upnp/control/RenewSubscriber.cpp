@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: RenewSubscriber.cpp
+*  File: RenewSubscriber.cpp
 *
-*	Revision:
+*  Revision:
 *
-*	07/07/04
-*		- first revision
+*  07/07/04
+*    - first revision
 *
 ******************************************************************/
 
@@ -20,22 +20,22 @@ using namespace CyberLink;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//	Constants
+//  Constants
 ////////////////////////////////////////////////
 
 const long RenewSubscriber::INTERVAL= 120;
 
 ////////////////////////////////////////////////
-//	Thread
+//  Thread
 ////////////////////////////////////////////////
-	
+  
 void RenewSubscriber::run() 
 {
-	ControlPoint *ctrlp = getControlPoint();
-	long renewInterval = RenewSubscriber::INTERVAL * 1000;
-	while (isRunnable() == true) {
-		Wait(renewInterval);
-		ctrlp->renewSubscriberService();
-	}
+  ControlPoint *ctrlp = getControlPoint();
+  long renewInterval = RenewSubscriber::INTERVAL * 1000;
+  while (isRunnable() == true) {
+    Wait(renewInterval);
+    ctrlp->renewSubscriberService();
+  }
 }
 

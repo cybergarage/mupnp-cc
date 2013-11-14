@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*  Copyright (C) Satoshi Konno 2002-2003
 *
-*	File: SSDPSearchSocket.h
+*  File: SSDPSearchSocket.h
 *
-*	Revision;
+*  Revision;
 *
-*	07/05/03
-*		- first revision
+*  07/05/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -29,59 +29,59 @@ namespace CyberLink {
 
 class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread
 {
-	bool useIPv6Address;
-	uHTTP::ListenerList deviceSearchListenerList;
+  bool useIPv6Address;
+  uHTTP::ListenerList deviceSearchListenerList;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-
-public:
-
-	SSDPSearchSocket();
-	SSDPSearchSocket(const std::string &bindAddr);
-	~SSDPSearchSocket();
-
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	bool open(const std::string &bindAddr);
+  SSDPSearchSocket();
+  SSDPSearchSocket(const std::string &bindAddr);
+  ~SSDPSearchSocket();
 
-	////////////////////////////////////////////////
-	//	deviceSearch
-	////////////////////////////////////////////////
-
-public:
-
-	void addSearchListener(SearchListener *listener)
-	{
-		deviceSearchListenerList.add(listener);
-	}		
-
-	void removeSearchListener(SearchListener *listener)
-	{
-		deviceSearchListenerList.remove(listener);
-	}		
-
-	void performSearchListener(SSDPPacket *ssdpPacket)
-	{
-		int listenerSize = deviceSearchListenerList.size();
-		for (int n=0; n<listenerSize; n++) {
-			SearchListener *listener = (SearchListener *)deviceSearchListenerList.get(n);
-			listener->deviceSearchReceived(ssdpPacket);
-		}
-	}		
-
-	////////////////////////////////////////////////
-	//	run	
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
 public:
 
-	void run();
+  bool open(const std::string &bindAddr);
+
+  ////////////////////////////////////////////////
+  //  deviceSearch
+  ////////////////////////////////////////////////
+
+public:
+
+  void addSearchListener(SearchListener *listener)
+  {
+    deviceSearchListenerList.add(listener);
+  }    
+
+  void removeSearchListener(SearchListener *listener)
+  {
+    deviceSearchListenerList.remove(listener);
+  }    
+
+  void performSearchListener(SSDPPacket *ssdpPacket)
+  {
+    int listenerSize = deviceSearchListenerList.size();
+    for (int n=0; n<listenerSize; n++) {
+      SearchListener *listener = (SearchListener *)deviceSearchListenerList.get(n);
+      listener->deviceSearchReceived(ssdpPacket);
+    }
+  }    
+
+  ////////////////////////////////////////////////
+  //  run  
+  ////////////////////////////////////////////////
+
+public:
+
+  void run();
 
 };
 
