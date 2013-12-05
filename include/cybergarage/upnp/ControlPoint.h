@@ -324,7 +324,7 @@ private:
     return &httpServerList;
   }
 
-  void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  uHTTP::HTTP::StatusCode httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
   ////////////////////////////////////////////////
   //  Event Listener 

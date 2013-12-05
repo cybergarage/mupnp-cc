@@ -91,7 +91,7 @@ bool ClockDevice::queryControlReceived(StateVariable *stateVar)
 // HttpRequestListner
 ////////////////////////////////////////////////
 	
-void ClockDevice::httpRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode ClockDevice::httpRequestRecieved(HTTPRequest *httpReq)
 {
 	ParameterList paramList;
 	httpReq->getParameterList(paramList);
@@ -103,8 +103,7 @@ void ClockDevice::httpRequestRecieved(HTTPRequest *httpReq)
 	string uri;
 	httpReq->getURI(uri);
 	if (uri.find(CLOCK_PRESENTATION_URI) == string::npos)  {
-		Device::httpRequestRecieved(httpReq);
-		return;
+		return Device::httpRequestRecieved(httpReq);
 	}
 			 
 	string clockStr;
@@ -118,7 +117,7 @@ void ClockDevice::httpRequestRecieved(HTTPRequest *httpReq)
 	HTTPResponse httpRes;
 	httpRes.setStatusCode(HTTP::OK_REQUEST);
 	httpRes.setContent(contents);
-	httpReq->post(&httpRes);
+	return httpReq->post(&httpRes);
 }
 
 ////////////////////////////////////////////////

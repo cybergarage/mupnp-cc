@@ -41,9 +41,9 @@ public:
 	// HttpRequestListner
 	////////////////////////////////////////////////
 
-	void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
-	void httpInputStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
-	void httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
+	uHTTP::HTTP::StatusCode httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
+	uHTTP::HTTP::StatusCode httpInputStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
+	uHTTP::HTTP::StatusCode httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 	////////////////////////////////////////////////
 	// update

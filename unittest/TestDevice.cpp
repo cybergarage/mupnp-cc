@@ -70,7 +70,7 @@ bool TestDevice::queryControlReceived(StateVariable *stateVar)
 // HttpRequestListner
 ////////////////////////////////////////////////
 	
-void TestDevice::httpRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestDevice::httpRequestRecieved(HTTPRequest *httpReq)
 {
 	ParameterList paramList;
 	httpReq->getParameterList(paramList);
@@ -82,8 +82,7 @@ void TestDevice::httpRequestRecieved(HTTPRequest *httpReq)
 	string uri;
 	httpReq->getURI(uri);
 	if (uri.find(PRESENTATION_URI) == string::npos)  {
-		Device::httpRequestRecieved(httpReq);
-		return;
+		return Device::httpRequestRecieved(httpReq);
 	}
 			 
 	string contents;
@@ -94,7 +93,7 @@ void TestDevice::httpRequestRecieved(HTTPRequest *httpReq)
 	HTTPResponse httpRes;
 	httpRes.setStatusCode(HTTP::OK_REQUEST);
 	httpRes.setContent(contents);
-	httpReq->post(&httpRes);
+	return httpReq->post(&httpRes);
 }
 
 ////////////////////////////////////////////////

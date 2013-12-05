@@ -712,13 +712,13 @@ public:
     return getDeviceData()->getHTTPPort();
   }
 
-  void httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  uHTTP::HTTP::StatusCode httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 private:
 
   const char *getDescriptionData(const std::string &host, std::string &buf);
-  void httpGetRequestRecieved(uHTTP::HTTPRequest *httpReq);
-  void httpPostRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  uHTTP::HTTP::StatusCode httpGetRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  uHTTP::HTTP::StatusCode httpPostRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
   ////////////////////////////////////////////////
   //  SOAP
@@ -726,8 +726,8 @@ private:
 
 private:
 
-  void soapBadActionRecieved(uHTTP::HTTPRequest *soapReq);
-  void soapActionRecieved(uHTTP::HTTPRequest *soapReq);
+  uHTTP::HTTP::StatusCode soapBadActionRecieved(uHTTP::HTTPRequest *soapReq);
+  uHTTP::HTTP::StatusCode soapActionRecieved(uHTTP::HTTPRequest *soapReq);
 
   ////////////////////////////////////////////////
   //  controlAction
@@ -735,10 +735,10 @@ private:
 
 private:
 
-  void invalidActionControlRecieved(ControlRequest *ctlReq);
-  void deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service);
-  void deviceActionControlRecieved(ActionRequest *ctlReq, Service *service);
-  void deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service);
+  uHTTP::HTTP::StatusCode invalidActionControlRecieved(ControlRequest *ctlReq);
+  uHTTP::HTTP::StatusCode deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service);
+  uHTTP::HTTP::StatusCode deviceActionControlRecieved(ActionRequest *ctlReq, Service *service);
+  uHTTP::HTTP::StatusCode deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service);
 
   ////////////////////////////////////////////////
   //  eventSubscribe
@@ -746,11 +746,11 @@ private:
 
 private:
 
-  void upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code);
-  void deviceEventSubscriptionRecieved(SubscriptionRequest *subReq);
-  void deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
-  void deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
-  void deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
+  uHTTP::HTTP::StatusCode upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code);
+  uHTTP::HTTP::StatusCode deviceEventSubscriptionRecieved(SubscriptionRequest *subReq);
+  uHTTP::HTTP::StatusCode deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
+  uHTTP::HTTP::StatusCode deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
+  uHTTP::HTTP::StatusCode deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq);
   
   ////////////////////////////////////////////////
   //  Thread  

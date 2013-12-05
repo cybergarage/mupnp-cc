@@ -339,7 +339,7 @@ void ControlPoint::search(const std::string &target, int mx)
 //  EventSub HTTPServer
 ////////////////////////////////////////////////
 
-void ControlPoint::httpRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode ControlPoint::httpRequestRecieved(HTTPRequest *httpReq)
 {
   if (Debug::isOn() == true)
     httpReq->print();
@@ -358,11 +358,10 @@ void ControlPoint::httpRequestRecieved(HTTPRequest *httpReq)
       const char *varValue = prop->getValue();
       performEventListener(uuid, seq, varName, varValue);
     }
-    httpReq->returnOK();
-    return;
+    return httpReq->returnOK();
   }
     
-  httpReq->returnBadRequest();
+  return httpReq->returnBadRequest();
 }
 
 ////////////////////////////////////////////////

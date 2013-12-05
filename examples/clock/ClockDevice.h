@@ -131,7 +131,7 @@ public:
 	// HttpRequestListner
 	////////////////////////////////////////////////
 
-	void httpRequestRecieved(HTTPRequest *httpReq);
+	uHTTP::HTTP::StatusCode httpRequestRecieved(HTTPRequest *httpReq);
 
 	////////////////////////////////////////////////
 	// update

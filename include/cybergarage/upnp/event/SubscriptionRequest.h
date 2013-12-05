@@ -153,9 +153,9 @@ public:
 
 public:
 
-  void post(SubscriptionResponse *subRes)
+  uHTTP::HTTP::StatusCode post(SubscriptionResponse *subRes)
   {
-    HTTPRequest::post(subRes);
+    return HTTPRequest::post(subRes);
   }
 
   ////////////////////////////////////////////////

@@ -246,7 +246,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
-					"-lboost_unit_test_framework",
+					"-lboost_unit_test_framework-mt",
 					"-luhttp++",
 				);
 				SDKROOT = macosx;
@@ -277,7 +277,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
-					"-lboost_unit_test_framework",
+					"-lboost_unit_test_framework-mt",
 					"-luhttp++",
 				);
 				SDKROOT = macosx;
@@ -297,7 +297,7 @@
 					/usr/local/lib,
 				);
 				OTHER_LDFLAGS = (
-					"-lboost_unit_test_framework",
+					"-lboost_unit_test_framework-mt",
 					"-luhttp++",
 					"-lxml2",
 				);
@@ -318,7 +318,7 @@
 					/usr/local/lib,
 				);
 				OTHER_LDFLAGS = (
-					"-lboost_unit_test_framework",
+					"-lboost_unit_test_framework-mt",
 					"-luhttp++",
 					"-lxml2",
 				);

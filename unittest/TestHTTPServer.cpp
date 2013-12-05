@@ -38,22 +38,21 @@ TestHTTPServer::TestHTTPServer()
 // HttpRequestListner
 ////////////////////////////////////////////////
 
-void TestHTTPServer::httpRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestHTTPServer::httpRequestRecieved(HTTPRequest *httpReq)
 {
 		string uri;
 		httpReq->getURI(uri);
 		if (uri.compare(TEST_INPUTSTREAM_URI) == 0) {
-			httpInputStreamRequestRecieved(httpReq);
-			return;
+			return httpInputStreamRequestRecieved(httpReq);
 		}
 
 		HTTPResponse httpRes;
 		httpRes.setStatusCode(HTTP::OK_REQUEST);
 		httpRes.setContent(content);
-		httpReq->post(&httpRes);
+		return httpReq->post(&httpRes);
 }
 
-void TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest *httpReq)
 {
 	StringBufferInputStream in(content.c_str());
 
@@ -61,16 +60,16 @@ void TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest *httpReq)
 	httpRes.setStatusCode(HTTP::OK_REQUEST);
 	httpRes.setContentInputStream(&in);
 	httpRes.setContentLength(content.length());
-	httpReq->post(&httpRes);
+	return httpReq->post(&httpRes);
 }
 
-void TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
 		HTTPResponse httpRes;
 		httpRes.setTransferEncoding(HTTP::CHUNKED);
 		httpRes.setStatusCode(HTTP::OK_REQUEST);
 		httpRes.setContent(content);
-		httpReq->post(&httpRes);
+		return httpReq->post(&httpRes);
 }
 
 ////////////////////////////////////////////////

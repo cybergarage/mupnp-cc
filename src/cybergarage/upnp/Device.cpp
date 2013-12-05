@@ -1082,28 +1082,25 @@ void Device::deviceSearchReceived(SSDPPacket *ssdpPacket)
 //  HTTP Server  
 ////////////////////////////////////////////////
 
-void Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
   if (Debug::isOn() == true)
     httpReq->print();
 
   if (httpReq->isGetRequest() == true || httpReq->isHeadRequest()) {
-    httpGetRequestRecieved(httpReq);
-    return;
+    return httpGetRequestRecieved(httpReq);
   }
 
   if (httpReq->isPostRequest() == true) {
-    httpPostRequestRecieved(httpReq);
-    return;
+    return httpPostRequestRecieved(httpReq);
   }
 
   if (httpReq->isSubscribeRequest() == true || httpReq->isUnsubscribeRequest() == true) {
     SubscriptionRequest subReq(httpReq);
-    deviceEventSubscriptionRecieved(&subReq);
-    return;
+    return deviceEventSubscriptionRecieved(&subReq);
   }
 
-  httpReq->returnBadRequest();
+  return httpReq->returnBadRequest();
 }
 
 ////////////////////////////////////////////////
@@ -1128,13 +1125,12 @@ const char *Device::getDescriptionData(const std::string &host, string &buf)
   return buf.c_str();
 }
   
-void Device::httpGetRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq)
 {
   string uri;
   httpReq->getURI(uri);
   if (uri.length() <= 0) {
-    httpReq->returnBadRequest();
-    return;
+    return httpReq->returnBadRequest();
   }
       
   string fileByteBuf;
@@ -1155,8 +1151,7 @@ void Device::httpGetRequestRecieved(HTTPRequest *httpReq)
     fileByte = embService->getSCPDData(fileByteBuf);
   }
   else {
-    httpReq->returnBadRequest();
-    return;
+    return httpReq->returnBadRequest();
   }
 
   HTTPResponse httpRes;
@@ -1164,67 +1159,65 @@ void Device::httpGetRequestRecieved(HTTPRequest *httpReq)
     httpRes.setContentType(XML::CONTENT_TYPE);
   httpRes.setStatusCode(HTTP::OK_REQUEST);
   httpRes.setContent(fileByte);
-  httpReq->post(&httpRes);
+  return httpReq->post(&httpRes);
 }
 
-void Device::httpPostRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq)
 {
   if (httpReq->isSOAPAction() == true) {
     //SOAPRequest soapReq = new SOAPRequest(httpReq);
-    soapActionRecieved(httpReq);
-    return;
+    return soapActionRecieved(httpReq);
   }
-  httpReq->returnBadRequest();
+  return httpReq->returnBadRequest();
 }
 
 ////////////////////////////////////////////////
 //  SOAP
 ////////////////////////////////////////////////
 
-void Device::soapBadActionRecieved(HTTPRequest *soapReq)
+uHTTP::HTTP::StatusCode Device::soapBadActionRecieved(HTTPRequest *soapReq)
 {
   SOAPResponse soapRes;
   soapRes.setStatusCode(HTTP::BAD_REQUEST);
   soapReq->post(&soapRes);
+  return soapRes.getStatusCode();
 }
 
-void Device::soapActionRecieved(HTTPRequest *soapReq)
+uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq)
 {
   string uri;
   soapReq->getURI(uri);
   Service *ctlService = getServiceByControlURL(uri.c_str());
   if (ctlService != NULL)  {
     ActionRequest crlReq(soapReq);
-    deviceControlRequestRecieved(&crlReq, ctlService);
-    return;
+    return deviceControlRequestRecieved(&crlReq, ctlService);
   }
-  soapBadActionRecieved(soapReq);
+  return soapBadActionRecieved(soapReq);
 }
 
 ////////////////////////////////////////////////
 //  controlAction
 ////////////////////////////////////////////////
 
-void Device::invalidActionControlRecieved(ControlRequest *ctlReq)
+uHTTP::HTTP::StatusCode Device::invalidActionControlRecieved(ControlRequest *ctlReq)
 {
   ControlResponse actRes;
   actRes.setFaultResponse(UPnP::INVALID_ACTION);
-  ctlReq->post(&actRes);
+  return ctlReq->post(&actRes);
 }
 
-void Device::deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service)
+uHTTP::HTTP::StatusCode Device::deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service)
 {
   if (ctlReq->isQueryControl() == true) {
     QueryRequest queryRes(ctlReq);
-    deviceQueryControlRecieved(&queryRes, service);
+    return deviceQueryControlRecieved(&queryRes, service);
   }
-  else {
-    ActionRequest actRes(ctlReq);
-    deviceActionControlRecieved(&actRes, service);
-  }
+
+  ActionRequest actRes(ctlReq);
+  return deviceActionControlRecieved(&actRes, service);
 }
 
-void Device::deviceActionControlRecieved(ActionRequest *ctlReq, Service *service)
+uHTTP::HTTP::StatusCode Device::deviceActionControlRecieved(ActionRequest *ctlReq, Service *service)
 {
   if (Debug::isOn() == true)
     ctlReq->print();
@@ -1233,42 +1226,42 @@ void Device::deviceActionControlRecieved(ActionRequest *ctlReq, Service *service
   const char *actionName = ctlReq->getActionName(actionNameBuf);
   Action *action = service->getAction(actionName);
   if (action == NULL) {
-    invalidActionControlRecieved(ctlReq);
-    return;
+    return invalidActionControlRecieved(ctlReq);
   }
   ArgumentList *actionArgList = action->getArgumentList();
   ArgumentList *reqArgList = ctlReq->getArgumentList();
   actionArgList->set(reqArgList);
   if (action->performActionListener(ctlReq) == false)
-    invalidActionControlRecieved(ctlReq);
+    return invalidActionControlRecieved(ctlReq);
+  return HTTP::OK_REQUEST;
 }
 
-void Device::deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service)
+uHTTP::HTTP::StatusCode Device::deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service)
 {
   if (Debug::isOn() == true)
     ctlReq->print();
   const char *varName = ctlReq->getVarName();
   if (service->hasStateVariable(varName) == false) {
-    invalidActionControlRecieved(ctlReq);
-    return;
+    return invalidActionControlRecieved(ctlReq);
   }
   StateVariable *stateVar = getStateVariable(varName);
   if (stateVar->performQueryListener(ctlReq) == false)
-    invalidActionControlRecieved(ctlReq);
+    return invalidActionControlRecieved(ctlReq);
+  return HTTP::OK_REQUEST;
 }
 
 ////////////////////////////////////////////////
 //  eventSubscribe
 ////////////////////////////////////////////////
 
-void Device::upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code)
+uHTTP::HTTP::StatusCode Device::upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code)
 {
   SubscriptionResponse subRes;
   subRes.setErrorResponse(code);
-  subReq->post(&subRes);
+  return subReq->post(&subRes);
 }
 
-void Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
+uHTTP::HTTP::StatusCode Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
 {
   if (Debug::isOn() == true)
     subReq->print();
@@ -1276,36 +1269,31 @@ void Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
   subReq->getURI(uri);
   Service *service = getServiceByEventSubURL(uri.c_str());
   if (service == NULL) {
-    subReq->returnBadRequest();
-    return;
+    return subReq->returnBadRequest();
   }
   if (subReq->hasCallback() == false && subReq->hasSID() == false) {
-    upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
-    return;
+    return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
   }
 
   // UNSUBSCRIBE
   if (subReq->isUnsubscribeRequest() == true) {
-    deviceEventUnsubscriptionRecieved(service, subReq);
-    return;
+    return deviceEventUnsubscriptionRecieved(service, subReq);
   }
 
   // SUBSCRIBE (NEW)
   if (subReq->hasCallback() == true) {
-    deviceEventNewSubscriptionRecieved(service, subReq);
-    return;
+    return deviceEventNewSubscriptionRecieved(service, subReq);
   }
     
   // SUBSCRIBE (RENEW)
   if (subReq->hasSID() == true) {
-    deviceEventRenewSubscriptionRecieved(service, subReq);
-    return;
+    return deviceEventRenewSubscriptionRecieved(service, subReq);
   }
     
-  upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
+  return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
 }
 
-void Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
+uHTTP::HTTP::StatusCode Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
 {
   string callback;
   subReq->getCallback(callback);
@@ -1329,17 +1317,18 @@ void Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRe
   subReq->post(&subRes);
 
   service->notifyAllStateVariables();
+
+  return uHTTP::HTTP::OK_REQUEST;
 }
 
-void Device::deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
+uHTTP::HTTP::StatusCode Device::deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
 {
   string sidBuf;
   const char *sid = subReq->getSID(sidBuf);
   Subscriber *sub = service->getSubscriberBySID(sid);
 
   if (sub == NULL) {
-    upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
-    return;
+    return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
   }
 
   long timeOut = subReq->getTimeout();
@@ -1350,25 +1339,24 @@ void Device::deviceEventRenewSubscriptionRecieved(Service *service, Subscription
   subRes.setStatusCode(HTTP::OK_REQUEST);
   subRes.setSID(sid);
   subRes.setTimeout(timeOut);
-  subReq->post(&subRes);
+  return subReq->post(&subRes);
 }    
 
-void Device::deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
+uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
 {
   string sidBuf;
   const char *sid = subReq->getSID(sidBuf);
 
   Subscriber *sub = service->getSubscriberBySID(sid);
   if (sub == NULL) {
-    upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
-    return;
+    return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
   }
 
   service->removeSubscriber(sub);
             
   SubscriptionResponse subRes;
   subRes.setStatusCode(HTTP::OK_REQUEST);
-  subReq->post(&subRes);
+  return subReq->post(&subRes);
 }    
 
 ////////////////////////////////////////////////
