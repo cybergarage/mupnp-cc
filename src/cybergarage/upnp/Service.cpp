@@ -397,7 +397,7 @@ void Service::notify(StateVariable *stateVar)
 
   // Remove expired subArraycribers.
   subArrayCnt = subList->size();
-  subArray = new (Subscriber(*[subArrayCnt]));
+  subArray = new Subscriber*[subArrayCnt];
   for (n=0; n<subArrayCnt; n++)
     subArray[n] = subList->getSubscriber(n);
   for (n=0; n<subArrayCnt; n++) {
@@ -411,7 +411,7 @@ void Service::notify(StateVariable *stateVar)
     
   // Notify to subArraycribers.
   subArrayCnt = subList->size();
-  subArray = new (Subscriber(*[subArrayCnt]));
+  subArray = new Subscriber*[subArrayCnt];
   for (n=0; n<subArrayCnt; n++)
     subArray[n] = subList->getSubscriber(n);
   for (n=0; n<subArrayCnt; n++) {

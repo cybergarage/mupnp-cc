@@ -231,7 +231,7 @@ void ControlPoint::removeExpiredDevices()
   int n;
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
-  Device **dev = new (Device(*[devCnt]));
+  Device **dev = new Device*[devCnt];
   for (n=0; n<devCnt; n++)
     dev[n] = devList->getDevice(n);
   for (n=0; n<devCnt; n++) {
