@@ -26,9 +26,7 @@
 #include <cybergarage/upnp/device/SearchListener.h>
 
 namespace CyberLink {
-
-class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread
-{
+class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
   bool useIPv6Address;
   uHTTP::ListenerList deviceSearchListenerList;
 
@@ -36,8 +34,7 @@ class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   SSDPSearchSocket();
   SSDPSearchSocket(const std::string &bindAddr);
   ~SSDPSearchSocket();
@@ -46,28 +43,23 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool open(const std::string &bindAddr);
 
   ////////////////////////////////////////////////
   //  deviceSearch
   ////////////////////////////////////////////////
 
-public:
-
-  void addSearchListener(SearchListener *listener)
-  {
+ public:
+  void addSearchListener(SearchListener *listener) {
     deviceSearchListenerList.add(listener);
   }    
 
-  void removeSearchListener(SearchListener *listener)
-  {
+  void removeSearchListener(SearchListener *listener) {
     deviceSearchListenerList.remove(listener);
   }    
 
-  void performSearchListener(SSDPPacket *ssdpPacket)
-  {
+  void performSearchListener(SSDPPacket *ssdpPacket) {
     int listenerSize = deviceSearchListenerList.size();
     for (int n=0; n<listenerSize; n++) {
       SearchListener *listener = (SearchListener *)deviceSearchListenerList.get(n);
@@ -79,8 +71,7 @@ public:
   //  run  
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void run();
 
 };

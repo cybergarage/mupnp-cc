@@ -23,16 +23,13 @@
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
-
-class HTTPMUSocket
-{
+class HTTPMUSocket {
   uHTTP::InetSocketAddress ssdpMultiGroup;
   uHTTP::MulticastSocket ssdpMultiSock;
   //uHTTP::NetworkInterface ssdpMultiIf;
   SSDPPacket recvPacket;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
@@ -47,8 +44,7 @@ public:
   //  bindAddr
   ////////////////////////////////////////////////
 
-  const char *getLocalAddress()
-  {
+  const char *getLocalAddress() {
     return ssdpMultiSock.getLocalAddress();
   }
 
@@ -69,14 +65,12 @@ public:
   //  post (HTTPRequest)
   ////////////////////////////////////////////////
 
-  bool post(uHTTP::HTTPRequest *req, const std::string &bindAddr, int bindPort)
-  {
+  bool post(uHTTP::HTTPRequest *req, const std::string &bindAddr, int bindPort) {
     std::string reqStr;
     return send(req->toString(reqStr), bindAddr, bindPort);
   }
 
-  bool post(uHTTP::HTTPRequest *req)
-  {
+  bool post(uHTTP::HTTPRequest *req) {
     std::string reqStr;
     return send(req->toString(reqStr));
   }

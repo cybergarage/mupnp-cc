@@ -25,8 +25,7 @@ using namespace CyberXML;
 //  setRequest
 ////////////////////////////////////////////////
 
-void QueryResponse::setResponse(StateVariable *stateVar)
-{
+void QueryResponse::setResponse(StateVariable *stateVar) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
     
   const char *value = stateVar->getValue();
@@ -42,8 +41,7 @@ void QueryResponse::setResponse(StateVariable *stateVar)
 //  getReturn
 ////////////////////////////////////////////////
 
-CyberXML::Node *QueryResponse::getReturnNode()
-{
+CyberXML::Node *QueryResponse::getReturnNode() {
   CyberXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
@@ -57,8 +55,7 @@ CyberXML::Node *QueryResponse::getReturnNode()
   return queryResNode->getNode(0);
 }
   
-const char *QueryResponse::getReturnValue()
-{
+const char *QueryResponse::getReturnValue() {
   CyberXML::Node *node = getReturnNode();
   if (node == NULL)
     return "";
@@ -69,8 +66,7 @@ const char *QueryResponse::getReturnValue()
 //  setRequest
 ////////////////////////////////////////////////
 
-Node *QueryResponse::createResponseNode(const std::string &value)
-{
+Node *QueryResponse::createResponseNode(const std::string &value) {
   CyberXML::Node *queryResNode = new CyberXML::Node();
   queryResNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE_RESPONSE);
   queryResNode->setNameSpace(Control::NS, Control::XMLNS);

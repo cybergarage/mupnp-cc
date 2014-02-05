@@ -26,33 +26,27 @@
 #include <cybergarage/upnp/event/SubscriptionResponse.h>
 
 namespace CyberLink {
-
-class SSDPSearchRequest : public SSDPRequest
-{
+class SSDPSearchRequest : public SSDPRequest {
 public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-  SSDPSearchRequest(const std::string &serachTarget, int mx)
-  {
+  SSDPSearchRequest(const std::string &serachTarget, int mx) {
     init(serachTarget, mx);
   }
   
-  SSDPSearchRequest(const std::string &serachTarget)
-  {
+  SSDPSearchRequest(const std::string &serachTarget) {
     init(serachTarget, SSDP::DEFAULT_MSEARCH_MX);
   }
   
-  SSDPSearchRequest()
-  {
+  SSDPSearchRequest() {
     init(ST::ROOT_DEVICE, SSDP::DEFAULT_MSEARCH_MX);
   }
 
 private:
 
-  void init(const std::string &serachTarget, int mx)
-  {
+  void init(const std::string &serachTarget, int mx) {
     setMethod(uHTTP::HTTP::M_SEARCH);
     setURI("*");
 
@@ -71,8 +65,7 @@ private:
 
 public:
   
-  void setLocalAddress(const std::string &bindAddr)
-  {
+  void setLocalAddress(const std::string &bindAddr) {
     const char *ssdpAddr = SSDP::ADDRESS;
     if (uHTTP::IsIPv6Address(bindAddr) == true)
       ssdpAddr = SSDP::GetIPv6Address();

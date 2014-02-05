@@ -23,8 +23,7 @@ using namespace CyberLink;
 //  Thread
 ////////////////////////////////////////////////
   
-void Disposer::run() 
-{
+void Disposer::run()  {
   ControlPoint *ctrlp = getControlPoint();
   long monitorInterval = ctrlp->getExpiredDeviceMonitoringInterval() * 1000;
   

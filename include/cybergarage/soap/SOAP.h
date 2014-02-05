@@ -19,9 +19,7 @@
 #include <cybergarage/xml/Node.h>
 
 namespace CyberSOAP {
-
 namespace SOAP {
-
 const char ENVELOPE[] = "Envelope";
 const char BODY[] = "Body";
 const char RESPONSE[] = "Response";

@@ -21,18 +21,13 @@
 #include <cybergarage/upnp/ssdp/SSDP.h>
 
 namespace CyberLink {
-
-class SSDPResponse : public uHTTP::HTTPResponse
-{
-
-public:
-
+class SSDPResponse : public uHTTP::HTTPResponse {
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-  SSDPResponse()
-  {
+  SSDPResponse() {
     setVersion(uHTTP::HTTP::VER_11);
   }
 
@@ -40,13 +35,11 @@ public:
   //  ST (SearchTarget)
   ////////////////////////////////////////////////
 
-  void setST(const std::string &value)
-  {
+  void setST(const std::string &value) {
     setHeader(uHTTP::HTTP::ST, value);
   }
 
-  const char *getST()
-  {
+  const char *getST() {
     return getHeaderValue(uHTTP::HTTP::ST);
   }
 
@@ -54,13 +47,11 @@ public:
   //  Location
   ////////////////////////////////////////////////
 
-  void setLocation(const std::string &value)
-  {
+  void setLocation(const std::string &value) {
     setHeader(uHTTP::HTTP::LOCATION, value);
   }
 
-  const char *getLocation()
-  {
+  const char *getLocation() {
     return getHeaderValue(uHTTP::HTTP::LOCATION);
   }
 
@@ -68,13 +59,11 @@ public:
   //  USN
   ////////////////////////////////////////////////
 
-  void setUSN(const std::string &value)
-  {
+  void setUSN(const std::string &value) {
     setHeader(uHTTP::HTTP::USN, value);
   }
 
-  const char *getUSN()
-  {
+  const char *getUSN() {
     return getHeaderValue(uHTTP::HTTP::USN);
   }
 
@@ -82,13 +71,11 @@ public:
   //  MYNAME
   ////////////////////////////////////////////////
   
-  void setMYNAME(const std::string &value)
-  {
+  void setMYNAME(const std::string &value) {
     setHeader(uHTTP::HTTP::MYNAME, value);
   }
 
-  const char *getMYNAME()
-  {
+  const char *getMYNAME() {
     return getHeaderValue(uHTTP::HTTP::MYNAME);
   }
 

@@ -27,8 +27,7 @@ using namespace CyberLink;
 //  Access Methods (Extension)
 ////////////////////////////////////////////////
 
-bool SSDPPacket::isRootDevice()
-{
+bool SSDPPacket::isRootDevice() {
   std::string buf;
   if (NT::IsRootDevice(getNT(buf)) == true)
     return true;
@@ -41,8 +40,7 @@ bool SSDPPacket::isRootDevice()
 //  set
 ////////////////////////////////////////////////
 
-void SSDPPacket::set(SSDPPacket *ssdpPacket)
-{
+void SSDPPacket::set(SSDPPacket *ssdpPacket) {
   if (ssdpPacket == NULL) {
     setLocalAddress("");
     setTimeStamp(0);

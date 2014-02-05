@@ -21,17 +21,14 @@
 #include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
 
 namespace CyberLink {
-
 class ControlPoint;
 
-class SSDPNotifySocketList : public uHTTP::Vector 
-{
+class SSDPNotifySocketList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   SSDPNotifySocketList();
 
   ~SSDPNotifySocketList();
@@ -40,10 +37,8 @@ public:
   //  Methods
   ////////////////////////////////////////////////
   
-public:
-
-  SSDPNotifySocket *getSSDPNotifySocket(int n)
-  {
+ public:
+  SSDPNotifySocket *getSSDPNotifySocket(int n) {
     return (SSDPNotifySocket *)get(n);
   }
 
@@ -51,16 +46,14 @@ public:
   //  ControlPoint
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setControlPoint(ControlPoint *ctrlPoint);
 
   ////////////////////////////////////////////////
   //  open/close
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   bool open();
   void close();
   
@@ -68,8 +61,7 @@ public:
   //  start/stop
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void start();
   void stop();
   
@@ -77,8 +69,7 @@ public:
   //  clear
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void clear();
 };
 

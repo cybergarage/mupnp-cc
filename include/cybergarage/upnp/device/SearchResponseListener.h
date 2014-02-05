@@ -19,9 +19,7 @@
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
-
-class SearchResponseListener
-{
+class SearchResponseListener {
 public:
   virtual void deviceSearchResponseReceived(SSDPPacket *ssdpPacket) = 0;
 };

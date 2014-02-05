@@ -37,8 +37,7 @@ using namespace CyberSOAP;
 //  initArgumentList
 ////////////////////////////////////////////////
 
-void ActionRequest::initArgumentList()
-{
+void ActionRequest::initArgumentList() {
   Node *actNode = getActionNode();
   if (actNode == NULL)
     return;
@@ -57,8 +56,7 @@ void ActionRequest::initArgumentList()
 //  getActionNode
 ////////////////////////////////////////////////
 
-CyberXML::Node *ActionRequest::getActionNode()
-{
+CyberXML::Node *ActionRequest::getActionNode() {
   CyberXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
@@ -71,8 +69,7 @@ CyberXML::Node *ActionRequest::getActionNode()
 //  getActionName
 ////////////////////////////////////////////////
 
-const char *ActionRequest::getActionName(std::string &buf)
-{
+const char *ActionRequest::getActionName(std::string &buf) {
   CyberXML::Node *node = getActionNode();
   if (node == NULL)
     return "";
@@ -92,8 +89,7 @@ const char *ActionRequest::getActionName(std::string &buf)
 //  setRequest
 ////////////////////////////////////////////////
 
-void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList)
-{
+void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList) {
   Service *service = action->getService();
 
   setRequestHost(service);
@@ -120,8 +116,7 @@ void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList)
 //  Contents
 ////////////////////////////////////////////////
 
-Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *action, ArgumentList *argList)
-{
+Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *action, ArgumentList *argList) {
   const char *actionName = action->getName();
   const char *serviceType = service->getServiceType();
 
@@ -146,8 +141,7 @@ Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *acti
 //  post
 ////////////////////////////////////////////////
 
-ActionResponse *ActionRequest::post(ActionResponse *actionRes)
-{
+ActionResponse *ActionRequest::post(ActionResponse *actionRes) {
   postMessage(getRequestHost(), getRequestPort(), actionRes);
   return actionRes;
 }

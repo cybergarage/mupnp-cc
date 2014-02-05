@@ -16,14 +16,12 @@
 #include <cybergarage/upnp/device/USN.h>
 #include <uhttp/util/StringUtil.h>
 
-bool CyberLink::USN::IsRootDevice(const std::string &usnValue)
-{
+bool CyberLink::USN::IsRootDevice(const std::string &usnValue) {
   uHTTP::String usnStr = usnValue;
   return usnStr.endsWith(ROOTDEVICE);
 }
   
-const char *CyberLink::USN::GetUDN(const std::string &usnValue, std::string &udn)
-{
+const char *CyberLink::USN::GetUDN(const std::string &usnValue, std::string &udn) {
   uHTTP::String usnStr = usnValue;
   int idx = usnStr.indexOf("::");
   if (idx < 0)

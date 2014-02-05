@@ -23,12 +23,10 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class Service;
 class StateVariable;
 
-class QueryRequest : public ControlRequest
-{
+class QueryRequest : public ControlRequest {
   QueryResponse queryRes;
 
 public:
@@ -36,12 +34,10 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
   
-  QueryRequest()
-  {
+  QueryRequest() {
   }
 
-  QueryRequest(uHTTP::HTTPRequest *httpReq)
-  {
+  QueryRequest(uHTTP::HTTPRequest *httpReq) {
     set(httpReq);
   }
 
@@ -53,8 +49,7 @@ private:
 
   CyberXML::Node *getVarNameNode();
   
-public:
-
+ public:
   const char *getVarName();
 
   ////////////////////////////////////////////////
@@ -75,12 +70,10 @@ private:
   //  post
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   QueryResponse *post(QueryResponse *actionRes);
 
-  QueryResponse *post()
-  {
+  QueryResponse *post() {
     return post(&queryRes);
   }
 

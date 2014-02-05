@@ -24,12 +24,10 @@ using namespace CyberLink;
 //  Constructor
 ////////////////////////////////////////////////
   
-SSDPSearchResponseSocketList::SSDPSearchResponseSocketList() 
-{
+SSDPSearchResponseSocketList::SSDPSearchResponseSocketList()  {
 }
 
-SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList() 
-{
+SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()  {
   stop();
   close();
 }
@@ -38,8 +36,7 @@ SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()
 //  ControlPoint
 ////////////////////////////////////////////////
 
-void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint)
-{
+void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
@@ -51,8 +48,7 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint)
 //  Methods
 ////////////////////////////////////////////////
   
-bool SSDPSearchResponseSocketList::open(int port)
-{
+bool SSDPSearchResponseSocketList::open(int port) {
   int nHostAddrs = uHTTP::GetNHostAddresses();
   for (int n=0; n<nHostAddrs; n++) {
     string bindAddr;
@@ -63,8 +59,7 @@ bool SSDPSearchResponseSocketList::open(int port)
   return true;
 }
 
-void SSDPSearchResponseSocketList::close()
-{
+void SSDPSearchResponseSocketList::close() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
@@ -77,8 +72,7 @@ void SSDPSearchResponseSocketList::close()
 //  Methods
 ////////////////////////////////////////////////
   
-void SSDPSearchResponseSocketList::start()
-{
+void SSDPSearchResponseSocketList::start() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
@@ -86,8 +80,7 @@ void SSDPSearchResponseSocketList::start()
   }
 }
 
-void SSDPSearchResponseSocketList::stop()
-{
+void SSDPSearchResponseSocketList::stop() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
@@ -99,8 +92,7 @@ void SSDPSearchResponseSocketList::stop()
 //  Methods
 ////////////////////////////////////////////////
 
-bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req)
-{
+bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
   bool ret = true;
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
@@ -122,8 +114,7 @@ bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req)
 //  ControlPoint
 ////////////////////////////////////////////////
 
-void SSDPSearchResponseSocketList::clear()
-{
+void SSDPSearchResponseSocketList::clear() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);

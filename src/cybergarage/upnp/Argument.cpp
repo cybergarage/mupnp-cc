@@ -46,36 +46,31 @@ const char *Argument::RELATED_STATE_VARIABLE = "relatedStateVariable";
 //  Constructor
 ////////////////////////////////////////////////
 
-Argument::Argument()
-{
+Argument::Argument() {
   argumentNode = &defaultArgumentNode;
   serviceNode = &defaultServiceNode;
 }
   
-Argument::Argument(CyberXML::Node *servNode, CyberXML::Node *argNode)
-{
+Argument::Argument(CyberXML::Node *servNode, CyberXML::Node *argNode) {
   argumentNode = argNode;
   serviceNode = servNode;
 }
 
-Argument::Argument(const std::string &name, const std::string &value)
-{
+Argument::Argument(const std::string &name, const std::string &value) {
   argumentNode = &defaultArgumentNode;
   serviceNode = &defaultServiceNode;
   setName(name);
   setValue(value);
 }
 
-Argument::~Argument()
-{
+Argument::~Argument() {
 }
 
 ////////////////////////////////////////////////
 //  setValue
 ////////////////////////////////////////////////
 
-void Argument::setValue(int value)
-{
+void Argument::setValue(int value) {
   string valueStr;
   Integer2String(value, valueStr);
   setValue(valueStr.c_str());
@@ -85,8 +80,7 @@ void Argument::setValue(int value)
 //  getService
 ////////////////////////////////////////////////
 
-Service *Argument::getService()
-{
+Service *Argument::getService() {
   CyberXML::Node *node = getServiceNode();
   ServiceData *data = (ServiceData *)node->getUserData();
   if (data == NULL)
@@ -98,8 +92,7 @@ Service *Argument::getService()
 //  relatedStateVariable
 ////////////////////////////////////////////////
 
-StateVariable *Argument::getRelatedStateVariable()
-{
+StateVariable *Argument::getRelatedStateVariable() {
   Service *service = getService();
   if (service == NULL)
     return NULL;

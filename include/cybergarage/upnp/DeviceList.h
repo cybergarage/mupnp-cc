@@ -19,11 +19,9 @@
 #include <uhttp/util/Vector.h>
 
 namespace CyberLink {
-
 class Device;
 
-class DeviceList : public uHTTP::Vector
-{
+class DeviceList : public uHTTP::Vector {
 public:
   ////////////////////////////////////////////////
   //  Constants
@@ -49,8 +47,7 @@ public:
   //  Methods
   ////////////////////////////////////////////////
   
-  Device *getDevice(int n)
-  {
+  Device *getDevice(int n) {
     return (Device *)get(n);
   }
 
@@ -58,8 +55,7 @@ public:
   //  clear
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void clear();
 };
 

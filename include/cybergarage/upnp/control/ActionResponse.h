@@ -23,19 +23,16 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class Action;
 
-class ActionResponse : public ControlResponse
-{
+class ActionResponse : public ControlResponse {
   ArgumentList argList;
 
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   ActionResponse();
   ActionResponse(CyberSOAP::SOAPResponse *soapRes);
 
@@ -43,8 +40,7 @@ public:
   //  Response
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setResponse(Action *action);
 
 private:
@@ -59,8 +55,7 @@ private:
 
   CyberXML::Node *getActionResponseNode();
   
-public:
-
+ public:
   ArgumentList *getResponse();
 
 };

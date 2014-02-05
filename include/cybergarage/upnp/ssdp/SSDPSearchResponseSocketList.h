@@ -22,17 +22,14 @@
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocket.h>
 
 namespace CyberLink {
-
 class ControlPoint;
 
-class SSDPSearchResponseSocketList : public uHTTP::Vector 
-{
+class SSDPSearchResponseSocketList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   SSDPSearchResponseSocketList();
 
   ~SSDPSearchResponseSocketList();
@@ -41,18 +38,15 @@ public:
   //  ControlPoint
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setControlPoint(ControlPoint *ctrlPoint);
 
   ////////////////////////////////////////////////
   //  get
   ////////////////////////////////////////////////
   
-public:
-
-  SSDPSearchResponseSocket *getSSDPSearchResponseSocket(int n)
-  {
+ public:
+  SSDPSearchResponseSocket *getSSDPSearchResponseSocket(int n) {
     return (SSDPSearchResponseSocket *)get(n);
   }
   
@@ -60,8 +54,7 @@ public:
   //  open/close
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   bool open(int port);
 
   bool open() 
@@ -75,8 +68,7 @@ public:
   //  start/stop
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void start();
 
   void stop();
@@ -85,16 +77,14 @@ public:
   //  Methods
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool post(SSDPSearchRequest *req);
   
   ////////////////////////////////////////////////
   //  clear
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void clear();
 };
 

@@ -26,25 +26,20 @@
 #include <string>
 
 namespace CyberLink {
-
 class Service;
 
-class SubscriptionRequest : public uHTTP::HTTPRequest
-{
+class SubscriptionRequest : public uHTTP::HTTPRequest {
   SubscriptionResponse subRes;
 
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
-  SubscriptionRequest()
-  {
+ public:
+  SubscriptionRequest() {
   }
 
-  SubscriptionRequest(uHTTP::HTTPRequest *httpReq)
-  {
+  SubscriptionRequest(uHTTP::HTTPRequest *httpReq) {
     set(httpReq);
   }
   
@@ -56,8 +51,7 @@ private:
 
   void setService(Service *service);
 
-public:
-
+ public:
   void setSubscribeRequest(Service *service, const std::string &callback, long timeout);
   void setRenewRequest(Service *service, const std::string &uuid, long timeout);
   void setUnsubscribeRequest(Service *service);
@@ -66,15 +60,12 @@ public:
   //  NT
   ////////////////////////////////////////////////
 
-public:
-
-  void setNT(const std::string &value)
-  {
+ public:
+  void setNT(const std::string &value) {
     setHeader(uHTTP::HTTP::NT, value);
   }
 
-  const char *getNT()
-  {
+  const char *getNT() {
     return getHeaderValue(uHTTP::HTTP::NT);
   }
   
@@ -87,20 +78,16 @@ private:
   static const char CALLBACK_START_WITH;
   static const char CALLBACK_END_WITH;
 
-public:
-
-  void setCallback(const std::string &value)
-  {
+ public:
+  void setCallback(const std::string &value) {
     setStringHeader(uHTTP::HTTP::CALBACK, value, CALLBACK_START_WITH, CALLBACK_END_WITH);
   }
   
-  const char *getCallback(std::string &buf)
-  {
+  const char *getCallback(std::string &buf) {
     return getStringHeaderValue(uHTTP::HTTP::CALBACK, CALLBACK_START_WITH, CALLBACK_END_WITH, buf);
   }
 
-  bool hasCallback()
-  {
+  bool hasCallback() {
     std::string callback;
     getCallback(callback);
     return (0 < callback.length()) ? true : false;
@@ -110,21 +97,17 @@ public:
   //  SID
   ////////////////////////////////////////////////
 
-public:
-
-  void setSID(const std::string &sid)
-  {
+ public:
+  void setSID(const std::string &sid) {
     std::string buf;
     setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
   }
 
-  const char *getSID(std::string &buf)
-  {
+  const char *getSID(std::string &buf) {
     return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
   }
   
-  bool hasSID()
-  {
+  bool hasSID() {
     std::string sid;
     getSID(sid);
     return (0 < sid.length()) ? true : false;
@@ -134,16 +117,13 @@ public:
   //  Timeout
   ////////////////////////////////////////////////
 
-public:
-
-  void setTimeout(long value)
-  {
+ public:
+  void setTimeout(long value) {
     std::string buf;
     setHeader(uHTTP::HTTP::TIMEOUT, Subscription::toTimeoutHeaderString(value, buf));
   }
 
-  long getTimeout()
-  {
+  long getTimeout() {
     return Subscription::GetTimeout(getHeaderValue(uHTTP::HTTP::TIMEOUT));
   }
 
@@ -151,10 +131,8 @@ public:
   //  post (Response)
   ////////////////////////////////////////////////
 
-public:
-
-  uHTTP::HTTP::StatusCode post(SubscriptionResponse *subRes)
-  {
+ public:
+  uHTTP::HTTP::StatusCode post(SubscriptionResponse *subRes) {
     return HTTPRequest::post(subRes);
   }
 
@@ -162,10 +140,8 @@ public:
   //  post
   ////////////////////////////////////////////////
 
-public:
-
-  SubscriptionResponse *post()
-  {
+ public:
+  SubscriptionResponse *post() {
     uHTTP::HTTPResponse *httpRes = HTTPRequest::post(getRequestHost(), getRequestPort());
     subRes.set(httpRes);
     return &subRes;

@@ -43,20 +43,17 @@ using namespace uHTTP;
 //  Constructor
 ////////////////////////////////////////////////
 
-Parser::Parser()
-{
+Parser::Parser() {
 }
 
-Parser::~Parser()
-{
+Parser::~Parser() {
 }
 
 ////////////////////////////////////////////////
 //  convertToCLinkFormat
 ////////////////////////////////////////////////
 
-static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
-{
+static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
   if ( cur == NULL ) {
     // This should never happen...
     cout << "convertToCLinkFormat: This should never happen!" << endl;
@@ -130,8 +127,7 @@ static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth )
 //  parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, size_t len)
-{
+Node *Parser::parse(const std::string &data, size_t len) {
   // First, parse the XML memory buffer ito a DOM object
   xmlDocPtr doc = xmlParseMemory( data.c_str(), (int)len );
   if ( doc == NULL ) {

@@ -19,13 +19,10 @@
 #include <uhttp/util/Thread.h>
 
 namespace CyberLink {
-
 class ControlPoint;
 
-class RenewSubscriber : public uHTTP::Thread
-{
-public:
-
+class RenewSubscriber : public uHTTP::Thread {
+ public:
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
@@ -36,10 +33,8 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
-  RenewSubscriber(ControlPoint *ctrlp)
-  {
+ public:
+  RenewSubscriber(ControlPoint *ctrlp) {
     setControlPoint(ctrlp);
   }
   
@@ -51,15 +46,12 @@ private:
   
   ControlPoint *controlPoint;
 
-public:
-
-  void setControlPoint(ControlPoint *ctrlp)
-  {
+ public:
+  void setControlPoint(ControlPoint *ctrlp) {
     controlPoint = ctrlp;
   }
   
-  ControlPoint *getControlPoint()
-  {
+  ControlPoint *getControlPoint() {
     return controlPoint;
   }
 
@@ -67,8 +59,7 @@ public:
   //  Thread
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void run();
 
 };

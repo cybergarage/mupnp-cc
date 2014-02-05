@@ -20,14 +20,10 @@
 #include <cybergarage/xml/Node.h>
 
 namespace CyberLink {
-
-class Icon
-{
-
+class Icon {
   CyberXML::Node *iconNode;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
@@ -43,8 +39,7 @@ public:
   //  Member
   ////////////////////////////////////////////////
 
-  CyberXML::Node *getIconNode()
-  {
+  CyberXML::Node *getIconNode() {
     return iconNode;
   }
   
@@ -52,8 +47,7 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
 
-  Icon(CyberXML::Node *node)
-  {
+  Icon(CyberXML::Node *node) {
     iconNode = node;
   }
 
@@ -61,8 +55,7 @@ public:
   //  isIconNode
   ////////////////////////////////////////////////
 
-  static bool isIconNode(CyberXML::Node *node)
-  {
+  static bool isIconNode(CyberXML::Node *node) {
     return node->isName(ELEM_NAME);
   }
 
@@ -70,13 +63,11 @@ public:
   //  mimeType
   ////////////////////////////////////////////////
 
-  void setMimeType(const std::string &value)
-  {
+  void setMimeType(const std::string &value) {
     getIconNode()->setNode(MIME_TYPE, value);
   }
 
-  const char *getMimeType()
-  {
+  const char *getMimeType() {
     return getIconNode()->getNodeValue(MIME_TYPE);
   }
 
@@ -84,13 +75,11 @@ public:
   //  width
   ////////////////////////////////////////////////
 
-  void setWidth(const std::string &value)
-  {
+  void setWidth(const std::string &value) {
     getIconNode()->setNode(WIDTH, value);
   }
 
-  const char *getWidth()
-  {
+  const char *getWidth() {
     return getIconNode()->getNodeValue(WIDTH);
   }
 
@@ -98,13 +87,11 @@ public:
   //  height
   ////////////////////////////////////////////////
 
-  void setHeight(const std::string &value)
-  {
+  void setHeight(const std::string &value) {
     getIconNode()->setNode(HEIGHT, value);
   }
 
-  const char *getHeight()
-  {
+  const char *getHeight() {
     return getIconNode()->getNodeValue(HEIGHT);
   }
 
@@ -112,13 +99,11 @@ public:
   //  depth
   ////////////////////////////////////////////////
 
-  void setDepth(const std::string &value)
-  {
+  void setDepth(const std::string &value) {
     getIconNode()->setNode(DEPTH, value);
   }
 
-  const char *getDepth()
-  {
+  const char *getDepth() {
     return getIconNode()->getNodeValue(DEPTH);
   }
 
@@ -126,13 +111,11 @@ public:
   //  URL
   ////////////////////////////////////////////////
 
-  void setURL(const std::string &value)
-  {
+  void setURL(const std::string &value) {
     getIconNode()->setNode(URL, value);
   }
 
-  const char *getURL()
-  {
+  const char *getURL() {
     return getIconNode()->getNodeValue(URL);
   }
 };

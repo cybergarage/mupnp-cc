@@ -28,18 +28,13 @@
 #include <uhttp/util/StringUtil.h>
 
 namespace CyberLink {
-
-class SSDPRequest : public uHTTP::HTTPRequest
-{
-
-public:
-
+class SSDPRequest : public uHTTP::HTTPRequest {
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-  SSDPRequest()
-  {
+  SSDPRequest() {
     setVersion(uHTTP::HTTP::VER_11);
   }
 
@@ -47,13 +42,11 @@ public:
   //  NT
   ////////////////////////////////////////////////
 
-  void setNT(const std::string &value)
-  {
+  void setNT(const std::string &value) {
     setHeader(uHTTP::HTTP::NT, value);
   }
 
-  const char *getNT()
-  {
+  const char *getNT() {
     return getHeaderValue(uHTTP::HTTP::NT);
   }
 
@@ -61,13 +54,11 @@ public:
   //  NTS
   ////////////////////////////////////////////////
 
-  void setNTS(const std::string &value)
-  {
+  void setNTS(const std::string &value) {
     setHeader(uHTTP::HTTP::NTS, value);
   }
 
-  const char *getNTS()
-  {
+  const char *getNTS() {
     return getHeaderValue(uHTTP::HTTP::NTS);
   }
 
@@ -75,13 +66,11 @@ public:
   //  Location
   ////////////////////////////////////////////////
 
-  void setLocation(const std::string &value)
-  {
+  void setLocation(const std::string &value) {
     setHeader(uHTTP::HTTP::LOCATION, value);
   }
 
-  const char *getLocation()
-  {
+  const char *getLocation() {
     return getHeaderValue(uHTTP::HTTP::LOCATION);
   }
 
@@ -89,13 +78,11 @@ public:
   //  USN
   ////////////////////////////////////////////////
 
-  void setUSN(const std::string &value)
-  {
+  void setUSN(const std::string &value) {
     setHeader(uHTTP::HTTP::USN, value);
   }
 
-  const char *getUSN()
-  {
+  const char *getUSN() {
     return getHeaderValue(uHTTP::HTTP::USN);
   }
 
@@ -103,8 +90,7 @@ public:
   //  CacheControl
   ////////////////////////////////////////////////
 
-  void setLeaseTime(int value)
-  {
+  void setLeaseTime(int value) {
     std::string leaseTime;
     std::string buf;
     leaseTime = "max-age=";
@@ -112,8 +98,7 @@ public:
     setHeader(uHTTP::HTTP::CACHE_CONTROL,  leaseTime.c_str());
   }
 
-  int getLeaseTime()
-  {
+  int getLeaseTime() {
     const char *cacheCtrl = getHeaderValue(uHTTP::HTTP::CACHE_CONTROL);
     return SSDP::GetLeaseTime(cacheCtrl);
   }

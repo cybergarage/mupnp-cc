@@ -23,31 +23,26 @@
 using namespace CyberXML;
 using namespace uHTTP;
 
-NodeList::NodeList() 
-{
+NodeList::NodeList()  {
 }
 
-NodeList::~NodeList() 
-{
+NodeList::~NodeList()  {
   clear();
 }
 
-bool NodeList::addNode(Node *node) 
-{
+bool NodeList::addNode(Node *node)  {
   if (node == NULL)
     return false;
   return add(node);
 }
 
-bool NodeList::insertNode(Node *node, int index) 
-{
+bool NodeList::insertNode(Node *node, int index)  {
   if (node == NULL)
     return false;
   return insertAt(node, index);
 }
 
-bool NodeList::removeNode(Node *node) 
-{
+bool NodeList::removeNode(Node *node)  {
   if (node == NULL)
     return false;
   bool ret = remove(node);
@@ -59,13 +54,11 @@ bool NodeList::removeNode(Node *node)
 //  get*
 ////////////////////////////////////////////////
 
-Node *NodeList::getNode(int n)
-{
+Node *NodeList::getNode(int n) {
   return (Node *)Vector::get(n);
 }
 
-Node *NodeList::getNode(const std::string &name) 
-{
+Node *NodeList::getNode(const std::string &name)  {
   int nLists = size(); 
   for (int n=0; n<nLists; n++) {
     Node *node = getNode(n);
@@ -76,8 +69,7 @@ Node *NodeList::getNode(const std::string &name)
   return NULL;
 }
 
-Node *NodeList::getEndsWith(const std::string &name) 
-{
+Node *NodeList::getEndsWith(const std::string &name)  {
   int nLists = size(); 
   for (int n=0; n<nLists; n++) {
     Node *node = getNode(n);
@@ -90,8 +82,7 @@ Node *NodeList::getEndsWith(const std::string &name)
   return NULL;
 }
 
-Node *NodeList::getNode(const std::string &name, const std::string &value) 
-{
+Node *NodeList::getNode(const std::string &name, const std::string &value)  {
   int nLists = size(); 
   for (int n=0; n<nLists; n++) {
     Node *node = getNode(n);
@@ -109,8 +100,7 @@ Node *NodeList::getNode(const std::string &name, const std::string &value)
 //  clear
 ////////////////////////////////////////////////
 
-void NodeList::clear()
-{
+void NodeList::clear() {
   int nLists = size(); 
   for (int n=0; n<nLists; n++) {
     Node *node = getNode(n);

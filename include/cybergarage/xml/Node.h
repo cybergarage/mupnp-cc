@@ -25,10 +25,7 @@
 #include <cybergarage/xml/NodeData.h>
 
 namespace CyberXML {
-
-class Node 
-{
-
+class Node  {
   Node *parentNode;
 
   std::string name;
@@ -67,8 +64,7 @@ public:
   //  root node
   ////////////////////////////////////////////////
 
-  Node *getRootNode()
-  {
+  Node *getRootNode() {
     Node *rootNode = NULL;
     Node *parentNode = getParentNode();
     while (parentNode != NULL) {
@@ -94,13 +90,11 @@ public:
     name += val;
   }
 
-  const char *getName()
-  {
+  const char *getName() {
     return name.c_str();
   }
 
-  bool isName(const std::string &val)
-  {
+  bool isName(const std::string &val) {
     return (name.compare(val) == 0) ? true : false;
   }
 
@@ -108,20 +102,17 @@ public:
   //  value (set)
   ////////////////////////////////////////////////
 
-  void setValue(const std::string &val)
-  {
+  void setValue(const std::string &val) {
     value = val;
   }
 
   void setValue(int val);
 
-  const char *getValue()
-  {
+  const char *getValue() {
     return value.c_str();
   }
 
-  bool isValue(const std::string &val)
-  {
+  bool isValue(const std::string &val) {
     return (value.compare(val) == 0) ? true : false;
   }
 
@@ -129,13 +120,11 @@ public:
   //  value (add)
   ////////////////////////////////////////////////
 
-  void addValue(const std::string &val)
-  {
+  void addValue(const std::string &val) {
     value.append(val);
   }
 
-  void addValue(const std::string &val, int len)
-  {
+  void addValue(const std::string &val, int len) {
     value.append(val, 0, len);
   }
 
@@ -151,8 +140,7 @@ public:
     return attrList.getAttribute(index);
   }
 
-  Attribute *getAttribute(const std::string & name)
-  {
+  Attribute *getAttribute(const std::string & name) {
     return attrList.getAttribute(name);
   }
 
@@ -177,8 +165,7 @@ public:
     return removeAttribute(getAttribute(name));
   }
 
-  bool hasAttributes()
-  {
+  bool hasAttributes() {
     if (0 < getNAttributes())
       return true;
     return false;
@@ -188,8 +175,7 @@ public:
   //  Attribute (Extention)
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setAttribute(const std::string & name, const std::string & value);
 
   void setAttribute(const std::string &name, int value);
@@ -202,8 +188,7 @@ public:
   //  Attribute (xmlns)
   ////////////////////////////////////////////////
 
-  void setNameSpace(const std::string & ns, const std::string & val)
-  {
+  void setNameSpace(const std::string & ns, const std::string & val) {
     std::string nspace;
     nspace = "xmlns:";
     nspace += ns;
@@ -222,18 +207,15 @@ public:
     return nodeList.getNode(index);
   }
 
-  Node *getNode(const std::string & name)
-  {
+  Node *getNode(const std::string & name) {
     return nodeList.getNode(name);
   }
 
-  Node *getNode(const std::string & name, const std::string &value)
-  {
+  Node *getNode(const std::string & name, const std::string &value) {
     return nodeList.getNode(name, value);
   }
 
-  Node *getNodeEndsWith(const std::string & name)
-  {
+  Node *getNodeEndsWith(const std::string & name) {
     return nodeList.getEndsWith(name);
   }
 
@@ -256,15 +238,13 @@ public:
     return nodeList.removeNode(getNode(name));
   }
 
-  bool hasNodes()
-  {
+  bool hasNodes() {
     if (0 < getNNodes())
       return true;
     return false;
   }
 
-  void removeAllNodes(void)
-  {
+  void removeAllNodes(void) {
     nodeList.clear();
   }
 
@@ -296,8 +276,7 @@ public:
 
   void setUserData(NodeData *data);
 
-  NodeData *getUserData()
-  {
+  NodeData *getUserData() {
     return userData;
   }
 
@@ -307,24 +286,21 @@ public:
 
 protected:
 
-  const char *getIndentLevelString(int nIndentLevel, std::string &buf)
-  {
+  const char *getIndentLevelString(int nIndentLevel, std::string &buf) {
     buf = "";
     for (int n=0; n<nIndentLevel; n++)
       buf.append("\t");
     return buf.c_str();
   }
 
-public:
-
+ public:
 #ifndef NO_USE_OSTRINGSTREAM
   void outputAttributes(std::ostream& ps);
 #else
   void outputAttributes(std::string& ps);
 #endif
 
-public:
-
+ public:
 #ifndef NO_USE_OSTRINGSTREAM
   virtual void output(std::ostream& ps, int indentLevel, bool hasChildNode);
 #else

@@ -23,23 +23,18 @@
 #include <string>
 
 namespace CyberLink {
-
-class SubscriptionResponse : public uHTTP::HTTPResponse
-{
+class SubscriptionResponse : public uHTTP::HTTPResponse {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
-  SubscriptionResponse()
-  {
+ public:
+  SubscriptionResponse() {
     std::string serverName;
     setServer(UPnP::GetServerName(serverName));
   }
 
-  SubscriptionResponse(uHTTP::HTTPResponse *httpRes)
-  {
+  SubscriptionResponse(uHTTP::HTTPResponse *httpRes) {
     set(httpRes);
   }
 
@@ -49,8 +44,7 @@ public:
 
 public:
   
-  void setResponse(int code)
-  {
+  void setResponse(int code) {
     setStatusCode(code);
     setContentLength(0);
   }
@@ -59,10 +53,8 @@ public:
   //  Error
   ////////////////////////////////////////////////
 
-public:
-
-  void setErrorResponse(int code)
-  {
+ public:
+  void setErrorResponse(int code) {
     setStatusCode(code);
     setContentLength(0);
   }
@@ -71,16 +63,13 @@ public:
   //  SID
   ////////////////////////////////////////////////
 
-public:
-
-  void setSID(const std::string &sid)
-  {
+ public:
+  void setSID(const std::string &sid) {
     std::string buf;
     setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
   }
 
-  const char *getSID(std::string &buf)
-  {
+  const char *getSID(std::string &buf) {
     return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
   }
 
@@ -88,16 +77,13 @@ public:
   //  Timeout
   ////////////////////////////////////////////////
 
-public:
-
-  void setTimeout(long value)
-  {
+ public:
+  void setTimeout(long value) {
     std::string buf;
     setHeader(uHTTP::HTTP::TIMEOUT, Subscription::toTimeoutHeaderString(value, buf));
   }
 
-  long getTimeout()
-  {
+  long getTimeout() {
     return Subscription::GetTimeout(getHeaderValue(uHTTP::HTTP::TIMEOUT));
   }
 };

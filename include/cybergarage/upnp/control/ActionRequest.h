@@ -24,12 +24,9 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class Action;
 
-class ActionRequest : public ControlRequest
-{
-
+class ActionRequest : public ControlRequest {
   ArgumentList argumentList;
   ActionResponse actionRes;
 
@@ -37,14 +34,11 @@ class ActionRequest : public ControlRequest
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
-  ActionRequest()
-  {
+ public:
+  ActionRequest() {
   }
 
-  ActionRequest(uHTTP::HTTPRequest *httpReq)
-  {
+  ActionRequest(uHTTP::HTTPRequest *httpReq) {
     set(httpReq);
     initArgumentList();
   }
@@ -53,8 +47,7 @@ public:
   //  Action
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   CyberXML::Node *getActionNode();
 
   const char *getActionName(std::string &buf);
@@ -63,10 +56,8 @@ private:
 
   void initArgumentList();
 
-public:
-
-  ArgumentList *getArgumentList()
-  {
+ public:
+  ArgumentList *getArgumentList() {
     return &argumentList;
   }
 
@@ -74,8 +65,7 @@ public:
   //  setRequest
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setRequest(Action *action, ArgumentList *argList);
 
   ////////////////////////////////////////////////
@@ -90,12 +80,10 @@ private:
   //  post
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   ActionResponse *post(ActionResponse *actionRes);
 
-  ActionResponse *post()
-  {
+  ActionResponse *post() {
     return post(&actionRes);
   }
 

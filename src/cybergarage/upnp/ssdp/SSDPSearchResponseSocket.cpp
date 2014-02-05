@@ -22,18 +22,15 @@ using namespace CyberLink;
 //  Constructor
 ////////////////////////////////////////////////
 
-SSDPSearchResponseSocket::SSDPSearchResponseSocket()
-{
+SSDPSearchResponseSocket::SSDPSearchResponseSocket() {
   setControlPoint(NULL);
 }
   
-SSDPSearchResponseSocket::SSDPSearchResponseSocket(const std::string &bindAddr, int port) : HTTPUSocket(bindAddr, port)
-{
+SSDPSearchResponseSocket::SSDPSearchResponseSocket(const std::string &bindAddr, int port) : HTTPUSocket(bindAddr, port) {
   setControlPoint(NULL);
 }
 
-SSDPSearchResponseSocket::~SSDPSearchResponseSocket()
-{
+SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
   stop();
   close();
 }
@@ -42,8 +39,7 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket()
 //  run  
 ////////////////////////////////////////////////
 
-void SSDPSearchResponseSocket::run()
-{
+void SSDPSearchResponseSocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
     //Thread.yield();

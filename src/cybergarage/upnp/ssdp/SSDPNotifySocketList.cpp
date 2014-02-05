@@ -25,12 +25,10 @@ using namespace uHTTP;
 // Constructor
 ////////////////////////////////////////////////
   
-SSDPNotifySocketList::SSDPNotifySocketList() 
-{
+SSDPNotifySocketList::SSDPNotifySocketList()  {
 }
 
-SSDPNotifySocketList::~SSDPNotifySocketList() 
-{
+SSDPNotifySocketList::~SSDPNotifySocketList()  {
   stop();
   close();
 }
@@ -39,8 +37,7 @@ SSDPNotifySocketList::~SSDPNotifySocketList()
 // ControlPoint
 ////////////////////////////////////////////////
 
-void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint)
-{
+void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
@@ -52,8 +49,7 @@ void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint)
 // open/close
 ////////////////////////////////////////////////
   
-bool SSDPNotifySocketList::open() 
-{
+bool SSDPNotifySocketList::open()  {
   int nHostAddrs = GetNHostAddresses();
   for (int n=0; n<nHostAddrs; n++) {
     string bindAddr;
@@ -64,8 +60,7 @@ bool SSDPNotifySocketList::open()
   return true;
 }
   
-void SSDPNotifySocketList::close()
-{
+void SSDPNotifySocketList::close() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
@@ -78,8 +73,7 @@ void SSDPNotifySocketList::close()
 // start/stop
 ////////////////////////////////////////////////
   
-void SSDPNotifySocketList::start()
-{
+void SSDPNotifySocketList::start() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
@@ -87,8 +81,7 @@ void SSDPNotifySocketList::start()
   }
 }
 
-void SSDPNotifySocketList::stop()
-{
+void SSDPNotifySocketList::stop() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
@@ -100,8 +93,7 @@ void SSDPNotifySocketList::stop()
 // clear
 ////////////////////////////////////////////////
 
-void SSDPNotifySocketList::clear()
-{
+void SSDPNotifySocketList::clear() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);

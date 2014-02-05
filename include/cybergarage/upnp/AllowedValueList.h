@@ -21,15 +21,12 @@
 #include <cybergarage/upnp/AllowedValue.h>
 
 namespace CyberLink {
-
-class AllowedValueList : public uHTTP::Vector 
-{
+class AllowedValueList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   static const char *ELEM_NAME;
 
 
@@ -37,8 +34,7 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   AllowedValueList() 
   {
   }
@@ -52,18 +48,15 @@ public:
   //  clear
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void clear();
   
   ////////////////////////////////////////////////
   //  Methods
   ////////////////////////////////////////////////
   
-public:
-
-  AllowedValue *getAllowedValue(int n)
-  {
+ public:
+  AllowedValue *getAllowedValue(int n) {
     return (AllowedValue *)get(n);
   }
 

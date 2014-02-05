@@ -19,9 +19,7 @@
 #include <sstream>
 
 namespace CyberLink {
-
 namespace MAN {
-
 const char DISCOVER[] = "ssdp:discover";
   
 bool IsDiscover(const std::string &value);

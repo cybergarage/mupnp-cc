@@ -19,9 +19,7 @@
 #include <sstream>
 
 namespace CyberLink {
-
 namespace ST {
-
 const char ALL_DEVICE[] = "ssdp:all";
 const char ROOT_DEVICE[] = "upnp:rootdevice";
 const char UUID_DEVICE[] = "uuid";

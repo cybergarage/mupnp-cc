@@ -22,13 +22,10 @@
 #include <cybergarage/xml/NodeData.h>
 
 namespace CyberLink {
-
 class ActionListener;
 class ControlResponse;
 
-class ActionData : public CyberXML::NodeData
-{
-
+class ActionData : public CyberXML::NodeData {
   ActionListener *actionListener;
   ControlResponse *ctrlRes;
 
@@ -36,8 +33,7 @@ class ActionData : public CyberXML::NodeData
   // Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   ActionData();
 
   ~ActionData();
@@ -46,8 +42,7 @@ public:
   // ActionListener
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   ActionListener *getActionListener() 
   {
     return actionListener;
@@ -62,8 +57,7 @@ public:
   // ControlResponse
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   ControlResponse *getControlResponse() 
   {
     return ctrlRes;

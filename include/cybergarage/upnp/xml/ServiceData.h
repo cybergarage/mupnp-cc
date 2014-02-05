@@ -26,12 +26,10 @@
 #include <string>
 
 namespace CyberLink {
-
 class QueryListener;
 class Service;
 
-class ServiceData : public CyberXML::NodeData
-{
+class ServiceData : public CyberXML::NodeData {
   Service *service;
 
   std::string sid;
@@ -42,8 +40,7 @@ class ServiceData : public CyberXML::NodeData
 
   CyberXML::Node *scpdNode;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -56,15 +53,12 @@ public:
   // Service
   ////////////////////////////////////////////////
 
-public:
-
-  void setService(Service *serv)
-  {
+ public:
+  void setService(Service *serv) {
     service = serv;
   }
 
-  Service *getService()
-  {
+  Service *getService() {
     return service;
   }
 

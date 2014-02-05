@@ -19,14 +19,11 @@
 #include <string>
 
 namespace CyberXML {
-
-class Attribute 
-{
+class Attribute  {
   std::string name; 
   std::string value; 
 
-public:
-
+ public:
   Attribute() 
   {
   }

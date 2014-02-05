@@ -19,11 +19,9 @@
 #include <string>
 
 namespace CyberLink {
-
 class StateVariable;
 
-class QueryListener
-{
+class QueryListener {
 public:
   virtual bool queryControlReceived(StateVariable *stateVar) = 0;
 };

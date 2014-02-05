@@ -23,8 +23,7 @@
 
 using namespace CyberLink;
 
-DeviceData::DeviceData() 
-{
+DeviceData::DeviceData()  {
   setDevice(NULL);
   setSSDPPacket(NULL);
   advertiser = NULL;

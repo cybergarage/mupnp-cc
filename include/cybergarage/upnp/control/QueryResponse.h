@@ -22,23 +22,18 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class StateVariable;
 
-class QueryResponse : public ControlResponse
-{
-
+class QueryResponse : public ControlResponse {
 public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-  QueryResponse()
-  {
+  QueryResponse() {
   }
 
-  QueryResponse(CyberSOAP::SOAPResponse *soapRes)
-  {
+  QueryResponse(CyberSOAP::SOAPResponse *soapRes) {
     set(soapRes);
   }
 
@@ -50,16 +45,14 @@ private:
 
   CyberXML::Node *getReturnNode();
   
-public:
-
+ public:
   const char *getReturnValue();
 
   ////////////////////////////////////////////////
   //  Response
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setResponse(StateVariable *stateVar);
 
 private:

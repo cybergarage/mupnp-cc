@@ -19,9 +19,7 @@
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
-
-class NotifyListener
-{
+class NotifyListener {
 public:
   virtual void deviceNotifyReceived(SSDPPacket *ssdpPacket) = 0;
 };

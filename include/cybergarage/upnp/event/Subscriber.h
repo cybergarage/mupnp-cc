@@ -22,9 +22,7 @@
 #include <uhttp/net/URL.h>
 
 namespace CyberLink {
-
-class Subscriber
-{
+class Subscriber {
   std::string SID;
   std::string ifAddr;
   
@@ -58,13 +56,11 @@ public:
   //  deliveryURL
   ////////////////////////////////////////////////
 
-  void setInterfaceAddress(const std::string &addr)
-  {
+  void setInterfaceAddress(const std::string &addr) {
     ifAddr = addr;
   }
   
-  const char *getInterfaceAddress()
-  {
+  const char *getInterfaceAddress() {
     return ifAddr.c_str();
   }
   
@@ -76,8 +72,7 @@ public:
     return deliveryURL.getSting();
   }
 
-  void setDeliveryURL(const std::string &url)
-  {
+  void setDeliveryURL(const std::string &url) {
     deliveryURL.setString(url);
   }
 

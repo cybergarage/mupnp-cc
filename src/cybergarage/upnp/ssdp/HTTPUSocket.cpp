@@ -26,18 +26,15 @@ using namespace CyberLink;
 //  Constructor
 ////////////////////////////////////////////////
 
-HTTPUSocket::HTTPUSocket()
-{
+HTTPUSocket::HTTPUSocket() {
   open();
 }
   
-HTTPUSocket::HTTPUSocket(const std::string &bindAddr, int port)
-{
+HTTPUSocket::HTTPUSocket(const std::string &bindAddr, int port) {
   open(port, bindAddr);
 }
 
-HTTPUSocket::~HTTPUSocket()
-{
+HTTPUSocket::~HTTPUSocket() {
   close();
 }
 
@@ -45,8 +42,7 @@ HTTPUSocket::~HTTPUSocket()
 //  open
 ////////////////////////////////////////////////
   
-bool HTTPUSocket::open(int bindPort, const std::string &bindAddr)
-{
+bool HTTPUSocket::open(int bindPort, const std::string &bindAddr) {
   close();
   return ssdpUniSock.bind(bindPort, bindAddr);
 }
@@ -55,8 +51,7 @@ bool HTTPUSocket::open(int bindPort, const std::string &bindAddr)
 //  close
 ////////////////////////////////////////////////
 
-bool HTTPUSocket::close()
-{
+bool HTTPUSocket::close() {
   ssdpUniSock.close();
   return true;
 }
@@ -65,8 +60,7 @@ bool HTTPUSocket::close()
 //  post
 ////////////////////////////////////////////////
 
-bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg)
-{
+bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg) {
   ssdpUniSock.send(addr, port, msg);
   return true;
 }
@@ -75,8 +69,7 @@ bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg
 //  reveive
 ////////////////////////////////////////////////
 
-SSDPPacket *HTTPUSocket::receive()
-{
+SSDPPacket *HTTPUSocket::receive() {
   recvPacket.setLocalAddress(getLocalAddress());
   size_t nRecv = ssdpUniSock.receive(recvPacket.getDatagramPacket());
   if (nRecv == 0)

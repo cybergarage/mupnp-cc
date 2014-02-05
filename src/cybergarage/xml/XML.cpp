@@ -66,8 +66,7 @@ static Mutex iconvMutex;
 //  EscapeXMLChars
 ////////////////////////////////////////////////
 
-const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &out)
-{
+const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &out) {
   out = in;
   
   // Thanks for Smolander Visa (09/06/05)
@@ -83,7 +82,6 @@ const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &ou
   return out.c_str();
 }
 
-const char *CyberXML::XML::EscapeXMLChars(std::string &in, std::string &out)
-{
+const char *CyberXML::XML::EscapeXMLChars(std::string &in, std::string &out) {
   return EscapeXMLChars(in.c_str(), out);
 }

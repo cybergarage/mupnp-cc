@@ -31,8 +31,7 @@ using namespace uHTTP;
 //  CreateEnvelopeBodyNode
 ////////////////////////////////////////////////
 
-CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode()
-{
+CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode() {
   // <Envelope>
   string envNodeName;
   envNodeName += XMLNS;
@@ -66,8 +65,7 @@ CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode()
 //  Header
 ////////////////////////////////////////////////
 
-const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &header)
-{
+const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &header) {
   header = "";
   if (content.length() <= 0)
     return header.c_str();
@@ -82,8 +80,7 @@ const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &
 //  Encoding
 ////////////////////////////////////////////////
 
-const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::string &encording)
-{
+const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::string &encording) {
   encording = "";
   string header;
   SOAP::GetHeader(content, header);
@@ -100,8 +97,7 @@ const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::strin
   return encording.c_str();
 }
 
-bool CyberSOAP::SOAP::IsEncording(const std::string &content, const std::string &encType)
-{
+bool CyberSOAP::SOAP::IsEncording(const std::string &content, const std::string &encType) {
   string enc;
   SOAP::GetEncording(content, enc);
   String encStr(enc);

@@ -29,8 +29,7 @@ const char *AllowedValueList::ELEM_NAME = "allowedValueList";
 //  clear
 ////////////////////////////////////////////////
 
-void AllowedValueList::clear() 
-{
+void AllowedValueList::clear()  {
   int nValues = size();
   for (int n=0; n<nValues; n++) {
     AllowedValue *value = getAllowedValue(n);

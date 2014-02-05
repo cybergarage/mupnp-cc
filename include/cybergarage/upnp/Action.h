@@ -29,11 +29,9 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class Service;
 
-class Action
-{
+class Action {
   CyberXML::Node *serviceNode;
   CyberXML::Node *actionNode;
   
@@ -49,8 +47,7 @@ class Action
   //  Constants
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   static const char *ELEM_NAME;
   static const char *NAME;
 
@@ -60,17 +57,14 @@ public:
 
 private:
 
-  CyberXML::Node *getServiceNode()
-  {
+  CyberXML::Node *getServiceNode() {
     return serviceNode;
   }
 
-public:
-
+ public:
   Service *getService();
   
-  CyberXML::Node *getActionNode()
-  {
+  CyberXML::Node *getActionNode() {
     return actionNode;
   }
   
@@ -87,15 +81,12 @@ public:
   // Mutex
   ////////////////////////////////////////////////
   
-public:
-
-  void lock()
-  {
+ public:
+  void lock() {
     mutex.lock();
   }
   
-  void unlock()
-  {
+  void unlock() {
     mutex.unlock();
   }
 
@@ -103,8 +94,7 @@ public:
   //  isActionNode
   ////////////////////////////////////////////////
 
-  static bool isActionNode(CyberXML::Node *node)
-  {
+  static bool isActionNode(CyberXML::Node *node) {
     std::string nodeName = node->getName();
     if (nodeName.compare(Action::ELEM_NAME) == 0)
       return true;
@@ -115,13 +105,11 @@ public:
   //  name
   ////////////////////////////////////////////////
 
-  void setName(const std::string &value)
-  {
+  void setName(const std::string &value) {
     getActionNode()->setNode(Action::NAME, value);
   }
 
-  const char *getName()
-  {
+  const char *getName() {
     return getActionNode()->getNodeValue(Action::NAME);
   }
 
@@ -134,56 +122,47 @@ private:
   void initArgumentList();
   void clearOutputAgumentValues();
 
-public:
-
-  ArgumentList *getArgumentList()
-  {
+ public:
+  ArgumentList *getArgumentList() {
     return argumentList;
   }
 
-  ArgumentList *getInputArgumentList()
-  {
+  ArgumentList *getInputArgumentList() {
     return argumentInList;
   }
 
-  ArgumentList *getOutputArgumentList()
-  {
+  ArgumentList *getOutputArgumentList() {
     return argumentOutList;
   }
 
   Argument *getArgument(const std::string &name);
 
-  void setArgumentValues(ArgumentList *argList)
-  {
+  void setArgumentValues(ArgumentList *argList) {
     getArgumentList()->set(argList);
   }
   
-  void setArgumentValue(const std::string &name, const std::string &value)
-  {
+  void setArgumentValue(const std::string &name, const std::string &value) {
     Argument *arg = getArgument(name);
     if (arg == NULL)
       return;
     arg->setValue(value);
   }
 
-  void setArgumentValue(const std::string &name, int value)
-  {
+  void setArgumentValue(const std::string &name, int value) {
     Argument *arg = getArgument(name);
     if (arg == NULL)
       return;
     arg->setValue(value);
   }
 
-  const char *getArgumentValue(const std::string &name)
-  {
+  const char *getArgumentValue(const std::string &name) {
     Argument *arg = getArgument(name);
     if (arg == NULL)
       return "";
     return arg->getValue();
   }
 
-  int getArgumentIntegerValue(const std::string &name)
-  {
+  int getArgumentIntegerValue(const std::string &name) {
     Argument *arg = getArgument(name);
     if (arg == NULL)
       return 0;
@@ -194,8 +173,7 @@ public:
   //  UserData
   ////////////////////////////////////////////////
 
-  ActionData *getActionData()
-  {
+  ActionData *getActionData() {
     CyberXML::Node *node = getActionNode();
     ActionData *userData = (ActionData *)node->getUserData();
     if (userData == NULL) {
@@ -235,8 +213,7 @@ public:
     getActionData()->setControlResponse(res);
   }
   
-  UPnPStatus *getControlStatus()
-  {
+  UPnPStatus *getControlStatus() {
     return getControlResponse()->getUPnPError();
   }
 
@@ -244,29 +221,24 @@ public:
   //  postControlAction
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool postControlAction();
 
   ////////////////////////////////////////////////
   //  UPnPStatus
   ////////////////////////////////////////////////
 
-public:
-
-  void setStatus(int code, const std::string &descr)
-  {
+ public:
+  void setStatus(int code, const std::string &descr) {
     upnpStatus.setCode(code);
     upnpStatus.setDescription(descr);
   }
 
-  void setStatus(int code)
-  {
+  void setStatus(int code) {
     setStatus(code, UPnP::StatusCode2String(code));
   }
   
-  UPnPStatus *getStatus()
-  {
+  UPnPStatus *getStatus() {
     return &upnpStatus;
   }
 

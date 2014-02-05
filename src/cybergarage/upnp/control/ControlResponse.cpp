@@ -35,8 +35,7 @@ const char *ControlResponse::FAULT_STRING = "UPnPError";
 //  FaultResponse
 ////////////////////////////////////////////////
 
-void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr)
-{
+void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr) {
   setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
   
   Node *bodyNode = getBodyNode();
@@ -47,8 +46,7 @@ void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr)
   setContent(envNode);
 }
 
-Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &errDescr)
-{
+Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &errDescr) {
   // <s:Fault>
   string faultNodeName;
   faultNodeName = SOAP::XMLNS;

@@ -19,9 +19,7 @@
 #include <string>
 
 namespace CyberLink {
-
 namespace NT {
-
 const char ROOTDEVICE[] = "upnp:rootdevice";
 const char EVENT[] = "upnp:event";
   

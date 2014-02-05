@@ -53,12 +53,10 @@ using namespace uHTTP;
 //  Constructor
 ////////////////////////////////////////////////
 
-Parser::Parser()
-{
+Parser::Parser() {
 }
 
-Parser::~Parser()
-{
+Parser::~Parser() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,8 +68,7 @@ typedef struct _ExpatData {
   Node *currNode;
 } ExpatData;
 
-static void XMLCALL ExpatElementStart(void *userData, const std::string &el, const std::string &*attr)
-{
+static void XMLCALL ExpatElementStart(void *userData, const std::string &el, const std::string &*attr) {
   ExpatData *expatData = (ExpatData *)userData;
 
   Node *node = new Node();
@@ -92,15 +89,13 @@ static void XMLCALL ExpatElementStart(void *userData, const std::string &el, con
   expatData->currNode = node;
 }
 
-static void XMLCALL ExpatElementEnd(void *userData, const std::string &el)
-{
+static void XMLCALL ExpatElementEnd(void *userData, const std::string &el) {
   ExpatData *expatData = (ExpatData *)userData;
   if (expatData->currNode != NULL)
     expatData->currNode = expatData->currNode->getParentNode();
 }
 
-static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int len)
-{
+static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int len) {
   ExpatData *expatData = (ExpatData *)userData;
 
   if (expatData->currNode != NULL)
@@ -111,8 +106,7 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 //  parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, size_t len)
-{
+Node *Parser::parse(const std::string &data, size_t len) {
   XML_Parser p = XML_ParserCreate(NULL);
   if (!p)
     return NULL;

@@ -130,8 +130,7 @@ const char *Device::presentationURL = "presentationURL";
 //  Constructor
 ////////////////////////////////////////////////
 
-Device::Device(CyberXML::Node *root, CyberXML::Node *device)
-{
+Device::Device(CyberXML::Node *root, CyberXML::Node *device) {
   setLocalRootDeviceFlag(false);
   rootNode = root;
   deviceNode = device;
@@ -141,8 +140,7 @@ Device::Device(CyberXML::Node *root, CyberXML::Node *device)
   setWirelessMode(false);
 }
 
-Device::Device()
-{
+Device::Device() {
   setLocalRootDeviceFlag(false);
   rootNode = NULL;
   deviceNode = NULL;
@@ -151,8 +149,7 @@ Device::Device()
   initChildList();
 }
   
-Device::Device(CyberXML::Node *device)
-{
+Device::Device(CyberXML::Node *device) {
   setLocalRootDeviceFlag(false);
   rootNode = NULL;
   deviceNode = device;
@@ -161,14 +158,12 @@ Device::Device(CyberXML::Node *device)
   initChildList();
 }
 
-void Device::initUUID()
-{
+void Device::initUUID() {
   string uuid;
   setUUID(UPnP::CreateUUID(uuid));
 }
 
-void Device::initDeviceData()
-{
+void Device::initDeviceData() {
   rootDevice = NULL;
   parentDevice = NULL;
   DeviceData *data = getDeviceData();
@@ -176,8 +171,7 @@ void Device::initDeviceData()
     data->setDevice(this);
 }
 
-void Device::initChildList()
-{
+void Device::initChildList() {
   initDeviceList();
   initServiceList();
   initIconList();
@@ -189,8 +183,7 @@ void Device::initChildList()
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-Device::Device(uHTTP::File *descriptionFile)
-{
+Device::Device(uHTTP::File *descriptionFile) {
   setLocalRootDeviceFlag(true);
   rootNode = NULL;
   deviceNode = NULL;
@@ -200,8 +193,7 @@ Device::Device(uHTTP::File *descriptionFile)
     throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
 }
 
-Device::Device(const std::string &descriptionFileName)
-{
+Device::Device(const std::string &descriptionFileName) {
   setLocalRootDeviceFlag(true);
   rootNode = NULL;
   deviceNode = NULL;
@@ -218,8 +210,7 @@ Device::Device(const std::string &descriptionFileName)
 //  Member
 ////////////////////////////////////////////////
 
-CyberXML::Node *Device::getRootNode()
-{
+CyberXML::Node *Device::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
   if (deviceNode == NULL)
@@ -231,8 +222,7 @@ CyberXML::Node *Device::getRootNode()
 //  NMPR
 ////////////////////////////////////////////////
   
-void Device::setNMPRMode(bool flag)
-{
+void Device::setNMPRMode(bool flag) {
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
@@ -245,8 +235,7 @@ void Device::setNMPRMode(bool flag)
   }
 }
 
-bool Device::isNMPRMode()
-{
+bool Device::isNMPRMode() {
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return false;
@@ -257,8 +246,7 @@ bool Device::isNMPRMode()
 //  URL Base
 ////////////////////////////////////////////////
 
-void Device::setURLBase(const std::string &value)
-{
+void Device::setURLBase(const std::string &value) {
   if (isRootDevice() == true) {
     Node *node = getRootNode()->getNode(URLBASE_NAME);
     if (node != NULL) {
@@ -274,15 +262,13 @@ void Device::setURLBase(const std::string &value)
   }
 }
 
-void Device::updateURLBase(const std::string &host)
-{
+void Device::updateURLBase(const std::string &host) {
   string urlBase;
   GetHostURL(host, getHTTPPort(), "", urlBase);
   setURLBase(urlBase.c_str());
 }
 
-const char *Device::getURLBase()
-{
+const char *Device::getURLBase() {
   if (isRootDevice() == true)
     return getRootNode()->getNodeValue(URLBASE_NAME);
   return "";
@@ -292,8 +278,7 @@ const char *Device::getURLBase()
 //  Destructor
 ////////////////////////////////////////////////
 
-Device::~Device()
-{
+Device::~Device() {
   if (isLocalRootDevice() == true) {
     stop();
     if (rootDevice != NULL)
@@ -307,8 +292,7 @@ Device::~Device()
 //  isDeviceType
 ////////////////////////////////////////////////
 
-bool Device::isDeviceType(const std::string &value)
-{
+bool Device::isDeviceType(const std::string &value) {
   string valueStr = value;
   return (valueStr.compare(getDeviceType()) == 0) ? true : false;
 }
@@ -317,8 +301,7 @@ bool Device::isDeviceType(const std::string &value)
 //  LeaseTime 
 ////////////////////////////////////////////////
 
-void Device::setLeaseTime(int value)
-{
+void Device::setLeaseTime(int value) {
   getDeviceData()->setLeaseTime(value);
   Advertiser *adv = getAdvertiser();
   if (adv != NULL) {
@@ -327,8 +310,7 @@ void Device::setLeaseTime(int value)
   }
 }
 
-int Device::getLeaseTime()
-{
+int Device::getLeaseTime() {
   SSDPPacket *packet = getSSDPPacket();
   if (packet != NULL)
     return packet->getLeaseTime();
@@ -341,16 +323,14 @@ int Device::getLeaseTime()
 //  TimeStamp 
 ////////////////////////////////////////////////
 
-long Device::getTimeStamp()
-{
+long Device::getTimeStamp() {
   SSDPPacket *packet = getSSDPPacket();
   if (packet != NULL)
     return packet->getTimeStamp();    
   return 0;
 }
 
-bool Device::isExpired()
-{
+bool Device::isExpired() {
   long elipsedTime = getElapsedTime();
   long leaseTime = getLeaseTime() + UPnP::DEFAULT_EXPIRED_DEVICE_EXTRA_TIME;
   if (leaseTime < 0)
@@ -364,8 +344,7 @@ bool Device::isExpired()
 //  Root Device
 ////////////////////////////////////////////////
 
-Device *Device::getRootDevice()
-{
+Device *Device::getRootDevice() {
   if (rootDevice != NULL)
     return rootDevice;
   CyberXML::Node *rootNode = getRootNode();
@@ -386,8 +365,7 @@ Device *Device::getRootDevice()
 
 // Thanks for Stefano Lenzi (07/24/04)
 
-Device *Device::getParentDevice()
-{
+Device *Device::getParentDevice() {
   if (parentDevice != NULL)
     return parentDevice;
   if(isRootDevice() == true)
@@ -408,8 +386,7 @@ Device *Device::getParentDevice()
 //  UserData
 ////////////////////////////////////////////////
 
-DeviceData *Device::getDeviceData()
-{
+DeviceData *Device::getDeviceData() {
   CyberXML::Node *node = getDeviceNode();
   if (node == NULL)
     return NULL;
@@ -425,8 +402,7 @@ DeviceData *Device::getDeviceData()
 //  loadDescription
 ////////////////////////////////////////////////
 
-bool Device::loadDescription(const std::string &description)
-{
+bool Device::loadDescription(const std::string &description) {
   try {
     Parser parser;
     rootNode = parser.parse(description);
@@ -471,8 +447,7 @@ bool Device::loadDescription(const std::string &description)
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-bool Device::loadDescription(uHTTP::File *file)
-{
+bool Device::loadDescription(uHTTP::File *file) {
   string description;
 
   if (file->load(description) == false) {
@@ -503,8 +478,7 @@ bool Device::loadDescription(uHTTP::File *file)
 //  deviceList
 ////////////////////////////////////////////////
 
-void Device::initDeviceList()
-{
+void Device::initDeviceList() {
   deviceList.clear();
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
@@ -522,8 +496,7 @@ void Device::initDeviceList()
   } 
 }
 
-bool Device::isDevice(const std::string &name)
-{
+bool Device::isDevice(const std::string &name) {
   String nameStr = name;
   if (nameStr.endsWith(getUDN()) == true)
     return true;
@@ -534,8 +507,7 @@ bool Device::isDevice(const std::string &name)
   return false;
 }
   
-Device *Device::getDevice(const std::string &name)
-{
+Device *Device::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
   int devCnt = devList->size();
   for (int n=0; n<devCnt; n++) {
@@ -549,8 +521,7 @@ Device *Device::getDevice(const std::string &name)
   return NULL;
 }
 
-Device *Device::getDeviceByDescriptionURI(const std::string &uri)
-{
+Device *Device::getDeviceByDescriptionURI(const std::string &uri) {
   DeviceList *devList = getDeviceList();
   int devCnt = devList->size();
   for (int n=0; n<devCnt; n++) {
@@ -568,8 +539,7 @@ Device *Device::getDeviceByDescriptionURI(const std::string &uri)
 //  serviceList
 ////////////////////////////////////////////////
 
-void Device::initServiceList()
-{
+void Device::initServiceList() {
   serviceList.clear();
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
@@ -587,8 +557,7 @@ void Device::initServiceList()
   } 
 }
 
-Service *Device::getService(const std::string &name)
-{
+Service *Device::getService(const std::string &name) {
   int n;
 
   ServiceList *serviceList = getServiceList();
@@ -611,8 +580,7 @@ Service *Device::getService(const std::string &name)
   return NULL;
 }
 
-Service *Device::getServiceBySCPDURL(const std::string &searchUrl)
-{
+Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
   int n;
   ServiceList *serviceList = getServiceList();
   int serviceCnt = serviceList->size();
@@ -634,8 +602,7 @@ Service *Device::getServiceBySCPDURL(const std::string &searchUrl)
   return NULL;
 }
 
-Service *Device::getServiceByControlURL(const std::string &searchUrl)
-{
+Service *Device::getServiceByControlURL(const std::string &searchUrl) {
   int n;
   ServiceList *serviceList = getServiceList();
   int serviceCnt = serviceList->size();
@@ -657,8 +624,7 @@ Service *Device::getServiceByControlURL(const std::string &searchUrl)
   return NULL;
 }
 
-Service *Device::getServiceByEventSubURL(const std::string &searchUrl)
-{
+Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
   int n;
   ServiceList *serviceList = getServiceList();
   int serviceCnt = serviceList->size();
@@ -680,8 +646,7 @@ Service *Device::getServiceByEventSubURL(const std::string &searchUrl)
   return NULL;
 }
 
-Service *Device::getSubscriberService(const std::string &uuid)
-{
+Service *Device::getSubscriberService(const std::string &uuid) {
   int n;
   String uuidStr = uuid;
   ServiceList *serviceList = getServiceList();
@@ -709,8 +674,7 @@ Service *Device::getSubscriberService(const std::string &uuid)
 //  StateVariable
 ////////////////////////////////////////////////
 
-StateVariable *Device::getStateVariable(const std::string &serviceType, const std::string &name)
-{
+StateVariable *Device::getStateVariable(const std::string &serviceType, const std::string &name) {
   int n;
 
   ServiceList *serviceList = getServiceList();
@@ -739,8 +703,7 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
   return NULL;
 }
 
-StateVariable *Device::getStateVariable(const std::string &name)
-{
+StateVariable *Device::getStateVariable(const std::string &name) {
   return getStateVariable("", name);
 }
 
@@ -748,8 +711,7 @@ StateVariable *Device::getStateVariable(const std::string &name)
 //  Action
 ////////////////////////////////////////////////
 
-CyberLink::Action *Device::getAction(const std::string &name)
-{
+CyberLink::Action *Device::getAction(const std::string &name) {
   int n;
   uHTTP::String nameStr= name;
 
@@ -785,8 +747,7 @@ CyberLink::Action *Device::getAction(const std::string &name)
 //  iconList
 ////////////////////////////////////////////////
 
-void Device::initIconList()
-{
+void Device::initIconList() {
   iconList.clear();
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
@@ -808,26 +769,22 @@ void Device::initIconList()
 //  Notify
 ////////////////////////////////////////////////
 
-void Device::notifyWait()
-{
+void Device::notifyWait() {
   uHTTP::WaitRandom(DEFAULT_DISCOVERY_WAIT_TIME);
 }
 
-const char *Device::getLocationURL(const std::string &host, std::string &buf)
-{
+const char *Device::getLocationURL(const std::string &host, std::string &buf) {
   return uHTTP::GetHostURL(host, getHTTPPort(), getDescriptionURI(), buf);
 }
 
-const char *Device::getNotifyDeviceNT(std::string &buf)
-{
+const char *Device::getNotifyDeviceNT(std::string &buf) {
   if (isRootDevice() == false)
     buf = getUDN();      
   buf = UPNP_ROOTDEVICE;
   return buf.c_str();
 }
 
-const char *Device::getNotifyDeviceUSN(std::string &buf)
-{
+const char *Device::getNotifyDeviceUSN(std::string &buf) {
   buf = getUDN();
   if (isRootDevice() == true) {
     buf.append("::");
@@ -836,22 +793,19 @@ const char *Device::getNotifyDeviceUSN(std::string &buf)
   return buf.c_str();
 }
 
-const char *Device::getNotifyDeviceTypeNT(std::string &buf)
-{
+const char *Device::getNotifyDeviceTypeNT(std::string &buf) {
   buf = getDeviceType();
   return buf.c_str();
 }
 
-const char *Device::getNotifyDeviceTypeUSN(std::string &buf)
-{
+const char *Device::getNotifyDeviceTypeUSN(std::string &buf) {
   buf = getUDN();
   buf.append("::");
   buf.append(getDeviceType());
   return buf.c_str();
 }
 
-void Device::announce(const std::string &bindAddr)
-{
+void Device::announce(const std::string &bindAddr) {
   string devLocationBuf;
   const char *devLocation = getLocationURL(bindAddr, devLocationBuf);
     
@@ -902,8 +856,7 @@ void Device::announce(const std::string &bindAddr)
   }
 }
 
-void Device::announce()
-{
+void Device::announce() {
   notifyWait();
 
   int nHostAddrs = uHTTP::GetNHostAddresses();
@@ -918,8 +871,7 @@ void Device::announce()
   }
 }
   
-void Device::byebye(const std::string &bindAddr)
-{
+void Device::byebye(const std::string &bindAddr) {
   int n;
   SSDPNotifySocket ssdpSock(bindAddr);
     
@@ -962,8 +914,7 @@ void Device::byebye(const std::string &bindAddr)
   }
 }
 
-void Device::byebye()
-{
+void Device::byebye() {
   int nHostAddrs = uHTTP::GetNHostAddresses();
   for (int n=0; n<nHostAddrs; n++) {
     std::string bindAddrBuf;
@@ -980,8 +931,7 @@ void Device::byebye()
 //  Search
 ////////////////////////////////////////////////
 
-bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn)
-{
+bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn) {
   const char *localAddr = ssdpPacket->getLocalAddress();
   Device *rootDev = getRootDevice();
   string rootDevLocation;
@@ -1012,8 +962,7 @@ bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, c
   return true;
 }
 
-void Device::deviceSearchResponse(SSDPPacket *ssdpPacket)
-{
+void Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
   string ssdpST;
   ssdpPacket->getST(ssdpST);
 
@@ -1073,8 +1022,7 @@ void Device::deviceSearchResponse(SSDPPacket *ssdpPacket)
 }
 
 
-void Device::deviceSearchReceived(SSDPPacket *ssdpPacket)
-{
+void Device::deviceSearchReceived(SSDPPacket *ssdpPacket) {
   deviceSearchResponse(ssdpPacket);
 }
 
@@ -1082,8 +1030,7 @@ void Device::deviceSearchReceived(SSDPPacket *ssdpPacket)
 //  HTTP Server  
 ////////////////////////////////////////////////
 
-uHTTP::HTTP::StatusCode Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
-{
+uHTTP::HTTP::StatusCode Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq) {
   if (Debug::isOn() == true)
     httpReq->print();
 
@@ -1107,8 +1054,7 @@ uHTTP::HTTP::StatusCode Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 //  HTTP Server  
 ////////////////////////////////////////////////
 
-const char *Device::getDescriptionData(const std::string &host, string &buf)
-{
+const char *Device::getDescriptionData(const std::string &host, string &buf) {
   lock();
   if (isNMPRMode() == false)
     updateURLBase(host);
@@ -1125,8 +1071,7 @@ const char *Device::getDescriptionData(const std::string &host, string &buf)
   return buf.c_str();
 }
   
-uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq)
-{
+uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq) {
   string uri;
   httpReq->getURI(uri);
   if (uri.length() <= 0) {
@@ -1162,8 +1107,7 @@ uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq)
   return httpReq->post(&httpRes);
 }
 
-uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq)
-{
+uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq) {
   if (httpReq->isSOAPAction() == true) {
     //SOAPRequest soapReq = new SOAPRequest(httpReq);
     return soapActionRecieved(httpReq);
@@ -1175,16 +1119,14 @@ uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq)
 //  SOAP
 ////////////////////////////////////////////////
 
-uHTTP::HTTP::StatusCode Device::soapBadActionRecieved(HTTPRequest *soapReq)
-{
+uHTTP::HTTP::StatusCode Device::soapBadActionRecieved(HTTPRequest *soapReq) {
   SOAPResponse soapRes;
   soapRes.setStatusCode(HTTP::BAD_REQUEST);
   soapReq->post(&soapRes);
   return soapRes.getStatusCode();
 }
 
-uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq)
-{
+uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq) {
   string uri;
   soapReq->getURI(uri);
   Service *ctlService = getServiceByControlURL(uri.c_str());
@@ -1199,15 +1141,13 @@ uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq)
 //  controlAction
 ////////////////////////////////////////////////
 
-uHTTP::HTTP::StatusCode Device::invalidActionControlRecieved(ControlRequest *ctlReq)
-{
+uHTTP::HTTP::StatusCode Device::invalidActionControlRecieved(ControlRequest *ctlReq) {
   ControlResponse actRes;
   actRes.setFaultResponse(UPnP::INVALID_ACTION);
   return ctlReq->post(&actRes);
 }
 
-uHTTP::HTTP::StatusCode Device::deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service)
-{
+uHTTP::HTTP::StatusCode Device::deviceControlRequestRecieved(ControlRequest *ctlReq, Service *service) {
   if (ctlReq->isQueryControl() == true) {
     QueryRequest queryRes(ctlReq);
     return deviceQueryControlRecieved(&queryRes, service);
@@ -1217,8 +1157,7 @@ uHTTP::HTTP::StatusCode Device::deviceControlRequestRecieved(ControlRequest *ctl
   return deviceActionControlRecieved(&actRes, service);
 }
 
-uHTTP::HTTP::StatusCode Device::deviceActionControlRecieved(ActionRequest *ctlReq, Service *service)
-{
+uHTTP::HTTP::StatusCode Device::deviceActionControlRecieved(ActionRequest *ctlReq, Service *service) {
   if (Debug::isOn() == true)
     ctlReq->print();
       
@@ -1236,8 +1175,7 @@ uHTTP::HTTP::StatusCode Device::deviceActionControlRecieved(ActionRequest *ctlRe
   return HTTP::OK_REQUEST;
 }
 
-uHTTP::HTTP::StatusCode Device::deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service)
-{
+uHTTP::HTTP::StatusCode Device::deviceQueryControlRecieved(QueryRequest *ctlReq, Service *service) {
   if (Debug::isOn() == true)
     ctlReq->print();
   const char *varName = ctlReq->getVarName();
@@ -1254,15 +1192,13 @@ uHTTP::HTTP::StatusCode Device::deviceQueryControlRecieved(QueryRequest *ctlReq,
 //  eventSubscribe
 ////////////////////////////////////////////////
 
-uHTTP::HTTP::StatusCode Device::upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code)
-{
+uHTTP::HTTP::StatusCode Device::upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code) {
   SubscriptionResponse subRes;
   subRes.setErrorResponse(code);
   return subReq->post(&subRes);
 }
 
-uHTTP::HTTP::StatusCode Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq)
-{
+uHTTP::HTTP::StatusCode Device::deviceEventSubscriptionRecieved(SubscriptionRequest *subReq) {
   if (Debug::isOn() == true)
     subReq->print();
   string uri;
@@ -1293,8 +1229,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventSubscriptionRecieved(SubscriptionRequ
   return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
 }
 
-uHTTP::HTTP::StatusCode Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
-{
+uHTTP::HTTP::StatusCode Device::deviceEventNewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq) {
   string callback;
   subReq->getCallback(callback);
 
@@ -1321,8 +1256,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventNewSubscriptionRecieved(Service *serv
   return uHTTP::HTTP::OK_REQUEST;
 }
 
-uHTTP::HTTP::StatusCode Device::deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
-{
+uHTTP::HTTP::StatusCode Device::deviceEventRenewSubscriptionRecieved(Service *service, SubscriptionRequest *subReq) {
   string sidBuf;
   const char *sid = subReq->getSID(sidBuf);
   Subscriber *sub = service->getSubscriberBySID(sid);
@@ -1342,8 +1276,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventRenewSubscriptionRecieved(Service *se
   return subReq->post(&subRes);
 }    
 
-uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq)
-{
+uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *service, SubscriptionRequest *subReq) {
   string sidBuf;
   const char *sid = subReq->getSID(sidBuf);
 
@@ -1363,8 +1296,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *servi
 //  Thread  
 ////////////////////////////////////////////////
 
-bool Device::start()
-{
+bool Device::start() {
   stop(true);
 
   ////////////////////////////////////////
@@ -1411,8 +1343,7 @@ bool Device::start()
   return true;
 }
   
-bool Device::stop(bool doByeBye)
-{
+bool Device::stop(bool doByeBye) {
   if (doByeBye == true)
     byebye();
     
@@ -1439,8 +1370,7 @@ bool Device::stop(bool doByeBye)
 //  Action/QueryListener
 ////////////////////////////////////////////////
 
-void Device::setActionListener(ActionListener *listener)
-{
+void Device::setActionListener(ActionListener *listener) {
   ServiceList *ServiceList = getServiceList();
   int nServices = ServiceList->size();
   for (int n=0; n<nServices; n++) {
@@ -1449,8 +1379,7 @@ void Device::setActionListener(ActionListener *listener)
   }
 }
 
-void Device::setQueryListener(QueryListener *listener)
-{
+void Device::setQueryListener(QueryListener *listener) {
   ServiceList *ServiceList = getServiceList();
   int nServices = ServiceList->size();
   for (int n=0; n<nServices; n++) {
@@ -1464,8 +1393,7 @@ void Device::setQueryListener(QueryListener *listener)
 ////////////////////////////////////////////////
 
 // Thanks for Mikael Hakman (04/25/05)
-void Device::setActionListener(ActionListener *listener, bool includeSubDevices)
-{
+void Device::setActionListener(ActionListener *listener, bool includeSubDevices) {
   setActionListener(listener);
   if (includeSubDevices == true) {
     DeviceList *devList = getDeviceList();
@@ -1478,8 +1406,7 @@ void Device::setActionListener(ActionListener *listener, bool includeSubDevices)
 }
 
 // Thanks for Mikael Hakman (04/25/05)
-void Device::setQueryListener(QueryListener *listener, bool includeSubDevices)
-{
+void Device::setQueryListener(QueryListener *listener, bool includeSubDevices) {
   setQueryListener(listener);
   if (includeSubDevices == true) {
     DeviceList *devList = getDeviceList();

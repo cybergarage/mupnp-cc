@@ -76,8 +76,7 @@ const char *StateVariable::SENDEVENTS_NO = "no";
 //  StateVariable::StateVariable
 ////////////////////////////////////////////////
 
-StateVariable::StateVariable()
-{
+StateVariable::StateVariable() {
   this->serviceNode = NULL;
   this->stateVariableNode = &stateVarNode;
 
@@ -85,8 +84,7 @@ StateVariable::StateVariable()
   initAllowedValueRange();
 }
 
-StateVariable::StateVariable(CyberXML::Node *serviceNode, CyberXML::Node *stateVarNode)
-{
+StateVariable::StateVariable(CyberXML::Node *serviceNode, CyberXML::Node *stateVarNode) {
   this->serviceNode = serviceNode;
   this->stateVariableNode = stateVarNode;
 
@@ -94,16 +92,14 @@ StateVariable::StateVariable(CyberXML::Node *serviceNode, CyberXML::Node *stateV
   initAllowedValueRange();
 }
 
-StateVariable::~StateVariable()
-{
+StateVariable::~StateVariable() {
 }
 
 ////////////////////////////////////////////////
 //  AllowedallowedValueList
 ////////////////////////////////////////////////
 
-void StateVariable::initAllowedValueList()
-{
+void StateVariable::initAllowedValueList() {
   allowedValueList.clear();
   Node *allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
   if (allowedValueListNode == NULL)
@@ -122,8 +118,7 @@ void StateVariable::initAllowedValueList()
 //  AllowedValueRange
 ////////////////////////////////////////////////
 
-void StateVariable::initAllowedValueRange()
-{
+void StateVariable::initAllowedValueRange() {
   Node *valueRangeNode = getStateVariableNode()->getNode(AllowedValueRange::ELEM_NAME);
   allowedValueRange.setAllowedValueRangeNode(valueRangeNode);
 }
@@ -132,8 +127,7 @@ void StateVariable::initAllowedValueRange()
 //  Value
 ////////////////////////////////////////////////
 
-void StateVariable::setValue(const std::string &value)
-{
+void StateVariable::setValue(const std::string &value) {
   // Thnaks for Tho Beisch (11/09/04)
   string currValue = getStateVariableData()->getValue();
   // Thnaks for Tho Rick Keiner (11/18/04)
@@ -151,14 +145,12 @@ void StateVariable::setValue(const std::string &value)
   service->notify(this);
 }
 
-void StateVariable::setValue(int value) 
-{
+void StateVariable::setValue(int value)  {
   string strValue;
   setValue(Integer2String(value, strValue));
 }
 
-void StateVariable::setValue(long value) 
-{
+void StateVariable::setValue(long value)  {
   string strValue;
   setValue(Long2String(value, strValue));
 }
@@ -167,8 +159,7 @@ void StateVariable::setValue(long value)
 //  set
 ////////////////////////////////////////////////
 
-void StateVariable::set(StateVariable *stateVar) 
-{
+void StateVariable::set(StateVariable *stateVar)  {
   setName(stateVar->getName());
   setValue(stateVar->getValue());
   setDataType(stateVar->getDataType());
@@ -179,8 +170,7 @@ void StateVariable::set(StateVariable *stateVar)
 //  queryAction
 ////////////////////////////////////////////////
 
-bool StateVariable::performQueryListener(QueryRequest *queryReq)
-{
+bool StateVariable::performQueryListener(QueryRequest *queryReq) {
   QueryListener *listener = getQueryListener();
   if (listener == NULL)
     return false;
@@ -205,8 +195,7 @@ bool StateVariable::performQueryListener(QueryRequest *queryReq)
 //  ActionControl
 ////////////////////////////////////////////////
 
-bool StateVariable::postQuerylAction()
-{
+bool StateVariable::postQuerylAction() {
   QueryRequest queryReq;
   queryReq.setRequest(this);
   if (Debug::isOn() == true)

@@ -16,8 +16,7 @@
 #include <cybergarage/upnp/device/NT.h>
 #include <uhttp/util/StringUtil.h>
 
-bool CyberLink::NT::IsRootDevice(const std::string &ntValue)
-{
+bool CyberLink::NT::IsRootDevice(const std::string &ntValue) {
   uHTTP::String ntStr = ntValue;
   return ntStr.startsWith(ROOTDEVICE);
 }

@@ -20,15 +20,11 @@
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
-
-class HTTPUSocket 
-{
-
+class HTTPUSocket  {
   uHTTP::DatagramSocket ssdpUniSock;
   SSDPPacket recvPacket;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
@@ -55,8 +51,7 @@ public:
   //  DatagramSocket
   ////////////////////////////////////////////////
 
-  uHTTP::DatagramSocket &getDatagramSocket()
-  {
+  uHTTP::DatagramSocket &getDatagramSocket() {
     return ssdpUniSock;
   }
 
@@ -64,8 +59,7 @@ public:
   //  bindAddr
   ////////////////////////////////////////////////
 
-  const char *getLocalAddress()
-  {
+  const char *getLocalAddress() {
     return ssdpUniSock.getLocalAddress();
   }
 

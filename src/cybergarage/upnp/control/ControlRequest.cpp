@@ -42,8 +42,7 @@ using namespace uHTTP;
 //  setRequest
 ////////////////////////////////////////////////
 
-void ControlRequest::setRequestHost(Service *service)
-{
+void ControlRequest::setRequestHost(Service *service) {
   string ctrlURL = service->getControlURL();
 
   // Thanks for Thomas Schulz (2004/03/20)

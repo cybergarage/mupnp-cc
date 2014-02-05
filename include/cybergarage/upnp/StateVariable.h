@@ -30,11 +30,9 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class Service;
 
-class StateVariable
-{
+class StateVariable {
   CyberXML::Node *stateVariableNode;
   CyberXML::Node *serviceNode;
   
@@ -48,8 +46,7 @@ class StateVariable
   //  Constants
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   static const char *ELEM_NAME;
   static const char *NAME;
   static const char *DATATYPE;
@@ -61,15 +58,12 @@ public:
   //  Member
   ////////////////////////////////////////////////
 
-public:
-
-  CyberXML::Node *getServiceNode()
-  {
+ public:
+  CyberXML::Node *getServiceNode() {
     return serviceNode;
   }
 
-  Service *getService()
-  {
+  Service *getService() {
     CyberXML::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
@@ -79,8 +73,7 @@ public:
     return data->getService();
   }
 
-  CyberXML::Node *getStateVariableNode()
-  {
+  CyberXML::Node *getStateVariableNode() {
     return stateVariableNode;
   }
   
@@ -88,8 +81,7 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   StateVariable();
   StateVariable(CyberXML::Node *serviceNode, CyberXML::Node *stateVarNode);
 
@@ -99,10 +91,8 @@ public:
   //  isStateVariableNode
   ////////////////////////////////////////////////
 
-public:
-
-  static bool isStateVariableNode(CyberXML::Node *node)
-  {
+ public:
+  static bool isStateVariableNode(CyberXML::Node *node) {
     return node->isName(ELEM_NAME);
   }
 
@@ -114,15 +104,12 @@ private:
 
   void initAllowedValueList();
 
-public:
-
-  AllowedValueList *getAllowedValueList()
-  {
+ public:
+  AllowedValueList *getAllowedValueList() {
     return &allowedValueList;
   }
 
-  bool hasAllowedValueList()
-  {
+  bool hasAllowedValueList() {
     return (0 < allowedValueList.size()) ? true : false;
   }
 
@@ -134,17 +121,14 @@ private:
 
   void initAllowedValueRange();
 
-public:
-
-  AllowedValueRange *getAllowedValueRange()
-  {
+ public:
+  AllowedValueRange *getAllowedValueRange() {
     if (allowedValueRange.getAllowedValueRangeNode() == NULL)
         return NULL;
     return &allowedValueRange;
   }
 
-  bool hasAllowedValueRange()
-  {
+  bool hasAllowedValueRange() {
     return (getAllowedValueRange() != NULL) ? true : false;
   }
 
@@ -152,15 +136,12 @@ public:
   //  name
   ////////////////////////////////////////////////
 
-public:
-
-  void setName(const std::string &value)
-  {
+ public:
+  void setName(const std::string &value) {
     getStateVariableNode()->setNode(NAME, value);
   }
 
-  const char *getName()
-  {
+  const char *getName() {
     return getStateVariableNode()->getNodeValue(NAME);
   }
 
@@ -168,15 +149,12 @@ public:
   //  dataType
   ////////////////////////////////////////////////
 
-public:
-
-  void setDataType(const std::string &value)
-  {
+ public:
+  void setDataType(const std::string &value) {
     getStateVariableNode()->setNode(DATATYPE, value);
   }
 
-  const char *getDataType()
-  {
+  const char *getDataType() {
     return getStateVariableNode()->getNodeValue(DATATYPE);
   }
 
@@ -184,15 +162,12 @@ public:
   //  dataType
   ////////////////////////////////////////////////
 
-public:
-
-  void setSendEvents(bool state)
-  {
+ public:
+  void setSendEvents(bool state) {
     getStateVariableNode()->setAttribute(SENDEVENTS, (state == true) ? SENDEVENTS_YES : SENDEVENTS_NO);
   }
   
-  bool isSendEvents()
-  {
+  bool isSendEvents() {
     const char *state = getStateVariableNode()->getAttributeValue(SENDEVENTS);
     if (state == NULL)
       return false;
@@ -206,10 +181,8 @@ public:
   //  UserData
   ////////////////////////////////////////////////
 
-public:
-
-  StateVariableData *getStateVariableData ()
-  {
+ public:
+  StateVariableData *getStateVariableData () {
     CyberXML::Node *node = getStateVariableNode();
     StateVariableData *userData = (StateVariableData *)node->getUserData();
     if (userData == NULL) {
@@ -223,8 +196,7 @@ public:
   //  Value
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setValue(const std::string &value);
   void setValue(int value);
   void setValue(long value);
@@ -238,16 +210,14 @@ public:
   //  set
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void set(StateVariable *stateVar);
 
   ////////////////////////////////////////////////
   //  queryAction
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   QueryListener *getQueryListener() 
   {
     return getStateVariableData()->getQueryListener();
@@ -264,8 +234,7 @@ public:
   //  ActionControl
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   QueryResponse *getQueryResponse() 
   {
     return getStateVariableData()->getQueryResponse();
@@ -276,8 +245,7 @@ public:
     getStateVariableData()->setQueryResponse(res);
   }
 
-  UPnPStatus *getQueryStatus()
-  {
+  UPnPStatus *getQueryStatus() {
     return getQueryResponse()->getUPnPError();
   }
   
@@ -285,29 +253,24 @@ public:
   //  ActionControl
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool postQuerylAction();
 
   ////////////////////////////////////////////////
   //  UPnPStatus
   ////////////////////////////////////////////////
 
-public:
-
-  void setStatus(int code, const std::string &descr)
-  {
+ public:
+  void setStatus(int code, const std::string &descr) {
     upnpStatus.setCode(code);
     upnpStatus.setDescription(descr);
   }
 
-  void setStatus(int code)
-  {
+  void setStatus(int code) {
     setStatus(code, UPnP::StatusCode2String(code));
   }
   
-  UPnPStatus *getStatus()
-  {
+  UPnPStatus *getStatus() {
     return &upnpStatus;
   }
 

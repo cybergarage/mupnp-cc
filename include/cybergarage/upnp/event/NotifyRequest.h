@@ -27,13 +27,10 @@
 #include <sstream>
 
 namespace CyberLink {
-
-class NotifyRequest : public CyberSOAP::SOAPRequest
-{
+class NotifyRequest : public CyberSOAP::SOAPRequest {
   PropertyList propList;
 
-public:
-
+ public:
   static const char *XMLNS;
   static const char *PROPERTY;
   static const char *PROPERTYSET;
@@ -42,14 +39,11 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
-  NotifyRequest()
-  {
+ public:
+  NotifyRequest() {
   }
 
-  NotifyRequest(uHTTP::HTTPRequest *httpReq)
-  {
+  NotifyRequest(uHTTP::HTTPRequest *httpReq) {
     set(httpReq);
   }
 
@@ -57,10 +51,8 @@ public:
   //  NT
   ////////////////////////////////////////////////
 
-public:
-
-  void setNT(const std::string &value)
-  {
+ public:
+  void setNT(const std::string &value) {
     setHeader(uHTTP::HTTP::NT, value);
   }
 
@@ -68,10 +60,8 @@ public:
   //  NTS
   ////////////////////////////////////////////////
 
-public:
-
-  void setNTS(const std::string &value)
-  {
+ public:
+  void setNTS(const std::string &value) {
     setHeader(uHTTP::HTTP::NTS, value);
   }
 
@@ -79,16 +69,13 @@ public:
   //  SID
   ////////////////////////////////////////////////
 
-public:
-
-  void setSID(const std::string &sid)
-  {
+ public:
+  void setSID(const std::string &sid) {
     std::string buf;
     setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
   }
 
-  const char *getSID(std::string &buf)
-  {
+  const char *getSID(std::string &buf) {
     return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
   }
 
@@ -96,15 +83,12 @@ public:
   //  SEQ
   ////////////////////////////////////////////////
 
-public:
-
-  void setSEQ(long value)
-  {
+ public:
+  void setSEQ(long value) {
     setHeader(uHTTP::HTTP::SEQ, value);
   }
 
-  long getSEQ()
-  {
+  long getSEQ() {
     return getLongHeaderValue(uHTTP::HTTP::SEQ);
   }
 
@@ -112,8 +96,7 @@ public:
   //  Request
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool setRequest(Subscriber *sub, const std::string &varName, const std::string &value);
 
 private:
@@ -130,8 +113,7 @@ private:
   
   Property *getProperty(CyberXML::Node *varNode);
 
-public:
-
+ public:
   PropertyList *getPropertyList();
   
 };

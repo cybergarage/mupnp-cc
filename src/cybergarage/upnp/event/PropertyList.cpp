@@ -20,31 +20,26 @@
 
 using namespace CyberLink;
 
-PropertyList::PropertyList()
-{
+PropertyList::PropertyList() {
 }
 
-PropertyList::~PropertyList() 
-{
+PropertyList::~PropertyList()  {
   clear();
 }
 
-bool PropertyList::addProperty(Property *prop) 
-{
+bool PropertyList::addProperty(Property *prop)  {
   if (prop == NULL)
     return false;
   return add(prop);
 }
 
-bool PropertyList::insertProperty(Property *prop, int index) 
-{
+bool PropertyList::insertProperty(Property *prop, int index)  {
   if (prop == NULL)
     return false;
   return insertAt(prop, index);
 }
 
-bool PropertyList::removeProperty(Property *prop) 
-{
+bool PropertyList::removeProperty(Property *prop)  {
   if (prop == NULL)
     return false;
   bool ret = remove(prop);
@@ -52,8 +47,7 @@ bool PropertyList::removeProperty(Property *prop)
   return ret;
 }
 
- void PropertyList::clear() 
-{
+ void PropertyList::clear()  {
   int nProp = size();
   for (int n=0; n<nProp; n++) {
     Property *prop = getProperty(n);

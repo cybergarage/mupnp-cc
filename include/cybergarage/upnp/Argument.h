@@ -23,12 +23,10 @@
 #include <cybergarage/upnp/xml/ArgumentData.h>
 
 namespace CyberLink{
-
 class Service;
 class StateVariable;
 
-class Argument
-{
+class Argument {
   
   CyberXML::Node *serviceNode;
   CyberXML::Node *argumentNode;
@@ -36,8 +34,7 @@ class Argument
   CyberXML::Node defaultArgumentNode;
   CyberXML::Node defaultServiceNode;
   
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
@@ -49,19 +46,16 @@ public:
   static const char *DIRECTION;
   static const char *RELATED_STATE_VARIABLE;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Member
   ////////////////////////////////////////////////
 
-  CyberXML::Node *getServiceNode()
-  {
+  CyberXML::Node *getServiceNode() {
     return serviceNode;
   }
 
-  CyberXML::Node *getArgumentNode()
-  {
+  CyberXML::Node *getArgumentNode() {
     return argumentNode;
   }
   
@@ -81,8 +75,7 @@ public:
   //  isArgumentNode
   ////////////////////////////////////////////////
 
-  static bool isArgumentNode(CyberXML::Node *node)
-  {
+  static bool isArgumentNode(CyberXML::Node *node) {
     return node->isName(Argument::ELEM_NAME);
   }
 
@@ -90,13 +83,11 @@ public:
   //  name
   ////////////////////////////////////////////////
 
-  void setName(const std::string &value)
-  {
+  void setName(const std::string &value) {
     getArgumentNode()->setNode(NAME, value);
   }
 
-  const char *getName()
-  {
+  const char *getName() {
     return getArgumentNode()->getNodeValue(NAME);
   }
 
@@ -104,18 +95,15 @@ public:
   //  direction
   ////////////////////////////////////////////////
 
-  void setDirection(const std::string &value)
-  {
+  void setDirection(const std::string &value) {
     getArgumentNode()->setNode(DIRECTION, value);
   }
 
-  const char *getDirection()
-  {
+  const char *getDirection() {
     return getArgumentNode()->getNodeValue(DIRECTION);
   }
 
-  bool isInDirection()
-  {
+  bool isInDirection() {
     const char *dir = getDirection();
     if (dir == NULL)
       return false;
@@ -123,8 +111,7 @@ public:
     return dirStr.equalsIgnoreCase(IN_DIR);
   }
 
-  bool isOutDirection()
-  {
+  bool isOutDirection() {
     return !isInDirection();
   }
   
@@ -132,13 +119,11 @@ public:
   //  relatedStateVariable
   ////////////////////////////////////////////////
 
-  void setRelatedStateVariableName(const std::string &value)
-  {
+  void setRelatedStateVariableName(const std::string &value) {
     getArgumentNode()->setNode(RELATED_STATE_VARIABLE, value);
   }
 
-  const char *getRelatedStateVariableName()
-  {
+  const char *getRelatedStateVariableName() {
     return getArgumentNode()->getNodeValue(RELATED_STATE_VARIABLE);
   }
 
@@ -148,8 +133,7 @@ public:
   //  UserData
   ////////////////////////////////////////////////
 
-  ArgumentData *getArgumentData()
-  {
+  ArgumentData *getArgumentData() {
     CyberXML::Node *node = getArgumentNode();
     ArgumentData *userData = (ArgumentData *)node->getUserData();
     if (userData == NULL) {
@@ -163,20 +147,17 @@ public:
   //  value
   ////////////////////////////////////////////////
 
-  void setValue(const std::string &value)
-  {
+  void setValue(const std::string &value) {
     getArgumentData()->setValue(value);
   }
 
   void setValue(int value);
 
-  const char *getValue()
-  {
+  const char *getValue() {
     return getArgumentData()->getValue();
   }
 
-  int getIntegerValue()
-  {
+  int getIntegerValue() {
     return atoi(getValue());
   }
 

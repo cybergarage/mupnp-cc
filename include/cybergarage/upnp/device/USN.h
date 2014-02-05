@@ -19,9 +19,7 @@
 #include <string>
 
 namespace CyberLink {
-
 namespace USN {
-
 const char ROOTDEVICE[] = "upnp:rootdevice";
   
 bool IsRootDevice(const std::string &usnValue);

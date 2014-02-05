@@ -39,21 +39,18 @@ using namespace std;
 //  Constructor
 ////////////////////////////////////////////////
   
-SOAPRequest::SOAPRequest()
-{
+SOAPRequest::SOAPRequest() {
   setContentType(CyberXML::XML::CONTENT_TYPE);
   setMethod(uHTTP::HTTP::POST);
   setRootNode(NULL);
 }
 
-SOAPRequest::SOAPRequest(uHTTP::HTTPRequest *httpReq)
-{
+SOAPRequest::SOAPRequest(uHTTP::HTTPRequest *httpReq) {
   set(httpReq);
   setRootNode(NULL);
 }
 
-SOAPRequest::~SOAPRequest()
-{
+SOAPRequest::~SOAPRequest() {
   if (rootNode != NULL)
     delete rootNode;
 }
@@ -62,8 +59,7 @@ SOAPRequest::~SOAPRequest()
 // SOAPACTION
 ////////////////////////////////////////////////
 
-bool SOAPRequest::isSOAPAction(const std::string &value)
-{
+bool SOAPRequest::isSOAPAction(const std::string &value) {
   const char *headerValue = getHeaderValue(SOAPACTION);
   if (headerValue == NULL)
     return false;
@@ -80,8 +76,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value)
 //  parseMessage
 ////////////////////////////////////////////////
 
-CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen)
-{
+CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
   if (contentLen <= 0)
     return NULL;
 
@@ -93,8 +88,7 @@ CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t con
 //  Node
 ////////////////////////////////////////////////
 
-CyberXML::Node *SOAPRequest::getRootNode()
-{
+CyberXML::Node *SOAPRequest::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
       
@@ -110,8 +104,7 @@ CyberXML::Node *SOAPRequest::getRootNode()
 //  post
 ////////////////////////////////////////////////
 
-SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPResponse *soapRes)
-{
+SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPResponse *soapRes) {
   post(host, port, soapRes);
 
   const char *content = soapRes->getContent();
@@ -129,8 +122,7 @@ SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPRe
 //  setContent
 ////////////////////////////////////////////////
 
-void SOAPRequest::setContent(CyberXML::Node *node)
-{
+void SOAPRequest::setContent(CyberXML::Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   string buf;

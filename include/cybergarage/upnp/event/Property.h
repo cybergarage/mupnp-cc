@@ -19,20 +19,16 @@
 #include <string>
 
 namespace CyberLink {
-
-class Property
-{
+class Property {
   std::string name;
   std::string value;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-  Property()
-  {
+  Property() {
   }
 
   ////////////////////////////////////////////////

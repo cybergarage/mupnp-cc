@@ -41,9 +41,7 @@
 #include <sstream>
 
 namespace CyberLink {
-
-class Device : public uHTTP::HTTPRequestListener, public SearchListener
-{
+class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   CyberXML::Node *rootNode;
   CyberXML::Node *deviceNode;
 
@@ -66,8 +64,7 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener
   //  Constants
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   static const char *ELEM_NAME;
   static const char *UPNP_ROOTDEVICE;
   static const int DEFAULT_STARTUP_WAIT_TIME;
@@ -93,22 +90,18 @@ public:
   //  Member
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   CyberXML::Node *getRootNode();
 
-  CyberXML::Node *getDeviceNode()
-  {
+  CyberXML::Node *getDeviceNode() {
     return deviceNode;
   }
 
-  void setRootNode(CyberXML::Node *node)
-  {
+  void setRootNode(CyberXML::Node *node) {
     rootNode = node;
   }
 
-  void setDeviceNode(CyberXML::Node *node)
-  {
+  void setDeviceNode(CyberXML::Node *node) {
     deviceNode = node;
   }
         
@@ -130,23 +123,19 @@ private:
   void initDeviceData();
   void initChildList();
 
-public:
-
+ public:
   virtual ~Device();
 
   ////////////////////////////////////////////////
   // Mutex
   ////////////////////////////////////////////////
   
-public:
-
-  void lock()
-  {
+ public:
+  void lock() {
     mutex.lock();
   }
   
-  void unlock()
-  {
+  void unlock() {
     mutex.unlock();
   }
 
@@ -154,8 +143,7 @@ public:
   //  NMPR
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setNMPRMode(bool flag);
   bool isNMPRMode();
 
@@ -163,20 +151,16 @@ public:
   //  Wireless
   ////////////////////////////////////////////////
   
-public:
-
-  void setWirelessMode(bool flag)
-  {
+ public:
+  void setWirelessMode(bool flag) {
     wirelessMode = flag;
   }
 
-  bool isWirelessMode()
-  {
+  bool isWirelessMode() {
     return wirelessMode;
   }
   
-  int getSSDPAnnounceCount()
-  {
+  int getSSDPAnnounceCount() {
     if (isNMPRMode() == true && isWirelessMode() == true)
       return UPnP::INMPR03_DISCOVERY_OVER_WIRELESS_COUNT;
     return 1;
@@ -188,18 +172,15 @@ public:
 
 private:
 
-  void setUUID(const std::string &uuid)
-  {
+  void setUUID(const std::string &uuid) {
     devUUID = uuid;
   }
 
-  const char *getUUID()
-  {
+  const char *getUUID() {
     return devUUID.c_str();
   }
 
-  void updateUDN()
-  {
+  void updateUDN() {
     std::string uuid;
     uuid.append("uuid:");
     uuid.append(getUUID());
@@ -212,13 +193,11 @@ private:
 
 private:
 
-  void setLocalRootDeviceFlag(bool flag)
-  {
+  void setLocalRootDeviceFlag(bool flag) {
     localRootDeviceFlag = flag;
   }
 
-  bool isLocalRootDevice()
-  {
+  bool isLocalRootDevice() {
     return localRootDeviceFlag;
   }
 
@@ -226,16 +205,14 @@ private:
   //  Root Device
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   Device *getRootDevice();
 
    ////////////////////////////////////////////////
   //  Parent Device
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   Device *getParentDevice();
 
   ////////////////////////////////////////////////
@@ -254,30 +231,24 @@ public:
   //  Description
   ////////////////////////////////////////////////
 
-public:
-
-  void setDescriptionFile(const std::string &file)
-  {
+ public:
+  void setDescriptionFile(const std::string &file) {
     getDeviceData()->setDescriptionFile(file);
   }
 
-  const char *getDescriptionFile()
-  {
+  const char *getDescriptionFile() {
     return getDeviceData()->getDescriptionFile();
   }
 
-  void setDescriptionURI(const std::string &uri)
-  {
+  void setDescriptionURI(const std::string &uri) {
     getDeviceData()->setDescriptionURI(uri);
   }
 
-  const char *getDescriptionURI()
-  {
+  const char *getDescriptionURI() {
     return getDeviceData()->getDescriptionURI();
   }
 
-  bool isDescriptionURI(const std::string &uri)
-  {
+  bool isDescriptionURI(const std::string &uri) {
     const char *descriptionURI = getDescriptionURI();
     if (descriptionURI == NULL)
       return false;
@@ -285,8 +256,7 @@ public:
     return descriptionURIStr.equals(uri);
   }
 
-  const char *getDescriptionFilePath(std::string &buf)
-  {
+  const char *getDescriptionFilePath(std::string &buf) {
     const char *descriptionFileName = getDescriptionFile();
     if (descriptionFileName == NULL)
       return "";
@@ -308,10 +278,8 @@ private:
   //  isDeviceNode
   ////////////////////////////////////////////////
 
-public:
-
-  static bool isDeviceNode(CyberXML::Node *node)
-  {
+ public:
+  static bool isDeviceNode(CyberXML::Node *node) {
     return node->isName(Device::ELEM_NAME);
   }
   
@@ -319,8 +287,7 @@ public:
   //  Root Device
   ////////////////////////////////////////////////
 
-  bool isRootDevice()
-  {
+  bool isRootDevice() {
     return (getRootNode() != NULL) ? true : false;
   }
   
@@ -328,13 +295,11 @@ public:
   //  Root Device
   ////////////////////////////////////////////////
 
-  void setSSDPPacket(SSDPPacket *packet)
-  {
+  void setSSDPPacket(SSDPPacket *packet) {
     getDeviceData()->setSSDPPacket(packet);
   }
 
-  SSDPPacket *getSSDPPacket()
-  {
+  SSDPPacket *getSSDPPacket() {
     if (isRootDevice() == false)
       return NULL;
     return getDeviceData()->getSSDPPacket();
@@ -344,13 +309,11 @@ public:
   //  Location 
   ////////////////////////////////////////////////
 
-  void setLocation(const std::string &value)
-  {
+  void setLocation(const std::string &value) {
     getDeviceData()->setLocation(value);
   }
 
-  const char *getLocation()
-  {
+  const char *getLocation() {
     SSDPPacket *packet = getSSDPPacket();
     if (packet != NULL) {
       std::string buf;
@@ -363,8 +326,7 @@ public:
   //  LeaseTime 
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void setLeaseTime(int value);
   int getLeaseTime();
 
@@ -372,11 +334,9 @@ public:
   //  TimeStamp 
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   long getTimeStamp();
-  long getElapsedTime()
-  {
+  long getElapsedTime() {
     return time(NULL) - getTimeStamp();
   }
 
@@ -392,21 +352,18 @@ private:
 
   void updateURLBase(const std::string &host);
 
-public:
-
+ public:
   const char *getURLBase();
 
   ////////////////////////////////////////////////
   //  deviceType
   ////////////////////////////////////////////////
 
-  void setDeviceType(const std::string &value)
-  {
+  void setDeviceType(const std::string &value) {
     getDeviceNode()->setNode(DEVICE_TYPE, value);
   }
 
-  const char *getDeviceType()
-  {
+  const char *getDeviceType() {
     return getDeviceNode()->getNodeValue(DEVICE_TYPE);
   }
 
@@ -416,13 +373,11 @@ public:
   //  friendlyName
   ////////////////////////////////////////////////
 
-  void setFriendlyName(const std::string &value)
-  {
+  void setFriendlyName(const std::string &value) {
     getDeviceNode()->setNode(FRIENDLY_NAME, value);
   }
 
-  const char *getFriendlyName()
-  {
+  const char *getFriendlyName() {
     return getDeviceNode()->getNodeValue(FRIENDLY_NAME);
   }
 
@@ -430,13 +385,11 @@ public:
   //  manufacture
   ////////////////////////////////////////////////
   
-  void setManufacturer(const std::string &value)
-  {
+  void setManufacturer(const std::string &value) {
     getDeviceNode()->setNode(MANUFACTURER, value);
   }
 
-  const char *getManufacturer()
-  {
+  const char *getManufacturer() {
     return getDeviceNode()->getNodeValue(MANUFACTURER);
   }
 
@@ -444,13 +397,11 @@ public:
   //  manufactureURL
   ////////////////////////////////////////////////
 
-  void setManufacturerURL(const std::string &value)
-  {
+  void setManufacturerURL(const std::string &value) {
     getDeviceNode()->setNode(MANUFACTURER_URL, value);
   }
 
-  const char *getManufacturerURL()
-  {
+  const char *getManufacturerURL() {
     return getDeviceNode()->getNodeValue(MANUFACTURER_URL);
   }
 
@@ -458,13 +409,11 @@ public:
   //  modelDescription
   ////////////////////////////////////////////////
 
-  void setModelDescription(const std::string &value)
-  {
+  void setModelDescription(const std::string &value) {
     getDeviceNode()->setNode(MODEL_DESCRIPTION, value);
   }
 
-  const char *getModelDescription()
-  {
+  const char *getModelDescription() {
     return getDeviceNode()->getNodeValue(MODEL_DESCRIPTION);
   }
 
@@ -472,13 +421,11 @@ public:
   //  modelName
   ////////////////////////////////////////////////
 
-  void setModelName(const std::string &value)
-  {
+  void setModelName(const std::string &value) {
     getDeviceNode()->setNode(MODEL_NAME, value);
   }
 
-  const char *getModelName()
-  {
+  const char *getModelName() {
     return getDeviceNode()->getNodeValue(MODEL_NAME);
   }
 
@@ -486,13 +433,11 @@ public:
   //  modelNumber
   ////////////////////////////////////////////////
 
-  void setModelNumber(const std::string &value)
-  {
+  void setModelNumber(const std::string &value) {
     getDeviceNode()->setNode(MODEL_NUMBER, value);
   }
 
-  const char *getModelNumber()
-  {
+  const char *getModelNumber() {
     return getDeviceNode()->getNodeValue(MODEL_NUMBER);
   }
 
@@ -500,13 +445,11 @@ public:
   //  modelURL
   ////////////////////////////////////////////////
 
-  void setModelURL(const std::string &value)
-  {
+  void setModelURL(const std::string &value) {
     getDeviceNode()->setNode(MODEL_URL, value);
   }
 
-  const char *getModelURL()
-  {
+  const char *getModelURL() {
     return getDeviceNode()->getNodeValue(MODEL_URL);
   }
 
@@ -514,13 +457,11 @@ public:
   //  serialNumber
   ////////////////////////////////////////////////
 
-  void setSerialNumber(const std::string &value)
-  {
+  void setSerialNumber(const std::string &value) {
     getDeviceNode()->setNode(SERIAL_NUMBER, value);
   }
 
-  const char *getSerialNumber()
-  {
+  const char *getSerialNumber() {
     return getDeviceNode()->getNodeValue(SERIAL_NUMBER);
   }
 
@@ -528,18 +469,15 @@ public:
   //  UDN
   ////////////////////////////////////////////////
 
-  void setUDN(const std::string &value)
-  {
+  void setUDN(const std::string &value) {
     getDeviceNode()->setNode(UDN, value);
   }
 
-  const char *getUDN()
-  {
+  const char *getUDN() {
     return getDeviceNode()->getNodeValue(UDN);
   }
 
-  bool hasUDN()
-  {
+  bool hasUDN() {
     const char *udn = getUDN();
     if (udn == NULL)
       return false;
@@ -553,13 +491,11 @@ public:
   //  UPC
   ////////////////////////////////////////////////
 
-  void setUPC(const std::string &value)
-  {
+  void setUPC(const std::string &value) {
     getDeviceNode()->setNode(UPC, value);
   }
 
-  const char *getUPC()
-  {
+  const char *getUPC() {
     return getDeviceNode()->getNodeValue(UPC);
   }
 
@@ -567,13 +503,11 @@ public:
   //  presentationURL
   ////////////////////////////////////////////////
 
-  void setPresentationURL(const std::string &value)
-  {
+  void setPresentationURL(const std::string &value) {
     getDeviceNode()->setNode(presentationURL, value);
   }
 
-  const char *getPresentationURL()
-  {
+  const char *getPresentationURL() {
     return getDeviceNode()->getNodeValue(presentationURL);
   }
 
@@ -585,10 +519,8 @@ private:
 
   void initDeviceList();
 
-public:
-
-  DeviceList *getDeviceList()
-  {
+ public:
+  DeviceList *getDeviceList() {
     return &deviceList;
   }
 
@@ -605,18 +537,15 @@ private:
 
   void initServiceList();
 
-public:
-
-  ServiceList *getServiceList()
-  {
+ public:
+  ServiceList *getServiceList() {
     return &serviceList;
   }
 
   Service *getService(const std::string &name);
   Service *getSubscriberService(const std::string &uuid);
 
-public:
-
+ public:
   Service *getServiceBySCPDURL(const std::string &searchUrl);
   Service *getServiceByControlURL(const std::string &searchUrl);
   Service *getServiceByEventSubURL(const std::string &searchUrl);
@@ -634,8 +563,7 @@ public:
   //  Action
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   Action *getAction(const std::string &name);
 
   ////////////////////////////////////////////////
@@ -646,15 +574,12 @@ private:
 
   void initIconList();
 
-public:
-
-  IconList *getIconList()
-  {
+ public:
+  IconList *getIconList() {
     return &iconList;
   }
   
-  Icon *getIcon(int n)
-  {
+  Icon *getIcon(int n) {
     IconList *iconList = getIconList();
     if (n < 0 && ((int)iconList->size()-1) < n)
       return NULL;
@@ -665,8 +590,7 @@ public:
   //  Notify
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   const char *getLocationURL(const std::string &host, std::string &buf);
 
 private:
@@ -676,8 +600,7 @@ private:
   const char *getNotifyDeviceTypeNT(std::string &buf);
   const char *getNotifyDeviceTypeUSN(std::string &buf);
 
-public:
-
+ public:
   static void notifyWait();
 
   void announce(const std::string &bindAddr);
@@ -690,8 +613,7 @@ public:
   //  Search
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn);
   void deviceSearchResponse(SSDPPacket *ssdpPacket);
   void deviceSearchReceived(SSDPPacket *ssdpPacket);
@@ -700,15 +622,12 @@ public:
   //  HTTP Server  
   ////////////////////////////////////////////////
 
-public:
-
-  void setHTTPPort(int port)
-  {
+ public:
+  void setHTTPPort(int port) {
     getDeviceData()->setHTTPPort(port);
   }
   
-  int getHTTPPort()
-  {
+  int getHTTPPort() {
     return getDeviceData()->getHTTPPort();
   }
 
@@ -756,8 +675,7 @@ private:
   //  Thread  
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   uHTTP::HTTPServerList *getHTTPServerList() 
   {
     return getDeviceData()->getHTTPServerList();
@@ -768,21 +686,18 @@ public:
     return getDeviceData()->getSSDPSearchSocketList();
   }
 
-  void setAdvertiser(Advertiser *adv)
-  {
+  void setAdvertiser(Advertiser *adv) {
     getDeviceData()->setAdvertiser(adv);
   }
 
-  Advertiser *getAdvertiser()
-  {
+  Advertiser *getAdvertiser() {
     return getDeviceData()->getAdvertiser();
   }
 
 public:
   
   bool start();
-  bool stop()
-  {
+  bool stop() {
     return stop(true);
   }
 
@@ -794,8 +709,7 @@ private:
   // Interface Address
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   const char *getInterfaceAddress() 
   {
     SSDPPacket *ssdpPacket = getSSDPPacket();
@@ -843,8 +757,7 @@ public:
     ps.println("iconList = " + iconList.size());
   }
 
-  public void print()
-  {
+  public void print() {
     PrintWriter pr = new PrintWriter(System.out);
     output(pr);
     pr.flush();

@@ -25,9 +25,7 @@
 #include <sstream>
 
 namespace CyberLink {
-
-class ControlResponse : public CyberSOAP::SOAPResponse
-{
+class ControlResponse : public CyberSOAP::SOAPResponse {
   UPnPStatus upnpErr;
 
 public:
@@ -43,14 +41,12 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
   
-  ControlResponse()
-  {
+  ControlResponse() {
     std::string serverName;
     setServer(UPnP::GetServerName(serverName));
   }
 
-  ControlResponse(CyberSOAP::SOAPResponse *soapRes)
-  {
+  ControlResponse(CyberSOAP::SOAPResponse *soapRes) {
     set(soapRes);
   }
 
@@ -61,8 +57,7 @@ public:
 public:
   
   void setFaultResponse(int errCode, const std::string &errDescr);
-  void setFaultResponse(int errCode)
-  {
+  void setFaultResponse(int errCode) {
     setFaultResponse(errCode, UPnP::StatusCode2String(errCode));
   }
 
@@ -76,34 +71,29 @@ private:
 
 private:
 
-  CyberXML::Node *getUPnPErrorNode()
-  {
+  CyberXML::Node *getUPnPErrorNode() {
     CyberXML::Node *detailNode = getFaultDetailNode();
     if (detailNode == NULL)
       return NULL;
     return detailNode->getNodeEndsWith(CyberSOAP::SOAP::UPNP_ERROR);
   }
 
-  CyberXML::Node *getUPnPErrorCodeNode()
-  {
+  CyberXML::Node *getUPnPErrorCodeNode() {
     CyberXML::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
     return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_CODE);
   }
 
-  CyberXML::Node *getUPnPErrorDescriptionNode()
-  {
+  CyberXML::Node *getUPnPErrorDescriptionNode() {
     CyberXML::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
     return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_DESCRIPTION);
   }
 
-public:
-
-  int getUPnPErrorCode()
-  {
+ public:
+  int getUPnPErrorCode() {
     CyberXML::Node *errorCodeNode = getUPnPErrorCodeNode();
     if (errorCodeNode == NULL)
       return -1;
@@ -111,16 +101,14 @@ public:
     return atoi(errorCodeStr);
   }
 
-  const char *getUPnPErrorDescription()
-  {
+  const char *getUPnPErrorDescription() {
     CyberXML::Node *errorDescNode = getUPnPErrorDescriptionNode();
     if (errorDescNode == NULL)
       return "";
     return errorDescNode->getValue();
   }
 
-  UPnPStatus *getUPnPError()
-  {
+  UPnPStatus *getUPnPError() {
     upnpErr.setCode(getUPnPErrorCode());
     upnpErr.setDescription(getUPnPErrorDescription());
     return &upnpErr;

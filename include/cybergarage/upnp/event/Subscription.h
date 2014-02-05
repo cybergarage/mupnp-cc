@@ -19,9 +19,7 @@
 #include <string>
 
 namespace CyberLink {
-
 namespace Subscription {
-
 const char XMLNS[] = "urn:schemas-upnp-org:event-1-0";
 const char TIMEOUT_HEADER[] = "Second-";
 const char INFINITE_STRING[]= "infinite";

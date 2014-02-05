@@ -19,11 +19,9 @@
 #include <uhttp/util/Vector.h>
 
 namespace CyberLink {
-
 class StateVariable;
 
-class ServiceStateTable : public uHTTP::Vector 
-{
+class ServiceStateTable : public uHTTP::Vector  {
 public:
   ////////////////////////////////////////////////
   //  Constants
@@ -49,8 +47,7 @@ public:
   //  Methods
   ////////////////////////////////////////////////
   
-  StateVariable *getStateVariable(int n)
-  {
+  StateVariable *getStateVariable(int n) {
     return (StateVariable *)get(n);
   }
 

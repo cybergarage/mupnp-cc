@@ -23,18 +23,14 @@
 #include <cybergarage/upnp/ssdp/SSDPResponse.h>
 
 namespace CyberLink {
-
-class SSDPSearchResponse : public SSDPResponse
-{
-
+class SSDPSearchResponse : public SSDPResponse {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
 public:
   
-  SSDPSearchResponse()
-  {
+  SSDPSearchResponse() {
     setStatusCode(uHTTP::HTTP::OK_REQUEST);
     setCacheControl(Device::DEFAULT_LEASE_TIME);
     std::string buf;

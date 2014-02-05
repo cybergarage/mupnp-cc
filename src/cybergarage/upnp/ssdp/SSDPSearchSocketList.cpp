@@ -24,12 +24,10 @@ using namespace CyberLink;
 // Constructor
 ////////////////////////////////////////////////
 
-SSDPSearchSocketList::SSDPSearchSocketList() 
-{
+SSDPSearchSocketList::SSDPSearchSocketList()  {
 }
 
-SSDPSearchSocketList::~SSDPSearchSocketList() 
-{
+SSDPSearchSocketList::~SSDPSearchSocketList()  {
   stop();
   close();
 }
@@ -38,8 +36,7 @@ SSDPSearchSocketList::~SSDPSearchSocketList()
 // addSearchListener
 ////////////////////////////////////////////////
   
-void SSDPSearchSocketList::addSearchListener(SearchListener *listener)
-{
+void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
   int nServers = size();
   for (int n=0; n<nServers; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
@@ -51,8 +48,7 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener)
 // open/close
 ////////////////////////////////////////////////
   
-bool SSDPSearchSocketList::open() 
-{
+bool SSDPSearchSocketList::open()  {
   int nHostAddrs = uHTTP::GetNHostAddresses();
   for (int n=0; n<nHostAddrs; n++) {
     std::string bindAddrStr;
@@ -63,8 +59,7 @@ bool SSDPSearchSocketList::open()
   return true;
 }
 
-void SSDPSearchSocketList::close()
-{
+void SSDPSearchSocketList::close() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
@@ -77,8 +72,7 @@ void SSDPSearchSocketList::close()
 // start/stop
 ////////////////////////////////////////////////
   
-void SSDPSearchSocketList::start()
-{
+void SSDPSearchSocketList::start() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
@@ -86,8 +80,7 @@ void SSDPSearchSocketList::start()
   }
 }
 
-void SSDPSearchSocketList::stop()
-{
+void SSDPSearchSocketList::stop() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
@@ -99,8 +92,7 @@ void SSDPSearchSocketList::stop()
 // clear
 ////////////////////////////////////////////////
 
-void SSDPSearchSocketList::clear()
-{
+void SSDPSearchSocketList::clear() {
   int nSockets = size();
   for (int n=0; n<nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);

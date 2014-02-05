@@ -19,13 +19,10 @@
 #include <uhttp/util/Vector.h>
 
 namespace CyberLink {
-
 class Action;
 
-class ActionList : public uHTTP::Vector 
-{
-public:
-
+class ActionList : public uHTTP::Vector  {
+ public:
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
@@ -50,8 +47,7 @@ public:
   //  Methods
   ////////////////////////////////////////////////
   
-  Action *getAction(int n)
-  {
+  Action *getAction(int n) {
     return (Action*)get(n);
   }
 

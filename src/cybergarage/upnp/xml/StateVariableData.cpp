@@ -22,13 +22,11 @@ using namespace CyberLink;
 // value
 ////////////////////////////////////////////////
 
-StateVariableData::StateVariableData() 
-{
+StateVariableData::StateVariableData()  {
   queryRes = NULL;
 }
 
-StateVariableData::~StateVariableData()
-{
+StateVariableData::~StateVariableData() {
   if (queryRes != NULL)
     delete queryRes;
 }
@@ -37,8 +35,7 @@ StateVariableData::~StateVariableData()
 // QueryResponse
 ////////////////////////////////////////////////
 
-void StateVariableData::setQueryResponse(QueryResponse *res) 
-{
+void StateVariableData::setQueryResponse(QueryResponse *res)  {
   if (queryRes != NULL)
     delete queryRes;
   queryRes = res;

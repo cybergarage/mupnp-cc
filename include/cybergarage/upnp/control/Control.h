@@ -20,9 +20,7 @@
 #include <cybergarage/xml/Node.h>
 
 namespace CyberLink{
-
 namespace Control {
-
 const char NS[] = "u";
 const char QUERY_SOAPACTION[] = "urn:schemas-upnp-org:control-1-0#QueryStateVariable";
 const char XMLNS[] = "urn:schemas-upnp-org:control-1-0";

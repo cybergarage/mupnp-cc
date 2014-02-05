@@ -17,34 +17,28 @@
 #define _CXML_XMLNODEDATA_H_
 
 namespace CyberXML {
-
 class Node;
 
-class NodeData
-{
+class NodeData {
   Node *node;
 
 public:
   
-  NodeData()
-  {
+  NodeData() {
   }
 
-  virtual ~NodeData()
-  {
+  virtual ~NodeData() {
   }
 
   ////////////////////////////////////////////////
   // node
   ////////////////////////////////////////////////
 
-  void setNode(CyberXML::Node *node)
-  {
+  void setNode(CyberXML::Node *node) {
     this->node = node;
   }
 
-  CyberXML::Node *getNode()
-  {
+  CyberXML::Node *getNode() {
     return node;
   }
 

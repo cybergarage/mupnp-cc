@@ -20,18 +20,14 @@
 #include <uhttp/util/StringUtil.h>
 
 namespace CyberXML {
-
 class Node;
 
-class NodeList : public uHTTP::Vector
-{
-
+class NodeList : public uHTTP::Vector {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   NodeList();
   virtual ~NodeList();
   
@@ -39,8 +35,7 @@ public:
   //  Methods
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool addNode(Node *node);
   bool removeNode(Node *node);
   bool insertNode(Node *node, int index);
@@ -54,8 +49,7 @@ public:
   //  clear
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void clear();
 };
 

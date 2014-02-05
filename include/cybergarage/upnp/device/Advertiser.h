@@ -19,19 +19,15 @@
 #include <uhttp/util/Thread.h>
 
 namespace CyberLink {
-
 class Device;
 
-class Advertiser : public uHTTP::Thread
-{
+class Advertiser : public uHTTP::Thread {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
-  Advertiser(Device *dev)
-  {
+ public:
+  Advertiser(Device *dev) {
     setDevice(dev);
   }
   
@@ -43,15 +39,12 @@ private:
   
   Device *device;
 
-public:
-
-  void setDevice(Device *dev)
-  {
+ public:
+  void setDevice(Device *dev) {
     device = dev;
   }
   
-  Device *getDevice()
-  {
+  Device *getDevice() {
     return device;
   }
 
@@ -59,8 +52,7 @@ public:
   //  Thread
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void run();
 
 };

@@ -47,8 +47,7 @@ const char *NotifyRequest::PROPERTYSET = "propertyset";
 //  PropetySet
 ////////////////////////////////////////////////
 
-bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, const std::string &value)
-{
+bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, const std::string &value) {
   //const char *callback = sub->getDeliveryURL();
   const char *sid = sub->getSID();
   long notifyCnt = sub->getNotifyCount();
@@ -72,8 +71,7 @@ bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, cons
 }
 
 
-CyberXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value)
-{
+CyberXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value) {
   string propSetXmlNs;
   //propSetXmlNs.append(XMLNS)
   //propSetXmlNs.append(CyberSOAP::SOAP::DELIM)
@@ -95,8 +93,7 @@ CyberXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName,
   return propSetNode;
 }
 
-CyberXML::Node *NotifyRequest::getVariableNode()
-{
+CyberXML::Node *NotifyRequest::getVariableNode() {
   Node *rootNode = getEnvelopeNode();
   if (rootNode == NULL)
     return NULL;
@@ -113,8 +110,7 @@ CyberXML::Node *NotifyRequest::getVariableNode()
 ////////////////////////////////////////////////
 
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)
-Property *NotifyRequest::getProperty(Node *varNode)
-{
+Property *NotifyRequest::getProperty(Node *varNode) {
   Property *prop = new Property();
   if (varNode == NULL) {
     prop->setName("");
@@ -132,8 +128,7 @@ Property *NotifyRequest::getProperty(Node *varNode)
 }
 
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)
-PropertyList *NotifyRequest::getPropertyList() 
-{
+PropertyList *NotifyRequest::getPropertyList()  {
   propList.clear();
   Node *propSetNode = getEnvelopeNode();
   for (int i = 0; i<propSetNode->getNNodes(); i++){

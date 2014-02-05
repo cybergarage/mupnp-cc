@@ -24,12 +24,9 @@
 #include <cybergarage/xml/Node.h>
 
 namespace CyberSOAP {
-
 const char SOAPACTION[] = "SOAPACTION";
 
-class SOAPRequest : public uHTTP::HTTPRequest
-{
-
+class SOAPRequest : public uHTTP::HTTPRequest {
   CyberXML::Node *rootNode;
   SOAPResponse soapRes;
     
@@ -37,8 +34,7 @@ class SOAPRequest : public uHTTP::HTTPRequest
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   SOAPRequest();
   SOAPRequest(uHTTP::HTTPRequest *httpReq);
 
@@ -48,15 +44,12 @@ public:
   // SOAPACTION
   ////////////////////////////////////////////////
 
-public:
-
-  void setSOAPAction(const std::string &action)
-  {
+ public:
+  void setSOAPAction(const std::string &action) {
     setStringHeader(SOAPACTION, action);
   }
   
-  const char *getSOAPAction(std::string &buf)
-  {
+  const char *getSOAPAction(std::string &buf) {
     return getStringHeaderValue(SOAPACTION, buf);
   }
 
@@ -66,10 +59,8 @@ public:
   //  Header
   ////////////////////////////////////////////////
 
-public:
-
-  const char *getHeader(std::string &buf)
-  {
+ public:
+  const char *getHeader(std::string &buf) {
     return SOAP::GetHeader(getContent(), buf);
   }
 
@@ -77,15 +68,12 @@ public:
   //  Encoding
   ////////////////////////////////////////////////
 
-public:
-
-  const char *getEncording(std::string &buf)
-  {
+ public:
+  const char *getEncording(std::string &buf) {
     return SOAP::GetEncording(getContent(), buf);
   }
 
-  bool isEncording(const std::string &encType)
-  {
+  bool isEncording(const std::string &encType) {
     return SOAP::IsEncording(getContent(), encType);
   }
 
@@ -97,12 +85,10 @@ private:
 
   CyberXML::Node *parseMessage(const std::string &content, size_t contentLen);
 
-public:
-
+ public:
   SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
 
-  SOAPResponse *postMessage(const std::string &host, int port)
-  {
+  SOAPResponse *postMessage(const std::string &host, int port) {
     return postMessage(host, port, &soapRes);
   }
 
@@ -112,8 +98,7 @@ public:
 
 private:
 
-  void setRootNode(CyberXML::Node *node)
-  {
+  void setRootNode(CyberXML::Node *node) {
     rootNode = node;
   }
 
@@ -123,20 +108,16 @@ private:
   //  XML
   ////////////////////////////////////////////////
 
-public:
-
-  void setEnvelopeNode(CyberXML::Node *node)
-  {
+ public:
+  void setEnvelopeNode(CyberXML::Node *node) {
     setRootNode(node);
   }
   
-  CyberXML::Node *getEnvelopeNode()
-  {
+  CyberXML::Node *getEnvelopeNode() {
     return getRootNode();
   }
     
-  CyberXML::Node *getBodyNode()
-  {
+  CyberXML::Node *getBodyNode() {
     CyberXML::Node *envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
@@ -149,16 +130,14 @@ public:
   //  SOAP UPnP
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void setContent(CyberXML::Node *node);
 
   ////////////////////////////////////////////////
   //  print
   ////////////////////////////////////////////////
 /*  
-  public void print()
-  {
+  public void print() {
     System.out.println(toString());
     if (hasContent() == true)
       return;

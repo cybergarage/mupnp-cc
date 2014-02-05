@@ -34,9 +34,7 @@
 #include <cybergarage/upnp/control/RenewSubscriber.h>
 
 namespace CyberLink {
-
-class ControlPoint : public uHTTP::HTTPRequestListener
-{
+class ControlPoint : public uHTTP::HTTPRequestListener {
   SSDPNotifySocketList ssdpNotifySocketList;
   SSDPSearchResponseSocketList ssdpSearchResponseSocketList;
   SSDPSearchResponseSocket ssdpSearchResponseSocket;
@@ -67,8 +65,7 @@ class ControlPoint : public uHTTP::HTTPRequestListener
   bool nmprMode;
   RenewSubscriber *renewSubscriber;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
@@ -84,18 +81,15 @@ private:
   //  Member
   ////////////////////////////////////////////////
 
-  SSDPNotifySocketList *getSSDPNotifySocketList()
-  {
+  SSDPNotifySocketList *getSSDPNotifySocketList() {
     return &ssdpNotifySocketList;
   }
   
-  SSDPSearchResponseSocketList *getSSDPSearchResponseSocketList()
-  {
+  SSDPSearchResponseSocketList *getSSDPSearchResponseSocketList() {
     return &ssdpSearchResponseSocketList;
   }
 
-  SSDPSearchResponseSocket *getSSDPSearchResponseSocket()
-  {
+  SSDPSearchResponseSocket *getSSDPSearchResponseSocket() {
     return &ssdpSearchResponseSocket;
   }
   
@@ -103,8 +97,7 @@ private:
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   ControlPoint(int ssdpPort = DEFAULT_SSDP_PORT, int httpPort = DEFAULT_EVENTSUB_PORT);
   virtual ~ControlPoint();
 
@@ -112,8 +105,7 @@ public:
   //  Port (SSDP)
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   int getSSDPPort() {
     return ssdpPort;
   }
@@ -126,8 +118,7 @@ public:
   //  Port (EventSub)
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   int getHTTPPort() {
     return httpPort;
   }
@@ -140,15 +131,12 @@ public:
   //  NMPR
   ////////////////////////////////////////////////
 
-public:
-
-  void setNMPRMode(bool flag)
-  {
+ public:
+  void setNMPRMode(bool flag) {
     nmprMode = flag;
   }
 
-  bool isNMPRMode()
-  {
+  bool isNMPRMode() {
     return nmprMode;
   }
 
@@ -165,19 +153,16 @@ private:
   
   void initDeviceList();
 
-public:
-
+ public:
   Device *getDevice(CyberXML::Node *rootNode);
 
-  DeviceList *getDeviceList()
-  {
+  DeviceList *getDeviceList() {
     return &deviceList;
   }
 
   Device *getDevice(const std::string &name);
 
-  bool hasDevice(const std::string &name)
-  {
+  bool hasDevice(const std::string &name) {
     return (getDevice(name) != NULL) ? true : false;
   }
 
@@ -192,27 +177,22 @@ private:
   //  Expired Device
   ////////////////////////////////////////////////
 
-public:
-
-  void setExpiredDeviceMonitoringInterval(long interval)
-  {
+ public:
+  void setExpiredDeviceMonitoringInterval(long interval) {
     expiredDeviceMonitoringInterval = interval;
   }
 
-  long getExpiredDeviceMonitoringInterval()
-  {
+  long getExpiredDeviceMonitoringInterval() {
     return expiredDeviceMonitoringInterval;
   }
   
-  void setDeviceDisposer(Disposer *disposer)
-  {
+  void setDeviceDisposer(Disposer *disposer) {
     if (deviceDisposer != NULL)
       delete deviceDisposer;
     deviceDisposer = disposer;
   }
   
-  Disposer *getDeviceDisposer()
-  {
+  Disposer *getDeviceDisposer() {
     return deviceDisposer;
   }
 
@@ -224,15 +204,12 @@ public:
   //  Notify
   ////////////////////////////////////////////////
 
-public:
-
-  void addNotifyListener(NotifyListener *listener)
-  {
+ public:
+  void addNotifyListener(NotifyListener *listener) {
     deviceNotifyListenerList.add(listener);
   }    
 
-  void removeNotifyListener(NotifyListener *listener)
-  {
+  void removeNotifyListener(NotifyListener *listener) {
     deviceNotifyListenerList.remove(listener);
   }    
 
@@ -242,15 +219,12 @@ public:
   //  SearchResponse
   ////////////////////////////////////////////////
 
-public:
-
-  void addSearchResponseListener(SearchResponseListener *listener)
-  {
+ public:
+  void addSearchResponseListener(SearchResponseListener *listener) {
     deviceSearchResponseListenerList.add(listener);
   }    
 
-  void removeSearchResponseListener(SearchResponseListener *listener)
-  {
+  void removeSearchResponseListener(SearchResponseListener *listener) {
     deviceSearchResponseListenerList.remove(listener);
   }    
 
@@ -261,15 +235,12 @@ public:
   //  Thanks for Oliver Newell (2004/10/16)
   ////////////////////////////////////////////////
 
-public:
-
-  void addDeviceChangeListener(DeviceChangeListener *listener)
-  {
+ public:
+  void addDeviceChangeListener(DeviceChangeListener *listener) {
     deviceChangeListenerList.add(listener);
   }    
 
-  void removeDeviceChangeListener(DeviceChangeListener *listener)
-  {
+  void removeDeviceChangeListener(DeviceChangeListener *listener) {
     deviceChangeListenerList.remove(listener);
   }    
 
@@ -280,8 +251,7 @@ public:
   //  SSDPPacket
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void notifyReceived(SSDPPacket *packet);
   void searchResponseReceived(SSDPPacket *packet);
 
@@ -289,10 +259,8 @@ public:
   //  M-SEARCH
   ////////////////////////////////////////////////
 
-public:
-
-  int getSearchMx()
-  {
+ public:
+  int getSearchMx() {
     return searchMx;
   }
 
@@ -303,13 +271,11 @@ public:
 
   void search(const std::string &target, int mx);
 
-  void search(const std::string &target)
-  {
+  void search(const std::string &target) {
     search(target, SSDP::DEFAULT_MSEARCH_MX);
   }
 
-  void search()
-  {
+  void search() {
     search(ST::ROOT_DEVICE, SSDP::DEFAULT_MSEARCH_MX);
   }
 
@@ -319,8 +285,7 @@ public:
 
 private:
 
-  uHTTP::HTTPServerList *getHTTPServerList()
-  {
+  uHTTP::HTTPServerList *getHTTPServerList() {
     return &httpServerList;
   }
 
@@ -330,20 +295,16 @@ private:
   //  Event Listener 
   ////////////////////////////////////////////////
 
-public:
-
-  void addEventListener(EventListener *listener)
-  {
+ public:
+  void addEventListener(EventListener *listener) {
     eventListenerList.add(listener);
   }    
 
-  void removeEventListener(EventListener *listener)
-  {
+  void removeEventListener(EventListener *listener) {
     eventListenerList.remove(listener);
   }    
 
-  void performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value)
-  {
+  void performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value) {
     int listenerSize = eventListenerList.size();
     for (int n=0; n<listenerSize; n++) {
       EventListener *listener = (EventListener *)eventListenerList.get(n);
@@ -357,36 +318,30 @@ public:
 
 public:  
   
-  const char *getEventSubURI()
-  {
+  const char *getEventSubURI() {
     return eventSubURI.c_str();
   }
 
-  void setEventSubURI(const std::string &url)
-  {
+  void setEventSubURI(const std::string &url) {
     eventSubURI = url;
   }
 
 private:
 
-  const char *getEventSubCallbackURL(const std::string &host, std::string &buf)
-  {
+  const char *getEventSubCallbackURL(const std::string &host, std::string &buf) {
     return uHTTP::GetHostURL(host, getHTTPPort(), getEventSubURI(), buf);
   }
 
-public:
-
+ public:
   bool subscribe(Service *service, long timeout);
 
-  bool subscribe(Service *service)
-  {
+  bool subscribe(Service *service) {
     return subscribe(service, Subscription::INFINITE_VALUE);
   }
 
   bool subscribe(Service *service, const std::string &uuid, long timeout);
 
-  bool subscribe(Service *service, const std::string &uuid)
-  {
+  bool subscribe(Service *service, const std::string &uuid) {
     return subscribe(service, uuid, Subscription::INFINITE_VALUE);
   }
 
@@ -395,8 +350,7 @@ public:
   bool unsubscribe(Service *service);
   void unsubscribe(Device *device);
 
-  void unsubscribe()
-  {
+  void unsubscribe() {
     DeviceList *devList = getDeviceList();
     int devCnt = devList->size();
     for (int n=0; n<devCnt; n++) {
@@ -409,10 +363,8 @@ public:
   //  getSubscriberService  
   ////////////////////////////////////////////////
 
-public:
-
-  Service *getSubscriberService(const std::string &uuid)
-  {
+ public:
+  Service *getSubscriberService(const std::string &uuid) {
     DeviceList *devList = getDeviceList();
     int devCnt = devList->size();
     for (int n=0; n<devCnt; n++) {
@@ -428,8 +380,7 @@ public:
   //  getSubscriberService  
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void renewSubscriberService(Device *dev, long timeout);
   void renewSubscriberService(long timeout);
   void renewSubscriberService();
@@ -438,17 +389,14 @@ public:
   //  Subscriber
   ////////////////////////////////////////////////
   
-public:
-
-  void setRenewSubscriber(RenewSubscriber *sub)
-  {
+ public:
+  void setRenewSubscriber(RenewSubscriber *sub) {
     if (renewSubscriber != NULL)
       delete renewSubscriber;
     renewSubscriber = sub;
   }
   
-  RenewSubscriber *getRenewSubscriber()
-  {
+  RenewSubscriber *getRenewSubscriber() {
     return renewSubscriber;  
   }
 
@@ -456,17 +404,14 @@ public:
   //  run  
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool start(const std::string &target, int mx);
 
-  bool start(const std::string &target)
-  {
+  bool start(const std::string &target) {
     return start(target, SSDP::DEFAULT_MSEARCH_MX);
   }
 
-  bool start()
-  {
+  bool start() {
     return start(ST::ROOT_DEVICE, SSDP::DEFAULT_MSEARCH_MX);
   }
 
@@ -476,15 +421,12 @@ public:
   //  lock
   ////////////////////////////////////////////////
 
-public:
-
-  void lock()
-  {
+ public:
+  void lock() {
     mutex.lock();
   }
 
-  void unlock()
-  {
+  void unlock() {
     mutex.unlock();
   }
 
@@ -492,8 +434,7 @@ public:
   //  print
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void print();
 };
 

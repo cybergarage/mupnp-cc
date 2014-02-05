@@ -59,8 +59,7 @@ using namespace uHTTP;
 static int parserCnt = 0;
 static Mutex parserMutex;
 
-Parser::Parser()
-{
+Parser::Parser() {
   parserMutex.lock();
   if (parserCnt == 0)
       XMLPlatformUtils::Initialize();
@@ -68,8 +67,7 @@ Parser::Parser()
   parserMutex.unlock();
 }
 
-Parser::~Parser()
-{
+Parser::~Parser() {
   parserMutex.lock();
   parserCnt--;
   if (parserCnt <= 0)
@@ -81,8 +79,7 @@ Parser::~Parser()
 //  parse (Xerces)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const char *XMLCh2Char(const XMLCh *value, string &buf)
-{
+const char *XMLCh2Char(const XMLCh *value, string &buf) {
   char *xmlChars = XMLString::transcode(value);
   if (xmlChars == NULL) {
     buf = "";
@@ -93,8 +90,7 @@ const char *XMLCh2Char(const XMLCh *value, string &buf)
   return buf.c_str();
 }
 
-Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank)
-{
+Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
   int domNodeType = domNode->getNodeType();
       
   string domNodeName;
@@ -145,8 +141,7 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank)
   return node;
 }
 
-Node *XMLParse(InputSource &inSrc)
-{
+Node *XMLParse(InputSource &inSrc) {
   Node *root = NULL;
     
   XercesDOMParser *parser = new XercesDOMParser();
@@ -178,8 +173,7 @@ Node *XMLParse(InputSource &inSrc)
 //  parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, size_t len)
-{
+Node *Parser::parse(const std::string &data, size_t len) {
   try {
     /*
     XMLCh *xmlChars = XMLString::transcode(data);

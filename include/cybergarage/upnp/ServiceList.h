@@ -19,11 +19,9 @@
 #include <uhttp/util/Vector.h>
 
 namespace CyberLink {
-
 class Service;
 
-class ServiceList : public uHTTP::Vector
-{
+class ServiceList : public uHTTP::Vector {
 public:
   ////////////////////////////////////////////////
   //  Constants
@@ -49,8 +47,7 @@ public:
   //  Methods
   ////////////////////////////////////////////////
   
-  Service *getService(int n)
-  {
+  Service *getService(int n) {
     return (Service *)get(n);
   }
 

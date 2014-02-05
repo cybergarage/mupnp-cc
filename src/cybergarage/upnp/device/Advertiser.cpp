@@ -25,8 +25,7 @@ using namespace uHTTP;
 //  Thread
 ////////////////////////////////////////////////
   
-void Advertiser::run() 
-{
+void Advertiser::run()  {
   Device *dev = getDevice();
   long leaseTime = dev->getLeaseTime();
   long notifyInterval;

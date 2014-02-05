@@ -26,17 +26,14 @@ using namespace CyberLink;
 //  Constructor
 ////////////////////////////////////////////////
 
-SSDPSearchSocket::SSDPSearchSocket()
-{
+SSDPSearchSocket::SSDPSearchSocket() {
 }
 
-SSDPSearchSocket::SSDPSearchSocket(const std::string &bindAddr)
-{
+SSDPSearchSocket::SSDPSearchSocket(const std::string &bindAddr) {
   open(bindAddr);
 }
 
-SSDPSearchSocket::~SSDPSearchSocket()
-{
+SSDPSearchSocket::~SSDPSearchSocket() {
   stop();
   close();
 }
@@ -45,8 +42,7 @@ SSDPSearchSocket::~SSDPSearchSocket()
 //  Constructor
 ////////////////////////////////////////////////
 
-bool SSDPSearchSocket::open(const std::string &bindAddr)
-{
+bool SSDPSearchSocket::open(const std::string &bindAddr) {
   const char *addr = SSDP::ADDRESS;
   useIPv6Address = false;
   if (uHTTP::IsIPv6Address(bindAddr) == true) {
@@ -60,8 +56,7 @@ bool SSDPSearchSocket::open(const std::string &bindAddr)
 //  run  
 ////////////////////////////////////////////////
 
-void SSDPSearchSocket::run()
-{
+void SSDPSearchSocket::run() {
   while (isRunnable() == true) {
     //Thread.yield();
     SSDPPacket *packet = receive();

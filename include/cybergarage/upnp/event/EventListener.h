@@ -17,9 +17,7 @@
 #define _CLINK_EVENTLISTENER_H_
 
 namespace CyberLink {
-
-class EventListener
-{
+class EventListener {
 public:
   virtual void eventNotifyReceived(const std::string &uuid, long seq, const std::string &varName, const std::string &value) = 0;
 };

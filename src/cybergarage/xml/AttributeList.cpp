@@ -20,31 +20,26 @@
 
 using namespace CyberXML;
 
-AttributeList::AttributeList() 
-{
+AttributeList::AttributeList()  {
 }
 
-AttributeList::~AttributeList() 
-{
+AttributeList::~AttributeList()  {
   clear();
 }
 
-bool AttributeList::addAttribute(Attribute *attr) 
-{
+bool AttributeList::addAttribute(Attribute *attr)  {
   if (attr == NULL)
     return false;
   return add(attr);
 }
 
-bool AttributeList::insertAttribute(Attribute *attr, int index) 
-{
+bool AttributeList::insertAttribute(Attribute *attr, int index)  {
   if (attr == NULL)
     return false;
   return insertAt(attr, index);
 }
 
-bool AttributeList::removeAttribute(Attribute *attr) 
-{
+bool AttributeList::removeAttribute(Attribute *attr)  {
   if (attr == NULL)
     return false;
   bool ret = remove(attr);
@@ -52,8 +47,7 @@ bool AttributeList::removeAttribute(Attribute *attr)
   return ret;
 }
   
-Attribute *AttributeList::getAttribute(const std::string &name) 
-{
+Attribute *AttributeList::getAttribute(const std::string &name)  {
   int nLists = size(); 
   for (int n=0; n<nLists; n++) {
     Attribute *elem = getAttribute(n);
@@ -63,8 +57,7 @@ Attribute *AttributeList::getAttribute(const std::string &name)
   return NULL;
 }
 
-void AttributeList::clear()
-{
+void AttributeList::clear() {
   int nLists = size(); 
   for (int n=0; n<nLists; n++) {
     Attribute *attr = getAttribute(n);

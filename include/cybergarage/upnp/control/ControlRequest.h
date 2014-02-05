@@ -22,23 +22,18 @@
 #include <sstream>
 
 namespace CyberLink {
-
 class Service;
 
-class ControlRequest : public CyberSOAP::SOAPRequest
-{
-
+class ControlRequest : public CyberSOAP::SOAPRequest {
 public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-  ControlRequest()
-  {
+  ControlRequest() {
   }
 
-  ControlRequest(uHTTP::HTTPRequest *httpReq)
-  {
+  ControlRequest(uHTTP::HTTPRequest *httpReq) {
     set(httpReq);
   }
 
@@ -46,13 +41,11 @@ public:
   //  Query
   ////////////////////////////////////////////////
 
-  bool isQueryControl()
-  {
+  bool isQueryControl() {
     return isSOAPAction(Control::QUERY_SOAPACTION);
   }
   
-  bool isActionControl()
-  {
+  bool isActionControl() {
     return !isQueryControl();
   }
 

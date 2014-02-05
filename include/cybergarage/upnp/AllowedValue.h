@@ -19,9 +19,7 @@
 #include <cybergarage/xml/Node.h>
 
 namespace CyberLink{
-
-class AllowedValue
-{
+class AllowedValue {
   CyberXML::Node *allowedValueNode;
   
   ////////////////////////////////////////////////
@@ -34,15 +32,12 @@ class AllowedValue
   //  Member
   ////////////////////////////////////////////////
 
-public:
-
-  void setAllowedValueNode(CyberXML::Node *node)
-  {
+ public:
+  void setAllowedValueNode(CyberXML::Node *node) {
     allowedValueNode = node;
   }
 
-  CyberXML::Node *getAllowedValueNode()
-  {
+  CyberXML::Node *getAllowedValueNode() {
     return allowedValueNode;
   }
 
@@ -52,13 +47,11 @@ public:
 
 public:
   
-  AllowedValue()
-  {
+  AllowedValue() {
     setAllowedValueNode(NULL);
   }
 
-  AllowedValue(CyberXML::Node *node)
-  {
+  AllowedValue(CyberXML::Node *node) {
     setAllowedValueNode(node);
   }
 
@@ -66,10 +59,8 @@ public:
   //  isAllowedValueNode
   ////////////////////////////////////////////////
 
-public:
-
-  static bool isAllowedValueNode(CyberXML::Node *node)
-  {
+ public:
+  static bool isAllowedValueNode(CyberXML::Node *node) {
     return node->isName(AllowedValue::ELEM_NAME);
   }
 
@@ -77,15 +68,12 @@ public:
   //  minimum
   ////////////////////////////////////////////////
 
-public:
-
-  void setValue(const std::string &value)
-  {
+ public:
+  void setValue(const std::string &value) {
     getAllowedValueNode()->setValue(value);
   }
 
-  const char *getValue()
-  {
+  const char *getValue() {
     return getAllowedValueNode()->getValue();
   }
   

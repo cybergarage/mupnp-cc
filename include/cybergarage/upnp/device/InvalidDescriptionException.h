@@ -19,18 +19,13 @@
 #include <uhttp/util/Exception.h>
 
 namespace CyberLink {
-
 const char INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND[] = "File not found";
 
-class InvalidDescriptionException : public uHTTP::Exception
-{
-
+class InvalidDescriptionException : public uHTTP::Exception {
   std::string errMsg;
   
-public:
-
-  InvalidDescriptionException(const std::string &msg) : Exception(msg)
-  {
+ public:
+  InvalidDescriptionException(const std::string &msg) : Exception(msg) {
   }
 
 };

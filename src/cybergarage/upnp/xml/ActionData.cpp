@@ -25,14 +25,12 @@ using namespace CyberXML;
 // Constructor
 ////////////////////////////////////////////////
 
-ActionData::ActionData() 
-{
+ActionData::ActionData()  {
   setActionListener(NULL);
   ctrlRes = NULL;
 }
 
-ActionData::~ActionData() 
-{
+ActionData::~ActionData()  {
   if (ctrlRes != NULL)
     delete ctrlRes;
 }
@@ -41,8 +39,7 @@ ActionData::~ActionData()
 // ControlResponse
 ////////////////////////////////////////////////
 
-void ActionData::setControlResponse(ControlResponse *res) 
-{
+void ActionData::setControlResponse(ControlResponse *res)  {
   if (ctrlRes != NULL)
     delete ctrlRes;
   ctrlRes = res;

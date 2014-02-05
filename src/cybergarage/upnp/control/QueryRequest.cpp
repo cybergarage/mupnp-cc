@@ -32,8 +32,7 @@ using namespace CyberXML;
 //  setRequest
 ////////////////////////////////////////////////
   
-void QueryRequest::setRequest(StateVariable *stateVar)
-{
+void QueryRequest::setRequest(StateVariable *stateVar) {
   Service *service = stateVar->getService();    
     
   setRequestHost(service);
@@ -52,8 +51,7 @@ void QueryRequest::setRequest(StateVariable *stateVar)
 //  Contents
 ////////////////////////////////////////////////
 
-CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar)
-{
+CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
   CyberXML::Node *queryVarNode = new CyberXML::Node();
   queryVarNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE);
   queryVarNode->setNameSpace(Control::NS, Control::XMLNS);
@@ -70,8 +68,7 @@ CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar)
 //  getVarName
 ////////////////////////////////////////////////
 
-CyberXML::Node *QueryRequest::getVarNameNode()
-{
+CyberXML::Node *QueryRequest::getVarNameNode() {
   CyberXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
@@ -85,8 +82,7 @@ CyberXML::Node *QueryRequest::getVarNameNode()
   return queryStateVarNode->getNode(0);
 }
   
-const char *QueryRequest::getVarName()
-{
+const char *QueryRequest::getVarName() {
   CyberXML::Node *node = getVarNameNode();
   if (node == NULL)
     return "";
@@ -97,8 +93,7 @@ const char *QueryRequest::getVarName()
 //  post
 ////////////////////////////////////////////////
 
-QueryResponse *QueryRequest::post(QueryResponse *queryRes)
-{
+QueryResponse *QueryRequest::post(QueryResponse *queryRes) {
   postMessage(getRequestHost(), getRequestPort(), queryRes);
   return queryRes;
 }

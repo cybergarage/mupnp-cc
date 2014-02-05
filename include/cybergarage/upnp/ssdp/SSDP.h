@@ -17,9 +17,7 @@
 #define _CLINK_SSDP_H_
 
 namespace CyberLink {
-
 namespace SSDP {
-
 const int PORT = 1900;
   
 const char ADDRESS[] = "239.255.255.250";

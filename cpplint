@@ -1,0 +1,2 @@
+#!/bin/sh
+find . -name "*.h" -print -or -name "*.cpp" -print | xargs cpplint.py --linelength=200

@@ -19,9 +19,7 @@
 #include <string>
 
 namespace CyberLink {
-
 namespace NTS {
-
 const char ALIVE[] = "ssdp:alive";
 const char BYEBYE[] = "ssdp:byebye";
 const char PROPCHANGE[] = "upnp:propchange";

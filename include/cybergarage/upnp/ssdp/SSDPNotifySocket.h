@@ -23,16 +23,13 @@
 #include <cybergarage/upnp/ssdp/SSDPNotifyRequest.h>
 
 namespace CyberLink {
-
 class ControlPoint;
 
-class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread
-{
+class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
   ControlPoint *controlPoint;
   bool useIPv6Address;
 
-public:
-
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
@@ -44,13 +41,11 @@ public:
   //  ControlPoint  
   ////////////////////////////////////////////////
   
-  void setControlPoint(ControlPoint *ctrlp)
-  {
+  void setControlPoint(ControlPoint *ctrlp) {
     controlPoint = ctrlp;
   }
 
-  ControlPoint *getControlPoint()
-  {
+  ControlPoint *getControlPoint() {
     return controlPoint;
   }
 

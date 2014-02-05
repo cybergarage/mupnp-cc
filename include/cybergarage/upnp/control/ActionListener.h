@@ -19,11 +19,9 @@
 //#include <cybergarage/upnp/Action.h>
 
 namespace CyberLink {
-
 class Action;
 
-class ActionListener
-{
+class ActionListener {
 public:
   virtual bool actionControlReceived(Action *action) = 0;
 };

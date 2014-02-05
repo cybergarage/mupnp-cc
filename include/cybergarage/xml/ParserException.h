@@ -19,13 +19,9 @@
 #include <uhttp/util/Exception.h>
 
 namespace CyberXML {
-
-class ParserException : public uHTTP::Exception
-{
-public:
-
-  ParserException(const std::string &msg) : Exception(msg)
-  {
+class ParserException : public uHTTP::Exception {
+ public:
+  ParserException(const std::string &msg) : Exception(msg) {
   }
   
 };

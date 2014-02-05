@@ -28,8 +28,7 @@ const char *DeviceList::ELEM_NAME = "deviceList";
 //  Methods
 ////////////////////////////////////////////////
 
-void DeviceList::clear() 
-{
+void DeviceList::clear()  {
   int nDev = size();
   for (int n=0; n<nDev; n++) {
     Device *dev = getDevice(n);

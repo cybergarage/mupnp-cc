@@ -19,19 +19,15 @@
 #include <uhttp/util/Thread.h>
 
 namespace CyberLink {
-
 class ControlPoint;
 
-class Disposer : public uHTTP::Thread
-{
+class Disposer : public uHTTP::Thread {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
-  Disposer(ControlPoint *ctrlp)
-  {
+ public:
+  Disposer(ControlPoint *ctrlp) {
     setControlPoint(ctrlp);
   }
   
@@ -43,15 +39,12 @@ private:
   
   ControlPoint *controlPoint;
 
-public:
-
-  void setControlPoint(ControlPoint *ctrlp)
-  {
+ public:
+  void setControlPoint(ControlPoint *ctrlp) {
     controlPoint = ctrlp;
   }
   
-  ControlPoint *getControlPoint()
-  {
+  ControlPoint *getControlPoint() {
     return controlPoint;
   }
 
@@ -59,8 +52,7 @@ public:
   //  Thread
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void run();
 
 };

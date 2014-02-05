@@ -19,12 +19,10 @@
 #include <string>
 
 namespace CyberLink {
-
 const char NAME[] = "CyberLinkC++";
 const char VER[]= "1.7";
 
 namespace UPnP {
-
 ////////////////////////////////////////////////
 //  Constants
 ////////////////////////////////////////////////

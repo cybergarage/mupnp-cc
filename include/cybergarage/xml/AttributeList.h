@@ -20,16 +20,12 @@
 #include <cybergarage/xml/Attribute.h>
 
 namespace CyberXML {
-
-class AttributeList : public uHTTP::Vector
-{
-
+class AttributeList : public uHTTP::Vector {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   AttributeList();
   
   ~AttributeList();
@@ -39,14 +35,12 @@ public:
   //  Methods
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool addAttribute(Attribute *attr);
   bool insertAttribute(Attribute *attr, int index);
   bool removeAttribute(Attribute *attr);
 
-  Attribute *getAttribute(int n)
-  {
+  Attribute *getAttribute(int n) {
     return (Attribute *)Vector::get(n);
   }
 
@@ -57,8 +51,7 @@ public:
   //  clear
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void clear();
 };
 

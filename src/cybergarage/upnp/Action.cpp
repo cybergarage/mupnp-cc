@@ -50,24 +50,21 @@ const char *Action::NAME = "name";
 //  Constructor
 ////////////////////////////////////////////////
 
-Action::Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode)
-{
+Action::Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode) {
   this->serviceNode = serviceNode;
   this->actionNode = actionNode;
 
   initArgumentList();
 }
 
-Action::Action(Action *action)
-{
+Action::Action(Action *action) {
   this->serviceNode = action->getServiceNode();
   this->actionNode = action->getActionNode();
 
   initArgumentList();
 }
 
-Action::~Action()
-{
+Action::~Action() {
   delete argumentList;
   delete argumentInList;
   delete argumentOutList;
@@ -77,8 +74,7 @@ Action::~Action()
 //  getService
 ////////////////////////////////////////////////
 
-Service *Action::getService()
-{
+Service *Action::getService() {
   CyberXML::Node *node = getServiceNode();
   ServiceData *data = (ServiceData *)node->getUserData();
   if (data == NULL)
@@ -90,8 +86,7 @@ Service *Action::getService()
 //  argumentList
 ////////////////////////////////////////////////
 
-void Action::initArgumentList()
-{
+void Action::initArgumentList() {
   argumentList = new ArgumentList(true);
   argumentInList = new ArgumentList(false);
   argumentOutList = new ArgumentList(false);
@@ -115,8 +110,7 @@ void Action::initArgumentList()
   } 
 }
 
-Argument *Action::getArgument(const std::string &name)
-{
+Argument *Action::getArgument(const std::string &name) {
   ArgumentList *argList = getArgumentList();
   int nArgs = argList->size();
   for (int n=0; n<nArgs; n++) {
@@ -131,8 +125,7 @@ Argument *Action::getArgument(const std::string &name)
   return NULL;
 }
 
-void Action::clearOutputAgumentValues()
-{
+void Action::clearOutputAgumentValues() {
   ArgumentList *outArgList = getOutputArgumentList();
   int nArgs = outArgList->size();
   for (int n=0; n<nArgs; n++) {
@@ -145,8 +138,7 @@ void Action::clearOutputAgumentValues()
 //  controlAction
 ////////////////////////////////////////////////
 
-bool Action::performActionListener(ActionRequest *actionReq)
-{
+bool Action::performActionListener(ActionRequest *actionReq) {
   ActionListener *listener = (ActionListener *)getActionListener();
   if (listener == NULL)
     return false;
@@ -171,8 +163,7 @@ bool Action::performActionListener(ActionRequest *actionReq)
 //  postControlAction
 ////////////////////////////////////////////////
 
-bool Action::postControlAction()
-{
+bool Action::postControlAction() {
   ArgumentList *actionArgList = getArgumentList();
   ArgumentList *actionInputArgList = getInputArgumentList();
   ActionRequest ctrlReq;

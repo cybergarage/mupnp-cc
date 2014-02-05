@@ -27,13 +27,11 @@ using namespace CyberLink;
 //  Constructor
 ////////////////////////////////////////////////
   
-Subscriber::Subscriber()
-{
+Subscriber::Subscriber() {
   renew();
 }
 
-Subscriber::~Subscriber()
-{
+Subscriber::~Subscriber() {
   renew();
 }
 
@@ -41,8 +39,7 @@ Subscriber::~Subscriber()
 //  SEQ
 ////////////////////////////////////////////////
 
-void Subscriber::incrementNotifyCount() 
-{
+void Subscriber::incrementNotifyCount()  {
   if (notifyCount == LONG_MAX) {
     notifyCount = 1;
     return;
@@ -54,8 +51,7 @@ void Subscriber::incrementNotifyCount()
 //  Timeout
 ////////////////////////////////////////////////
 
-bool Subscriber::isExpired()
-{
+bool Subscriber::isExpired() {
   long currTime = time(NULL);
     
   // Thanks for Oliver Newell (10/26/04)
@@ -74,8 +70,7 @@ bool Subscriber::isExpired()
 //  renew
 ////////////////////////////////////////////////
   
-void Subscriber::renew()
-{
+void Subscriber::renew() {
   setSubscriptionTime(time(NULL));
   setNotifyCount(0);
 }

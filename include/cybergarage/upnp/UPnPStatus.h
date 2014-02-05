@@ -21,7 +21,6 @@
 #include <string>
 
 namespace CyberLink {
-
 namespace UPnP {
 const int INVALID_ACTION = 401;
 const int INVALID_ARGS = 402;
@@ -34,27 +33,22 @@ namespace UPnP {
 const char *StatusCode2String(int code);
 }
 
-class UPnPStatus
-{
+class UPnPStatus {
   int code;
   std::string description;
   
-public:
-
-  UPnPStatus()
-  {
+ public:
+  UPnPStatus() {
     setCode(0);
     setDescription("");  
   }
 
-  UPnPStatus(int code, const std::string &desc)
-  {
+  UPnPStatus(int code, const std::string &desc) {
     setCode(code);
     setDescription(desc);  
   }
 
-public:
-
+ public:
   void setCode(int code) {
     this->code = code;
   }
@@ -63,8 +57,7 @@ public:
     this->description = description;
   }
 
-public:
-
+ public:
   const char *getDescription() {
     return description.c_str();
   }

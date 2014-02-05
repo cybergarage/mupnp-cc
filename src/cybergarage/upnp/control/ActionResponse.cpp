@@ -36,13 +36,11 @@ using namespace CyberSOAP;
 //  Constructor
 ////////////////////////////////////////////////
 
-ActionResponse::ActionResponse()
-{
+ActionResponse::ActionResponse() {
   setHeader(HTTP::EXT, "");
 }
 
-ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes)
-{
+ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes) {
   set(soapRes);
   setHeader(HTTP::EXT, "");
 }
@@ -51,8 +49,7 @@ ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes)
 //  Response
 ////////////////////////////////////////////////
 
-void ActionResponse::setResponse(CyberLink::Action *action)
-{
+void ActionResponse::setResponse(CyberLink::Action *action) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
   
   CyberXML::Node *bodyNode = getBodyNode();
@@ -63,8 +60,7 @@ void ActionResponse::setResponse(CyberLink::Action *action)
   setContent(envNode);
 }
 
-CyberXML::Node *ActionResponse::createResponseNode(CyberLink::Action *action)
-{
+CyberXML::Node *ActionResponse::createResponseNode(CyberLink::Action *action) {
   string nodeName;
   nodeName = CyberSOAP::SOAP::METHODNS;
   nodeName += CyberSOAP::SOAP::DELIM;
@@ -101,16 +97,14 @@ CyberXML::Node *ActionResponse::createResponseNode(CyberLink::Action *action)
 //  getResponse
 ////////////////////////////////////////////////
 
-Node *ActionResponse::getActionResponseNode()
-{
+Node *ActionResponse::getActionResponseNode() {
   Node *bodyNode = getBodyNode();
   if (bodyNode == NULL || bodyNode->hasNodes() == false)
     return NULL;
   return bodyNode->getNode(0);
 }
 
-ArgumentList *ActionResponse::getResponse()
-{
+ArgumentList *ActionResponse::getResponse() {
   argList.clear();
     
   Node *resNode = getActionResponseNode();

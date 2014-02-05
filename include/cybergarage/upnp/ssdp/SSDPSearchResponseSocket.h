@@ -22,11 +22,9 @@
 #include <cybergarage/upnp/ssdp/SSDPSearchRequest.h>
 
 namespace CyberLink {
-
 class ControlPoint;
 
-class SSDPSearchResponseSocket : public HTTPUSocket, public uHTTP::Thread
-{
+class SSDPSearchResponseSocket : public HTTPUSocket, public uHTTP::Thread {
   ControlPoint *controlPoint;
 
 public:
@@ -42,13 +40,11 @@ public:
   //  ControlPoint  
   ////////////////////////////////////////////////
   
-  void setControlPoint(ControlPoint *ctrlp)
-  {
+  void setControlPoint(ControlPoint *ctrlp) {
     controlPoint = ctrlp;
   }
 
-  ControlPoint *getControlPoint()
-  {
+  ControlPoint *getControlPoint() {
     return controlPoint;
   }
 
@@ -62,8 +58,7 @@ public:
   //  post
   ////////////////////////////////////////////////
 
-  bool post(const std::string &addr, int port, SSDPSearchResponse *res)
-  {
+  bool post(const std::string &addr, int port, SSDPSearchResponse *res) {
     std::string headerStr;
     return HTTPUSocket::post(addr, port, res->getHeader(headerStr));
   }
@@ -72,8 +67,7 @@ public:
   //  post
   ////////////////////////////////////////////////
 
-  bool post(const std::string &addr, int port, SSDPSearchRequest *req)
-  {
+  bool post(const std::string &addr, int port, SSDPSearchRequest *req) {
     std::string buf;
     return HTTPUSocket::post(addr, port, req->toString(buf));
   }

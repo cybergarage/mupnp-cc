@@ -22,8 +22,7 @@ using namespace CyberLink;
 //  post (SSDPNotifySocket)
 ////////////////////////////////////////////////
 
-SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr)
-{
+SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
   const char *addr = SSDP::ADDRESS;
   useIPv6Address = false;
   if (uHTTP::IsIPv6Address(bindAddr) == true) {
@@ -34,8 +33,7 @@ SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr)
   setControlPoint(NULL);
 }
 
-SSDPNotifySocket::~SSDPNotifySocket()
-{
+SSDPNotifySocket::~SSDPNotifySocket() {
   stop();
   close();
 }
@@ -44,8 +42,7 @@ SSDPNotifySocket::~SSDPNotifySocket()
 //  post (SSDPNotifySocket)
 ////////////////////////////////////////////////
 
-bool SSDPNotifySocket::post(SSDPNotifyRequest *req)
-{
+bool SSDPNotifySocket::post(SSDPNotifyRequest *req) {
   const char *ssdpAddr = SSDP::ADDRESS;
   if (useIPv6Address == true)
     ssdpAddr = SSDP::GetIPv6Address();
@@ -57,8 +54,7 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req)
 //  run  
 ////////////////////////////////////////////////
 
-void SSDPNotifySocket::run()
-{
+void SSDPNotifySocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
     //Thread.yield();

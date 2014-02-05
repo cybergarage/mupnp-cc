@@ -32,9 +32,7 @@
 #include <cybergarage/upnp/device/USN.h>
 
 namespace CyberLink {
-
-class SSDPPacket 
-{
+class SSDPPacket  {
   uHTTP::DatagramPacket  dgmPacket;
   std::string localAddr;
   long timeStamp;
@@ -43,25 +41,20 @@ class SSDPPacket
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
-  SSDPPacket()
-  {
+ public:
+  SSDPPacket() {
   }
 
   ////////////////////////////////////////////////
   //  DatagramPacket
   ////////////////////////////////////////////////
   
-public:
-
-  void setDatagramPacket(uHTTP::DatagramPacket *packet)
-  {
+ public:
+  void setDatagramPacket(uHTTP::DatagramPacket *packet) {
     dgmPacket.set(packet);
   }
 
-  uHTTP::DatagramPacket &getDatagramPacket()
-  {
+  uHTTP::DatagramPacket &getDatagramPacket() {
     return dgmPacket;
   }
 
@@ -69,15 +62,12 @@ public:
   //  addr
   ////////////////////////////////////////////////
   
-public:
-
-  void setLocalAddress(const std::string & addr)
-  {
+ public:
+  void setLocalAddress(const std::string & addr) {
     localAddr = addr;
   }
   
-  const char *getLocalAddress()
-  {
+  const char *getLocalAddress() {
     return localAddr.c_str();
   }
 
@@ -85,15 +75,12 @@ public:
   //  Time
   ////////////////////////////////////////////////
 
-public:
-
-  void setTimeStamp(long value)
-  {
+ public:
+  void setTimeStamp(long value) {
     timeStamp = value;
   }
     
-  long getTimeStamp()
-  {
+  long getTimeStamp() {
     return timeStamp;
   }
 
@@ -101,15 +88,12 @@ public:
   //  Remote host
   ////////////////////////////////////////////////
 
-public:
-
-  const char *getRemoteAddress()
-  {
+ public:
+  const char *getRemoteAddress() {
     return dgmPacket.getAddress();
   }
 
-  int getRemotePort()
-  {
+  int getRemotePort() {
     return dgmPacket.getPort();
   }
   
@@ -117,10 +101,8 @@ public:
   //  Access Methods
   ////////////////////////////////////////////////
 
-public:
-
-  const char *getData()
-  {
+ public:
+  const char *getData() {
     return dgmPacket.getData();
   }
 
@@ -128,55 +110,44 @@ public:
   //  Access Methods
   ////////////////////////////////////////////////
 
-public:
-
-  const char *getHost(std::string &buf)
-  {
+ public:
+  const char *getHost(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::HOST, buf);
   }
 
-  const char *getCacheControl(std::string &buf)
-  {
+  const char *getCacheControl(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::CACHE_CONTROL, buf);
   }
   
-  const char *getLocation(std::string &buf)
-  {
+  const char *getLocation(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::LOCATION, buf);
   }
 
-  const char *getMAN(std::string &buf)
-  {
+  const char *getMAN(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::MAN, buf);
   }
 
-  const char *getST(std::string &buf)
-  {
+  const char *getST(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::ST, buf);
   }
 
-  const char *getNT(std::string &buf)
-  {
+  const char *getNT(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::NT, buf);
   }
 
-  const char *getNTS(std::string &buf)
-  {
+  const char *getNTS(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::NTS, buf);
   }
 
-  const char *getServer(std::string &buf)
-  {
+  const char *getServer(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::SERVER, buf);
   }
 
-  const char *getUSN(std::string &buf)
-  {
+  const char *getUSN(std::string &buf) {
     return uHTTP::HTTPHeaderGetValue(getData(), uHTTP::HTTP::USN, buf);
   }
 
-  int getMX()
-  {
+  int getMX() {
     return uHTTP::HTTPHeaderGetIntegerValue(getData(), uHTTP::HTTP::MX);
   }
 
@@ -184,30 +155,25 @@ public:
   //  Access Methods (Extension)
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool isRootDevice();
 
-  bool isDiscover()
-  {
+  bool isDiscover() {
     std::string buf;
     return MAN::IsDiscover(getMAN(buf));
   }
 
-  bool isAlive()
-  {
+  bool isAlive() {
     std::string buf;
     return NTS::IsAlive(getNTS(buf));
   }
 
-  bool isByeBye()
-  {
+  bool isByeBye() {
     std::string buf;
     return NTS::IsByeBye(getNTS(buf));
   }
 
-  int getLeaseTime()
-  {
+  int getLeaseTime() {
     std::string buf;
     return SSDP::GetLeaseTime(getCacheControl(buf));
   }
@@ -216,12 +182,10 @@ public:
   //  set
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void set(SSDPPacket *ssdpPacket);
   
-  bool isNull()
-  {
+  bool isNull() {
     return (timeStamp == 0) ? true : false;
   }
 
@@ -229,15 +193,12 @@ public:
   //  toString
   ////////////////////////////////////////////////
 
-public:
-
-  const char *toString()
-  {
+ public:
+  const char *toString() {
     return getData();
   }
 
-  void print()
-  {
+  void print() {
     std::cout << toString() << std::endl;
   }  
 };

@@ -17,11 +17,9 @@
 #define _CLINK_DEVICECHANGELISTENER_H_
 
 namespace CyberLink {
-
 class Device;
 
-class DeviceChangeListener
-{
+class DeviceChangeListener {
 public:
   virtual void deviceAdded(Device *dev) = 0;
   virtual void deviceRemoved(Device *dev) = 0;

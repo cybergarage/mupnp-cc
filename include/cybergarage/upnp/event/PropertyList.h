@@ -19,13 +19,10 @@
 #include <uhttp/util/Vector.h>
 
 namespace CyberLink {
-
 class Property;
 
-class PropertyList : public uHTTP::Vector 
-{
-public:
-
+class PropertyList : public uHTTP::Vector  {
+ public:
   ////////////////////////////////////////////////
   //  Constants
   ////////////////////////////////////////////////
@@ -36,8 +33,7 @@ public:
   //  Constructor
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   PropertyList();
 
   ~PropertyList();
@@ -46,14 +42,12 @@ public:
   //  Methods
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   bool addProperty(Property *prop);
   bool removeProperty(Property *prop);
   bool insertProperty(Property *prop, int index);
 
-  Property *getProperty(int n)
-  {
+  Property *getProperty(int n) {
     return (Property *)get(n);
   }
 
@@ -61,8 +55,7 @@ public:
   // clear
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   void clear();
 };
 

@@ -25,11 +25,9 @@
 #include <string>
 
 namespace CyberLink {
-
 class Device;
 
-class DeviceData : public CyberXML::NodeData
-{
+class DeviceData : public CyberXML::NodeData {
   Device *device;
 
   std::string descriptionURI; 
@@ -54,15 +52,12 @@ public:
   // Device
   ////////////////////////////////////////////////
 
-public:
-
-  void setDevice(Device *dev)
-  {
+ public:
+  void setDevice(Device *dev) {
     device = dev;
   }
 
-  Device *getDevice()
-  {
+  Device *getDevice() {
     return device;
   }
 

@@ -21,13 +21,10 @@
 #include <cybergarage/xml/NodeData.h>
 
 namespace CyberLink {
-
 class QueryResponse;
 class QueryListener;
 
-class StateVariableData : public CyberXML::NodeData
-{
-
+class StateVariableData : public CyberXML::NodeData {
   std::string value;
   QueryResponse *queryRes;
   QueryListener *queryListener;
@@ -36,8 +33,7 @@ class StateVariableData : public CyberXML::NodeData
   // Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   StateVariableData();
 
   ~StateVariableData();
@@ -46,8 +42,7 @@ public:
   // value
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   const char *getValue() {
     return value.c_str();
   }
@@ -60,8 +55,7 @@ public:
   // QueryListener
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   QueryListener *getQueryListener() 
   {
     return queryListener;
@@ -76,8 +70,7 @@ public:
   // QueryResponse
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   QueryResponse *getQueryResponse() 
   {
     return queryRes;

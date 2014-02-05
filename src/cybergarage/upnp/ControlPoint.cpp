@@ -68,8 +68,7 @@ const int ControlPoint::DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL = 60;
 //  Constructor
 ////////////////////////////////////////////////
 
-ControlPoint::ControlPoint(int ssdpPort, int httpPort)
-{
+ControlPoint::ControlPoint(int ssdpPort, int httpPort) {
   setSSDPPort(ssdpPort);
   setHTTPPort(httpPort);
   setSearchMx(SSDP::DEFAULT_MSEARCH_MX);
@@ -81,8 +80,7 @@ ControlPoint::ControlPoint(int ssdpPort, int httpPort)
 
 }
 
-ControlPoint::~ControlPoint()
-{
+ControlPoint::~ControlPoint() {
   stop();
 }
 
@@ -90,8 +88,7 @@ ControlPoint::~ControlPoint()
 //  Device List
 ////////////////////////////////////////////////
 
-Device *ControlPoint::getDevice(Node *rootNode)
-{
+Device *ControlPoint::getDevice(Node *rootNode) {
   if (rootNode == NULL)
       return NULL;
   Node *devNode = rootNode->getNode(Device::ELEM_NAME);
@@ -100,8 +97,7 @@ Device *ControlPoint::getDevice(Node *rootNode)
   return new Device(rootNode, devNode);
 }
 
-void ControlPoint::initDeviceList()
-{
+void ControlPoint::initDeviceList() {
   lock();
   deviceList.clear();
   int nRoots = devNodeList.size();
@@ -115,8 +111,7 @@ void ControlPoint::initDeviceList()
   unlock();
  }
 
-Device *ControlPoint::getDevice(const std::string &name)
-{
+Device *ControlPoint::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
   int nDevs = devList->size();
   for (int n=0; n<nDevs; n++) {
@@ -134,15 +129,13 @@ Device *ControlPoint::getDevice(const std::string &name)
 //  add
 ////////////////////////////////////////////////
 
-void ControlPoint::addDevice(CyberXML::Node *rootNode)
-{
+void ControlPoint::addDevice(CyberXML::Node *rootNode) {
   lock();
   devNodeList.add(rootNode);
   unlock();
 }
 
-void ControlPoint::addDevice(SSDPPacket *ssdpPacket)
-{
+void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   if (ssdpPacket->isRootDevice() == false)
     return;
   
@@ -185,8 +178,7 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket)
 //  remove
 ////////////////////////////////////////////////
 
-void ControlPoint::removeDevice(CyberXML::Node *rootNode)
-{
+void ControlPoint::removeDevice(CyberXML::Node *rootNode) {
   lock();
   devNodeList.remove(rootNode);
   removedDevNodeList.add(rootNode);
@@ -195,8 +187,7 @@ void ControlPoint::removeDevice(CyberXML::Node *rootNode)
   initDeviceList();
 }
 
-void ControlPoint::removeDevice(Device *dev)
-{
+void ControlPoint::removeDevice(Device *dev) {
   if (dev == NULL)
     return;
   // Thanks for Oliver Newell (2004/10/16)
@@ -205,14 +196,12 @@ void ControlPoint::removeDevice(Device *dev)
   removeDevice(dev->getRootNode());
 }
 
-void ControlPoint::removeDevice(const std::string &name)
-{
+void ControlPoint::removeDevice(const std::string &name) {
   Device *dev = getDevice(name);
   removeDevice(dev);
 }
 
-void ControlPoint::removeDevice(SSDPPacket *packet)
-{
+void ControlPoint::removeDevice(SSDPPacket *packet) {
   if (packet->isByeBye() == false)
     return;
   string usnBuf;
@@ -226,8 +215,7 @@ void ControlPoint::removeDevice(SSDPPacket *packet)
 //  Expired Device
 ////////////////////////////////////////////////
   
-void ControlPoint::removeExpiredDevices()
-{
+void ControlPoint::removeExpiredDevices() {
   int n;
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
@@ -247,8 +235,7 @@ void ControlPoint::removeExpiredDevices()
   initDeviceList();
 }
 
-void ControlPoint::clean()
-{
+void ControlPoint::clean() {
   removedDevNodeList.clear();
 }
 
@@ -256,8 +243,7 @@ void ControlPoint::clean()
 //  Notify
 ////////////////////////////////////////////////
     
-void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket)
-{
+void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
   int listenerSize = deviceNotifyListenerList.size();
   for (int n=0; n<listenerSize; n++) {
     NotifyListener *listener = (NotifyListener *)deviceNotifyListenerList.get(n);
@@ -269,8 +255,7 @@ void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket)
 //  SearchResponse
 ////////////////////////////////////////////////
 
-void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket)
-{
+void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
   int listenerSize = deviceSearchResponseListenerList.size();
   for (int n=0; n<listenerSize; n++) {
     SearchResponseListener *listener = (SearchResponseListener *)deviceSearchResponseListenerList.get(n);
@@ -284,8 +269,7 @@ void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket)
 //  Thanks for Oliver Newell (2004/10/16)
 ////////////////////////////////////////////////
 
-void ControlPoint::performAddDeviceListener(Device *dev)
-{
+void ControlPoint::performAddDeviceListener(Device *dev) {
   int listenerSize = deviceChangeListenerList.size();
   for (int n=0; n<listenerSize; n++) {
     DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
@@ -293,8 +277,7 @@ void ControlPoint::performAddDeviceListener(Device *dev)
   }
 }
 
-void ControlPoint::performRemoveDeviceListener(Device *dev)
-{
+void ControlPoint::performRemoveDeviceListener(Device *dev) {
   int listenerSize = deviceChangeListenerList.size();
   for (int n=0; n<listenerSize; n++) {
     DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
@@ -306,8 +289,7 @@ void ControlPoint::performRemoveDeviceListener(Device *dev)
 //  SSDPPacket
 ////////////////////////////////////////////////
   
-void ControlPoint::notifyReceived(SSDPPacket *packet)
-{
+void ControlPoint::notifyReceived(SSDPPacket *packet) {
   if (packet->isRootDevice() == true) {
     if (packet->isAlive() == true)
       addDevice(packet);
@@ -317,8 +299,7 @@ void ControlPoint::notifyReceived(SSDPPacket *packet)
   performNotifyListener(packet);
 }
 
-void ControlPoint::searchResponseReceived(SSDPPacket *packet)
-{
+void ControlPoint::searchResponseReceived(SSDPPacket *packet) {
   if (packet->isRootDevice() == true)
     addDevice(packet);
   performSearchResponseListener(packet);
@@ -328,8 +309,7 @@ void ControlPoint::searchResponseReceived(SSDPPacket *packet)
 //  M-SEARCH
 ////////////////////////////////////////////////
 
-void ControlPoint::search(const std::string &target, int mx)
-{
+void ControlPoint::search(const std::string &target, int mx) {
   SSDPSearchRequest msReq(target, mx);
   SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
   ssdpSearchResponseSocketList->post(&msReq);
@@ -339,8 +319,7 @@ void ControlPoint::search(const std::string &target, int mx)
 //  EventSub HTTPServer
 ////////////////////////////////////////////////
 
-uHTTP::HTTP::StatusCode ControlPoint::httpRequestRecieved(HTTPRequest *httpReq)
-{
+uHTTP::HTTP::StatusCode ControlPoint::httpRequestRecieved(HTTPRequest *httpReq) {
   if (Debug::isOn() == true)
     httpReq->print();
     
@@ -368,8 +347,7 @@ uHTTP::HTTP::StatusCode ControlPoint::httpRequestRecieved(HTTPRequest *httpReq)
 //  Subscription 
 ////////////////////////////////////////////////
 
-bool ControlPoint::subscribe(Service *service, long timeout)
-{
+bool ControlPoint::subscribe(Service *service, long timeout) {
   if (service->isSubscribed() == true) {
     const char *sid = service->getSID();
     return subscribe(service, sid, timeout);
@@ -405,8 +383,7 @@ bool ControlPoint::subscribe(Service *service, long timeout)
   return ret;
 }
 
-bool ControlPoint::subscribe(Service *service, const std::string &uuid, long timeout)
-{
+bool ControlPoint::subscribe(Service *service, const std::string &uuid, long timeout) {
   SubscriptionRequest subReq;
   subReq.setRenewRequest(service, uuid, timeout);
   if (Debug::isOn() == true)
@@ -424,15 +401,13 @@ bool ControlPoint::subscribe(Service *service, const std::string &uuid, long tim
   return false;
 }
 
-bool ControlPoint::isSubscribed(Service *service)
-{
+bool ControlPoint::isSubscribed(Service *service) {
   if (service == NULL)
     return false;
   return service->isSubscribed();
 }
 
-bool ControlPoint::unsubscribe(Service *service)
-{
+bool ControlPoint::unsubscribe(Service *service) {
   SubscriptionRequest subReq;
   subReq.setUnsubscribeRequest(service);
   if (Debug::isOn() == true)
@@ -447,8 +422,7 @@ bool ControlPoint::unsubscribe(Service *service)
   return false;
 }
 
-void ControlPoint::unsubscribe(Device *device)
-{
+void ControlPoint::unsubscribe(Device *device) {
   int n;
 
   ServiceList *serviceList = device->getServiceList();
@@ -471,8 +445,7 @@ void ControlPoint::unsubscribe(Device *device)
 //  getSubscriberService  
 ////////////////////////////////////////////////
 
-void ControlPoint::renewSubscriberService(Device *dev, long timeout)
-{
+void ControlPoint::renewSubscriberService(Device *dev, long timeout) {
   int n;
 
   ServiceList *serviceList = dev->getServiceList();
@@ -495,8 +468,7 @@ void ControlPoint::renewSubscriberService(Device *dev, long timeout)
   }
 }
   
-void ControlPoint::renewSubscriberService(long timeout)
-{
+void ControlPoint::renewSubscriberService(long timeout) {
   lock();
   DeviceList *devList = getDeviceList();
   int devCnt = devList->size();
@@ -507,8 +479,7 @@ void ControlPoint::renewSubscriberService(long timeout)
   unlock();
 }
   
-void ControlPoint::renewSubscriberService()
-{
+void ControlPoint::renewSubscriberService() {
   renewSubscriberService(Subscription::INFINITE_VALUE);
 }
 
@@ -516,8 +487,7 @@ void ControlPoint::renewSubscriberService()
 //  run  
 ////////////////////////////////////////////////
 
-bool ControlPoint::start(const std::string &target, int mx)
-{
+bool ControlPoint::start(const std::string &target, int mx) {
   stop();
 
   ////////////////////////////////////////
@@ -591,8 +561,7 @@ bool ControlPoint::start(const std::string &target, int mx)
   return true;
 }
   
-bool ControlPoint::stop()
-{
+bool ControlPoint::stop() {
   unsubscribe();
     
   SSDPNotifySocketList *ssdpNotifySocketList = getSSDPNotifySocketList();
@@ -641,8 +610,7 @@ bool ControlPoint::stop()
 //  print
 ////////////////////////////////////////////////
 
-void ControlPoint::print()
-{
+void ControlPoint::print() {
     DeviceList *devList = getDeviceList();
     int devCnt = devList->size();
     cout << "Device Num = " << devCnt << endl;

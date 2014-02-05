@@ -22,15 +22,12 @@
 #include <cybergarage/upnp/device/SearchListener.h>
 
 namespace CyberLink {
-
-class SSDPSearchSocketList : public uHTTP::Vector 
-{
+class SSDPSearchSocketList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
 
-public:
-
+ public:
   SSDPSearchSocketList();
 
   ~SSDPSearchSocketList();
@@ -39,10 +36,8 @@ public:
   //  Methods
   ////////////////////////////////////////////////
   
-public:
-
-  SSDPSearchSocket *getSSDPSearchSocket(int n)
-  {
+ public:
+  SSDPSearchSocket *getSSDPSearchSocket(int n) {
     return (SSDPSearchSocket *)get(n);
   }
   
@@ -52,8 +47,7 @@ public:
   //  open/close
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   bool open();
 
   void close();
@@ -63,8 +57,7 @@ public:
   //  start/stop
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void start();
 
   void stop();
@@ -73,8 +66,7 @@ public:
   //  close
   ////////////////////////////////////////////////
   
-public:
-
+ public:
   void clear();
 };
 

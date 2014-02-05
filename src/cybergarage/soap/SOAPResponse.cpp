@@ -30,31 +30,27 @@ using namespace std;
 //  Constructor
 ////////////////////////////////////////////////
   
-SOAPResponse::SOAPResponse()
-{
+SOAPResponse::SOAPResponse() {
   rootNode = NULL;
   setRootNode(SOAP::CreateEnvelopeBodyNode());
   setContentType(CyberXML::XML::CONTENT_TYPE);
 }
 
 /*
-SOAPResponse(uHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes)
-{
+SOAPResponse(uHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes) {
   rootNode = NULL;
   setRootNode(SOAP::CreateEnvelopeBodyNode());
   setContentType(CyberXML::XML::CONTENT_TYPE);
 }
 
-SOAPResponse(SOAPResponse *soapRes) : HTTPResponse(soapRes)
-{
+SOAPResponse(SOAPResponse *soapRes) : HTTPResponse(soapRes) {
   rootNode = NULL;
   setEnvelopeNode(soapRes->getEnvelopeNode());
   setContentType(CyberXML::XML::CONTENT_TYPE);
 }
 */
 
-SOAPResponse::~SOAPResponse()
-{
+SOAPResponse::~SOAPResponse() {
   if (rootNode != NULL)
     delete rootNode;
 }
@@ -63,8 +59,7 @@ SOAPResponse::~SOAPResponse()
 //  setContent
 ////////////////////////////////////////////////
   
-void SOAPResponse::setContent(CyberXML::Node *node)
-{
+void SOAPResponse::setContent(CyberXML::Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   std::string buf;

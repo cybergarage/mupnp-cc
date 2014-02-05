@@ -28,8 +28,7 @@ const char *IconList::ELEM_NAME = "iconList";
 //  Methods
 ////////////////////////////////////////////////
 
- void IconList::clear() 
-{
+ void IconList::clear()  {
   int nIcon = size();
   for (int n=0; n<nIcon; n++) {
     Icon *ico = getIcon(n);

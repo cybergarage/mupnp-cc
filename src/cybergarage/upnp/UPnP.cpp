@@ -46,8 +46,7 @@ using namespace CyberLink;
 //  GetServerName
 ////////////////////////////////////////////////
   
-const char *UPnP::GetServerName(std::string &buf)
-{
+const char *UPnP::GetServerName(std::string &buf) {
   uHTTP::GetServerName(buf);
   buf += " UPnP/";
   buf += UPnP::VER;
@@ -62,8 +61,7 @@ const char *UPnP::GetServerName(std::string &buf)
 //  UUID
 ////////////////////////////////////////////////
 
-const char *UPnP::CreateUUID(std::string &buf)
-{
+const char *UPnP::CreateUUID(std::string &buf) {
   time_t time1 = time(NULL);
   time_t time2 = (time_t)((double)time(NULL) * ((double)rand() / (double)RAND_MAX));
   char sidBuf[((4+1)*4) + 1];
@@ -80,8 +78,7 @@ const char *UPnP::CreateUUID(std::string &buf)
 //  Enable/Disable
 ////////////////////////////////////////////////
 
-void UPnP::SetEnable(int value)
-{
+void UPnP::SetEnable(int value) {
   switch (value) {
   case USE_ONLY_IPV6_ADDR:
     {
@@ -126,8 +123,7 @@ void UPnP::SetEnable(int value)
   }
 }
 
-void UPnP::SetDisable(int value)
-{
+void UPnP::SetDisable(int value) {
   switch (value) {
   case USE_ONLY_IPV6_ADDR:
     {
@@ -147,8 +143,7 @@ void UPnP::SetDisable(int value)
   }
 }
 
-bool UPnP::IsEnabled(int value)
-{
+bool UPnP::IsEnabled(int value) {
   switch (value) {
   case USE_ONLY_IPV6_ADDR:
     {

@@ -27,12 +27,10 @@ using namespace uHTTP;
 //  Constructor
 ////////////////////////////////////////////////
   
-HTTPMUSocket::HTTPMUSocket()
-{
+HTTPMUSocket::HTTPMUSocket() {
 }
 
-HTTPMUSocket::HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr)
-{
+HTTPMUSocket::HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr) {
   open(addr, port, bindAddr);
 }
 
@@ -40,8 +38,7 @@ HTTPMUSocket::HTTPMUSocket(const std::string &addr, int port, const std::string 
 //  Destructor
 ////////////////////////////////////////////////
 
-HTTPMUSocket::~HTTPMUSocket()
-{
+HTTPMUSocket::~HTTPMUSocket() {
   close();
 }
 
@@ -49,8 +46,7 @@ HTTPMUSocket::~HTTPMUSocket()
 //  open/close
 ////////////////////////////////////////////////
 
-bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bindAddr)
-{
+bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bindAddr) {
   ssdpMultiGroup.setAddress(addr);
   ssdpMultiGroup.setPort(port);
   //ssdpMultiIf.setAddress(bindAddr);
@@ -66,8 +62,7 @@ bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bi
   return true;
 }
 
-bool HTTPMUSocket::close()
-{
+bool HTTPMUSocket::close() {
   if (ssdpMultiSock.close() == false)
     return false;
   return true;
@@ -77,8 +72,7 @@ bool HTTPMUSocket::close()
 //  reveive
 ////////////////////////////////////////////////
 
-bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int bindPort)
-{
+bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int bindPort) {
   MulticastSocket msock;
   if ((0 < bindAddr.length()) && (0 < bindPort))
       msock.bind(bindPort, bindAddr);
@@ -93,8 +87,7 @@ bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int
 //  reveive
 ////////////////////////////////////////////////
 
-SSDPPacket *HTTPMUSocket::receive()
-{
+SSDPPacket *HTTPMUSocket::receive() {
   recvPacket.setLocalAddress(getLocalAddress());
   size_t nRecv = ssdpMultiSock.receive(recvPacket.getDatagramPacket());
   if (nRecv == 0)

@@ -48,8 +48,7 @@ const char SubscriptionRequest::CALLBACK_END_WITH = '>';
 //  setRequest
 ////////////////////////////////////////////////
 
-void SubscriptionRequest::setService(Service *service)
-{
+void SubscriptionRequest::setService(Service *service) {
   const char *eventSubURL = service->getEventSubURL();
     
   // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (05/21/03)
@@ -91,8 +90,7 @@ void SubscriptionRequest::setService(Service *service)
   setRequestPort(reqPort);
 }
 
-void SubscriptionRequest::setSubscribeRequest(Service *service, const std::string &callback, long timeout)
-{
+void SubscriptionRequest::setSubscribeRequest(Service *service, const std::string &callback, long timeout) {
   setMethod(Subscription::SUBSCRIBE_METHOD);
   setService(service);
   setCallback(callback);
@@ -100,16 +98,14 @@ void SubscriptionRequest::setSubscribeRequest(Service *service, const std::strin
   setTimeout(timeout);
 }
 
-void SubscriptionRequest::setRenewRequest(Service *service, const std::string &uuid, long timeout)
-{
+void SubscriptionRequest::setRenewRequest(Service *service, const std::string &uuid, long timeout) {
   setMethod(Subscription::SUBSCRIBE_METHOD);
   setService(service);
   setSID(uuid);
   setTimeout(timeout);
 }
 
-void SubscriptionRequest::setUnsubscribeRequest(Service *service)
-{
+void SubscriptionRequest::setUnsubscribeRequest(Service *service) {
   setMethod(Subscription::UNSUBSCRIBE_METHOD);
   setService(service);
   setSID(service->getSID());

@@ -26,14 +26,10 @@
 #include <cybergarage/xml/ParserException.h>
 
 namespace CyberXML {
-
 const int PARSER_DEFAULT_READ_BUF_SIZE = 1024;
 
-class Parser 
-{
-
-public:
-
+class Parser  {
+ public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
@@ -53,18 +49,15 @@ public:
   
   Node *parse(const std::string &data, size_t len);
 
-  Node *parse(const std::string &data)
-  {
+  Node *parse(const std::string &data) {
     return parse(data, data.length());
   }
   
-  Node *parse(std::string *data)
-  {
+  Node *parse(std::string *data) {
     return parse(data->c_str(), data->length());
   }
   
-  Node *parse(UnicodeStr *data, size_t len)
-  {
+  Node *parse(UnicodeStr *data, size_t len) {
     return parse((const std::string &)data, len);
   }
 };
