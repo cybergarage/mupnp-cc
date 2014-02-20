@@ -30,7 +30,7 @@ const char *ServiceList::ELEM_NAME = "serviceList";
 
  void ServiceList::clear()  {
   int nService = size();
-  for (int n=0; n<nService; n++) {
+  for (int n = 0; n < nService; n++) {
     Service *service = getService(n);
     delete service;
   }

@@ -47,7 +47,7 @@ class SubscriberList : public uHTTP::Vector  {
   void clear() 
   {
     int nSub = size();
-    for (int n=0; n<nSub; n++) {
+    for (int n = 0; n < nSub; n++) {
       Subscriber *sub = getSubscriber(n);
       delete sub;
     }

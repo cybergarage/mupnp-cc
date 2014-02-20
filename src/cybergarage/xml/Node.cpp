@@ -154,7 +154,7 @@ void Node::outputAttributes(std::string& ps) {
 #endif
   std::string valBuf;
   int nAttributes = getNAttributes();
-  for (int n=0; n<nAttributes; n++) {
+  for (int n = 0; n < nAttributes; n++) {
 #ifndef NO_USE_OSTRINGSTREAM
     Attribute *attr = getAttribute(n);
     ps << " " << attr->getName() << "=\"" << XML::EscapeXMLChars(attr->getValue(), valBuf) << "\"";
@@ -236,7 +236,7 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
 #endif
 
   int nChildNodes = getNNodes();
-  for (int n=0; n<nChildNodes; n++) {
+  for (int n = 0; n < nChildNodes; n++) {
     Node *cnode = getNode(n);
     cnode->output(ps, indentLevel+1, true);
   }

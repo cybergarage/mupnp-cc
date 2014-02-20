@@ -105,7 +105,7 @@ void StateVariable::initAllowedValueList() {
   if (allowedValueListNode == NULL)
     return;
   int nNode = allowedValueListNode->getNNodes();
-  for (int n=0; n<nNode; n++) {
+  for (int n = 0; n < nNode; n++) {
     Node *node = allowedValueListNode->getNode(n);
     if (AllowedValue::isAllowedValueNode(node) == false)
       continue;

@@ -60,7 +60,7 @@ Node *NodeList::getNode(int n) {
 
 Node *NodeList::getNode(const std::string &name)  {
   int nLists = size(); 
-  for (int n=0; n<nLists; n++) {
+  for (int n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
     if (StringEquals(name, nodeName) == true)
@@ -71,7 +71,7 @@ Node *NodeList::getNode(const std::string &name)  {
 
 Node *NodeList::getEndsWith(const std::string &name)  {
   int nLists = size(); 
-  for (int n=0; n<nLists; n++) {
+  for (int n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
     if (nodeName == NULL)
@@ -84,7 +84,7 @@ Node *NodeList::getEndsWith(const std::string &name)  {
 
 Node *NodeList::getNode(const std::string &name, const std::string &value)  {
   int nLists = size(); 
-  for (int n=0; n<nLists; n++) {
+  for (int n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
     if (StringEquals(name, nodeName) == false)
@@ -102,7 +102,7 @@ Node *NodeList::getNode(const std::string &name, const std::string &value)  {
 
 void NodeList::clear() {
   int nLists = size(); 
-  for (int n=0; n<nLists; n++) {
+  for (int n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     if (node != NULL)
       delete node;

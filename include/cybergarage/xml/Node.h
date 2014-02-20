@@ -288,7 +288,7 @@ protected:
 
   const char *getIndentLevelString(int nIndentLevel, std::string &buf) {
     buf = "";
-    for (int n=0; n<nIndentLevel; n++)
+    for (int n = 0; n < nIndentLevel; n++)
       buf.append("\t");
     return buf.c_str();
   }

@@ -30,7 +30,7 @@ const char *IconList::ELEM_NAME = "iconList";
 
  void IconList::clear()  {
   int nIcon = size();
-  for (int n=0; n<nIcon; n++) {
+  for (int n = 0; n < nIcon; n++) {
     Icon *ico = getIcon(n);
     delete ico;
   }

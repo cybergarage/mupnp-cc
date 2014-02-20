@@ -123,7 +123,7 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
   DOMNamedNodeMap *attrMap = domNode->getAttributes(); 
   int attrLen = attrMap->getLength();
   //Debug.message("attrLen = " + attrLen);
-  for (int n = 0; n<attrLen; n++) {
+  for (int n = 0; n < attrLen; n++) {
     DOMNode *attr = attrMap->item(n);
     string attrName;
     XMLCh2Char(attr->getNodeName(), attrName);

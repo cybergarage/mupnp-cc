@@ -101,7 +101,7 @@ void ControlPoint::initDeviceList() {
   lock();
   deviceList.clear();
   int nRoots = devNodeList.size();
-  for (int n=0; n<nRoots; n++) {
+  for (int n = 0; n < nRoots; n++) {
     Node *rootNode = devNodeList.getNode(n);
     Device *dev = getDevice(rootNode);
     if (dev == NULL)
@@ -114,7 +114,7 @@ void ControlPoint::initDeviceList() {
 Device *ControlPoint::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
   int nDevs = devList->size();
-  for (int n=0; n<nDevs; n++) {
+  for (int n = 0; n < nDevs; n++) {
     Device *dev = devList->getDevice(n);
     if (dev->isDevice(name) == true)
       return dev;
@@ -220,9 +220,9 @@ void ControlPoint::removeExpiredDevices() {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   Device **dev = new Device*[devCnt];
-  for (n=0; n<devCnt; n++)
+  for (n = 0; n < devCnt; n++)
     dev[n] = devList->getDevice(n);
-  for (n=0; n<devCnt; n++) {
+  for (n = 0; n < devCnt; n++) {
     if (dev[n]->isExpired() == true) {
       string msg = "Expired device = ";
       msg += dev[n]->getFriendlyName();
@@ -245,7 +245,7 @@ void ControlPoint::clean() {
     
 void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
   int listenerSize = deviceNotifyListenerList.size();
-  for (int n=0; n<listenerSize; n++) {
+  for (int n = 0; n < listenerSize; n++) {
     NotifyListener *listener = (NotifyListener *)deviceNotifyListenerList.get(n);
     listener->deviceNotifyReceived(ssdpPacket);
   }
@@ -257,7 +257,7 @@ void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
 
 void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
   int listenerSize = deviceSearchResponseListenerList.size();
-  for (int n=0; n<listenerSize; n++) {
+  for (int n = 0; n < listenerSize; n++) {
     SearchResponseListener *listener = (SearchResponseListener *)deviceSearchResponseListenerList.get(n);
     listener->deviceSearchResponseReceived(ssdpPacket);
   }
@@ -271,7 +271,7 @@ void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
 
 void ControlPoint::performAddDeviceListener(Device *dev) {
   int listenerSize = deviceChangeListenerList.size();
-  for (int n=0; n<listenerSize; n++) {
+  for (int n = 0; n < listenerSize; n++) {
     DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
     listener->deviceAdded(dev);
   }
@@ -279,7 +279,7 @@ void ControlPoint::performAddDeviceListener(Device *dev) {
 
 void ControlPoint::performRemoveDeviceListener(Device *dev) {
   int listenerSize = deviceChangeListenerList.size();
-  for (int n=0; n<listenerSize; n++) {
+  for (int n = 0; n < listenerSize; n++) {
     DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
     listener->deviceRemoved( dev );
   }
@@ -427,7 +427,7 @@ void ControlPoint::unsubscribe(Device *device) {
 
   ServiceList *serviceList = device->getServiceList();
   int serviceCnt = serviceList->size();
-  for (n=0; n<serviceCnt; n++) {
+  for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (service->hasSID() == true)
       unsubscribe(service);
@@ -435,7 +435,7 @@ void ControlPoint::unsubscribe(Device *device) {
 
   DeviceList *childDevList = device->getDeviceList();
   int childDevCnt = childDevList->size();
-  for (n=0; n<childDevCnt; n++) {
+  for (n = 0; n < childDevCnt; n++) {
     Device *cdev = childDevList->getDevice(n);
     unsubscribe(cdev);
   }    
@@ -450,7 +450,7 @@ void ControlPoint::renewSubscriberService(Device *dev, long timeout) {
 
   ServiceList *serviceList = dev->getServiceList();
   int serviceCnt = serviceList->size();
-  for (n=0; n<serviceCnt; n++) {
+  for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (service->isSubscribed() == false)
       continue;
@@ -462,7 +462,7 @@ void ControlPoint::renewSubscriberService(Device *dev, long timeout) {
     
   DeviceList *cdevList = dev->getDeviceList();
   int cdevCnt = cdevList->size();
-  for (n=0; n<cdevCnt; n++) {
+  for (n = 0; n < cdevCnt; n++) {
     Device *cdev = cdevList->getDevice(n);
     renewSubscriberService(cdev, timeout);
   }
@@ -472,7 +472,7 @@ void ControlPoint::renewSubscriberService(long timeout) {
   lock();
   DeviceList *devList = getDeviceList();
   int devCnt = devList->size();
-  for (int n=0; n<devCnt; n++) {
+  for (int n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     renewSubscriberService(dev, timeout);
   }
@@ -614,7 +614,7 @@ void ControlPoint::print() {
     DeviceList *devList = getDeviceList();
     int devCnt = devList->size();
     cout << "Device Num = " << devCnt << endl;
-    for (int n=0; n<devCnt; n++) {
+    for (int n = 0; n < devCnt; n++) {
       Device *dev = devList->getDevice(n);
       cout << "[" << n <<  "] " << dev->getFriendlyName() << ", " << dev->getLeaseTime() << ", " << dev->getElapsedTime() << endl;
     }    

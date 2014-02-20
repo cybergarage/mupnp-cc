@@ -43,7 +43,7 @@ void ActionRequest::initArgumentList() {
     return;
   int nArgNodes = actNode->getNNodes();
   argumentList.clear();
-  for (int n=0; n<nArgNodes; n++) {
+  for (int n = 0; n < nArgNodes; n++) {
     Argument *arg = new Argument();
     Node *argNode = actNode->getNode(n);
     arg->setName(argNode->getName());
@@ -124,7 +124,7 @@ Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *acti
   actionNode->setName(Control::NS, actionName);
   actionNode->setNameSpace(Control::NS, serviceType);
   int argListCnt = argList->size();
-  for (int n=0; n<argListCnt; n++) {
+  for (int n = 0; n < argListCnt; n++) {
     Argument *arg = argList->getArgument(n);
     Node *argNode = new Node();
     string name = arg->getName();

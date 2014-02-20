@@ -30,7 +30,7 @@ const char *CyberLink::ActionList::ELEM_NAME = "actionList";
 
  void ActionList::clear()  {
   int nAct = size();
-  for (int n=0; n<nAct; n++) {
+  for (int n = 0; n < nAct; n++) {
     Action *act = getAction(n);
     delete act;
   }

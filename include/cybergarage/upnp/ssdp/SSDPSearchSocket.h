@@ -61,7 +61,7 @@ class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
 
   void performSearchListener(SSDPPacket *ssdpPacket) {
     int listenerSize = deviceSearchListenerList.size();
-    for (int n=0; n<listenerSize; n++) {
+    for (int n = 0; n < listenerSize; n++) {
       SearchListener *listener = (SearchListener *)deviceSearchListenerList.get(n);
       listener->deviceSearchReceived(ssdpPacket);
     }
