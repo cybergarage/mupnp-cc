@@ -624,10 +624,14 @@ private:
 
  public:
   void setHTTPPort(int port) {
+    if (!hasDeviceData())
+      return;
     getDeviceData()->setHTTPPort(port);
   }
   
   int getHTTPPort() {
+    if (!hasDeviceData())
+      return 0;
     return getDeviceData()->getHTTPPort();
   }
 
