@@ -302,7 +302,8 @@ bool Device::isDeviceType(const std::string &value) {
 ////////////////////////////////////////////////
 
 void Device::setLeaseTime(int value) {
-  getDeviceData()->setLeaseTime(value);
+  if (hasDeviceData())
+    getDeviceData()->setLeaseTime(value);
   Advertiser *adv = getAdvertiser();
   if (adv != NULL) {
     announce();

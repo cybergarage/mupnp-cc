@@ -233,18 +233,26 @@ public:
 
  public:
   void setDescriptionFile(const std::string &file) {
+    if (!hasDeviceData())
+      return;
     getDeviceData()->setDescriptionFile(file);
   }
 
   const char *getDescriptionFile() {
+    if (!hasDeviceData())
+      return "";
     return getDeviceData()->getDescriptionFile();
   }
 
   void setDescriptionURI(const std::string &uri) {
+    if (!hasDeviceData())
+      return;
     getDeviceData()->setDescriptionURI(uri);
   }
 
   const char *getDescriptionURI() {
+    if (!hasDeviceData())
+      return "";
     return getDeviceData()->getDescriptionURI();
   }
 
@@ -296,11 +304,15 @@ private:
   ////////////////////////////////////////////////
 
   void setSSDPPacket(SSDPPacket *packet) {
+    if (!hasDeviceData())
+      return;
     getDeviceData()->setSSDPPacket(packet);
   }
 
   SSDPPacket *getSSDPPacket() {
     if (isRootDevice() == false)
+      return NULL;
+    if (!hasDeviceData())
       return NULL;
     return getDeviceData()->getSSDPPacket();
   }
@@ -319,6 +331,8 @@ private:
       std::string buf;
       setLocation(packet->getLocation(buf));
     }
+    if (!hasDeviceData())
+      return "";
     return getDeviceData()->getLocation();
   }
 
@@ -682,19 +696,27 @@ private:
  public:
   uHTTP::HTTPServerList *getHTTPServerList() 
   {
+    if (!hasDeviceData())
+      return NULL;
     return getDeviceData()->getHTTPServerList();
   }
 
   SSDPSearchSocketList *getSSDPSearchSocketList() 
   {
+    if (!hasDeviceData())
+      return NULL;
     return getDeviceData()->getSSDPSearchSocketList();
   }
 
   void setAdvertiser(Advertiser *adv) {
+    if (!hasDeviceData())
+      return;
     getDeviceData()->setAdvertiser(adv);
   }
 
   Advertiser *getAdvertiser() {
+    if (!hasDeviceData())
+      return NULL;
     return getDeviceData()->getAdvertiser();
   }
 
