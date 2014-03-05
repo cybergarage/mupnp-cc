@@ -68,7 +68,7 @@ typedef struct _ExpatData {
   Node *currNode;
 } ExpatData;
 
-static void XMLCALL ExpatElementStart(void *userData, const std::string &el, const std::string &*attr) {
+static void XMLCALL ExpatElementStart(void *userData, const XML_Char *el, const XML_Char **attr) {
   ExpatData *expatData = (ExpatData *)userData;
 
   Node *node = new Node();
@@ -89,7 +89,7 @@ static void XMLCALL ExpatElementStart(void *userData, const std::string &el, con
   expatData->currNode = node;
 }
 
-static void XMLCALL ExpatElementEnd(void *userData, const std::string &el) {
+static void XMLCALL ExpatElementEnd(void *userData, const XML_Char *el) {
   ExpatData *expatData = (ExpatData *)userData;
   if (expatData->currNode != NULL)
     expatData->currNode = expatData->currNode->getParentNode();
@@ -118,7 +118,7 @@ Node *Parser::parse(const std::string &data, size_t len) {
   XML_SetElementHandler(p, ExpatElementStart, ExpatElementEnd);
   XML_SetCharacterDataHandler(p, ExpatCharacterData); 
 
-  int parseRet = XML_Parse(p, data, (int)len, 1);
+  int parseRet = XML_Parse(p, data.c_str(), (int)len, 1);
   XML_ParserFree(p);
 
   if (parseRet == 0 /*XML_STATUS_ERROR*/) {
