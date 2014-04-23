@@ -29,14 +29,14 @@ const char SUBSCRIBE_METHOD[] = "SUBSCRIBE";
 const char UNSUBSCRIBE_METHOD[] = "UNSUBSCRIBE";
 
 ////////////////////////////////////////////////
-//  Timeout
+// Timeout
 ////////////////////////////////////////////////
   
 const char *toTimeoutHeaderString(long time, std::string &buf);
 long GetTimeout(const std::string &headerValue);
 
 ////////////////////////////////////////////////
-//  SID
+// SID
 ////////////////////////////////////////////////
 
 const char *CreateSID(std::string &buf);

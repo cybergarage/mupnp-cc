@@ -28,7 +28,7 @@ using namespace CyberSOAP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  CreateEnvelopeBodyNode
+// CreateEnvelopeBodyNode
 ////////////////////////////////////////////////
 
 CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode() {
@@ -62,7 +62,7 @@ CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode() {
 }
 
 ////////////////////////////////////////////////
-//  Header
+// Header
 ////////////////////////////////////////////////
 
 const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &header) {
@@ -77,7 +77,7 @@ const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &
 }
 
 ////////////////////////////////////////////////
-//  Encoding
+// Encoding
 ////////////////////////////////////////////////
 
 const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::string &encording) {

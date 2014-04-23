@@ -61,7 +61,7 @@ using namespace CyberXML;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const char *StateVariable::ELEM_NAME = "stateVariable";
@@ -73,7 +73,7 @@ const char *StateVariable::SENDEVENTS_YES = "yes";
 const char *StateVariable::SENDEVENTS_NO = "no";
 
 ////////////////////////////////////////////////
-//  StateVariable::StateVariable
+// StateVariable::StateVariable
 ////////////////////////////////////////////////
 
 StateVariable::StateVariable() {
@@ -96,7 +96,7 @@ StateVariable::~StateVariable() {
 }
 
 ////////////////////////////////////////////////
-//  AllowedallowedValueList
+// AllowedallowedValueList
 ////////////////////////////////////////////////
 
 void StateVariable::initAllowedValueList() {
@@ -115,7 +115,7 @@ void StateVariable::initAllowedValueList() {
 }
 
 ////////////////////////////////////////////////
-//  AllowedValueRange
+// AllowedValueRange
 ////////////////////////////////////////////////
 
 void StateVariable::initAllowedValueRange() {
@@ -124,7 +124,7 @@ void StateVariable::initAllowedValueRange() {
 }
 
 ////////////////////////////////////////////////
-//  Value
+// Value
 ////////////////////////////////////////////////
 
 void StateVariable::setValue(const std::string &value) {
@@ -156,7 +156,7 @@ void StateVariable::setValue(long value)  {
 }
 
 ////////////////////////////////////////////////
-//  set
+// set
 ////////////////////////////////////////////////
 
 void StateVariable::set(StateVariable *stateVar)  {
@@ -167,7 +167,7 @@ void StateVariable::set(StateVariable *stateVar)  {
 }
 
 ////////////////////////////////////////////////
-//  queryAction
+// queryAction
 ////////////////////////////////////////////////
 
 bool StateVariable::performQueryListener(QueryRequest *queryReq) {
@@ -192,7 +192,7 @@ bool StateVariable::performQueryListener(QueryRequest *queryReq) {
 }
 
 ////////////////////////////////////////////////
-//  ActionControl
+// ActionControl
 ////////////////////////////////////////////////
 
 bool StateVariable::postQuerylAction() {

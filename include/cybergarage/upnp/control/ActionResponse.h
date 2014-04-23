@@ -29,7 +29,7 @@ class ActionResponse : public ControlResponse {
   ArgumentList argList;
 
   ////////////////////////////////////////////////
-  //  Constructor
+  // Constructor
   ////////////////////////////////////////////////
   
  public:
@@ -37,7 +37,7 @@ class ActionResponse : public ControlResponse {
   ActionResponse(CyberSOAP::SOAPResponse *soapRes);
 
   ////////////////////////////////////////////////
-  //  Response
+  // Response
   ////////////////////////////////////////////////
 
  public:
@@ -48,7 +48,7 @@ private:
   CyberXML::Node *createResponseNode(Action *action);
 
   ////////////////////////////////////////////////
-  //  getResponse
+  // getResponse
   ////////////////////////////////////////////////
 
 private:

@@ -68,7 +68,7 @@ Node::~Node() {
 }
 
 ////////////////////////////////////////////////
-//  userData
+// userData
 ////////////////////////////////////////////////
 
 void Node::setUserData(NodeData *data) {
@@ -80,7 +80,7 @@ void Node::setUserData(NodeData *data) {
 }
 
 ////////////////////////////////////////////////
-//  value
+// value
 ////////////////////////////////////////////////
 
 void Node::setValue(int val) {
@@ -101,7 +101,7 @@ void Node::setValue(int val) {
 }
 
 ////////////////////////////////////////////////
-//  Attribute (Extention)
+// Attribute (Extention)
 ////////////////////////////////////////////////
 
 void Node::setAttribute(const std::string & name, const std::string &value) {
@@ -144,7 +144,7 @@ int Node::getAttributeIntegerValue(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-//  outputAttribures
+// outputAttribures
 ////////////////////////////////////////////////
 
 #ifndef NO_USE_OSTRINGSTREAM
@@ -171,7 +171,7 @@ void Node::outputAttributes(std::string& ps) {
 
 
 ////////////////////////////////////////////////
-//  output
+// output
 ////////////////////////////////////////////////
 
 #ifndef NO_USE_OSTRINGSTREAM
@@ -253,7 +253,7 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
 }
 
 ////////////////////////////////////////////////
-//  toString
+// toString
 ////////////////////////////////////////////////
 
 const char *Node::toString(std::string &buf, bool hasChildNode) {
@@ -268,7 +268,7 @@ const char *Node::toString(std::string &buf, bool hasChildNode) {
 }
 
 ////////////////////////////////////////////////
-//  print
+// print
 ////////////////////////////////////////////////
 
 void Node::print(bool hasChildNode) {

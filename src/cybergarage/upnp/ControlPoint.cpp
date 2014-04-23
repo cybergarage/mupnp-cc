@@ -56,7 +56,7 @@ using namespace CyberXML;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const int ControlPoint::DEFAULT_EVENTSUB_PORT = 8058;
@@ -65,7 +65,7 @@ const char *ControlPoint::DEFAULT_EVENTSUB_URI = "/evetSub";
 const int ControlPoint::DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL = 60;
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
 
 ControlPoint::ControlPoint(int ssdpPort, int httpPort) {
@@ -85,7 +85,7 @@ ControlPoint::~ControlPoint() {
 }
 
 ////////////////////////////////////////////////
-//  Device List
+// Device List
 ////////////////////////////////////////////////
 
 Device *ControlPoint::getDevice(Node *rootNode) {
@@ -126,7 +126,7 @@ Device *ControlPoint::getDevice(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-//  add
+// add
 ////////////////////////////////////////////////
 
 void ControlPoint::addDevice(CyberXML::Node *rootNode) {
@@ -175,7 +175,7 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 }
 
 ////////////////////////////////////////////////
-//  remove
+// remove
 ////////////////////////////////////////////////
 
 void ControlPoint::removeDevice(CyberXML::Node *rootNode) {
@@ -212,7 +212,7 @@ void ControlPoint::removeDevice(SSDPPacket *packet) {
 }
 
 ////////////////////////////////////////////////
-//  Expired Device
+// Expired Device
 ////////////////////////////////////////////////
   
 void ControlPoint::removeExpiredDevices() {
@@ -240,7 +240,7 @@ void ControlPoint::clean() {
 }
 
 ////////////////////////////////////////////////
-//  Notify
+// Notify
 ////////////////////////////////////////////////
     
 void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
@@ -252,7 +252,7 @@ void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
 }
 
 ////////////////////////////////////////////////
-//  SearchResponse
+// SearchResponse
 ////////////////////////////////////////////////
 
 void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
@@ -265,8 +265,8 @@ void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
 
 
 ////////////////////////////////////////////////
-//  DeviceChangeListener
-//  Thanks for Oliver Newell (2004/10/16)
+// DeviceChangeListener
+// Thanks for Oliver Newell (2004/10/16)
 ////////////////////////////////////////////////
 
 void ControlPoint::performAddDeviceListener(Device *dev) {
@@ -286,7 +286,7 @@ void ControlPoint::performRemoveDeviceListener(Device *dev) {
 }
 
 ////////////////////////////////////////////////
-//  SSDPPacket
+// SSDPPacket
 ////////////////////////////////////////////////
   
 void ControlPoint::notifyReceived(SSDPPacket *packet) {
@@ -306,7 +306,7 @@ void ControlPoint::searchResponseReceived(SSDPPacket *packet) {
 }
 
 ////////////////////////////////////////////////
-//  M-SEARCH
+// M-SEARCH
 ////////////////////////////////////////////////
 
 void ControlPoint::search(const std::string &target, int mx) {
@@ -316,7 +316,7 @@ void ControlPoint::search(const std::string &target, int mx) {
 }
 
 ////////////////////////////////////////////////
-//  EventSub HTTPServer
+// EventSub HTTPServer
 ////////////////////////////////////////////////
 
 uHTTP::HTTP::StatusCode ControlPoint::httpRequestRecieved(HTTPRequest *httpReq) {
@@ -344,7 +344,7 @@ uHTTP::HTTP::StatusCode ControlPoint::httpRequestRecieved(HTTPRequest *httpReq) 
 }
 
 ////////////////////////////////////////////////
-//  Subscription 
+// Subscription 
 ////////////////////////////////////////////////
 
 bool ControlPoint::subscribe(Service *service, long timeout) {
@@ -442,7 +442,7 @@ void ControlPoint::unsubscribe(Device *device) {
 }
 
 ////////////////////////////////////////////////
-//  getSubscriberService  
+// getSubscriberService  
 ////////////////////////////////////////////////
 
 void ControlPoint::renewSubscriberService(Device *dev, long timeout) {
@@ -484,7 +484,7 @@ void ControlPoint::renewSubscriberService() {
 }
 
 ////////////////////////////////////////////////
-//  run  
+// run  
 ////////////////////////////////////////////////
 
 bool ControlPoint::start(const std::string &target, int mx) {
@@ -607,7 +607,7 @@ bool ControlPoint::stop() {
 }
 
 ////////////////////////////////////////////////
-//  print
+// print
 ////////////////////////////////////////////////
 
 void ControlPoint::print() {

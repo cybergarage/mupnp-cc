@@ -31,7 +31,7 @@ using namespace CyberLink;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const char *Argument::ELEM_NAME = "argument";
@@ -43,7 +43,7 @@ const char *Argument::DIRECTION = "direction";
 const char *Argument::RELATED_STATE_VARIABLE = "relatedStateVariable";
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
 
 Argument::Argument() {
@@ -67,7 +67,7 @@ Argument::~Argument() {
 }
 
 ////////////////////////////////////////////////
-//  setValue
+// setValue
 ////////////////////////////////////////////////
 
 void Argument::setValue(int value) {
@@ -77,7 +77,7 @@ void Argument::setValue(int value) {
 }
 
 ////////////////////////////////////////////////
-//  getService
+// getService
 ////////////////////////////////////////////////
 
 Service *Argument::getService() {
@@ -89,7 +89,7 @@ Service *Argument::getService() {
 }
 
 ////////////////////////////////////////////////
-//  relatedStateVariable
+// relatedStateVariable
 ////////////////////////////////////////////////
 
 StateVariable *Argument::getRelatedStateVariable() {

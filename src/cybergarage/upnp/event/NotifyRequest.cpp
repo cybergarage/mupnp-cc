@@ -36,7 +36,7 @@ using namespace CyberLink;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const char *NotifyRequest::XMLNS = "e";
@@ -44,7 +44,7 @@ const char *NotifyRequest::PROPERTY = "property";
 const char *NotifyRequest::PROPERTYSET = "propertyset";
 
 ////////////////////////////////////////////////
-//  PropetySet
+// PropetySet
 ////////////////////////////////////////////////
 
 bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, const std::string &value) {
@@ -106,7 +106,7 @@ CyberXML::Node *NotifyRequest::getVariableNode() {
 }
 
 ////////////////////////////////////////////////
-//  PropetySet
+// PropetySet
 ////////////////////////////////////////////////
 
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)

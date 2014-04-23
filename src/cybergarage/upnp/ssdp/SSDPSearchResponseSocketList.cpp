@@ -21,7 +21,7 @@ using namespace std;
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
   
 SSDPSearchResponseSocketList::SSDPSearchResponseSocketList()  {
@@ -33,7 +33,7 @@ SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()  {
 }
 
 ////////////////////////////////////////////////
-//  ControlPoint
+// ControlPoint
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
@@ -45,7 +45,7 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
 }
 
 ////////////////////////////////////////////////
-//  Methods
+// Methods
 ////////////////////////////////////////////////
   
 bool SSDPSearchResponseSocketList::open(int port) {
@@ -69,7 +69,7 @@ void SSDPSearchResponseSocketList::close() {
 }
 
 ////////////////////////////////////////////////
-//  Methods
+// Methods
 ////////////////////////////////////////////////
   
 void SSDPSearchResponseSocketList::start() {
@@ -89,7 +89,7 @@ void SSDPSearchResponseSocketList::stop() {
 }
 
 ////////////////////////////////////////////////
-//  Methods
+// Methods
 ////////////////////////////////////////////////
 
 bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
@@ -111,7 +111,7 @@ bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
 }
 
 ////////////////////////////////////////////////
-//  ControlPoint
+// ControlPoint
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocketList::clear() {

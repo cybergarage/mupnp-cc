@@ -24,7 +24,7 @@ const char VER[]= "1.7";
 
 namespace UPnP {
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
   
 const char VER[]= "1.0";
@@ -39,7 +39,7 @@ const int INMPR03_DISCOVERY_OVER_WIRELESS_COUNT = 4;
 const char XML_DECLARATION[] = "<?xml version=\"1.0\"?>";
 
 ////////////////////////////////////////////////
-//  Functions
+// Functions
 ////////////////////////////////////////////////
 
 const char *GetServerName(std::string &buf);
@@ -47,7 +47,7 @@ const char *CreateUUID(std::string &buf);
 int CreateBootID();
 
 ////////////////////////////////////////////////
-//  Enable / Disable
+// Enable / Disable
 ////////////////////////////////////////////////
   
 const int USE_ONLY_IPV6_ADDR = 1;

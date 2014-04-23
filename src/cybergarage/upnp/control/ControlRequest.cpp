@@ -39,7 +39,7 @@ using namespace CyberXML;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  setRequest
+// setRequest
 ////////////////////////////////////////////////
 
 void ControlRequest::setRequestHost(Service *service) {

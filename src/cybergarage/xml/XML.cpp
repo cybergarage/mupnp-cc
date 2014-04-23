@@ -63,7 +63,7 @@ static Mutex iconvMutex;
 #endif
 
 ////////////////////////////////////////////////
-//  EscapeXMLChars
+// EscapeXMLChars
 ////////////////////////////////////////////////
 
 const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &out) {

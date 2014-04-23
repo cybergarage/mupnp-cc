@@ -22,7 +22,7 @@ using namespace CyberLink;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
-//  setRequest
+// setRequest
 ////////////////////////////////////////////////
 
 void QueryResponse::setResponse(StateVariable *stateVar) {
@@ -38,7 +38,7 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
 }
 
 ////////////////////////////////////////////////
-//  getReturn
+// getReturn
 ////////////////////////////////////////////////
 
 CyberXML::Node *QueryResponse::getReturnNode() {
@@ -63,7 +63,7 @@ const char *QueryResponse::getReturnValue() {
 }
 
 ////////////////////////////////////////////////
-//  setRequest
+// setRequest
 ////////////////////////////////////////////////
 
 Node *QueryResponse::createResponseNode(const std::string &value) {

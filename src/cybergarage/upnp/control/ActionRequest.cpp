@@ -34,7 +34,7 @@ using namespace CyberXML;
 using namespace CyberSOAP;
 
 ////////////////////////////////////////////////
-//  initArgumentList
+// initArgumentList
 ////////////////////////////////////////////////
 
 void ActionRequest::initArgumentList() {
@@ -53,7 +53,7 @@ void ActionRequest::initArgumentList() {
 }
 
 ////////////////////////////////////////////////
-//  getActionNode
+// getActionNode
 ////////////////////////////////////////////////
 
 CyberXML::Node *ActionRequest::getActionNode() {
@@ -66,7 +66,7 @@ CyberXML::Node *ActionRequest::getActionNode() {
 }
 
 ////////////////////////////////////////////////
-//  getActionName
+// getActionName
 ////////////////////////////////////////////////
 
 const char *ActionRequest::getActionName(std::string &buf) {
@@ -86,7 +86,7 @@ const char *ActionRequest::getActionName(std::string &buf) {
 }
 
 ////////////////////////////////////////////////
-//  setRequest
+// setRequest
 ////////////////////////////////////////////////
 
 void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList) {
@@ -113,7 +113,7 @@ void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList)
 }
 
 ////////////////////////////////////////////////
-//  Contents
+// Contents
 ////////////////////////////////////////////////
 
 Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *action, ArgumentList *argList) {
@@ -138,7 +138,7 @@ Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *acti
 }
 
 ////////////////////////////////////////////////
-//  post
+// post
 ////////////////////////////////////////////////
 
 ActionResponse *ActionRequest::post(ActionResponse *actionRes) {

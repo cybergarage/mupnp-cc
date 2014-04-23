@@ -32,7 +32,7 @@ using namespace uHTTP;
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//  Timeout
+// Timeout
 ////////////////////////////////////////////////
 
 const char *CyberLink::Subscription::toTimeoutHeaderString(long time, std::string &buf) {
@@ -59,7 +59,7 @@ long CyberLink::Subscription::GetTimeout(const std::string &headerValue) {
 }
 
 ////////////////////////////////////////////////
-//  SID
+// SID
 ////////////////////////////////////////////////
 
 const char *CyberLink::Subscription::CreateSID(std::string &buf) {

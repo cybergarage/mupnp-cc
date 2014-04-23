@@ -38,14 +38,14 @@ using namespace uHTTP;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
-//  CALLBACK
+// CALLBACK
 ////////////////////////////////////////////////
 
 const char SubscriptionRequest::CALLBACK_START_WITH  = '<';
 const char SubscriptionRequest::CALLBACK_END_WITH = '>';
 
 ////////////////////////////////////////////////
-//  setRequest
+// setRequest
 ////////////////////////////////////////////////
 
 void SubscriptionRequest::setService(Service *service) {

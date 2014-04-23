@@ -31,7 +31,7 @@ namespace CyberLink {
 class SSDPRequest : public uHTTP::HTTPRequest {
  public:
   ////////////////////////////////////////////////
-  //  Constructor
+  // Constructor
   ////////////////////////////////////////////////
   
   SSDPRequest() {
@@ -39,7 +39,7 @@ class SSDPRequest : public uHTTP::HTTPRequest {
   }
 
   ////////////////////////////////////////////////
-  //  NT
+  // NT
   ////////////////////////////////////////////////
 
   void setNT(const std::string &value) {
@@ -51,7 +51,7 @@ class SSDPRequest : public uHTTP::HTTPRequest {
   }
 
   ////////////////////////////////////////////////
-  //  NTS
+  // NTS
   ////////////////////////////////////////////////
 
   void setNTS(const std::string &value) {
@@ -63,7 +63,7 @@ class SSDPRequest : public uHTTP::HTTPRequest {
   }
 
   ////////////////////////////////////////////////
-  //  Location
+  // Location
   ////////////////////////////////////////////////
 
   void setLocation(const std::string &value) {
@@ -75,7 +75,7 @@ class SSDPRequest : public uHTTP::HTTPRequest {
   }
 
   ////////////////////////////////////////////////
-  //  USN
+  // USN
   ////////////////////////////////////////////////
 
   void setUSN(const std::string &value) {
@@ -87,7 +87,7 @@ class SSDPRequest : public uHTTP::HTTPRequest {
   }
 
   ////////////////////////////////////////////////
-  //  CacheControl
+  // CacheControl
   ////////////////////////////////////////////////
 
   void setLeaseTime(int value) {
@@ -104,7 +104,7 @@ class SSDPRequest : public uHTTP::HTTPRequest {
   }
 
   ////////////////////////////////////////////////
-  //  BOOTID.UPNP.ORG
+  // BOOTID.UPNP.ORG
   ////////////////////////////////////////////////
 
   void setBootID(int value) {

@@ -29,7 +29,7 @@ using namespace CyberLink;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////
-//  setRequest
+// setRequest
 ////////////////////////////////////////////////
   
 void QueryRequest::setRequest(StateVariable *stateVar) {
@@ -48,7 +48,7 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
 }
 
 ////////////////////////////////////////////////
-//  Contents
+// Contents
 ////////////////////////////////////////////////
 
 CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
@@ -65,7 +65,7 @@ CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
 }
 
 ////////////////////////////////////////////////
-//  getVarName
+// getVarName
 ////////////////////////////////////////////////
 
 CyberXML::Node *QueryRequest::getVarNameNode() {
@@ -90,7 +90,7 @@ const char *QueryRequest::getVarName() {
 }
 
 ////////////////////////////////////////////////
-//  post
+// post
 ////////////////////////////////////////////////
 
 QueryResponse *QueryRequest::post(QueryResponse *queryRes) {

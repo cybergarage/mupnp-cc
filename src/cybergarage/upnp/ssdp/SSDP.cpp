@@ -24,7 +24,7 @@ using namespace CyberLink::SSDP;
 static string ssdpIPv6Address;
 
 ////////////////////////////////////////////////
-//  SSDP Address for IPv6
+// SSDP Address for IPv6
 ////////////////////////////////////////////////
 
 void CyberLink::SSDP::SetIPv6Address(const std::string &addr) {
@@ -38,7 +38,7 @@ const char *CyberLink::SSDP::GetIPv6Address() {
 }
 
 ////////////////////////////////////////////////
-//  LeaseTime
+// LeaseTime
 ////////////////////////////////////////////////
   
 int CyberLink::SSDP::GetLeaseTime(const std::string &cacheCnt) {

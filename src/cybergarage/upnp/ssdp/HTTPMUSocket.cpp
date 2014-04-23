@@ -24,7 +24,7 @@ using namespace CyberLink;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
   
 HTTPMUSocket::HTTPMUSocket() {
@@ -35,7 +35,7 @@ HTTPMUSocket::HTTPMUSocket(const std::string &addr, int port, const std::string 
 }
 
 ////////////////////////////////////////////////
-//  Destructor
+// Destructor
 ////////////////////////////////////////////////
 
 HTTPMUSocket::~HTTPMUSocket() {
@@ -43,7 +43,7 @@ HTTPMUSocket::~HTTPMUSocket() {
 }
 
 ////////////////////////////////////////////////
-//  open/close
+// open/close
 ////////////////////////////////////////////////
 
 bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bindAddr) {
@@ -69,7 +69,7 @@ bool HTTPMUSocket::close() {
 }
 
 ////////////////////////////////////////////////
-//  reveive
+// reveive
 ////////////////////////////////////////////////
 
 bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int bindPort) {
@@ -84,7 +84,7 @@ bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int
 }
 
 ////////////////////////////////////////////////
-//  reveive
+// reveive
 ////////////////////////////////////////////////
 
 SSDPPacket *HTTPMUSocket::receive() {

@@ -24,7 +24,7 @@ namespace CyberLink {
 class SSDPResponse : public uHTTP::HTTPResponse {
  public:
   ////////////////////////////////////////////////
-  //  Constructor
+  // Constructor
   ////////////////////////////////////////////////
   
   SSDPResponse() {
@@ -32,7 +32,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
-  //  ST (SearchTarget)
+  // ST (SearchTarget)
   ////////////////////////////////////////////////
 
   void setST(const std::string &value) {
@@ -44,7 +44,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
-  //  Location
+  // Location
   ////////////////////////////////////////////////
 
   void setLocation(const std::string &value) {
@@ -56,7 +56,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
-  //  USN
+  // USN
   ////////////////////////////////////////////////
 
   void setUSN(const std::string &value) {
@@ -68,7 +68,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
-  //  BOOTID.UPNP.ORG
+  // BOOTID.UPNP.ORG
   ////////////////////////////////////////////////
 
   void setBootID(int value) {
@@ -80,7 +80,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
-  //  MYNAME
+  // MYNAME
   ////////////////////////////////////////////////
   
   void setMYNAME(const std::string &value) {
@@ -92,7 +92,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
-  //  CacheControl
+  // CacheControl
   ////////////////////////////////////////////////
 
   void setLeaseTime(int value);
@@ -100,7 +100,7 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   int getLeaseTime();
 
   ////////////////////////////////////////////////
-  //  getHeader
+  // getHeader
   ////////////////////////////////////////////////
 
   const char *getHeader(std::string &headerStr);

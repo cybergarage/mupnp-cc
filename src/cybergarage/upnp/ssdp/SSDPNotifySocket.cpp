@@ -19,7 +19,7 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-//  post (SSDPNotifySocket)
+// post (SSDPNotifySocket)
 ////////////////////////////////////////////////
 
 SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
@@ -39,7 +39,7 @@ SSDPNotifySocket::~SSDPNotifySocket() {
 }
 
 ////////////////////////////////////////////////
-//  post (SSDPNotifySocket)
+// post (SSDPNotifySocket)
 ////////////////////////////////////////////////
 
 bool SSDPNotifySocket::post(SSDPNotifyRequest *req) {
@@ -51,7 +51,7 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req) {
 }
 
 ////////////////////////////////////////////////
-//  run  
+// run  
 ////////////////////////////////////////////////
 
 void SSDPNotifySocket::run() {

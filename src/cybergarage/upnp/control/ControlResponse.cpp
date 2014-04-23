@@ -25,14 +25,14 @@ using namespace uHTTP;
 using namespace CyberSOAP;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const char *ControlResponse::FAULT_CODE = "Client";
 const char *ControlResponse::FAULT_STRING = "UPnPError";
 
 ////////////////////////////////////////////////
-//  FaultResponse
+// FaultResponse
 ////////////////////////////////////////////////
 
 void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr) {

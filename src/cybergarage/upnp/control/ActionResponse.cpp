@@ -33,7 +33,7 @@ using namespace CyberXML;
 using namespace CyberSOAP;
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
 
 ActionResponse::ActionResponse() {
@@ -46,7 +46,7 @@ ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes) {
 }
 
 ////////////////////////////////////////////////
-//  Response
+// Response
 ////////////////////////////////////////////////
 
 void ActionResponse::setResponse(CyberLink::Action *action) {
@@ -94,7 +94,7 @@ CyberXML::Node *ActionResponse::createResponseNode(CyberLink::Action *action) {
 }
 
  ////////////////////////////////////////////////
-//  getResponse
+// getResponse
 ////////////////////////////////////////////////
 
 Node *ActionResponse::getActionResponseNode() {

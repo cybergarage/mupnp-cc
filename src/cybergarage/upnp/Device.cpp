@@ -101,7 +101,7 @@ using namespace uHTTP;
 using namespace CyberSOAP;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const char *Device::ELEM_NAME = "device";
@@ -127,7 +127,7 @@ const char *Device::UPC = "UPC";
 const char *Device::presentationURL = "presentationURL";
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
 
 Device::Device(CyberXML::Node *root, CyberXML::Node *device) {
@@ -185,7 +185,7 @@ void Device::initChildList() {
 }
 
 ////////////////////////////////////////////////
-//  Constructor (File)
+// Constructor (File)
 ////////////////////////////////////////////////
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
@@ -216,7 +216,7 @@ Device::Device(const std::string &descriptionFileName) {
 #endif
 
 ////////////////////////////////////////////////
-//  Member
+// Member
 ////////////////////////////////////////////////
 
 CyberXML::Node *Device::getRootNode() {
@@ -228,7 +228,7 @@ CyberXML::Node *Device::getRootNode() {
 }
 
 ////////////////////////////////////////////////
-//  NMPR
+// NMPR
 ////////////////////////////////////////////////
   
 void Device::setNMPRMode(bool flag) {
@@ -252,7 +252,7 @@ bool Device::isNMPRMode() {
 }
 
 ////////////////////////////////////////////////
-//  URL Base
+// URL Base
 ////////////////////////////////////////////////
 
 void Device::setURLBase(const std::string &value) {
@@ -284,7 +284,7 @@ const char *Device::getURLBase() {
 }
 
 ////////////////////////////////////////////////
-//  Destructor
+// Destructor
 ////////////////////////////////////////////////
 
 Device::~Device() {
@@ -298,7 +298,7 @@ Device::~Device() {
 }
 
 ////////////////////////////////////////////////
-//  isDeviceType
+// isDeviceType
 ////////////////////////////////////////////////
 
 bool Device::isDeviceType(const std::string &value) {
@@ -307,7 +307,7 @@ bool Device::isDeviceType(const std::string &value) {
 }
 
 ////////////////////////////////////////////////
-//  LeaseTime 
+// LeaseTime 
 ////////////////////////////////////////////////
 
 void Device::setLeaseTime(int value) {
@@ -330,7 +330,7 @@ int Device::getLeaseTime() {
 }
 
 ////////////////////////////////////////////////
-//  TimeStamp 
+// TimeStamp 
 ////////////////////////////////////////////////
 
 long Device::getTimeStamp() {
@@ -351,7 +351,7 @@ bool Device::isExpired() {
 }
 
  ////////////////////////////////////////////////
-//  Root Device
+// Root Device
 ////////////////////////////////////////////////
 
 Device *Device::getRootDevice() {
@@ -370,7 +370,7 @@ Device *Device::getRootDevice() {
 }
 
  ////////////////////////////////////////////////
-//  Root Device
+// Root Device
 ////////////////////////////////////////////////
 
 // Thanks for Stefano Lenzi (07/24/04)
@@ -393,7 +393,7 @@ Device *Device::getParentDevice() {
 }
 
 ////////////////////////////////////////////////
-//  UserData
+// UserData
 ////////////////////////////////////////////////
 
 DeviceData *Device::getDeviceData() {
@@ -409,7 +409,7 @@ DeviceData *Device::getDeviceData() {
 }
 
 ////////////////////////////////////////////////
-//  loadDescription
+// loadDescription
 ////////////////////////////////////////////////
 
 bool Device::loadDescription(const std::string &description) {
@@ -452,7 +452,7 @@ bool Device::loadDescription(const std::string &description) {
 }
 
 ////////////////////////////////////////////////
-//  Description (File)
+// Description (File)
 ////////////////////////////////////////////////
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
@@ -485,7 +485,7 @@ bool Device::loadDescription(uHTTP::File *file) {
 #endif
 
 ////////////////////////////////////////////////
-//  deviceList
+// deviceList
 ////////////////////////////////////////////////
 
 void Device::initDeviceList() {
@@ -546,7 +546,7 @@ Device *Device::getDeviceByDescriptionURI(const std::string &uri) {
 }
 
 ////////////////////////////////////////////////
-//  serviceList
+// serviceList
 ////////////////////////////////////////////////
 
 void Device::initServiceList() {
@@ -681,7 +681,7 @@ Service *Device::getSubscriberService(const std::string &uuid) {
 }
 
 ////////////////////////////////////////////////
-//  StateVariable
+// StateVariable
 ////////////////////////////////////////////////
 
 StateVariable *Device::getStateVariable(const std::string &serviceType, const std::string &name) {
@@ -718,7 +718,7 @@ StateVariable *Device::getStateVariable(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-//  Action
+// Action
 ////////////////////////////////////////////////
 
 CyberLink::Action *Device::getAction(const std::string &name) {
@@ -754,7 +754,7 @@ CyberLink::Action *Device::getAction(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-//  iconList
+// iconList
 ////////////////////////////////////////////////
 
 void Device::initIconList() {
@@ -776,7 +776,7 @@ void Device::initIconList() {
 }
   
 ////////////////////////////////////////////////
-//  Notify
+// Notify
 ////////////////////////////////////////////////
 
 void Device::notifyWait() {
@@ -939,7 +939,7 @@ void Device::byebye() {
 }
 
 ////////////////////////////////////////////////
-//  Search
+// Search
 ////////////////////////////////////////////////
 
 bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn) {
@@ -1039,7 +1039,7 @@ void Device::deviceSearchReceived(SSDPPacket *ssdpPacket) {
 }
 
 ////////////////////////////////////////////////
-//  HTTP Server  
+// HTTP Server  
 ////////////////////////////////////////////////
 
 uHTTP::HTTP::StatusCode Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq) {
@@ -1063,7 +1063,7 @@ uHTTP::HTTP::StatusCode Device::httpRequestRecieved(uHTTP::HTTPRequest *httpReq)
 }
 
 ////////////////////////////////////////////////
-//  HTTP Server  
+// HTTP Server  
 ////////////////////////////////////////////////
 
 const char *Device::getDescriptionData(const std::string &host, string &buf) {
@@ -1128,7 +1128,7 @@ uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq) {
 }
 
 ////////////////////////////////////////////////
-//  SOAP
+// SOAP
 ////////////////////////////////////////////////
 
 uHTTP::HTTP::StatusCode Device::soapBadActionRecieved(HTTPRequest *soapReq) {
@@ -1150,7 +1150,7 @@ uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq) {
 }
 
 ////////////////////////////////////////////////
-//  controlAction
+// controlAction
 ////////////////////////////////////////////////
 
 uHTTP::HTTP::StatusCode Device::invalidActionControlRecieved(ControlRequest *ctlReq) {
@@ -1201,7 +1201,7 @@ uHTTP::HTTP::StatusCode Device::deviceQueryControlRecieved(QueryRequest *ctlReq,
 }
 
 ////////////////////////////////////////////////
-//  eventSubscribe
+// eventSubscribe
 ////////////////////////////////////////////////
 
 uHTTP::HTTP::StatusCode Device::upnpBadSubscriptionRecieved(SubscriptionRequest *subReq, int code) {
@@ -1305,7 +1305,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *servi
 }    
 
 ////////////////////////////////////////////////
-//  Thread  
+// Thread  
 ////////////////////////////////////////////////
 
 bool Device::start() {
@@ -1379,7 +1379,7 @@ bool Device::stop(bool doByeBye) {
 }
   
 ////////////////////////////////////////////////
-//  Action/QueryListener
+// Action/QueryListener
 ////////////////////////////////////////////////
 
 void Device::setActionListener(ActionListener *listener) {
@@ -1401,7 +1401,7 @@ void Device::setQueryListener(QueryListener *listener) {
 }
 
 ////////////////////////////////////////////////
-//  Action/QueryListener
+// Action/QueryListener
 ////////////////////////////////////////////////
 
 // Thanks for Mikael Hakman (04/25/05)

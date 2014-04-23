@@ -24,13 +24,13 @@
 #endif
 
 ////////////////////////////////////////////////
-//  Compiler Switch (BEGIN)
+// Compiler Switch (BEGIN)
 ////////////////////////////////////////////////
 
 #if !defined(USE_XMLPARSER_EXPAT) && !defined(USE_XMLPARSER_LIBXML2)
 
 ////////////////////////////////////////////////
-//  Header Files
+// Header Files
 ////////////////////////////////////////////////
 
 #include <uhttp/util/Mutex.h>
@@ -53,7 +53,7 @@ using namespace CyberXML;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
 
 static int parserCnt = 0;
@@ -76,7 +76,7 @@ Parser::~Parser() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//  parse (Xerces)
+// parse (Xerces)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const char *XMLCh2Char(const XMLCh *value, string &buf) {
@@ -103,7 +103,7 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
   if (attrs != NULL)
     arrrsLen = attrs->getLength();
 
-//  Debug.message("[" + rank + "] ELEM : " + domNodeName + ", " + domNodeValue + ", type = " + domNodeType + ", attrs = " + arrrsLen);
+// Debug.message("[" + rank + "] ELEM : " + domNodeName + ", " + domNodeValue + ", type = " + domNodeType + ", attrs = " + arrrsLen);
 
   if (domNodeType == DOMNode::TEXT_NODE) {
     parentNode->setValue(domNodeValue.c_str());
@@ -170,7 +170,7 @@ Node *XMLParse(InputSource &inSrc) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//  parse
+// parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 Node *Parser::parse(const std::string &data, size_t len) {
@@ -191,7 +191,7 @@ Node *Parser::parse(const std::string &data, size_t len) {
 }
 
 ////////////////////////////////////////////////
-//  Compiler Switch (END)
+// Compiler Switch (END)
 ////////////////////////////////////////////////
 
 #endif

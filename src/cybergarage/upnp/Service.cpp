@@ -83,7 +83,7 @@ using namespace uHTTP;
 using namespace std;
 
 ////////////////////////////////////////////////
-//  Constants
+// Constants
 ////////////////////////////////////////////////
 
 const char *Service::ELEM_NAME = "service";
@@ -94,7 +94,7 @@ const char *Service::CONTROL_URL = "controlURL";
 const char *Service::EVENT_SUB_URL = "eventSubURL";
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
 
 Service::Service(CyberXML::Node *node) {
@@ -109,7 +109,7 @@ Service::~Service() {
 }
 
 ////////////////////////////////////////////////
-//  Device
+// Device
 ////////////////////////////////////////////////
 
 Device *Service::getRootDevice() {
@@ -117,7 +117,7 @@ Device *Service::getRootDevice() {
 }
 
 ////////////////////////////////////////////////
-//  deviceList
+// deviceList
 ////////////////////////////////////////////////
 
 void Service::initActionList() {
@@ -155,7 +155,7 @@ CyberLink::Action *Service::getAction(const std::string &actionName) {
 }
 
 ////////////////////////////////////////////////
-//  serviceStateTable
+// serviceStateTable
 ////////////////////////////////////////////////
 
 void Service::initServiceStateTable() {
@@ -193,7 +193,7 @@ StateVariable *Service::getStateVariable(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-//  SCPD node
+// SCPD node
 ////////////////////////////////////////////////
 
 CyberXML::Node *Service::getSCPDNode(uHTTP::URL *url) {
@@ -296,7 +296,7 @@ const char *Service::getSCPDData(string &buf) {
 }
 
 ////////////////////////////////////////////////
-//  Load SCPD
+// Load SCPD
 ////////////////////////////////////////////////
 
 bool Service::loadSCPD(const std::string &description) {
@@ -351,7 +351,7 @@ bool Service::loadSCPD(uHTTP::File *file) {
 #endif
 
 ////////////////////////////////////////////////
-//  Notify
+// Notify
 ////////////////////////////////////////////////
 
 bool Service::notify(Subscriber *sub, StateVariable *stateVar) {
@@ -422,7 +422,7 @@ void Service::notifyAllStateVariables() {
 }
 
 ////////////////////////////////////////////////
-//  annouce
+// annouce
 ////////////////////////////////////////////////
 
 const char *Service::getNotifyServiceTypeNT(std::string &buf) {
@@ -483,7 +483,7 @@ void Service::byebye(const std::string &bindAddr) {
 }
 
 ////////////////////////////////////////////////
-//  queryAction
+// queryAction
 ////////////////////////////////////////////////
 
 void Service::setQueryListener(QueryListener *listener) {
@@ -496,7 +496,7 @@ void Service::setQueryListener(QueryListener *listener) {
 }
 
 ////////////////////////////////////////////////
-//  isURL
+// isURL
 ////////////////////////////////////////////////
   
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/03/03)
@@ -513,7 +513,7 @@ bool Service::isURL(const std::string &referenceUrl, const std::string &url) {
 }
 
 ////////////////////////////////////////////////
-//  Subscription
+// Subscription
 ////////////////////////////////////////////////
 
 void Service::addSubscriber(Subscriber *sub)  {
@@ -574,7 +574,7 @@ Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-//  serviceSearchResponse
+// serviceSearchResponse
 ////////////////////////////////////////////////
 
 bool Service::serviceSearchResponse(SSDPPacket *ssdpPacket) {
@@ -603,7 +603,7 @@ bool Service::serviceSearchResponse(SSDPPacket *ssdpPacket) {
 }
 
 ////////////////////////////////////////////////
-//  ActionListener
+// ActionListener
 ////////////////////////////////////////////////
 
 void Service::setActionListener(ActionListener *listener) {

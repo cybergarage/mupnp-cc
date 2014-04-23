@@ -36,7 +36,7 @@ using namespace CyberXML;
 using namespace std;
 
 ////////////////////////////////////////////////
-//  Constructor
+// Constructor
 ////////////////////////////////////////////////
   
 SOAPRequest::SOAPRequest() {
@@ -73,7 +73,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value) {
 }
 
 ////////////////////////////////////////////////
-//  parseMessage
+// parseMessage
 ////////////////////////////////////////////////
 
 CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
@@ -85,7 +85,7 @@ CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t con
 }
 
 ////////////////////////////////////////////////
-//  Node
+// Node
 ////////////////////////////////////////////////
 
 CyberXML::Node *SOAPRequest::getRootNode() {
@@ -101,7 +101,7 @@ CyberXML::Node *SOAPRequest::getRootNode() {
 }
 
 ////////////////////////////////////////////////
-//  post
+// post
 ////////////////////////////////////////////////
 
 SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPResponse *soapRes) {
@@ -119,7 +119,7 @@ SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPRe
 }
 
 ////////////////////////////////////////////////
-//  setContent
+// setContent
 ////////////////////////////////////////////////
 
 void SOAPRequest::setContent(CyberXML::Node *node) {

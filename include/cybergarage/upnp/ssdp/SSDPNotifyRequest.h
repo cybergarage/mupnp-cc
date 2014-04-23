@@ -24,7 +24,7 @@ namespace CyberLink {
 class SSDPNotifyRequest : public  SSDPRequest {
 public:
   ////////////////////////////////////////////////
-  //  Constructor
+  // Constructor
   ////////////////////////////////////////////////
   
   SSDPNotifyRequest() {
