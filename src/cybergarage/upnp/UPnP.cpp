@@ -32,6 +32,7 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <limits.h>
 
 #ifdef WIN32
 #include <windows.h>
@@ -72,6 +73,15 @@ const char *UPnP::CreateUUID(std::string &buf) {
     (int)(((time2 >> 31) | 0xE000) & 0xFFFF));
   buf = sidBuf;
   return buf.c_str();
+}
+
+////////////////////////////////////////////////
+// BootID
+////////////////////////////////////////////////
+
+int UPnP::CreateBootID() {
+  time_t currentTime = time(NULL);
+  return (currentTime % INT_MAX);
 }
 
 ////////////////////////////////////////////////

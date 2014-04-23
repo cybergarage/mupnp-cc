@@ -44,6 +44,7 @@ const char XML_DECLARATION[] = "<?xml version=\"1.0\"?>";
 
 const char *GetServerName(std::string &buf);
 const char *CreateUUID(std::string &buf);
+int CreateBootID();
 
 ////////////////////////////////////////////////
 //  Enable / Disable

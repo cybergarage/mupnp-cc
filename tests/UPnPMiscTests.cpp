@@ -10,6 +10,8 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include <limits.h>
+
 #include <cybergarage/upnp/CyberLink.h>
 
 using namespace CyberLink;
@@ -35,9 +37,17 @@ BOOST_AUTO_TEST_CASE(STTests)
 
 BOOST_AUTO_TEST_CASE(SSDPTests)
 {
-    const char *UPNP_TEST_MAXAGE_STR = "max-age=60";
-    const int UPNP_TEST_MAXAGE = 60;
+  const char *UPNP_TEST_MAXAGE_STR = "max-age=60";
+  const int UPNP_TEST_MAXAGE = 60;
     
 	int mx = SSDP::GetLeaseTime(UPNP_TEST_MAXAGE_STR);
 	BOOST_CHECK_EQUAL(UPNP_TEST_MAXAGE, mx);
 }
+
+BOOST_AUTO_TEST_CASE(BootIdTests)
+{
+  int bootId = UPnP::CreateBootID();
+	BOOST_CHECK(0 < bootId);
+	BOOST_CHECK(bootId < INT_MAX);
+}
+
