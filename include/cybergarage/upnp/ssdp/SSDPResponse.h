@@ -68,6 +68,18 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   }
 
   ////////////////////////////////////////////////
+  //  BOOTID.UPNP.ORG
+  ////////////////////////////////////////////////
+
+  void setBootID(int value) {
+    setHeader(SSDP::BOOTID_UPNP_ORG, value);
+  }
+
+  int getBootID() {
+    return getIntegerHeaderValue(SSDP::BOOTID_UPNP_ORG);
+  }
+
+  ////////////////////////////////////////////////
   //  MYNAME
   ////////////////////////////////////////////////
   

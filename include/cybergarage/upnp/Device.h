@@ -55,6 +55,7 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   bool localRootDeviceFlag;
 
   std::string devUUID;
+  int devBootID;
 
   uHTTP::Mutex mutex;
 
@@ -120,6 +121,7 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
 private:
 
   void initUUID();
+  void initBootID();
   void initDeviceData();
   void initChildList();
 
@@ -176,17 +178,35 @@ private:
     devUUID = uuid;
   }
 
-  const char *getUUID() {
-    return devUUID.c_str();
-  }
-
   void updateUDN() {
     std::string uuid;
     uuid.append("uuid:");
     uuid.append(getUUID());
     setUDN(uuid.c_str());
   }
-  
+
+public:
+
+  const char *getUUID() {
+    return devUUID.c_str();
+  }
+
+  ////////////////////////////////////////////////
+  //  Device BootID
+  ////////////////////////////////////////////////
+
+private:
+
+  void setBootID(int bootId) {
+    devBootID = bootId;
+  }
+
+public:
+
+  int getBootID() {
+    return devBootID;
+  }
+
   //////////////////////////////////////////////
   //  Root Device
   ////////////////////////////////////////////////

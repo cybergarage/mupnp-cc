@@ -135,6 +135,7 @@ Device::Device(CyberXML::Node *root, CyberXML::Node *device) {
   rootNode = root;
   deviceNode = device;
   initUUID();
+  initBootID();
   initDeviceData();
   initChildList();
   setWirelessMode(false);
@@ -145,6 +146,7 @@ Device::Device() {
   rootNode = NULL;
   deviceNode = NULL;
   initUUID();
+  initBootID();
   initDeviceData();
   initChildList();
 }
@@ -154,6 +156,7 @@ Device::Device(CyberXML::Node *device) {
   rootNode = NULL;
   deviceNode = device;
   initUUID();
+  initBootID();
   initDeviceData();
   initChildList();
 }
@@ -161,6 +164,10 @@ Device::Device(CyberXML::Node *device) {
 void Device::initUUID() {
   string uuid;
   setUUID(UPnP::CreateUUID(uuid));
+}
+
+void Device::initBootID() {
+  setBootID(UPnP::CreateBootID());
 }
 
 void Device::initDeviceData() {
@@ -188,6 +195,7 @@ Device::Device(uHTTP::File *descriptionFile) {
   rootNode = NULL;
   deviceNode = NULL;
   initUUID();
+  initBootID();
   bool ret = loadDescription(descriptionFile);
   if (ret == false)
     throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
@@ -198,6 +206,7 @@ Device::Device(const std::string &descriptionFileName) {
   rootNode = NULL;
   deviceNode = NULL;
   initUUID();
+  initBootID();
   uHTTP::File descriptionFile(descriptionFileName);
   bool ret = loadDescription(&descriptionFile);
   if (ret == false)
@@ -818,7 +827,8 @@ void Device::announce(const std::string &bindAddr) {
   ssdpReq.setLeaseTime(getLeaseTime());
   ssdpReq.setLocation(devLocation);
   ssdpReq.setNTS(NTS::ALIVE);
-    
+  ssdpReq.setBootID(getBootID());
+
   // uuid:device-UUID(::upnp:rootdevice)* 
   if (isRootDevice() == true) {
     string devNT, devUSN;
@@ -945,6 +955,7 @@ bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, c
   ssdpRes.setST(st);
   ssdpRes.setUSN(usn);
   ssdpRes.setLocation(rootDevLocation.c_str());
+  ssdpRes.setBootID(getBootID());
   // Thanks for Brent Hills (10/20/04)
   ssdpRes.setMYNAME(getFriendlyName());
 

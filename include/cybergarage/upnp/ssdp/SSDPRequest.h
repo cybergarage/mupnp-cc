@@ -102,6 +102,19 @@ class SSDPRequest : public uHTTP::HTTPRequest {
     const char *cacheCtrl = getHeaderValue(uHTTP::HTTP::CACHE_CONTROL);
     return SSDP::GetLeaseTime(cacheCtrl);
   }
+
+  ////////////////////////////////////////////////
+  //  BOOTID.UPNP.ORG
+  ////////////////////////////////////////////////
+
+  void setBootID(int value) {
+    setHeader(SSDP::BOOTID_UPNP_ORG, value);
+  }
+
+  int getBootID() {
+    return getIntegerHeaderValue(SSDP::BOOTID_UPNP_ORG);
+  }
+
 };
 
 }
