@@ -121,7 +121,7 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
 private:
 
   void initUUID();
-  void initBootID();
+  void updateBootID();
   void initDeviceData();
   void initChildList();
 

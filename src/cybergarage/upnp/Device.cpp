@@ -135,7 +135,7 @@ Device::Device(CyberXML::Node *root, CyberXML::Node *device) {
   rootNode = root;
   deviceNode = device;
   initUUID();
-  initBootID();
+  updateBootID();
   initDeviceData();
   initChildList();
   setWirelessMode(false);
@@ -146,7 +146,7 @@ Device::Device() {
   rootNode = NULL;
   deviceNode = NULL;
   initUUID();
-  initBootID();
+  updateBootID();
   initDeviceData();
   initChildList();
 }
@@ -156,7 +156,7 @@ Device::Device(CyberXML::Node *device) {
   rootNode = NULL;
   deviceNode = device;
   initUUID();
-  initBootID();
+  updateBootID();
   initDeviceData();
   initChildList();
 }
@@ -166,7 +166,7 @@ void Device::initUUID() {
   setUUID(UPnP::CreateUUID(uuid));
 }
 
-void Device::initBootID() {
+void Device::updateBootID() {
   setBootID(UPnP::CreateBootID());
 }
 
@@ -195,7 +195,7 @@ Device::Device(uHTTP::File *descriptionFile) {
   rootNode = NULL;
   deviceNode = NULL;
   initUUID();
-  initBootID();
+  updateBootID();
   bool ret = loadDescription(descriptionFile);
   if (ret == false)
     throw InvalidDescriptionException(INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND);
@@ -206,7 +206,7 @@ Device::Device(const std::string &descriptionFileName) {
   rootNode = NULL;
   deviceNode = NULL;
   initUUID();
-  initBootID();
+  updateBootID();
   uHTTP::File descriptionFile(descriptionFileName);
   bool ret = loadDescription(&descriptionFile);
   if (ret == false)
@@ -1337,6 +1337,12 @@ bool Device::start() {
     return false;
   ssdpSearchSockList->addSearchListener(this);
   ssdpSearchSockList->start();
+
+  ////////////////////////////////////////
+  // BOOTID.UPNP.ORG
+  ////////////////////////////////////////
+
+  updateBootID();
 
   ////////////////////////////////////////
   // Announce
