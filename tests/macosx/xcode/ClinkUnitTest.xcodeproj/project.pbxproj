@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		214BD315192DE5CD00426493 /* libuhttp++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 214BD312192DE5A800426493 /* libuhttp++.a */; };
 		214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */; };
 		214CE3651564D75400115E8A /* TestDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3601564D75400115E8A /* TestDevice.cpp */; };
 		214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3611564D75400115E8A /* TestHTTPServer.cpp */; };
@@ -19,6 +20,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		214BD311192DE5A800426493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21E1EB1C1535D1E0005AA247;
+			remoteInfo = libuhttp;
+		};
+		214BD313192DE5C700426493 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 21E1EB1B1535D1E0005AA247;
+			remoteInfo = libuhttp;
+		};
 		215D56D21564F41200D7BDC0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
@@ -48,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		214BD30D192DE5A700426493 /* libuhttp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libuhttp.xcodeproj; path = ../../../../uhttp/lib/macosx/xcode/libuhttp.xcodeproj; sourceTree = "<group>"; };
 		214CE35A1564D75400115E8A /* TestCtrlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCtrlPoint.h; path = ../../TestCtrlPoint.h; sourceTree = "<group>"; };
 		214CE35B1564D75400115E8A /* TestDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDevice.h; path = ../../TestDevice.h; sourceTree = "<group>"; };
 		214CE35C1564D75400115E8A /* TestHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestHTTPServer.h; path = ../../TestHTTPServer.h; sourceTree = "<group>"; };
@@ -68,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214BD315192DE5CD00426493 /* libuhttp++.a in Frameworks */,
 				215D56D61564F41E00D7BDC0 /* liblibclink++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		214BD30E192DE5A700426493 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				214BD312192DE5A800426493 /* libuhttp++.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		214CE34E1564C8C900115E8A /* Src */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +121,7 @@
 		214CE3691564D87500115E8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				214BD30D192DE5A700426493 /* libuhttp.xcodeproj */,
 				215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */,
 			);
 			name = Frameworks;
@@ -140,6 +166,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				214BD314192DE5C700426493 /* PBXTargetDependency */,
 				215D56D51564F41A00D7BDC0 /* PBXTargetDependency */,
 			);
 			name = ClinkUnitTest;
@@ -170,6 +197,10 @@
 					ProductGroup = 215D56CC1564F41100D7BDC0 /* Products */;
 					ProjectRef = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
 				},
+				{
+					ProductGroup = 214BD30E192DE5A700426493 /* Products */;
+					ProjectRef = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -179,6 +210,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		214BD312192DE5A800426493 /* libuhttp++.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libuhttp++.a";
+			remoteRef = 214BD311192DE5A800426493 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		215D56D31564F41200D7BDC0 /* liblibclink++.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -207,6 +245,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		214BD314192DE5C700426493 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libuhttp;
+			targetProxy = 214BD313192DE5C700426493 /* PBXContainerItemProxy */;
+		};
 		215D56D51564F41A00D7BDC0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "libclink++";
@@ -219,8 +262,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LIBRARY = "libc++";
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -244,7 +288,7 @@
 					/opt/local/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lboost_unit_test_framework-mt",
@@ -258,8 +302,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LIBRARY = "libc++";
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -277,7 +322,7 @@
 					/opt/local/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-lboost_unit_test_framework-mt",
 					"-luhttp++",
