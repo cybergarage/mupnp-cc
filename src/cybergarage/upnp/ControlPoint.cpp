@@ -217,12 +217,18 @@ void ControlPoint::removeDevice(SSDPPacket *packet) {
   
 void ControlPoint::removeExpiredDevices() {
   int n;
+  
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   Device **dev = new Device*[devCnt];
-  for (n = 0; n < devCnt; n++)
-    dev[n] = devList->getDevice(n);
+
   for (n = 0; n < devCnt; n++) {
+    dev[n] = devList->getDevice(n);
+  }
+  
+  for (n = 0; n < devCnt; n++) {
+    if (!dev[n]->isRootDevice())
+      continue;
     if (dev[n]->isExpired() == true) {
       string msg = "Expired device = ";
       msg += dev[n]->getFriendlyName();
@@ -231,6 +237,7 @@ void ControlPoint::removeExpiredDevices() {
       removeDevice(rootNode);
     }
   }
+  
   delete []dev;
   initDeviceList();
 }
