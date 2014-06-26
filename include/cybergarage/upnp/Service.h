@@ -104,6 +104,8 @@ private:
 
  public:
   static bool isServiceNode(CyberXML::Node *node) {
+    if (node == NULL)
+      return false;
     return node->isName(Service::ELEM_NAME);
   }
   
