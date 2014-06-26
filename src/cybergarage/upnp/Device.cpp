@@ -400,7 +400,7 @@ DeviceData *Device::getDeviceData() {
   CyberXML::Node *node = getDeviceNode();
   if (node == NULL)
     return NULL;
-  DeviceData *userData = (DeviceData *)node->getUserData();
+  DeviceData *userData = dynamic_cast<DeviceData *>(node->getUserData());
   if (userData == NULL) {
     userData = new DeviceData();
     node->setUserData(userData);

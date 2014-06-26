@@ -135,7 +135,7 @@ private:
     CyberXML::Node *node = getDeviceNode();
     if (node == NULL)
       return NULL;
-    DeviceData *data = (DeviceData *)node->getUserData();
+    DeviceData *data = dynamic_cast<DeviceData *>(node->getUserData());
     if (data == NULL)
       return NULL;
     return data->getDevice();
@@ -304,7 +304,7 @@ private:
     CyberXML::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
-    ServiceData *userData = (ServiceData *)node->getUserData();
+    ServiceData *userData = dynamic_cast<ServiceData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ServiceData();
       node->setUserData(userData);

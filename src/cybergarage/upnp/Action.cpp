@@ -76,7 +76,7 @@ Action::~Action() {
 
 Service *Action::getService() {
   CyberXML::Node *node = getServiceNode();
-  ServiceData *data = (ServiceData *)node->getUserData();
+  ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;
   return data->getService();
