@@ -133,6 +133,8 @@ private:
  public:
   Device *getDevice() {
     CyberXML::Node *node = getDeviceNode();
+    if (node == NULL)
+      return NULL;
     DeviceData *data = (DeviceData *)node->getUserData();
     if (data == NULL)
       return NULL;
