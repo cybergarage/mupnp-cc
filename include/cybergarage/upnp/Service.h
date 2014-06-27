@@ -104,6 +104,8 @@ private:
 
  public:
   static bool isServiceNode(CyberXML::Node *node) {
+    if (node == NULL)
+      return false;
     return node->isName(Service::ELEM_NAME);
   }
   
@@ -131,7 +133,9 @@ private:
  public:
   Device *getDevice() {
     CyberXML::Node *node = getDeviceNode();
-    DeviceData *data = (DeviceData *)node->getUserData();
+    if (node == NULL)
+      return NULL;
+    DeviceData *data = dynamic_cast<DeviceData *>(node->getUserData());
     if (data == NULL)
       return NULL;
     return data->getDevice();
@@ -300,7 +304,7 @@ private:
     CyberXML::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
-    ServiceData *userData = (ServiceData *)node->getUserData();
+    ServiceData *userData = dynamic_cast<ServiceData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ServiceData();
       node->setUserData(userData);

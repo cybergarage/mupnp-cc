@@ -175,7 +175,7 @@ private:
 
   ActionData *getActionData() {
     CyberXML::Node *node = getActionNode();
-    ActionData *userData = (ActionData *)node->getUserData();
+    ActionData *userData = dynamic_cast<ActionData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ActionData();
       node->setUserData(userData);

@@ -67,7 +67,7 @@ class StateVariable {
     CyberXML::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
-    ServiceData *data = (ServiceData *)node->getUserData();
+    ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
     if (data == NULL)
       return NULL;
     return data->getService();
@@ -184,7 +184,7 @@ private:
  public:
   StateVariableData *getStateVariableData () {
     CyberXML::Node *node = getStateVariableNode();
-    StateVariableData *userData = (StateVariableData *)node->getUserData();
+    StateVariableData *userData = dynamic_cast<StateVariableData *>(node->getUserData());
     if (userData == NULL) {
       userData = new StateVariableData();
       node->setUserData(userData);

@@ -135,7 +135,7 @@ class Argument {
 
   ArgumentData *getArgumentData() {
     CyberXML::Node *node = getArgumentNode();
-    ArgumentData *userData = (ArgumentData *)node->getUserData();
+    ArgumentData *userData = dynamic_cast<ArgumentData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ArgumentData();
       node->setUserData(userData);
