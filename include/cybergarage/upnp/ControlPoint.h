@@ -269,14 +269,14 @@ private:
     searchMx = mx;
   }
 
-  void search(const std::string &target, int mx);
+  bool search(const std::string &target, int mx);
 
-  void search(const std::string &target) {
-    search(target, SSDP::DEFAULT_MSEARCH_MX);
+  bool search(const std::string &target) {
+    return search(target, SSDP::DEFAULT_MSEARCH_MX);
   }
 
-  void search() {
-    search(ST::ROOT_DEVICE, SSDP::DEFAULT_MSEARCH_MX);
+  bool search() {
+    return search(ST::ROOT_DEVICE, SSDP::DEFAULT_MSEARCH_MX);
   }
 
   ////////////////////////////////////////////////

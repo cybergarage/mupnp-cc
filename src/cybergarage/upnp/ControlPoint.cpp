@@ -316,10 +316,10 @@ void ControlPoint::searchResponseReceived(SSDPPacket *packet) {
 // M-SEARCH
 ////////////////////////////////////////////////
 
-void ControlPoint::search(const std::string &target, int mx) {
+bool ControlPoint::search(const std::string &target, int mx) {
   SSDPSearchRequest msReq(target, mx);
   SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
-  ssdpSearchResponseSocketList->post(&msReq);
+  return ssdpSearchResponseSocketList->post(&msReq);
 }
 
 ////////////////////////////////////////////////
