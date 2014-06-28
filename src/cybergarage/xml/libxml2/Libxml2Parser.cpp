@@ -131,18 +131,18 @@ Node *Parser::parse(const std::string &data, size_t len) {
   // First, parse the XML memory buffer ito a DOM object
   xmlDocPtr doc = xmlParseMemory( data.c_str(), (int)len );
   if ( doc == NULL ) {
-  cout << "XML file parsing failed:" << endl;
-  cout << data << endl;
-  return NULL;
+    cout << "XML file parsing failed:" << endl;
+    cout << data << endl;
+    return NULL;
   }
 
   // Then get a pointer to the root node
   xmlNodePtr cur;
   cur = xmlDocGetRootElement( doc );
   if (cur == NULL) {
-  fprintf(stderr,"Empty document\n");
-  xmlFreeDoc(doc);
-  return NULL;
+    fprintf(stderr,"Empty document\n");
+    xmlFreeDoc(doc);
+    return NULL;
   }
 
   // Then convert the libxml2 type node tree into CyberLink XML node tree
