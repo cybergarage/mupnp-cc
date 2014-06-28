@@ -438,7 +438,7 @@ const char *Service::getNotifyServiceTypeUSN(string &buf) {
   return  buf.c_str();
 }
 
-void Service::announce(const std::string &bindAddr) {
+bool Service::announce(const std::string &bindAddr) {
   // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
   
   string devLocation;
@@ -460,12 +460,13 @@ void Service::announce(const std::string &bindAddr) {
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
 
-  SSDPNotifySocket ssdpSock(bindAddr);
   Device::notifyWait();
-  ssdpSock.post(&ssdpReq);
+  
+  SSDPNotifySocket ssdpSock(bindAddr);
+  return ssdpSock.post(&ssdpReq);
 }
 
-void Service::byebye(const std::string &bindAddr) {
+bool Service::byebye(const std::string &bindAddr) {
   // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
     
   string devNT, devUSN;
@@ -477,9 +478,10 @@ void Service::byebye(const std::string &bindAddr) {
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
 
-  SSDPNotifySocket ssdpSock(bindAddr);
   Device::notifyWait();
-  ssdpSock.post(&ssdpReq);
+  
+  SSDPNotifySocket ssdpSock(bindAddr);
+  return ssdpSock.post(&ssdpReq);
 }
 
 ////////////////////////////////////////////////

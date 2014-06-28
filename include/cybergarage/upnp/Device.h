@@ -637,11 +637,11 @@ private:
  public:
   static void notifyWait();
 
-  void announce(const std::string &bindAddr);
-  void announce();
+  bool announce(const std::string &bindAddr);
+  bool announce();
   
-  void byebye(const std::string &bindAddr);
-  void byebye();
+  bool byebye(const std::string &bindAddr);
+  bool byebye();
 
   ////////////////////////////////////////////////
   // Search

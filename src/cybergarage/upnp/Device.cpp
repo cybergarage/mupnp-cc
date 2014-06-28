@@ -815,7 +815,9 @@ const char *Device::getNotifyDeviceTypeUSN(std::string &buf) {
   return buf.c_str();
 }
 
-void Device::announce(const std::string &bindAddr) {
+bool Device::announce(const std::string &bindAddr) {
+  bool isSuccess = true;
+  
   string devLocationBuf;
   const char *devLocation = getLocationURL(bindAddr, devLocationBuf);
     
@@ -836,16 +838,18 @@ void Device::announce(const std::string &bindAddr) {
     getNotifyDeviceUSN(devUSN);
     ssdpReq.setNT(devNT.c_str());
     ssdpReq.setUSN(devUSN.c_str());
-    ssdpSock.post(&ssdpReq);
+    if (!ssdpSock.post(&ssdpReq))
+      isSuccess = false;
   }
 
-  // uuid:device-UUID::urn:schemas-upnp-org:device:deviceType:v 
+  // uuid:device-UUID::urn:schemas-upnp-org:device:deviceType:v
   string devNT, devUSN;
   getNotifyDeviceTypeNT(devNT);
   getNotifyDeviceTypeUSN(devUSN);
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
-  ssdpSock.post(&ssdpReq);
+  if (!ssdpSock.post(&ssdpReq))
+    isSuccess = false;
 
   // Thanks for Mikael Hakman (04/25/05)
   ssdpSock.close();
@@ -856,18 +860,24 @@ void Device::announce(const std::string &bindAddr) {
   int serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
-    service->announce(bindAddr);
+    if (!service->announce(bindAddr))
+      isSuccess = false;
   }
 
   DeviceList *childDeviceList = getDeviceList();
   int childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
-    childDevice->announce(bindAddr);
+    if (!childDevice->announce(bindAddr))
+      isSuccess = false;
   }
+
+  return isSuccess;
 }
 
-void Device::announce() {
+bool Device::announce() {
+  bool isSuccess = true;
+  
   notifyWait();
 
   int nHostAddrs = uHTTP::GetNHostAddresses();
@@ -877,12 +887,18 @@ void Device::announce() {
     if (uHTTP::StringHasData(bindAddr) == false)
       continue;
     int ssdpCount = getSSDPAnnounceCount();
-    for (int i = 0; i<ssdpCount; i++)
-      announce(bindAddr);
+    for (int i = 0; i<ssdpCount; i++) {
+      if (!announce(bindAddr))
+        isSuccess = false;
+    }
   }
+
+  return isSuccess;
 }
   
-void Device::byebye(const std::string &bindAddr) {
+bool Device::byebye(const std::string &bindAddr) {
+  bool isSuccess = true;
+  
   int n;
   SSDPNotifySocket ssdpSock(bindAddr);
     
@@ -896,7 +912,8 @@ void Device::byebye(const std::string &bindAddr) {
     getNotifyDeviceUSN(devUSN);
     ssdpReq.setNT(devNT.c_str());
     ssdpReq.setUSN(devUSN.c_str());
-    ssdpSock.post(&ssdpReq);
+    if (!ssdpSock.post(&ssdpReq))
+      isSuccess = false;
   }
 
   // uuid:device-UUID::urn:schemas-upnp-org:device:deviceType:v 
@@ -905,7 +922,8 @@ void Device::byebye(const std::string &bindAddr) {
   getNotifyDeviceTypeUSN(devUSN);
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
-  ssdpSock.post(&ssdpReq);
+  if (!ssdpSock.post(&ssdpReq))
+    isSuccess = false;
 
   // Thanks for Mikael Hakman (04/25/05)
   ssdpSock.close();
@@ -914,18 +932,23 @@ void Device::byebye(const std::string &bindAddr) {
   int serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
-    service->byebye(bindAddr);
+    if (!service->byebye(bindAddr))
+      isSuccess = false;
   }
 
   DeviceList *childDeviceList = getDeviceList();
   int childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
-    childDevice->byebye(bindAddr);
+    if (!childDevice->byebye(bindAddr))
+      isSuccess = false;
   }
+  
+  return isSuccess;
 }
 
-void Device::byebye() {
+bool Device::byebye() {
+  bool isSuccess = true;
   int nHostAddrs = uHTTP::GetNHostAddresses();
   for (int n = 0; n < nHostAddrs; n++) {
     std::string bindAddrBuf;
@@ -933,9 +956,12 @@ void Device::byebye() {
     if (uHTTP::StringHasData(bindAddr) == false)
       continue;
     int ssdpCount = getSSDPAnnounceCount();
-    for (int i = 0; i<ssdpCount; i++)
-      byebye(bindAddr);
+    for (int i = 0; i<ssdpCount; i++) {
+      if (!byebye(bindAddr))
+        isSuccess = false;
+    }
   }
+  return isSuccess;
 }
 
 ////////////////////////////////////////////////
