@@ -1,6 +1,6 @@
 noinst_PROGRAMS = upnpclock
 
-INCLUDES = -I$(top_srcdir)/include -I../ -I../../common @XML_CFLAGS@ @GTK_CFLAGS@ @GDK_IMLIB_CFLAGS@
+AM_CPPFLAGS = -I$(top_srcdir)/include -I../ -I../../common @XML_CFLAGS@ @GTK_CFLAGS@ @GDK_IMLIB_CFLAGS@
 
 noinst_HEADERS = \
 	../../common/InputUtil.h

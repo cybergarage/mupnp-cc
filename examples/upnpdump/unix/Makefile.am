@@ -1,6 +1,6 @@
 noinst_PROGRAMS = upnpdump
 
-INCLUDES = -I$(top_srcdir)/include -I../../common @XML_CFLAGS@
+AM_CPPFLAGS = -I$(top_srcdir)/include -I../../common @XML_CFLAGS@
 
 noinst_HEADERS = \
 	../../common/InputUtil.h

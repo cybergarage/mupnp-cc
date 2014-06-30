@@ -6,11 +6,12 @@
 #
 ############################################################
 
-AC_INIT(include/cybergarage/upnp/CyberLink.h)
 AC_CONFIG_AUX_DIR(config)
-
-AM_INIT_AUTOMAKE(clink++, 1.0)
 AM_CONFIG_HEADER(config.h)
+
+AC_INIT([clinkc++], [1.0])
+AC_CONFIG_SRCDIR([include/cybergarage/upnp/UPnP.h])
+AM_INIT_AUTOMAKE([subdir-objects])
 
 ##############################
 # Constants
