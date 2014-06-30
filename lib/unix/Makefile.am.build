@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+print<<HEADER;
+############################################################
+#
+# CyberLink for C++
+#
+# Copyright (C) Satoshi Konno 2003
+#
+############################################################
+
+lib_LIBRARIES = libclink++.a
+
+AM_CPPFLAGS = -I\$(top_srcdir)/include \@XML_CFLAGS\@
+
+clinkcc_sources = \\
+HEADER
+my @find_files = `find ../../src/cybergarage -name *.cpp`;
+my @source_files;
+foreach $file (@find_files) {
+	$file =~ s/\n//;
+	$file = "\t" . $file;
+	push @source_files, $file;
+}
+print join(" \\\n", @source_files) . "\n";
+
+print<<FOTTER;
+
+libclink___a_SOURCES = \\
+        \$(clinkcc_sources)
+FOTTER
