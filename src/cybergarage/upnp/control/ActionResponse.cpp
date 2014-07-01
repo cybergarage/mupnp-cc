@@ -79,8 +79,8 @@ CyberXML::Node *ActionResponse::createResponseNode(CyberLink::Action *action) {
   }
     
   ArgumentList *argList = action->getArgumentList();
-  int nArgs = argList->size();
-  for (int n = 0; n < nArgs; n++) {
+  size_t nArgs = argList->size();
+  for (size_t n = 0; n < nArgs; n++) {
     Argument *arg = argList->getArgument(n);
     if (arg->isOutDirection() == false)
       continue;
@@ -111,8 +111,8 @@ ArgumentList *ActionResponse::getResponse() {
   if (resNode == NULL)
     return &argList;
       
-  int nArgs = resNode->getNNodes();
-  for (int n = 0; n < nArgs; n++) {
+  size_t nArgs = resNode->getNNodes();
+  for (size_t n = 0; n < nArgs; n++) {
     Node *node = resNode->getNode(n);
     const char *name = node->getName();
     const char *value = node->getValue();

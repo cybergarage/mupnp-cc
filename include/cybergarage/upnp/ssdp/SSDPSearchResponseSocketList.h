@@ -46,7 +46,7 @@ class SSDPSearchResponseSocketList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   
  public:
-  SSDPSearchResponseSocket *getSSDPSearchResponseSocket(int n) {
+  SSDPSearchResponseSocket *getSSDPSearchResponseSocket(size_t n) {
     return (SSDPSearchResponseSocket *)get(n);
   }
   

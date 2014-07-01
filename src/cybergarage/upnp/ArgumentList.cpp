@@ -31,8 +31,8 @@ const char *ArgumentList::ELEM_NAME = "argumentList";
 
 void ArgumentList::clear()  {
   if (delElemFlag == true) {
-    int nArgs = size();
-    for (int n = 0; n < nArgs; n++) {
+    size_t nArgs = size();
+    for (size_t n = 0; n < nArgs; n++) {
       Argument *arg = getArgument(n);
       delete arg;
     }
@@ -45,8 +45,8 @@ void ArgumentList::clear()  {
 ////////////////////////////////////////////////
 
 Argument *ArgumentList::getArgument(const std::string &name) {
-  int nArgs = size();
-  for (int n = 0; n < nArgs; n++) {
+  size_t nArgs = size();
+  for (size_t n = 0; n < nArgs; n++) {
     Argument *arg = getArgument(n);
     const char *argName = arg->getName();
     if (argName == NULL)
@@ -63,8 +63,8 @@ Argument *ArgumentList::getArgument(const std::string &name) {
 ////////////////////////////////////////////////
   
 void ArgumentList::set(ArgumentList *inArgList) {
-  int nInArgs = inArgList->size();
-  for (int n = 0; n < nInArgs; n++) {
+  size_t nInArgs = inArgList->size();
+  for (size_t n = 0; n < nInArgs; n++) {
     Argument *inArg = inArgList->getArgument(n);
     const char *inArgName = inArg->getName();
     Argument *arg = getArgument(inArgName);

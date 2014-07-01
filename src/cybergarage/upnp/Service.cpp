@@ -129,8 +129,8 @@ void Service::initActionList() {
   if (actionListNode == NULL)
     return;
   Node *serviceNode = getServiceNode();
-  int nNode = actionListNode->getNNodes();
-  for (int n = 0; n < nNode; n++) {
+  size_t nNode = actionListNode->getNNodes();
+  for (size_t n = 0; n < nNode; n++) {
     Node *node = actionListNode->getNode(n);
     if (Action::isActionNode(node) == false)
       continue;
@@ -141,8 +141,8 @@ void Service::initActionList() {
 
 CyberLink::Action *Service::getAction(const std::string &actionName) {
   ActionList *actionList = getActionList();
-  int nActions = actionList->size();
-  for (int n = 0; n < nActions; n++) {
+  size_t nActions = actionList->size();
+  for (size_t n = 0; n < nActions; n++) {
     Action *action = actionList->getAction(n);
     const char *name = action->getName();
     if (name == NULL)
@@ -167,8 +167,8 @@ void Service::initServiceStateTable() {
   if (stateTableNode == NULL)
     return;
   Node *serviceNode = getServiceNode();
-  int nNode = stateTableNode->getNNodes();
-  for (int n = 0; n < nNode; n++) {
+  size_t nNode = stateTableNode->getNNodes();
+  for (size_t n = 0; n < nNode; n++) {
     Node *node = stateTableNode->getNode(n);
     if (StateVariable::isStateVariableNode(node) == false)
       continue;
@@ -179,8 +179,8 @@ void Service::initServiceStateTable() {
 
 StateVariable *Service::getStateVariable(const std::string &name) {
   ServiceStateTable *stateTable = getServiceStateTable();
-  int tableSize = stateTable->size();
-  for (int n = 0; n < tableSize; n++) {
+  size_t tableSize = stateTable->size();
+  for (size_t n = 0; n < tableSize; n++) {
     StateVariable *var = stateTable->getStateVariable(n);
     const char *varName = var->getName();
     if (varName == NULL)
@@ -377,7 +377,7 @@ void Service::notify(StateVariable *stateVar) {
   SubscriberList *subList = getSubscriberList();
 
   Subscriber **subArray;
-  int subArrayCnt, n;
+  size_t subArrayCnt, n;
 
   // Remove expired subArraycribers.
   subArrayCnt = subList->size();
@@ -413,8 +413,8 @@ void Service::notify(StateVariable *stateVar) {
 
 void Service::notifyAllStateVariables() {
   ServiceStateTable *stateTable = getServiceStateTable();
-  int tableSize = stateTable->size();
-  for (int n = 0; n < tableSize; n++) {
+  size_t tableSize = stateTable->size();
+  for (size_t n = 0; n < tableSize; n++) {
     StateVariable *var = stateTable->getStateVariable(n);
     if (var->isSendEvents() == true)
       notify(var);
@@ -490,8 +490,8 @@ bool Service::byebye(const std::string &bindAddr) {
 
 void Service::setQueryListener(QueryListener *listener) {
   ServiceStateTable *stateTable = getServiceStateTable();
-  int tableSize = stateTable->size();
-  for (int n = 0; n < tableSize; n++) {
+  size_t tableSize = stateTable->size();
+  for (size_t n = 0; n < tableSize; n++) {
     StateVariable *var = stateTable->getStateVariable(n);
     var->setQueryListener(listener);
   }
@@ -535,9 +535,9 @@ Subscriber *Service::getSubscriberBySID(const std::string &name) {
   SubscriberList *subList = getSubscriberList();
   Subscriber *findSub = NULL;
   lock();
-  int subListCnt = subList->size();
+  size_t subListCnt = subList->size();
   //cout << "subListCnt = " << subListCnt << endl;
-  for (int n = 0; n < subListCnt; n++) {
+  for (size_t n = 0; n < subListCnt; n++) {
     Subscriber *sub = subList->getSubscriber(n);
     const char *sid = sub->getSID();
     //cout << "[" << n << "] = " << sid << endl;
@@ -557,8 +557,8 @@ Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name) {
   SubscriberList *subList = getSubscriberList();
   Subscriber *findSub = NULL;
   lock();
-  int subListCnt = subList->size();
-  for (int n = 0; n < subListCnt; n++) {
+  size_t subListCnt = subList->size();
+  for (size_t n = 0; n < subListCnt; n++) {
     Subscriber *sub = subList->getSubscriber(n);
     if (sub == NULL)
       continue;
@@ -611,8 +611,8 @@ bool Service::serviceSearchResponse(SSDPPacket *ssdpPacket) {
 void Service::setActionListener(ActionListener *listener) {
   lock();
   ActionList *actionList = getActionList();
-  int nActions = actionList->size();
-  for (int n = 0; n < nActions; n++) {
+  size_t nActions = actionList->size();
+  for (size_t n = 0; n < nActions; n++) {
     Action *action = actionList->getAction(n);
     action->setActionListener(listener);
   }

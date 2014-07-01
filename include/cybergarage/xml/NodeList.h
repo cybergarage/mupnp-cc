@@ -38,9 +38,9 @@ class NodeList : public uHTTP::Vector {
  public:
   bool addNode(Node *node);
   bool removeNode(Node *node);
-  bool insertNode(Node *node, int index);
+  bool insertNode(Node *node, size_t index);
 
-  Node *getNode(int n);
+  Node *getNode(size_t n);
   Node *getNode(const std::string &name);
   Node *getEndsWith(const std::string &name);
   Node *getNode(const std::string &name, const std::string &value);

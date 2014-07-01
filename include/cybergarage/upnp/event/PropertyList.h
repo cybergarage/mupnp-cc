@@ -47,7 +47,7 @@ class PropertyList : public uHTTP::Vector  {
   bool removeProperty(Property *prop);
   bool insertProperty(Property *prop, int index);
 
-  Property *getProperty(int n) {
+  Property *getProperty(size_t n) {
     return (Property *)get(n);
   }
 

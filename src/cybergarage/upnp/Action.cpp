@@ -96,8 +96,8 @@ void Action::initArgumentList() {
   if (serviceNode == NULL || argumentListNode == NULL)
     return;
 
-  int nodeCnt = argumentListNode->getNNodes();
-  for (int n = 0; n < nodeCnt; n++) {
+  size_t nodeCnt = argumentListNode->getNNodes();
+  for (size_t n = 0; n < nodeCnt; n++) {
     CyberXML::Node *argNode = argumentListNode->getNode(n);
     if (Argument::isArgumentNode(argNode) == false)
       continue;
@@ -112,8 +112,8 @@ void Action::initArgumentList() {
 
 Argument *Action::getArgument(const std::string &name) {
   ArgumentList *argList = getArgumentList();
-  int nArgs = argList->size();
-  for (int n = 0; n < nArgs; n++) {
+  size_t nArgs = argList->size();
+  for (size_t n = 0; n < nArgs; n++) {
     Argument *arg = argList->getArgument(n);
     const char *argName = arg->getName();
     if (argName == NULL)
@@ -127,8 +127,8 @@ Argument *Action::getArgument(const std::string &name) {
 
 void Action::clearOutputAgumentValues() {
   ArgumentList *outArgList = getOutputArgumentList();
-  int nArgs = outArgList->size();
-  for (int n = 0; n < nArgs; n++) {
+  size_t nArgs = outArgList->size();
+  for (size_t n = 0; n < nArgs; n++) {
     Argument *arg = outArgList->getArgument(n);
     arg->setValue("");
   }

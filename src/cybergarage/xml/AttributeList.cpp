@@ -48,8 +48,8 @@ bool AttributeList::removeAttribute(Attribute *attr)  {
 }
   
 Attribute *AttributeList::getAttribute(const std::string &name)  {
-  int nLists = size(); 
-  for (int n = 0; n < nLists; n++) {
+  size_t nLists = size();
+  for (size_t n = 0; n < nLists; n++) {
     Attribute *elem = getAttribute(n);
     if (uHTTP::StringEquals(name, elem->getName()) == true)
       return elem;
@@ -58,8 +58,8 @@ Attribute *AttributeList::getAttribute(const std::string &name)  {
 }
 
 void AttributeList::clear() {
-  int nLists = size(); 
-  for (int n = 0; n < nLists; n++) {
+  size_t nLists = size();
+  for (size_t n = 0; n < nLists; n++) {
     Attribute *attr = getAttribute(n);
     if (attr != NULL)
       delete attr;

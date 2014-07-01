@@ -47,7 +47,7 @@ public:
   // Methods
   ////////////////////////////////////////////////
   
-  Device *getDevice(int n) {
+  Device *getDevice(size_t n) {
     return (Device *)get(n);
   }
 

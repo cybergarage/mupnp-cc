@@ -30,8 +30,8 @@ const char *AllowedValueList::ELEM_NAME = "allowedValueList";
 ////////////////////////////////////////////////
 
 void AllowedValueList::clear()  {
-  int nValues = size();
-  for (int n = 0; n < nValues; n++) {
+  size_t nValues = size();
+  for (size_t n = 0; n < nValues; n++) {
     AllowedValue *value = getAllowedValue(n);
     delete value;
   }

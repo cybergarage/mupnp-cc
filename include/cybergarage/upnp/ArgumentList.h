@@ -58,7 +58,7 @@ class ArgumentList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   
  public:
-  Argument *getArgument(int n) {
+  Argument *getArgument(size_t n) {
     return (Argument *)get(n);
   }
 

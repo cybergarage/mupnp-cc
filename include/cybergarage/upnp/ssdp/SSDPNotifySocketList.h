@@ -38,7 +38,7 @@ class SSDPNotifySocketList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   
  public:
-  SSDPNotifySocket *getSSDPNotifySocket(int n) {
+  SSDPNotifySocket *getSSDPNotifySocket(size_t n) {
     return (SSDPNotifySocket *)get(n);
   }
 

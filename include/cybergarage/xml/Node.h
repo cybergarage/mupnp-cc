@@ -199,11 +199,11 @@ public:
   // Child node
   ////////////////////////////////////////////////
 
-  int getNNodes() {
-    return (int)nodeList.size();
+  size_t getNNodes() {
+    return nodeList.size();
   }
 
-  Node *getNode(int index) {
+  Node *getNode(size_t index) {
     return nodeList.getNode(index);
   }
 
@@ -224,7 +224,7 @@ public:
     nodeList.addNode(node);
   }
 
-  void insertNode(Node *node, int index) {
+  void insertNode(Node *node, size_t index) {
     node->setParentNode(this);
     nodeList.insertNode(node, index);
   }

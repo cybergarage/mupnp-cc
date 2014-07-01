@@ -47,7 +47,7 @@ public:
   // Methods
   ////////////////////////////////////////////////
   
-  Service *getService(int n) {
+  Service *getService(size_t n) {
     return (Service *)get(n);
   }
 

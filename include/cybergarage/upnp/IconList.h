@@ -46,7 +46,7 @@ class IconList : public uHTTP::Vector {
   // Methods
   ////////////////////////////////////////////////
   
-  Icon *getIcon(int n) {
+  Icon *getIcon(size_t n) {
     return (Icon *)get(n);
   }
 

@@ -235,8 +235,8 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
   ps += "\n";
 #endif
 
-  int nChildNodes = getNNodes();
-  for (int n = 0; n < nChildNodes; n++) {
+  size_t nChildNodes = getNNodes();
+  for (size_t n = 0; n < nChildNodes; n++) {
     Node *cnode = getNode(n);
     cnode->output(ps, indentLevel+1, true);
   }

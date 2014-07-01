@@ -305,8 +305,8 @@ private:
   }    
 
   void performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value) {
-    int listenerSize = eventListenerList.size();
-    for (int n = 0; n < listenerSize; n++) {
+    size_t listenerSize = eventListenerList.size();
+    for (size_t n = 0; n < listenerSize; n++) {
       EventListener *listener = (EventListener *)eventListenerList.get(n);
       listener->eventNotifyReceived(uuid, seq, name, value);
     }
@@ -352,8 +352,8 @@ private:
 
   void unsubscribe() {
     DeviceList *devList = getDeviceList();
-    int devCnt = devList->size();
-    for (int n = 0; n < devCnt; n++) {
+    size_t devCnt = devList->size();
+    for (size_t n = 0; n < devCnt; n++) {
       Device *dev = devList->getDevice(n);
       unsubscribe(dev);
     }    
@@ -366,8 +366,8 @@ private:
  public:
   Service *getSubscriberService(const std::string &uuid) {
     DeviceList *devList = getDeviceList();
-    int devCnt = devList->size();
-    for (int n = 0; n < devCnt; n++) {
+    size_t devCnt = devList->size();
+    for (size_t n = 0; n < devCnt; n++) {
       Device *dev = devList->getDevice(n);
       Service *service = dev->getSubscriberService(uuid);
       if (service != NULL)

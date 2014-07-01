@@ -47,7 +47,7 @@ public:
   // Methods
   ////////////////////////////////////////////////
   
-  Action *getAction(int n) {
+  Action *getAction(size_t n) {
     return (Action*)get(n);
   }
 

@@ -496,8 +496,8 @@ void Device::initDeviceList() {
   CyberXML::Node *devListNode = devNode->getNode(DeviceList::ELEM_NAME);
   if (devListNode == NULL)
     return;
-  int nNode = devListNode->getNNodes();
-  for (int n = 0; n < nNode; n++) {
+  size_t nNode = devListNode->getNNodes();
+  for (size_t n = 0; n < nNode; n++) {
     CyberXML::Node *node = devListNode->getNode(n);
     if (Device::isDeviceNode(node) == false)
       continue;
@@ -519,8 +519,8 @@ bool Device::isDevice(const std::string &name) {
   
 Device *Device::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
-  for (int n = 0; n < devCnt; n++) {
+  size_t devCnt = devList->size();
+  for (size_t n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     if (dev->isDevice(name) == true)
       return dev;
@@ -533,8 +533,8 @@ Device *Device::getDevice(const std::string &name) {
 
 Device *Device::getDeviceByDescriptionURI(const std::string &uri) {
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
-  for (int n = 0; n < devCnt; n++) {
+  size_t devCnt = devList->size();
+  for (size_t n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     if (dev->isDescriptionURI(uri) == true)
       return dev;
@@ -557,8 +557,8 @@ void Device::initServiceList() {
   CyberXML::Node *serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
   if (serviceListNode == NULL)
     return;
-  int nNode = serviceListNode->getNNodes();
-  for (int n = 0; n < nNode; n++) {
+  size_t nNode = serviceListNode->getNNodes();
+  for (size_t n = 0; n < nNode; n++) {
     CyberXML::Node *node = serviceListNode->getNode(n);
     if (Service::isServiceNode(node) == false)
       continue;
@@ -568,10 +568,10 @@ void Device::initServiceList() {
 }
 
 Service *Device::getService(const std::string &name) {
-  int n;
+  size_t n;
 
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (service->isService(name) == true)
@@ -579,7 +579,7 @@ Service *Device::getService(const std::string &name) {
   }
     
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     Service *service = dev->getService(name);
@@ -591,9 +591,10 @@ Service *Device::getService(const std::string &name) {
 }
 
 Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
-  int n;
+  size_t n;
+  
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (service->isSCPDURL(searchUrl) == true)
@@ -601,7 +602,7 @@ Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
   }
   
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     Service *service = dev->getServiceBySCPDURL(searchUrl);
@@ -613,9 +614,10 @@ Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
 }
 
 Service *Device::getServiceByControlURL(const std::string &searchUrl) {
-  int n;
+  size_t n;
+  
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (service->isControlURL(searchUrl) == true)
@@ -623,7 +625,7 @@ Service *Device::getServiceByControlURL(const std::string &searchUrl) {
   }
   
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     Service *service = dev->getServiceByControlURL(searchUrl);
@@ -635,9 +637,10 @@ Service *Device::getServiceByControlURL(const std::string &searchUrl) {
 }
 
 Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
-  int n;
+  size_t n;
+  
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (service->isEventSubURL(searchUrl) == true)
@@ -645,7 +648,7 @@ Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
   }
     
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     Service *service = dev->getServiceByEventSubURL(searchUrl);
@@ -657,10 +660,11 @@ Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
 }
 
 Service *Device::getSubscriberService(const std::string &uuid) {
-  int n;
+  size_t n;
+  
   String uuidStr = uuid;
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     const char *sid = service->getSID();
@@ -669,7 +673,7 @@ Service *Device::getSubscriberService(const std::string &uuid) {
   }
     
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     Service *service = dev->getSubscriberService(uuid);
@@ -685,10 +689,10 @@ Service *Device::getSubscriberService(const std::string &uuid) {
 ////////////////////////////////////////////////
 
 StateVariable *Device::getStateVariable(const std::string &serviceType, const std::string &name) {
-  int n;
+  size_t n;
 
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     // Thanks for Theo Beisch (11/09/04)
@@ -702,7 +706,7 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
   }
   
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     StateVariable *stateVar = dev->getStateVariable(name);
@@ -722,16 +726,16 @@ StateVariable *Device::getStateVariable(const std::string &name) {
 ////////////////////////////////////////////////
 
 CyberLink::Action *Device::getAction(const std::string &name) {
-  int n;
+  size_t n;
   uHTTP::String nameStr= name;
 
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     ActionList *actionList = service->getActionList();
-    int actionCnt = actionList->size();
-    for (int i = 0; i<actionCnt; i++) {
+    size_t actionCnt = actionList->size();
+    for (size_t i = 0; i<actionCnt; i++) {
       Action *action = actionList->getAction(i);
       const char *actionName = action->getName();
       if (actionName == NULL)
@@ -742,7 +746,7 @@ CyberLink::Action *Device::getAction(const std::string &name) {
   }
     
   DeviceList *devList = getDeviceList();
-  int devCnt = devList->size();
+  size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
     Device *dev = devList->getDevice(n);
     Action *action = dev->getAction(name);
@@ -765,8 +769,8 @@ void Device::initIconList() {
   Node *iconListNode = devNode->getNode(IconList::ELEM_NAME);
   if (iconListNode == NULL)
     return;
-  int nNode = iconListNode->getNNodes();
-  for (int n = 0; n < nNode; n++) {
+  size_t nNode = iconListNode->getNNodes();
+  for (size_t n = 0; n < nNode; n++) {
     Node *node = iconListNode->getNode(n);
     if (Icon::isIconNode(node) == false)
       continue;
@@ -854,10 +858,10 @@ bool Device::announce(const std::string &bindAddr) {
   // Thanks for Mikael Hakman (04/25/05)
   ssdpSock.close();
 
-  int n;
+  size_t n;
 
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (!service->announce(bindAddr))
@@ -865,7 +869,7 @@ bool Device::announce(const std::string &bindAddr) {
   }
 
   DeviceList *childDeviceList = getDeviceList();
-  int childDeviceCnt = childDeviceList->size();
+  size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
     if (!childDevice->announce(bindAddr))
@@ -880,8 +884,8 @@ bool Device::announce() {
   
   notifyWait();
 
-  int nHostAddrs = uHTTP::GetNHostAddresses();
-  for (int n = 0; n < nHostAddrs; n++) {
+  size_t nHostAddrs = uHTTP::GetNHostAddresses();
+  for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrBuf;
     const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrBuf);
     if (uHTTP::StringHasData(bindAddr) == false)
@@ -899,7 +903,7 @@ bool Device::announce() {
 bool Device::byebye(const std::string &bindAddr) {
   bool isSuccess = true;
   
-  int n;
+  size_t n;
   SSDPNotifySocket ssdpSock(bindAddr);
     
   SSDPNotifyRequest ssdpReq;
@@ -929,7 +933,7 @@ bool Device::byebye(const std::string &bindAddr) {
   ssdpSock.close();
 
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (!service->byebye(bindAddr))
@@ -937,7 +941,7 @@ bool Device::byebye(const std::string &bindAddr) {
   }
 
   DeviceList *childDeviceList = getDeviceList();
-  int childDeviceCnt = childDeviceList->size();
+  size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
     if (!childDevice->byebye(bindAddr))
@@ -949,8 +953,8 @@ bool Device::byebye(const std::string &bindAddr) {
 
 bool Device::byebye() {
   bool isSuccess = true;
-  int nHostAddrs = uHTTP::GetNHostAddresses();
-  for (int n = 0; n < nHostAddrs; n++) {
+  size_t nHostAddrs = uHTTP::GetNHostAddresses();
+  for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrBuf;
     const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrBuf);
     if (uHTTP::StringHasData(bindAddr) == false)
@@ -1042,17 +1046,17 @@ void Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
     }
   }
     
-  int n;
+  size_t n;
 
   ServiceList *serviceList = getServiceList();
-  int serviceCnt = serviceList->size();
+  size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     service->serviceSearchResponse(ssdpPacket);
   }
     
   DeviceList *childDeviceList = getDeviceList();
-  int childDeviceCnt = childDeviceList->size();
+  size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
     childDevice->deviceSearchResponse(ssdpPacket);
@@ -1416,8 +1420,8 @@ bool Device::stop(bool doByeBye) {
 
 void Device::setActionListener(ActionListener *listener) {
   ServiceList *ServiceList = getServiceList();
-  int nServices = ServiceList->size();
-  for (int n = 0; n < nServices; n++) {
+  size_t nServices = ServiceList->size();
+  for (size_t n = 0; n < nServices; n++) {
     Service *Service = ServiceList->getService(n);
     Service->setActionListener(listener);
   }
@@ -1425,8 +1429,8 @@ void Device::setActionListener(ActionListener *listener) {
 
 void Device::setQueryListener(QueryListener *listener) {
   ServiceList *ServiceList = getServiceList();
-  int nServices = ServiceList->size();
-  for (int n = 0; n < nServices; n++) {
+  size_t nServices = ServiceList->size();
+  for (size_t n = 0; n < nServices; n++) {
     Service *Service = ServiceList->getService(n);
     Service->setQueryListener(listener);
   }
@@ -1441,8 +1445,8 @@ void Device::setActionListener(ActionListener *listener, bool includeSubDevices)
   setActionListener(listener);
   if (includeSubDevices == true) {
     DeviceList *devList = getDeviceList();
-    int devCnt = devList->size();
-    for (int n = 0; n < devCnt; n++) {
+    size_t devCnt = devList->size();
+    for (size_t n = 0; n < devCnt; n++) {
       Device *dev = devList->getDevice(n);
       dev->setActionListener(listener, true);
     }
@@ -1454,8 +1458,8 @@ void Device::setQueryListener(QueryListener *listener, bool includeSubDevices) {
   setQueryListener(listener);
   if (includeSubDevices == true) {
     DeviceList *devList = getDeviceList();
-    int devCnt = devList->size();
-    for (int n = 0; n < devCnt; n++) {
+    size_t devCnt = devList->size();
+    for (size_t n = 0; n < devCnt; n++) {
       Device *dev = devList->getDevice(n);
       dev->setQueryListener(listener, true);
     }

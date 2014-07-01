@@ -37,7 +37,7 @@ class SSDPSearchSocketList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   
  public:
-  SSDPSearchSocket *getSSDPSearchSocket(int n) {
+  SSDPSearchSocket *getSSDPSearchSocket(size_t n) {
     return (SSDPSearchSocket *)get(n);
   }
   

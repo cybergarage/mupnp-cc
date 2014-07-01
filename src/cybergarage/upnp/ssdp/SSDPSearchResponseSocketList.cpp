@@ -37,8 +37,8 @@ SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()  {
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     sock->setControlPoint(ctrlPoint);
   }
@@ -49,8 +49,8 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
 ////////////////////////////////////////////////
   
 bool SSDPSearchResponseSocketList::open(int port) {
-  int nHostAddrs = uHTTP::GetNHostAddresses();
-  for (int n = 0; n < nHostAddrs; n++) {
+  size_t nHostAddrs = uHTTP::GetNHostAddresses();
+  for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     uHTTP::GetHostAddress(n, bindAddr);
     SSDPSearchResponseSocket *socket = new SSDPSearchResponseSocket(bindAddr.c_str(), port);
@@ -60,8 +60,8 @@ bool SSDPSearchResponseSocketList::open(int port) {
 }
 
 void SSDPSearchResponseSocketList::close() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     sock->close();
   }
@@ -73,16 +73,16 @@ void SSDPSearchResponseSocketList::close() {
 ////////////////////////////////////////////////
   
 void SSDPSearchResponseSocketList::start() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     sock->start();
   }
 }
 
 void SSDPSearchResponseSocketList::stop() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     sock->stop();
   }
@@ -94,8 +94,8 @@ void SSDPSearchResponseSocketList::stop() {
 
 bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
   bool ret = true;
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     const char *bindAddr = sock->getLocalAddress();
     req->setLocalAddress(bindAddr);
@@ -115,8 +115,8 @@ bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocketList::clear() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     delete sock;
   }

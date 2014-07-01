@@ -40,14 +40,14 @@ class SubscriberList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   
  public:
-  Subscriber *getSubscriber(int n) {
+  Subscriber *getSubscriber(size_t n) {
     return (Subscriber *)get(n);
   }
 
   void clear() 
   {
-    int nSub = size();
-    for (int n = 0; n < nSub; n++) {
+    size_t nSub = size();
+    for (size_t n = 0; n < nSub; n++) {
       Subscriber *sub = getSubscriber(n);
       delete sub;
     }

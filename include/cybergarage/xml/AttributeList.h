@@ -40,7 +40,7 @@ class AttributeList : public uHTTP::Vector {
   bool insertAttribute(Attribute *attr, int index);
   bool removeAttribute(Attribute *attr);
 
-  Attribute *getAttribute(int n) {
+  Attribute *getAttribute(size_t n) {
     return (Attribute *)Vector::get(n);
   }
 

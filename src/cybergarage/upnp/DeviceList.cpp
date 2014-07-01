@@ -29,8 +29,8 @@ const char *DeviceList::ELEM_NAME = "deviceList";
 ////////////////////////////////////////////////
 
 void DeviceList::clear()  {
-  int nDev = size();
-  for (int n = 0; n < nDev; n++) {
+  size_t nDev = size();
+  for (size_t n = 0; n < nDev; n++) {
     Device *dev = getDevice(n);
     delete dev;
   }

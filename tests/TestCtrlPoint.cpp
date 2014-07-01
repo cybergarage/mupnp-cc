@@ -109,19 +109,19 @@ void PrintDeviceInfo(Device *dev, int indent)
 	const char *devName = dev->getFriendlyName();
 	cout << indentStr << devName << endl;
 
-	int i, n, j;
+	size_t i, n, j;
 	ServiceList *serviceList = dev->getServiceList();
-	int serviceCnt = serviceList->size();
+	size_t serviceCnt = serviceList->size();
 	for (n=0; n<serviceCnt; n++) {
 		Service *service = serviceList->getService(n);
 		cout << indentStr << " service[" << n << "] = "<< service->getServiceType() << endl;
 		ActionList *actionList = service->getActionList();
-		int actionCnt = actionList->size();
+		size_t actionCnt = actionList->size();
 		for (i=0; i<actionCnt; i++) {
 			Action *action = actionList->getAction(i);
 			cout << indentStr << "  action[" << i << "] = "<< action->getName() << endl;
 			ArgumentList *argList = action->getArgumentList();
-			int argCnt = argList->size();
+			size_t argCnt = argList->size();
 			for (j=0; j<argCnt; j++) {
 					Argument *arg = argList->getArgument(j);
 					cout << indentStr << "    arg[" << j << "] = " << arg->getName() << "("  << arg->getDirection() << ")";
@@ -132,12 +132,12 @@ void PrintDeviceInfo(Device *dev, int indent)
 			}
 		}
 		ServiceStateTable *stateTable = service->getServiceStateTable();
-		int varCnt = stateTable->size();
+		size_t varCnt = stateTable->size();
 		for (i=0; i<varCnt; i++) {
 			StateVariable *stateVar = stateTable->getStateVariable(i);
 			cout << indentStr << "  stateVar[" << i << "] = " << stateVar->getName() << endl;
 			AllowedValueList *valueList = stateVar->getAllowedValueList();
-			int valueListCnt = valueList->size();
+			size_t valueListCnt = valueList->size();
 			if (0 < valueListCnt) {
 				for (j=0; j<valueListCnt; j++)
 					cout << indentStr << "    AllowedValueList[" << j << "] = " << valueList->getAllowedValue(j) << endl;
@@ -157,8 +157,8 @@ void PrintDevice(Device *dev, int indent)
 	PrintDeviceInfo(dev, indent);
 
 	DeviceList *childDevList = dev->getDeviceList();
-	int nChildDevs = childDevList->size();
-	for (int n=0; n<nChildDevs; n++) {
+	size_t nChildDevs = childDevList->size();
+	for (size_t n=0; n<nChildDevs; n++) {
 		Device *childDev = childDevList->getDevice(n);
 		PrintDevice(childDev, indent);
 	}
@@ -167,9 +167,9 @@ void PrintDevice(Device *dev, int indent)
 void TestCtrlPoint::print()
 {
 	DeviceList *rootDevList = getDeviceList();
-	int nRootDevs = rootDevList->size();
+	size_t nRootDevs = rootDevList->size();
 	cout << "Device Num = " << nRootDevs << endl;
-	for (int n=0; n<nRootDevs; n++) {
+	for (size_t n=0; n<nRootDevs; n++) {
 		Device *dev = rootDevList->getDevice(n);
 		const char *devName = dev->getFriendlyName();
 		cout << "[" << n << "] = " << devName << endl;

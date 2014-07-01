@@ -36,7 +36,7 @@ bool NodeList::addNode(Node *node)  {
   return add(node);
 }
 
-bool NodeList::insertNode(Node *node, int index)  {
+bool NodeList::insertNode(Node *node, size_t index)  {
   if (node == NULL)
     return false;
   return insertAt(node, index);
@@ -54,13 +54,13 @@ bool NodeList::removeNode(Node *node)  {
 // get*
 ////////////////////////////////////////////////
 
-Node *NodeList::getNode(int n) {
+Node *NodeList::getNode(size_t n) {
   return (Node *)Vector::get(n);
 }
 
 Node *NodeList::getNode(const std::string &name)  {
-  int nLists = size(); 
-  for (int n = 0; n < nLists; n++) {
+  size_t nLists = size();
+  for (size_t n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
     if (StringEquals(name, nodeName) == true)
@@ -70,8 +70,8 @@ Node *NodeList::getNode(const std::string &name)  {
 }
 
 Node *NodeList::getEndsWith(const std::string &name)  {
-  int nLists = size(); 
-  for (int n = 0; n < nLists; n++) {
+  size_t nLists = size();
+  for (size_t n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
     if (nodeName == NULL)
@@ -83,8 +83,8 @@ Node *NodeList::getEndsWith(const std::string &name)  {
 }
 
 Node *NodeList::getNode(const std::string &name, const std::string &value)  {
-  int nLists = size(); 
-  for (int n = 0; n < nLists; n++) {
+  size_t nLists = size();
+  for (size_t n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
     if (StringEquals(name, nodeName) == false)
@@ -101,8 +101,8 @@ Node *NodeList::getNode(const std::string &name, const std::string &value)  {
 ////////////////////////////////////////////////
 
 void NodeList::clear() {
-  int nLists = size(); 
-  for (int n = 0; n < nLists; n++) {
+  size_t nLists = size();
+  for (size_t n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     if (node != NULL)
       delete node;

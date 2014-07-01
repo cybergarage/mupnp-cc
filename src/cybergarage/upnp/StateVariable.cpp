@@ -104,8 +104,8 @@ void StateVariable::initAllowedValueList() {
   Node *allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
   if (allowedValueListNode == NULL)
     return;
-  int nNode = allowedValueListNode->getNNodes();
-  for (int n = 0; n < nNode; n++) {
+  size_t nNode = allowedValueListNode->getNNodes();
+  for (size_t n = 0; n < nNode; n++) {
     Node *node = allowedValueListNode->getNode(n);
     if (AllowedValue::isAllowedValueNode(node) == false)
       continue;

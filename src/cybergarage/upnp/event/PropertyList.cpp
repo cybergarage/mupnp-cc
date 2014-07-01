@@ -48,8 +48,8 @@ bool PropertyList::removeProperty(Property *prop)  {
 }
 
  void PropertyList::clear()  {
-  int nProp = size();
-  for (int n = 0; n < nProp; n++) {
+  size_t nProp = size();
+  for (size_t n = 0; n < nProp; n++) {
     Property *prop = getProperty(n);
     delete prop;
   }

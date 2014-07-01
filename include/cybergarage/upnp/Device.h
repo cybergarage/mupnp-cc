@@ -613,9 +613,9 @@ private:
     return &iconList;
   }
   
-  Icon *getIcon(int n) {
+  Icon *getIcon(size_t n) {
     IconList *iconList = getIconList();
-    if (n < 0 && ((int)iconList->size()-1) < n)
+    if ((iconList->size()-1) < n)
       return NULL;
     return iconList->getIcon(n);
   }

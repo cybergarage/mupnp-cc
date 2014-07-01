@@ -47,7 +47,7 @@ public:
   // Methods
   ////////////////////////////////////////////////
   
-  StateVariable *getStateVariable(int n) {
+  StateVariable *getStateVariable(size_t n) {
     return (StateVariable *)get(n);
   }
 

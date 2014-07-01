@@ -30,8 +30,8 @@ const char *ServiceStateTable::ELEM_NAME = "serviceStateTable";
 ////////////////////////////////////////////////
 
  void ServiceStateTable::clear()  {
-  int nVars = size();
-  for (int n = 0; n < nVars; n++) {
+  size_t nVars = size();
+  for (size_t n = 0; n < nVars; n++) {
     StateVariable *var = getStateVariable(n);
     delete var;
   }

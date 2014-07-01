@@ -37,8 +37,8 @@ SSDPSearchSocketList::~SSDPSearchSocketList()  {
 ////////////////////////////////////////////////
   
 void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
-  int nServers = size();
-  for (int n = 0; n < nServers; n++) {
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
     sock->addSearchListener(listener);
   }
@@ -49,8 +49,8 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
 ////////////////////////////////////////////////
   
 bool SSDPSearchSocketList::open()  {
-  int nHostAddrs = uHTTP::GetNHostAddresses();
-  for (int n = 0; n < nHostAddrs; n++) {
+  size_t nHostAddrs = uHTTP::GetNHostAddresses();
+  for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrStr;
     const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrStr);
     SSDPSearchSocket *ssdpSearchSocket = new SSDPSearchSocket(bindAddr);
@@ -60,8 +60,8 @@ bool SSDPSearchSocketList::open()  {
 }
 
 void SSDPSearchSocketList::close() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
     sock->close();
   }
@@ -73,16 +73,16 @@ void SSDPSearchSocketList::close() {
 ////////////////////////////////////////////////
   
 void SSDPSearchSocketList::start() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
     sock->start();
   }
 }
 
 void SSDPSearchSocketList::stop() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
     sock->stop();
   }
@@ -93,8 +93,8 @@ void SSDPSearchSocketList::stop() {
 ////////////////////////////////////////////////
 
 void SSDPSearchSocketList::clear() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
     delete sock;
   }

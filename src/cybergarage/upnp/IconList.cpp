@@ -29,8 +29,8 @@ const char *IconList::ELEM_NAME = "iconList";
 ////////////////////////////////////////////////
 
  void IconList::clear()  {
-  int nIcon = size();
-  for (int n = 0; n < nIcon; n++) {
+  size_t nIcon = size();
+  for (size_t n = 0; n < nIcon; n++) {
     Icon *ico = getIcon(n);
     delete ico;
   }

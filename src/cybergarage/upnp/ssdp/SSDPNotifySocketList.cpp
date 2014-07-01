@@ -38,8 +38,8 @@ SSDPNotifySocketList::~SSDPNotifySocketList()  {
 ////////////////////////////////////////////////
 
 void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
     sock->setControlPoint(ctrlPoint);
   }
@@ -50,8 +50,8 @@ void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
 ////////////////////////////////////////////////
   
 bool SSDPNotifySocketList::open()  {
-  int nHostAddrs = GetNHostAddresses();
-  for (int n = 0; n < nHostAddrs; n++) {
+  size_t nHostAddrs = GetNHostAddresses();
+  for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     GetHostAddress(n, bindAddr);
     SSDPNotifySocket *ssdpNotifySocket = new SSDPNotifySocket(bindAddr.c_str());
@@ -61,8 +61,8 @@ bool SSDPNotifySocketList::open()  {
 }
   
 void SSDPNotifySocketList::close() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
     sock->close();
   }
@@ -74,16 +74,16 @@ void SSDPNotifySocketList::close() {
 ////////////////////////////////////////////////
   
 void SSDPNotifySocketList::start() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
     sock->start();
   }
 }
 
 void SSDPNotifySocketList::stop() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
     sock->stop();
   }
@@ -94,8 +94,8 @@ void SSDPNotifySocketList::stop() {
 ////////////////////////////////////////////////
 
 void SSDPNotifySocketList::clear() {
-  int nSockets = size();
-  for (int n = 0; n < nSockets; n++) {
+  size_t nSockets = size();
+  for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
     delete sock;
   }

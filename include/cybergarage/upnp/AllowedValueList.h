@@ -56,7 +56,7 @@ class AllowedValueList : public uHTTP::Vector  {
   ////////////////////////////////////////////////
   
  public:
-  AllowedValue *getAllowedValue(int n) {
+  AllowedValue *getAllowedValue(size_t n) {
     return (AllowedValue *)get(n);
   }
 
