@@ -2,7 +2,7 @@
 *
 *	CyberSQL for C++
 *
-*	Copyright (C) Satoshi Konno 2002-2003
+*	Copyright (C) Satoshi Konno 2002
 *
 *	File: UniMySQL.cpp
 *

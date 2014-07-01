@@ -2,7 +2,7 @@
 *
 *	CyberMediaGate for C++
 *
-*	Copyright (C) Satoshi Konno 2003-2004
+*	Copyright (C) Satoshi Konno 2002
 *
 *	File: MediaGateMain.cpp
 *

@@ -2,7 +2,7 @@
 *
 *	MediaServer for CyberLink
 *
-*	Copyright (C) Satoshi Konno 2003-2004
+*	Copyright (C) Satoshi Konno 2003
 *
 *	File : GIFPlugIn.h
 *

@@ -2,7 +2,7 @@
 *
 *	CyberLink for Java
 *
-*	Copyright (C) Satoshi Konno 2002-2004
+*	Copyright (C) Satoshi Konno 2002
 *
 *	File : TestDevice.h
 *
