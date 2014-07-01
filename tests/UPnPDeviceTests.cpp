@@ -57,7 +57,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 	// Search Device
 	/////////////////////////////
     
-    Wait((5 * 1000));
+  Wait((5 * 1000));
     
 	Device *ctrlpDev = ctrlp->getDevice("CyberGarageCountDevice");
 	BOOST_CHECK(ctrlpDev != NULL);
