@@ -50,8 +50,7 @@ bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bi
   ssdpMultiGroup.setAddress(addr);
   ssdpMultiGroup.setPort(port);
 
-  const char *msockBindAddr = bindAddr.c_str();
-  if (ssdpMultiSock.bind(port, msockBindAddr) == false)
+  if (ssdpMultiSock.bind(port, bindAddr) == false)
     return false;
   if (ssdpMultiSock.joinGroup(addr, bindAddr) == false) {
     ssdpMultiSock.close();
