@@ -49,7 +49,6 @@ HTTPMUSocket::~HTTPMUSocket() {
 bool HTTPMUSocket::open(const std::string &addr, int port, const std::string &bindAddr) {
   ssdpMultiGroup.setAddress(addr);
   ssdpMultiGroup.setPort(port);
-  //ssdpMultiIf.setAddress(bindAddr);
 
   const char *msockBindAddr = bindAddr.c_str();
   if (ssdpMultiSock.bind(port, msockBindAddr) == false)
