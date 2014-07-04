@@ -26,11 +26,6 @@ SSDPNotifySocket::SSDPNotifySocket() {
   setControlPoint(NULL);
 }
 
-SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
-  setControlPoint(NULL);
-  open(bindAddr);
-}
-
 ////////////////////////////////////////////////
 // Destructor
 ////////////////////////////////////////////////
@@ -46,10 +41,8 @@ SSDPNotifySocket::~SSDPNotifySocket() {
 
 bool SSDPNotifySocket::open(const std::string &bindAddr) {
   const char *addr = SSDP::ADDRESS;
-  useIPv6Address = false;
   if (uHTTP::IsIPv6Address(bindAddr) == true) {
     addr = SSDP::GetIPv6Address();
-    useIPv6Address = true;
   }
   return HTTPMUSocket::open(addr, SSDP::PORT, bindAddr);
 }
@@ -57,14 +50,6 @@ bool SSDPNotifySocket::open(const std::string &bindAddr) {
 ////////////////////////////////////////////////
 // post
 ////////////////////////////////////////////////
-
-bool SSDPNotifySocket::post(SSDPNotifyRequest *req) {
-  const char *ssdpAddr = SSDP::ADDRESS;
-  if (useIPv6Address == true)
-    ssdpAddr = SSDP::GetIPv6Address();
-  req->setHost(ssdpAddr, SSDP::PORT);
-  return HTTPMUSocket::post(req);
-}
 
 bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
   const char *ssdpAddr = SSDP::ADDRESS;

@@ -322,8 +322,8 @@ private:
   const char *getNotifyServiceTypeUSN(std::string &buf);
 
  public:
-  bool announce(const std::string &bindAddr);
-  bool byebye(const std::string &bindAddr);
+  bool announce(const std::string &ifAddr);
+  bool byebye(const std::string &ifAddr);
 
   ////////////////////////////////////////////////
   // serviceSearchResponse  

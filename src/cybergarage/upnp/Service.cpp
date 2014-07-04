@@ -438,12 +438,12 @@ const char *Service::getNotifyServiceTypeUSN(string &buf) {
   return  buf.c_str();
 }
 
-bool Service::announce(const std::string &bindAddr) {
+bool Service::announce(const std::string &ifAddr) {
   // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
   
   string devLocation;
   Device *rootDev = getRootDevice();
-  rootDev->getLocationURL(bindAddr, devLocation);
+  rootDev->getLocationURL(ifAddr, devLocation);
 
   string devNT, devUSN;
   getNotifyServiceTypeNT(devNT);      
@@ -462,11 +462,11 @@ bool Service::announce(const std::string &bindAddr) {
 
   Device::notifyWait();
   
-  SSDPNotifySocket ssdpSock(bindAddr);
-  return ssdpSock.post(&ssdpReq);
+  SSDPNotifySocket ssdpSock;
+  return ssdpSock.post(&ssdpReq, ifAddr);
 }
 
-bool Service::byebye(const std::string &bindAddr) {
+bool Service::byebye(const std::string &ifAddr) {
   // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
     
   string devNT, devUSN;
@@ -480,8 +480,8 @@ bool Service::byebye(const std::string &bindAddr) {
 
   Device::notifyWait();
   
-  SSDPNotifySocket ssdpSock(bindAddr);
-  return ssdpSock.post(&ssdpReq);
+  SSDPNotifySocket ssdpSock;
+  return ssdpSock.post(&ssdpReq, ifAddr);
 }
 
 ////////////////////////////////////////////////

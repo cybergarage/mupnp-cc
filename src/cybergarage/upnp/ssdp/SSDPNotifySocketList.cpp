@@ -54,7 +54,11 @@ bool SSDPNotifySocketList::open()  {
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     GetHostAddress(n, bindAddr);
-    SSDPNotifySocket *ssdpNotifySocket = new SSDPNotifySocket(bindAddr.c_str());
+    SSDPNotifySocket *ssdpNotifySocket = new SSDPNotifySocket();
+    if (ssdpNotifySocket->open(bindAddr) == false) {
+      delete ssdpNotifySocket;
+      continue;
+    }
     add(ssdpNotifySocket);
   }
   return true;

@@ -27,13 +27,6 @@ BOOST_AUTO_TEST_CASE(NotifySocketPost)
   string ifAddr = netIf->getAddress();
 
   for (int n=0; n<10; n++) {
-    SSDPNotifySocket ssdpSock(ifAddr);
-    SSDPNotifyRequest ssdpReq;
-    ssdpReq.setNTS(NTS::ALIVE);
-    BOOST_CHECK(ssdpSock.post(&ssdpReq));
-  }
-
-  for (int n=0; n<10; n++) {
     SSDPNotifySocket ssdpSock;
     SSDPNotifyRequest ssdpReq;
     ssdpReq.setNTS(NTS::ALIVE);

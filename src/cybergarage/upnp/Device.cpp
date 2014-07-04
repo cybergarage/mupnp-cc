@@ -819,13 +819,13 @@ const char *Device::getNotifyDeviceTypeUSN(std::string &buf) {
   return buf.c_str();
 }
 
-bool Device::announce(const std::string &bindAddr) {
+bool Device::announce(const std::string &ifAddr) {
   bool isSuccess = true;
   
   string devLocationBuf;
-  const char *devLocation = getLocationURL(bindAddr, devLocationBuf);
+  const char *devLocation = getLocationURL(ifAddr, devLocationBuf);
     
-  SSDPNotifySocket ssdpSock(bindAddr);
+  SSDPNotifySocket ssdpSock;
 
   SSDPNotifyRequest ssdpReq;
   string serverName;
@@ -842,7 +842,7 @@ bool Device::announce(const std::string &bindAddr) {
     getNotifyDeviceUSN(devUSN);
     ssdpReq.setNT(devNT.c_str());
     ssdpReq.setUSN(devUSN.c_str());
-    if (!ssdpSock.post(&ssdpReq))
+    if (!ssdpSock.post(&ssdpReq, ifAddr))
       isSuccess = false;
   }
 
@@ -852,7 +852,7 @@ bool Device::announce(const std::string &bindAddr) {
   getNotifyDeviceTypeUSN(devUSN);
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
-  if (!ssdpSock.post(&ssdpReq))
+  if (!ssdpSock.post(&ssdpReq, ifAddr))
     isSuccess = false;
 
   // Thanks for Mikael Hakman (04/25/05)
@@ -864,7 +864,7 @@ bool Device::announce(const std::string &bindAddr) {
   size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
-    if (!service->announce(bindAddr))
+    if (!service->announce(ifAddr))
       isSuccess = false;
   }
 
@@ -872,7 +872,7 @@ bool Device::announce(const std::string &bindAddr) {
   size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
-    if (!childDevice->announce(bindAddr))
+    if (!childDevice->announce(ifAddr))
       isSuccess = false;
   }
 
@@ -900,11 +900,11 @@ bool Device::announce() {
   return isSuccess;
 }
   
-bool Device::byebye(const std::string &bindAddr) {
+bool Device::byebye(const std::string &ifAddr) {
   bool isSuccess = true;
   
   size_t n;
-  SSDPNotifySocket ssdpSock(bindAddr);
+  SSDPNotifySocket ssdpSock;
     
   SSDPNotifyRequest ssdpReq;
   ssdpReq.setNTS(NTS::BYEBYE);
@@ -916,7 +916,7 @@ bool Device::byebye(const std::string &bindAddr) {
     getNotifyDeviceUSN(devUSN);
     ssdpReq.setNT(devNT.c_str());
     ssdpReq.setUSN(devUSN.c_str());
-    if (!ssdpSock.post(&ssdpReq))
+    if (!ssdpSock.post(&ssdpReq, ifAddr))
       isSuccess = false;
   }
 
@@ -926,7 +926,7 @@ bool Device::byebye(const std::string &bindAddr) {
   getNotifyDeviceTypeUSN(devUSN);
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
-  if (!ssdpSock.post(&ssdpReq))
+  if (!ssdpSock.post(&ssdpReq, ifAddr))
     isSuccess = false;
 
   // Thanks for Mikael Hakman (04/25/05)
@@ -936,7 +936,7 @@ bool Device::byebye(const std::string &bindAddr) {
   size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
-    if (!service->byebye(bindAddr))
+    if (!service->byebye(ifAddr))
       isSuccess = false;
   }
 
@@ -944,7 +944,7 @@ bool Device::byebye(const std::string &bindAddr) {
   size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
-    if (!childDevice->byebye(bindAddr))
+    if (!childDevice->byebye(ifAddr))
       isSuccess = false;
   }
   

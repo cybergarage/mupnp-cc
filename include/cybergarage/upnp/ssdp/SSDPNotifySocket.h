@@ -27,7 +27,6 @@ class ControlPoint;
 
 class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
   ControlPoint *controlPoint;
-  bool useIPv6Address;
 
  public:
   ////////////////////////////////////////////////
@@ -35,7 +34,6 @@ class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
   ////////////////////////////////////////////////
   
   SSDPNotifySocket();
-  SSDPNotifySocket(const std::string &bindAddr);
   ~SSDPNotifySocket();
 
   ////////////////////////////////////////////////
@@ -60,7 +58,6 @@ class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
   // post
   ////////////////////////////////////////////////
 
-  bool post(SSDPNotifyRequest *req);
   bool post(SSDPNotifyRequest *req, const std::string &ifAddr);
 
   ////////////////////////////////////////////////
