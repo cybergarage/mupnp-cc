@@ -17,6 +17,7 @@
 		218B2DED156A6DF300940645 /* UPnPDeviceParseTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 218B2DEC156A6DF300940645 /* UPnPDeviceParseTests.cpp */; };
 		21A753891565EE34002D1E62 /* XMLParserTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21A753881565EE34002D1E62 /* XMLParserTests.cpp */; };
 		21D287B71850CA7600B312EF /* TestMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21D287B61850CA7600B312EF /* TestMain.cpp */; };
+		21FE309E1967157100202429 /* NotifSocketTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21FE309D1967157100202429 /* NotifSocketTests.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		218B2DEC156A6DF300940645 /* UPnPDeviceParseTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPDeviceParseTests.cpp; path = ../../UPnPDeviceParseTests.cpp; sourceTree = "<group>"; };
 		21A753881565EE34002D1E62 /* XMLParserTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XMLParserTests.cpp; path = ../../XMLParserTests.cpp; sourceTree = "<group>"; };
 		21D287B61850CA7600B312EF /* TestMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestMain.cpp; path = ../../TestMain.cpp; sourceTree = "<group>"; };
+		21FE309D1967157100202429 /* NotifSocketTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotifSocketTests.cpp; path = ../../NotifSocketTests.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		214CE34E1564C8C900115E8A /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				21FE309D1967157100202429 /* NotifSocketTests.cpp */,
 				21D287B61850CA7600B312EF /* TestMain.cpp */,
 				21A753881565EE34002D1E62 /* XMLParserTests.cpp */,
 				215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */,
@@ -238,6 +241,7 @@
 				215D56C91564F33F00D7BDC0 /* UPnPDeviceTests.cpp in Sources */,
 				215D56CA1564F33F00D7BDC0 /* UPnPMiscTests.cpp in Sources */,
 				21A753891565EE34002D1E62 /* XMLParserTests.cpp in Sources */,
+				21FE309E1967157100202429 /* NotifSocketTests.cpp in Sources */,
 				218B2DED156A6DF300940645 /* UPnPDeviceParseTests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

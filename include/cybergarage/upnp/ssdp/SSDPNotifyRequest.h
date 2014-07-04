@@ -21,7 +21,7 @@
 #include <cybergarage/upnp/ssdp/SSDPRequest.h>
 
 namespace CyberLink {
-class SSDPNotifyRequest : public  SSDPRequest {
+class SSDPNotifyRequest : public SSDPRequest {
 public:
   ////////////////////////////////////////////////
   // Constructor

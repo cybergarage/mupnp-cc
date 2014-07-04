@@ -19,8 +19,12 @@
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-// post (SSDPNotifySocket)
+// Constructor
 ////////////////////////////////////////////////
+
+SSDPNotifySocket::SSDPNotifySocket() {
+  setControlPoint(NULL);
+}
 
 SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
   const char *addr = SSDP::ADDRESS;
@@ -33,13 +37,17 @@ SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
   setControlPoint(NULL);
 }
 
+////////////////////////////////////////////////
+// Destructor
+////////////////////////////////////////////////
+
 SSDPNotifySocket::~SSDPNotifySocket() {
   stop();
   close();
 }
 
 ////////////////////////////////////////////////
-// post (SSDPNotifySocket)
+// post
 ////////////////////////////////////////////////
 
 bool SSDPNotifySocket::post(SSDPNotifyRequest *req) {
@@ -48,6 +56,14 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req) {
     ssdpAddr = SSDP::GetIPv6Address();
   req->setHost(ssdpAddr, SSDP::PORT);
   return HTTPMUSocket::post(req);
+}
+
+bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
+  const char *ssdpAddr = SSDP::ADDRESS;
+  if (uHTTP::IsIPv6Address(ifAddr) == true)
+    ssdpAddr = SSDP::GetIPv6Address();
+  req->setHost(ssdpAddr, SSDP::PORT);
+  return HTTPMUSocket::post(ssdpAddr, SSDP::PORT, req);
 }
 
 ////////////////////////////////////////////////

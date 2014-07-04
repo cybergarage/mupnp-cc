@@ -34,6 +34,7 @@ class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
   // Constructor
   ////////////////////////////////////////////////
   
+  SSDPNotifySocket();
   SSDPNotifySocket(const std::string &bindAddr);
   ~SSDPNotifySocket();
 
@@ -54,6 +55,7 @@ class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
   ////////////////////////////////////////////////
 
   bool post(SSDPNotifyRequest *req);
+  bool post(SSDPNotifyRequest *req, const std::string &ifAddr);
 
   ////////////////////////////////////////////////
   // run  

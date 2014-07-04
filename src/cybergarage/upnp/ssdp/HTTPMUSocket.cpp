@@ -67,7 +67,7 @@ bool HTTPMUSocket::close() {
 }
 
 ////////////////////////////////////////////////
-// reveive
+// send
 ////////////////////////////////////////////////
 
 bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int bindPort) {
@@ -79,6 +79,16 @@ bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int
   msock.setTimeToLive(4);
   msock.send(&dgmPacket);
   return true;
+}
+
+bool HTTPMUSocket::send(const std::string &host, int port, const std::string &msg) {
+  InetSocketAddress inetAddr(host, port);
+  
+  DatagramPacket dgmPacket(msg, &inetAddr);
+  
+  MulticastSocket msock;
+  msock.setTimeToLive(4);
+  return (0 < msock.send(&dgmPacket)) ? true : false;
 }
 
 ////////////////////////////////////////////////

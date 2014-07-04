@@ -59,6 +59,7 @@ class HTTPMUSocket {
   ////////////////////////////////////////////////
 
   bool send(const std::string &msg, const std::string &bindAddr = "", int bindPort = -1);
+  bool send(const std::string &host, int port, const std::string &msg);
 
   ////////////////////////////////////////////////
   // post (HTTPRequest)
@@ -74,6 +75,11 @@ class HTTPMUSocket {
     return send(req->toString(reqStr));
   }
 
+  bool post(const std::string &host, int port, uHTTP::HTTPRequest *req) {
+    std::string reqStr;
+    return send(host, port, req->toString(reqStr));
+  }
+  
   ////////////////////////////////////////////////
   // reveive
   ////////////////////////////////////////////////
