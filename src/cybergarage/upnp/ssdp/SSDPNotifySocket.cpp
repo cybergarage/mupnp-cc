@@ -27,14 +27,8 @@ SSDPNotifySocket::SSDPNotifySocket() {
 }
 
 SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
-  const char *addr = SSDP::ADDRESS;
-  useIPv6Address = false;
-  if (uHTTP::IsIPv6Address(bindAddr) == true) {
-    addr = SSDP::GetIPv6Address();
-    useIPv6Address = true;
-  }
-  open(addr, SSDP::PORT, bindAddr);
   setControlPoint(NULL);
+  open(bindAddr);
 }
 
 ////////////////////////////////////////////////
@@ -44,6 +38,20 @@ SSDPNotifySocket::SSDPNotifySocket(const std::string &bindAddr) {
 SSDPNotifySocket::~SSDPNotifySocket() {
   stop();
   close();
+}
+
+////////////////////////////////////////////////
+// open
+////////////////////////////////////////////////
+
+bool SSDPNotifySocket::open(const std::string &bindAddr) {
+  const char *addr = SSDP::ADDRESS;
+  useIPv6Address = false;
+  if (uHTTP::IsIPv6Address(bindAddr) == true) {
+    addr = SSDP::GetIPv6Address();
+    useIPv6Address = true;
+  }
+  return HTTPMUSocket::open(addr, SSDP::PORT, bindAddr);
 }
 
 ////////////////////////////////////////////////
