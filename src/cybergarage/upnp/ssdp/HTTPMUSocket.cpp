@@ -70,17 +70,6 @@ bool HTTPMUSocket::close() {
 // send
 ////////////////////////////////////////////////
 
-bool HTTPMUSocket::send(const std::string &msg, const std::string &bindAddr, int bindPort) {
-  MulticastSocket msock;
-  if ((0 < bindAddr.length()) && (0 < bindPort))
-      msock.bind(bindPort, bindAddr);
-  DatagramPacket dgmPacket(msg, &ssdpMultiGroup);
-  // Thnaks for Tho Beisch (11/09/04)
-  msock.setTimeToLive(4);
-  msock.send(&dgmPacket);
-  return true;
-}
-
 bool HTTPMUSocket::send(const std::string &host, int port, const std::string &msg) {
   InetSocketAddress inetAddr(host, port);
   
