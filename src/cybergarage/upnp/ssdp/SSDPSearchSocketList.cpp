@@ -49,14 +49,20 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
 ////////////////////////////////////////////////
   
 bool SSDPSearchSocketList::open()  {
+  bool isAllHostOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
   for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrStr;
     const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrStr);
-    SSDPSearchSocket *ssdpSearchSocket = new SSDPSearchSocket(bindAddr);
+    SSDPSearchSocket *ssdpSearchSocket = new SSDPSearchSocket();
+    if (ssdpSearchSocket->open(bindAddr) == false) {
+      delete ssdpSearchSocket;
+      isAllHostOpened = false;
+      continue;
+    }
     add(ssdpSearchSocket);
   }
-  return true;
+  return isAllHostOpened;
 }
 
 void SSDPSearchSocketList::close() {

@@ -29,10 +29,6 @@ using namespace CyberLink;
 SSDPSearchSocket::SSDPSearchSocket() {
 }
 
-SSDPSearchSocket::SSDPSearchSocket(const std::string &bindAddr) {
-  open(bindAddr);
-}
-
 SSDPSearchSocket::~SSDPSearchSocket() {
   stop();
   close();

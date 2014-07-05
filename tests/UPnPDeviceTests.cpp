@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 
 	TestDevice *testDev = new TestDevice();
 	BOOST_CHECK(testDev);
-	testDev->start();
+	BOOST_CHECK(testDev->start());
 
 	/////////////////////////////
 	// VariableTest
@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 	/////////////////////////////
 
 	TestCtrlPoint *ctrlp = new TestCtrlPoint();
-	ctrlp->start();
+	BOOST_CHECK(ctrlp->start());
 
 	/////////////////////////////
 	// Search Device

@@ -18,7 +18,7 @@ using namespace CyberLink;
 
 TestDevice::TestDevice()
 {
-    loadDescription(DEVICE_DESCRIPTION);
+  loadDescription(DEVICE_DESCRIPTION);
     
 	Service *counterService = getService("urn:schemas-upnp-org:service:count:1");
 	counterService->loadSCPD(SERVICE_DESCRIPTION);

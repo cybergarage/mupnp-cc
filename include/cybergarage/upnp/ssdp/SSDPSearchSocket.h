@@ -36,7 +36,6 @@ class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
 
  public:
   SSDPSearchSocket();
-  SSDPSearchSocket(const std::string &bindAddr);
   ~SSDPSearchSocket();
 
   ////////////////////////////////////////////////
