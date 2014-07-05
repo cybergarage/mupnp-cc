@@ -52,14 +52,22 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
 
 	TestCtrlPoint *ctrlp = new TestCtrlPoint();
 	BOOST_CHECK(ctrlp->start());
+	BOOST_CHECK(ctrlp->search());
 
 	/////////////////////////////
 	// Search Device
 	/////////////////////////////
-    
-  Wait((5 * 1000));
-    
-	Device *ctrlpDev = ctrlp->getDevice("CyberGarageCountDevice");
+  
+  Device *ctrlpDev = NULL;
+  
+  while (ctrlpDev == NULL) {
+    BOOST_CHECK(ctrlp->search());
+    Wait((SSDP::DEFAULT_MSEARCH_MX * 1000));
+    BOOST_CHECK(testDev->announce());
+    Wait((SSDP::DEFAULT_MSEARCH_MX * 1000));
+    ctrlpDev = ctrlp->getDevice("CyberGarageCountDevice");
+  }
+  
 	BOOST_CHECK(ctrlpDev != NULL);
     
 	/////////////////////////////

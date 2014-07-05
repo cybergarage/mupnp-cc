@@ -33,7 +33,6 @@ public:
   ////////////////////////////////////////////////
 
   SSDPSearchResponseSocket();
-  SSDPSearchResponseSocket(const std::string &bindAddr, int port);
   ~SSDPSearchResponseSocket();
 
   ////////////////////////////////////////////////

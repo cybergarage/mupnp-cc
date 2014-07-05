@@ -49,14 +49,20 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
 ////////////////////////////////////////////////
   
 bool SSDPSearchResponseSocketList::open(int port) {
+  bool areAllHostsOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     uHTTP::GetHostAddress(n, bindAddr);
-    SSDPSearchResponseSocket *socket = new SSDPSearchResponseSocket(bindAddr.c_str(), port);
-    add(socket);
+    SSDPSearchResponseSocket *ssdpResSocket = new SSDPSearchResponseSocket();
+    if (ssdpResSocket->open(port, bindAddr.c_str()) == false) {
+      delete ssdpResSocket;
+      areAllHostsOpened = false;
+      continue;
+    }
+    add(ssdpResSocket);
   }
-  return true;
+  return areAllHostsOpened;
 }
 
 void SSDPSearchResponseSocketList::close() {
@@ -93,7 +99,7 @@ void SSDPSearchResponseSocketList::stop() {
 ////////////////////////////////////////////////
 
 bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
-  bool ret = true;
+  bool areAllPostSuccess = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
@@ -102,12 +108,10 @@ bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
     const char *ssdpAddr = SSDP::ADDRESS;
     if (uHTTP::IsIPv6Address(bindAddr) == true)
       ssdpAddr = SSDP::GetIPv6Address();
-    //sock.joinGroup(ssdpAddr, SSDP.PORT, bindAddr);
     if (sock->post(ssdpAddr, SSDP::PORT, req) == false)
-      ret = false;
-    //sock.leaveGroup(ssdpAddr, SSDP.PORT, bindAddr);
+      areAllPostSuccess = false;
   }
-  return ret;
+  return areAllPostSuccess;
 }
 
 ////////////////////////////////////////////////

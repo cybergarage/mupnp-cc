@@ -26,10 +26,6 @@ SSDPSearchResponseSocket::SSDPSearchResponseSocket() {
   setControlPoint(NULL);
 }
   
-SSDPSearchResponseSocket::SSDPSearchResponseSocket(const std::string &bindAddr, int port) : HTTPUSocket(bindAddr, port) {
-  setControlPoint(NULL);
-}
-
 SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
   stop();
   close();

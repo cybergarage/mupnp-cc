@@ -31,8 +31,6 @@ class HTTPUSocket  {
 
   HTTPUSocket();
   
-  HTTPUSocket(const std::string &bindAddr, int port);
-
   ~HTTPUSocket();
 
   ////////////////////////////////////////////////
