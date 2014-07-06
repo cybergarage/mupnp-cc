@@ -55,7 +55,7 @@ bool SSDPSearchResponseSocketList::open(int port) {
     string bindAddr;
     uHTTP::GetHostAddress(n, bindAddr);
     SSDPSearchResponseSocket *ssdpResSocket = new SSDPSearchResponseSocket();
-    if (ssdpResSocket->open(port, bindAddr.c_str()) == false) {
+    if (ssdpResSocket->open(port, bindAddr) == false) {
       delete ssdpResSocket;
       areAllHostsOpened = false;
       continue;

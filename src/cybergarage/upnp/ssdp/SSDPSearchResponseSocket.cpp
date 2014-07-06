@@ -38,7 +38,6 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
 void SSDPSearchResponseSocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
-    //Thread.yield();
     SSDPPacket *packet = receive();
     if (packet == NULL)
       continue;

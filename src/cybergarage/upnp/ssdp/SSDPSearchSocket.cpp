@@ -54,7 +54,6 @@ bool SSDPSearchSocket::open(const std::string &bindAddr) {
 
 void SSDPSearchSocket::run() {
   while (isRunnable() == true) {
-    //Thread.yield();
     SSDPPacket *packet = receive();
     if (packet == NULL)
       continue;
