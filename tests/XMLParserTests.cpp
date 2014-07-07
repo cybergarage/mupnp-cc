@@ -20,10 +20,10 @@ using namespace CyberXML;
 const std::string XML_TEST_SAMPLE_01 =
 "<?xml version=\"1.0\" ?> \n"
 "<root xmlns=\"urn:schemas-upnp-org:device-1-0\">\n"
-" 	<specVersion> \n"
-" 		<major>1</major>\n"
-" 		<minor>0</minor>\n"
-" 	</specVersion> \n"
+"   <specVersion> \n"
+"     <major>1</major>\n"
+"     <minor>0</minor>\n"
+"   </specVersion> \n"
 "</root> \n";
 
 BOOST_AUTO_TEST_CASE(XMLParserTests)

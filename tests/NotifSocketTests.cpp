@@ -19,9 +19,9 @@ using namespace std;
 
 BOOST_AUTO_TEST_CASE(NotifySocketPost)
 {
-	NetworkInterfaceList netIfList;
-	GetHostAddresses(netIfList);
-	BOOST_CHECK(0 < netIfList.size());
+  NetworkInterfaceList netIfList;
+  GetHostAddresses(netIfList);
+  BOOST_CHECK(0 < netIfList.size());
   
   NetworkInterface *netIf = netIfList.getNetworkInterface(0);
   string ifAddr = netIf->getAddress();

@@ -1,10 +1,10 @@
 /******************************************************************
 *
-*	CyberUPnP for Java
+*  CyberUPnP for Java
 *
-*	Copyright (C) Satoshi Konno 2002
+*  Copyright (C) Satoshi Konno 2002
 *
-*	File : TestDevice.cpp
+*  File : TestDevice.cpp
 *
 ******************************************************************/
 
@@ -31,7 +31,7 @@ const char *TestHTTPServer::TEST_CHUNKED_URI = "/testChunked";
 
 TestHTTPServer::TestHTTPServer()
 {
-	addRequestListener(this);
+  addRequestListener(this);
 }
 
 ////////////////////////////////////////////////
@@ -40,36 +40,36 @@ TestHTTPServer::TestHTTPServer()
 
 uHTTP::HTTP::StatusCode TestHTTPServer::httpRequestRecieved(HTTPRequest *httpReq)
 {
-		string uri;
-		httpReq->getURI(uri);
-		if (uri.compare(TEST_INPUTSTREAM_URI) == 0) {
-			return httpInputStreamRequestRecieved(httpReq);
-		}
+  string uri;
+  httpReq->getURI(uri);
+  if (uri.compare(TEST_INPUTSTREAM_URI) == 0) {
+    return httpInputStreamRequestRecieved(httpReq);
+  }
 
-		HTTPResponse httpRes;
-		httpRes.setStatusCode(HTTP::OK_REQUEST);
-		httpRes.setContent(content);
-		return httpReq->post(&httpRes);
+  HTTPResponse httpRes;
+  httpRes.setStatusCode(HTTP::OK_REQUEST);
+  httpRes.setContent(content);
+  return httpReq->post(&httpRes);
 }
 
 uHTTP::HTTP::StatusCode TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest *httpReq)
 {
-	StringBufferInputStream in(content.c_str());
+  StringBufferInputStream in(content.c_str());
 
-	HTTPResponse httpRes;
-	httpRes.setStatusCode(HTTP::OK_REQUEST);
-	httpRes.setContentInputStream(&in);
-	httpRes.setContentLength(content.length());
-	return httpReq->post(&httpRes);
+  HTTPResponse httpRes;
+  httpRes.setStatusCode(HTTP::OK_REQUEST);
+  httpRes.setContentInputStream(&in);
+  httpRes.setContentLength(content.length());
+  return httpReq->post(&httpRes);
 }
 
 uHTTP::HTTP::StatusCode TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq)
 {
-		HTTPResponse httpRes;
-		httpRes.setTransferEncoding(HTTP::CHUNKED);
-		httpRes.setStatusCode(HTTP::OK_REQUEST);
-		httpRes.setContent(content);
-		return httpReq->post(&httpRes);
+  HTTPResponse httpRes;
+  httpRes.setTransferEncoding(HTTP::CHUNKED);
+  httpRes.setStatusCode(HTTP::OK_REQUEST);
+  httpRes.setContent(content);
+  return httpReq->post(&httpRes);
 }
 
 ////////////////////////////////////////////////

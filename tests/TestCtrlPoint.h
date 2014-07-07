@@ -1,15 +1,15 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*  CyberLink for C++
 *
-*	Copyright (C) Satoshi Konno 2002
+*  Copyright (C) Satoshi Konno 2002
 *
-*	File: upnpdump.cpp
+*  File: upnpdump.cpp
 *
-*	Revision;
+*  Revision;
 *
-*	08/22/03
-*		- first revision
+*  08/22/03
+*    - first revision
 *
 ******************************************************************/
 
@@ -25,19 +25,19 @@ class TestCtrlPoint : public ControlPoint , public NotifyListener, public EventL
 
 public:
 
-	TestCtrlPoint();
-	
-	////////////////////////////////////////////////
-	//	Listener
-	////////////////////////////////////////////////
-	
+  TestCtrlPoint();
+  
+  ////////////////////////////////////////////////
+  //  Listener
+  ////////////////////////////////////////////////
+  
 public:
 
-	void deviceNotifyReceived(SSDPPacket *packet);
-	void deviceSearchResponseReceived(SSDPPacket *packet);
-	void eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value);
+  void deviceNotifyReceived(SSDPPacket *packet);
+  void deviceSearchResponseReceived(SSDPPacket *packet);
+  void eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value);
 
-	void print();
+  void print();
 
 };
 
