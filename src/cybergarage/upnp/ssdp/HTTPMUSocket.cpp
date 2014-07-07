@@ -30,10 +30,6 @@ using namespace uHTTP;
 HTTPMUSocket::HTTPMUSocket() {
 }
 
-HTTPMUSocket::HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr) {
-  open(addr, port, bindAddr);
-}
-
 ////////////////////////////////////////////////
 // Destructor
 ////////////////////////////////////////////////

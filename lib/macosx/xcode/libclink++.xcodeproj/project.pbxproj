@@ -279,7 +279,7 @@
 		2184A99A155C7A2800D1E138 /* HTTPMUSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPMUSocket.cpp; sourceTree = "<group>"; };
 		2184A99B155C7A2800D1E138 /* HTTPUSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPUSocket.cpp; sourceTree = "<group>"; };
 		2184A99C155C7A2800D1E138 /* SSDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDP.cpp; sourceTree = "<group>"; };
-		2184A99D155C7A2800D1E138 /* SSDPNotifySocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPNotifySocket.cpp; sourceTree = "<group>"; };
+		2184A99D155C7A2800D1E138 /* SSDPNotifySocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPNotifySocket.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		2184A99E155C7A2800D1E138 /* SSDPNotifySocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPNotifySocketList.cpp; sourceTree = "<group>"; };
 		2184A99F155C7A2800D1E138 /* SSDPPacket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPPacket.cpp; sourceTree = "<group>"; };
 		2184A9A0155C7A2800D1E138 /* SSDPResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPResponse.cpp; sourceTree = "<group>"; };
