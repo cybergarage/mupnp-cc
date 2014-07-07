@@ -70,7 +70,7 @@
 		214CE35C1564D75400115E8A /* TestHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestHTTPServer.h; path = ../../TestHTTPServer.h; sourceTree = "<group>"; };
 		214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestCtrlPoint.cpp; path = ../../TestCtrlPoint.cpp; sourceTree = "<group>"; };
 		214CE3601564D75400115E8A /* TestDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestDevice.cpp; path = ../../TestDevice.cpp; sourceTree = "<group>"; };
-		214CE3611564D75400115E8A /* TestHTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestHTTPServer.cpp; path = ../../TestHTTPServer.cpp; sourceTree = "<group>"; };
+		214CE3611564D75400115E8A /* TestHTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = TestHTTPServer.cpp; path = ../../TestHTTPServer.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPDeviceTests.cpp; path = ../../UPnPDeviceTests.cpp; sourceTree = "<group>"; };
 		215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPMiscTests.cpp; path = ../../UPnPMiscTests.cpp; sourceTree = "<group>"; };
 		215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libclink++.xcodeproj"; path = "../../../lib/macosx/xcode/libclink++.xcodeproj"; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lboost_unit_test_framework-mt",
@@ -338,7 +338,7 @@
 					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-lboost_unit_test_framework-mt",
 					"-luhttp++",

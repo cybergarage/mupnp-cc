@@ -33,10 +33,7 @@ class HTTPMUSocket {
   // Constructor
   ////////////////////////////////////////////////
   
-  HTTPMUSocket();
-  
-  HTTPMUSocket(const std::string &addr, int port, const std::string &bindAddr);
-
+  HTTPMUSocket();  
   ~HTTPMUSocket();
 
   ////////////////////////////////////////////////

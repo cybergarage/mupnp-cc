@@ -29,10 +29,6 @@ using namespace CyberLink;
 HTTPUSocket::HTTPUSocket() {
   open();
 }
-  
-HTTPUSocket::HTTPUSocket(const std::string &bindAddr, int port) {
-  open(port, bindAddr);
-}
 
 HTTPUSocket::~HTTPUSocket() {
   close();

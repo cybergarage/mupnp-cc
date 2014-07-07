@@ -49,7 +49,8 @@ void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
 // open/close
 ////////////////////////////////////////////////
   
-bool SSDPNotifySocketList::open()  {
+bool SSDPNotifySocketList::open() {
+  bool isAllHostOpened = true;
   size_t nHostAddrs = GetNHostAddresses();
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
@@ -57,11 +58,12 @@ bool SSDPNotifySocketList::open()  {
     SSDPNotifySocket *ssdpNotifySocket = new SSDPNotifySocket();
     if (ssdpNotifySocket->open(bindAddr) == false) {
       delete ssdpNotifySocket;
+      isAllHostOpened = false;
       continue;
     }
     add(ssdpNotifySocket);
   }
-  return true;
+  return isAllHostOpened;
 }
   
 void SSDPNotifySocketList::close() {

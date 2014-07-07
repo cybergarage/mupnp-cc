@@ -26,10 +26,6 @@ SSDPSearchResponseSocket::SSDPSearchResponseSocket() {
   setControlPoint(NULL);
 }
   
-SSDPSearchResponseSocket::SSDPSearchResponseSocket(const std::string &bindAddr, int port) : HTTPUSocket(bindAddr, port) {
-  setControlPoint(NULL);
-}
-
 SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
   stop();
   close();
@@ -42,7 +38,6 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
 void SSDPSearchResponseSocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
-    //Thread.yield();
     SSDPPacket *packet = receive();
     if (packet == NULL)
       continue;
