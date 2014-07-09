@@ -15,43 +15,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/event/Property.h>
 #include <cybergarage/upnp/event/PropertyList.h>
 
 using namespace CyberLink;
 
-PropertyList::PropertyList() {
-}
-
-PropertyList::~PropertyList()  {
-  clear();
-}
-
-bool PropertyList::addProperty(Property *prop)  {
-  if (prop == NULL)
-    return false;
-  return add(prop);
-}
-
-bool PropertyList::insertProperty(Property *prop, int index)  {
-  if (prop == NULL)
-    return false;
-  return insertAt(prop, index);
-}
-
-bool PropertyList::removeProperty(Property *prop)  {
-  if (prop == NULL)
-    return false;
-  bool ret = remove(prop);
-  delete prop;
-  return ret;
-}
-
- void PropertyList::clear()  {
-  size_t nProp = size();
-  for (size_t n = 0; n < nProp; n++) {
-    Property *prop = getProperty(n);
-    delete prop;
-  }
-  Vector::clear();
-}
+const char *PropertyList::ELEM_NAME = "propertyList";

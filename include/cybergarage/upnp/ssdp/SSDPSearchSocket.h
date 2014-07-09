@@ -18,7 +18,6 @@
 
 #include <string>
 
-#include <uhttp/util/ListenerList.h>
 #include <uhttp/util/Thread.h>
 #include <uhttp/net/HostInterface.h>
 #include <cybergarage/upnp/ssdp/SSDP.h>

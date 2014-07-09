@@ -29,7 +29,6 @@ SSDPSearchSocketList::SSDPSearchSocketList()  {
 
 SSDPSearchSocketList::~SSDPSearchSocketList()  {
   stop();
-  close();
 }
 
 ////////////////////////////////////////////////
@@ -92,17 +91,5 @@ void SSDPSearchSocketList::stop() {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
     sock->stop();
   }
-}
-
-////////////////////////////////////////////////
-// clear
-////////////////////////////////////////////////
-
-void SSDPSearchSocketList::clear() {
-  size_t nSockets = size();
-  for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
-    delete sock;
-  }
-  Vector::clear();
+  close();
 }

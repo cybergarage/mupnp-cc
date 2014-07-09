@@ -17,46 +17,48 @@
 #define _CLINK_PROPERTYLIST_H_
 
 #include <uhttp/util/Vector.h>
+#include <cybergarage/upnp/event/Property.h>
 
 namespace CyberLink {
-class Property;
 
-class PropertyList : public uHTTP::Vector  {
+class PropertyList : public uHTTP::Vector<Property>  {
  public:
+    
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
   
   static const char *ELEM_NAME;
 
+public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
   
- public:
-  PropertyList();
-
-  ~PropertyList();
+  PropertyList() {
+  }
   
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
 
  public:
-  bool addProperty(Property *prop);
-  bool removeProperty(Property *prop);
-  bool insertProperty(Property *prop, int index);
-
-  Property *getProperty(size_t n) {
-    return (Property *)get(n);
+  bool addProperty(Property *prop) {
+        return add(prop);
+  }
+  
+  bool removeProperty(Property *prop) {
+    return remove(prop);
+  }
+  
+  bool insertProperty(Property *prop, int index) {
+    return insertAt(prop, index);
   }
 
-  ////////////////////////////////////////////////
-  // clear
-  ////////////////////////////////////////////////
-
- public:
-  void clear();
+  Property *getProperty(size_t n) {
+    return get(n);
+  }
 };
 
 }

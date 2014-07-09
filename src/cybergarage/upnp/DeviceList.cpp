@@ -23,16 +23,3 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 
 const char *DeviceList::ELEM_NAME = "deviceList";
-
-////////////////////////////////////////////////
-// Methods
-////////////////////////////////////////////////
-
-void DeviceList::clear()  {
-  size_t nDev = size();
-  for (size_t n = 0; n < nDev; n++) {
-    Device *dev = getDevice(n);
-    delete dev;
-  }
-  Vector::clear();
-}

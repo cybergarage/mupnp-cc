@@ -26,22 +26,7 @@ using namespace CyberLink;
 const char *ArgumentList::ELEM_NAME = "argumentList";
 
 ////////////////////////////////////////////////
-// clear
-////////////////////////////////////////////////
-
-void ArgumentList::clear()  {
-  if (delElemFlag == true) {
-    size_t nArgs = size();
-    for (size_t n = 0; n < nArgs; n++) {
-      Argument *arg = getArgument(n);
-      delete arg;
-    }
-  }
-  Vector::clear();
-}
-
-////////////////////////////////////////////////
-// Methods
+// getArgument
 ////////////////////////////////////////////////
 
 Argument *ArgumentList::getArgument(const std::string &name) {
@@ -59,7 +44,7 @@ Argument *ArgumentList::getArgument(const std::string &name) {
 }
 
 ////////////////////////////////////////////////
-// Methods
+// set
 ////////////////////////////////////////////////
   
 void ArgumentList::set(ArgumentList *inArgList) {

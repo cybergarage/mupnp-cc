@@ -16,10 +16,12 @@
 #ifndef _CLINK_SSDPSEARCHLISTENER_H_
 #define _CLINK_SSDPSEARCHLISTENER_H_
 
+#include <uhttp/util/Listener.h>
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 namespace CyberLink {
-class SearchListener {
+    
+class SearchListener : public uHTTP::Listener {
 public:
   virtual void deviceSearchReceived(SSDPPacket *ssdpPacket) = 0;
 };

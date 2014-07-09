@@ -165,7 +165,7 @@
 		2184A776155C7A0600D1E138 /* AllowedValueList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllowedValueList.h; sourceTree = "<group>"; };
 		2184A777155C7A0600D1E138 /* AllowedValueRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllowedValueRange.h; sourceTree = "<group>"; };
 		2184A778155C7A0600D1E138 /* Argument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Argument.h; sourceTree = "<group>"; };
-		2184A779155C7A0600D1E138 /* ArgumentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArgumentList.h; sourceTree = "<group>"; };
+		2184A779155C7A0600D1E138 /* ArgumentList.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = ArgumentList.h; sourceTree = "<group>"; tabWidth = 2; };
 		2184A77B155C7A0600D1E138 /* ActionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionListener.h; sourceTree = "<group>"; };
 		2184A77C155C7A0600D1E138 /* ActionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionRequest.h; sourceTree = "<group>"; };
 		2184A77D155C7A0600D1E138 /* ActionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionResponse.h; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 		2184A798155C7A0600D1E138 /* EventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListener.h; sourceTree = "<group>"; };
 		2184A799155C7A0600D1E138 /* NotifyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyRequest.h; sourceTree = "<group>"; };
 		2184A79A155C7A0600D1E138 /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
-		2184A79B155C7A0600D1E138 /* PropertyList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyList.h; sourceTree = "<group>"; };
+		2184A79B155C7A0600D1E138 /* PropertyList.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = PropertyList.h; sourceTree = "<group>"; tabWidth = 2; };
 		2184A79C155C7A0600D1E138 /* Subscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscriber.h; sourceTree = "<group>"; };
 		2184A79D155C7A0600D1E138 /* SubscriberList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriberList.h; sourceTree = "<group>"; };
 		2184A79E155C7A0600D1E138 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
@@ -232,10 +232,10 @@
 		2184A81B155C7A0600D1E138 /* ServiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceData.h; sourceTree = "<group>"; };
 		2184A81C155C7A0600D1E138 /* StateVariableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateVariableData.h; sourceTree = "<group>"; };
 		2184A829155C7A0600D1E138 /* Attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attribute.h; sourceTree = "<group>"; };
-		2184A82A155C7A0600D1E138 /* AttributeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeList.h; sourceTree = "<group>"; };
+		2184A82A155C7A0600D1E138 /* AttributeList.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = AttributeList.h; sourceTree = "<group>"; tabWidth = 2; };
 		2184A82B155C7A0600D1E138 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		2184A82C155C7A0600D1E138 /* NodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeData.h; sourceTree = "<group>"; };
-		2184A82D155C7A0600D1E138 /* NodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeList.h; sourceTree = "<group>"; };
+		2184A82D155C7A0600D1E138 /* NodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = NodeList.h; sourceTree = "<group>"; tabWidth = 2; };
 		2184A82E155C7A0600D1E138 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		2184A82F155C7A0600D1E138 /* ParserException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserException.h; sourceTree = "<group>"; };
 		2184A830155C7A0600D1E138 /* XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML.h; sourceTree = "<group>"; };
@@ -280,13 +280,13 @@
 		2184A99B155C7A2800D1E138 /* HTTPUSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPUSocket.cpp; sourceTree = "<group>"; };
 		2184A99C155C7A2800D1E138 /* SSDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDP.cpp; sourceTree = "<group>"; };
 		2184A99D155C7A2800D1E138 /* SSDPNotifySocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPNotifySocket.cpp; sourceTree = "<group>"; tabWidth = 2; };
-		2184A99E155C7A2800D1E138 /* SSDPNotifySocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPNotifySocketList.cpp; sourceTree = "<group>"; };
+		2184A99E155C7A2800D1E138 /* SSDPNotifySocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPNotifySocketList.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		2184A99F155C7A2800D1E138 /* SSDPPacket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPPacket.cpp; sourceTree = "<group>"; };
 		2184A9A0155C7A2800D1E138 /* SSDPResponse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPResponse.cpp; sourceTree = "<group>"; };
 		2184A9A1155C7A2800D1E138 /* SSDPSearchResponseSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPSearchResponseSocket.cpp; sourceTree = "<group>"; };
-		2184A9A2155C7A2800D1E138 /* SSDPSearchResponseSocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPSearchResponseSocketList.cpp; sourceTree = "<group>"; };
+		2184A9A2155C7A2800D1E138 /* SSDPSearchResponseSocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPSearchResponseSocketList.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		2184A9A3155C7A2800D1E138 /* SSDPSearchSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPSearchSocket.cpp; sourceTree = "<group>"; };
-		2184A9A4155C7A2800D1E138 /* SSDPSearchSocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPSearchSocketList.cpp; sourceTree = "<group>"; };
+		2184A9A4155C7A2800D1E138 /* SSDPSearchSocketList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = SSDPSearchSocketList.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		2184A9A5155C7A2800D1E138 /* StateVariable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StateVariable.cpp; sourceTree = "<group>"; };
 		2184A9A6155C7A2800D1E138 /* UPnP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UPnP.cpp; sourceTree = "<group>"; };
 		2184A9A7155C7A2800D1E138 /* UPnPStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UPnPStatus.cpp; sourceTree = "<group>"; };

@@ -20,8 +20,10 @@
 #include <cybergarage/upnp/Icon.h>
 
 namespace CyberLink{
-class IconList : public uHTTP::Vector {
+    
+class IconList : public uHTTP::Vector<Icon> {
  public:
+    
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
@@ -29,6 +31,7 @@ class IconList : public uHTTP::Vector {
   static const char *ELEM_NAME;
 
  public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -36,21 +39,14 @@ class IconList : public uHTTP::Vector {
   IconList() 
   {
   }
-
-  ~IconList() 
-  {
-    clear();
-  }
-  
+    
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
   Icon *getIcon(size_t n) {
-    return (Icon *)get(n);
+    return get(n);
   }
-
-  void clear();
 };
 
 }

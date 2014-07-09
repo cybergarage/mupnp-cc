@@ -20,45 +20,24 @@
 #include <cybergarage/upnp/event/Subscriber.h>
 
 namespace CyberLink {
-class SubscriberList : public uHTTP::Vector  {
+    
+class SubscriberList : public uHTTP::Vector<Subscriber>  {
+public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
   
- public:
-  SubscriberList() 
+  SubscriberList()
   {
   }
   
-  ~SubscriberList() 
-  {
-    clear();
-  }
-
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
- public:
   Subscriber *getSubscriber(size_t n) {
-    return (Subscriber *)get(n);
-  }
-
-  void clear() 
-  {
-    size_t nSub = size();
-    for (size_t n = 0; n < nSub; n++) {
-      Subscriber *sub = getSubscriber(n);
-      delete sub;
-    }
-    Vector::clear();
-  }
-
-  void remove(Subscriber *sub) {
-    if (sub == NULL)
-        return;
-    Vector::remove(sub);
-    delete sub;
+    return get(n);
   }
 };
 

@@ -21,7 +21,7 @@
 namespace CyberLink {
 class Device;
 
-class DeviceList : public uHTTP::Vector {
+class DeviceList : public uHTTP::Vector<Device> {
 public:
   ////////////////////////////////////////////////
   // Constants
@@ -37,26 +37,14 @@ public:
   DeviceList() 
   {
   }
-
-  ~DeviceList() 
-  {
-    clear();
-  }
   
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
   Device *getDevice(size_t n) {
-    return (Device *)get(n);
+    return get(n);
   }
-
-  ////////////////////////////////////////////////
-  // clear
-  ////////////////////////////////////////////////
-
- public:
-  void clear();
 };
 
 }

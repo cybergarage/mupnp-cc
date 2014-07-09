@@ -21,45 +21,32 @@
 #include <cybergarage/upnp/Argument.h>
 
 namespace CyberLink {
-class ArgumentList : public uHTTP::Vector  {
-  bool delElemFlag;
-
+    
+class ArgumentList : public uHTTP::Vector<Argument>  {
+public:
+    
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
   
- public:
   static const char *ELEM_NAME;
 
+public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
   
- public:
-  ArgumentList(bool delElemFlag = true) 
-  {
-    this->delElemFlag = delElemFlag;
+  ArgumentList(bool delElemFlag = true) {
+    setWeekContainer(!delElemFlag);
   }
-
-  ~ArgumentList() 
-  {
-    clear();
-  }
-
-  ////////////////////////////////////////////////
-  // clear
-  ////////////////////////////////////////////////
-
- public:
-  void clear();
-  
+    
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
- public:
   Argument *getArgument(size_t n) {
-    return (Argument *)get(n);
+    return get(n);
   }
 
   Argument *getArgument(const std::string &name);
@@ -68,7 +55,6 @@ class ArgumentList : public uHTTP::Vector  {
   // Methods
   ////////////////////////////////////////////////
   
- public:
   void set(ArgumentList *inArgList);
 };
 

@@ -23,16 +23,3 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 
 const char *CyberLink::ActionList::ELEM_NAME = "actionList";
-
-////////////////////////////////////////////////
-// Methods
-////////////////////////////////////////////////
-
-void ActionList::clear()  {
-  size_t nAct = size();
-  for (size_t n = 0; n < nAct; n++) {
-    Action *act = getAction(n);
-    delete act;
-  }
-  Vector::clear();
-}

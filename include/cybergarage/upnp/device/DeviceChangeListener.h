@@ -16,10 +16,12 @@
 #ifndef _CLINK_DEVICECHANGELISTENER_H_
 #define _CLINK_DEVICECHANGELISTENER_H_
 
+#include <uhttp/util/Listener.h>
+
 namespace CyberLink {
 class Device;
 
-class DeviceChangeListener {
+class DeviceChangeListener : public uHTTP::Listener {
 public:
   virtual void deviceAdded(Device *dev) = 0;
   virtual void deviceRemoved(Device *dev) = 0;

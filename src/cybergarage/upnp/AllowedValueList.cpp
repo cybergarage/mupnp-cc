@@ -24,16 +24,3 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
   
 const char *AllowedValueList::ELEM_NAME = "allowedValueList";
-
-////////////////////////////////////////////////
-// clear
-////////////////////////////////////////////////
-
-void AllowedValueList::clear()  {
-  size_t nValues = size();
-  for (size_t n = 0; n < nValues; n++) {
-    AllowedValue *value = getAllowedValue(n);
-    delete value;
-  }
-  Vector::clear();
-}

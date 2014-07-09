@@ -23,40 +23,9 @@
 using namespace CyberXML;
 using namespace uHTTP;
 
-NodeList::NodeList()  {
-}
-
-NodeList::~NodeList()  {
-  clear();
-}
-
-bool NodeList::addNode(Node *node)  {
-  if (node == NULL)
-    return false;
-  return add(node);
-}
-
-bool NodeList::insertNode(Node *node, size_t index)  {
-  if (node == NULL)
-    return false;
-  return insertAt(node, index);
-}
-
-bool NodeList::removeNode(Node *node)  {
-  if (node == NULL)
-    return false;
-  bool ret = remove(node);
-  delete node;
-  return ret;
-}
-
 ////////////////////////////////////////////////
 // get*
 ////////////////////////////////////////////////
-
-Node *NodeList::getNode(size_t n) {
-  return (Node *)Vector::get(n);
-}
 
 Node *NodeList::getNode(const std::string &name)  {
   size_t nLists = size();
@@ -94,18 +63,4 @@ Node *NodeList::getNode(const std::string &name, const std::string &value)  {
       return node;
   }
   return NULL;
-}
-
-////////////////////////////////////////////////
-// clear
-////////////////////////////////////////////////
-
-void NodeList::clear() {
-  size_t nLists = size();
-  for (size_t n = 0; n < nLists; n++) {
-    Node *node = getNode(n);
-    if (node != NULL)
-      delete node;
-  }
-  Vector::clear();
 }

@@ -17,7 +17,7 @@
 #define _CLINK_DEVICEDATA_H_
 
 #include <uhttp/http/HTTPServerList.h>
-#include <uhttp/util/ListenerList.h>
+#include <uhttp/util/Listener.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchSocketList.h>
 #include <cybergarage/upnp/device/Advertiser.h>
 #include <cybergarage/xml/NodeData.h>

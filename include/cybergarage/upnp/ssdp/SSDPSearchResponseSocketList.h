@@ -24,41 +24,38 @@
 namespace CyberLink {
 class ControlPoint;
 
-class SSDPSearchResponseSocketList : public uHTTP::Vector  {
+class SSDPSearchResponseSocketList : public uHTTP::Vector<SSDPSearchResponseSocket>  {
+
+public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
   
- public:
   SSDPSearchResponseSocketList();
-
   ~SSDPSearchResponseSocketList();
 
   ////////////////////////////////////////////////
   // ControlPoint
   ////////////////////////////////////////////////
 
- public:
   void setControlPoint(ControlPoint *ctrlPoint);
 
   ////////////////////////////////////////////////
   // get
   ////////////////////////////////////////////////
   
- public:
   SSDPSearchResponseSocket *getSSDPSearchResponseSocket(size_t n) {
-    return (SSDPSearchResponseSocket *)get(n);
+    return get(n);
   }
   
   ////////////////////////////////////////////////
   // open/close
   ////////////////////////////////////////////////
   
- public:
   bool open(int port);
 
-  bool open() 
-  {
+  bool open()  {
     return open(SSDP::PORT);
   }
     
@@ -68,9 +65,7 @@ class SSDPSearchResponseSocketList : public uHTTP::Vector  {
   // start/stop
   ////////////////////////////////////////////////
   
- public:
   void start();
-
   void stop();
 
   ////////////////////////////////////////////////
@@ -79,13 +74,6 @@ class SSDPSearchResponseSocketList : public uHTTP::Vector  {
 
  public:
   bool post(SSDPSearchRequest *req);
-  
-  ////////////////////////////////////////////////
-  // clear
-  ////////////////////////////////////////////////
-  
- public:
-  void clear();
 };
 
 }

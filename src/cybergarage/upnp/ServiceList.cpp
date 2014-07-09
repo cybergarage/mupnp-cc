@@ -23,16 +23,3 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 
 const char *ServiceList::ELEM_NAME = "serviceList";
-
-////////////////////////////////////////////////
-// Methods
-////////////////////////////////////////////////
-
- void ServiceList::clear()  {
-  size_t nService = size();
-  for (size_t n = 0; n < nService; n++) {
-    Service *service = getService(n);
-    delete service;
-  }
-  Vector::clear();
-}

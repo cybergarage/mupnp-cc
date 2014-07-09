@@ -23,14 +23,13 @@
 namespace CyberLink {
 class ControlPoint;
 
-class SSDPNotifySocketList : public uHTTP::Vector  {
+class SSDPNotifySocketList : public uHTTP::Vector<SSDPNotifySocket>  {
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
   
  public:
   SSDPNotifySocketList();
-
   ~SSDPNotifySocketList();
 
   ////////////////////////////////////////////////
@@ -39,7 +38,7 @@ class SSDPNotifySocketList : public uHTTP::Vector  {
   
  public:
   SSDPNotifySocket *getSSDPNotifySocket(size_t n) {
-    return (SSDPNotifySocket *)get(n);
+    return get(n);
   }
 
   ////////////////////////////////////////////////
@@ -64,13 +63,6 @@ class SSDPNotifySocketList : public uHTTP::Vector  {
  public:
   void start();
   void stop();
-  
-  ////////////////////////////////////////////////
-  // clear
-  ////////////////////////////////////////////////
-
- public:
-  void clear();
 };
 
 }

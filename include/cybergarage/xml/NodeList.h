@@ -20,37 +20,44 @@
 #include <uhttp/util/StringUtil.h>
 
 namespace CyberXML {
+
 class Node;
 
-class NodeList : public uHTTP::Vector {
+class NodeList : public uHTTP::Vector<Node> {
+public:
+  
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-
- public:
-  NodeList();
-  virtual ~NodeList();
+  
+  NodeList() {
+  }
+  
+public:
   
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-
- public:
-  bool addNode(Node *node);
-  bool removeNode(Node *node);
-  bool insertNode(Node *node, size_t index);
-
-  Node *getNode(size_t n);
+  
+  bool addNode(Node *node) {
+    return add(node);
+  }
+  
+  bool removeNode(Node *node) {
+    return remove(node);
+  }
+  
+  bool insertNode(Node *node, size_t index) {
+    return insertAt(node, index);
+  }
+  
+  Node *getNode(size_t n) {
+    return Vector::get(n);
+  }
+  
   Node *getNode(const std::string &name);
   Node *getEndsWith(const std::string &name);
   Node *getNode(const std::string &name, const std::string &value);
-
-  ////////////////////////////////////////////////
-  // clear
-  ////////////////////////////////////////////////
-
- public:
-  void clear();
 };
 
 }

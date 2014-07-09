@@ -30,7 +30,6 @@ SSDPNotifySocketList::SSDPNotifySocketList()  {
 
 SSDPNotifySocketList::~SSDPNotifySocketList()  {
   stop();
-  close();
 }
 
 ////////////////////////////////////////////////
@@ -93,17 +92,5 @@ void SSDPNotifySocketList::stop() {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
     sock->stop();
   }
-}
-
-////////////////////////////////////////////////
-// clear
-////////////////////////////////////////////////
-
-void SSDPNotifySocketList::clear() {
-  size_t nSockets = size();
-  for (size_t n = 0; n < nSockets; n++) {
-    SSDPNotifySocket *sock = getSSDPNotifySocket(n);
-    delete sock;
-  }
-  Vector::clear();
+  close();
 }

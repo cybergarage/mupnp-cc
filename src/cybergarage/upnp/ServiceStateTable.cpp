@@ -24,16 +24,3 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 
 const char *ServiceStateTable::ELEM_NAME = "serviceStateTable";
-
-////////////////////////////////////////////////
-// Methods
-////////////////////////////////////////////////
-
- void ServiceStateTable::clear()  {
-  size_t nVars = size();
-  for (size_t n = 0; n < nVars; n++) {
-    StateVariable *var = getStateVariable(n);
-    delete var;
-  }
-  Vector::clear();
-}

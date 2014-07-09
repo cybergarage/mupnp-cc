@@ -18,7 +18,7 @@
 #ifndef _CLINK_SERVICEDATA_H_
 #define _CLINK_SERVICEDATA_H_
 
-#include <uhttp/util/ListenerList.h>
+#include <uhttp/util/Listener.h>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/xml/NodeData.h>
 #include <cybergarage/upnp/event/SubscriberList.h>

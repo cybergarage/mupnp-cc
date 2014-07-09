@@ -17,12 +17,14 @@
 #define _CLINK_ACTIONLIST_H_
 
 #include <uhttp/util/Vector.h>
+#include <cybergarage/upnp/Action.h>
 
 namespace CyberLink {
-class Action;
 
-class ActionList : public uHTTP::Vector  {
- public:
+class ActionList : public uHTTP::Vector<Action>  {
+
+public:
+    
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
@@ -30,6 +32,7 @@ class ActionList : public uHTTP::Vector  {
   static const char *ELEM_NAME;
 
 public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -38,20 +41,13 @@ public:
   {
   }
 
-  ~ActionList() 
-  {
-    clear();
-  }
-  
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
   Action *getAction(size_t n) {
-    return (Action*)get(n);
+    return get(n);
   }
-
-  void clear();
 };
 
 }

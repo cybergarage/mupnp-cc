@@ -21,7 +21,7 @@
 namespace CyberLink {
 class StateVariable;
 
-class ServiceStateTable : public uHTTP::Vector  {
+class ServiceStateTable : public uHTTP::Vector<StateVariable>  {
 public:
   ////////////////////////////////////////////////
   // Constants
@@ -30,6 +30,7 @@ public:
   static const char *ELEM_NAME;
 
 public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -38,20 +39,13 @@ public:
   {
   }
 
-  ~ServiceStateTable() 
-  {
-    clear();
-  }
-  
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
   StateVariable *getStateVariable(size_t n) {
-    return (StateVariable *)get(n);
+    return get(n);
   }
-
-  void clear();
 };
 
 }

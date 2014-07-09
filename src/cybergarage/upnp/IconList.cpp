@@ -23,16 +23,3 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 
 const char *IconList::ELEM_NAME = "iconList";
-
-////////////////////////////////////////////////
-// Methods
-////////////////////////////////////////////////
-
- void IconList::clear()  {
-  size_t nIcon = size();
-  for (size_t n = 0; n < nIcon; n++) {
-    Icon *ico = getIcon(n);
-    delete ico;
-  }
-  Vector::clear();
-}

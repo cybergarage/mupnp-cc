@@ -29,7 +29,6 @@ SSDPSearchResponseSocketList::SSDPSearchResponseSocketList()  {
 
 SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()  {
   stop();
-  close();
 }
 
 ////////////////////////////////////////////////
@@ -92,6 +91,7 @@ void SSDPSearchResponseSocketList::stop() {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
     sock->stop();
   }
+  close();
 }
 
 ////////////////////////////////////////////////
@@ -112,17 +112,4 @@ bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
       areAllPostSuccess = false;
   }
   return areAllPostSuccess;
-}
-
-////////////////////////////////////////////////
-// ControlPoint
-////////////////////////////////////////////////
-
-void SSDPSearchResponseSocketList::clear() {
-  size_t nSockets = size();
-  for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
-    delete sock;
-  }
-  Vector::clear();
 }

@@ -21,8 +21,9 @@
 namespace CyberLink {
 class Service;
 
-class ServiceList : public uHTTP::Vector {
+class ServiceList : public uHTTP::Vector<Service> {
 public:
+    
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
@@ -30,6 +31,7 @@ public:
   static const char *ELEM_NAME;
 
 public:
+    
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -38,20 +40,13 @@ public:
   {
   }
 
-  ~ServiceList() 
-  {
-    clear();
-  }
-  
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
   
   Service *getService(size_t n) {
-    return (Service *)get(n);
+    return get(n);
   }
-
-  void clear();
 };
 
 }
