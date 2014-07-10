@@ -65,12 +65,12 @@ bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg
 // reveive
 ////////////////////////////////////////////////
 
-SSDPPacket *HTTPUSocket::receive() {
-  recvPacket.setLocalAddress(getLocalAddress());
-  size_t nRecv = ssdpUniSock.receive(recvPacket.getDatagramPacket());
-  if (nRecv == 0)
-    return NULL;
-  recvPacket.setTimeStamp(time(NULL));
-  return &recvPacket;
+bool HTTPUSocket::receive(SSDPPacket *ssdpPacket) {
+  ssdpPacket->setLocalAddress(getLocalAddress());
+  ssize_t nRecv = ssdpUniSock.receive(ssdpPacket->getDatagramPacket());
+  if (nRecv <= 0)
+    return false;
+  ssdpPacket->setTimeStamp(time(NULL));
+  return true;
 }
 

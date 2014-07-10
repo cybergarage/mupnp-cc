@@ -22,7 +22,6 @@
 namespace CyberLink {
 class HTTPUSocket  {
   uHTTP::DatagramSocket ssdpUniSock;
-  SSDPPacket recvPacket;
 
  public:
   ////////////////////////////////////////////////
@@ -66,7 +65,8 @@ class HTTPUSocket  {
   ////////////////////////////////////////////////
   
   bool post(const std::string &addr, int port, const std::string &msg);
-  SSDPPacket *receive();
+
+  bool receive(SSDPPacket *ssdpPacket);
 
 };
 

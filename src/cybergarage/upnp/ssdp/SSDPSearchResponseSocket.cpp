@@ -36,12 +36,13 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocket::run() {
-  ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
-    SSDPPacket *packet = receive();
-    if (packet == NULL)
+    SSDPPacket packet;
+    if (!receive(&packet))
       continue;
-    if (ctrlPoint != NULL)
-      ctrlPoint->searchResponseReceived(packet); 
+    ControlPoint *ctrlPoint = getControlPoint();
+    if (!ctrlPoint)
+      continue;
+    ctrlPoint->searchResponseReceived(&packet);
   }
 }

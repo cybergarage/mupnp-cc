@@ -351,14 +351,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-					/opt/local/include,
 					../../../include/,
 					/usr/local/include,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/opt/local/lib,
-					/usr/local/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-lboost_unit_test_framework-mt",
 					"-lboost_system-mt",
@@ -373,14 +369,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-					/opt/local/include,
 					../../../include/,
 					/usr/local/include,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/opt/local/lib,
-					/usr/local/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-lboost_unit_test_framework-mt",
 					"-lboost_system-mt",

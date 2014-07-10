@@ -82,11 +82,11 @@ bool HTTPMUSocket::send(const std::string &host, int port, const std::string &ms
 // reveive
 ////////////////////////////////////////////////
 
-SSDPPacket *HTTPMUSocket::receive() {
-  recvPacket.setLocalAddress(getLocalAddress());
-  size_t nRecv = ssdpMultiSock.receive(recvPacket.getDatagramPacket());
-  if (nRecv == 0)
-    return NULL;
-  recvPacket.setTimeStamp(time(NULL));
-  return &recvPacket;
+bool HTTPMUSocket::receive(SSDPPacket *ssdpPacket) {
+  ssdpPacket->setLocalAddress(getLocalAddress());
+  ssize_t nRecv = ssdpMultiSock.receive(ssdpPacket->getDatagramPacket());
+  if (nRecv <= 0)
+    return false;
+  ssdpPacket->setTimeStamp(time(NULL));
+  return true;
 }

@@ -54,10 +54,10 @@ bool SSDPSearchSocket::open(const std::string &bindAddr) {
 
 void SSDPSearchSocket::run() {
   while (isRunnable() == true) {
-    SSDPPacket *packet = receive();
-    if (packet == NULL)
+    SSDPPacket packet;
+    if (!receive(&packet))
       continue;
-    if (packet->isDiscover() == true)
-      performSearchListener(packet);
+    if (packet.isDiscover() == true)
+      performSearchListener(&packet);
   }
 }

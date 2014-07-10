@@ -26,7 +26,6 @@ namespace CyberLink {
 class HTTPMUSocket {
   uHTTP::InetSocketAddress ssdpMultiGroup;
   uHTTP::MulticastSocket ssdpMultiSock;
-  SSDPPacket recvPacket;
 
  public:
   ////////////////////////////////////////////////
@@ -70,7 +69,7 @@ class HTTPMUSocket {
   // reveive
   ////////////////////////////////////////////////
 
-  SSDPPacket *receive();
+   bool receive(SSDPPacket *ssdpPacket);
 };
 
 }

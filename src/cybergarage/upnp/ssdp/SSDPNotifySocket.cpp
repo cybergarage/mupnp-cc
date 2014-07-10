@@ -64,12 +64,13 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
 ////////////////////////////////////////////////
 
 void SSDPNotifySocket::run() {
-  ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
-    SSDPPacket *packet = receive();
-    if (packet == NULL)
+    SSDPPacket packet;
+    if (!receive(&packet))
       continue;
-    if (ctrlPoint != NULL)
-      ctrlPoint->notifyReceived(packet); 
+    ControlPoint *ctrlPoint = getControlPoint();
+    if (!ctrlPoint)
+      continue;
+    ctrlPoint->notifyReceived(&packet);
   }
 }
