@@ -11,18 +11,19 @@ noinst_PROGRAMS = clinkcctestunit
 AM_CPPFLAGS = -I$(top_srcdir)/include -I../
 
 noinst_HEADERS = \
-	..//TestCtrlPoint.h \
-	..//TestDevice.h \
-	..//TestHTTPServer.h
+	../TestDevice.h \
+	../TestCtrlPoint.h \
+	../TestHTTPServer.h
 
 clinkcctestunit_SOURCES = \
-	..//TestCtrlPoint.cpp \
-	..//TestDevice.cpp \
-	..//TestHTTPServer.cpp \
-	..//TestMain.cpp \
-	..//UPnPDeviceParseTests.cpp \
-	..//UPnPDeviceTests.cpp \
-	..//UPnPMiscTests.cpp \
-	..//XMLParserTests.cpp
+	../XMLParserTests.cpp \
+	../UPnPDeviceParseTests.cpp \
+	../TestDevice.cpp \
+	../UPnPDeviceTests.cpp \
+	../UPnPMiscTests.cpp \
+	../TestCtrlPoint.cpp \
+	../NotifSocketTests.cpp \
+	../TestHTTPServer.cpp \
+	../TestMain.cpp
 
 clinkcctestunit_LDADD = ../../lib/unix/libclink++.a -ldl @XML_LIBS@
