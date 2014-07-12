@@ -290,10 +290,6 @@ const char *Device::getURLBase() {
 Device::~Device() {
   if (isLocalRootDevice() == true) {
     stop();
-    if (rootDevice != NULL)
-      delete rootDevice;
-    if (parentDevice != NULL)
-      delete parentDevice;
   }
 }
 
