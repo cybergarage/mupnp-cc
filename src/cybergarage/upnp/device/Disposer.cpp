@@ -30,7 +30,6 @@ void Disposer::run()  {
   while (isRunnable() == true) {
     uHTTP::Wait(monitorInterval);
     ctrlp->removeExpiredDevices();
-    //ctrlp->print();
   }
 }
 

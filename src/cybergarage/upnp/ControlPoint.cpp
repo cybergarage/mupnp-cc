@@ -99,7 +99,9 @@ Device *ControlPoint::getDevice(Node *rootNode) {
 
 void ControlPoint::initDeviceList() {
   lock();
+  
   deviceList.clear();
+  
   size_t nRoots = devNodeList.size();
   for (size_t n = 0; n < nRoots; n++) {
     Node *rootNode = devNodeList.getNode(n);
@@ -107,9 +109,10 @@ void ControlPoint::initDeviceList() {
     if (dev == NULL)
       continue;
     deviceList.add(dev);
-  } 
+  }
+  
   unlock();
- }
+}
 
 Device *ControlPoint::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
@@ -180,8 +183,10 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 
 void ControlPoint::removeDevice(CyberXML::Node *rootNode) {
   lock();
-  devNodeList.remove(rootNode);
-  removedDevNodeList.add(rootNode);
+  
+  if (devNodeList.erase(rootNode))
+    removedDevNodeList.add(rootNode);
+  
   unlock();
 
   initDeviceList();
@@ -430,7 +435,7 @@ bool ControlPoint::unsubscribe(Service *service) {
 }
 
 void ControlPoint::unsubscribe(Device *device) {
-  int n;
+  size_t n;
 
   ServiceList *serviceList = device->getServiceList();
   size_t serviceCnt = serviceList->size();
