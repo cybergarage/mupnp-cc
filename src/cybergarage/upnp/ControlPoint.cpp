@@ -73,11 +73,11 @@ ControlPoint::ControlPoint(int ssdpPort, int httpPort) {
   setHTTPPort(httpPort);
   setSearchMx(SSDP::DEFAULT_MSEARCH_MX);
   setEventSubURI(DEFAULT_EVENTSUB_URI);
-  deviceDisposer = NULL;
   setExpiredDeviceMonitoringInterval(DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL);
   setNMPRMode(false);
+  
+  deviceDisposer = NULL;
   renewSubscriber = NULL;
-
 }
 
 ControlPoint::~ControlPoint() {
@@ -556,10 +556,13 @@ bool ControlPoint::start(const std::string &target, int mx) {
   // Disposer
   ////////////////////////////////////////
 
-  Disposer *disposer = new Disposer(this);
-  setDeviceDisposer(disposer);
-  disposer->start();
-
+  // TODO Enable disposer to fix the memory leak
+  if (isNMPRMode() == true) {
+    Disposer *disposer = new Disposer(this);
+    setDeviceDisposer(disposer);
+    disposer->start();
+  }
+  
   ////////////////////////////////////////
   // Subscriber
   ////////////////////////////////////////
