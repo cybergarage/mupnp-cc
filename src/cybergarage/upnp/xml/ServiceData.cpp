@@ -31,11 +31,6 @@ ServiceData::ServiceData()  {
   scpdNode = NULL;
 }
 
-ServiceData::~ServiceData()  {
-  if (scpdNode != NULL)
-    delete scpdNode;
-}
-
 ////////////////////////////////////////////////
 // scpdNode
 ////////////////////////////////////////////////
