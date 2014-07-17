@@ -169,8 +169,6 @@ private:
 private:
 
   void removeDevice(CyberXML::Node *rootNode);
-  void removeDevice(Device *device);
-  void removeDevice(const std::string &name);
   void removeDevice(SSDPPacket *packet);
 
   ////////////////////////////////////////////////

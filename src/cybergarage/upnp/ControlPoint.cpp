@@ -98,8 +98,6 @@ Device *ControlPoint::getDevice(Node *rootNode) {
 }
 
 void ControlPoint::initDeviceList() {
-  lock();
-  
   deviceList.clear();
   
   size_t nRoots = devNodeList.size();
@@ -110,8 +108,6 @@ void ControlPoint::initDeviceList() {
       continue;
     deviceList.add(dev);
   }
-  
-  unlock();
 }
 
 Device *ControlPoint::getDevice(const std::string &name) {
@@ -133,12 +129,14 @@ Device *ControlPoint::getDevice(const std::string &name) {
 ////////////////////////////////////////////////
 
 void ControlPoint::addDevice(CyberXML::Node *rootNode) {
-  lock();
   devNodeList.add(rootNode);
-  unlock();
+  initDeviceList();
 }
 
 void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
+  if (ssdpPacket->isAlive() == false)
+    return;
+  
   if (ssdpPacket->isRootDevice() == false)
     return;
   
@@ -167,14 +165,12 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   }
   rootDev->setSSDPPacket(ssdpPacket);
 
-  unlock();
-
   addDevice(rootNode);
-
-  initDeviceList();
 
   // Thanks for Oliver Newell (2004/10/16)
   performAddDeviceListener( rootDev );
+
+  unlock();
 }
 
 ////////////////////////////////////////////////
@@ -182,38 +178,35 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 ////////////////////////////////////////////////
 
 void ControlPoint::removeDevice(CyberXML::Node *rootNode) {
-  lock();
-  
   if (devNodeList.erase(rootNode))
     removedDevNodeList.add(rootNode);
-  
-  unlock();
-
   initDeviceList();
-}
-
-void ControlPoint::removeDevice(Device *dev) {
-  if (dev == NULL)
-    return;
-  // Thanks for Oliver Newell (2004/10/16)
-  if(dev->isRootDevice() == true)
-    performRemoveDeviceListener(dev);
-  removeDevice(dev->getRootNode());
-}
-
-void ControlPoint::removeDevice(const std::string &name) {
-  Device *dev = getDevice(name);
-  removeDevice(dev);
 }
 
 void ControlPoint::removeDevice(SSDPPacket *packet) {
   if (packet->isByeBye() == false)
     return;
+  
+  lock();
+  
   string usnBuf;
   string udnBuf;
   const char *usn = packet->getUSN(usnBuf);
   const char *udn = USN::GetUDN(usn, udnBuf);
-  removeDevice(udn);
+  
+  Device *dev = getDevice(udn);
+  if (dev == NULL) {
+    unlock();
+    return;
+  }
+  
+  // Thanks for Oliver Newell (2004/10/16)
+  if(dev->isRootDevice() == true)
+    performRemoveDeviceListener(dev);
+  
+  removeDevice(dev->getRootNode());
+  
+  unlock();
 }
 
 ////////////////////////////////////////////////
@@ -221,6 +214,8 @@ void ControlPoint::removeDevice(SSDPPacket *packet) {
 ////////////////////////////////////////////////
   
 void ControlPoint::removeExpiredDevices() {
+  lock();
+  
   int n;
   
   DeviceList *devList = getDeviceList();
@@ -244,7 +239,8 @@ void ControlPoint::removeExpiredDevices() {
   }
   
   delete []dev;
-  initDeviceList();
+
+  unlock();
 }
 
 void ControlPoint::clean() {
@@ -275,7 +271,6 @@ void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
   }
 }
 
-
 ////////////////////////////////////////////////
 // DeviceChangeListener
 // Thanks for Oliver Newell (2004/10/16)
@@ -301,20 +296,20 @@ void ControlPoint::performRemoveDeviceListener(Device *dev) {
 // SSDPPacket
 ////////////////////////////////////////////////
   
-void ControlPoint::notifyReceived(SSDPPacket *packet) {
-  if (packet->isRootDevice() == true) {
-    if (packet->isAlive() == true)
-      addDevice(packet);
-    if (packet->isByeBye() == true)
-      removeDevice(packet);
+void ControlPoint::notifyReceived(SSDPPacket *ssdpPacket) {
+  if (ssdpPacket->isRootDevice() == true) {
+    if (ssdpPacket->isAlive() == true)
+      addDevice(ssdpPacket);
+    if (ssdpPacket->isByeBye() == true)
+      removeDevice(ssdpPacket);
   }
-  performNotifyListener(packet);
+  performNotifyListener(ssdpPacket);
 }
 
-void ControlPoint::searchResponseReceived(SSDPPacket *packet) {
-  if (packet->isRootDevice() == true)
-    addDevice(packet);
-  performSearchResponseListener(packet);
+void ControlPoint::searchResponseReceived(SSDPPacket *ssdpPacket) {
+  if (ssdpPacket->isRootDevice() == true)
+    addDevice(ssdpPacket);
+  performSearchResponseListener(ssdpPacket);
 }
 
 ////////////////////////////////////////////////
@@ -556,12 +551,9 @@ bool ControlPoint::start(const std::string &target, int mx) {
   // Disposer
   ////////////////////////////////////////
 
-  // TODO Enable disposer to fix the memory leak
-  if (isNMPRMode() == true) {
-    Disposer *disposer = new Disposer(this);
-    setDeviceDisposer(disposer);
-    disposer->start();
-  }
+  Disposer *disposer = new Disposer(this);
+  setDeviceDisposer(disposer);
+  disposer->start();
   
   ////////////////////////////////////////
   // Subscriber
