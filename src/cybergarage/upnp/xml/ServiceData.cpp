@@ -36,8 +36,6 @@ ServiceData::ServiceData()  {
 ////////////////////////////////////////////////
 
 void ServiceData::setSCPDNode(CyberXML::Node *node) {
-  if (scpdNode != NULL)
-    delete scpdNode;
   scpdNode = node;
 }
 
