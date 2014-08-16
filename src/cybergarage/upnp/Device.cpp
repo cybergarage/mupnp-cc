@@ -1352,7 +1352,10 @@ bool Device::start() {
     bindPort = getHTTPPort();
   }
   httpServerList->addRequestListener(this);
-  httpServerList->start();
+  if (httpServerList->start() == false) {
+    stop();
+    return false;
+  }
 
   ////////////////////////////////////////
   // SSDP Seach Socket
@@ -1362,7 +1365,10 @@ bool Device::start() {
   if (ssdpSearchSockList->open() == false)
     return false;
   ssdpSearchSockList->addSearchListener(this);
-  ssdpSearchSockList->start();
+  if (ssdpSearchSockList->start() == false) {
+    stop();
+    return false;
+  }
 
   ////////////////////////////////////////
   // BOOTID.UPNP.ORG
