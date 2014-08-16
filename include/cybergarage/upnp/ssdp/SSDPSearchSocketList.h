@@ -44,10 +44,10 @@ public:
   void addSearchListener(SearchListener *listener);
 
   bool open();
-  void close();
+  bool close();
     
-  void start();
-  void stop();
+  bool start();
+  bool stop();
 
 };
 

@@ -48,7 +48,7 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
 ////////////////////////////////////////////////
   
 bool SSDPSearchSocketList::open()  {
-  bool isAllHostOpened = true;
+  bool areAllSocketsOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
   for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrStr;
@@ -56,40 +56,52 @@ bool SSDPSearchSocketList::open()  {
     SSDPSearchSocket *ssdpSearchSocket = new SSDPSearchSocket();
     if (ssdpSearchSocket->open(bindAddr) == false) {
       delete ssdpSearchSocket;
-      isAllHostOpened = false;
+      areAllSocketsOpened = false;
       continue;
     }
     add(ssdpSearchSocket);
   }
-  return isAllHostOpened;
+  return areAllSocketsOpened;
 }
 
-void SSDPSearchSocketList::close() {
+bool SSDPSearchSocketList::close() {
+  bool areAllSocketsClosed = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
-    sock->close();
+    if (sock->close() == false) {
+      areAllSocketsClosed = false;
+    }
   }
   clear();
+  return areAllSocketsClosed;
 }
   
 ////////////////////////////////////////////////
 // start/stop
 ////////////////////////////////////////////////
   
-void SSDPSearchSocketList::start() {
+bool SSDPSearchSocketList::start() {
+  bool areAllSocketsStarted = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
-    sock->start();
+    if (sock->start() == false) {
+      areAllSocketsStarted = false;
+    }
   }
+  return areAllSocketsStarted;
 }
 
-void SSDPSearchSocketList::stop() {
+bool SSDPSearchSocketList::stop() {
+  bool areAllSocketsStopped = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchSocket *sock = getSSDPSearchSocket(n);
-    sock->stop();
+    if (sock->stop() == false) {
+      areAllSocketsStopped = false;
+    }
   }
   close();
+  return areAllSocketsStopped;
 }
