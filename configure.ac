@@ -206,6 +206,13 @@ AC_CHECK_PROG(GTK_CONFIG, gtk-config, yes, no)
 #fi
 
 ##############################
+# Checks for UUID
+##############################
+
+AC_CHECK_LIB([uuid],[main])
+AC_CHECK_HEADERS([uuid/uuid.h])
+
+##############################
 # Checks for typedefs, structures, and compiler characteristics.
 ##############################
 
