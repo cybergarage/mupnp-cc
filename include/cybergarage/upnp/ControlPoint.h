@@ -41,6 +41,7 @@ class ControlPoint : public uHTTP::HTTPRequestListener {
 
   int ssdpPort;
   int httpPort;
+  size_t httpWorkerCount;
   
   CyberXML::NodeList  devNodeList;
   CyberXML::NodeList  removedDevNodeList;
@@ -71,6 +72,7 @@ class ControlPoint : public uHTTP::HTTPRequestListener {
   ////////////////////////////////////////////////
 
   static const int DEFAULT_EVENTSUB_PORT;
+  static const int DEFAULT_EVENTSUB_WORKER_COUNT;
   static const int DEFAULT_SSDP_PORT;
   static const char *DEFAULT_EVENTSUB_URI;
   static const int DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL;
@@ -115,7 +117,7 @@ private:
   }
 
   ////////////////////////////////////////////////
-  // Port (EventSub)
+  // HTTP (EventSub)
   ////////////////////////////////////////////////
 
  public:
@@ -125,6 +127,14 @@ private:
 
   void setHTTPPort(int port) {
     httpPort = port;
+  }
+  
+  size_t getHTTPWorkerCount() {
+    return httpWorkerCount;
+  }
+  
+  void setHTTPWorkerCount(size_t count) {
+    httpWorkerCount = count;
   }
   
   ////////////////////////////////////////////////

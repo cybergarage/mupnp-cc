@@ -60,6 +60,7 @@ using namespace uHTTP;
 ////////////////////////////////////////////////
 
 const int ControlPoint::DEFAULT_EVENTSUB_PORT = 8058;
+const int ControlPoint::DEFAULT_EVENTSUB_WORKER_COUNT = 1;
 const int ControlPoint::DEFAULT_SSDP_PORT = 8008;
 const char *ControlPoint::DEFAULT_EVENTSUB_URI = "/evetSub";
 const int ControlPoint::DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL = 60;
@@ -71,6 +72,7 @@ const int ControlPoint::DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL = 60;
 ControlPoint::ControlPoint(int ssdpPort, int httpPort) {
   setSSDPPort(ssdpPort);
   setHTTPPort(httpPort);
+  setHTTPWorkerCount(DEFAULT_EVENTSUB_WORKER_COUNT);
   setSearchMx(SSDP::DEFAULT_MSEARCH_MX);
   setEventSubURI(DEFAULT_EVENTSUB_URI);
   setExpiredDeviceMonitoringInterval(DEFAULT_EXPIRED_DEVICE_MONITORING_INTERVAL);
@@ -512,6 +514,7 @@ bool ControlPoint::start(const std::string &target, int mx) {
     bindPort = getHTTPPort();
   }
   httpServerList->addRequestListener(this);
+  httpServerList->setWorkerCount(getHTTPWorkerCount());
   httpServerList->start();
     
   ////////////////////////////////////////

@@ -72,6 +72,7 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   static const int DEFAULT_DISCOVERY_WAIT_TIME;
   static const int DEFAULT_LEASE_TIME;
   static const int HTTP_DEFAULT_PORT;
+  static const int HTTP_DEFAULT_WORKER_COUNT;
   static const char *DEFAULT_DESCRIPTION_URI;
   static const char *URLBASE_NAME;
   static const char *DEVICE_TYPE;
@@ -669,6 +670,18 @@ private:
     return getDeviceData()->getHTTPPort();
   }
 
+  void setHTTPWorkerCount(size_t count) {
+    if (!hasDeviceData())
+      return;
+    getDeviceData()->setHTTPWorkerCount(count);
+  }
+  
+  size_t getHTTPWorkerCount() {
+    if (!hasDeviceData())
+      return 0;
+    return getDeviceData()->getHTTPWorkerCount();
+  }
+  
   uHTTP::HTTP::StatusCode httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
 
 private:

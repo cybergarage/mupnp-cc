@@ -35,7 +35,8 @@ class DeviceData : public CyberXML::NodeData {
   std::string location;
   int leaseTime;
   int httpPort;
-
+  size_t httpWorkerCount;
+  
   uHTTP::HTTPServerList httpServerList;    
   uHTTP::ListenerList controlActionListenerList;
 
@@ -125,6 +126,18 @@ public:
     httpPort = port;
   }
 
+  ////////////////////////////////////////////////
+  // httpPort
+  ////////////////////////////////////////////////
+  
+  size_t getHTTPWorkerCount() {
+    return httpWorkerCount;
+  }
+  
+  void setHTTPWorkerCount(size_t num) {
+    httpWorkerCount = num;
+  }
+  
   ////////////////////////////////////////////////
   // controlActionListenerList
   ////////////////////////////////////////////////

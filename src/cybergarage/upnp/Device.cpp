@@ -111,6 +111,7 @@ const int Device::DEFAULT_STARTUP_WAIT_TIME = 1000;
 const int Device::DEFAULT_DISCOVERY_WAIT_TIME = 500;
 const int Device::DEFAULT_LEASE_TIME = 30 * 60;
 const int Device::HTTP_DEFAULT_PORT = 4004;
+const int Device::HTTP_DEFAULT_WORKER_COUNT = 2;
 const char *Device::DEFAULT_DESCRIPTION_URI = "/description.xml";
 const char *Device::URLBASE_NAME = "URLBase";
 const char *Device::DEVICE_TYPE = "deviceType";
@@ -436,6 +437,7 @@ bool Device::loadDescription(const std::string &description) {
   setDescriptionURI(DEFAULT_DESCRIPTION_URI);
   setLeaseTime(DEFAULT_LEASE_TIME);
   setHTTPPort(HTTP_DEFAULT_PORT);
+  setHTTPWorkerCount(HTTP_DEFAULT_WORKER_COUNT);
   
   // Thanks for Oliver Newell (03/23/04)
   if (hasUDN() == false)
@@ -1352,6 +1354,7 @@ bool Device::start() {
     bindPort = getHTTPPort();
   }
   httpServerList->addRequestListener(this);
+  httpServerList->setWorkerCount(getHTTPWorkerCount());
   if (httpServerList->start() == false) {
     stop();
     return false;
