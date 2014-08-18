@@ -54,6 +54,9 @@
 /* Define to 1 if you have the `uhttp++' library (-luhttp++). */
 #undef HAVE_LIBUHTTP__
 
+/* Define to 1 if you have the `uuid' library (-luuid). */
+#undef HAVE_LIBUUID
+
 /* Define to 1 if you have the `ws2_32' library (-lws2_32). */
 #undef HAVE_LIBWS2_32
 
@@ -131,6 +134,9 @@
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the <uuid/uuid.h> header file. */
+#undef HAVE_UUID_UUID_H
 
 /* Define to 1 if you have the <xercesc/util/XercesVersion.hpp> header file.
    */
