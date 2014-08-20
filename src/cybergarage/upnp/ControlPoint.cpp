@@ -508,24 +508,34 @@ bool ControlPoint::start(const std::string &target, int mx) {
   HTTPServerList *httpServerList = getHTTPServerList();
   while (httpServerList->open(bindPort) == false) {
     retryCnt++;
-    if (UPnP::SERVER_RETRY_COUNT < retryCnt)
+    if (UPnP::SERVER_RETRY_COUNT < retryCnt) {
+      stop();
       return false;
+    }
     setHTTPPort(bindPort + 1);
     bindPort = getHTTPPort();
   }
   httpServerList->addRequestListener(this);
   httpServerList->setWorkerCount(getHTTPWorkerCount());
-  httpServerList->start();
+  if (httpServerList->start() == false) {
+    stop();
+    return false;
+  }
     
   ////////////////////////////////////////
   // Notify Socket
   ////////////////////////////////////////
     
   SSDPNotifySocketList *ssdpNotifySocketList = getSSDPNotifySocketList();
-  if (ssdpNotifySocketList->open() == false)
+  if (ssdpNotifySocketList->open() == false) {
+    stop();
     return false;
-  ssdpNotifySocketList->setControlPoint(this);      
-  ssdpNotifySocketList->start();
+  }
+  ssdpNotifySocketList->setControlPoint(this);
+  if (ssdpNotifySocketList->start() == false) {
+    stop();
+    return false;
+  }
     
   ////////////////////////////////////////
   // SeachResponse Socket
@@ -536,13 +546,18 @@ bool ControlPoint::start(const std::string &target, int mx) {
   SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
   while (ssdpSearchResponseSocketList->open(ssdpPort) == false) {
     retryCnt++;
-    if (UPnP::SERVER_RETRY_COUNT < retryCnt)
+    if (UPnP::SERVER_RETRY_COUNT < retryCnt) {
+      stop();
       return false;
+    }
     setSSDPPort(ssdpPort + 1);
     ssdpPort = getSSDPPort();
   }
   ssdpSearchResponseSocketList->setControlPoint(this);
-  ssdpSearchResponseSocketList->start();
+  if (ssdpSearchResponseSocketList->start() == false) {
+    stop();
+    return false;
+  }
 
   ////////////////////////////////////////
   // search root devices
@@ -556,7 +571,10 @@ bool ControlPoint::start(const std::string &target, int mx) {
 
   Disposer *disposer = new Disposer(this);
   setDeviceDisposer(disposer);
-  disposer->start();
+  if (disposer->start() == false) {
+    stop();
+    return false;
+  }
   
   ////////////////////////////////////////
   // Subscriber

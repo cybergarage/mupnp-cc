@@ -64,34 +64,46 @@ bool SSDPSearchResponseSocketList::open(int port) {
   return areAllHostsOpened;
 }
 
-void SSDPSearchResponseSocketList::close() {
+bool SSDPSearchResponseSocketList::close() {
+  bool areAllSocketsClosed = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
-    sock->close();
+    if (sock->close() == false) {
+      areAllSocketsClosed = false;
+    }
   }
   clear();
+  return areAllSocketsClosed;
 }
 
 ////////////////////////////////////////////////
 // Methods
 ////////////////////////////////////////////////
   
-void SSDPSearchResponseSocketList::start() {
+bool SSDPSearchResponseSocketList::start() {
+  bool areAllSocketsStarted = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
-    sock->start();
+    if (sock->start() == false) {
+      areAllSocketsStarted = false;
+    }
   }
+  return areAllSocketsStarted;
 }
 
-void SSDPSearchResponseSocketList::stop() {
+bool SSDPSearchResponseSocketList::stop() {
+  bool areAllSocketsStopped = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
-    sock->stop();
+    if (sock->stop() == false) {
+      areAllSocketsStopped = false;
+    }
   }
   close();
+  return areAllSocketsStopped;
 }
 
 ////////////////////////////////////////////////

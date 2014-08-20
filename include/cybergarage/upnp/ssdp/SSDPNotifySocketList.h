@@ -54,15 +54,15 @@ class SSDPNotifySocketList : public uHTTP::Vector<SSDPNotifySocket>  {
   
  public:
   bool open();
-  void close();
+  bool close();
   
   ////////////////////////////////////////////////
   // start/stop
   ////////////////////////////////////////////////
   
  public:
-  void start();
-  void stop();
+  bool start();
+  bool stop();
 };
 
 }

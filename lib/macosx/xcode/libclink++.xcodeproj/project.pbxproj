@@ -653,7 +653,9 @@
 				2184A900155C7A1000D1E138 /* Sources */,
 				219C21EE155C7877003ABA46 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		219C21EE155C7877003ABA46 /* Products */ = {
 			isa = PBXGroup;

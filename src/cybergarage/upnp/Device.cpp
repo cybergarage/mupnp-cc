@@ -1348,8 +1348,10 @@ bool Device::start() {
   HTTPServerList *httpServerList = getHTTPServerList();
   while (httpServerList->open(bindPort) == false) {
     retryCnt++;
-    if (UPnP::SERVER_RETRY_COUNT < retryCnt)
+    if (UPnP::SERVER_RETRY_COUNT < retryCnt) {
+      stop();
       return false;
+    }
     setHTTPPort(bindPort + 1);
     bindPort = getHTTPPort();
   }
@@ -1393,7 +1395,10 @@ bool Device::start() {
 
   Advertiser *adv = new Advertiser(this);
   setAdvertiser(adv);
-  adv->start();
+  if (adv->start() == false) {
+    stop();
+    return false;
+  }
   
   return true;
 }

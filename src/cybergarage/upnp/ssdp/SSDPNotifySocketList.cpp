@@ -65,32 +65,44 @@ bool SSDPNotifySocketList::open() {
   return isAllHostOpened;
 }
   
-void SSDPNotifySocketList::close() {
+bool SSDPNotifySocketList::close() {
+  bool areAllSocketsClosed = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
-    sock->close();
+    if (sock->close() == false) {
+      areAllSocketsClosed = false;
+    }
   }
   clear();
+  return areAllSocketsClosed;
 }
   
 ////////////////////////////////////////////////
 // start/stop
 ////////////////////////////////////////////////
   
-void SSDPNotifySocketList::start() {
+bool SSDPNotifySocketList::start() {
+  bool areAllSocketsStarted = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
-    sock->start();
+    if (sock->start() == false) {
+      areAllSocketsStarted = false;
+    }
   }
+  return areAllSocketsStarted;
 }
 
-void SSDPNotifySocketList::stop() {
+bool SSDPNotifySocketList::stop() {
+  bool areAllSocketsStopped = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
     SSDPNotifySocket *sock = getSSDPNotifySocket(n);
-    sock->stop();
+    if (sock->stop() == false) {
+      areAllSocketsStopped = false;
+    }
   }
   close();
+  return areAllSocketsStopped;
 }
