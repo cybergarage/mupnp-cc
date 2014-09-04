@@ -51,6 +51,8 @@ void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
 bool SSDPNotifySocketList::open() {
   bool isAllHostOpened = true;
   size_t nHostAddrs = GetNHostAddresses();
+  if (nHostAddrs == 0)
+    return false;
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     GetHostAddress(n, bindAddr);

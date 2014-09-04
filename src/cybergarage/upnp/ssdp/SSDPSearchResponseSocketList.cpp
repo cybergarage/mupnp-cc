@@ -50,6 +50,8 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
 bool SSDPSearchResponseSocketList::open(int port) {
   bool areAllHostsOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
+  if (nHostAddrs == 0)
+    return false;
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     uHTTP::GetHostAddress(n, bindAddr);

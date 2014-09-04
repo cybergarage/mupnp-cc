@@ -50,6 +50,8 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
 bool SSDPSearchSocketList::open()  {
   bool areAllSocketsOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
+  if (nHostAddrs == 0)
+    return false;
   for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrStr;
     const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrStr);
