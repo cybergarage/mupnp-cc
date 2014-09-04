@@ -28,6 +28,7 @@
 #include <uhttp/util/StringUtil.h>
 
 namespace CyberLink {
+
 class SSDPRequest : public uHTTP::HTTPRequest {
  public:
   ////////////////////////////////////////////////

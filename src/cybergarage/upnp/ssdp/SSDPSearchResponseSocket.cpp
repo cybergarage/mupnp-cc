@@ -13,8 +13,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/ControlPoint.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocket.h>
+
+#include <cybergarage/upnp/ControlPoint.h>
+#include <cybergarage/upnp/Log.h>
 
 using namespace CyberLink;
 
@@ -38,11 +40,17 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
 void SSDPSearchResponseSocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
-    SSDPPacket packet;
-    if (!receive(&packet))
+    SSDPPacket ssdpPacket;
+    
+    if (!receive(&ssdpPacket))
       continue;
     if (!ctrlPoint)
       continue;
-    ctrlPoint->searchResponseReceived(&packet);
+    
+    std::string ssdpSt;
+    ssdpPacket.getST(ssdpSt);
+    LogTrace("SSDP Search Response Received : %s", ssdpSt.c_str());
+    
+    ctrlPoint->searchResponseReceived(&ssdpPacket);
   }
 }

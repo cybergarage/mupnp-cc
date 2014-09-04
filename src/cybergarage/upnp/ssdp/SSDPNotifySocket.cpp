@@ -14,7 +14,9 @@
 ******************************************************************/
 
 #include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
+
 #include <cybergarage/upnp/ControlPoint.h>
+#include <cybergarage/upnp/Log.h>
 
 using namespace CyberLink;
 
@@ -56,7 +58,12 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
   if (uHTTP::IsIPv6Address(ifAddr) == true)
     ssdpAddr = SSDP::GetIPv6Address();
   req->setHost(ssdpAddr, SSDP::PORT);
-  return HTTPMUSocket::post(ssdpAddr, SSDP::PORT, req);
+  
+  bool isSuccess = HTTPMUSocket::post(ssdpAddr, SSDP::PORT, req);
+  
+  LogTrace("SSDP Notify Request (%d) : %s", isSuccess, req->getNT());
+
+  return isSuccess;
 }
 
 ////////////////////////////////////////////////
@@ -66,11 +73,19 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
 void SSDPNotifySocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
-    SSDPPacket packet;
-    if (!receive(&packet))
+    SSDPPacket ssdpPacket;
+    
+    if (!receive(&ssdpPacket))
       continue;
     if (!ctrlPoint)
       continue;
-    ctrlPoint->notifyReceived(&packet);
+    
+    std::string ssdpNTS, ssdpNT;
+    ssdpPacket.getNTS(ssdpNTS);
+    ssdpPacket.getNT(ssdpNT);
+    
+    LogTrace("SSDP Notify Received : %s %s", ssdpNTS.c_str(), ssdpNT.c_str());
+    
+    ctrlPoint->notifyReceived(&ssdpPacket);
   }
 }

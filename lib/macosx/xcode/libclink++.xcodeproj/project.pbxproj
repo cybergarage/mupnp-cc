@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2161F1ED19B834FE00BEBD64 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 2161F1EC19B834FE00BEBD64 /* Log.h */; };
 		2184A858155C7A0600D1E138 /* SOAP.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76C155C7A0600D1E138 /* SOAP.h */; };
 		2184A859155C7A0600D1E138 /* SOAPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76D155C7A0600D1E138 /* SOAPRequest.h */; };
 		2184A85A155C7A0600D1E138 /* SOAPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2184A76E155C7A0600D1E138 /* SOAPResponse.h */; };
@@ -156,6 +157,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2161F1EC19B834FE00BEBD64 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		2184A76C155C7A0600D1E138 /* SOAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAP.h; sourceTree = "<group>"; };
 		2184A76D155C7A0600D1E138 /* SOAPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAPRequest.h; sourceTree = "<group>"; };
 		2184A76E155C7A0600D1E138 /* SOAPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOAPResponse.h; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 		2184A772155C7A0600D1E138 /* upnp */ = {
 			isa = PBXGroup;
 			children = (
+				2161F1EC19B834FE00BEBD64 /* Log.h */,
 				2184A773155C7A0600D1E138 /* Action.h */,
 				2184A774155C7A0600D1E138 /* ActionList.h */,
 				2184A775155C7A0600D1E138 /* AllowedValue.h */,
@@ -717,6 +720,7 @@
 				2184A884155C7A0600D1E138 /* SubscriberList.h in Headers */,
 				2184A885155C7A0600D1E138 /* Subscription.h in Headers */,
 				2184A886155C7A0600D1E138 /* SubscriptionRequest.h in Headers */,
+				2161F1ED19B834FE00BEBD64 /* Log.h in Headers */,
 				2184A887155C7A0600D1E138 /* SubscriptionResponse.h in Headers */,
 				2184A888155C7A0600D1E138 /* Icon.h in Headers */,
 				2184A889155C7A0600D1E138 /* IconList.h in Headers */,
