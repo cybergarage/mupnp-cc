@@ -156,8 +156,8 @@ private:
 
 private:
 
-  void addDevice(CyberXML::Node *rootNode);
-  void addDevice(SSDPPacket *ssdpPacket);
+  bool addDevice(CyberXML::Node *rootNode);
+  bool addDevice(SSDPPacket *ssdpPacket);
 
 private:
   

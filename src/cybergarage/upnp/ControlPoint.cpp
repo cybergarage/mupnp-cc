@@ -130,14 +130,15 @@ Device *ControlPoint::getDevice(const std::string &name) {
 // add
 ////////////////////////////////////////////////
 
-void ControlPoint::addDevice(CyberXML::Node *rootNode) {
+bool ControlPoint::addDevice(CyberXML::Node *rootNode) {
   devNodeList.add(rootNode);
   initDeviceList();
+  return true;
 }
 
-void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
+bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   if (ssdpPacket->isRootDevice() == false)
-    return;
+    return false;
   
   lock();
   
@@ -149,7 +150,7 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   if (dev != NULL) {
     dev->setSSDPPacket(ssdpPacket);
     unlock();
-    return;
+    return false;
   }
 
   string locationBuf;
@@ -160,7 +161,7 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   Device *rootDev = getDevice(rootNode);
   if (rootDev == NULL) {
     unlock();
-    return;
+    return false;
   }
   rootDev->setSSDPPacket(ssdpPacket);
 
@@ -170,6 +171,8 @@ void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   performAddDeviceListener( rootDev );
 
   unlock();
+  
+  return true;
 }
 
 ////////////////////////////////////////////////
