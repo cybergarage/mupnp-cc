@@ -35,7 +35,7 @@ SSDPSearchSocket::~SSDPSearchSocket() {
 }
 
 ////////////////////////////////////////////////
-// Constructor
+// open
 ////////////////////////////////////////////////
 
 bool SSDPSearchSocket::open(const std::string &bindAddr) {
@@ -49,6 +49,22 @@ bool SSDPSearchSocket::open(const std::string &bindAddr) {
 }
 
 ////////////////////////////////////////////////
+// performSearchListener
+////////////////////////////////////////////////
+
+bool SSDPSearchSocket::performSearchListener(SSDPPacket *ssdpPacket) {
+  bool areAllListnersSuccess = true;
+  size_t listenerSize = deviceSearchListenerList.size();
+  for (size_t n = 0; n < listenerSize; n++) {
+    SearchListener *listener = (SearchListener *)deviceSearchListenerList.get(n);
+    if (listener->deviceSearchReceived(ssdpPacket) == false) {
+      areAllListnersSuccess = false;
+    }
+  }
+  return areAllListnersSuccess;
+}
+
+////////////////////////////////////////////////
 // run  
 ////////////////////////////////////////////////
 
@@ -57,7 +73,8 @@ void SSDPSearchSocket::run() {
     SSDPPacket packet;
     if (!receive(&packet))
       continue;
-    if (packet.isDiscover() == true)
-      performSearchListener(&packet);
+    if (packet.isDiscover() == false)
+      continue;
+    performSearchListener(&packet);
   }
 }

@@ -1002,12 +1002,12 @@ bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, c
   return true;
 }
 
-void Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
+bool Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
   string ssdpST;
   ssdpPacket->getST(ssdpST);
 
   if (ssdpST.length() <= 0)
-    return;
+    return false;
 
   bool isRootDev = isRootDevice();
     
@@ -1016,22 +1016,27 @@ void Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
     devUSN.append("::");
     devUSN.append(USN::ROOTDEVICE);
   }
-      
+  
+  bool isDeviceResponseSuccess = false;
+  
   if (ST::IsAllDevice(ssdpST.c_str()) == true) {
     string devNT;
     getNotifyDeviceNT(devNT);      
     int repeatCnt = (isRootDev == true) ? 3 : 2;
-    for (int n = 0; n < repeatCnt; n++)
-      postSearchResponse(ssdpPacket, devNT.c_str(), devUSN.c_str());
+    for (int n = 0; n < repeatCnt; n++) {
+      isDeviceResponseSuccess = postSearchResponse(ssdpPacket, devNT.c_str(), devUSN.c_str());
+    }
   }
   else if (ST::IsRootDevice(ssdpST.c_str()) == true) {
-    if (isRootDev == true)
-      postSearchResponse(ssdpPacket, ST::ROOT_DEVICE, devUSN.c_str());
+    if (isRootDev == true) {
+      isDeviceResponseSuccess = postSearchResponse(ssdpPacket, ST::ROOT_DEVICE, devUSN.c_str());
+    }
   }
   else if (ST::IsUUIDDevice(ssdpST.c_str()) == true) {
     const char *devUDN = getUDN();
-    if (ssdpST.compare(devUDN) == 0)
-      postSearchResponse(ssdpPacket, devUDN, devUSN.c_str());
+    if (ssdpST.compare(devUDN) == 0) {
+      isDeviceResponseSuccess = postSearchResponse(ssdpPacket, devUDN, devUSN.c_str());
+    }
   }
   else if (ST::IsURNDevice(ssdpST.c_str()) == true) {
     const char *devType= getDeviceType();
@@ -1040,30 +1045,39 @@ void Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
       devUSN = getUDN();
       devUSN += "::";
       devUSN += devType;
-      postSearchResponse(ssdpPacket, devType, devUSN.c_str());
+      isDeviceResponseSuccess = postSearchResponse(ssdpPacket, devType, devUSN.c_str());
     }
   }
-    
+  
+  bool areServiceResponsesSuccess = true;
   size_t n;
 
   ServiceList *serviceList = getServiceList();
   size_t serviceCnt = serviceList->size();
   for (n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
-    service->serviceSearchResponse(ssdpPacket);
+    if (service->serviceSearchResponse(ssdpPacket) == false) {
+      areServiceResponsesSuccess = false;
+    }
   }
     
+  bool areEmbeddedDeviceResponsesSuccess = true;
+  
   DeviceList *childDeviceList = getDeviceList();
   size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
-    childDevice->deviceSearchResponse(ssdpPacket);
+    if (childDevice->deviceSearchResponse(ssdpPacket) == false) {
+      areEmbeddedDeviceResponsesSuccess = false;
+    }
   }
+  
+  return (isDeviceResponseSuccess & areServiceResponsesSuccess & areEmbeddedDeviceResponsesSuccess);
 }
 
 
-void Device::deviceSearchReceived(SSDPPacket *ssdpPacket) {
-  deviceSearchResponse(ssdpPacket);
+bool Device::deviceSearchReceived(SSDPPacket *ssdpPacket) {
+  return deviceSearchResponse(ssdpPacket);
 }
 
 ////////////////////////////////////////////////

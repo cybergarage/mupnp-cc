@@ -23,7 +23,7 @@ namespace CyberLink {
     
 class SearchListener : public uHTTP::Listener {
 public:
-  virtual void deviceSearchReceived(SSDPPacket *ssdpPacket) = 0;
+  virtual bool deviceSearchReceived(SSDPPacket *ssdpPacket) = 0;
 };
 
 }

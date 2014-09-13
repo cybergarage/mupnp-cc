@@ -650,8 +650,8 @@ private:
 
  public:
   bool postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, const std::string &usn);
-  void deviceSearchResponse(SSDPPacket *ssdpPacket);
-  void deviceSearchReceived(SSDPPacket *ssdpPacket);
+  bool deviceSearchResponse(SSDPPacket *ssdpPacket);
+  bool deviceSearchReceived(SSDPPacket *ssdpPacket);
 
   ////////////////////////////////////////////////
   // HTTP Server  
