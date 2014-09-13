@@ -136,9 +136,6 @@ void ControlPoint::addDevice(CyberXML::Node *rootNode) {
 }
 
 void ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
-  if (ssdpPacket->isAlive() == false)
-    return;
-  
   if (ssdpPacket->isRootDevice() == false)
     return;
   
