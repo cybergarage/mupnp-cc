@@ -253,24 +253,32 @@ void ControlPoint::clean() {
 // Notify
 ////////////////////////////////////////////////
     
-void ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
+bool ControlPoint::performNotifyListener(SSDPPacket *ssdpPacket) {
+  bool areAllListenerSuccess = true;
   size_t listenerSize = deviceNotifyListenerList.size();
   for (size_t n = 0; n < listenerSize; n++) {
     NotifyListener *listener = (NotifyListener *)deviceNotifyListenerList.get(n);
-    listener->deviceNotifyReceived(ssdpPacket);
+    if (listener->deviceNotifyReceived(ssdpPacket) == false) {
+      areAllListenerSuccess = false;
+    }
   }
+  return areAllListenerSuccess;
 }
 
 ////////////////////////////////////////////////
 // SearchResponse
 ////////////////////////////////////////////////
 
-void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
+bool ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
+  bool areAllListenerSuccess = true;
   size_t listenerSize = deviceSearchResponseListenerList.size();
   for (size_t n = 0; n < listenerSize; n++) {
     SearchResponseListener *listener = (SearchResponseListener *)deviceSearchResponseListenerList.get(n);
-    listener->deviceSearchResponseReceived(ssdpPacket);
+    if (listener->deviceSearchResponseReceived(ssdpPacket) == false) {
+      areAllListenerSuccess = false;
+    }
   }
+  return areAllListenerSuccess;
 }
 
 ////////////////////////////////////////////////
@@ -278,20 +286,40 @@ void ControlPoint::performSearchResponseListener(SSDPPacket *ssdpPacket) {
 // Thanks for Oliver Newell (2004/10/16)
 ////////////////////////////////////////////////
 
-void ControlPoint::performAddDeviceListener(Device *dev) {
+bool ControlPoint::performAddDeviceListener(Device *dev) {
+  bool areAllListenerSuccess = true;
   size_t listenerSize = deviceChangeListenerList.size();
   for (size_t n = 0; n < listenerSize; n++) {
     DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
-    listener->deviceAdded(dev);
+    if (listener->deviceAdded(dev) == false) {
+      areAllListenerSuccess = false;
+    }
   }
+  return areAllListenerSuccess;
 }
 
-void ControlPoint::performRemoveDeviceListener(Device *dev) {
+bool ControlPoint::performRemoveDeviceListener(Device *dev) {
+  bool areAllListenerSuccess = true;
   size_t listenerSize = deviceChangeListenerList.size();
   for (size_t n = 0; n < listenerSize; n++) {
     DeviceChangeListener *listener = (DeviceChangeListener *)deviceChangeListenerList.get(n);
-    listener->deviceRemoved( dev );
+    if (listener->deviceRemoved( dev ) == false) {
+      areAllListenerSuccess = false;
+    }
   }
+  return areAllListenerSuccess;
+}
+
+bool ControlPoint::performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value) {
+  bool areAllListenerSuccess = true;
+  size_t listenerSize = eventListenerList.size();
+  for (size_t n = 0; n < listenerSize; n++) {
+    EventListener *listener = (EventListener *)eventListenerList.get(n);
+    if (listener->eventNotifyReceived(uuid, seq, name, value) == false) {
+      areAllListenerSuccess = false;
+    }
+  }
+  return areAllListenerSuccess;
 }
 
 ////////////////////////////////////////////////

@@ -23,11 +23,10 @@ class Device;
 
 class DeviceChangeListener : public uHTTP::Listener {
 public:
-  virtual void deviceAdded(Device *dev) = 0;
-  virtual void deviceRemoved(Device *dev) = 0;
+  virtual bool deviceAdded(Device *dev) = 0;
+  virtual bool deviceRemoved(Device *dev) = 0;
 };
 
 }
 
 #endif
-

@@ -202,7 +202,7 @@ void OutputSSDPPacket(SSDPPacket *packet, bool isDeviceSearch = false)
 // deviceNotifyReceived
 ////////////////////////////////////////////////
 
-void TVDevice::deviceNotifyReceived(SSDPPacket *packet)
+bool TVDevice::deviceNotifyReceived(SSDPPacket *packet)
 {
 	OutputSSDPPacket(packet);
 	
@@ -210,43 +210,49 @@ void TVDevice::deviceNotifyReceived(SSDPPacket *packet)
 		checkNewDevices(packet);
 	if (packet->isByeBye() == true)
 		checkRemoveDevices(packet);
+
+	return true;
 }
 	
 ////////////////////////////////////////////////
 // deviceSearchResponseReceived
 ////////////////////////////////////////////////
 
-void TVDevice::deviceSearchResponseReceived(SSDPPacket *packet)
+bool TVDevice::deviceSearchResponseReceived(SSDPPacket *packet)
 {
 	OutputSSDPPacket(packet);
 	
 	checkNewDevices(packet);
+
+	return true;
 }
 	
 ////////////////////////////////////////////////
 // eventNotifyReceived
 ////////////////////////////////////////////////
 
-void TVDevice::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
+bool TVDevice::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
 {
-		cout << "eventNotifyReceived : " << uuid << ", " << seq << ", " << name << ", " << value << endl;
+	cout << "eventNotifyReceived : " << uuid << ", " << seq << ", " << name << ", " << value << endl;
 		
-		Service *service = ctrlPoint->getSubscriberService(uuid);
-		if (service == NULL)
-			return;
-		if (service->isService(CLOCK_SERVICE_TYPE) == true)
-			clockTime = value;
-		else if (service->isService(AIRCON_SERVICE_TYPE) == true)
-			airconTemp = value;
-		else {
-			/*
-			if (value != null && 0 < value.length()) {
-				Device dev = service.getDevice();
-				String fname = dev.getFriendlyName();
-				message = fname + ":" + value;
-			}
-			*/
+	Service *service = ctrlPoint->getSubscriberService(uuid);
+	if (service == NULL)
+		return false;
+	if (service->isService(CLOCK_SERVICE_TYPE) == true)
+		clockTime = value;
+	else if (service->isService(AIRCON_SERVICE_TYPE) == true)
+		airconTemp = value;
+	else {
+		/*
+		if (value != null && 0 < value.length()) {
+			Device dev = service.getDevice();
+			String fname = dev.getFriendlyName();
+			message = fname + ":" + value;
 		}
+		*/
+	}
+
+	return true;
 }
 
 ////////////////////////////////////////////////

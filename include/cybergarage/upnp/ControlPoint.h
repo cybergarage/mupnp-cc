@@ -221,7 +221,7 @@ private:
     deviceNotifyListenerList.remove(listener);
   }    
 
-  void performNotifyListener(SSDPPacket *ssdpPacket);
+  bool performNotifyListener(SSDPPacket *ssdpPacket);
 
   ////////////////////////////////////////////////
   // SearchResponse
@@ -236,7 +236,7 @@ private:
     deviceSearchResponseListenerList.remove(listener);
   }    
 
-  void performSearchResponseListener(SSDPPacket *ssdpPacket);
+  bool performSearchResponseListener(SSDPPacket *ssdpPacket);
 
   ////////////////////////////////////////////////
   // DeviceChangeListener
@@ -252,8 +252,8 @@ private:
     deviceChangeListenerList.remove(listener);
   }    
 
-  void performAddDeviceListener(Device *dev);
-  void performRemoveDeviceListener(Device *dev);
+  bool performAddDeviceListener(Device *dev);
+  bool performRemoveDeviceListener(Device *dev);
 
   ////////////////////////////////////////////////
   // SSDPPacket
@@ -312,13 +312,7 @@ private:
     eventListenerList.remove(listener);
   }    
 
-  void performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value) {
-    size_t listenerSize = eventListenerList.size();
-    for (size_t n = 0; n < listenerSize; n++) {
-      EventListener *listener = (EventListener *)eventListenerList.get(n);
-      listener->eventNotifyReceived(uuid, seq, name, value);
-    }
-  }
+  bool performEventListener(const std::string &uuid, long seq, const std::string &name, const std::string &value);
 
   ////////////////////////////////////////////////
   // Subscription 

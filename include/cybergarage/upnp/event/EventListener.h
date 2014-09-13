@@ -22,7 +22,7 @@ namespace CyberLink {
 
 class EventListener : public uHTTP::Listener {
 public:
-  virtual void eventNotifyReceived(const std::string &uuid, long seq, const std::string &varName, const std::string &value) = 0;
+  virtual bool eventNotifyReceived(const std::string &uuid, long seq, const std::string &varName, const std::string &value) = 0;
 };
 
 }

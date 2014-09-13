@@ -23,7 +23,7 @@ namespace CyberLink {
 
 class NotifyListener : public uHTTP::Listener {
 public:
-  virtual void deviceNotifyReceived(SSDPPacket *ssdpPacket) = 0;
+  virtual bool deviceNotifyReceived(SSDPPacket *ssdpPacket) = 0;
 };
 
 }
