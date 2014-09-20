@@ -61,8 +61,13 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
   
   bool isSuccess = HTTPMUSocket::post(ssdpAddr, SSDP::PORT, req);
   
-  LogTrace("SSDP Notify Request (%d) : %s", isSuccess, req->getNT());
-
+  if (isSuccess) {
+    LogTrace("SSDP Notify Request (%d) : %s", isSuccess, req->getNT());
+  }
+  else {
+    LogWarn("SSDP Notify Request (%d) : %s", isSuccess, req->getNT());
+  }
+  
   return isSuccess;
 }
 
@@ -74,10 +79,7 @@ void SSDPNotifySocket::run() {
   ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
     SSDPPacket ssdpPacket;
-    
     if (!receive(&ssdpPacket))
-      continue;
-    if (!ctrlPoint)
       continue;
     
     std::string ssdpNTS, ssdpNT;
@@ -85,6 +87,9 @@ void SSDPNotifySocket::run() {
     ssdpPacket.getNT(ssdpNT);
     
     LogTrace("SSDP Notify Received : %s %s", ssdpNTS.c_str(), ssdpNT.c_str());
+    
+    if (!ctrlPoint)
+      continue;
     
     ctrlPoint->notifyReceived(&ssdpPacket);
   }

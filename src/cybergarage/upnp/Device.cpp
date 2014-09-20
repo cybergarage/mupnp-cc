@@ -823,8 +823,6 @@ bool Device::announce(const std::string &ifAddr) {
   string devLocationBuf;
   const char *devLocation = getLocationURL(ifAddr, devLocationBuf);
     
-  SSDPNotifySocket ssdpSock;
-
   SSDPNotifyRequest ssdpReq;
   string serverName;
   ssdpReq.setServer(UPnP::GetServerName(serverName));
@@ -833,7 +831,9 @@ bool Device::announce(const std::string &ifAddr) {
   ssdpReq.setNTS(NTS::ALIVE);
   ssdpReq.setBootID(getBootID());
 
-  // uuid:device-UUID(::upnp:rootdevice)* 
+  SSDPNotifySocket ssdpSock;
+  
+  // uuid:device-UUID(::upnp:rootdevice)*
   if (isRootDevice() == true) {
     string devNT, devUSN;
     getNotifyDeviceNT(devNT);
@@ -856,11 +856,9 @@ bool Device::announce(const std::string &ifAddr) {
   // Thanks for Mikael Hakman (04/25/05)
   ssdpSock.close();
 
-  size_t n;
-
   ServiceList *serviceList = getServiceList();
   size_t serviceCnt = serviceList->size();
-  for (n = 0; n < serviceCnt; n++) {
+  for (size_t n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (!service->announce(ifAddr))
       isSuccess = false;
@@ -868,7 +866,7 @@ bool Device::announce(const std::string &ifAddr) {
 
   DeviceList *childDeviceList = getDeviceList();
   size_t childDeviceCnt = childDeviceList->size();
-  for (n = 0; n < childDeviceCnt; n++) {
+  for (size_t n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
     if (!childDevice->announce(ifAddr))
       isSuccess = false;
@@ -901,13 +899,12 @@ bool Device::announce() {
 bool Device::byebye(const std::string &ifAddr) {
   bool isSuccess = true;
   
-  size_t n;
-  SSDPNotifySocket ssdpSock;
-    
   SSDPNotifyRequest ssdpReq;
   ssdpReq.setNTS(NTS::BYEBYE);
     
-  // uuid:device-UUID(::upnp:rootdevice)* 
+  SSDPNotifySocket ssdpSock;
+  
+  // uuid:device-UUID(::upnp:rootdevice)*
   if (isRootDevice() == true) {
     string devNT, devUSN;
     getNotifyDeviceNT(devNT);
@@ -932,7 +929,7 @@ bool Device::byebye(const std::string &ifAddr) {
 
   ServiceList *serviceList = getServiceList();
   size_t serviceCnt = serviceList->size();
-  for (n = 0; n < serviceCnt; n++) {
+  for (size_t n = 0; n < serviceCnt; n++) {
     Service *service = serviceList->getService(n);
     if (!service->byebye(ifAddr))
       isSuccess = false;
@@ -940,7 +937,7 @@ bool Device::byebye(const std::string &ifAddr) {
 
   DeviceList *childDeviceList = getDeviceList();
   size_t childDeviceCnt = childDeviceList->size();
-  for (n = 0; n < childDeviceCnt; n++) {
+  for (size_t n = 0; n < childDeviceCnt; n++) {
     Device *childDevice = childDeviceList->getDevice(n);
     if (!childDevice->byebye(ifAddr))
       isSuccess = false;
