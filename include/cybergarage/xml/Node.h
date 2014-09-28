@@ -219,14 +219,16 @@ public:
     return nodeList.getEndsWith(name);
   }
 
-  void addNode(Node *node) {
+  bool addNode(Node *node) {
     node->setParentNode(this);
     nodeList.addNode(node);
+    return true;
   }
 
-  void insertNode(Node *node, size_t index) {
+  bool insertNode(Node *node, size_t index) {
     node->setParentNode(this);
     nodeList.insertNode(node, index);
+    return true;
   }
 
   bool removeNode(Node *node) {
@@ -252,15 +254,15 @@ public:
   // Element (Child Node)
   ////////////////////////////////////////////////
 
-  void setNode(const std::string & name, const std::string & value) {
+  bool setNode(const std::string & name, const std::string & value) {
     Node *node = getNode(name);
     if (node != NULL) {
       node->setValue(value);
-      return;
+      return false;
     }
     node = new Node(name);
     node->setValue(value);
-    addNode(node);
+    return addNode(node);
   }
 
   const char *getNodeValue(const std::string & name) {
