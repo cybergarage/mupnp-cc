@@ -381,6 +381,8 @@ Device *Device::getParentDevice() {
   if (rootNode == NULL)
     return NULL;
   Node *devNode = getDeviceNode();
+  if (devNode == NULL)
+    return NULL;
   //<device><deviceList><device>
   devNode = devNode->getParentNode()->getParentNode();
   parentDevice = new Device();
@@ -403,6 +405,22 @@ DeviceData *Device::getDeviceData() {
     node->setUserData(userData);
   }
   return userData;
+}
+
+////////////////////////////////////////////////
+// Device Node Value
+////////////////////////////////////////////////
+
+bool Device::setDeviceNodeValue(const std::string &name, const std::string &value) {
+  if (hasDeviceNode() == false)
+    return false;
+  return getDeviceNode()->setNode(DEVICE_TYPE, value);
+}
+
+const char *Device::getDeviceNodeValue(const std::string &name) {
+  if (hasDeviceNode() == false)
+    return "";
+  return getDeviceNode()->getNodeValue(name);
 }
 
 ////////////////////////////////////////////////

@@ -391,19 +391,31 @@ private:
 
   void updateURLBase(const std::string &host);
 
- public:
+public:
   const char *getURLBase();
 
+  ////////////////////////////////////////////////
+  // Device Node Value
+  ////////////////////////////////////////////////
+  
+private:
+  
+  bool setDeviceNodeValue(const std::string &name, const std::string &value);
+  
+  const char *getDeviceNodeValue(const std::string &name);
+  
   ////////////////////////////////////////////////
   // deviceType
   ////////////////////////////////////////////////
 
-  void setDeviceType(const std::string &value) {
-    getDeviceNode()->setNode(DEVICE_TYPE, value);
+public:
+  
+  bool setDeviceType(const std::string &value) {
+    return setDeviceNodeValue(DEVICE_TYPE, value);
   }
 
   const char *getDeviceType() {
-    return getDeviceNode()->getNodeValue(DEVICE_TYPE);
+    return getDeviceNodeValue(DEVICE_TYPE);
   }
 
   bool isDeviceType(const std::string &value);
@@ -412,108 +424,108 @@ private:
   // friendlyName
   ////////////////////////////////////////////////
 
-  void setFriendlyName(const std::string &value) {
-    getDeviceNode()->setNode(FRIENDLY_NAME, value);
+  bool setFriendlyName(const std::string &value) {
+    return setDeviceNodeValue(FRIENDLY_NAME, value);
   }
 
   const char *getFriendlyName() {
-    return getDeviceNode()->getNodeValue(FRIENDLY_NAME);
+    return getDeviceNodeValue(FRIENDLY_NAME);
   }
 
   ////////////////////////////////////////////////
   // manufacture
   ////////////////////////////////////////////////
   
-  void setManufacturer(const std::string &value) {
-    getDeviceNode()->setNode(MANUFACTURER, value);
+  bool setManufacturer(const std::string &value) {
+    return setDeviceNodeValue(MANUFACTURER, value);
   }
 
   const char *getManufacturer() {
-    return getDeviceNode()->getNodeValue(MANUFACTURER);
+    return getDeviceNodeValue(MANUFACTURER);
   }
 
   ////////////////////////////////////////////////
   // manufactureURL
   ////////////////////////////////////////////////
 
-  void setManufacturerURL(const std::string &value) {
-    getDeviceNode()->setNode(MANUFACTURER_URL, value);
+  bool setManufacturerURL(const std::string &value) {
+    return setDeviceNodeValue(MANUFACTURER_URL, value);
   }
 
   const char *getManufacturerURL() {
-    return getDeviceNode()->getNodeValue(MANUFACTURER_URL);
+    return getDeviceNodeValue(MANUFACTURER_URL);
   }
 
   ////////////////////////////////////////////////
   // modelDescription
   ////////////////////////////////////////////////
 
-  void setModelDescription(const std::string &value) {
-    getDeviceNode()->setNode(MODEL_DESCRIPTION, value);
+  bool setModelDescription(const std::string &value) {
+    return setDeviceNodeValue(MODEL_DESCRIPTION, value);
   }
 
   const char *getModelDescription() {
-    return getDeviceNode()->getNodeValue(MODEL_DESCRIPTION);
+    return getDeviceNodeValue(MODEL_DESCRIPTION);
   }
 
   ////////////////////////////////////////////////
   // modelName
   ////////////////////////////////////////////////
 
-  void setModelName(const std::string &value) {
-    getDeviceNode()->setNode(MODEL_NAME, value);
+  bool setModelName(const std::string &value) {
+    return setDeviceNodeValue(MODEL_NAME, value);
   }
 
   const char *getModelName() {
-    return getDeviceNode()->getNodeValue(MODEL_NAME);
+    return getDeviceNodeValue(MODEL_NAME);
   }
 
   ////////////////////////////////////////////////
   // modelNumber
   ////////////////////////////////////////////////
 
-  void setModelNumber(const std::string &value) {
-    getDeviceNode()->setNode(MODEL_NUMBER, value);
+  bool setModelNumber(const std::string &value) {
+    return setDeviceNodeValue(MODEL_NUMBER, value);
   }
 
   const char *getModelNumber() {
-    return getDeviceNode()->getNodeValue(MODEL_NUMBER);
+    return getDeviceNodeValue(MODEL_NUMBER);
   }
 
   ////////////////////////////////////////////////
   // modelURL
   ////////////////////////////////////////////////
 
-  void setModelURL(const std::string &value) {
-    getDeviceNode()->setNode(MODEL_URL, value);
+  bool setModelURL(const std::string &value) {
+    return setDeviceNodeValue(MODEL_URL, value);
   }
 
   const char *getModelURL() {
-    return getDeviceNode()->getNodeValue(MODEL_URL);
+    return getDeviceNodeValue(MODEL_URL);
   }
 
   ////////////////////////////////////////////////
   // serialNumber
   ////////////////////////////////////////////////
 
-  void setSerialNumber(const std::string &value) {
-    getDeviceNode()->setNode(SERIAL_NUMBER, value);
+  bool setSerialNumber(const std::string &value) {
+    return setDeviceNodeValue(SERIAL_NUMBER, value);
   }
 
   const char *getSerialNumber() {
-    return getDeviceNode()->getNodeValue(SERIAL_NUMBER);
+    return getDeviceNodeValue(SERIAL_NUMBER);
   }
 
   ////////////////////////////////////////////////
   // UDN
   ////////////////////////////////////////////////
 
-  void setUDN(const std::string &value) {
-    getDeviceNode()->setNode(UDN, value);
+  bool setUDN(const std::string &value) {
+    return setDeviceNodeValue(UDN, value);
   }
 
   const char *getUDN() {
-    return getDeviceNode()->getNodeValue(UDN);
+    return getDeviceNodeValue(UDN);
   }
 
   bool hasUDN() {
@@ -530,24 +542,24 @@ private:
   // UPC
   ////////////////////////////////////////////////
 
-  void setUPC(const std::string &value) {
-    getDeviceNode()->setNode(UPC, value);
+  bool setUPC(const std::string &value) {
+    return setDeviceNodeValue(UPC, value);
   }
 
   const char *getUPC() {
-    return getDeviceNode()->getNodeValue(UPC);
+    return getDeviceNodeValue(UPC);
   }
 
   ////////////////////////////////////////////////
   // presentationURL
   ////////////////////////////////////////////////
 
-  void setPresentationURL(const std::string &value) {
-    getDeviceNode()->setNode(presentationURL, value);
+  bool setPresentationURL(const std::string &value) {
+    return setDeviceNodeValue(presentationURL, value);
   }
 
   const char *getPresentationURL() {
-    return getDeviceNode()->getNodeValue(presentationURL);
+    return getDeviceNodeValue(presentationURL);
   }
 
   ////////////////////////////////////////////////
