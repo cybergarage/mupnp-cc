@@ -99,6 +99,10 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
     return deviceNode;
   }
 
+  bool hasDeviceNode() {
+    return (deviceNode != NULL) ? true : false;
+  }
+  
   void setRootNode(CyberXML::Node *node) {
     rootNode = node;
   }

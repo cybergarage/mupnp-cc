@@ -68,6 +68,10 @@ public:
     return serviceNode;
   }
 
+  bool hasServiceNode() {
+    return (serviceNode != NULL) ? true : false;
+  }
+  
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
