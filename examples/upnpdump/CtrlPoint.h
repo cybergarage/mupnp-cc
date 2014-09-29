@@ -33,9 +33,9 @@ public:
 	
 public:
 
-	void deviceNotifyReceived(SSDPPacket *packet);
-	void deviceSearchResponseReceived(SSDPPacket *packet);
-	void eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value);
+	bool deviceNotifyReceived(SSDPPacket *packet);
+	bool deviceSearchResponseReceived(SSDPPacket *packet);
+	bool eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value);
 
 	void print();
 
