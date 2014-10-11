@@ -47,9 +47,12 @@ void SSDPSearchResponseSocket::run() {
     if (!ctrlPoint)
       continue;
     
-    std::string ssdpSt;
+    std::string ssdpSt, ssdpNTS, ssdpNT, ssdpLocation;
     ssdpPacket.getST(ssdpSt);
-    LogTrace("SSDP Search Response Received : %s", ssdpSt.c_str());
+    ssdpPacket.getNTS(ssdpNTS);
+    ssdpPacket.getNT(ssdpNT);
+    ssdpPacket.getLocation(ssdpLocation);
+    LogTrace("SSDP Search Response Received : %s %s %s %s", ssdpSt.c_str(), ssdpNTS.c_str(), ssdpNT.c_str(), ssdpLocation.c_str());
     
     ctrlPoint->searchResponseReceived(&ssdpPacket);
   }

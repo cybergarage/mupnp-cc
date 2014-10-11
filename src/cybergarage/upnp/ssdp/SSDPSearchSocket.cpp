@@ -19,6 +19,7 @@
 
 #include <cybergarage/upnp/ControlPoint.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchSocket.h>
+#include <cybergarage/upnp/Log.h>
 
 using namespace CyberLink;
 
@@ -70,11 +71,17 @@ bool SSDPSearchSocket::performSearchListener(SSDPPacket *ssdpPacket) {
 
 void SSDPSearchSocket::run() {
   while (isRunnable() == true) {
-    SSDPPacket packet;
-    if (!receive(&packet))
+    SSDPPacket ssdpPacket;
+    if (!receive(&ssdpPacket))
       continue;
-    if (packet.isDiscover() == false)
+    
+    std::string ssdpST;
+    ssdpPacket.getST(ssdpST);
+    LogTrace("SSDP Search Received : %s", ssdpST.c_str());
+    
+    if (ssdpPacket.isDiscover() == false)
       continue;
-    performSearchListener(&packet);
+    
+    performSearchListener(&ssdpPacket);
   }
 }
