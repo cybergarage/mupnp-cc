@@ -414,7 +414,7 @@ DeviceData *Device::getDeviceData() {
 bool Device::setDeviceNodeValue(const std::string &name, const std::string &value) {
   if (hasDeviceNode() == false)
     return false;
-  return getDeviceNode()->setNode(DEVICE_TYPE, value);
+  return getDeviceNode()->setNode(name, value);
 }
 
 const char *Device::getDeviceNodeValue(const std::string &name) {
