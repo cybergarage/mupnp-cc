@@ -31,6 +31,7 @@
 ////////////////////////////////////////////////
 
 #include <cybergarage/xml/Parser.h>
+#include <cybergarage/upnp/Log.h>
 
 #include <libxml/parser.h>
 #include <libxml/tree.h>
@@ -56,13 +57,13 @@ Parser::~Parser() {
 static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
   if ( cur == NULL ) {
     // This should never happen...
-    cout << "convertToCLinkFormat: This should never happen!" << endl;
+    LogFatal("convertToCLinkFormat: This should never happen!");
     exit( 0 );
     return NULL;
   }
 
   if ( depth > 12 ) {
-    cout << "convertToCLinkFormat: Recursion depth > 10. Are you sure this is OK!?" << endl;
+    LogWarn("convertToCLinkFormat: Recursion depth > 10. Are you sure this is OK!?");
     return NULL;
   }
   
@@ -131,8 +132,8 @@ Node *Parser::parse(const std::string &data, size_t len) {
   // First, parse the XML memory buffer ito a DOM object
   xmlDocPtr doc = xmlParseMemory( data.c_str(), (int)len );
   if ( doc == NULL ) {
-    cout << "XML file parsing failed:" << endl;
-    cout << data << endl;
+    LogWarn("XML file parsing failed:");
+    LogWarn("%s", data.c_str());
     return NULL;
   }
 
@@ -140,7 +141,7 @@ Node *Parser::parse(const std::string &data, size_t len) {
   xmlNodePtr cur;
   cur = xmlDocGetRootElement( doc );
   if (cur == NULL) {
-    fprintf(stderr,"Empty document\n");
+    LogWarn("Empty document");
     xmlFreeDoc(doc);
     return NULL;
   }
