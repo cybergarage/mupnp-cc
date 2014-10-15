@@ -130,7 +130,7 @@ static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
 
 Node *Parser::parse(const std::string &data, size_t len) {
   // First, parse the XML memory buffer ito a DOM object
-  xmlDocPtr doc = xmlParseMemory( data.c_str(), (int)len );
+  xmlDocPtr doc = xmlReadMemory(data.c_str(), (int)len, NULL, NULL, XML_PARSE_NOERROR);
   if ( doc == NULL ) {
     LogWarn("XML file parsing failed:");
     LogWarn("%s", data.c_str());
