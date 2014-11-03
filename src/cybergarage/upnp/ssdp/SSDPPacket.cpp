@@ -19,12 +19,37 @@
 ******************************************************************/
 
 #include <string>
+#include <uhttp/HTTP.h>
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
 using namespace CyberLink;
 
 ////////////////////////////////////////////////
-// Access Methods (Extension)
+// SSDPPacket
+////////////////////////////////////////////////
+
+bool SSDPPacket::isNotifyRequest()
+{
+  const char *dgmPackatData = getData();
+  if (!dgmPackatData)
+    return false;
+  return (strncmp(dgmPackatData, uHTTP::HTTP::NOTIFY , strlen(uHTTP::HTTP::NOTIFY)) == 0) ? true : false;
+}
+
+////////////////////////////////////////////////
+// SSDPPacket
+////////////////////////////////////////////////
+
+bool SSDPPacket::isSearchRequest()
+{
+  const char *dgmPackatData = getData();
+  if (!dgmPackatData)
+    return false;
+  return (strncmp(dgmPackatData, uHTTP::HTTP::M_SEARCH, strlen(uHTTP::HTTP::M_SEARCH)) == 0) ? true : false;
+}
+
+////////////////////////////////////////////////
+// isRootDevice
 ////////////////////////////////////////////////
 
 bool SSDPPacket::isRootDevice() {

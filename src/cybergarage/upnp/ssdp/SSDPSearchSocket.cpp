@@ -75,6 +75,9 @@ void SSDPSearchSocket::run() {
     if (!receive(&ssdpPacket))
       continue;
     
+    if (!ssdpPacket.isSearchRequest())
+      continue;
+    
     std::string ssdpST;
     ssdpPacket.getST(ssdpST);
     LogTrace("SSDP Search Received : %s", ssdpST.c_str());

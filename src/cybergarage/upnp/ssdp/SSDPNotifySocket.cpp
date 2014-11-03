@@ -82,6 +82,9 @@ void SSDPNotifySocket::run() {
     if (!receive(&ssdpPacket))
       continue;
     
+    if (!ssdpPacket.isNotifyRequest())
+      continue;
+    
     std::string ssdpNTS, ssdpNT, ssdpLocation;
     ssdpPacket.getNTS(ssdpNTS);
     ssdpPacket.getNT(ssdpNT);
