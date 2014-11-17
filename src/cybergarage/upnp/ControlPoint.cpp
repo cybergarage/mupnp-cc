@@ -621,22 +621,22 @@ bool ControlPoint::stop() {
   unsubscribe();
     
   SSDPNotifySocketList *ssdpNotifySocketList = getSSDPNotifySocketList();
-  ssdpNotifySocketList->stop();
   ssdpNotifySocketList->close();
+  ssdpNotifySocketList->stop();
   ssdpNotifySocketList->clear();
     
   SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
-  ssdpSearchResponseSocketList->stop();
   ssdpSearchResponseSocketList->close();
+  ssdpSearchResponseSocketList->stop();
 
   SSDPSearchResponseSocket *ssdpSearchResponseSocket = getSSDPSearchResponseSocket();
-  ssdpSearchResponseSocket->stop();
   ssdpSearchResponseSocket->close();
+  ssdpSearchResponseSocket->stop();
   ssdpSearchResponseSocketList->clear();
 
   HTTPServerList *httpServerList = getHTTPServerList();
-  httpServerList->stop();
   httpServerList->close();
+  httpServerList->stop();
   httpServerList->clear();
 
   ////////////////////////////////////////

@@ -43,7 +43,8 @@ void SSDPSearchResponseSocket::run() {
     SSDPPacket ssdpPacket;
     
     if (!receive(&ssdpPacket))
-      continue;
+      break;
+    
     if (!ctrlPoint)
       continue;
     

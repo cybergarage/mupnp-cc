@@ -80,7 +80,7 @@ void SSDPNotifySocket::run() {
   while (isRunnable() == true) {
     SSDPPacket ssdpPacket;
     if (!receive(&ssdpPacket))
-      continue;
+      break;
     
     if (!ssdpPacket.isNotifyRequest())
       continue;
