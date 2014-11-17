@@ -38,7 +38,6 @@ class DeviceData : public CyberXML::NodeData {
   size_t httpWorkerCount;
   
   uHTTP::HTTPServerList httpServerList;    
-  uHTTP::ListenerList controlActionListenerList;
 
   SSDPSearchSocketList ssdpSearchSocketList;
   SSDPPacket ssdpPacket;
@@ -138,14 +137,6 @@ public:
     httpWorkerCount = num;
   }
   
-  ////////////////////////////////////////////////
-  // controlActionListenerList
-  ////////////////////////////////////////////////
-
-  uHTTP::ListenerList &getControlActionListenerList() {
-    return controlActionListenerList;
-  }
-
   ////////////////////////////////////////////////
   // SSDPSearchSocket
   ////////////////////////////////////////////////

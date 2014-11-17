@@ -35,7 +35,6 @@ class ServiceData : public CyberXML::NodeData {
   std::string sid;
   long timeout;
 
-  uHTTP::ListenerList controlActionListenerList;
   SubscriberList subscriberList;
 
   CyberXML::Node *scpdNode;
@@ -58,14 +57,6 @@ class ServiceData : public CyberXML::NodeData {
 
   Service *getService() {
     return service;
-  }
-
-  ////////////////////////////////////////////////
-  // controlActionListenerList
-  ////////////////////////////////////////////////
-
-  uHTTP::ListenerList *getControlActionListenerList() {
-    return &controlActionListenerList;
   }
 
   ////////////////////////////////////////////////
