@@ -34,6 +34,12 @@
 #include <cybergarage/upnp/control/RenewSubscriber.h>
 
 namespace CyberLink {
+  
+typedef uHTTP::ListenerList<NotifyListener>         NotifyListenerList;
+typedef uHTTP::ListenerList<SearchResponseListener> SearchResponseListenerList;
+typedef uHTTP::ListenerList<DeviceChangeListener>   DeviceChangeListenerList;
+typedef uHTTP::ListenerList<EventListener>   EventListenerList;
+  
 class ControlPoint : public uHTTP::HTTPRequestListener {
   SSDPNotifySocketList ssdpNotifySocketList;
   SSDPSearchResponseSocketList ssdpSearchResponseSocketList;
@@ -46,9 +52,9 @@ class ControlPoint : public uHTTP::HTTPRequestListener {
   CyberXML::NodeList  devNodeList;
   CyberXML::NodeList  removedDevNodeList;
 
-  uHTTP::ListenerList deviceNotifyListenerList;
-  uHTTP::ListenerList deviceSearchResponseListenerList;
-  uHTTP::ListenerList deviceChangeListenerList;
+  NotifyListenerList deviceNotifyListenerList;
+  SearchResponseListenerList deviceSearchResponseListenerList;
+  DeviceChangeListenerList deviceChangeListenerList;
 
   uHTTP::Mutex mutex;
   DeviceList deviceList;
@@ -56,7 +62,7 @@ class ControlPoint : public uHTTP::HTTPRequestListener {
   int searchMx;
 
   uHTTP::HTTPServerList httpServerList;
-  uHTTP::ListenerList eventListenerList;
+  EventListenerList eventListenerList;
 
   std::string eventSubURI;
 

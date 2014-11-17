@@ -57,7 +57,7 @@ bool SSDPSearchSocket::performSearchListener(SSDPPacket *ssdpPacket) {
   bool areAllListnersSuccess = true;
   size_t listenerSize = deviceSearchListenerList.size();
   for (size_t n = 0; n < listenerSize; n++) {
-    SearchListener *listener = (SearchListener *)deviceSearchListenerList.get(n);
+    SearchListener *listener = deviceSearchListenerList.get(n);
     if (listener->deviceSearchReceived(ssdpPacket) == false) {
       areAllListnersSuccess = false;
     }

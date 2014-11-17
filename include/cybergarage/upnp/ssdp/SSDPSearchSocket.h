@@ -25,9 +25,12 @@
 #include <cybergarage/upnp/device/SearchListener.h>
 
 namespace CyberLink {
+  
+typedef uHTTP::ListenerList<SearchListener> SearchListenerList;
+  
 class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
   bool useIPv6Address;
-  uHTTP::ListenerList deviceSearchListenerList;
+  SearchListenerList deviceSearchListenerList;
 
   ////////////////////////////////////////////////
   // Constructor

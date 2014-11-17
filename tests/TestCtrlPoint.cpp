@@ -37,7 +37,7 @@ TestCtrlPoint::TestCtrlPoint()
 // deviceNotifyReceived
 ////////////////////////////////////////////////
 
-void TestCtrlPoint::deviceNotifyReceived(SSDPPacket *packet)
+bool TestCtrlPoint::deviceNotifyReceived(SSDPPacket *packet)
 {
   if (packet->isDiscover() == true) {
     string stBuf;
@@ -63,13 +63,15 @@ void TestCtrlPoint::deviceNotifyReceived(SSDPPacket *packet)
     if (Debug::isOn() == true)
       cout << "ssdp:byebye : uuid = " << usn << ", NT = " << nt << endl; 
   }
+  
+  return true;
 }
   
 ////////////////////////////////////////////////
 // deviceSearchResponseReceived
 ////////////////////////////////////////////////
 
-void TestCtrlPoint::deviceSearchResponseReceived(SSDPPacket *packet)
+bool TestCtrlPoint::deviceSearchResponseReceived(SSDPPacket *packet)
 {
   string usnBuf;
   string stBuf;
@@ -79,16 +81,20 @@ void TestCtrlPoint::deviceSearchResponseReceived(SSDPPacket *packet)
   const char *url = packet->getLocation(locationBuf);
   if (Debug::isOn() == true)
     cout << "device search res : uuid = " << uuid << ", ST = " << st << ", location = " << url << endl; 
+
+  return true;
 }
   
 ////////////////////////////////////////////////
 // eventNotifyReceived
 ////////////////////////////////////////////////
 
-void TestCtrlPoint::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
+bool TestCtrlPoint::eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value)
 {
   if (Debug::isOn() == true)
-    cout << "event notify : uuid = " << uuid << ", seq = " << seq << ", name = " << name << ", value =" << value << endl; 
+    cout << "event notify : uuid = " << uuid << ", seq = " << seq << ", name = " << name << ", value =" << value << endl;
+  
+  return true;
 }
 
 ////////////////////////////////////////////////
