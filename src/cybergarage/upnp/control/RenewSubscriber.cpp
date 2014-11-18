@@ -30,11 +30,13 @@ const long RenewSubscriber::INTERVAL= 120;
 ////////////////////////////////////////////////
   
 void RenewSubscriber::run()  {
-  ControlPoint *ctrlp = getControlPoint();
+  ControlPoint *ctrlPoint = getControlPoint();
   long renewInterval = RenewSubscriber::INTERVAL * 1000;
   while (isRunnable() == true) {
     Wait(renewInterval);
-    ctrlp->renewSubscriberService();
+    if (!ctrlPoint)
+      break;
+    ctrlPoint->renewSubscriberService();
   }
 }
 

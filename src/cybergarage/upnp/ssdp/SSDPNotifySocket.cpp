@@ -76,10 +76,13 @@ bool SSDPNotifySocket::post(SSDPNotifyRequest *req, const std::string &ifAddr) {
 ////////////////////////////////////////////////
 
 void SSDPNotifySocket::run() {
-  ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
     SSDPPacket ssdpPacket;
     if (!receive(&ssdpPacket))
+      break;
+    
+    ControlPoint *ctrlPoint = getControlPoint();
+    if (!ctrlPoint)
       break;
     
     if (!ssdpPacket.isNotifyRequest())
@@ -91,9 +94,6 @@ void SSDPNotifySocket::run() {
     ssdpPacket.getLocation(ssdpLocation);
     
     LogTrace("SSDP Notify Received : %s %s %s", ssdpNTS.c_str(), ssdpNT.c_str(), ssdpLocation.c_str());
-    
-    if (!ctrlPoint)
-      continue;
     
     ctrlPoint->notifyReceived(&ssdpPacket);
   }

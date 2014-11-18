@@ -24,12 +24,15 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
   
 void Disposer::run()  {
-  ControlPoint *ctrlp = getControlPoint();
-  long monitorInterval = ctrlp->getExpiredDeviceMonitoringInterval() * 1000;
+  ControlPoint *ctrlPoint = getControlPoint();
+  long monitorInterval = ctrlPoint->getExpiredDeviceMonitoringInterval() * 1000;
   
   while (isRunnable() == true) {
     uHTTP::Wait(monitorInterval);
-    ctrlp->removeExpiredDevices();
+    ControlPoint *ctrlPoint = getControlPoint();
+    if (!ctrlPoint)
+      break;
+    ctrlPoint->removeExpiredDevices();
   }
 }
 

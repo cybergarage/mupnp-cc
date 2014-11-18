@@ -38,15 +38,15 @@ SSDPSearchResponseSocket::~SSDPSearchResponseSocket() {
 ////////////////////////////////////////////////
 
 void SSDPSearchResponseSocket::run() {
-  ControlPoint *ctrlPoint = getControlPoint();
   while (isRunnable() == true) {
     SSDPPacket ssdpPacket;
     
     if (!receive(&ssdpPacket))
       break;
     
+    ControlPoint *ctrlPoint = getControlPoint();
     if (!ctrlPoint)
-      continue;
+      break;
     
     std::string ssdpSt, ssdpNTS, ssdpNT, ssdpLocation;
     ssdpPacket.getST(ssdpSt);
