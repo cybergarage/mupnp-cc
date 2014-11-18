@@ -131,7 +131,8 @@ Device *ControlPoint::getDevice(const std::string &name) {
 ////////////////////////////////////////////////
 
 bool ControlPoint::addDevice(CyberXML::Node *rootNode) {
-  devNodeList.add(rootNode);
+  if (!devNodeList.add(rootNode))
+    return false;
   initDeviceList();
   return true;
 }
@@ -179,15 +180,17 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 // remove
 ////////////////////////////////////////////////
 
-void ControlPoint::removeDevice(CyberXML::Node *rootNode) {
-  if (devNodeList.erase(rootNode))
-    removedDevNodeList.add(rootNode);
+bool ControlPoint::removeDevice(CyberXML::Node *rootNode) {
+  if (!devNodeList.erase(rootNode))
+    return false;
+  removedDevNodeList.add(rootNode);
   initDeviceList();
+  return true;
 }
 
-void ControlPoint::removeDevice(SSDPPacket *packet) {
+bool ControlPoint::removeDevice(SSDPPacket *packet) {
   if (packet->isByeBye() == false)
-    return;
+    return false;
   
   lock();
   
@@ -199,16 +202,18 @@ void ControlPoint::removeDevice(SSDPPacket *packet) {
   Device *dev = getDevice(udn);
   if (dev == NULL) {
     unlock();
-    return;
+    return false;
   }
   
   // Thanks for Oliver Newell (2004/10/16)
   if(dev->isRootDevice() == true)
     performRemoveDeviceListener(dev);
   
-  removeDevice(dev->getRootNode());
+  bool isRemoved = removeDevice(dev->getRootNode());
   
   unlock();
+  
+  return isRemoved;
 }
 
 ////////////////////////////////////////////////
@@ -622,19 +627,19 @@ bool ControlPoint::stop() {
     
   SSDPNotifySocketList *ssdpNotifySocketList = getSSDPNotifySocketList();
   ssdpNotifySocketList->setControlPoint(NULL);
-  ssdpNotifySocketList->close();
   ssdpNotifySocketList->stop();
+  ssdpNotifySocketList->close();
   ssdpNotifySocketList->clear();
     
   SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
   ssdpSearchResponseSocketList->setControlPoint(NULL);
-  ssdpSearchResponseSocketList->close();
   ssdpSearchResponseSocketList->stop();
+  ssdpSearchResponseSocketList->close();
 
   HTTPServerList *httpServerList = getHTTPServerList();
   httpServerList->removeRequestListener(this);
-  httpServerList->close();
   httpServerList->stop();
+  httpServerList->close();
   httpServerList->clear();
 
   ////////////////////////////////////////

@@ -25,7 +25,6 @@
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 #include <cybergarage/upnp/ssdp/SSDPNotifySocketList.h>
 #include <cybergarage/upnp/ssdp/SSDPSearchResponseSocketList.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchResponseSocket.h>
 #include <cybergarage/upnp/device/SearchResponseListener.h>
 #include <cybergarage/upnp/device/NotifyListener.h>
 #include <cybergarage/upnp/device/Disposer.h>
@@ -179,8 +178,8 @@ private:
 
 private:
 
-  void removeDevice(CyberXML::Node *rootNode);
-  void removeDevice(SSDPPacket *packet);
+  bool removeDevice(CyberXML::Node *rootNode);
+  bool removeDevice(SSDPPacket *packet);
 
   ////////////////////////////////////////////////
   // Expired Device
