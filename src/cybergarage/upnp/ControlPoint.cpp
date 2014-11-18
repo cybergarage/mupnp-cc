@@ -621,20 +621,18 @@ bool ControlPoint::stop() {
   unsubscribe();
     
   SSDPNotifySocketList *ssdpNotifySocketList = getSSDPNotifySocketList();
+  ssdpNotifySocketList->setControlPoint(NULL);
   ssdpNotifySocketList->close();
   ssdpNotifySocketList->stop();
   ssdpNotifySocketList->clear();
     
   SSDPSearchResponseSocketList *ssdpSearchResponseSocketList = getSSDPSearchResponseSocketList();
+  ssdpSearchResponseSocketList->setControlPoint(NULL);
   ssdpSearchResponseSocketList->close();
   ssdpSearchResponseSocketList->stop();
 
-  SSDPSearchResponseSocket *ssdpSearchResponseSocket = getSSDPSearchResponseSocket();
-  ssdpSearchResponseSocket->close();
-  ssdpSearchResponseSocket->stop();
-  ssdpSearchResponseSocketList->clear();
-
   HTTPServerList *httpServerList = getHTTPServerList();
+  httpServerList->removeRequestListener(this);
   httpServerList->close();
   httpServerList->stop();
   httpServerList->clear();

@@ -1437,11 +1437,13 @@ bool Device::stop(bool doByeBye) {
     byebye();
     
   HTTPServerList *httpServerList = getHTTPServerList();
+  httpServerList->removeRequestListener(this);
   httpServerList->close();
   httpServerList->stop();
   httpServerList->clear();
 
   SSDPSearchSocketList *ssdpSearchSockList = getSSDPSearchSocketList();
+  ssdpSearchSockList->removeSearchListener(this);
   ssdpSearchSockList->close();
   ssdpSearchSockList->stop();
   ssdpSearchSockList->clear();

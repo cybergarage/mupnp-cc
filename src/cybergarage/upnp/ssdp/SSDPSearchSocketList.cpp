@@ -44,6 +44,18 @@ void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
 }    
 
 ////////////////////////////////////////////////
+// removeSearchListener
+////////////////////////////////////////////////
+
+void SSDPSearchSocketList::removeSearchListener(SearchListener *listener) {
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
+    sock->removeSearchListener(listener);
+  }
+}
+
+////////////////////////////////////////////////
 // open/close
 ////////////////////////////////////////////////
   

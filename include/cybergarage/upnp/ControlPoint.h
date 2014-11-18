@@ -43,7 +43,6 @@ typedef uHTTP::ListenerList<EventListener>   EventListenerList;
 class ControlPoint : public uHTTP::HTTPRequestListener {
   SSDPNotifySocketList ssdpNotifySocketList;
   SSDPSearchResponseSocketList ssdpSearchResponseSocketList;
-  SSDPSearchResponseSocket ssdpSearchResponseSocket;
 
   int ssdpPort;
   int httpPort;
@@ -97,10 +96,6 @@ private:
     return &ssdpSearchResponseSocketList;
   }
 
-  SSDPSearchResponseSocket *getSSDPSearchResponseSocket() {
-    return &ssdpSearchResponseSocket;
-  }
-  
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////

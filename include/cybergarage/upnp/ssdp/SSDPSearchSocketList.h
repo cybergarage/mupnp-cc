@@ -42,6 +42,7 @@ public:
   }
   
   void addSearchListener(SearchListener *listener);
+  void removeSearchListener(SearchListener *listener);
 
   bool open();
   bool close();

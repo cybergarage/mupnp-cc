@@ -113,7 +113,10 @@ Service::~Service() {
 ////////////////////////////////////////////////
 
 Device *Service::getRootDevice() {
-  return getDevice()->getRootDevice();
+  Device *dev = getDevice();
+  if (!dev)
+    return NULL;
+  return dev->getRootDevice();
 }
 
 ////////////////////////////////////////////////
