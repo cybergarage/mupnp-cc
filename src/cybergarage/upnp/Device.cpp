@@ -1010,11 +1010,16 @@ bool Device::postSearchResponse(SSDPPacket *ssdpPacket, const std::string &st, c
   SSDPSearchResponseSocket ssdpResSock;
   if (Debug::isOn() == true)
     ssdpRes.print();
+  
+  bool areAllResponseSucess = true;
+  
   int ssdpCount = getSSDPAnnounceCount();
-  for (int i = 0; i<ssdpCount; i++)
-    ssdpResSock.post(remoteAddr, remotePort, &ssdpRes);
+  for (int i = 0; i<ssdpCount; i++) {
+    if (!ssdpResSock.post(remoteAddr, remotePort, &ssdpRes))
+      areAllResponseSucess = false;
+  }
 
-  return true;
+  return areAllResponseSucess;
 }
 
 bool Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
