@@ -267,7 +267,7 @@ private:
   }
 
   void setStatus(int code) {
-    setStatus(code, UPnP::StatusCode2String(code));
+    setStatus(code, UPnP::StatusCodeToString(code));
   }
   
   UPnPStatus *getStatus() {

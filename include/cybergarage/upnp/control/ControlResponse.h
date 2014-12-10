@@ -58,7 +58,7 @@ public:
   
   void setFaultResponse(int errCode, const std::string &errDescr);
   void setFaultResponse(int errCode) {
-    setFaultResponse(errCode, UPnP::StatusCode2String(errCode));
+    setFaultResponse(errCode, UPnP::StatusCodeToString(errCode));
   }
 
 private:

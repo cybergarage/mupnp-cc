@@ -16,7 +16,7 @@
 #include <uhttp/http/HTTP.h>
 #include <cybergarage/upnp/UPnPStatus.h>
   
-const char *CyberLink::UPnP::StatusCode2String(int code) {
+const char *CyberLink::UPnP::StatusCodeToString(int code) {
   switch (code) {
   case UPnP::INVALID_ACTION: return "Invalid Action";
   case UPnP::INVALID_ARGS: return "Invalid Args";

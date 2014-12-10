@@ -30,7 +30,7 @@ const int ACTION_FAILED = 501;
 }
 
 namespace UPnP {
-const char *StatusCode2String(int code);
+const char *StatusCodeToString(int code);
 }
 
 class UPnPStatus {
