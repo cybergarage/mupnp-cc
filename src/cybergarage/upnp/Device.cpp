@@ -375,19 +375,31 @@ Device *Device::getRootDevice() {
 Device *Device::getParentDevice() {
   if (parentDevice != NULL)
     return parentDevice;
+  
   if(isRootDevice() == true)
     return NULL;
+  
   CyberXML::Node *rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
+  
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return NULL;
+  
   //<device><deviceList><device>
-  devNode = devNode->getParentNode()->getParentNode();
+  
+  CyberXML::Node *parentNode = devNode->getParentNode();
+  if (!parentNode)
+    return NULL;
+  devNode = parentNode->getParentNode();
+  if (!devNode)
+    return NULL;
+  
   parentDevice = new Device();
   parentDevice->setDeviceNode(devNode);
   parentDevice->setRootNode(rootNode);
+  
   return parentDevice;
 }
 
