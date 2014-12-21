@@ -120,14 +120,20 @@ private:
 private:
 
   CyberXML::Node *getDeviceNode() {
-    CyberXML::Node *node = getServiceNode()->getParentNode();
-    if (node == NULL)
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
       return NULL;
-    return node->getParentNode();
+    CyberXML::Node *parentNode = serviceNode->getParentNode();
+    if (parentNode == NULL)
+      return NULL;
+    return parentNode->getParentNode();
   }
 
   CyberXML::Node *getRootNode() {
-    return getServiceNode()->getRootNode();
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return NULL;
+    return serviceNode->getRootNode();
   }
 
   ////////////////////////////////////////////////
@@ -153,11 +159,17 @@ private:
 
  public:
   void setServiceType(const std::string &value) {
-    getServiceNode()->setNode(SERVICE_TYPE, value);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return;
+    serviceNode->setNode(SERVICE_TYPE, value);
   }
 
   const char *getServiceType() {
-    return getServiceNode()->getNodeValue(SERVICE_TYPE);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return "";
+    return serviceNode->getNodeValue(SERVICE_TYPE);
   }
 
   ////////////////////////////////////////////////
@@ -166,11 +178,17 @@ private:
 
  public:
   void setServiceID(const std::string &value) {
-    getServiceNode()->setNode(SERVICE_ID, value);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return;
+    serviceNode->setNode(SERVICE_ID, value);
   }
 
   const char *getServiceID() {
-    return getServiceNode()->getNodeValue(SERVICE_ID);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return "";
+    return serviceNode->getNodeValue(SERVICE_ID);
   }
 
   ////////////////////////////////////////////////
@@ -187,11 +205,17 @@ private:
 
  public:
   void setSCPDURL(const std::string &value) {
-    getServiceNode()->setNode(SCPDURL, value);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return;
+   serviceNode->setNode(SCPDURL, value);
   }
 
   const char *getSCPDURL() {
-    return getServiceNode()->getNodeValue(SCPDURL);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return "";
+    return serviceNode->getNodeValue(SCPDURL);
   }
 
   bool isSCPDURL(const std::string &url) {
@@ -206,11 +230,17 @@ private:
 
  public:
   void setControlURL(const std::string &value) {
-    getServiceNode()->setNode(CONTROL_URL, value);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return;
+    serviceNode->setNode(CONTROL_URL, value);
   }
 
   const char *getControlURL() {
-    return getServiceNode()->getNodeValue(CONTROL_URL);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return "";
+    return serviceNode->getNodeValue(CONTROL_URL);
   }
 
   bool isControlURL(const std::string &url) {
@@ -223,11 +253,17 @@ private:
 
  public:
   void setEventSubURL(const std::string &value) {
-    getServiceNode()->setNode(EVENT_SUB_URL, value);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return;
+    serviceNode->setNode(EVENT_SUB_URL, value);
   }
 
   const char *getEventSubURL() {
-    return getServiceNode()->getNodeValue(EVENT_SUB_URL);
+    CyberXML::Node *serviceNode = getServiceNode();
+    if (serviceNode == NULL)
+      return "";
+    return serviceNode->getNodeValue(EVENT_SUB_URL);
   }
 
   bool isEventSubURL(const std::string &url) {
