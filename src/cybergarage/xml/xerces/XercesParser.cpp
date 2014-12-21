@@ -144,15 +144,15 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
 Node *XMLParse(InputSource &inSrc) {
   Node *root = NULL;
     
-  XercesDOMParser *parser = new XercesDOMParser();
+  XercesDOMParser parser;
   /*
-  parser->setDoSchema(false);
-  parser->setDoValidation(false);
-  parser->setValidationScheme(XercesDOMParser::Val_Never);
+  parser.setDoSchema(false);
+  parser.setDoValidation(false);
+  parser.setValidationScheme(XercesDOMParser::Val_Never);
   */
   try {
-    parser->parse(inSrc);
-    xercesc::DOMDocument *doc = parser->getDocument();
+    parser.parse(inSrc);
+    xercesc::DOMDocument *doc = parser.getDocument();
     if (doc == NULL)
       return NULL;
     DOMElement *docElem = doc->getDocumentElement();
