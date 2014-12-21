@@ -52,7 +52,7 @@ public:
 
   void setParentNode(Node *node) 
   {
-    this->  parentNode = node;
+    this->parentNode = node;
   }
 
   Node *getParentNode() 
