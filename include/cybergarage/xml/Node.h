@@ -52,12 +52,12 @@ public:
 
   void setParentNode(Node *node) 
   {
-    parentNode = node;
+    this->  parentNode = node;
   }
 
   Node *getParentNode() 
   {
-    return parentNode;
+    return dynamic_cast<Node *>(this->parentNode);
   }
 
   ////////////////////////////////////////////////
