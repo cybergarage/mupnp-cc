@@ -73,7 +73,6 @@
 *
 ******************************************************************/
 
-
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/net/URL.h>
 #include <uhttp/util/Debug.h>
@@ -83,6 +82,7 @@
 #include <cybergarage/upnp/Device.h>
 #include <cybergarage/upnp/Service.h>
 #include <cybergarage/upnp/UPnPStatus.h>
+#include <cybergarage/upnp/Log.h>
 #include <cybergarage/upnp/device/ST.h>
 #include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
 #include <cybergarage/upnp/ssdp/SSDPNotifyRequest.h>
@@ -1383,6 +1383,8 @@ uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *servi
 ////////////////////////////////////////////////
 
 bool Device::start() {
+  LogTrace("Device::start()");
+  
   stop(true);
 
   ////////////////////////////////////////
@@ -1450,9 +1452,8 @@ bool Device::start() {
 }
   
 bool Device::stop(bool doByeBye) {
-  if (doByeBye == true)
-    byebye();
-    
+  LogTrace("Device::stop()");
+  
   HTTPServerList *httpServerList = getHTTPServerList();
   httpServerList->removeRequestListener(this);
   httpServerList->close();
@@ -1471,6 +1472,9 @@ bool Device::stop(bool doByeBye) {
     setAdvertiser(NULL);
   }
 
+  if (doByeBye == true)
+    byebye();
+  
   return true;
 }
   
