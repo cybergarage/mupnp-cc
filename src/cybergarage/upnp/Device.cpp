@@ -1383,7 +1383,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *servi
 ////////////////////////////////////////////////
 
 bool Device::start() {
-  LogTrace("Device::start()");
+  LogTrace("Device::start() - BEGIN");
   
   stop(true);
 
@@ -1448,11 +1448,16 @@ bool Device::start() {
     return false;
   }
   
+  LogTrace("Device::start() - END");
+  
   return true;
 }
   
 bool Device::stop(bool doByeBye) {
-  LogTrace("Device::stop()");
+  LogTrace("Device::stop() - BEGIN");
+  
+  if (doByeBye == true)
+    byebye();
   
   HTTPServerList *httpServerList = getHTTPServerList();
   httpServerList->removeRequestListener(this);
@@ -1472,8 +1477,7 @@ bool Device::stop(bool doByeBye) {
     setAdvertiser(NULL);
   }
 
-  if (doByeBye == true)
-    byebye();
+  LogTrace("Device::stop() - END");
   
   return true;
 }

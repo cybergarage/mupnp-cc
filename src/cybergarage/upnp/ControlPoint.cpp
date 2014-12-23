@@ -44,9 +44,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/ControlPoint.h>
 #include <uhttp/util/Debug.h>
+#include <cybergarage/upnp/ControlPoint.h>
 #include <cybergarage/xml/Parser.h>
+#include <cybergarage/upnp/Log.h>
 
 #include <iostream>
 
@@ -530,6 +531,8 @@ void ControlPoint::renewSubscriberService() {
 ////////////////////////////////////////////////
 
 bool ControlPoint::start(const std::string &target, int mx) {
+  LogTrace("ControlPoint::start() - BEGIN");
+  
   stop();
 
   ////////////////////////////////////////
@@ -619,10 +622,14 @@ bool ControlPoint::start(const std::string &target, int mx) {
     renewSub->start();
   }
 
+  LogTrace("ControlPoint::start() - END");
+  
   return true;
 }
   
 bool ControlPoint::stop() {
+  LogTrace("ControlPoint::stop() - BEGIN");
+  
   unsubscribe();
     
   SSDPNotifySocketList *ssdpNotifySocketList = getSSDPNotifySocketList();
@@ -662,6 +669,8 @@ bool ControlPoint::stop() {
     setRenewSubscriber(NULL);
   }
 
+  LogTrace("ControlPoint::stop() - END");
+  
   return true;
 }
 
