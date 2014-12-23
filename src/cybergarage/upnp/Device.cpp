@@ -1456,9 +1456,6 @@ bool Device::start() {
 bool Device::stop(bool doByeBye) {
   LogTrace("Device::stop() - BEGIN");
   
-  if (doByeBye == true)
-    byebye();
-  
   HTTPServerList *httpServerList = getHTTPServerList();
   httpServerList->removeRequestListener(this);
   httpServerList->close();
@@ -1478,6 +1475,9 @@ bool Device::stop(bool doByeBye) {
   }
 
   LogTrace("Device::stop() - END");
+  
+  if (doByeBye == true)
+    byebye();
   
   return true;
 }
