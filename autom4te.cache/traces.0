@@ -551,7 +551,7 @@ m4trace:configure.ac:14: -1- _AM_SET_OPTIONS([subdir-objects])
 m4trace:configure.ac:14: -1- _AM_SET_OPTION([subdir-objects])
 m4trace:configure.ac:14: -2- _AM_MANGLE_OPTION([subdir-objects])
 m4trace:configure.ac:14: -1- _m4_warn([obsolete], [The macro `AC_FOREACH' is obsolete.
-You should run autoupdate.], [../../lib/autoconf/general.m4:196: AC_FOREACH is expanded from...
+You should run autoupdate.], [../../lib/autoconf/general.m4:194: AC_FOREACH is expanded from...
 /usr/share/aclocal-1.9/options.m4:25: _AM_SET_OPTIONS is expanded from...
 /usr/share/aclocal-1.9/init.m4:26: AM_INIT_AUTOMAKE is expanded from...
 configure.ac:14: the top level])
@@ -679,7 +679,7 @@ m4trace:configure.ac:153: -1- m4_pattern_allow([^USE_XMLPARSER_LIBXML2$])
 m4trace:configure.ac:156: -1- m4_pattern_allow([^XML_CFLAGS$])
 m4trace:configure.ac:157: -1- m4_pattern_allow([^XML_LIBS$])
 m4trace:configure.ac:166: -2- _m4_warn([obsolete], [The macro `AC_HELP_STRING' is obsolete.
-You should run autoupdate.], [../../lib/autoconf/general.m4:209: AC_HELP_STRING is expanded from...
+You should run autoupdate.], [../../lib/autoconf/general.m4:207: AC_HELP_STRING is expanded from...
 configure.ac:166: the top level])
 m4trace:configure.ac:167: -1- AM_CONDITIONAL([UNITTESTS], [test "$build_tests" = yes])
 m4trace:configure.ac:167: -1- m4_pattern_allow([^UNITTESTS_TRUE$])
@@ -697,32 +697,34 @@ m4trace:configure.ac:202: -1- m4_pattern_allow([^GTK_CFLAGS$])
 m4trace:configure.ac:203: -1- m4_pattern_allow([^GDK_IMLIB_CFLAGS$])
 m4trace:configure.ac:204: -1- m4_pattern_allow([^GTK_LIBS$])
 m4trace:configure.ac:205: -1- m4_pattern_allow([^GDK_IMLIB_LIBS$])
-m4trace:configure.ac:213: -1- m4_pattern_allow([^const$])
-m4trace:configure.ac:215: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
-m4trace:configure.ac:221: -1- m4_pattern_allow([^HAVE_SOCKET$])
-m4trace:configure.ac:222: -1- m4_pattern_allow([^HAVE_INET_NTOA$])
-m4trace:configure.ac:223: -1- m4_pattern_allow([^HAVE_IFADDRS_H$])
-m4trace:configure.ac:224: -1- m4_pattern_allow([^HAVE_GETIFADDRS$])
-m4trace:configure.ac:227: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
-You should run autoupdate.], [../../lib/autoconf/general.m4:2615: AC_TRY_COMPILE is expanded from...
-configure.ac:227: the top level])
-m4trace:configure.ac:227: -1- m4_pattern_allow([^HAVE_SOCKLEN_T$])
-m4trace:configure.ac:242: -1- m4_pattern_allow([^HAVE_SSTREAM$])
-m4trace:configure.ac:245: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
-You should run autoupdate.], [../../lib/autoconf/general.m4:2615: AC_TRY_COMPILE is expanded from...
-configure.ac:245: the top level])
-m4trace:configure.ac:245: -1- m4_pattern_allow([^HAVE_STD_COUT$])
-m4trace:configure.ac:261: -1- m4_pattern_allow([^HAVE_FOPEN$])
-m4trace:configure.ac:262: -1- m4_pattern_allow([^HAVE_MEMSET$])
-m4trace:configure.ac:263: -1- m4_pattern_allow([^HAVE_REALPATH$])
-m4trace:configure.ac:264: -1- m4_pattern_allow([^HAVE_LOCALTIME_R$])
-m4trace:configure.ac:265: -1- m4_pattern_allow([^HAVE_GMTIME_R$])
-m4trace:configure.ac:266: -1- m4_pattern_allow([^HAVE_SNPRINTF$])
-m4trace:configure.ac:267: -1- m4_pattern_allow([^HAVE_STRCHR$])
-m4trace:configure.ac:268: -1- m4_pattern_allow([^HAVE_UNAME$])
-m4trace:configure.ac:274: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
+m4trace:configure.ac:212: -1- m4_pattern_allow([^HAVE_LIBUUID$])
+m4trace:configure.ac:213: -1- m4_pattern_allow([^HAVE_UUID_UUID_H$])
+m4trace:configure.ac:220: -1- m4_pattern_allow([^const$])
+m4trace:configure.ac:222: -1- m4_pattern_allow([^TM_IN_SYS_TIME$])
+m4trace:configure.ac:228: -1- m4_pattern_allow([^HAVE_SOCKET$])
+m4trace:configure.ac:229: -1- m4_pattern_allow([^HAVE_INET_NTOA$])
+m4trace:configure.ac:230: -1- m4_pattern_allow([^HAVE_IFADDRS_H$])
+m4trace:configure.ac:231: -1- m4_pattern_allow([^HAVE_GETIFADDRS$])
+m4trace:configure.ac:234: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
+You should run autoupdate.], [../../lib/autoconf/general.m4:2614: AC_TRY_COMPILE is expanded from...
+configure.ac:234: the top level])
+m4trace:configure.ac:234: -1- m4_pattern_allow([^HAVE_SOCKLEN_T$])
+m4trace:configure.ac:249: -1- m4_pattern_allow([^HAVE_SSTREAM$])
+m4trace:configure.ac:252: -1- _m4_warn([obsolete], [The macro `AC_TRY_COMPILE' is obsolete.
+You should run autoupdate.], [../../lib/autoconf/general.m4:2614: AC_TRY_COMPILE is expanded from...
+configure.ac:252: the top level])
+m4trace:configure.ac:252: -1- m4_pattern_allow([^HAVE_STD_COUT$])
+m4trace:configure.ac:268: -1- m4_pattern_allow([^HAVE_FOPEN$])
+m4trace:configure.ac:269: -1- m4_pattern_allow([^HAVE_MEMSET$])
+m4trace:configure.ac:270: -1- m4_pattern_allow([^HAVE_REALPATH$])
+m4trace:configure.ac:271: -1- m4_pattern_allow([^HAVE_LOCALTIME_R$])
+m4trace:configure.ac:272: -1- m4_pattern_allow([^HAVE_GMTIME_R$])
+m4trace:configure.ac:273: -1- m4_pattern_allow([^HAVE_SNPRINTF$])
+m4trace:configure.ac:274: -1- m4_pattern_allow([^HAVE_STRCHR$])
+m4trace:configure.ac:275: -1- m4_pattern_allow([^HAVE_UNAME$])
+m4trace:configure.ac:281: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 You should run autoupdate.], [])
-m4trace:configure.ac:274: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.ac:274: -1- m4_pattern_allow([^LTLIBOBJS$])
-m4trace:configure.ac:274: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
-m4trace:configure.ac:274: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+m4trace:configure.ac:281: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:281: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.ac:281: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
+m4trace:configure.ac:281: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS

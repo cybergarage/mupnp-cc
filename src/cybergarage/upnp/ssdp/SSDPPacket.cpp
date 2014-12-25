@@ -19,6 +19,7 @@
 ******************************************************************/
 
 #include <string>
+#include <string.h>
 #include <uhttp/HTTP.h>
 #include <cybergarage/upnp/ssdp/SSDPPacket.h>
 
