@@ -1,6 +1,7 @@
 Makefile
 config
 config.*
+autom4te.cache/
 *.o
 *.a
 *.po
