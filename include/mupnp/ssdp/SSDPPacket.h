@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,8 +15,8 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPPACKET_H_
-#define _CLINK_SSDPPACKET_H_
+#ifndef _MUPMPCC_SSDPPACKET_H_
+#define _MUPMPCC_SSDPPACKET_H_
 
 #include <iostream>
 #include <string>
@@ -24,14 +24,14 @@
 #include <uhttp/net/DatagramPacket.h>
 #include <uhttp/http/HTTP.h>
 #include <uhttp/http/HTTPHeader.h>
-#include <cybergarage/upnp/ssdp/SSDP.h>
-#include <cybergarage/upnp/device/NTS.h>
-#include <cybergarage/upnp/device/MAN.h>
-#include <cybergarage/upnp/device/NT.h>
-#include <cybergarage/upnp/device/ST.h>
-#include <cybergarage/upnp/device/USN.h>
+#include <mupnp/ssdp/SSDP.h>
+#include <mupnp/device/NTS.h>
+#include <mupnp/device/MAN.h>
+#include <mupnp/device/NT.h>
+#include <mupnp/device/ST.h>
+#include <mupnp/device/USN.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class SSDPPacket  {
   uHTTP::DatagramPacket  dgmPacket;
   std::string localAddr;

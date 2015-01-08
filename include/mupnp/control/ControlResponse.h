@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,18 +13,18 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CONTROLRESPONSE_H_
-#define _CLINK_CONTROLRESPONSE_H_
+#ifndef _MUPMPCC_CONTROLRESPONSE_H_
+#define _MUPMPCC_CONTROLRESPONSE_H_
 
 #include <cybergarage/soap/SOAPResponse.h>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/soap/SOAP.h>
-#include <cybergarage/upnp/UPnP.h>
-#include <cybergarage/upnp/UPnPStatus.h>
+#include <mupnp/UPnP.h>
+#include <mupnp/UPnPStatus.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class ControlResponse : public CyberSOAP::SOAPResponse {
   UPnPStatus upnpErr;
 

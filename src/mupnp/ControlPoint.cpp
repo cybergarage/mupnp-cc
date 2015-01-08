@@ -45,14 +45,14 @@
 ******************************************************************/
 
 #include <uhttp/util/Debug.h>
-#include <cybergarage/upnp/ControlPoint.h>
+#include <mupnp/ControlPoint.h>
 #include <cybergarage/xml/Parser.h>
-#include <cybergarage/upnp/Log.h>
+#include <mupnp/Log.h>
 
 #include <iostream>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 using namespace uHTTP;
 

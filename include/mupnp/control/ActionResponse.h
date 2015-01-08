@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,16 +13,16 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ACTIONRESPONSE_H_
-#define _CLINK_ACTIONRESPONSE_H_
+#ifndef _MUPMPCC_ACTIONRESPONSE_H_
+#define _MUPMPCC_ACTIONRESPONSE_H_
 
-#include <cybergarage/upnp/control/ControlResponse.h>
+#include <mupnp/control/ControlResponse.h>
 #include <uhttp/http/HTTPStatus.h>
-#include <cybergarage/upnp/ArgumentList.h>
+#include <mupnp/ArgumentList.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class Action;
 
 class ActionResponse : public ControlResponse {

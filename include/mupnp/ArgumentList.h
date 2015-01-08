@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,14 +13,14 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ARGUMENTLIST_H_
-#define _CLINK_ARGUMENTLIST_H_
+#ifndef _MUPMPCC_ARGUMENTLIST_H_
+#define _MUPMPCC_ARGUMENTLIST_H_
 
 #include <uhttp/util/Vector.h>
 #include <uhttp/util/StringUtil.h>
-#include <cybergarage/upnp/Argument.h>
+#include <mupnp/Argument.h>
 
-namespace CyberLink {
+namespace mUPnP {
     
 class ArgumentList : public uHTTP::Vector<Argument>  {
 public:

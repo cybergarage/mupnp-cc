@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -21,15 +21,15 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/control/ActionRequest.h>
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/Action.h>
+#include <mupnp/control/ActionRequest.h>
+#include <mupnp/Device.h>
+#include <mupnp/Service.h>
+#include <mupnp/Action.h>
 
 #include <string>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 using namespace CyberSOAP;
 
@@ -89,7 +89,7 @@ const char *ActionRequest::getActionName(std::string &buf) {
 // setRequest
 ////////////////////////////////////////////////
 
-void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList) {
+void ActionRequest::setRequest(mUPnP::Action *action, ArgumentList *argList) {
   Service *service = action->getService();
 
   setRequestHost(service);
@@ -116,7 +116,7 @@ void ActionRequest::setRequest(CyberLink::Action *action, ArgumentList *argList)
 // Contents
 ////////////////////////////////////////////////
 
-Node *ActionRequest::createContentNode(Service *service, CyberLink::Action *action, ArgumentList *argList) {
+Node *ActionRequest::createContentNode(Service *service, mUPnP::Action *action, ArgumentList *argList) {
   const char *actionName = action->getName();
   const char *serviceType = service->getServiceType();
 

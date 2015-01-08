@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ACTIONLISTENER_H_
-#define _CLINK_ACTIONLISTENER_H_
+#ifndef _MUPMPCC_ACTIONLISTENER_H_
+#define _MUPMPCC_ACTIONLISTENER_H_
 
-//#include <cybergarage/upnp/Action.h>
+//#include <mupnp/Action.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Action;
 
 class ActionListener {

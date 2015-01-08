@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_HTTPUSOCKET_H_
-#define _CLINK_HTTPUSOCKET_H_
+#ifndef _MUPMPCC_HTTPUSOCKET_H_
+#define _MUPMPCC_HTTPUSOCKET_H_
 
 #include <uhttp/net/DatagramSocket.h>
-#include <cybergarage/upnp/ssdp/SSDPPacket.h>
+#include <mupnp/ssdp/SSDPPacket.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class HTTPUSocket  {
   uHTTP::DatagramSocket ssdpUniSock;
 

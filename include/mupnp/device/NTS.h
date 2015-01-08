@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_NTS_H_
-#define _CLINK_NTS_H_
+#ifndef _MUPMPCC_NTS_H_
+#define _MUPMPCC_NTS_H_
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 namespace NTS {
 const char ALIVE[] = "ssdp:alive";
 const char BYEBYE[] = "ssdp:byebye";

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,17 +15,17 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SERVICEDATA_H_
-#define _CLINK_SERVICEDATA_H_
+#ifndef _MUPMPCC_SERVICEDATA_H_
+#define _MUPMPCC_SERVICEDATA_H_
 
 #include <uhttp/util/Listener.h>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/xml/NodeData.h>
-#include <cybergarage/upnp/event/SubscriberList.h>
+#include <mupnp/event/SubscriberList.h>
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 class QueryListener;
 class Service;
 

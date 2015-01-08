@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,10 +15,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/ssdp/SSDPSearchResponseSocketList.h>
+#include <mupnp/ssdp/SSDPSearchResponseSocketList.h>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constructor

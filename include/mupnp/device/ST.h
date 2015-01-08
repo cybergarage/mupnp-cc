@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ST_H_
-#define _CLINK_ST_H_
+#ifndef _MUPMPCC_ST_H_
+#define _MUPMPCC_ST_H_
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 namespace ST {
 const char ALL_DEVICE[] = "ssdp:all";
 const char ROOT_DEVICE[] = "upnp:rootdevice";

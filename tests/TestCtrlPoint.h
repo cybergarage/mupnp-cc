@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -16,9 +16,9 @@
 #ifndef _TESTCTRLPOINT_H_
 #define _TESTCTRLPOINT_H_
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/UPnP.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 class TestCtrlPoint : public ControlPoint , public NotifyListener, public EventListener, public SearchResponseListener
 {

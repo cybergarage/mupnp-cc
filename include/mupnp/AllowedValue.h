@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *  
 ******************************************************************/
 
-#ifndef _CLINK_ALLOWEDVALUE_H_
-#define _CLINK_ALLOWEDVALUE_H_
+#ifndef _MUPMPCC_ALLOWEDVALUE_H_
+#define _MUPMPCC_ALLOWEDVALUE_H_
 
 #include <cybergarage/xml/Node.h>
 
-namespace CyberLink{
+namespace mUPnP{
 class AllowedValue {
   CyberXML::Node *allowedValueNode;
   

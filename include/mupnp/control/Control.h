@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CONTROL_H_
-#define _CLINK_CONTROL_H_
+#ifndef _MUPMPCC_CONTROL_H_
+#define _MUPMPCC_CONTROL_H_
 
 #include <sstream>
 #include <cybergarage/xml/Node.h>
 
-namespace CyberLink{
+namespace mUPnP{
 namespace Control {
 const char NS[] = "u";
 const char QUERY_SOAPACTION[] = "urn:schemas-upnp-org:control-1-0#QueryStateVariable";

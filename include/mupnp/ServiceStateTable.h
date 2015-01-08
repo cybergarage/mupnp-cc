@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SERVICESTATETABLE_H_
-#define _CLINK_SERVICESTATETABLE_H_
+#ifndef _MUPMPCC_SERVICESTATETABLE_H_
+#define _MUPMPCC_SERVICESTATETABLE_H_
 
 #include <uhttp/util/Vector.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class StateVariable;
 
 class ServiceStateTable : public uHTTP::Vector<StateVariable>  {

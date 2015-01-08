@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPSEARCHSOCKETLIST_H_
-#define _CLINK_SSDPSEARCHSOCKETLIST_H_
+#ifndef _MUPMPCC_SSDPSEARCHSOCKETLIST_H_
+#define _MUPMPCC_SSDPSEARCHSOCKETLIST_H_
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchSocket.h>
-#include <cybergarage/upnp/device/SearchListener.h>
+#include <mupnp/ssdp/SSDPSearchSocket.h>
+#include <mupnp/device/SearchListener.h>
 
-namespace CyberLink {
+namespace mUPnP {
     
 class SSDPSearchSocketList : public uHTTP::Vector<SSDPSearchSocket>  {
 public:

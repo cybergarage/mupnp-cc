@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,14 +13,14 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPRESPONSE_H_
-#define _CLINK_SSDPRESPONSE_H_
+#ifndef _MUPMPCC_SSDPRESPONSE_H_
+#define _MUPMPCC_SSDPRESPONSE_H_
 
 #include <uhttp/http/HTTPResponse.h>
 #include <uhttp/http/HTTP.h>
-#include <cybergarage/upnp/ssdp/SSDP.h>
+#include <mupnp/ssdp/SSDP.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class SSDPResponse : public uHTTP::HTTPResponse {
  public:
   ////////////////////////////////////////////////

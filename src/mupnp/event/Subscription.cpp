@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -18,8 +18,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/UPnP.h>
-#include <cybergarage/upnp/event/Subscription.h>
+#include <mupnp/UPnP.h>
+#include <mupnp/event/Subscription.h>
 #include <uhttp/util/StringUtil.h>
 
 #include <stdio.h>
@@ -29,13 +29,13 @@
 
 using namespace std;
 using namespace uHTTP;
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Timeout
 ////////////////////////////////////////////////
 
-const char *CyberLink::Subscription::toTimeoutHeaderString(long time, std::string &buf) {
+const char *mUPnP::Subscription::toTimeoutHeaderString(long time, std::string &buf) {
   if (time != Subscription::INFINITE_VALUE) {
     string timeBuf;
     buf = Subscription::TIMEOUT_HEADER;
@@ -46,7 +46,7 @@ const char *CyberLink::Subscription::toTimeoutHeaderString(long time, std::strin
   return buf.c_str();
 }
 
-long CyberLink::Subscription::GetTimeout(const std::string &headerValue) {
+long mUPnP::Subscription::GetTimeout(const std::string &headerValue) {
   string headerValueStr = headerValue;
   string::size_type minusIdx = headerValueStr.find('-');
   if (minusIdx == std::string::npos)
@@ -62,7 +62,7 @@ long CyberLink::Subscription::GetTimeout(const std::string &headerValue) {
 // SID
 ////////////////////////////////////////////////
 
-const char *CyberLink::Subscription::CreateSID(std::string &buf) {
+const char *mUPnP::Subscription::CreateSID(std::string &buf) {
   time_t time1 = time(NULL);
   time_t time2 = (time_t)((double)time(NULL) * ((double)rand() / (double)RAND_MAX));
   char sidBuf[((4+1)*4) + 1];
@@ -81,7 +81,7 @@ const char *Subscription::toSIDHeaderString(const std::string &id, std::string &
   return buf.c_str();
 }
 
-const char *CyberLink::Subscription::GetSID(const std::string &headerValue, std::string &buf) {
+const char *mUPnP::Subscription::GetSID(const std::string &headerValue, std::string &buf) {
   std::string uuid = Subscription::UUID;
   std::string headerValueStr = headerValue;
   buf = headerValueStr.substr(uuid.length(), headerValueStr.length());

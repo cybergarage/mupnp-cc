@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,14 +13,14 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPNOTIFYSOCKETLIST_H_
-#define _CLINK_SSDPNOTIFYSOCKETLIST_H_
+#ifndef _MUPMPCC_SSDPNOTIFYSOCKETLIST_H_
+#define _MUPMPCC_SSDPNOTIFYSOCKETLIST_H_
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
+#include <mupnp/ssdp/SSDPNotifySocket.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ControlPoint;
 
 class SSDPNotifySocketList : public uHTTP::Vector<SSDPNotifySocket>  {

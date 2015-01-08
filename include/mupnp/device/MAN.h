@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_MAN_H_
-#define _CLINK_MAN_H_
+#ifndef _MUPMPCC_MAN_H_
+#define _MUPMPCC_MAN_H_
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 namespace MAN {
 const char DISCOVER[] = "ssdp:discover";
   

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,16 +13,16 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_HTTPMUSOCKET_H_
-#define _CLINK_HTTPMUSOCKET_H_
+#ifndef _MUPMPCC_HTTPMUSOCKET_H_
+#define _MUPMPCC_HTTPMUSOCKET_H_
 
 #include <uhttp/net/MulticastSocket.h>
 #include <uhttp/net/InetSocketAddress.h>
 #include <uhttp/net/NetworkInterface.h>
 #include <uhttp/http/HTTPRequest.h>
-#include <cybergarage/upnp/ssdp/SSDPPacket.h>
+#include <mupnp/ssdp/SSDPPacket.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class HTTPMUSocket {
   uHTTP::InetSocketAddress ssdpMultiGroup;
   uHTTP::MulticastSocket ssdpMultiSock;

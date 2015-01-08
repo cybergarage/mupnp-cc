@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210A2EF21A5E3A37002DA63C /* libmupnp++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210A2EEF1A5E35A0002DA63C /* libmupnp++.a */; };
 		214BD315192DE5CD00426493 /* libuhttp++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 214BD312192DE5A800426493 /* libuhttp++.a */; };
 		214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */; };
 		214CE3651564D75400115E8A /* TestDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3601564D75400115E8A /* TestDevice.cpp */; };
 		214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3611564D75400115E8A /* TestHTTPServer.cpp */; };
 		215D56C91564F33F00D7BDC0 /* UPnPDeviceTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */; };
 		215D56CA1564F33F00D7BDC0 /* UPnPMiscTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */; };
-		215D56D61564F41E00D7BDC0 /* liblibclink++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D56D31564F41200D7BDC0 /* liblibclink++.a */; };
 		218B2DED156A6DF300940645 /* UPnPDeviceParseTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 218B2DEC156A6DF300940645 /* UPnPDeviceParseTests.cpp */; };
 		21A753891565EE34002D1E62 /* XMLParserTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21A753881565EE34002D1E62 /* XMLParserTests.cpp */; };
 		21D287B71850CA7600B312EF /* TestMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21D287B61850CA7600B312EF /* TestMain.cpp */; };
@@ -21,6 +21,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		210A2EEE1A5E35A0002DA63C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 219C21ED155C7877003ABA46;
+			remoteInfo = "libmupnp++";
+		};
+		210A2EF01A5E3A33002DA63C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 219C21EC155C7877003ABA46;
+			remoteInfo = "libmupnp++";
+		};
 		214BD311192DE5A800426493 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
@@ -34,20 +48,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 21E1EB1B1535D1E0005AA247;
 			remoteInfo = libuhttp;
-		};
-		215D56D21564F41200D7BDC0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 219C21ED155C7877003ABA46;
-			remoteInfo = "libclink++";
-		};
-		215D56D41564F41A00D7BDC0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 219C21EC155C7877003ABA46;
-			remoteInfo = "libclink++";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -64,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libmupnp++.xcodeproj"; path = "../../../lib/macosx/xcode/libmupnp++.xcodeproj"; sourceTree = "<group>"; };
 		214BD30D192DE5A700426493 /* libuhttp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libuhttp.xcodeproj; path = ../../../../uhttp/lib/macosx/xcode/libuhttp.xcodeproj; sourceTree = "<group>"; };
 		214CE35A1564D75400115E8A /* TestCtrlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCtrlPoint.h; path = ../../TestCtrlPoint.h; sourceTree = "<group>"; };
 		214CE35B1564D75400115E8A /* TestDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDevice.h; path = ../../TestDevice.h; sourceTree = "<group>"; };
@@ -73,8 +74,7 @@
 		214CE3611564D75400115E8A /* TestHTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; name = TestHTTPServer.cpp; path = ../../TestHTTPServer.cpp; sourceTree = "<group>"; tabWidth = 2; };
 		215D56C71564F33F00D7BDC0 /* UPnPDeviceTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPDeviceTests.cpp; path = ../../UPnPDeviceTests.cpp; sourceTree = "<group>"; };
 		215D56C81564F33F00D7BDC0 /* UPnPMiscTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPMiscTests.cpp; path = ../../UPnPMiscTests.cpp; sourceTree = "<group>"; };
-		215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libclink++.xcodeproj"; path = "../../../lib/macosx/xcode/libclink++.xcodeproj"; sourceTree = "<group>"; };
-		216397E11564C6D100CF258B /* ClinkUnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ClinkUnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		216397E11564C6D100CF258B /* mUPnPUnitTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mUPnPUnitTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		218B2DEC156A6DF300940645 /* UPnPDeviceParseTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UPnPDeviceParseTests.cpp; path = ../../UPnPDeviceParseTests.cpp; sourceTree = "<group>"; };
 		21A753881565EE34002D1E62 /* XMLParserTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XMLParserTests.cpp; path = ../../XMLParserTests.cpp; sourceTree = "<group>"; };
 		21D287B61850CA7600B312EF /* TestMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestMain.cpp; path = ../../TestMain.cpp; sourceTree = "<group>"; };
@@ -86,14 +86,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210A2EF21A5E3A37002DA63C /* libmupnp++.a in Frameworks */,
 				214BD315192DE5CD00426493 /* libuhttp++.a in Frameworks */,
-				215D56D61564F41E00D7BDC0 /* liblibclink++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210A2EEB1A5E35A0002DA63C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				210A2EEF1A5E35A0002DA63C /* libmupnp++.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		214BD30E192DE5A700426493 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,18 +132,10 @@
 		214CE3691564D87500115E8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */,
 				214BD30D192DE5A700426493 /* libuhttp.xcodeproj */,
-				215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		215D56CC1564F41100D7BDC0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				215D56D31564F41200D7BDC0 /* liblibclink++.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		216397D61564C6D100CF258B = {
@@ -150,7 +150,7 @@
 		216397E21564C6D100CF258B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				216397E11564C6D100CF258B /* ClinkUnitTest */,
+				216397E11564C6D100CF258B /* mUPnPUnitTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,9 +158,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		216397E01564C6D100CF258B /* ClinkUnitTest */ = {
+		216397E01564C6D100CF258B /* mUPnPUnitTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 216397EB1564C6D100CF258B /* Build configuration list for PBXNativeTarget "ClinkUnitTest" */;
+			buildConfigurationList = 216397EB1564C6D100CF258B /* Build configuration list for PBXNativeTarget "mUPnPUnitTest" */;
 			buildPhases = (
 				216397DD1564C6D100CF258B /* Sources */,
 				216397DE1564C6D100CF258B /* Frameworks */,
@@ -169,12 +169,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				210A2EF11A5E3A33002DA63C /* PBXTargetDependency */,
 				214BD314192DE5C700426493 /* PBXTargetDependency */,
-				215D56D51564F41A00D7BDC0 /* PBXTargetDependency */,
 			);
-			name = ClinkUnitTest;
-			productName = ClinkUnitTest;
-			productReference = 216397E11564C6D100CF258B /* ClinkUnitTest */;
+			name = mUPnPUnitTest;
+			productName = mUPnPUnitTest;
+			productReference = 216397E11564C6D100CF258B /* mUPnPUnitTest */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -185,7 +185,7 @@
 			attributes = {
 				LastUpgradeCheck = 0600;
 			};
-			buildConfigurationList = 216397DB1564C6D100CF258B /* Build configuration list for PBXProject "ClinkUnitTest" */;
+			buildConfigurationList = 216397DB1564C6D100CF258B /* Build configuration list for PBXProject "mUPnPUnitTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -197,8 +197,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 215D56CC1564F41100D7BDC0 /* Products */;
-					ProjectRef = 215D56CB1564F41100D7BDC0 /* libclink++.xcodeproj */;
+					ProductGroup = 210A2EEB1A5E35A0002DA63C /* Products */;
+					ProjectRef = 210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */;
 				},
 				{
 					ProductGroup = 214BD30E192DE5A700426493 /* Products */;
@@ -207,24 +207,25 @@
 			);
 			projectRoot = "";
 			targets = (
-				216397E01564C6D100CF258B /* ClinkUnitTest */,
+				216397E01564C6D100CF258B /* mUPnPUnitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		210A2EEF1A5E35A0002DA63C /* libmupnp++.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "libmupnp++.a";
+			path = "liblibmupnp++.a";
+			remoteRef = 210A2EEE1A5E35A0002DA63C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		214BD312192DE5A800426493 /* libuhttp++.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libuhttp++.a";
 			remoteRef = 214BD311192DE5A800426493 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		215D56D31564F41200D7BDC0 /* liblibclink++.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "liblibclink++.a";
-			remoteRef = 215D56D21564F41200D7BDC0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -249,15 +250,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		210A2EF11A5E3A33002DA63C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libmupnp++";
+			targetProxy = 210A2EF01A5E3A33002DA63C /* PBXContainerItemProxy */;
+		};
 		214BD314192DE5C700426493 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libuhttp;
 			targetProxy = 214BD313192DE5C700426493 /* PBXContainerItemProxy */;
-		};
-		215D56D51564F41A00D7BDC0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "libclink++";
-			targetProxy = 215D56D41564F41A00D7BDC0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -386,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		216397DB1564C6D100CF258B /* Build configuration list for PBXProject "ClinkUnitTest" */ = {
+		216397DB1564C6D100CF258B /* Build configuration list for PBXProject "mUPnPUnitTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				216397E91564C6D100CF258B /* Debug */,
@@ -395,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		216397EB1564C6D100CF258B /* Build configuration list for PBXNativeTarget "ClinkUnitTest" */ = {
+		216397EB1564C6D100CF258B /* Build configuration list for PBXNativeTarget "mUPnPUnitTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				216397EC1564C6D100CF258B /* Debug */,

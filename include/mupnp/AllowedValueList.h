@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for Java
+*  mUPnP for Java
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,14 +13,14 @@
 *  
 ******************************************************************/
 
-#ifndef _CLINK_ALLOWEDVALUELIST_H_
-#define _CLINK_ALLOWEDVALUELIST_H_
+#ifndef _MUPMPCC_ALLOWEDVALUELIST_H_
+#define _MUPMPCC_ALLOWEDVALUELIST_H_
 
 #include <string>
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/AllowedValue.h>
+#include <mupnp/AllowedValue.h>
 
-namespace CyberLink {
+namespace mUPnP {
     
 class AllowedValueList : public uHTTP::Vector<AllowedValue>  {
 public:

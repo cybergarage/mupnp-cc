@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for Java
+*  mUPnP for Java
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -8,11 +8,11 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_TESTHTTPSERVER_H_
-#define _CLINK_TESTHTTPSERVER_H_
+#ifndef _MUPMPCC_TESTHTTPSERVER_H_
+#define _MUPMPCC_TESTHTTPSERVER_H_
 
 #include <string>
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/UPnP.h>
 
 class TestHTTPServer : public uHTTP::HTTPServer, public uHTTP::HTTPRequestListener
 {

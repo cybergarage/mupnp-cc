@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,14 +13,14 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPNOTIFYREQUEST_H_
-#define _CLINK_SSDPNOTIFYREQUEST_H_
+#ifndef _MUPMPCC_SSDPNOTIFYREQUEST_H_
+#define _MUPMPCC_SSDPNOTIFYREQUEST_H_
 
 #include <sstream>
 
-#include <cybergarage/upnp/ssdp/SSDPRequest.h>
+#include <mupnp/ssdp/SSDPRequest.h>
 
-namespace CyberLink {
+namespace mUPnP {
 
 class SSDPNotifyRequest : public SSDPRequest {
 public:

@@ -1,6 +1,6 @@
 /******************************************************************
  *
- * CyberLink for C++
+ * mUPnP for C++
  *
  * Copyright (C) Satoshi Konno 2002
  *
@@ -11,10 +11,10 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/UPnP.h>
 
 using namespace uHTTP;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace std;
 
 BOOST_AUTO_TEST_CASE(NotifySocketPost)

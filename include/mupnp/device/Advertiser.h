@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ADVERTISER_H_
-#define _CLINK_ADVERTISER_H_
+#ifndef _MUPMPCC_ADVERTISER_H_
+#define _MUPMPCC_ADVERTISER_H_
 
 #include <uhttp/util/Thread.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Device;
 
 class Advertiser : public uHTTP::Thread {

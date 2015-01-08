@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_PROPERTYLIST_H_
-#define _CLINK_PROPERTYLIST_H_
+#ifndef _MUPMPCC_PROPERTYLIST_H_
+#define _MUPMPCC_PROPERTYLIST_H_
 
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/event/Property.h>
+#include <mupnp/event/Property.h>
 
-namespace CyberLink {
+namespace mUPnP {
 
 class PropertyList : public uHTTP::Vector<Property>  {
  public:

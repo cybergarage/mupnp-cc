@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,13 +15,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ACTONDATA_H_
-#define _CLINK_ACTONDATA_H_
+#ifndef _MUPMPCC_ACTONDATA_H_
+#define _MUPMPCC_ACTONDATA_H_
 
 #include <string>
 #include <cybergarage/xml/NodeData.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ActionListener;
 class ControlResponse;
 

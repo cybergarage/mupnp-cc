@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -20,12 +20,12 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/control/QueryRequest.h>
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/StateVariable.h>
+#include <mupnp/control/QueryRequest.h>
+#include <mupnp/Device.h>
+#include <mupnp/Service.h>
+#include <mupnp/StateVariable.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ACTIONLIST_H_
-#define _CLINK_ACTIONLIST_H_
+#ifndef _MUPMPCC_ACTIONLIST_H_
+#define _MUPMPCC_ACTIONLIST_H_
 
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/Action.h>
+#include <mupnp/Action.h>
 
-namespace CyberLink {
+namespace mUPnP {
 
 class ActionList : public uHTTP::Vector<Action>  {
 

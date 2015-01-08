@@ -1,6 +1,6 @@
 /******************************************************************
 *
-* CyberLink for C++
+* mUPnP for C++
 *
 * Copyright (C) Satoshi Konno 2002
 *
@@ -13,7 +13,7 @@
 
 #include <uhttp/util/Log.h>
 
-namespace CyberLink {
+namespace mUPnP {
   
 #if defined(DEBUG)
 #define LogTrace(format, ...)     uHTTP::Log(uHTTP::Logger::GetSharedInstance(), uHTTP::LoggerTarget::TRACE,   __FILE__,  __LINE__, __PRETTY_FUNCTION__, format, ##__VA_ARGS__)

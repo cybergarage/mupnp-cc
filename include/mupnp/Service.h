@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,28 +15,28 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SERVICE_H_
-#define _CLINK_SERVICE_H_
+#ifndef _MUPMPCC_SERVICE_H_
+#define _MUPMPCC_SERVICE_H_
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/io/File.h>
 #include <uhttp/net/URL.h>
 
-#include <cybergarage/upnp/xml/DeviceData.h>
-#include <cybergarage/upnp/ActionList.h>
-#include <cybergarage/upnp/StateVariable.h>
-#include <cybergarage/upnp/ServiceStateTable.h>
-#include <cybergarage/upnp/xml/ServiceData.h>
-#include <cybergarage/upnp/event/NotifyRequest.h>
-#include <cybergarage/upnp/event/SubscriberList.h>
-#include <cybergarage/upnp/control/QueryRequest.h>
-#include <cybergarage/upnp/control/ActionListener.h>
+#include <mupnp/xml/DeviceData.h>
+#include <mupnp/ActionList.h>
+#include <mupnp/StateVariable.h>
+#include <mupnp/ServiceStateTable.h>
+#include <mupnp/xml/ServiceData.h>
+#include <mupnp/event/NotifyRequest.h>
+#include <mupnp/event/SubscriberList.h>
+#include <mupnp/control/QueryRequest.h>
+#include <mupnp/control/ActionListener.h>
 #include <uhttp/util/Mutex.h>
 #include <uhttp/util/Vector.h>
 #include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Device;
 
 class Service {

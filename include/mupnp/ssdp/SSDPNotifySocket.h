@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,16 +13,16 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPNOTIFYSOCKET_H_
-#define _CLINK_SSDPNOTIFYSOCKET_H_
+#ifndef _MUPMPCC_SSDPNOTIFYSOCKET_H_
+#define _MUPMPCC_SSDPNOTIFYSOCKET_H_
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/Thread.h>
-#include <cybergarage/upnp/ssdp/SSDP.h>
-#include <cybergarage/upnp/ssdp/HTTPMUSocket.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifyRequest.h>
+#include <mupnp/ssdp/SSDP.h>
+#include <mupnp/ssdp/HTTPMUSocket.h>
+#include <mupnp/ssdp/SSDPNotifyRequest.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ControlPoint;
 
 class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {

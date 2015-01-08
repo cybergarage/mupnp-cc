@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_DEVICECHANGELISTENER_H_
-#define _CLINK_DEVICECHANGELISTENER_H_
+#ifndef _MUPMPCC_DEVICECHANGELISTENER_H_
+#define _MUPMPCC_DEVICECHANGELISTENER_H_
 
 #include <uhttp/util/Listener.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Device;
 
 class DeviceChangeListener : public uHTTP::Listener {

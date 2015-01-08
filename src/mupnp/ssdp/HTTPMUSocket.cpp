@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -18,9 +18,9 @@
 
 #include <time.h>
 #include <uhttp/net/HostInterface.h>
-#include <cybergarage/upnp/ssdp/HTTPMUSocket.h>
+#include <mupnp/ssdp/HTTPMUSocket.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

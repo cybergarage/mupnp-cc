@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_QUERYRESPONSE_H_
-#define _CLINK_QUERYRESPONSE_H_
+#ifndef _MUPMPCC_QUERYRESPONSE_H_
+#define _MUPMPCC_QUERYRESPONSE_H_
 
-#include <cybergarage/upnp/control/ControlResponse.h>
+#include <mupnp/control/ControlResponse.h>
 #include <cybergarage/soap/SOAP.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class StateVariable;
 
 class QueryResponse : public ControlResponse {

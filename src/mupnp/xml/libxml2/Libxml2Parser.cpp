@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  libxml2 XML parser support for for CyberLink C++ UPnP stack
+*  libxml2 XML parser support for for mUPnP C++ UPnP stack
 *
 *  Copyright (C) Nokia 2005
 *
@@ -31,7 +31,7 @@
 ////////////////////////////////////////////////
 
 #include <cybergarage/xml/Parser.h>
-#include <cybergarage/upnp/Log.h>
+#include <mupnp/Log.h>
 
 #include <libxml/parser.h>
 #include <libxml/tree.h>
@@ -146,10 +146,10 @@ Node *Parser::parse(const std::string &data, size_t len) {
     return NULL;
   }
 
-  // Then convert the libxml2 type node tree into CyberLink XML node tree
+  // Then convert the libxml2 type node tree into mUPnP XML node tree
   Node *rootNode = convertToCLinkFormat( doc, cur, 0 );
 
-  // Now all data is copied to CyberLink, release the original DOM object tree
+  // Now all data is copied to mUPnP, release the original DOM object tree
   xmlFreeDoc(doc);
 
   return rootNode;

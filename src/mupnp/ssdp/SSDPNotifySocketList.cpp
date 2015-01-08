@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,10 +15,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/ssdp/SSDPNotifySocketList.h>
+#include <mupnp/ssdp/SSDPNotifySocketList.h>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

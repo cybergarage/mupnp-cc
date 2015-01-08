@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -79,23 +79,23 @@
 #include <uhttp/util/TimeUtil.h>
 #include <uhttp/http/HTTPDate.h>
 #include <uhttp/io/File.h>
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/UPnPStatus.h>
-#include <cybergarage/upnp/Log.h>
-#include <cybergarage/upnp/device/ST.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifyRequest.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchResponse.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchResponseSocket.h>
-#include <cybergarage/upnp/event/SubscriptionResponse.h>
+#include <mupnp/Device.h>
+#include <mupnp/Service.h>
+#include <mupnp/UPnPStatus.h>
+#include <mupnp/Log.h>
+#include <mupnp/device/ST.h>
+#include <mupnp/ssdp/SSDPNotifySocket.h>
+#include <mupnp/ssdp/SSDPNotifyRequest.h>
+#include <mupnp/ssdp/SSDPSearchResponse.h>
+#include <mupnp/ssdp/SSDPSearchResponseSocket.h>
+#include <mupnp/event/SubscriptionResponse.h>
 #include <cybergarage/xml/Parser.h>
 
 #include <iostream>
 
 using namespace std;
 using namespace uHTTP;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 using namespace uHTTP;
 using namespace CyberSOAP;
@@ -753,7 +753,7 @@ StateVariable *Device::getStateVariable(const std::string &name) {
 // Action
 ////////////////////////////////////////////////
 
-CyberLink::Action *Device::getAction(const std::string &name) {
+mUPnP::Action *Device::getAction(const std::string &name) {
   size_t n;
   uHTTP::String nameStr= name;
 

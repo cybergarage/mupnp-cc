@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ARGUMENTDATA_H_
-#define _CLINK_ARGUMENTDATA_H_
+#ifndef _MUPMPCC_ARGUMENTDATA_H_
+#define _MUPMPCC_ARGUMENTDATA_H_
 
 #include <string>
 #include <cybergarage/xml/NodeData.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ArgumentData : public CyberXML::NodeData {
   std::string value;
   

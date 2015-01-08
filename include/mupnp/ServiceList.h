@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SERVICELIST_H_
-#define _CLINK_SERVICELIST_H_
+#ifndef _MUPMPCC_SERVICELIST_H_
+#define _MUPMPCC_SERVICELIST_H_
 
 #include <uhttp/util/Vector.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Service;
 
 class ServiceList : public uHTTP::Vector<Service> {

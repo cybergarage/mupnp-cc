@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,16 +13,16 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ARGUMENT_H_
-#define _CLINK_ARGUMENT_H_
+#ifndef _MUPMPCC_ARGUMENT_H_
+#define _MUPMPCC_ARGUMENT_H_
 
 #include <stdlib.h>
 
 #include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
-#include <cybergarage/upnp/xml/ArgumentData.h>
+#include <mupnp/xml/ArgumentData.h>
 
-namespace CyberLink{
+namespace mUPnP{
 class Service;
 class StateVariable;
 

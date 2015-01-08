@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -25,11 +25,11 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/ssdp/SSDPResponse.h>
+#include <mupnp/ssdp/SSDPResponse.h>
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 using namespace uHTTP;
 

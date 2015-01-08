@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,11 +13,11 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Action.h>
-#include <cybergarage/upnp/ServiceStateTable.h>
-#include <cybergarage/upnp/StateVariable.h>
+#include <mupnp/Action.h>
+#include <mupnp/ServiceStateTable.h>
+#include <mupnp/StateVariable.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants

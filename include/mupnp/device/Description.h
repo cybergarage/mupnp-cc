@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_DESCRIPTON_H_
-#define _CLINK_DESCRIPTON_H_
+#ifndef _MUPMPCC_DESCRIPTON_H_
+#define _MUPMPCC_DESCRIPTON_H_
 
 #include <sstream>
 #include <uhttp/util/StringUtil.h>
 
-namespace CyberLink {
+namespace mUPnP {
 namespace Description {
 const char LOADING_EXCEPTION[] = "Couldn't load a specified description file ";
 const char NOROOT_EXCEPTION[] = "Couldn't find a root node";

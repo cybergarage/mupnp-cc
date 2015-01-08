@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,19 +13,19 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SUBSCRIPTIONREQUEST_H_
-#define _CLINK_SUBSCRIPTIONREQUEST_H_
+#ifndef _MUPMPCC_SUBSCRIPTIONREQUEST_H_
+#define _MUPMPCC_SUBSCRIPTIONREQUEST_H_
 
 #include <uhttp/http/HTTPRequest.h>
 #include <uhttp/http/HTTP.h>
-#include <cybergarage/upnp/event/Subscription.h>
-#include <cybergarage/upnp/device/NT.h>
-#include <cybergarage/upnp/event/SubscriptionRequest.h>
-#include <cybergarage/upnp/event/SubscriptionResponse.h>
+#include <mupnp/event/Subscription.h>
+#include <mupnp/device/NT.h>
+#include <mupnp/event/SubscriptionRequest.h>
+#include <mupnp/event/SubscriptionResponse.h>
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 class Service;
 
 class SubscriptionRequest : public uHTTP::HTTPRequest {

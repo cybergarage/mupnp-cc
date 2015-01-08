@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -38,9 +38,9 @@
 #endif
 
 #include <uhttp/net/HostInterface.h>
-#include <cybergarage/upnp/UPnP.h>
-#include <cybergarage/upnp/Icon.h>
-#include <cybergarage/upnp/ssdp/SSDP.h>
+#include <mupnp/UPnP.h>
+#include <mupnp/Icon.h>
+#include <mupnp/ssdp/SSDP.h>
 #include <uhttp/http/HTTPServer.h>
 
 #include <stdio.h>
@@ -54,7 +54,7 @@
 #endif
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // GetServerName
@@ -65,9 +65,9 @@ const char *UPnP::GetServerName(std::string &buf) {
   buf += " UPnP/";
   buf += UPnP::VER;
   buf += " ";
-  buf += CyberLink::NAME;
+  buf += mUPnP::NAME;
   buf += "/";
-  buf += CyberLink::VER;
+  buf += mUPnP::VER;
   return buf.c_str();
 }
 

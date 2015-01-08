@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SUBSCRIBERLIST_H_
-#define _CLINK_SUBSCRIBERLIST_H_
+#ifndef _MUPMPCC_SUBSCRIBERLIST_H_
+#define _MUPMPCC_SUBSCRIBERLIST_H_
 
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/event/Subscriber.h>
+#include <mupnp/event/Subscriber.h>
 
-namespace CyberLink {
+namespace mUPnP {
     
 class SubscriberList : public uHTTP::Vector<Subscriber>  {
 public:

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/device/NTS.h>
+#include <mupnp/device/NTS.h>
 #include <uhttp/util/StringUtil.h>
   
-bool CyberLink::NTS::IsAlive(const std::string &ntsValue) {
+bool mUPnP::NTS::IsAlive(const std::string &ntsValue) {
   uHTTP::String ntsStr = ntsValue;
   return ntsStr.startsWith(ALIVE);
 }
 
-bool CyberLink::NTS::IsByeBye(const std::string &ntsValue) {
+bool mUPnP::NTS::IsByeBye(const std::string &ntsValue) {
   uHTTP::String ntsStr = ntsValue;
   return ntsStr.startsWith(BYEBYE);
 }

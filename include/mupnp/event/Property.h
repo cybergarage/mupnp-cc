@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_PROPERTY_H_
-#define _CLINK_PROPERTY_H_
+#ifndef _MUPMPCC_PROPERTY_H_
+#define _MUPMPCC_PROPERTY_H_
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 class Property {
   std::string name;
   std::string value;

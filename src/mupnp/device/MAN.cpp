@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,13 +15,13 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/device/MAN.h>
+#include <mupnp/device/MAN.h>
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;
 using namespace uHTTP;
 
-bool CyberLink::MAN::IsDiscover(const std::string &value) {
+bool mUPnP::MAN::IsDiscover(const std::string &value) {
   uHTTP::String manStr = value;
   if (manStr.equals(DISCOVER) == true)
     return true;

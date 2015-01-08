@@ -1,10 +1,10 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
-*  File: CyberLink.h
+*  File: mUPnP.h
 *
 *  Revision;
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CYBERLINK_H_
-#define _CLINK_CYBERLINK_H_
+#ifndef _MUPMPCC_mUPnP_H_
+#define _MUPMPCC_mUPnP_H_
 
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/ControlPoint.h>
-#include <cybergarage/upnp/control/ActionListener.h>
-#include <cybergarage/upnp/control/QueryListener.h>
+#include <mupnp/Device.h>
+#include <mupnp/ControlPoint.h>
+#include <mupnp/control/ActionListener.h>
+#include <mupnp/control/QueryListener.h>
 
 #endif

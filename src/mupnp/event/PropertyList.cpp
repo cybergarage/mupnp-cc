@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,8 +15,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/event/PropertyList.h>
+#include <mupnp/event/PropertyList.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 const char *PropertyList::ELEM_NAME = "propertyList";

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,8 +13,8 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CONTROLPOINT_H_
-#define _CLINK_CONTROLPOINT_H_
+#ifndef _MUPMPCC_CONTROLPOINT_H_
+#define _MUPMPCC_CONTROLPOINT_H_
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/Listener.h>
@@ -22,17 +22,17 @@
 #include <uhttp/http/HTTPRequestListener.h>
 #include <uhttp/http/HTTPServerList.h>
 #include <cybergarage/xml/NodeList.h>
-#include <cybergarage/upnp/ssdp/SSDPPacket.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifySocketList.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchResponseSocketList.h>
-#include <cybergarage/upnp/device/SearchResponseListener.h>
-#include <cybergarage/upnp/device/NotifyListener.h>
-#include <cybergarage/upnp/device/Disposer.h>
-#include <cybergarage/upnp/device/DeviceChangeListener.h>
-#include <cybergarage/upnp/event/EventListener.h>
-#include <cybergarage/upnp/control/RenewSubscriber.h>
+#include <mupnp/ssdp/SSDPPacket.h>
+#include <mupnp/ssdp/SSDPNotifySocketList.h>
+#include <mupnp/ssdp/SSDPSearchResponseSocketList.h>
+#include <mupnp/device/SearchResponseListener.h>
+#include <mupnp/device/NotifyListener.h>
+#include <mupnp/device/Disposer.h>
+#include <mupnp/device/DeviceChangeListener.h>
+#include <mupnp/event/EventListener.h>
+#include <mupnp/control/RenewSubscriber.h>
 
-namespace CyberLink {
+namespace mUPnP {
   
 typedef uHTTP::ListenerList<NotifyListener>         NotifyListenerList;
 typedef uHTTP::ListenerList<SearchResponseListener> SearchResponseListenerList;

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SUBSCRIPTION_H_
-#define _CLINK_SUBSCRIPTION_H_
+#ifndef _MUPMPCC_SUBSCRIPTION_H_
+#define _MUPMPCC_SUBSCRIPTION_H_
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 namespace Subscription {
 const char XMLNS[] = "urn:schemas-upnp-org:event-1-0";
 const char TIMEOUT_HEADER[] = "Second-";

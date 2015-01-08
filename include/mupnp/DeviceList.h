@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_DEVICELIST_H_
-#define _CLINK_DEVICELIST_H_
+#ifndef _MUPMPCC_DEVICELIST_H_
+#define _MUPMPCC_DEVICELIST_H_
 
 #include <uhttp/util/Vector.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Device;
 
 class DeviceList : public uHTTP::Vector<Device> {

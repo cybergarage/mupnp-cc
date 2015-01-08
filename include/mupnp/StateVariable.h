@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,23 +13,23 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_STATEVARIABLE_H_
-#define _CLINK_STATEVARIABLE_H_
+#ifndef _MUPMPCC_STATEVARIABLE_H_
+#define _MUPMPCC_STATEVARIABLE_H_
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/StringUtil.h>
 #include <cybergarage/xml/Node.h>
-#include <cybergarage/upnp/UPnPStatus.h>
-#include <cybergarage/upnp/AllowedValueList.h>
-#include <cybergarage/upnp/AllowedValueRange.h>
-#include <cybergarage/upnp/xml/ServiceData.h>
-#include <cybergarage/upnp/xml/StateVariableData.h>
-#include <cybergarage/upnp/control/QueryResponse.h>
-#include <cybergarage/upnp/control/QueryRequest.h>
+#include <mupnp/UPnPStatus.h>
+#include <mupnp/AllowedValueList.h>
+#include <mupnp/AllowedValueRange.h>
+#include <mupnp/xml/ServiceData.h>
+#include <mupnp/xml/StateVariableData.h>
+#include <mupnp/control/QueryResponse.h>
+#include <mupnp/control/QueryRequest.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class Service;
 
 class StateVariable {

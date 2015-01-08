@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,19 +13,19 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPSEARCHREQUEST_H_
-#define _CLINK_SSDPSEARCHREQUEST_H_
+#ifndef _MUPMPCC_SSDPSEARCHREQUEST_H_
+#define _MUPMPCC_SSDPSEARCHREQUEST_H_
 
 #include <string>
 
-#include <cybergarage/upnp/ssdp/SSDP.h>
-#include <cybergarage/upnp/ssdp/SSDPRequest.h>
-#include <cybergarage/upnp/device/ST.h>
-#include <cybergarage/upnp/device/MAN.h>
+#include <mupnp/ssdp/SSDP.h>
+#include <mupnp/ssdp/SSDPRequest.h>
+#include <mupnp/device/ST.h>
+#include <mupnp/device/MAN.h>
 #include <uhttp/net/HostInterface.h>
-#include <cybergarage/upnp/event/SubscriptionResponse.h>
+#include <mupnp/event/SubscriptionResponse.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class SSDPSearchRequest : public SSDPRequest {
 public:
   ////////////////////////////////////////////////

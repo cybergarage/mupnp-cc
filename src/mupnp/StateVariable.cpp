@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -45,17 +45,17 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/StateVariable.h>
+#include <mupnp/StateVariable.h>
 #include <uhttp/util/Debug.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/AllowedValue.h>
-#include <cybergarage/upnp/control/QueryListener.h>
+#include <mupnp/Service.h>
+#include <mupnp/Service.h>
+#include <mupnp/AllowedValue.h>
+#include <mupnp/control/QueryListener.h>
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;
 using namespace uHTTP;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 using namespace CyberXML;
 using namespace uHTTP;

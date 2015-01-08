@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,10 +13,10 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDP_H_
-#define _CLINK_SSDP_H_
+#ifndef _MUPMPCC_SSDP_H_
+#define _MUPMPCC_SSDP_H_
 
-namespace CyberLink {
+namespace mUPnP {
 namespace SSDP {
 const int PORT = 1900;
   

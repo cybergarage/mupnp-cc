@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,22 +13,22 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ACTION_H_
-#define _CLINK_ACTION_H_
+#ifndef _MUPMPCC_ACTION_H_
+#define _MUPMPCC_ACTION_H_
 
-#include <cybergarage/upnp/control/ActionRequest.h>
-#include <cybergarage/upnp/control/ActionResponse.h>
+#include <mupnp/control/ActionRequest.h>
+#include <mupnp/control/ActionResponse.h>
 #include <cybergarage/xml/Node.h>
-#include <cybergarage/upnp/UPnPStatus.h>
-#include <cybergarage/upnp/xml/ServiceData.h>
-#include <cybergarage/upnp/xml/ActionData.h>
-#include <cybergarage/upnp/ArgumentList.h>
-#include <cybergarage/upnp/control/ActionListener.h>
+#include <mupnp/UPnPStatus.h>
+#include <mupnp/xml/ServiceData.h>
+#include <mupnp/xml/ActionData.h>
+#include <mupnp/ArgumentList.h>
+#include <mupnp/control/ActionListener.h>
 #include <uhttp/util/Mutex.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class Service;
 
 class Action {

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ICON_H_
-#define _CLINK_ICON_H_
+#ifndef _MUPMPCC_ICON_H_
+#define _MUPMPCC_ICON_H_
 
 #include <sstream>
 #include <cybergarage/xml/Node.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Icon {
   CyberXML::Node *iconNode;
 

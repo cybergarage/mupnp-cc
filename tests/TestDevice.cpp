@@ -14,7 +14,7 @@
 #include <sstream>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 
 TestDevice::TestDevice()
 {
@@ -120,7 +120,7 @@ const char *TestDevice::DEVICE_DESCRIPTION =
 "    <friendlyName>CyberGarageCountDevice</friendlyName>\n"
 "    <manufacturer>CyberGarage</manufacturer>\n"
 "    <manufacturerURL>http://www.cybergarage.org</manufacturerURL>\n"
-"    <modelDescription>CyberLink Count Device</modelDescription>\n"
+"    <modelDescription>mUPnP Count Device</modelDescription>\n"
 "    <modelName>Count</modelName>\n"
 "    <modelNumber>1.0</modelNumber>\n"
 "    <modelURL>http://www.cybergarage.org</modelURL>\n"

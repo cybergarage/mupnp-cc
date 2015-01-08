@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,10 +13,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/DeviceList.h>
+#include <mupnp/Device.h>
+#include <mupnp/DeviceList.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants

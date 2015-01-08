@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,10 +15,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/control/ControlResponse.h>
-#include <cybergarage/upnp/xml/ActionData.h>
+#include <mupnp/control/ControlResponse.h>
+#include <mupnp/xml/ActionData.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////

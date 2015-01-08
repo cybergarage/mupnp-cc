@@ -1,6 +1,6 @@
 /******************************************************************
  *
- * CyberLink for C++
+ * mUPnP for C++
  *
  * Copyright (C) Satoshi Konno 2002
  *
@@ -10,10 +10,10 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/UPnP.h>
 #include <cybergarage/xml/Parser.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace std;
 using namespace CyberXML;
 

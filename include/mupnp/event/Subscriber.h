@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SUBSCRIBER_H_
-#define _CLINK_SUBSCRIBER_H_
+#ifndef _MUPMPCC_SUBSCRIBER_H_
+#define _MUPMPCC_SUBSCRIBER_H_
 
 #include <time.h>
 #include <string>
 #include <limits.h>
 #include <uhttp/net/URL.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class Subscriber {
   std::string SID;
   std::string ifAddr;

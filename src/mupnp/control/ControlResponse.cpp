@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/control/ControlResponse.h>
-#include <cybergarage/upnp/Device.h>
+#include <mupnp/control/ControlResponse.h>
+#include <mupnp/Device.h>
 
 #include <string>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 using namespace uHTTP;
 using namespace CyberSOAP;

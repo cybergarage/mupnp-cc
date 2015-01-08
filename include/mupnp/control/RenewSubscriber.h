@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_RENEWSUBSCRIBER_H_
-#define _CLINK_RENEWSUBSCRIBER_H_
+#ifndef _MUPMPCC_RENEWSUBSCRIBER_H_
+#define _MUPMPCC_RENEWSUBSCRIBER_H_
 
 #include <uhttp/util/Thread.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ControlPoint;
 
 class RenewSubscriber : public uHTTP::Thread {

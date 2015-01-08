@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_SSDPSEARCHRESPONSESYSOCKET_H_
-#define _CLINK_SSDPSEARCHRESPONSESYSOCKET_H_
+#ifndef _MUPMPCC_SSDPSEARCHRESPONSESYSOCKET_H_
+#define _MUPMPCC_SSDPSEARCHRESPONSESYSOCKET_H_
 
 #include <uhttp/util/Thread.h>
-#include <cybergarage/upnp/ssdp/HTTPUSocket.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchResponse.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchRequest.h>
+#include <mupnp/ssdp/HTTPUSocket.h>
+#include <mupnp/ssdp/SSDPSearchResponse.h>
+#include <mupnp/ssdp/SSDPSearchRequest.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ControlPoint;
 
 class SSDPSearchResponseSocket : public HTTPUSocket, public uHTTP::Thread {

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -19,16 +19,16 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/control/ActionResponse.h>
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/Action.h>
+#include <mupnp/control/ActionResponse.h>
+#include <mupnp/Device.h>
+#include <mupnp/Service.h>
+#include <mupnp/Action.h>
 
 #include <sstream>
 
 using namespace std;
 using namespace uHTTP;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 using namespace CyberSOAP;
 
@@ -49,7 +49,7 @@ ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes) {
 // Response
 ////////////////////////////////////////////////
 
-void ActionResponse::setResponse(CyberLink::Action *action) {
+void ActionResponse::setResponse(mUPnP::Action *action) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
   
   CyberXML::Node *bodyNode = getBodyNode();
@@ -60,7 +60,7 @@ void ActionResponse::setResponse(CyberLink::Action *action) {
   setContent(envNode);
 }
 
-CyberXML::Node *ActionResponse::createResponseNode(CyberLink::Action *action) {
+CyberXML::Node *ActionResponse::createResponseNode(mUPnP::Action *action) {
   string nodeName;
   nodeName = CyberSOAP::SOAP::METHODNS;
   nodeName += CyberSOAP::SOAP::DELIM;

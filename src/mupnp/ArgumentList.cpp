@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,11 +13,11 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Argument.h>
-#include <cybergarage/upnp/ArgumentList.h>
+#include <mupnp/Argument.h>
+#include <mupnp/ArgumentList.h>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants

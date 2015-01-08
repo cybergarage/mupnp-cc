@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,34 +13,34 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_DEVICE_H_
-#define _CLINK_DEVICE_H_
+#ifndef _MUPMPCC_DEVICE_H_
+#define _MUPMPCC_DEVICE_H_
 
 #include <uhttp/http/HTTPRequestListener.h>
 #include <uhttp/util/StringUtil.h>
 #include <uhttp/util/TimeUtil.h>
 #include <cybergarage/xml/Node.h>
 #include <uhttp/io/File.h>
-#include <cybergarage/upnp/UPnP.h>
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/DeviceList.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/ServiceList.h>
-#include <cybergarage/upnp/Action.h>
-#include <cybergarage/upnp/StateVariable.h>
-#include <cybergarage/upnp/IconList.h>
-#include <cybergarage/upnp/ssdp/SSDPResponse.h>
-#include <cybergarage/upnp/device/SearchListener.h>
-#include <cybergarage/upnp/device/InvalidDescriptionException.h>
-#include <cybergarage/upnp/xml/DeviceData.h>
-#include <cybergarage/upnp/event/SubscriptionRequest.h>
-#include <cybergarage/upnp/event/SubscriptionResponse.h>
-#include <cybergarage/upnp/device/Advertiser.h>
+#include <mupnp/UPnP.h>
+#include <mupnp/Device.h>
+#include <mupnp/DeviceList.h>
+#include <mupnp/Service.h>
+#include <mupnp/ServiceList.h>
+#include <mupnp/Action.h>
+#include <mupnp/StateVariable.h>
+#include <mupnp/IconList.h>
+#include <mupnp/ssdp/SSDPResponse.h>
+#include <mupnp/device/SearchListener.h>
+#include <mupnp/device/InvalidDescriptionException.h>
+#include <mupnp/xml/DeviceData.h>
+#include <mupnp/event/SubscriptionRequest.h>
+#include <mupnp/event/SubscriptionResponse.h>
+#include <mupnp/device/Advertiser.h>
 #include <uhttp/util/Mutex.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   CyberXML::Node *rootNode;
   CyberXML::Node *deviceNode;

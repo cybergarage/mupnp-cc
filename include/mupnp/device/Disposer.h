@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_DISPOSER_H_
-#define _CLINK_DISPOSER_H_
+#ifndef _MUPMPCC_DISPOSER_H_
+#define _MUPMPCC_DISPOSER_H_
 
 #include <uhttp/util/Thread.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class ControlPoint;
 
 class Disposer : public uHTTP::Thread {

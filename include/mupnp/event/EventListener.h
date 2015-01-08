@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_EVENTLISTENER_H_
-#define _CLINK_EVENTLISTENER_H_
+#ifndef _MUPMPCC_EVENTLISTENER_H_
+#define _MUPMPCC_EVENTLISTENER_H_
 
 #include <uhttp/util/Listener.h>
 
-namespace CyberLink {
+namespace mUPnP {
 
 class EventListener : public uHTTP::Listener {
 public:

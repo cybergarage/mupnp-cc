@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -64,20 +64,20 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/Service.h>
-#include <cybergarage/upnp/Action.h>
-#include <cybergarage/upnp/UPnPStatus.h>
-#include <cybergarage/upnp/device/ST.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifySocket.h>
-#include <cybergarage/upnp/ssdp/SSDPNotifyRequest.h>
-#include <cybergarage/upnp/control/QueryRequest.h>
-#include <cybergarage/upnp/control/QueryListener.h>
+#include <mupnp/Device.h>
+#include <mupnp/Service.h>
+#include <mupnp/Action.h>
+#include <mupnp/UPnPStatus.h>
+#include <mupnp/device/ST.h>
+#include <mupnp/ssdp/SSDPNotifySocket.h>
+#include <mupnp/ssdp/SSDPNotifyRequest.h>
+#include <mupnp/control/QueryRequest.h>
+#include <mupnp/control/QueryListener.h>
 #include <cybergarage/xml/Parser.h>
 #include <uhttp/util/Debug.h>
 #include <string>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 using namespace uHTTP;
 using namespace std;
@@ -142,7 +142,7 @@ void Service::initActionList() {
   } 
 }
 
-CyberLink::Action *Service::getAction(const std::string &actionName) {
+mUPnP::Action *Service::getAction(const std::string &actionName) {
   ActionList *actionList = getActionList();
   size_t nActions = actionList->size();
   for (size_t n = 0; n < nActions; n++) {

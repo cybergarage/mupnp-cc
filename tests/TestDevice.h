@@ -8,12 +8,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_TESTDEVICE_H_
-#define _CLINK_TESTDEVICE_H_
+#ifndef _MUPMPCC_TESTDEVICE_H_
+#define _MUPMPCC_TESTDEVICE_H_
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/UPnP.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 
 const char PRESENTATION_URI[] = "/presentation";

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -15,12 +15,12 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_UPNPSTATUS_H_
-#define _CLINK_UPNPSTATUS_H_
+#ifndef _MUPMPCC_UPNPSTATUS_H_
+#define _MUPMPCC_UPNPSTATUS_H_
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 namespace UPnP {
 const int INVALID_ACTION = 401;
 const int INVALID_ARGS = 402;

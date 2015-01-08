@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -18,10 +18,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/event/Subscriber.h>
-#include <cybergarage/upnp/event/Subscription.h>
+#include <mupnp/event/Subscriber.h>
+#include <mupnp/event/Subscription.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constructor

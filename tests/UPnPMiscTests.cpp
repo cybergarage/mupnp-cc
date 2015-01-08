@@ -1,6 +1,6 @@
 /******************************************************************
  *
- * CyberLink for C++
+ * mUPnP for C++
  *
  * Copyright (C) Satoshi Konno 2002
  *
@@ -12,9 +12,9 @@
 
 #include <limits.h>
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/UPnP.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace std;
 
 BOOST_AUTO_TEST_CASE(SSDPRequestTests)

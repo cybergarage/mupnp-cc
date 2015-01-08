@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,20 +13,20 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_NOTIFYREQUEST_H_
-#define _CLINK_NOTIFYREQUEST_H_
+#ifndef _MUPMPCC_NOTIFYREQUEST_H_
+#define _MUPMPCC_NOTIFYREQUEST_H_
 
 #include <cybergarage/soap/SOAPRequest.h>
-#include <cybergarage/upnp/device/NT.h>
-#include <cybergarage/upnp/device/NTS.h>
-#include <cybergarage/upnp/event/Property.h>
-#include <cybergarage/upnp/event/Subscription.h>
-#include <cybergarage/upnp/event/Subscriber.h>
-#include <cybergarage/upnp/event/PropertyList.h>
+#include <mupnp/device/NT.h>
+#include <mupnp/device/NTS.h>
+#include <mupnp/event/Property.h>
+#include <mupnp/event/Subscription.h>
+#include <mupnp/event/Subscriber.h>
+#include <mupnp/event/PropertyList.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class NotifyRequest : public CyberSOAP::SOAPRequest {
   PropertyList propList;
 

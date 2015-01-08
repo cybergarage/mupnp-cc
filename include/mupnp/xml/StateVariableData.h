@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,14 +13,14 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_STATEVARIABLEDATA_H_
-#define _CLINK_STATEVARIABLEDATA_H_
+#ifndef _MUPMPCC_STATEVARIABLEDATA_H_
+#define _MUPMPCC_STATEVARIABLEDATA_H_
 
 #include <string>
 #include <cybergarage/xml/Node.h>
 #include <cybergarage/xml/NodeData.h>
 
-namespace CyberLink {
+namespace mUPnP {
 class QueryResponse;
 class QueryListener;
 

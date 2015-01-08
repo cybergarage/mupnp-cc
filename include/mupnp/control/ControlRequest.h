@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CONTROLREQUEST_H_
-#define _CLINK_CONTROLREQUEST_H_
+#ifndef _MUPMPCC_CONTROLREQUEST_H_
+#define _MUPMPCC_CONTROLREQUEST_H_
 
 #include <cybergarage/soap/SOAPRequest.h>
-#include <cybergarage/upnp/control/Control.h>
+#include <mupnp/control/Control.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class Service;
 
 class ControlRequest : public CyberSOAP::SOAPRequest {

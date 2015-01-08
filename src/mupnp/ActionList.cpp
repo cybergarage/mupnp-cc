@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Action.h>
-#include <cybergarage/upnp/ActionList.h>
+#include <mupnp/Action.h>
+#include <mupnp/ActionList.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants
 ////////////////////////////////////////////////
 
-const char *CyberLink::ActionList::ELEM_NAME = "actionList";
+const char *mUPnP::ActionList::ELEM_NAME = "actionList";

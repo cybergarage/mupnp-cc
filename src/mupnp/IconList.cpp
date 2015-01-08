@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,10 +13,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Icon.h>
-#include <cybergarage/upnp/IconList.h>
+#include <mupnp/Icon.h>
+#include <mupnp/IconList.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants

@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,11 +13,11 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/ControlPoint.h>
-#include <cybergarage/upnp/device/Disposer.h>
+#include <mupnp/ControlPoint.h>
+#include <mupnp/device/Disposer.h>
 #include <uhttp/util/TimeUtil.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Thread

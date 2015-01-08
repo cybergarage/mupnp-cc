@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -25,14 +25,14 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/event/NotifyRequest.h>
+#include <mupnp/event/NotifyRequest.h>
 
 #include <time.h>
 #include <stdlib.h>
 #include <string>
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace CyberXML;
 
 ////////////////////////////////////////////////

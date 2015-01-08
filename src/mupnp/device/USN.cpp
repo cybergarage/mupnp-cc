@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,15 +13,15 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/device/USN.h>
+#include <mupnp/device/USN.h>
 #include <uhttp/util/StringUtil.h>
 
-bool CyberLink::USN::IsRootDevice(const std::string &usnValue) {
+bool mUPnP::USN::IsRootDevice(const std::string &usnValue) {
   uHTTP::String usnStr = usnValue;
   return usnStr.endsWith(ROOTDEVICE);
 }
   
-const char *CyberLink::USN::GetUDN(const std::string &usnValue, std::string &udn) {
+const char *mUPnP::USN::GetUDN(const std::string &usnValue, std::string &udn) {
   uHTTP::String usnStr = usnValue;
   int idx = usnStr.indexOf("::");
   if (idx < 0)

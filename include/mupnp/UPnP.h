@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_UPNP_H_
-#define _CLINK_UPNP_H_
+#ifndef _MUPMPCC_UPNP_H_
+#define _MUPMPCC_UPNP_H_
 
 #include <string>
 
-namespace CyberLink {
-const char NAME[] = "CyberLinkC++";
+namespace mUPnP {
+const char NAME[] = "mUPnPC++";
 const char VER[]= "1.7";
 
 namespace UPnP {

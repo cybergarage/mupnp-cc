@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -19,9 +19,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/Device.h>
+#include <mupnp/Device.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 DeviceData::DeviceData()  {
   setDevice(NULL);

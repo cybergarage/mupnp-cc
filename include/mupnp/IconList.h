@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,13 +13,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ICONLIST_H_
-#define _CLINK_ICONLIST_H_
+#ifndef _MUPMPCC_ICONLIST_H_
+#define _MUPMPCC_ICONLIST_H_
 
 #include <uhttp/util/Vector.h>
-#include <cybergarage/upnp/Icon.h>
+#include <mupnp/Icon.h>
 
-namespace CyberLink{
+namespace mUPnP{
     
 class IconList : public uHTTP::Vector<Icon> {
  public:

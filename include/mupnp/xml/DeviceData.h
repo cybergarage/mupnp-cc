@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,18 +13,18 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_DEVICEDATA_H_
-#define _CLINK_DEVICEDATA_H_
+#ifndef _MUPMPCC_DEVICEDATA_H_
+#define _MUPMPCC_DEVICEDATA_H_
 
 #include <uhttp/http/HTTPServerList.h>
 #include <uhttp/util/Listener.h>
-#include <cybergarage/upnp/ssdp/SSDPSearchSocketList.h>
-#include <cybergarage/upnp/device/Advertiser.h>
+#include <mupnp/ssdp/SSDPSearchSocketList.h>
+#include <mupnp/device/Advertiser.h>
 #include <cybergarage/xml/NodeData.h>
 
 #include <string>
 
-namespace CyberLink {
+namespace mUPnP {
 class Device;
 
 class DeviceData : public CyberXML::NodeData {

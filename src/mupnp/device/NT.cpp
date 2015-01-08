@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,10 +13,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/device/NT.h>
+#include <mupnp/device/NT.h>
 #include <uhttp/util/StringUtil.h>
 
-bool CyberLink::NT::IsRootDevice(const std::string &ntValue) {
+bool mUPnP::NT::IsRootDevice(const std::string &ntValue) {
   uHTTP::String ntStr = ntValue;
   return ntStr.startsWith(ROOTDEVICE);
 }

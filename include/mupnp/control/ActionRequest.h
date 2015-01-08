@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*  CyberLink for C++
+*  mUPnP for C++
 *
 *  Copyright (C) Satoshi Konno 2002
 *
@@ -13,17 +13,17 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_ACTIONREQUEST_H_
-#define _CLINK_ACTIONREQUEST_H_
+#ifndef _MUPMPCC_ACTIONREQUEST_H_
+#define _MUPMPCC_ACTIONREQUEST_H_
 
-#include <cybergarage/upnp/control/ControlRequest.h>
-#include <cybergarage/upnp/control/ActionResponse.h>
-#include <cybergarage/upnp/ArgumentList.h>
+#include <mupnp/control/ControlRequest.h>
+#include <mupnp/control/ActionResponse.h>
+#include <mupnp/ArgumentList.h>
 #include <cybergarage/soap/SOAP.h>
 
 #include <sstream>
 
-namespace CyberLink {
+namespace mUPnP {
 class Action;
 
 class ActionRequest : public ControlRequest {
