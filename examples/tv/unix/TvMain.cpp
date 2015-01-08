@@ -36,7 +36,7 @@
 #endif
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 
 char tvImgFileName[] = "images/tv.jpg";

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215252E91A5E460700A226B5 /* mUPnP.h in Headers */ = {isa = PBXBuildFile; fileRef = 215252E81A5E460700A226B5 /* mUPnP.h */; };
 		21CDAC3F1A5E347000171E09 /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABE51A5E347000171E09 /* Action.h */; };
 		21CDAC401A5E347000171E09 /* ActionList.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABE61A5E347000171E09 /* ActionList.h */; };
 		21CDAC411A5E347000171E09 /* AllowedValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABE71A5E347000171E09 /* AllowedValue.h */; };
@@ -25,7 +26,6 @@
 		21CDAC4E1A5E347000171E09 /* QueryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABF51A5E347000171E09 /* QueryResponse.h */; };
 		21CDAC4F1A5E347000171E09 /* RenewSubscriber.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABF61A5E347000171E09 /* RenewSubscriber.h */; };
 		21CDAC501A5E347000171E09 /* ControlPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABF71A5E347000171E09 /* ControlPoint.h */; };
-		21CDAC511A5E347000171E09 /* CyberLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABF81A5E347000171E09 /* CyberLink.h */; };
 		21CDAC521A5E347000171E09 /* Advertiser.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABFA1A5E347000171E09 /* Advertiser.h */; };
 		21CDAC531A5E347000171E09 /* Description.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABFB1A5E347000171E09 /* Description.h */; };
 		21CDAC541A5E347000171E09 /* DeviceChangeListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABFC1A5E347000171E09 /* DeviceChangeListener.h */; };
@@ -157,6 +157,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		215252E81A5E460700A226B5 /* mUPnP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mUPnP.h; sourceTree = "<group>"; };
 		219C21ED155C7877003ABA46 /* libmupnp++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libmupnp++.a"; path = "liblibmupnp++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CDABE51A5E347000171E09 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		21CDABE61A5E347000171E09 /* ActionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionList.h; sourceTree = "<group>"; };
@@ -176,7 +177,6 @@
 		21CDABF51A5E347000171E09 /* QueryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryResponse.h; sourceTree = "<group>"; };
 		21CDABF61A5E347000171E09 /* RenewSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenewSubscriber.h; sourceTree = "<group>"; };
 		21CDABF71A5E347000171E09 /* ControlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPoint.h; sourceTree = "<group>"; };
-		21CDABF81A5E347000171E09 /* CyberLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CyberLink.h; sourceTree = "<group>"; };
 		21CDABFA1A5E347000171E09 /* Advertiser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Advertiser.h; sourceTree = "<group>"; };
 		21CDABFB1A5E347000171E09 /* Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Description.h; sourceTree = "<group>"; };
 		21CDABFC1A5E347000171E09 /* DeviceChangeListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceChangeListener.h; sourceTree = "<group>"; };
@@ -356,6 +356,7 @@
 		21CDABE41A5E347000171E09 /* mupnp */ = {
 			isa = PBXGroup;
 			children = (
+				215252E81A5E460700A226B5 /* mUPnP.h */,
 				21CDABE51A5E347000171E09 /* Action.h */,
 				21CDABE61A5E347000171E09 /* ActionList.h */,
 				21CDABE71A5E347000171E09 /* AllowedValue.h */,
@@ -365,7 +366,6 @@
 				21CDABEB1A5E347000171E09 /* ArgumentList.h */,
 				21CDABEC1A5E347000171E09 /* control */,
 				21CDABF71A5E347000171E09 /* ControlPoint.h */,
-				21CDABF81A5E347000171E09 /* CyberLink.h */,
 				21CDABF91A5E347000171E09 /* device */,
 				21CDAC071A5E347000171E09 /* Device.h */,
 				21CDAC081A5E347000171E09 /* DeviceList.h */,
@@ -676,6 +676,7 @@
 				21CDAC8B1A5E347000171E09 /* Node.h in Headers */,
 				21CDAC811A5E347000171E09 /* SSDPSearchSocket.h in Headers */,
 				21CDAC891A5E347000171E09 /* AttributeList.h in Headers */,
+				215252E91A5E460700A226B5 /* mUPnP.h in Headers */,
 				21CDAC411A5E347000171E09 /* AllowedValue.h in Headers */,
 				21CDAC531A5E347000171E09 /* Description.h in Headers */,
 				21CDAC7D1A5E347000171E09 /* SSDPSearchRequest.h in Headers */,
@@ -726,7 +727,6 @@
 				21CDAC7A1A5E347000171E09 /* SSDPPacket.h in Headers */,
 				21CDAC661A5E347000171E09 /* SubscriberList.h in Headers */,
 				21CDAC791A5E347000171E09 /* SSDPNotifySocketList.h in Headers */,
-				21CDAC511A5E347000171E09 /* CyberLink.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

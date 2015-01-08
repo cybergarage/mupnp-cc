@@ -11,7 +11,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/thread.hpp>
 
-#include <mupnp/UPnP.h>
+#include <mupnp/mUPnP.h>
 
 using namespace uHTTP;
 using namespace mUPnP;

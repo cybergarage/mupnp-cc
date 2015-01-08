@@ -12,7 +12,7 @@
 
 #include <limits.h>
 
-#include <mupnp/UPnP.h>
+#include <mupnp/mUPnP.h>
 
 using namespace mUPnP;
 using namespace std;

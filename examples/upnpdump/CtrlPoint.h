@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*	CyberLink for C++
+*	mUPnP for C++
 *
 *	Copyright (C) Satoshi Konno 2002
 *
@@ -13,12 +13,12 @@
 *
 ******************************************************************/
 
-#ifndef _UPNPDUMP_CTRLPOINT_H_
-#define _UPNPDUMP_CTRLPOINT_H_
+#ifndef _MUPNPDUMP_CTRLPOINT_H_
+#define _MUPNPDUMP_CTRLPOINT_H_
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/mUPnP.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 class CtrlPoint : public ControlPoint , public NotifyListener, public EventListener, public SearchResponseListener
 {

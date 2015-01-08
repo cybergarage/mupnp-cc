@@ -16,7 +16,7 @@
 #include "Clock.h"
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 
 //#define USE_CLOCK_DESCRIPTION_FILE
 

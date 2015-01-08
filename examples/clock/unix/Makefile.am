@@ -11,5 +11,5 @@ upnpclock_SOURCES = \
 	../ClockDevice.cpp \
 	../../common/InputUtil.cpp
 
-upnpclock_LDADD = ../../../lib/unix/libclink++.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
+upnpclock_LDADD = ../../../lib/unix/libmupnp++.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
 

@@ -12,7 +12,7 @@
 #define _MUPMPCC_TESTHTTPSERVER_H_
 
 #include <string>
-#include <mupnp/UPnP.h>
+#include <mupnp/mUPnP.h>
 
 class TestHTTPServer : public uHTTP::HTTPServer, public uHTTP::HTTPRequestListener
 {

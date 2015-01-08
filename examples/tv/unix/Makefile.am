@@ -10,5 +10,5 @@ upnptv_SOURCES = \
 	../TvDevice.cpp \
 	../../common/InputUtil.cpp
 
-upnptv_LDADD = ../../../lib/unix/libclink++.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
+upnptv_LDADD = ../../../lib/unix/libmupnp++.a @XML_LIBS@ @GTK_LIBS@ @GDK_IMLIB_LIBS@
 

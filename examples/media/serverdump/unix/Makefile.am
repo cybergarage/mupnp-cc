@@ -9,5 +9,5 @@ serverdump_SOURCES = \
 	../serverdump.cpp \
 	../../../common/InputUtil.cpp
 
-serverdump_LDADD = ../../../../lib/unix/libclink.a @XML_LIBS@
+serverdump_LDADD = ../../../../lib/unix/libmupnp.a @XML_LIBS@
 

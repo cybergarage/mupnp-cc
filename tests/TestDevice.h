@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_TESTDEVICE_H_
 #define _MUPMPCC_TESTDEVICE_H_
 
-#include <mupnp/UPnP.h>
+#include <mupnp/mUPnP.h>
 
 using namespace mUPnP;
 using namespace uHTTP;

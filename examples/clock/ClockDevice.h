@@ -8,13 +8,13 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CLOCKDEVICE_H_
-#define _CLINK_CLOCKDEVICE_H_
+#ifndef _MUPNP_CLOCKDEVICE_H_
+#define _MUPNP_CLOCKDEVICE_H_
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/mUPnP.h>
 #include "Clock.h"
 
-using namespace CyberLink;
+using namespace mUPnP;
 using namespace uHTTP;
 
 const char CLOCK_DESCRIPTION_FILE_NAME[] = "description/description.xml";

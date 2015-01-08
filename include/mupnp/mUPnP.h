@@ -13,8 +13,8 @@
 *
 ******************************************************************/
 
-#ifndef _MUPMPCC_mUPnP_H_
-#define _MUPMPCC_mUPnP_H_
+#ifndef _MUPMPCC_MUPNP_H_
+#define _MUPMPCC_MUPNP_H_
 
 #include <mupnp/Device.h>
 #include <mupnp/ControlPoint.h>

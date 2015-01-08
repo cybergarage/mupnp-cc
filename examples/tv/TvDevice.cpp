@@ -15,7 +15,7 @@
 #include "TvDevice.h"
 
 using namespace std;
-using namespace CyberLink;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constructor

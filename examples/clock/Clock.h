@@ -8,8 +8,8 @@
 *
 ******************************************************************/
 
-#ifndef _CLINK_CLOCK_H_
-#define _CLINK_CLOCK_H_
+#ifndef _MUPNP_CLOCK_H_
+#define _MUPNP_CLOCK_H_
 
 #include <time.h>
 #include <string>

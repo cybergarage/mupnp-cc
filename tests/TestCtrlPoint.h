@@ -16,7 +16,7 @@
 #ifndef _TESTCTRLPOINT_H_
 #define _TESTCTRLPOINT_H_
 
-#include <mupnp/UPnP.h>
+#include <mupnp/mUPnP.h>
 
 using namespace mUPnP;
 

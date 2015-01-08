@@ -11,9 +11,9 @@
 #ifndef _CLINK_TVDEVICE_H_
 #define _CLINK_TVDEVICE_H_
 
-#include <cybergarage/upnp/CyberLink.h>
+#include <mupnp/mUPnP.h>
 
-using namespace CyberLink;
+using namespace mUPnP;
 
 const char DESCRIPTION_FILE_NAME[] = "description/description.xml";
 const char CLOCK_DEVICE_TYPE[] = "urn:schemas-upnp-org:device:clock:1";
