@@ -1,6 +1,7 @@
 Makefile
-config
+config/
 config.*
+aclocal.m4
 autom4te.cache/
 *.o
 *.a
