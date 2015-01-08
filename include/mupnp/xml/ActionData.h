@@ -19,7 +19,7 @@
 #define _MUPMPCC_ACTONDATA_H_
 
 #include <string>
-#include <cybergarage/xml/NodeData.h>
+#include <mupnp/xml/NodeData.h>
 
 namespace mUPnP {
 class ActionListener;

@@ -19,7 +19,7 @@
 #include <string>
 #include <sstream>
 #include <string.h>
-#include <cybergarage/soap/SOAP.h>
+#include <mupnp/soap/SOAP.h>
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;

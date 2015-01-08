@@ -19,7 +19,7 @@
 #include <mupnp/control/ControlRequest.h>
 #include <mupnp/control/ActionResponse.h>
 #include <mupnp/ArgumentList.h>
-#include <cybergarage/soap/SOAP.h>
+#include <mupnp/soap/SOAP.h>
 
 #include <sstream>
 

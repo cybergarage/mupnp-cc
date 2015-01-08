@@ -15,7 +15,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/xml/AttributeList.h>
+#include <mupnp/xml/AttributeList.h>
 #include <uhttp/util/StringUtil.h>
 
 using namespace CyberXML;

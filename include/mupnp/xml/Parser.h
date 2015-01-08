@@ -19,11 +19,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <string>
-#include <cybergarage/xml/XML.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/XML.h>
+#include <mupnp/xml/Node.h>
 #include <uhttp/io/File.h>
 #include <uhttp/net/URL.h>
-#include <cybergarage/xml/ParserException.h>
+#include <mupnp/xml/ParserException.h>
 
 namespace CyberXML {
 const int PARSER_DEFAULT_READ_BUF_SIZE = 1024;

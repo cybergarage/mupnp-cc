@@ -73,7 +73,7 @@
 #include <mupnp/ssdp/SSDPNotifyRequest.h>
 #include <mupnp/control/QueryRequest.h>
 #include <mupnp/control/QueryListener.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 #include <uhttp/util/Debug.h>
 #include <string>
 

@@ -17,7 +17,7 @@
 #define _MUPMPCC_ICON_H_
 
 #include <sstream>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 
 namespace mUPnP {
 class Icon {

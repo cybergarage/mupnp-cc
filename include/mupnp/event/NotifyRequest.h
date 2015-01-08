@@ -16,7 +16,7 @@
 #ifndef _MUPMPCC_NOTIFYREQUEST_H_
 #define _MUPMPCC_NOTIFYREQUEST_H_
 
-#include <cybergarage/soap/SOAPRequest.h>
+#include <mupnp/soap/SOAPRequest.h>
 #include <mupnp/device/NT.h>
 #include <mupnp/device/NTS.h>
 #include <mupnp/event/Property.h>

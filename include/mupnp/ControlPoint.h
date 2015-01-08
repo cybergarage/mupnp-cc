@@ -21,7 +21,7 @@
 #include <uhttp/util/Mutex.h>
 #include <uhttp/http/HTTPRequestListener.h>
 #include <uhttp/http/HTTPServerList.h>
-#include <cybergarage/xml/NodeList.h>
+#include <mupnp/xml/NodeList.h>
 #include <mupnp/ssdp/SSDPPacket.h>
 #include <mupnp/ssdp/SSDPNotifySocketList.h>
 #include <mupnp/ssdp/SSDPSearchResponseSocketList.h>

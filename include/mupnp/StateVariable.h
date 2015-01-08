@@ -18,7 +18,7 @@
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/util/StringUtil.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 #include <mupnp/UPnPStatus.h>
 #include <mupnp/AllowedValueList.h>
 #include <mupnp/AllowedValueRange.h>

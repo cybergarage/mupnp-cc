@@ -21,7 +21,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/soap/SOAPResponse.h>
+#include <mupnp/soap/SOAPResponse.h>
 
 using namespace CyberSOAP;
 using namespace std;

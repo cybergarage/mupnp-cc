@@ -46,7 +46,7 @@
 
 #include <uhttp/util/Debug.h>
 #include <mupnp/ControlPoint.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 #include <mupnp/Log.h>
 
 #include <iostream>

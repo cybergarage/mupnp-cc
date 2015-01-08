@@ -17,8 +17,8 @@
 #define _CSOAP_SOAPRESPONSE_H_
 
 #include <uhttp/http/HTTPResponse.h>
-#include <cybergarage/xml/XML.h>
-#include <cybergarage/soap/SOAP.h>
+#include <mupnp/xml/XML.h>
+#include <mupnp/soap/SOAP.h>
 
 namespace CyberSOAP {
 class SOAPResponse : public uHTTP::HTTPResponse {

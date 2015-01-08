@@ -17,7 +17,7 @@
 #define _MUPMPCC_QUERYRESPONSE_H_
 
 #include <mupnp/control/ControlResponse.h>
-#include <cybergarage/soap/SOAP.h>
+#include <mupnp/soap/SOAP.h>
 
 #include <sstream>
 

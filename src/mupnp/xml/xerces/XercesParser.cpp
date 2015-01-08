@@ -34,7 +34,7 @@
 ////////////////////////////////////////////////
 
 #include <uhttp/util/Mutex.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/util/PlatformUtils.hpp>

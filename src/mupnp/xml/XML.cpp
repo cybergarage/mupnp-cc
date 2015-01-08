@@ -46,7 +46,7 @@
 #endif
 #endif
 
-#include <cybergarage/xml/XML.h>
+#include <mupnp/xml/XML.h>
 #include <uhttp/util/StringUtil.h>
 #ifndef WIN32
 #include <uhttp/util/Mutex.h>

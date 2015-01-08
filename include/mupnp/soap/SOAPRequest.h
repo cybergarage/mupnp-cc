@@ -19,9 +19,9 @@
 #include <uhttp/http/HTTPRequest.h>
 #include <uhttp/http/HTTPResponse.h>
 #include <uhttp/http/HTTP.h>
-#include <cybergarage/soap/SOAP.h>
-#include <cybergarage/soap/SOAPResponse.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/soap/SOAP.h>
+#include <mupnp/soap/SOAPResponse.h>
+#include <mupnp/xml/Node.h>
 
 namespace CyberSOAP {
 const char SOAPACTION[] = "SOAPACTION";

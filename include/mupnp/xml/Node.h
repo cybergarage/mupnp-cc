@@ -20,9 +20,9 @@
 #include <sstream>
 #include <string>
 
-#include <cybergarage/xml/AttributeList.h>
-#include <cybergarage/xml/NodeList.h>
-#include <cybergarage/xml/NodeData.h>
+#include <mupnp/xml/AttributeList.h>
+#include <mupnp/xml/NodeList.h>
+#include <mupnp/xml/NodeData.h>
 
 namespace CyberXML {
 class Node  {

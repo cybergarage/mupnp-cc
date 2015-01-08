@@ -17,8 +17,8 @@
 #define _MUPMPCC_STATEVARIABLEDATA_H_
 
 #include <string>
-#include <cybergarage/xml/Node.h>
-#include <cybergarage/xml/NodeData.h>
+#include <mupnp/xml/Node.h>
+#include <mupnp/xml/NodeData.h>
 
 namespace mUPnP {
 class QueryResponse;

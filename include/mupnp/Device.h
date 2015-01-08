@@ -19,7 +19,7 @@
 #include <uhttp/http/HTTPRequestListener.h>
 #include <uhttp/util/StringUtil.h>
 #include <uhttp/util/TimeUtil.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 #include <uhttp/io/File.h>
 #include <mupnp/UPnP.h>
 #include <mupnp/Device.h>

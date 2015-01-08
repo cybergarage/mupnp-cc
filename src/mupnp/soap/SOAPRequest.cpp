@@ -26,9 +26,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/soap/SOAPRequest.h>
+#include <mupnp/soap/SOAPRequest.h>
 #include <uhttp/util/StringUtil.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 
 using namespace CyberSOAP;
 using namespace uHTTP;

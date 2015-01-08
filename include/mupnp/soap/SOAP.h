@@ -16,7 +16,7 @@
 #ifndef _CSOAP_SOAP_H_
 #define _CSOAP_SOAP_H_
 
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 
 namespace CyberSOAP {
 namespace SOAP {

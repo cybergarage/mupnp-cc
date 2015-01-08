@@ -20,7 +20,7 @@
 #include <uhttp/util/Listener.h>
 #include <mupnp/ssdp/SSDPSearchSocketList.h>
 #include <mupnp/device/Advertiser.h>
-#include <cybergarage/xml/NodeData.h>
+#include <mupnp/xml/NodeData.h>
 
 #include <string>
 

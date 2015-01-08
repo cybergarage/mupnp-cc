@@ -89,7 +89,7 @@
 #include <mupnp/ssdp/SSDPSearchResponse.h>
 #include <mupnp/ssdp/SSDPSearchResponseSocket.h>
 #include <mupnp/event/SubscriptionResponse.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 
 #include <iostream>
 

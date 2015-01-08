@@ -16,9 +16,9 @@
 #ifndef _MUPMPCC_CONTROLRESPONSE_H_
 #define _MUPMPCC_CONTROLRESPONSE_H_
 
-#include <cybergarage/soap/SOAPResponse.h>
-#include <cybergarage/xml/Node.h>
-#include <cybergarage/soap/SOAP.h>
+#include <mupnp/soap/SOAPResponse.h>
+#include <mupnp/xml/Node.h>
+#include <mupnp/soap/SOAP.h>
 #include <mupnp/UPnP.h>
 #include <mupnp/UPnPStatus.h>
 

@@ -24,7 +24,7 @@
 #include <string>
 
 #include <uhttp/net/HostInterface.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 #include <uhttp/http/HTTPRequest.h>
 
 #if !defined(WIN32) && !defined(HAVE_FOPEN) && !defined(TENGINE) && !defined(ITRON) && !defined(BTRON)

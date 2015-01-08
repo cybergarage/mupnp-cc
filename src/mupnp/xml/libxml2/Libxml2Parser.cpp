@@ -30,7 +30,7 @@
 // Header Files
 ////////////////////////////////////////////////
 
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 #include <mupnp/Log.h>
 
 #include <libxml/parser.h>

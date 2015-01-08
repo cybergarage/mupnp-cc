@@ -19,7 +19,7 @@
 #include <stdlib.h>
 
 #include <uhttp/util/StringUtil.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 #include <mupnp/xml/ArgumentData.h>
 
 namespace mUPnP{

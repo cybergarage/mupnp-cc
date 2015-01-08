@@ -18,7 +18,7 @@
 
 #include <mupnp/control/ControlRequest.h>
 #include <mupnp/control/QueryResponse.h>
-#include <cybergarage/soap/SOAP.h>
+#include <mupnp/soap/SOAP.h>
 
 #include <sstream>
 

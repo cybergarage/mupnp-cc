@@ -34,7 +34,7 @@
 #include <uhttp/util/Mutex.h>
 #include <uhttp/util/Vector.h>
 #include <uhttp/util/StringUtil.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 
 namespace mUPnP {
 class Device;

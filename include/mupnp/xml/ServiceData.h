@@ -19,8 +19,8 @@
 #define _MUPMPCC_SERVICEDATA_H_
 
 #include <uhttp/util/Listener.h>
-#include <cybergarage/xml/Node.h>
-#include <cybergarage/xml/NodeData.h>
+#include <mupnp/xml/Node.h>
+#include <mupnp/xml/NodeData.h>
 #include <mupnp/event/SubscriberList.h>
 
 #include <string>

@@ -34,6 +34,7 @@
 
 using namespace std;
 using namespace uHTTP;
+using namespace mUPnP;
 
 /////////////////////////////////////////////////////////////////////////////////
 // main
@@ -44,9 +45,6 @@ void PrintKeyMessage()
 	cout << "'p' : Print" << endl;
 	cout << "'q' : Quit" << endl;
 }
-
-#include <cybergarage/xml/XML.h>
-using namespace CyberXML;
 
 int main(int argc, char* argv[])
 {

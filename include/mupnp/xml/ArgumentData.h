@@ -17,7 +17,7 @@
 #define _MUPMPCC_ARGUMENTDATA_H_
 
 #include <string>
-#include <cybergarage/xml/NodeData.h>
+#include <mupnp/xml/NodeData.h>
 
 namespace mUPnP {
 class ArgumentData : public CyberXML::NodeData {

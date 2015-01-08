@@ -5050,7 +5050,7 @@ _ACEOF
   LIBS="-luhttp++ $LIBS"
 
 else
-  as_fn_error $? "CyberLink needs uHTTP for C++" "$LINENO" 5
+  as_fn_error $? "mUPnP needs uHTTP for C++" "$LINENO" 5
 fi
 
 
@@ -5085,7 +5085,7 @@ if test "x$ac_cv_header_xercesc_util_XercesVersion_hpp" = xyes; then :
 _ACEOF
 
 else
-  as_fn_error $? "CyberLink needs Apache Xerces C++ $XERCES_VERSION later" "$LINENO" 5
+  as_fn_error $? "mUPnP needs Apache Xerces C++ $XERCES_VERSION later" "$LINENO" 5
 fi
 
 done
@@ -5162,7 +5162,7 @@ if test "x$ac_cv_header_expat_h" = xyes; then :
 _ACEOF
 
 else
-  as_fn_error $? "CyberLink needs Expat $EXPAT_VERSION later" "$LINENO" 5
+  as_fn_error $? "mUPnP needs Expat $EXPAT_VERSION later" "$LINENO" 5
 fi
 
 done
@@ -5280,7 +5280,7 @@ $as_echo "#define USE_XMLPARSER_LIBXML2 1" >>confdefs.h
 
 
 	else
-		as_fn_error $? "CyberLink needs libxml2 $LIBXML2_VERSION later" "$LINENO" 5
+		as_fn_error $? "mUPnP needs libxml2 $LIBXML2_VERSION later" "$LINENO" 5
 	fi
 fi
 
@@ -5525,7 +5525,7 @@ if test "x$ac_cv_header_pthread_h" = xyes; then :
 _ACEOF
 
 else
-  as_fn_error $? "CyberLink needs POSIX thread library" "$LINENO" 5
+  as_fn_error $? "mUPnP needs POSIX thread library" "$LINENO" 5
 fi
 
 done

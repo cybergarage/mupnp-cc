@@ -17,8 +17,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/xml/NodeList.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/NodeList.h>
+#include <mupnp/xml/Node.h>
 
 using namespace CyberXML;
 using namespace uHTTP;

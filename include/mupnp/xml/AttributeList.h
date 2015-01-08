@@ -17,7 +17,7 @@
 #define _CXML_ATTRIBUTELIST_H_
 
 #include <uhttp/util/Vector.h>
-#include <cybergarage/xml/Attribute.h>
+#include <mupnp/xml/Attribute.h>
 
 namespace CyberXML {
 

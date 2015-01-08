@@ -18,7 +18,7 @@
 
 #include <mupnp/control/ActionRequest.h>
 #include <mupnp/control/ActionResponse.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 #include <mupnp/UPnPStatus.h>
 #include <mupnp/xml/ServiceData.h>
 #include <mupnp/xml/ActionData.h>

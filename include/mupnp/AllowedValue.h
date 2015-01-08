@@ -16,7 +16,7 @@
 #ifndef _MUPMPCC_ALLOWEDVALUE_H_
 #define _MUPMPCC_ALLOWEDVALUE_H_
 
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 
 namespace mUPnP{
 class AllowedValue {

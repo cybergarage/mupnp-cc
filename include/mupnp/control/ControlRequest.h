@@ -16,7 +16,7 @@
 #ifndef _MUPMPCC_CONTROLREQUEST_H_
 #define _MUPMPCC_CONTROLREQUEST_H_
 
-#include <cybergarage/soap/SOAPRequest.h>
+#include <mupnp/soap/SOAPRequest.h>
 #include <mupnp/control/Control.h>
 
 #include <sstream>

@@ -34,8 +34,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <cybergarage/xml/XML.h>
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/XML.h>
+#include <mupnp/xml/Node.h>
 
 using namespace std;
 using namespace CyberXML;
