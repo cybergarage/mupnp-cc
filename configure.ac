@@ -1,6 +1,6 @@
 ############################################################
 #
-#	CyberLink for C++
+#	mUPnP for C++
 #
 #	Copyright (C) Satoshi Konno 2003-2013
 #
@@ -66,7 +66,7 @@ AC_CHECK_HEADERS([arpa/inet.h limits.h netdb.h netinet/in.h stdlib.h string.h sy
 # Checks for uHTTP libraries.
 ##############################
 
-AC_CHECK_LIB([uhttp++],[main],,[AC_MSG_ERROR(CyberLink needs uHTTP for C++)])
+AC_CHECK_LIB([uhttp++],[main],,[AC_MSG_ERROR(mUPnP needs uHTTP for C++)])
 
 ##############################
 # Checks for Xerces C++ libraries.
@@ -86,7 +86,7 @@ AC_ARG_ENABLE(xercescc,
 )
 
 if [ test $USE_XERCESCC = yes ]; then
-	AC_CHECK_HEADERS([xercesc/util/XercesVersion.hpp],,[AC_MSG_ERROR(CyberLink needs Apache Xerces C++ $XERCES_VERSION later)])
+	AC_CHECK_HEADERS([xercesc/util/XercesVersion.hpp],,[AC_MSG_ERROR(mUPnP needs Apache Xerces C++ $XERCES_VERSION later)])
 	AC_CHECK_LIB([xerces-c],[main])
 fi
 
@@ -108,7 +108,7 @@ AC_ARG_ENABLE(expat,
 )
 
 if [ test $USE_EXPAT = yes ]; then
-        AC_CHECK_HEADERS([expat.h],,[AC_MSG_ERROR(CyberLink needs Expat $EXPAT_VERSION later)])
+        AC_CHECK_HEADERS([expat.h],,[AC_MSG_ERROR(mUPnP needs Expat $EXPAT_VERSION later)])
         AC_CHECK_LIB([expat],[main])
         AC_DEFINE([USE_XMLPARSER_EXPAT],1,[EXPAT])
 fi
@@ -139,7 +139,7 @@ if [ test $USE_LIBXML2 = yes ]; then
 		AC_SUBST(XML_CFLAGS)
 		AC_SUBST(XML_LIBS)
 	else
-		AC_MSG_ERROR(CyberLink needs libxml2 $LIBXML2_VERSION later)
+		AC_MSG_ERROR(mUPnP needs libxml2 $LIBXML2_VERSION later)
 	fi
 fi
 
@@ -183,7 +183,7 @@ AC_CHECK_LIB([iconv],[main])
 # Checks for pthread
 ##############################
 
-AC_CHECK_HEADERS([pthread.h],,[AC_MSG_ERROR(CyberLink needs POSIX thread library)])
+AC_CHECK_HEADERS([pthread.h],,[AC_MSG_ERROR(mUPnP needs POSIX thread library)])
 AC_CHECK_LIB([pthread],[main])
 
 ##############################
