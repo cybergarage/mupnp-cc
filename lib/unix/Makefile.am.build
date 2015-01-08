@@ -2,19 +2,19 @@
 print<<HEADER;
 ############################################################
 #
-# CyberLink for C++
+# mUPnP for C++
 #
 # Copyright (C) Satoshi Konno 2003
 #
 ############################################################
 
-lib_LIBRARIES = libclink++.a
+lib_LIBRARIES = libmupnp++.a
 
 AM_CPPFLAGS = -I\$(top_srcdir)/include \@XML_CFLAGS\@
 
-clinkcc_sources = \\
+mupnpcc_sources = \\
 HEADER
-my @find_files = `find ../../src/cybergarage -name *.cpp`;
+my @find_files = `find ../../src/mupnp -name *.cpp`;
 my @source_files;
 foreach $file (@find_files) {
 	$file =~ s/\n//;
@@ -25,6 +25,6 @@ print join(" \\\n", @source_files) . "\n";
 
 print<<FOTTER;
 
-libclink___a_SOURCES = \\
-        \$(clinkcc_sources)
+libmupnp___a_SOURCES = \\
+        \$(mupnpcc_sources)
 FOTTER

@@ -2,13 +2,13 @@
 print<<HEADER;
 ############################################################
 #
-# CyberGarage for C
+# mUPnP for C++
 #
-# Copyright (C) Satoshi Konno 2005
+# Copyright (C) Satoshi Konno 2003
 #
 ############################################################
 
-noinst_PROGRAMS = clinkcctestunit
+noinst_PROGRAMS = mupnpcctestunit
 
 AM_CPPFLAGS = -I\$(top_srcdir)/include -I../
 
@@ -29,7 +29,7 @@ print join(" \\\n", @include_files) . "\n";
 
 print<<SOURCES;
 
-clinkcctestunit_SOURCES = \\
+mupnpcctestunit_SOURCES = \\
 SOURCES
 
 my @find_files = `find ../ -name *.cpp -or -name *.cpp`;
@@ -43,6 +43,6 @@ print join(" \\\n", @source_files) . "\n";
 
 print<<FOTTER;
 
-clinkcctestunit_LDADD = ../../lib/unix/libclink++.a -ldl \@XML_LIBS\@
+mupnpcctestunit_LDADD = ../../lib/unix/libclink++.a -ldl \@XML_LIBS\@
 FOTTER
 

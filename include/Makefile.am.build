@@ -2,16 +2,16 @@
 print<<HEADER;
 ############################################################
 #
-# CyberLink for C
+# mUPnP for C
 #
 # Copyright (C) Satoshi Konno 2002
 #
 ############################################################
 
-clinkcc_headers = \\
+mupnpcc_headers = \\
 HEADER
 
-my @find_files = `find ./cybergarage -name *.h`;
+my @find_files = `find ./mupnp -name *.h`;
 my @include_files;
 foreach $file (@find_files) {
 	$file =~ s/\n//;
@@ -23,5 +23,5 @@ print join(" \\\n", @include_files) . "\n";
 print<<FOTTER;
 
 nobase_include_HEADERS = \\
-	\$(clinkcc_headers)
+	\$(mupnpcc_headers)
 FOTTER
