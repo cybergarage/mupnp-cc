@@ -158,7 +158,7 @@
 
 /* Begin PBXFileReference section */
 		215252E81A5E460700A226B5 /* mUPnP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mUPnP.h; sourceTree = "<group>"; };
-		219C21ED155C7877003ABA46 /* libmupnp++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libmupnp++.a"; path = "liblibmupnp++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		219C21ED155C7877003ABA46 /* liblibmupnp++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "liblibmupnp++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CDABE51A5E347000171E09 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		21CDABE61A5E347000171E09 /* ActionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionList.h; sourceTree = "<group>"; };
 		21CDABE71A5E347000171E09 /* AllowedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllowedValue.h; sourceTree = "<group>"; };
@@ -348,7 +348,7 @@
 		219C21EE155C7877003ABA46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				219C21ED155C7877003ABA46 /* libmupnp++.a */,
+				219C21ED155C7877003ABA46 /* liblibmupnp++.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -747,7 +747,7 @@
 			);
 			name = "libmupnp++";
 			productName = "libmupnp++";
-			productReference = 219C21ED155C7877003ABA46 /* libmupnp++.a */;
+			productReference = 219C21ED155C7877003ABA46 /* liblibmupnp++.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */

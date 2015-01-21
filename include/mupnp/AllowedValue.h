@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: AllowedValue.h
-*
-*  Revision:
-*
-*  03/27/04
-*    - first revision.
-*  
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ALLOWEDVALUE_H_
 #define _MUPMPCC_ALLOWEDVALUE_H_
@@ -20,7 +15,7 @@
 
 namespace mUPnP{
 class AllowedValue {
-  CyberXML::Node *allowedValueNode;
+  mUPnP::Node *allowedValueNode;
   
   ////////////////////////////////////////////////
   // Constants
@@ -33,11 +28,11 @@ class AllowedValue {
   ////////////////////////////////////////////////
 
  public:
-  void setAllowedValueNode(CyberXML::Node *node) {
+  void setAllowedValueNode(Node *node) {
     allowedValueNode = node;
   }
 
-  CyberXML::Node *getAllowedValueNode() {
+  mUPnP::Node *getAllowedValueNode() {
     return allowedValueNode;
   }
 
@@ -51,7 +46,7 @@ public:
     setAllowedValueNode(NULL);
   }
 
-  AllowedValue(CyberXML::Node *node) {
+  AllowedValue(Node *node) {
     setAllowedValueNode(node);
   }
 
@@ -60,7 +55,7 @@ public:
   ////////////////////////////////////////////////
 
  public:
-  static bool isAllowedValueNode(CyberXML::Node *node) {
+  static bool isAllowedValueNode(Node *node) {
     return node->isName(AllowedValue::ELEM_NAME);
   }
 

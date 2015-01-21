@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File:  ExpatParser.cpp
-*
-*  Revision;
-*
-*  11/29/04
-*    - first revision
-*  06/14/05
-*    - Changed ExpatCharacterData() to use Node::addValue() instead of Node::setValue().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -46,7 +39,7 @@
 #include <stdio.h>
 
 using namespace std;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

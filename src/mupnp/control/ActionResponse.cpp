@@ -29,8 +29,8 @@
 using namespace std;
 using namespace uHTTP;
 using namespace mUPnP;
-using namespace CyberXML;
-using namespace CyberSOAP;
+using namespace mUPnP;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constructor
@@ -40,7 +40,7 @@ ActionResponse::ActionResponse() {
   setHeader(HTTP::EXT, "");
 }
 
-ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes) {
+ActionResponse::ActionResponse(SOAPResponse *soapRes) {
   set(soapRes);
   setHeader(HTTP::EXT, "");
 }
@@ -49,30 +49,30 @@ ActionResponse::ActionResponse(CyberSOAP::SOAPResponse *soapRes) {
 // Response
 ////////////////////////////////////////////////
 
-void ActionResponse::setResponse(mUPnP::Action *action) {
+void ActionResponse::setResponse(Action *action) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
   
-  CyberXML::Node *bodyNode = getBodyNode();
-  CyberXML::Node *resNode = createResponseNode(action);
+  mUPnP::Node *bodyNode = getBodyNode();
+  mUPnP::Node *resNode = createResponseNode(action);
   bodyNode->addNode(resNode);
 
-  CyberXML::Node *envNode = getEnvelopeNode();
+  mUPnP::Node *envNode = getEnvelopeNode();
   setContent(envNode);
 }
 
-CyberXML::Node *ActionResponse::createResponseNode(mUPnP::Action *action) {
+mUPnP::Node *ActionResponse::createResponseNode(Action *action) {
   string nodeName;
-  nodeName = CyberSOAP::SOAP::METHODNS;
-  nodeName += CyberSOAP::SOAP::DELIM;
+  nodeName = mUPnP::SOAP::METHODNS;
+  nodeName += mUPnP::SOAP::DELIM;
   nodeName += action->getName();
-  nodeName += CyberSOAP::SOAP::RESPONSE;
-  Node *actionNameResNode = new CyberXML::Node(nodeName.c_str());
+  nodeName += mUPnP::SOAP::RESPONSE;
+  Node *actionNameResNode = new mUPnP::Node(nodeName.c_str());
     
   Service *service = action->getService();    
   if (service != NULL) {
     string attrName;
     attrName ="xmlns:";
-    attrName += CyberSOAP::SOAP::METHODNS;
+    attrName += mUPnP::SOAP::METHODNS;
     actionNameResNode->setAttribute(
       attrName.c_str(),
       service->getServiceType());
@@ -84,7 +84,7 @@ CyberXML::Node *ActionResponse::createResponseNode(mUPnP::Action *action) {
     Argument *arg = argList->getArgument(n);
     if (arg->isOutDirection() == false)
       continue;
-    CyberXML::Node *argNode = new CyberXML::Node();
+    mUPnP::Node *argNode = new mUPnP::Node();
     argNode->setName(arg->getName());
     argNode->setValue(arg->getValue());
     actionNameResNode->addNode(argNode);

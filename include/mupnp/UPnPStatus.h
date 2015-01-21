@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: UPnPStatus.h
-*
-*  Revision;
-*
-*  08/12/03
-*    - first revision
-*  01/03/04
-*    - Changed the class name from UPnPError to UPnPStatus.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_UPNPSTATUS_H_
 #define _MUPMPCC_UPNPSTATUS_H_

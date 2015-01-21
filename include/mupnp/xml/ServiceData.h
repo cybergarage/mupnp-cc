@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ServiceData.h
-*
-*  Revision;
-*
-*  07/20/03
-*    - first revision
-*  03/30/05
-*    - Removed setDescriptionURL() and getDescriptionURL().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_SERVICEDATA_H_
 #define _MUPMPCC_SERVICEDATA_H_
@@ -29,7 +22,7 @@ namespace mUPnP {
 class QueryListener;
 class Service;
 
-class ServiceData : public CyberXML::NodeData {
+class ServiceData : public mUPnP::NodeData {
   Service *service;
 
   std::string sid;
@@ -37,7 +30,7 @@ class ServiceData : public CyberXML::NodeData {
 
   SubscriberList subscriberList;
 
-  CyberXML::Node *scpdNode;
+  mUPnP::Node *scpdNode;
 
  public:
   ////////////////////////////////////////////////
@@ -63,11 +56,11 @@ class ServiceData : public CyberXML::NodeData {
   // scpdNode
   ////////////////////////////////////////////////
 
-  CyberXML::Node *getSCPDNode() {
+  mUPnP::Node *getSCPDNode() {
     return scpdNode;
   }
 
-  void setSCPDNode(CyberXML::Node *node);
+  void setSCPDNode(Node *node);
 
   ////////////////////////////////////////////////
   // SubscriberList

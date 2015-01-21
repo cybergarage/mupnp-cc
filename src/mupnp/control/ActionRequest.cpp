@@ -30,8 +30,8 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace CyberXML;
-using namespace CyberSOAP;
+using namespace mUPnP;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // initArgumentList
@@ -56,8 +56,8 @@ void ActionRequest::initArgumentList() {
 // getActionNode
 ////////////////////////////////////////////////
 
-CyberXML::Node *ActionRequest::getActionNode() {
-  CyberXML::Node *bodyNode = getBodyNode();
+mUPnP::Node *ActionRequest::getActionNode() {
+  mUPnP::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
@@ -70,14 +70,14 @@ CyberXML::Node *ActionRequest::getActionNode() {
 ////////////////////////////////////////////////
 
 const char *ActionRequest::getActionName(std::string &buf) {
-  CyberXML::Node *node = getActionNode();
+  mUPnP::Node *node = getActionNode();
   if (node == NULL)
     return "";
   const char *name = node->getName();
   if (name == NULL)
     return "";
   uHTTP::String nameStr(name);
-  int idx = nameStr.indexOf(CyberSOAP::SOAP::DELIM)+1;
+  int idx = nameStr.indexOf(SOAP::DELIM)+1;
   if (idx < 0)
     return "";
   uHTTP::String actName;
@@ -89,7 +89,7 @@ const char *ActionRequest::getActionName(std::string &buf) {
 // setRequest
 ////////////////////////////////////////////////
 
-void ActionRequest::setRequest(mUPnP::Action *action, ArgumentList *argList) {
+void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
   Service *service = action->getService();
 
   setRequestHost(service);

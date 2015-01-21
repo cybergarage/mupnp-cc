@@ -1,20 +1,15 @@
 /******************************************************************
-*
-*  CyberSOAP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SOAPRequest.h
-*
-*  Revision;
-*
-*  05/21/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CSOAP_SOAPREQUEST_H_
-#define _CSOAP_SOAPREQUEST_H_
+#ifndef _MUPNP_SOAPREQUEST_H_
+#define _MUPNP_SOAPREQUEST_H_
 
 #include <uhttp/http/HTTPRequest.h>
 #include <uhttp/http/HTTPResponse.h>
@@ -23,11 +18,11 @@
 #include <mupnp/soap/SOAPResponse.h>
 #include <mupnp/xml/Node.h>
 
-namespace CyberSOAP {
+namespace mUPnP {
 const char SOAPACTION[] = "SOAPACTION";
 
 class SOAPRequest : public uHTTP::HTTPRequest {
-  CyberXML::Node *rootNode;
+  mUPnP::Node *rootNode;
   SOAPResponse soapRes;
     
   ////////////////////////////////////////////////
@@ -83,7 +78,7 @@ class SOAPRequest : public uHTTP::HTTPRequest {
 
 private:
 
-  CyberXML::Node *parseMessage(const std::string &content, size_t contentLen);
+  mUPnP::Node *parseMessage(const std::string &content, size_t contentLen);
 
  public:
   SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
@@ -98,27 +93,27 @@ private:
 
 private:
 
-  void setRootNode(CyberXML::Node *node) {
+  void setRootNode(Node *node) {
     rootNode = node;
   }
 
-  CyberXML::Node *getRootNode();
+  mUPnP::Node *getRootNode();
   
   ////////////////////////////////////////////////
   // XML
   ////////////////////////////////////////////////
 
  public:
-  void setEnvelopeNode(CyberXML::Node *node) {
+  void setEnvelopeNode(Node *node) {
     setRootNode(node);
   }
   
-  CyberXML::Node *getEnvelopeNode() {
+  mUPnP::Node *getEnvelopeNode() {
     return getRootNode();
   }
     
-  CyberXML::Node *getBodyNode() {
-    CyberXML::Node *envNode = getEnvelopeNode();
+  mUPnP::Node *getBodyNode() {
+    mUPnP::Node *envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
     if (envNode->hasNodes() == false)
@@ -131,22 +126,7 @@ private:
   ////////////////////////////////////////////////
   
  public:
-  void setContent(CyberXML::Node *node);
-
-  ////////////////////////////////////////////////
-  // print
-  ////////////////////////////////////////////////
-/*  
-  public void print() {
-    System.out.println(toString());
-    if (hasContent() == true)
-      return;
-    Node rootElem = getRootNode();
-    if (rootElem == null)
-      return;
-    System.out.println(rootElem.toString());
-  }
-*/
+  void setContent(Node *node);
 };
 
 }

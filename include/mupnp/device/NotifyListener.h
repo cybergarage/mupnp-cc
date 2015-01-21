@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: NotifyListener.h
-*
-*  Revision;
-*
-*  07/05/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_NOTIFYLISTENER_H_
 #define _MUPMPCC_NOTIFYLISTENER_H_

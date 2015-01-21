@@ -19,7 +19,7 @@
 #include <mupnp/StateVariable.h>
 
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // setRequest
@@ -29,11 +29,11 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
     
   const char *value = stateVar->getValue();
-  CyberXML::Node *bodyNode = getBodyNode();
-  CyberXML::Node *resNode = createResponseNode(value);
+  mUPnP::Node *bodyNode = getBodyNode();
+  mUPnP::Node *resNode = createResponseNode(value);
   bodyNode->addNode(resNode);
     
-  CyberXML::Node *envNodee = getEnvelopeNode();
+  mUPnP::Node *envNodee = getEnvelopeNode();
   setContent(envNodee);
 }
 
@@ -41,13 +41,13 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
 // getReturn
 ////////////////////////////////////////////////
 
-CyberXML::Node *QueryResponse::getReturnNode() {
-  CyberXML::Node *bodyNode = getBodyNode();
+mUPnP::Node *QueryResponse::getReturnNode() {
+  mUPnP::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
     return NULL;
-  CyberXML::Node *queryResNode = bodyNode->getNode(0);
+  mUPnP::Node *queryResNode = bodyNode->getNode(0);
   if (queryResNode == NULL)
     return NULL;
   if (queryResNode->hasNodes() == false)
@@ -56,7 +56,7 @@ CyberXML::Node *QueryResponse::getReturnNode() {
 }
   
 const char *QueryResponse::getReturnValue() {
-  CyberXML::Node *node = getReturnNode();
+  mUPnP::Node *node = getReturnNode();
   if (node == NULL)
     return "";
   return node->getValue();
@@ -67,11 +67,11 @@ const char *QueryResponse::getReturnValue() {
 ////////////////////////////////////////////////
 
 Node *QueryResponse::createResponseNode(const std::string &value) {
-  CyberXML::Node *queryResNode = new CyberXML::Node();
+  mUPnP::Node *queryResNode = new mUPnP::Node();
   queryResNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE_RESPONSE);
   queryResNode->setNameSpace(Control::NS, Control::XMLNS);
     
-  CyberXML::Node *returnNode = new CyberXML::Node();
+  mUPnP::Node *returnNode = new mUPnP::Node();
   returnNode->setName(Control::RETURN);
   returnNode->setValue(value);
   queryResNode->addNode(returnNode);

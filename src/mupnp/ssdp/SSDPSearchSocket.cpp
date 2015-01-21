@@ -1,21 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SSDPSearchSocket.cpp
-*
-*  Revision;
-*
-*  08/14/03
-*    - first revision
-*  04/20/05
-*    - Mikael Hakman <mhakman@dkab.net>
-*    - Added close() in stop().
-*    - Added test for null return from receive() in run().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/ControlPoint.h>
 #include <mupnp/ssdp/SSDPSearchSocket.h>

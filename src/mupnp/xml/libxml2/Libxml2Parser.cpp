@@ -1,20 +1,12 @@
 /******************************************************************
-*
-*  libxml2 XML parser support for for mUPnP C++ UPnP stack
-*
-*  Copyright (C) Nokia 2005
-*
-*  File:  Libxml2Parser.cpp
-*
-*  Revision:
-*
-*  08/24/05
-*    - first revision
-*  09/07/05
-*    - Thanks for  Smolander Visa <visa.smolander@nokia.com>
-*    - Fixed some bugs to parser the name spaces.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -37,7 +29,7 @@
 #include <libxml/tree.h>
 
 using namespace std;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

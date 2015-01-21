@@ -1,26 +1,17 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: NodeList.cpp
-*
-*  Revision;
-*
-*  04/28/04
-*    - first revision
-*  06/30/04
-*    - Added addNode(), insertNode() and removeNode();
-*  03/04/06
-*    - Added getNode(name, value) for iTunes Library.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/xml/NodeList.h>
 #include <mupnp/xml/Node.h>
 
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

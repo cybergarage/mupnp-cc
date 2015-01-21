@@ -1,25 +1,20 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: AttributeList.h
-*
-*  Revision;
-*
-*  04/22/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CXML_ATTRIBUTELIST_H_
-#define _CXML_ATTRIBUTELIST_H_
+#ifndef _MUPMPCC_ATTRIBUTELIST_H_
+#define _MUPMPCC_ATTRIBUTELIST_H_
 
 #include <uhttp/util/Vector.h>
 #include <mupnp/xml/Attribute.h>
 
-namespace CyberXML {
+namespace mUPnP {
 
 class AttributeList : public uHTTP::Vector<Attribute> {
 public:

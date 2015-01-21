@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SubscriberList.h
-*
-*  Revision;
-*
-*  07/05/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_SUBSCRIBERLIST_H_
 #define _MUPMPCC_SUBSCRIBERLIST_H_

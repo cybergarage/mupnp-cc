@@ -1,48 +1,12 @@
 /******************************************************************
-*
-*  uHTTP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ControlPoint.cpp
-*
-*  Revision:
-*
-*  07/15/03
-*    - first revision
-*  09/08/03
-*    - Giordano Sassaroli <sassarol@cefriel.it>
-*    - Problem : when an event notification message is received and the message
-*          contains updates on more than one variable, only the first variable update
-*          is notified.
-*    - Error :  the other xml nodes of the message are ignored
-*    - Fix : add two methods to the NotifyRequest for extracting the property array
-*        and modify the httpRequestRecieved method in ControlPoint
-*  01/06/04
-*    - Added the following methods to remove expired devices automatically
-*      removeExpiredDevices()
-*      setExpiredDeviceMonitoringInterval()/getExpiredDeviceMonitoringInterval()
-*      setDeviceDisposer()/getDeviceDisposer()
-*  04/20/04
-*    - Added the following methods.
-*      start(const std::string &target, int mx) and start(const std::string &target).
-*  04/28/04
-*    - Added a remove node list and clean() to delete removed devices..
-*    - Added lockDeviceList() and unlockDeviceList().
-*    - Added lockSubscriberList() and unlockSubscriberList().
-*  06/23/04
-*    - Added setNMPRMode() and isNMPRMode().
-*  07/08/04
-*    - Added renewSubscriberService().
-*    - Changed start() to create renew subscriber thread when the NMPR mode is true.
-*  08/17/04
-*    - Fixed removeExpiredDevices() to remove using the device array.
-*  10/16/04
-*    - Oliver Newell <newell@media-rush.com>
-*    - Added this class to allow ControlPoint applications to be notified when 
-*      the ControlPoint base class adds/removes a UPnP device
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <uhttp/util/Debug.h>
 #include <mupnp/ControlPoint.h>
@@ -53,7 +17,7 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
@@ -131,7 +95,7 @@ Device *ControlPoint::getDevice(const std::string &name) {
 // add
 ////////////////////////////////////////////////
 
-bool ControlPoint::addDevice(CyberXML::Node *rootNode) {
+bool ControlPoint::addDevice(Node *rootNode) {
   if (!devNodeList.add(rootNode))
     return false;
   initDeviceList();
@@ -181,7 +145,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 // remove
 ////////////////////////////////////////////////
 
-bool ControlPoint::removeDevice(CyberXML::Node *rootNode) {
+bool ControlPoint::removeDevice(Node *rootNode) {
   if (!devNodeList.erase(rootNode))
     return false;
   removedDevNodeList.add(rootNode);

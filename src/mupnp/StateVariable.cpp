@@ -1,49 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: StateVariable.cpp
-*
-*  Revision;
-*
-*  08/10/03
-*    - first revision
-*  01/05/04
-*    - Added UPnP status methods.
-*  01/06/04
-*    - Added the following methods.
-*      getQueryListener()
-*      setQueryListener()
-*      performQueryListener()
-*  01/07/04
-*    - Added StateVariable() and set();
-*    - Changed performQueryListener() to use a copy of the StateVariable.
-*  03/29/04
-*    - Thanks for Adavy
-*    - Added the following methods;
-*      initAllowedValueList().
-*      initAllowedValueRange().
-*      getAllowedValueList().
-*      getAllowedValueRange().
-*  04/26/04
-*    - Changed postQuerylAction() to get the return value using the QueryResponse.
-*  05/11/04
-*    - Added hasAllowedValueList() and hasAllowedValueRange().
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  07/09/04
-*    - Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net>
-*    - Changed postQuerylAction() to set the status code to the UPnPStatus.
-*  11/09/04
-*    - Theo Beisch <theo.beisch@gmx.de>
-*    - Changed StateVariable::setValue() to update and send the event when the value is not equal to the current value.
-*  11/19/04
-*    - Rick Keiner <rick@emanciple.com>
-*    - Fixed setValue() to compare only when the current value is not null.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/StateVariable.h>
 #include <uhttp/util/Debug.h>
@@ -57,7 +20,7 @@ using namespace std;
 using namespace uHTTP;
 using namespace mUPnP;
 using namespace uHTTP;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
@@ -84,7 +47,7 @@ StateVariable::StateVariable() {
   initAllowedValueRange();
 }
 
-StateVariable::StateVariable(CyberXML::Node *serviceNode, CyberXML::Node *stateVarNode) {
+StateVariable::StateVariable(Node *serviceNode, mUPnP::Node *stateVarNode) {
   this->serviceNode = serviceNode;
   this->stateVariableNode = stateVarNode;
 

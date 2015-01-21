@@ -1,20 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: HTTPMUSocket.cpp
-*
-*  Revision;
-*
-*  07/01/03
-*    - first revision
-*  11/19/04
-*    - Theo Beisch <theo.beisch@gmx.de>
-*    - Changed send() to set the TTL as 4.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <time.h>
 #include <uhttp/net/HostInterface.h>

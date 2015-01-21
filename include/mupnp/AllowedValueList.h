@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for Java
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: AllowedValueList.java
-*
-*  Revision:
-*
-*  03/29/04
-*    - first revision.
-*  
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ALLOWEDVALUELIST_H_
 #define _MUPMPCC_ALLOWEDVALUELIST_H_

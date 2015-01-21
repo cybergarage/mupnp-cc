@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ControlPoint.h
-*
-*  Revision;
-*
-*  07/11/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_CONTROLPOINT_H_
 #define _MUPMPCC_CONTROLPOINT_H_
@@ -47,8 +42,8 @@ class ControlPoint : public uHTTP::HTTPRequestListener {
   int httpPort;
   size_t httpWorkerCount;
   
-  CyberXML::NodeList  devNodeList;
-  CyberXML::NodeList  removedDevNodeList;
+  mUPnP::NodeList  devNodeList;
+  mUPnP::NodeList  removedDevNodeList;
 
   NotifyListenerList deviceNotifyListenerList;
   SearchResponseListenerList deviceSearchResponseListenerList;
@@ -156,7 +151,7 @@ private:
 
 private:
 
-  bool addDevice(CyberXML::Node *rootNode);
+  bool addDevice(Node *rootNode);
   bool addDevice(SSDPPacket *ssdpPacket);
 
 private:
@@ -164,7 +159,7 @@ private:
   void initDeviceList();
 
  public:
-  Device *getDevice(CyberXML::Node *rootNode);
+  Device *getDevice(Node *rootNode);
 
   DeviceList *getDeviceList() {
     return &deviceList;
@@ -178,7 +173,7 @@ private:
 
 private:
 
-  bool removeDevice(CyberXML::Node *rootNode);
+  bool removeDevice(Node *rootNode);
   bool removeDevice(SSDPPacket *packet);
 
   ////////////////////////////////////////////////

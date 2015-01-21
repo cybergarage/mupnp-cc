@@ -1,20 +1,12 @@
 /******************************************************************
-*
-*  CyberSOAP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SOAP.cpp
-*
-*  Revision;
-*
-*  05/21/03
-*    - first revision
-*  06/01/04
-*    - Added GetHeader().
-*    - Added GetEncording() and IsEncording().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <string>
 #include <sstream>
@@ -23,21 +15,21 @@
 #include <uhttp/util/StringUtil.h>
 
 using namespace std;
-using namespace CyberXML;
-using namespace CyberSOAP;
+using namespace mUPnP;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // CreateEnvelopeBodyNode
 ////////////////////////////////////////////////
 
-CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode() {
+mUPnP::Node *mUPnP::SOAP::CreateEnvelopeBodyNode() {
   // <Envelope>
   string envNodeName;
   envNodeName += XMLNS;
   envNodeName += DELIM;
   envNodeName += ENVELOPE;
-  Node *envNode = new CyberXML::Node(envNodeName.c_str());
+  Node *envNode = new mUPnP::Node(envNodeName.c_str());
 
   string xmlNs;
   xmlNs += "xmlns";
@@ -55,7 +47,7 @@ CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode() {
   bodyNodeName += XMLNS;
   bodyNodeName += DELIM;
   bodyNodeName += BODY;
-  Node *bodyNode = new CyberXML::Node(bodyNodeName.c_str());
+  Node *bodyNode = new mUPnP::Node(bodyNodeName.c_str());
   envNode->addNode(bodyNode);
 
   return envNode;
@@ -65,7 +57,7 @@ CyberXML::Node *CyberSOAP::SOAP::CreateEnvelopeBodyNode() {
 // Header
 ////////////////////////////////////////////////
 
-const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &header) {
+const char *mUPnP::SOAP::GetHeader(const std::string &content, std::string &header) {
   header = "";
   if (content.length() <= 0)
     return header.c_str();
@@ -80,7 +72,7 @@ const char *CyberSOAP::SOAP::GetHeader(const std::string &content, std::string &
 // Encoding
 ////////////////////////////////////////////////
 
-const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::string &encording) {
+const char *mUPnP::SOAP::GetEncording(const std::string &content, std::string &encording) {
   encording = "";
   string header;
   SOAP::GetHeader(content, header);
@@ -97,7 +89,7 @@ const char *CyberSOAP::SOAP::GetEncording(const std::string &content, std::strin
   return encording.c_str();
 }
 
-bool CyberSOAP::SOAP::IsEncording(const std::string &content, const std::string &encType) {
+bool mUPnP::SOAP::IsEncording(const std::string &content, const std::string &encType) {
   string enc;
   SOAP::GetEncording(content, enc);
   String encStr(enc);

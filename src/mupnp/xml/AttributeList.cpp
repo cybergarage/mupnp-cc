@@ -1,24 +1,17 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: AttributeList.cpp
-*
-*  Revision:
-*
-*  04/22/03
-*    - first revision
-*  06/30/04
-*    - Added addAttribute(), insertAttribute() and removeAttribute();
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/xml/AttributeList.h>
 #include <uhttp/util/StringUtil.h>
 
-using namespace CyberXML;
+using namespace mUPnP;
 
 Attribute *AttributeList::getAttribute(const std::string &name)  {
   size_t nLists = size();

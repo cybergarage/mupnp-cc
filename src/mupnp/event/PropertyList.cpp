@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: PropertyList.cpp
-*
-*  Revision;
-*
-*  09/08/03
-*    - first revision
-*  06/30/04
-*    - Added addProperty(), insertProperty() and removeProperty();
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/event/PropertyList.h>
 

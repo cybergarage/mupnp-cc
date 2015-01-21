@@ -1,22 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Subscriber.cpp
-*
-*  Revision:
-*
-*  08/02/03
-*    - first revision
-*  07/31/04
-*    - Added isExpired().
-*  10/26/04
-*    - Oliver Newell <newell@media-rush.com>
-*    - Added support the intinite time and fixed a bug in isExpired().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/event/Subscriber.h>
 #include <mupnp/event/Subscription.h>

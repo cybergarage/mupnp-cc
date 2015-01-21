@@ -1,19 +1,13 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ActionData.h
-*
-*  Revision;
-*
-*  07/20/03
-*    - first revision
-*  04/19/04
-*    - Fixed to initialize the action listener and the control responce member.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
+
 
 #ifndef _MUPMPCC_ACTONDATA_H_
 #define _MUPMPCC_ACTONDATA_H_
@@ -25,7 +19,7 @@ namespace mUPnP {
 class ActionListener;
 class ControlResponse;
 
-class ActionData : public CyberXML::NodeData {
+class ActionData : public mUPnP::NodeData {
   ActionListener *actionListener;
   ControlResponse *ctrlRes;
 

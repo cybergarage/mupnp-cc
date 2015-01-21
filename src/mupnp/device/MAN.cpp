@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: MAN.cpp
-*
-*  Revision:
-*
-*  07/08/03
-*    - first revision
-*  08/21/05
-*    - Changed IsDiscover() using string instead of ostringstream.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/device/MAN.h>
 #include <uhttp/util/StringUtil.h>

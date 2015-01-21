@@ -1,25 +1,18 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ActionData.cpp
-*
-*  Revision;
-*
-*  04/26/04
-*    - first revision
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/control/ControlResponse.h>
 #include <mupnp/xml/ActionData.h>
 
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constructor

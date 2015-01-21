@@ -1,22 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SSDPPacket.h
-*
-*  Revision;
-*
-*  06/05/03
-*    - first revision
-*  01/06/04
-*    - Added set() and isNull().
-*  11/01/04
-*    - Theo Beisch <theo.beisch@gmx.de>
-*    - Fixed isRootDevice() to check the ST header.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <string>
 #include <string.h>

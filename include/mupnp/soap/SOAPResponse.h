@@ -1,28 +1,23 @@
 /******************************************************************
-*
-*  CyberSOAP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SOAPResponse.h
-*
-*  Revision;
-*
-*  05/21/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CSOAP_SOAPRESPONSE_H_
-#define _CSOAP_SOAPRESPONSE_H_
+#ifndef _MUPNP_SOAPRESPONSE_H_
+#define _MUPNP_SOAPRESPONSE_H_
 
 #include <uhttp/http/HTTPResponse.h>
 #include <mupnp/xml/XML.h>
 #include <mupnp/soap/SOAP.h>
 
-namespace CyberSOAP {
+namespace mUPnP {
 class SOAPResponse : public uHTTP::HTTPResponse {
-  CyberXML::Node *rootNode;
+  mUPnP::Node *rootNode;
   
  public:
   ////////////////////////////////////////////////
@@ -66,13 +61,13 @@ class SOAPResponse : public uHTTP::HTTPResponse {
 
 private:
 
-  void setRootNode(CyberXML::Node *node) {
+  void setRootNode(Node *node) {
     if (rootNode != NULL)
       delete rootNode;
     rootNode = node;
   }
   
-  CyberXML::Node *getRootNode() {
+  mUPnP::Node *getRootNode() {
     return rootNode;
   }
   
@@ -81,23 +76,23 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  void setEnvelopeNode(CyberXML::Node *node) {
+  void setEnvelopeNode(Node *node) {
     setRootNode(node);
   }
 
-  CyberXML::Node *getEnvelopeNode() {
+  mUPnP::Node *getEnvelopeNode() {
     return getRootNode();
   }
   
-  CyberXML::Node *getBodyNode() {
-    CyberXML::Node *envNode = getEnvelopeNode();
+  mUPnP::Node *getBodyNode() {
+    mUPnP::Node *envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
     return envNode->getNodeEndsWith(SOAP::BODY);
   }
 
-  CyberXML::Node *getMethodResponseNode(const std::string & name) {
-    CyberXML::Node *bodyNode = getBodyNode();
+  mUPnP::Node *getMethodResponseNode(const std::string & name) {
+    mUPnP::Node *bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
     std::string methodResName;
@@ -106,57 +101,57 @@ private:
     return bodyNode->getNodeEndsWith(methodResName.c_str());
   }
 
-  CyberXML::Node *getFaultNode() {
-    CyberXML::Node *bodyNode = getBodyNode();
+  mUPnP::Node *getFaultNode() {
+    mUPnP::Node *bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
     return bodyNode->getNodeEndsWith(SOAP::FAULT);
   }
 
-  CyberXML::Node *getFaultCodeNode() {
-    CyberXML::Node *faultNode = getFaultNode();
+  mUPnP::Node *getFaultCodeNode() {
+    mUPnP::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::FAULT_CODE);
   }
 
-  CyberXML::Node *getFaultStringNode() {
-    CyberXML::Node *faultNode = getFaultNode();
+  mUPnP::Node *getFaultStringNode() {
+    mUPnP::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::FAULT_STRING);
   }
 
-  CyberXML::Node *getFaultActorNode() {
-    CyberXML::Node *faultNode = getFaultNode();
+  mUPnP::Node *getFaultActorNode() {
+    mUPnP::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::FAULTACTOR);
   }
 
-  CyberXML::Node *getFaultDetailNode() {
-    CyberXML::Node *faultNode = getFaultNode();
+  mUPnP::Node *getFaultDetailNode() {
+    mUPnP::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::DETAIL);
   }
 
   const char *getFaultCode() {
-    CyberXML::Node *node = getFaultCodeNode();
+    mUPnP::Node *node = getFaultCodeNode();
     if (node == NULL)
       return "";
     return node->getValue();
   }
   
   const char *getFaultString() {
-    CyberXML::Node *node = getFaultStringNode();
+    mUPnP::Node *node = getFaultStringNode();
     if (node == NULL)
       return "";
     return node->getValue();
   }
   
   const char *getFaultActor() {
-    CyberXML::Node *node = getFaultActorNode();
+    mUPnP::Node *node = getFaultActorNode();
     if (node == NULL)
       return "";
     return node->getValue();
@@ -167,7 +162,7 @@ private:
   ////////////////////////////////////////////////
   
  public:
-  void setContent(CyberXML::Node *node);
+  void setContent(Node *node);
 
   ////////////////////////////////////////////////
   // print

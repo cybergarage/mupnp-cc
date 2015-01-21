@@ -1,23 +1,12 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File:  Parser.cpp
-*
-*  Revision;
-*
-*  05/20/03
-*    - first revision
-*  04/19/04
-*    - Fixed the parse() to read under the buffer size.
-*  04/27/04
-*    - Chaged XMLCh2Char() to return the value using string buffer.
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <stdio.h>
 #include <string.h>
@@ -33,7 +22,7 @@
 #endif
 
 using namespace std;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 using namespace uHTTP;
 

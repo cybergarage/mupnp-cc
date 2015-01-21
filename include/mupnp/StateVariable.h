@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Icon.h
-*
-*  Revision;
-*
-*  07/20/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_STATEVARIABLE_H_
 #define _MUPMPCC_STATEVARIABLE_H_
@@ -33,10 +28,10 @@ namespace mUPnP {
 class Service;
 
 class StateVariable {
-  CyberXML::Node *stateVariableNode;
-  CyberXML::Node *serviceNode;
+  mUPnP::Node *stateVariableNode;
+  mUPnP::Node *serviceNode;
   
-  CyberXML::Node stateVarNode;
+  mUPnP::Node stateVarNode;
   UPnPStatus upnpStatus;
   
   AllowedValueList allowedValueList;
@@ -59,12 +54,12 @@ class StateVariable {
   ////////////////////////////////////////////////
 
  public:
-  CyberXML::Node *getServiceNode() {
+  mUPnP::Node *getServiceNode() {
     return serviceNode;
   }
 
   Service *getService() {
-    CyberXML::Node *node = getServiceNode();
+    mUPnP::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
     ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
@@ -73,7 +68,7 @@ class StateVariable {
     return data->getService();
   }
 
-  CyberXML::Node *getStateVariableNode() {
+  mUPnP::Node *getStateVariableNode() {
     return stateVariableNode;
   }
   
@@ -83,7 +78,7 @@ class StateVariable {
 
  public:
   StateVariable();
-  StateVariable(CyberXML::Node *serviceNode, CyberXML::Node *stateVarNode);
+  StateVariable(Node *serviceNode, mUPnP::Node *stateVarNode);
 
   ~StateVariable();
 
@@ -92,7 +87,7 @@ class StateVariable {
   ////////////////////////////////////////////////
 
  public:
-  static bool isStateVariableNode(CyberXML::Node *node) {
+  static bool isStateVariableNode(Node *node) {
     return node->isName(ELEM_NAME);
   }
 
@@ -183,7 +178,7 @@ private:
 
  public:
   StateVariableData *getStateVariableData () {
-    CyberXML::Node *node = getStateVariableNode();
+    mUPnP::Node *node = getStateVariableNode();
     StateVariableData *userData = dynamic_cast<StateVariableData *>(node->getUserData());
     if (userData == NULL) {
       userData = new StateVariableData();

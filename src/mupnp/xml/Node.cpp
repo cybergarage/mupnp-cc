@@ -1,34 +1,12 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Node.cpp
-*
-*  Revision;
-*
-*  04/22/03
-*    - first revision
-*  03/10/04
-*    - Terje Bakken
-*    - fixed missing escaping of reserved XML characters
-*  06/01/04
-*    - Added UnicodeString().
-*  08/18/04
-*    - Changed to setUserData() to delete the current user data.
-*  11/19/04
-*    - Theo Beisch <theo.beisch@gmx.de>
-*    - Changed XML::output() to use short notation when the tag value is null.
-*  12/16/04
-*    - Added support not to use ostringstream.
-*    - Added support not to use cout.
-*  06/14/05
-*    - Added addValue().
-*  03/04/06
-*    - Added getNode(name, value) for iTunes Library.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,7 +16,7 @@
 #include <mupnp/xml/Node.h>
 
 using namespace std;
-using namespace CyberXML;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Node

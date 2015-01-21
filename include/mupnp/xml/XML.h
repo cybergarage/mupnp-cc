@@ -1,24 +1,19 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: XML.h
-*
-*  Revision;
-*
-*  03/23/03
-*    - first revision.
-*  
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CXML_XML_H_
-#define _CXML_XML_H_
+#ifndef _MUPMPCC_XML_H_
+#define _MUPMPCC_XML_H_
 
 #include <string>
 
-namespace CyberXML {
+namespace mUPnP {
 typedef unsigned char UnicodeStr;
 
 namespace XML {

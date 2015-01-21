@@ -1,68 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Device.cpp
-*
-*  Revision:
-*
-*  08/13/03
-*    - first revision
-*  09/03/03
-*    - Giordano Sassaroli <sassarol@cefriel.it>
-*    - Problem : The device does not accepts request for services when control or subscription urls are absolute
-*    - Error : device methods, when requests are received, search for services that have a controlUrl (or eventSubUrl) equal to the request URI
-*          but request URI must be relative, so they cannot equal absolute urls
-*  09/03/03
-*    - Steven Yen
-*    - description: to retrieve service information based on information in URLBase and SCPDURL
-*    - problem: not able to retrieve service information when URLBase is missing and SCPDURL is relative
-*    - fix: modify to retrieve host information from Header's Location (required) field and update the
-*         BaseURL tag in the xml so subsequent information retrieval can be done (Steven Yen, 8.27.2003)
-*    - note: 1. in the case that Header's Location field combine with SCPDURL is not able to retrieve proper 
-*          information, updating BaseURL would not hurt, since exception will be thrown with or without update.
-*        2. this problem was discovered when using PC running MS win XP with ICS enabled (gateway). 
-*          It seems that  root device xml file does not have BaseURL and SCPDURL are all relative.
-*        3. UPnP device architecture states that BaseURL is optional and SCPDURL may be relative as 
-*          specified by UPnP vendor, so MS does not seem to violate the rule.
-*  10/22/03
-*    - Added setActionListener().
-*  01/05/04
-*    - Changed about new QueryListener interface.
-*  01/06/04
-*    - Moved the following methods to StateVariable class.
-*      getQueryListener() 
-*      setQueryListener() 
-*      performQueryListener()
-*    - Added new setQueryListener() to set a listner to all state variables.
-*  03/26/04
-*    - Jay Deen <j2deen_ca@yahoo.ca>
-*    - Fixed Service::getDeviceList() to public method.
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  07/02/04
-*    - Added serviceSearchResponse().
-*    - Deleted getLocationURL().
-*    - Fixed announce() to set the root device URL to the LOCATION field.
-*  07/31/04
-*    - Changed notify() to remove the expired subscribers and not to remove the invalid response subscribers for NMPR.
-*  10/29/04
-*    - Fixed a bug when notify() removes the expired devices().
-*  03/30/05
-*    - Added Service::isSCPDURL.
-*  03/31/05
-*    - Added getSCPDData().
-*   04/25/05
-*    - Thanks for Mikael Hakman <mhakman@dkab.net>
-*     - Changed getSCPDData() to add a XML declaration at first line.
-*   06/21/05
-*    - Changed notify() to continue when the subscriber is null.
-*  08/21/05
-*    - Changed getSCPDNode() using string instead of ostringstream.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
@@ -78,7 +22,7 @@
 #include <string>
 
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 using namespace std;
 
@@ -97,7 +41,7 @@ const char *Service::EVENT_SUB_URL = "eventSubURL";
 // Constructor
 ////////////////////////////////////////////////
 
-Service::Service(CyberXML::Node *node) {
+Service::Service(Node *node) {
   serviceNode = node;
   
   initServiceData();
@@ -199,22 +143,22 @@ StateVariable *Service::getStateVariable(const std::string &name) {
 // SCPD node
 ////////////////////////////////////////////////
 
-CyberXML::Node *Service::getSCPDNode(uHTTP::URL *url) {
-  CyberXML::Parser parser;
+mUPnP::Node *Service::getSCPDNode(uHTTP::URL *url) {
+  mUPnP::Parser parser;
   return parser.parse(url);
 }
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-CyberXML::Node *Service::getSCPDNode(uHTTP::File *file) {
-  CyberXML::Parser parser;
+mUPnP::Node *Service::getSCPDNode(uHTTP::File *file) {
+  mUPnP::Parser parser;
   return parser.parse(file);
 }
 
 #endif
 
-CyberXML::Node *Service::getSCPDNode(const std::string &description) {
-  CyberXML::Parser parser;
+mUPnP::Node *Service::getSCPDNode(const std::string &description) {
+  mUPnP::Parser parser;
   return parser.parse(description);
 }
 

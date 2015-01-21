@@ -1,33 +1,12 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: XML.cpp
-*
-*  Revision;
-*
-*  03/10/04
-*    - first revision
-*  05/10/04
-*    - Added Local2Unicode.
-*  05/19/04
-*    - Added some defines for Cygwin.
-*  06/01/04
-*    - Changed Added UnicodeStr from unsinged short to unsigned char.
-*  08/01/04
-*    - Added <stdio.h> for sprintf() for gcc 2.95.3.
-*  12/02/04
-*    - Brian Owens <brian@b-owens.com>
-*    - Fixed EscapeXMLChars() to convert from "'" to "&apos;" instead of "\".
-*  12/16/04
-*    - Added support for BTRON
-*  09/06/06
-*    - Thanks for Smolander Visa <visa.smolander@nokia.com>
-*    - Changed EscapeXMLChars() to process the '&' character at first for libxml2.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"
@@ -55,7 +34,7 @@
 #include <stdio.h>
 
 using namespace std;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 #ifndef WIN32
@@ -66,7 +45,7 @@ static Mutex iconvMutex;
 // EscapeXMLChars
 ////////////////////////////////////////////////
 
-const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &out) {
+const char *mUPnP::XML::EscapeXMLChars(const std::string &in, std::string &out) {
   out = in;
   
   // Thanks for Smolander Visa (09/06/05)
@@ -82,6 +61,6 @@ const char *CyberXML::XML::EscapeXMLChars(const std::string &in, std::string &ou
   return out.c_str();
 }
 
-const char *CyberXML::XML::EscapeXMLChars(std::string &in, std::string &out) {
+const char *mUPnP::XML::EscapeXMLChars(std::string &in, std::string &out) {
   return EscapeXMLChars(in.c_str(), out);
 }

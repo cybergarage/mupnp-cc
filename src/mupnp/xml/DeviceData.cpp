@@ -1,23 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: DeviceData.cpp
-*
-*  Revision;
-*
-*  07/22/03
-*    - first revision
-*  12/25/03
-*    - Added Advertiser functions.
-*  01/06/03
-*    - Changed a ssdp packet variable to static.
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/Device.h>
 

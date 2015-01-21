@@ -1,22 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Subscriptoin.cpp
-*
-*  Revision;
-*
-*  08/10/03
-*    - first revision
-*  04/19/04
-*    - Fixed GetTimeout() to return the valid value.
-*    - Fixed toTimeoutHeaderString() to set the valid value instead of the invalid URL value.
-*  08/01/04
-*    - Added <stdio.h> for sprintf() for gcc 2.95.3.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/UPnP.h>
 #include <mupnp/event/Subscription.h>

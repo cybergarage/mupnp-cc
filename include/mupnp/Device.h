@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Device.h
-*
-*  Revision;
-*
-*  07/10/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_DEVICE_H_
 #define _MUPMPCC_DEVICE_H_
@@ -42,8 +37,8 @@
 
 namespace mUPnP {
 class Device : public uHTTP::HTTPRequestListener, public SearchListener {
-  CyberXML::Node *rootNode;
-  CyberXML::Node *deviceNode;
+  mUPnP::Node *rootNode;
+  mUPnP::Node *deviceNode;
 
   Device *rootDevice;
   Device *parentDevice;
@@ -93,9 +88,9 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   ////////////////////////////////////////////////
 
  public:
-  CyberXML::Node *getRootNode();
+  mUPnP::Node *getRootNode();
 
-  CyberXML::Node *getDeviceNode() {
+  mUPnP::Node *getDeviceNode() {
     return deviceNode;
   }
 
@@ -103,11 +98,11 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
     return (deviceNode != NULL) ? true : false;
   }
   
-  void setRootNode(CyberXML::Node *node) {
+  void setRootNode(Node *node) {
     rootNode = node;
   }
 
-  void setDeviceNode(CyberXML::Node *node) {
+  void setDeviceNode(Node *node) {
     deviceNode = node;
   }
         
@@ -116,8 +111,8 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   ////////////////////////////////////////////////
 
   Device();
-  Device(CyberXML::Node *root, CyberXML::Node *device);
-  Device(CyberXML::Node *device);
+  Device(Node *root, mUPnP::Node *device);
+  Device(Node *device);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
   Device(uHTTP::File *descriptionFile);
   Device(const std::string &descriptionFileName);
@@ -312,7 +307,7 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  static bool isDeviceNode(CyberXML::Node *node) {
+  static bool isDeviceNode(Node *node) {
     return node->isName(Device::ELEM_NAME);
   }
   

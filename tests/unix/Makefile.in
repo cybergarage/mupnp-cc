@@ -107,7 +107,7 @@ am_mupnpcctestunit_OBJECTS = ..//NotifSocketTests.$(OBJEXT) \
 	..//UPnPDeviceTests.$(OBJEXT) ..//UPnPMiscTests.$(OBJEXT) \
 	..//XMLParserTests.$(OBJEXT)
 mupnpcctestunit_OBJECTS = $(am_mupnpcctestunit_OBJECTS)
-mupnpcctestunit_DEPENDENCIES = ../../lib/unix/libclink++.a
+mupnpcctestunit_DEPENDENCIES = ../../lib/unix/libmupnp++.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -283,7 +283,7 @@ mupnpcctestunit_SOURCES = \
 	..//UPnPMiscTests.cpp \
 	..//XMLParserTests.cpp
 
-mupnpcctestunit_LDADD = ../../lib/unix/libclink++.a -ldl @XML_LIBS@
+mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@
 all: all-am
 
 .SUFFIXES:

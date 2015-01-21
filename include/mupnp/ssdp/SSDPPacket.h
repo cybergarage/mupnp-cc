@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SSDPPacket.h
-*
-*  Revision;
-*
-*  06/05/03
-*    - first revision
-*  01/06/04
-*    - Added set() and isNull().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_SSDPPACKET_H_
 #define _MUPMPCC_SSDPPACKET_H_

@@ -1,32 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Action.cpp
-*
-*  Revision;
-*
-*  07/15/03
-*    - first revision
-*  01/05/04
-*    - Added UPnP status methods.
-*    - Changed about new ActionListener interface.
-*  01/05/04
-*    - Added clearOutputAgumentValues() to initialize the output values before calling performActionListener().
-*  04/23/04
-*    - Fixed initArgumentList() to share a argument node in three Argument when the argument lists are initialized.
-*    - Fixed getArgument(name) to return the valid pointer. 
-*  04/26/04
-*    - Changed postControlAction() to get the return value using the ActionResponse.
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  07/09/04
-*    - Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net>
-*    - Changed postControlAction() to set the status code to the UPnPStatus.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/Action.h>
 #include <uhttp/util/Debug.h>
@@ -37,7 +17,6 @@
 using namespace std;
 using namespace uHTTP;
 using namespace mUPnP;
-using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -50,7 +29,7 @@ const char *Action::NAME = "name";
 // Constructor
 ////////////////////////////////////////////////
 
-Action::Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode) {
+Action::Action(Node *serviceNode, mUPnP::Node *actionNode) {
   this->serviceNode = serviceNode;
   this->actionNode = actionNode;
 
@@ -75,7 +54,7 @@ Action::~Action() {
 ////////////////////////////////////////////////
 
 Service *Action::getService() {
-  CyberXML::Node *node = getServiceNode();
+  mUPnP::Node *node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;
@@ -91,14 +70,14 @@ void Action::initArgumentList() {
   argumentInList = new ArgumentList(false);
   argumentOutList = new ArgumentList(false);
 
-  CyberXML::Node *serviceNode = getServiceNode();
-  CyberXML::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
+  mUPnP::Node *serviceNode = getServiceNode();
+  mUPnP::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
   if (serviceNode == NULL || argumentListNode == NULL)
     return;
 
   size_t nodeCnt = argumentListNode->getNNodes();
   for (size_t n = 0; n < nodeCnt; n++) {
-    CyberXML::Node *argNode = argumentListNode->getNode(n);
+    mUPnP::Node *argNode = argumentListNode->getNode(n);
     if (Argument::isArgumentNode(argNode) == false)
       continue;
     Argument *arg = new Argument(serviceNode, argNode);

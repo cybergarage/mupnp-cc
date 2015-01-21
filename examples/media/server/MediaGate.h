@@ -1,15 +1,12 @@
 /******************************************************************
-*
-*	MediaGate for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2004
-*
-*	File : MediaGate.h
-*
-*	04/15/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIAGATE_H_
 #define _CLINK_MEDIAGATE_H_

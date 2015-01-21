@@ -11,11 +11,11 @@
 #include <boost/test/unit_test.hpp>
 
 #include <mupnp/UPnP.h>
-#include <cybergarage/xml/Parser.h>
+#include <mupnp/xml/Parser.h>
 
 using namespace mUPnP;
 using namespace std;
-using namespace CyberXML;
+using namespace mUPnP;
 
 const std::string XML_TEST_SAMPLE_01 =
 "<?xml version=\"1.0\" ?> \n"

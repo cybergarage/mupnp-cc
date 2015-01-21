@@ -1,20 +1,15 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Node.h
-*
-*  Revision;
-*
-*  04/22/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CXML_NODE_H_
-#define _CXML_NODE_H_
+#ifndef _MUPMPCC_NODE_H_
+#define _MUPMPCC_NODE_H_
 
 #include <iostream>
 #include <sstream>
@@ -24,7 +19,7 @@
 #include <mupnp/xml/NodeList.h>
 #include <mupnp/xml/NodeData.h>
 
-namespace CyberXML {
+namespace mUPnP {
 class Node  {
   Node *parentNode;
 

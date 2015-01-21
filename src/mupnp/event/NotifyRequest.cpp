@@ -1,29 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: NotifyRequest.cpp
-*
-*  Revision;
-*
-*  08/10/03
-*    - first revision
-*  09/08/03
-*    - Giordano Sassaroli <sassarol@cefriel.it>
-*    - Problem : when an event notification message is received and the message
-*          contains updates on more than one variable, only the first variable update
-*          is notified.
-*    - Error :  the other xml nodes of the message are ignored
-*    - Fix : add two methods to the NotifyRequest for extracting the property array
-*        and modify the httpRequestRecieved method in ControlPoint
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  08/21/05
-*    - Changed createPropertySetNode() using string instead of ostringstream.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/event/NotifyRequest.h>
 
@@ -33,7 +16,7 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -63,37 +46,37 @@ bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, cons
   setSID(sid);
   setSEQ(notifyCnt);
 
-  setContentType(CyberXML::XML::CONTENT_TYPE);
-  CyberXML::Node *propSetNode = createPropertySetNode(varName, value);
+  setContentType(XML::CONTENT_TYPE);
+  mUPnP::Node *propSetNode = createPropertySetNode(varName, value);
 
   setContent(propSetNode);
   return true;
 }
 
 
-CyberXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value) {
+mUPnP::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value) {
   string propSetXmlNs;
   //propSetXmlNs.append(XMLNS)
-  //propSetXmlNs.append(CyberSOAP::SOAP::DELIM)
+  //propSetXmlNs.append(SOAP::DELIM)
   propSetXmlNs.append(PROPERTYSET);
-  Node *propSetNode = new CyberXML::Node(propSetXmlNs.c_str());
+  Node *propSetNode = new mUPnP::Node(propSetXmlNs.c_str());
   propSetNode->setNameSpace(XMLNS, Subscription::XMLNS);
 
   string propXmlNs;
   //propXmlNs.append(XMLNS)
-  //propXmlNs.append(CyberSOAP::SOAP::DELIM)
+  //propXmlNs.append(SOAP::DELIM)
   propXmlNs.append(PROPERTY);
-  Node *propNode = new CyberXML::Node(propXmlNs.c_str());
+  Node *propNode = new mUPnP::Node(propXmlNs.c_str());
   propSetNode->addNode(propNode);
 
-  Node *varNameNode = new CyberXML::Node(varName);
+  Node *varNameNode = new mUPnP::Node(varName);
   varNameNode->setValue(value);
   propNode->addNode(varNameNode);
 
   return propSetNode;
 }
 
-CyberXML::Node *NotifyRequest::getVariableNode() {
+mUPnP::Node *NotifyRequest::getVariableNode() {
   Node *rootNode = getEnvelopeNode();
   if (rootNode == NULL)
     return NULL;

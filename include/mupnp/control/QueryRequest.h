@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: QueryRequest.h
-*
-*  Revision;
-*
-*  08/13/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_QUERYREQUEST_H_
 #define _MUPMPCC_QUERYREQUEST_H_
@@ -47,7 +42,7 @@ public:
 
 private:
 
-  CyberXML::Node *getVarNameNode();
+  mUPnP::Node *getVarNameNode();
   
  public:
   const char *getVarName();
@@ -64,7 +59,7 @@ private:
 
 private:
 
-  CyberXML::Node *createContentNode(StateVariable *stateVar);
+  mUPnP::Node *createContentNode(StateVariable *stateVar);
 
   ////////////////////////////////////////////////
   // post

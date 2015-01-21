@@ -26,4 +26,4 @@ mupnpcctestunit_SOURCES = \
 	..//UPnPMiscTests.cpp \
 	..//XMLParserTests.cpp
 
-mupnpcctestunit_LDADD = ../../lib/unix/libclink++.a -ldl @XML_LIBS@
+mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@

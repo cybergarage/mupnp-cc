@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: QueryResponse.h
-*
-*  Revision;
-*
-*  08/13/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_QUERYRESPONSE_H_
 #define _MUPMPCC_QUERYRESPONSE_H_
@@ -33,7 +28,7 @@ public:
   QueryResponse() {
   }
 
-  QueryResponse(CyberSOAP::SOAPResponse *soapRes) {
+  QueryResponse(SOAPResponse *soapRes) {
     set(soapRes);
   }
 
@@ -43,7 +38,7 @@ public:
 
 private:
 
-  CyberXML::Node *getReturnNode();
+  mUPnP::Node *getReturnNode();
   
  public:
   const char *getReturnValue();
@@ -57,7 +52,7 @@ private:
 
 private:
 
-  CyberXML::Node *createResponseNode(const std::string &value);
+  mUPnP::Node *createResponseNode(const std::string &value);
 };
 
 }

@@ -43,6 +43,6 @@ print join(" \\\n", @source_files) . "\n";
 
 print<<FOTTER;
 
-mupnpcctestunit_LDADD = ../../lib/unix/libclink++.a -ldl \@XML_LIBS\@
+mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl \@XML_LIBS\@
 FOTTER
 

@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Service.h
-*
-*  Revision;
-*
-*  07/22/03
-*    - first revision
-*  03/30/05
-*    - Removed setDescriptionURL() and getDescriptionURL().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_SERVICE_H_
 #define _MUPMPCC_SERVICE_H_
@@ -40,7 +33,7 @@ namespace mUPnP {
 class Device;
 
 class Service {
-  CyberXML::Node *serviceNode;
+  mUPnP::Node *serviceNode;
   
   ActionList actionList;
   ServiceStateTable serviceStateTable;
@@ -64,7 +57,7 @@ public:
   // Member
   ////////////////////////////////////////////////
 
-  CyberXML::Node *getServiceNode() {
+  mUPnP::Node *getServiceNode() {
     return serviceNode;
   }
 
@@ -77,7 +70,7 @@ public:
   ////////////////////////////////////////////////
 
  public:
-  Service(CyberXML::Node *node);
+  Service(Node *node);
 
   ~Service();
 
@@ -107,7 +100,7 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  static bool isServiceNode(CyberXML::Node *node) {
+  static bool isServiceNode(Node *node) {
     if (node == NULL)
       return false;
     return node->isName(Service::ELEM_NAME);
@@ -119,18 +112,18 @@ private:
 
 private:
 
-  CyberXML::Node *getDeviceNode() {
-    CyberXML::Node *serviceNode = getServiceNode();
+  mUPnP::Node *getDeviceNode() {
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return NULL;
-    CyberXML::Node *parentNode = serviceNode->getParentNode();
+    mUPnP::Node *parentNode = serviceNode->getParentNode();
     if (parentNode == NULL)
       return NULL;
     return parentNode->getParentNode();
   }
 
-  CyberXML::Node *getRootNode() {
-    CyberXML::Node *serviceNode = getServiceNode();
+  mUPnP::Node *getRootNode() {
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return NULL;
     return serviceNode->getRootNode();
@@ -142,7 +135,7 @@ private:
 
  public:
   Device *getDevice() {
-    CyberXML::Node *node = getDeviceNode();
+    mUPnP::Node *node = getDeviceNode();
     if (node == NULL)
       return NULL;
     DeviceData *data = dynamic_cast<DeviceData *>(node->getUserData());
@@ -159,14 +152,14 @@ private:
 
  public:
   void setServiceType(const std::string &value) {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(SERVICE_TYPE, value);
   }
 
   const char *getServiceType() {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(SERVICE_TYPE);
@@ -178,14 +171,14 @@ private:
 
  public:
   void setServiceID(const std::string &value) {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(SERVICE_ID, value);
   }
 
   const char *getServiceID() {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(SERVICE_ID);
@@ -205,14 +198,14 @@ private:
 
  public:
   void setSCPDURL(const std::string &value) {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
    serviceNode->setNode(SCPDURL, value);
   }
 
   const char *getSCPDURL() {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(SCPDURL);
@@ -230,14 +223,14 @@ private:
 
  public:
   void setControlURL(const std::string &value) {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(CONTROL_URL, value);
   }
 
   const char *getControlURL() {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(CONTROL_URL);
@@ -253,14 +246,14 @@ private:
 
  public:
   void setEventSubURL(const std::string &value) {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(EVENT_SUB_URL, value);
   }
 
   const char *getEventSubURL() {
-    CyberXML::Node *serviceNode = getServiceNode();
+    mUPnP::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(EVENT_SUB_URL);
@@ -281,12 +274,12 @@ private:
 #endif
 
 private:
-  CyberXML::Node *getSCPDNode(uHTTP::URL *url);
+  mUPnP::Node *getSCPDNode(uHTTP::URL *url);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-  CyberXML::Node *getSCPDNode(uHTTP::File *file);
+  mUPnP::Node *getSCPDNode(uHTTP::File *file);
 #endif
-  CyberXML::Node *getSCPDNode(const std::string &description);
-  CyberXML::Node *getSCPDNode();
+  mUPnP::Node *getSCPDNode(const std::string &description);
+  mUPnP::Node *getSCPDNode();
 
 public:
   ////////////////////////////////////////////////
@@ -341,7 +334,7 @@ private:
   ////////////////////////////////////////////////
 
   ServiceData *getServiceData() {
-    CyberXML::Node *node = getServiceNode();
+    mUPnP::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
     ServiceData *userData = dynamic_cast<ServiceData *>(node->getUserData());

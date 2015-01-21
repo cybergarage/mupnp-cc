@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ActionResponse.h
-*
-*  Revision;
-*
-*  07/29/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ACTIONRESPONSE_H_
 #define _MUPMPCC_ACTIONRESPONSE_H_
@@ -34,7 +29,7 @@ class ActionResponse : public ControlResponse {
   
  public:
   ActionResponse();
-  ActionResponse(CyberSOAP::SOAPResponse *soapRes);
+  ActionResponse(SOAPResponse *soapRes);
 
   ////////////////////////////////////////////////
   // Response
@@ -45,7 +40,7 @@ class ActionResponse : public ControlResponse {
 
 private:
 
-  CyberXML::Node *createResponseNode(Action *action);
+  mUPnP::Node *createResponseNode(Action *action);
 
   ////////////////////////////////////////////////
   // getResponse
@@ -53,7 +48,7 @@ private:
 
 private:
 
-  CyberXML::Node *getActionResponseNode();
+  mUPnP::Node *getActionResponseNode();
   
  public:
   ArgumentList *getResponse();

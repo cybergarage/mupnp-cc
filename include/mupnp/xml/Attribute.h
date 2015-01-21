@@ -1,25 +1,21 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Attribute.h
-*
-*  Revision;
-*
-*  04/22/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CXML_ATTRIBUTE_H_
-#define _CXML_ATTRIBUTE_H_
+#ifndef _MUPMPCC_ATTRIBUTE_H_
+#define _MUPMPCC_ATTRIBUTE_H_
 
 #include <string>
 
-namespace CyberXML {
-class Attribute  {
+namespace mUPnP {
+
+  class Attribute  {
   std::string name; 
   std::string value; 
 

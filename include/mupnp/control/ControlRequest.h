@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ControlRequest.h
-*
-*  Revision;
-*
-*  07/11/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_CONTROLREQUEST_H_
 #define _MUPMPCC_CONTROLREQUEST_H_
@@ -24,7 +19,7 @@
 namespace mUPnP {
 class Service;
 
-class ControlRequest : public CyberSOAP::SOAPRequest {
+class ControlRequest : public mUPnP::SOAPRequest {
 public:
   ////////////////////////////////////////////////
   // Constructor

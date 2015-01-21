@@ -1,15 +1,12 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : Clock.cpp
-*
-*	08/01/04
-*		- Added <stdio.h> for sprintf() for gcc 2.95.3.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include "Clock.h"
 #include <stdio.h>

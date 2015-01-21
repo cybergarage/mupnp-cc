@@ -1,24 +1,19 @@
 /******************************************************************
-*
-*  CyberSOAP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SOAP.h
-*
-*  Revision;
-*
-*  05/21/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CSOAP_SOAP_H_
-#define _CSOAP_SOAP_H_
+#ifndef _MUPNP_SOAP_H_
+#define _MUPNP_SOAP_H_
 
 #include <mupnp/xml/Node.h>
 
-namespace CyberSOAP {
+namespace mUPnP {
 namespace SOAP {
 const char ENVELOPE[] = "Envelope";
 const char BODY[] = "Body";
@@ -48,7 +43,7 @@ const char ENCORDING[] = "encoding";
 const char UTF_8[] = "utf-8";
 const char VERSION_HEADER[] = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
-CyberXML::Node *CreateEnvelopeBodyNode();
+mUPnP::Node *CreateEnvelopeBodyNode();
 
 const char *GetHeader(const std::string &content, std::string &header);
 const char *GetEncording(const std::string &content, std::string &encording);

@@ -26,7 +26,7 @@
 #include <mupnp/StateVariable.h>
 
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // setRequest
@@ -37,10 +37,10 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
     
   setRequestHost(service);
 
-  setEnvelopeNode(CyberSOAP::SOAP::CreateEnvelopeBodyNode());
-  CyberXML::Node *envNode = getEnvelopeNode();
-  CyberXML::Node *bodyNode = getBodyNode();
-  CyberXML::Node *qeuryNode = createContentNode(stateVar);
+  setEnvelopeNode(SOAP::CreateEnvelopeBodyNode());
+  mUPnP::Node *envNode = getEnvelopeNode();
+  mUPnP::Node *bodyNode = getBodyNode();
+  mUPnP::Node *qeuryNode = createContentNode(stateVar);
   bodyNode->addNode(qeuryNode);
   setContent(envNode);
 
@@ -51,12 +51,12 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
 // Contents
 ////////////////////////////////////////////////
 
-CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
-  CyberXML::Node *queryVarNode = new CyberXML::Node();
+mUPnP::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
+  mUPnP::Node *queryVarNode = new mUPnP::Node();
   queryVarNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE);
   queryVarNode->setNameSpace(Control::NS, Control::XMLNS);
 
-  CyberXML::Node *varNode = new CyberXML::Node();
+  mUPnP::Node *varNode = new mUPnP::Node();
   varNode->setName(Control::NS, Control::VAR_NAME);
   varNode->setValue(stateVar->getName());
   queryVarNode->addNode(varNode);
@@ -68,13 +68,13 @@ CyberXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
 // getVarName
 ////////////////////////////////////////////////
 
-CyberXML::Node *QueryRequest::getVarNameNode() {
-  CyberXML::Node *bodyNode = getBodyNode();
+mUPnP::Node *QueryRequest::getVarNameNode() {
+  mUPnP::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
     return NULL;
-  CyberXML::Node *queryStateVarNode = bodyNode->getNode(0);
+  mUPnP::Node *queryStateVarNode = bodyNode->getNode(0);
   if (queryStateVarNode == NULL)
     return NULL;
   if (queryStateVarNode->hasNodes() == false)
@@ -83,7 +83,7 @@ CyberXML::Node *QueryRequest::getVarNameNode() {
 }
   
 const char *QueryRequest::getVarName() {
-  CyberXML::Node *node = getVarNameNode();
+  mUPnP::Node *node = getVarNameNode();
   if (node == NULL)
     return "";
   return node->getValue();

@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: NotifyRequest.h
-*
-*  Revision;
-*
-*  07/08/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_NOTIFYREQUEST_H_
 #define _MUPMPCC_NOTIFYREQUEST_H_
@@ -27,7 +22,7 @@
 #include <sstream>
 
 namespace mUPnP {
-class NotifyRequest : public CyberSOAP::SOAPRequest {
+class NotifyRequest : public mUPnP::SOAPRequest {
   PropertyList propList;
 
  public:
@@ -101,9 +96,9 @@ class NotifyRequest : public CyberSOAP::SOAPRequest {
 
 private:
   
-  CyberXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
+  mUPnP::Node *createPropertySetNode(const std::string &varName, const std::string &value);
 
-  CyberXML::Node *getVariableNode();
+  mUPnP::Node *getVariableNode();
 
   ////////////////////////////////////////////////
   // Property
@@ -111,7 +106,7 @@ private:
 
 private:
   
-  Property *getProperty(CyberXML::Node *varNode);
+  Property *getProperty(Node *varNode);
 
  public:
   PropertyList *getPropertyList();

@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: DeviceData.h
-*
-*  Revision;
-*
-*  07/22/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_DEVICEDATA_H_
 #define _MUPMPCC_DEVICEDATA_H_
@@ -27,7 +22,7 @@
 namespace mUPnP {
 class Device;
 
-class DeviceData : public CyberXML::NodeData {
+class DeviceData : public mUPnP::NodeData {
   Device *device;
 
   std::string descriptionURI; 

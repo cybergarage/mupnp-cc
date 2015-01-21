@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Icon.h
-*
-*  Revision;
-*
-*  07/20/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ICON_H_
 #define _MUPMPCC_ICON_H_
@@ -21,7 +16,7 @@
 
 namespace mUPnP {
 class Icon {
-  CyberXML::Node *iconNode;
+  mUPnP::Node *iconNode;
 
  public:
   ////////////////////////////////////////////////
@@ -39,7 +34,7 @@ class Icon {
   // Member
   ////////////////////////////////////////////////
 
-  CyberXML::Node *getIconNode() {
+  mUPnP::Node *getIconNode() {
     return iconNode;
   }
   
@@ -47,7 +42,7 @@ class Icon {
   // Constructor
   ////////////////////////////////////////////////
 
-  Icon(CyberXML::Node *node) {
+  Icon(Node *node) {
     iconNode = node;
   }
 
@@ -55,7 +50,7 @@ class Icon {
   // isIconNode
   ////////////////////////////////////////////////
 
-  static bool isIconNode(CyberXML::Node *node) {
+  static bool isIconNode(Node *node) {
     return node->isName(ELEM_NAME);
   }
 

@@ -1,23 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ST.cpp
-*
-*  Revision;
-*
-*  07/08/03
-*    - first revision
-*  08/21/05
-*    - Changed IsAllDevice() using string instead of ostringstream.
-*    - Changed IsRootDevice() using string instead of ostringstream.
-*    - Changed IsUUIDDevice() using string instead of ostringstream.
-*    - Changed IsURNDevice() using string instead of ostringstream.
-*    - Changed IsURNService() using string instead of ostringstream.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/device/ST.h>
 #include <uhttp/util/StringUtil.h>

@@ -1,26 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: StateVariable.cpp
-*
-*  Revision;
-*
-*  08/10/03
-*    - first revision
-*  03/30/04
-*    - Added getRelatedStateVariable().
-*    - Changed setRelatedStateVariable() to setRelatedStateVariableName().
-*    - Changed getRelatedStateVariable() to getRelatedStateVariableName().
-*    - Added getActionNode() and getAction().
-*    - Added getServiceNode() and getService().
-*    - Added the parent service node to the constructor.
-*  08/21/05
-*    - Changed setValue(int) using Integer2String instead of ostringstream.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/Service.h>
 #include <mupnp/Argument.h>
@@ -51,7 +37,7 @@ Argument::Argument() {
   serviceNode = &defaultServiceNode;
 }
   
-Argument::Argument(CyberXML::Node *servNode, CyberXML::Node *argNode) {
+Argument::Argument(Node *servNode, mUPnP::Node *argNode) {
   argumentNode = argNode;
   serviceNode = servNode;
 }
@@ -81,7 +67,7 @@ void Argument::setValue(int value) {
 ////////////////////////////////////////////////
 
 Service *Argument::getService() {
-  CyberXML::Node *node = getServiceNode();
+  mUPnP::Node *node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;

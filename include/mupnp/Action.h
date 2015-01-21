@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Action.h
-*
-*  Revision;
-*
-*  07/08/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ACTION_H_
 #define _MUPMPCC_ACTION_H_
@@ -32,8 +27,8 @@ namespace mUPnP {
 class Service;
 
 class Action {
-  CyberXML::Node *serviceNode;
-  CyberXML::Node *actionNode;
+  mUPnP::Node *serviceNode;
+  mUPnP::Node *actionNode;
   
   ArgumentList *argumentList;
   ArgumentList *argumentInList;
@@ -57,14 +52,14 @@ class Action {
 
 private:
 
-  CyberXML::Node *getServiceNode() {
+  mUPnP::Node *getServiceNode() {
     return serviceNode;
   }
 
  public:
   Service *getService();
   
-  CyberXML::Node *getActionNode() {
+  mUPnP::Node *getActionNode() {
     return actionNode;
   }
   
@@ -72,7 +67,7 @@ private:
   // Constructor
   ////////////////////////////////////////////////
 
-  Action(CyberXML::Node *serviceNode, CyberXML::Node *actionNode);
+  Action(Node *serviceNode, mUPnP::Node *actionNode);
   Action(Action *action);
 
   ~Action();
@@ -94,7 +89,7 @@ private:
   // isActionNode
   ////////////////////////////////////////////////
 
-  static bool isActionNode(CyberXML::Node *node) {
+  static bool isActionNode(Node *node) {
     std::string nodeName = node->getName();
     if (nodeName.compare(Action::ELEM_NAME) == 0)
       return true;
@@ -174,7 +169,7 @@ private:
   ////////////////////////////////////////////////
 
   ActionData *getActionData() {
-    CyberXML::Node *node = getActionNode();
+    mUPnP::Node *node = getActionNode();
     ActionData *userData = dynamic_cast<ActionData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ActionData();

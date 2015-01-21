@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Argument.h
-*
-*  Revision;
-*
-*  07/08/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ARGUMENT_H_
 #define _MUPMPCC_ARGUMENT_H_
@@ -28,11 +23,11 @@ class StateVariable;
 
 class Argument {
   
-  CyberXML::Node *serviceNode;
-  CyberXML::Node *argumentNode;
+  mUPnP::Node *serviceNode;
+  mUPnP::Node *argumentNode;
 
-  CyberXML::Node defaultArgumentNode;
-  CyberXML::Node defaultServiceNode;
+  mUPnP::Node defaultArgumentNode;
+  mUPnP::Node defaultServiceNode;
   
  public:
   ////////////////////////////////////////////////
@@ -51,11 +46,11 @@ class Argument {
   // Member
   ////////////////////////////////////////////////
 
-  CyberXML::Node *getServiceNode() {
+  mUPnP::Node *getServiceNode() {
     return serviceNode;
   }
 
-  CyberXML::Node *getArgumentNode() {
+  mUPnP::Node *getArgumentNode() {
     return argumentNode;
   }
   
@@ -66,7 +61,7 @@ class Argument {
   ////////////////////////////////////////////////
 
   Argument();
-  Argument(CyberXML::Node *servNode, CyberXML::Node *argNode);
+  Argument(Node *servNode, mUPnP::Node *argNode);
   Argument(const std::string &name, const std::string &value);
 
   ~Argument();
@@ -75,7 +70,7 @@ class Argument {
   // isArgumentNode
   ////////////////////////////////////////////////
 
-  static bool isArgumentNode(CyberXML::Node *node) {
+  static bool isArgumentNode(Node *node) {
     return node->isName(Argument::ELEM_NAME);
   }
 
@@ -134,7 +129,7 @@ class Argument {
   ////////////////////////////////////////////////
 
   ArgumentData *getArgumentData() {
-    CyberXML::Node *node = getArgumentNode();
+    mUPnP::Node *node = getArgumentNode();
     ArgumentData *userData = dynamic_cast<ArgumentData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ArgumentData();

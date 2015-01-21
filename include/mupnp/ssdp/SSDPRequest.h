@@ -1,22 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SSDPRequest.h
-*
-*  Revision;
-*
-*  07/10/03
-*    - first revision
-*  03/16/04
-*    - Thanks for Darrell Young
-*    - Fixed to set v1.1 to the HTTP version.;
-*  03/03/05
-*    - Changed setLeaseTime() not to use iostream for TRON.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_SSDPREQUEST_H_
 #define _MUPMPCC_SSDPREQUEST_H_

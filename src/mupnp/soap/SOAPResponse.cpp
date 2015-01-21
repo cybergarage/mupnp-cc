@@ -1,29 +1,16 @@
 /******************************************************************
-*
-*  CyberSOAP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SOAPResponse.cpp
-*
-*  Revision;
-*
-*  05/21/03
-*    - first revision
-*  02/13/04
-*    - Ralf G. R. Bergs <Ralf@Ber.gs>, Inma Marin Lopez <inma@dif.um.es>.
-*    - Added XML header, <?xml version=\"1.0\"?> to setContent().
-*  05/31/04
-*    - Added XML header of setContent() to <?xml version=\"1.0\"? encording="utf-8">.
-*  06/01/04
-*    - Added getHeader().
-*    - Added getEncording() and isEncording().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/soap/SOAPResponse.h>
 
-using namespace CyberSOAP;
+using namespace mUPnP;
 using namespace std;
 
 ////////////////////////////////////////////////
@@ -33,20 +20,20 @@ using namespace std;
 SOAPResponse::SOAPResponse() {
   rootNode = NULL;
   setRootNode(SOAP::CreateEnvelopeBodyNode());
-  setContentType(CyberXML::XML::CONTENT_TYPE);
+  setContentType(XML::CONTENT_TYPE);
 }
 
 /*
 SOAPResponse(uHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes) {
   rootNode = NULL;
   setRootNode(SOAP::CreateEnvelopeBodyNode());
-  setContentType(CyberXML::XML::CONTENT_TYPE);
+  setContentType(XML::CONTENT_TYPE);
 }
 
 SOAPResponse(SOAPResponse *soapRes) : HTTPResponse(soapRes) {
   rootNode = NULL;
   setEnvelopeNode(soapRes->getEnvelopeNode());
-  setContentType(CyberXML::XML::CONTENT_TYPE);
+  setContentType(XML::CONTENT_TYPE);
 }
 */
 
@@ -59,7 +46,7 @@ SOAPResponse::~SOAPResponse() {
 // setContent
 ////////////////////////////////////////////////
   
-void SOAPResponse::setContent(CyberXML::Node *node) {
+void SOAPResponse::setContent(Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   std::string buf;

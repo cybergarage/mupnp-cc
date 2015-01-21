@@ -1,77 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Device.cpp
-*
-*  Revision;
-*
-*  08/13/03
-*    - first revision
-*  10/21/03
-*    - Updated a udn field by a original uuid.
-*  10/22/03
-*    - Added setActionListener().
-*    - Added setQueryListener().
-*  12/25/03
-*    - Added advertiser functions.
-*  01/05/04
-*    - Added isExpired().
-*  03/23/04
-*    - Oliver Newell <newell@media-rush.com>
-*    - Changed to update the UDN only when the field is null.
-*  04/21/04
-*    - Added isDeviceType().
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  06/18/04
-*    - Added setNMPRMode() and isNMPRMode().
-*    - Changed getDescriptionData() to update only when the NMPR mode is false.
-*  06/21/04
-*    - Changed start() to send a bye-bye before the announce.
-*    - Changed annouce(), byebye() and deviceSearchReceived() to send the SSDP
-*      messsage four times when the NMPR and the Wireless mode are true.
-*  07/02/04
-*    - Fixed announce() and byebye() to send the upnp::rootdevice message despite embedded devices.
-*    - Fixed getRootNode() to return the root node when the device is embedded.
-*  07/24/04
-*    - Thanks for Stefano Lenzi <kismet-sl@users.sourceforge.net>
-*    - Added getParentDevice().
-*  10/20/04 
-*    - Brent Hills <bhills@openshores.com>
-*    - Changed postSearchResponse() to add MYNAME header.
-*  11/19/04
-*    - Theo Beisch <theo.beisch@gmx.de>
-*    - Added getStateVariable(String serviceType, String name).
-*  03/23/05
-*    - Changed httpPostRequestRecieved() to return the bad request when the post request isn't the soap action.
-*  03/30/05
-*    - Added a  exclusive access control to Device::getDescriptionData().
-*    - Added Devuce::getServiceBySCPDURL().
-*  03/31/05
-*    - Changed httpGetRequestRecieved() to return the description stream using
-*      Device::getDescriptionData() and Service::getSCPDData() at first.
-*  04/25/05
-*    - Thanks for Mikael Hakman <mhakman@dkab.net>
-*    - Changed announce() and byebye() to close the socket after the posting.
-*  04/25/05
-*    - Thanks for Mikael Hakman <mhakman@dkab.net>
-*    - Changed deviceSearchResponse() answer with USN:UDN::<device-type> when request ST is device type.
-*   04/25/05
-*    - Thanks for Mikael Hakman <mhakman@dkab.net>
-*     - Changed getDescriptionData() to add a XML declaration at first line.
-*   04/25/05
-*    - Thanks for Mikael Hakman <mhakman@dkab.net>
-*    - Added a new setActionListener() and serQueryListner() to include the sub devices. 
-*  07/24/05
-*    - Thanks for Stefano Lenzi <kismet-sl@users.sourceforge.net>
-*    - Fixed a bug of getParentDevice() to return the parent device normally.
-*  02/21/06
-*    - Changed httpRequestRecieved() not to ignore HEAD requests.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <uhttp/net/HostInterface.h>
 #include <uhttp/net/URL.h>
@@ -96,9 +31,9 @@
 using namespace std;
 using namespace uHTTP;
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
-using namespace CyberSOAP;
+using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -131,7 +66,7 @@ const char *Device::presentationURL = "presentationURL";
 // Constructor
 ////////////////////////////////////////////////
 
-Device::Device(CyberXML::Node *root, CyberXML::Node *device) {
+Device::Device(Node *root, mUPnP::Node *device) {
   setLocalRootDeviceFlag(false);
   rootNode = root;
   deviceNode = device;
@@ -152,7 +87,7 @@ Device::Device() {
   initChildList();
 }
   
-Device::Device(CyberXML::Node *device) {
+Device::Device(Node *device) {
   setLocalRootDeviceFlag(false);
   rootNode = NULL;
   deviceNode = device;
@@ -220,7 +155,7 @@ Device::Device(const std::string &descriptionFileName) {
 // Member
 ////////////////////////////////////////////////
 
-CyberXML::Node *Device::getRootNode() {
+mUPnP::Node *Device::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
   if (deviceNode == NULL)
@@ -354,10 +289,10 @@ bool Device::isExpired() {
 Device *Device::getRootDevice() {
   if (rootDevice != NULL)
     return rootDevice;
-  CyberXML::Node *rootNode = getRootNode();
+  mUPnP::Node *rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
-  CyberXML::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
+  mUPnP::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
   if (devNode == NULL)
     return NULL;
   rootDevice = new Device();
@@ -379,7 +314,7 @@ Device *Device::getParentDevice() {
   if(isRootDevice() == true)
     return NULL;
   
-  CyberXML::Node *rootNode = getRootNode();
+  mUPnP::Node *rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
   
@@ -389,7 +324,7 @@ Device *Device::getParentDevice() {
   
   //<device><deviceList><device>
   
-  CyberXML::Node *parentNode = devNode->getParentNode();
+  mUPnP::Node *parentNode = devNode->getParentNode();
   if (!parentNode)
     return NULL;
   devNode = parentNode->getParentNode();
@@ -408,7 +343,7 @@ Device *Device::getParentDevice() {
 ////////////////////////////////////////////////
 
 DeviceData *Device::getDeviceData() {
-  CyberXML::Node *node = getDeviceNode();
+  mUPnP::Node *node = getDeviceNode();
   if (node == NULL)
     return NULL;
   DeviceData *userData = dynamic_cast<DeviceData *>(node->getUserData());
@@ -521,12 +456,12 @@ void Device::initDeviceList() {
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  CyberXML::Node *devListNode = devNode->getNode(DeviceList::ELEM_NAME);
+  mUPnP::Node *devListNode = devNode->getNode(DeviceList::ELEM_NAME);
   if (devListNode == NULL)
     return;
   size_t nNode = devListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    CyberXML::Node *node = devListNode->getNode(n);
+    mUPnP::Node *node = devListNode->getNode(n);
     if (Device::isDeviceNode(node) == false)
       continue;
     Device *dev = new Device(node);
@@ -582,12 +517,12 @@ void Device::initServiceList() {
   Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  CyberXML::Node *serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
+  mUPnP::Node *serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
   if (serviceListNode == NULL)
     return;
   size_t nNode = serviceListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    CyberXML::Node *node = serviceListNode->getNode(n);
+    mUPnP::Node *node = serviceListNode->getNode(n);
     if (Service::isServiceNode(node) == false)
       continue;
     Service *service = new Service(node);

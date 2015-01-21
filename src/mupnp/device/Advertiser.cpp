@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: Advertiser.cpp
-*
-*  Revision;
-*
-*  12/25/03
-*    - first revision
-*  06/18/04
-*    - Changed to advertise every 25%-50% of the periodic notification cycle for NMPR;
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/Device.h>
 #include <uhttp/util/TimeUtil.h>

@@ -1,12 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for Java
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File : TestDevice.h
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_TESTHTTPSERVER_H_
 #define _MUPMPCC_TESTHTTPSERVER_H_

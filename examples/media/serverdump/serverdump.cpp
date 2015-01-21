@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: upnpdump.cpp
-*
-*	Revision;
-*
-*	08/10/03
-*		- first revision
-*	03/25/04
-*		- Added print().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <cybergarage/upnp/media/player/MediaPlayer.h>
 #include <cybergarage/upnp/media/server/MediaServer.h>

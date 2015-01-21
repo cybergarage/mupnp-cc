@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : InputUtil.cpp
-*
-*	05/19/04
-*		- Added support for for Cygwin.
-*	05/21/04
-*		- Added support for for MinGW.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #if !defined(__MINGW32__)
 #include <stdio.h>

@@ -1,38 +1,20 @@
 /******************************************************************
-*
-*  CyberSOAP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SOAPRequest.cpp
-*
-*  Revision;
-*
-*  05/21/03
-*    - first revision
-*  02/13/04
-*    - Ralf G. R. Bergs <Ralf@Ber.gs>, Inma Marin Lopez <inma@dif.um.es>.
-*    - Added XML header, <?xml version=\"1.0\"?> to setContent().
-*  04/25/04
-*    - Added postMessage(const std::string &host, int port, SOAPResponse *soapRes);
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  05/26/04
-*    - Changed getRootNode() and postMessage() to convert the local string to UTF8 before the XML parser..
-*  06/01/04
-*    - Added getHeader().
-*    - Added getEncording() and isEncording().
-*    - Added parseMessage().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/soap/SOAPRequest.h>
 #include <uhttp/util/StringUtil.h>
 #include <mupnp/xml/Parser.h>
 
-using namespace CyberSOAP;
+using namespace mUPnP;
 using namespace uHTTP;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace std;
 
 ////////////////////////////////////////////////
@@ -40,7 +22,7 @@ using namespace std;
 ////////////////////////////////////////////////
   
 SOAPRequest::SOAPRequest() {
-  setContentType(CyberXML::XML::CONTENT_TYPE);
+  setContentType(XML::CONTENT_TYPE);
   setMethod(uHTTP::HTTP::POST);
   setRootNode(NULL);
 }
@@ -76,7 +58,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value) {
 // parseMessage
 ////////////////////////////////////////////////
 
-CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
+mUPnP::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
   if (contentLen <= 0)
     return NULL;
 
@@ -88,7 +70,7 @@ CyberXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t con
 // Node
 ////////////////////////////////////////////////
 
-CyberXML::Node *SOAPRequest::getRootNode() {
+mUPnP::Node *SOAPRequest::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
       
@@ -122,7 +104,7 @@ SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPRe
 // setContent
 ////////////////////////////////////////////////
 
-void SOAPRequest::setContent(CyberXML::Node *node) {
+void SOAPRequest::setContent(Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   string buf;

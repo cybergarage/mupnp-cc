@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ControlResponse.h
-*
-*  Revision;
-*
-*  07/29/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_CONTROLRESPONSE_H_
 #define _MUPMPCC_CONTROLRESPONSE_H_
@@ -25,7 +20,7 @@
 #include <sstream>
 
 namespace mUPnP {
-class ControlResponse : public CyberSOAP::SOAPResponse {
+class ControlResponse : public mUPnP::SOAPResponse {
   UPnPStatus upnpErr;
 
 public:
@@ -46,7 +41,7 @@ public:
     setServer(UPnP::GetServerName(serverName));
   }
 
-  ControlResponse(CyberSOAP::SOAPResponse *soapRes) {
+  ControlResponse(SOAPResponse *soapRes) {
     set(soapRes);
   }
 
@@ -63,7 +58,7 @@ public:
 
 private:
   
-  CyberXML::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
+  mUPnP::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
 
   ////////////////////////////////////////////////
   // UPnP Error
@@ -71,30 +66,30 @@ private:
 
 private:
 
-  CyberXML::Node *getUPnPErrorNode() {
-    CyberXML::Node *detailNode = getFaultDetailNode();
+  mUPnP::Node *getUPnPErrorNode() {
+    mUPnP::Node *detailNode = getFaultDetailNode();
     if (detailNode == NULL)
       return NULL;
-    return detailNode->getNodeEndsWith(CyberSOAP::SOAP::UPNP_ERROR);
+    return detailNode->getNodeEndsWith(SOAP::UPNP_ERROR);
   }
 
-  CyberXML::Node *getUPnPErrorCodeNode() {
-    CyberXML::Node *errorNode = getUPnPErrorNode();
+  mUPnP::Node *getUPnPErrorCodeNode() {
+    mUPnP::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
-    return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_CODE);
+    return errorNode->getNodeEndsWith(SOAP::ERROR_CODE);
   }
 
-  CyberXML::Node *getUPnPErrorDescriptionNode() {
-    CyberXML::Node *errorNode = getUPnPErrorNode();
+  mUPnP::Node *getUPnPErrorDescriptionNode() {
+    mUPnP::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
-    return errorNode->getNodeEndsWith(CyberSOAP::SOAP::ERROR_DESCRIPTION);
+    return errorNode->getNodeEndsWith(SOAP::ERROR_DESCRIPTION);
   }
 
  public:
   int getUPnPErrorCode() {
-    CyberXML::Node *errorCodeNode = getUPnPErrorCodeNode();
+    mUPnP::Node *errorCodeNode = getUPnPErrorCodeNode();
     if (errorCodeNode == NULL)
       return -1;
     const char *errorCodeStr = errorCodeNode->getValue();
@@ -102,7 +97,7 @@ private:
   }
 
   const char *getUPnPErrorDescription() {
-    CyberXML::Node *errorDescNode = getUPnPErrorDescriptionNode();
+    mUPnP::Node *errorDescNode = getUPnPErrorDescriptionNode();
     if (errorDescNode == NULL)
       return "";
     return errorDescNode->getValue();

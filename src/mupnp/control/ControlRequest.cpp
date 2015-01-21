@@ -35,7 +35,7 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace CyberXML;
+using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

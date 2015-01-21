@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SSDPSearchSocketList.cpp
-*
-*  Revision;
-*
-*  08/14/03
-*    - first revision
-*  07/17/04
-*    - Added the destructor and clear().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/ssdp/SSDPSearchSocketList.h>
 

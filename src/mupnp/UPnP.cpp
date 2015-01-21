@@ -1,28 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: UPnP.cpp
-*
-*  Revision;
-*
-*  07/20/03
-*    - first revision
-*  04/20/04
-*    - Updated GetServerName() to return the correct server name.
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*    - Removed extra heder includes.
-*  06/18/03
-*    - Added INMPR03 and INMPR03_VERSION.
-*  08/01/04
-*    - Added <stdio.h> for sprintf() for gcc 2.95.3.
-*  03/08/05
-*    - Changed GetServerName() not to use iostream and use uHTTP::GetServerName().
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"

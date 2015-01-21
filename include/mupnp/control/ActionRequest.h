@@ -1,17 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ActionRequest.h
-*
-*  Revision;
-*
-*  07/14/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #ifndef _MUPMPCC_ACTIONREQUEST_H_
 #define _MUPMPCC_ACTIONREQUEST_H_
@@ -48,7 +43,7 @@ class ActionRequest : public ControlRequest {
   ////////////////////////////////////////////////
 
  public:
-  CyberXML::Node *getActionNode();
+  mUPnP::Node *getActionNode();
 
   const char *getActionName(std::string &buf);
 
@@ -74,7 +69,7 @@ private:
 
 private:
 
-  CyberXML::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
+  mUPnP::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
 
   ////////////////////////////////////////////////
   // post

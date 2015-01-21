@@ -1,19 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: AllowedValueList.h
-*
-*  Revision:
-*
-*  03/29/04
-*    - first revision.
-*  02/28/05
-*    - Changed to use AllowedValue class instead of string as the member.
-*  
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/AllowedValueList.h>
 

@@ -1,29 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: SSDPResponse.cpp
-*
-*  Revision;
-*
-*  07/10/03
-*    - first revision
-*  01/23/04
-*    - Oliver Newell
-*    - Overided HTTPResponse::getHeader() for Intel UPnP control points.
-*  03/16/04
-*    - Thanks for Darrell Young
-*    - Fixed to set v1.1 to the HTTP version.;
-*  10/20/04
-*    - Brent Hills <bhills@openshores.com>
-*    - Added setMYNAME() and getMYNAME();
-*  08/21/05
-*    - Changed setLeaseTime() using Integer2String instead of ostringstream.
-*    - Changed getHeader() using string instead of ostringstream.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/ssdp/SSDPResponse.h>
 #include <uhttp/util/StringUtil.h>

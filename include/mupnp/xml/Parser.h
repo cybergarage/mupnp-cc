@@ -1,20 +1,15 @@
 /******************************************************************
-*
-*  CyberXML for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File:  Parser.h
-*
-*  Revision;
-*
-*  05/20/03
-*    - first revision
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CXML_PARSER_H_
-#define _CXML_PARSER_H_
+#ifndef _MUPMPCC_PARSER_H_
+#define _MUPMPCC_PARSER_H_
 
 #include <stdio.h>
 #include <string.h>
@@ -25,7 +20,7 @@
 #include <uhttp/net/URL.h>
 #include <mupnp/xml/ParserException.h>
 
-namespace CyberXML {
+namespace mUPnP {
 const int PARSER_DEFAULT_READ_BUF_SIZE = 1024;
 
 class Parser  {

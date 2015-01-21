@@ -1,20 +1,12 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: HTTPUSocket.cpp
-*
-*  Revision;
-*
-*  06/30/03
-*    - first revision
-*  01/06/04
-*    - Oliver Newell <olivern@users.sourceforge.net>
-*    - Added to set a current timestamp when the packet are received.
-*
-******************************************************************/
+ *
+ * mUPnP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <mupnp/ssdp/HTTPUSocket.h>
 #include <time.h>
