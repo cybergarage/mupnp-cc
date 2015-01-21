@@ -18,7 +18,7 @@
 #include <mupnp/soap/SOAPResponse.h>
 #include <mupnp/xml/Node.h>
 
-namespace mUPnP {
+namespace uSOAP {
 const char SOAPACTION[] = "SOAPACTION";
 
 class SOAPRequest : public uHTTP::HTTPRequest {

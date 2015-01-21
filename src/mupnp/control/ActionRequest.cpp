@@ -75,7 +75,7 @@ const char *ActionRequest::getActionName(std::string &buf) {
   if (name == NULL)
     return "";
   uHTTP::String nameStr(name);
-  int idx = nameStr.indexOf(SOAP::DELIM)+1;
+  int idx = nameStr.indexOf(uSOAP::SOAP::DELIM)+1;
   if (idx < 0)
     return "";
   uHTTP::String actName;
@@ -92,7 +92,7 @@ void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
 
   setRequestHost(service);
 
-  setEnvelopeNode(SOAP::CreateEnvelopeBodyNode());
+  setEnvelopeNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
   uXML::Node *envNode = getEnvelopeNode();
   uXML::Node *bodyNode = getBodyNode();
   uXML::Node *argNode = createContentNode(service, action, argList);

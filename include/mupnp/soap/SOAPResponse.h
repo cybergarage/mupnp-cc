@@ -15,7 +15,7 @@
 #include <mupnp/xml/XML.h>
 #include <mupnp/soap/SOAP.h>
 
-namespace mUPnP {
+namespace uSOAP {
 class SOAPResponse : public uHTTP::HTTPResponse {
   uXML::Node *rootNode;
   
@@ -25,12 +25,6 @@ class SOAPResponse : public uHTTP::HTTPResponse {
   ////////////////////////////////////////////////
   
   SOAPResponse();
-
-  /*
-  SOAPResponse(uHTTP::HTTPResponse *httpRes)  : HTTPResponse(httpRes)
-  SOAPResponse(SOAPResponse *soapRes) : HTTPResponse(soapRes)
-  */
-
   ~SOAPResponse();
 
   ////////////////////////////////////////////////
@@ -88,7 +82,7 @@ private:
     uXML::Node *envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
-    return envNode->getNodeEndsWith(SOAP::BODY);
+    return envNode->getNodeEndsWith(uSOAP::SOAP::BODY);
   }
 
   uXML::Node *getMethodResponseNode(const std::string & name) {
@@ -105,35 +99,35 @@ private:
     uXML::Node *bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
-    return bodyNode->getNodeEndsWith(SOAP::FAULT);
+    return bodyNode->getNodeEndsWith(uSOAP::SOAP::FAULT);
   }
 
   uXML::Node *getFaultCodeNode() {
     uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
-    return faultNode->getNodeEndsWith(SOAP::FAULT_CODE);
+    return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_CODE);
   }
 
   uXML::Node *getFaultStringNode() {
     uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
-    return faultNode->getNodeEndsWith(SOAP::FAULT_STRING);
+    return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_STRING);
   }
 
   uXML::Node *getFaultActorNode() {
     uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
-    return faultNode->getNodeEndsWith(SOAP::FAULTACTOR);
+    return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULTACTOR);
   }
 
   uXML::Node *getFaultDetailNode() {
     uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
-    return faultNode->getNodeEndsWith(SOAP::DETAIL);
+    return faultNode->getNodeEndsWith(uSOAP::SOAP::DETAIL);
   }
 
   const char *getFaultCode() {

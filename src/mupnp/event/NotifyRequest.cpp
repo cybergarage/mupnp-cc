@@ -57,14 +57,14 @@ bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, cons
 uXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value) {
   string propSetXmlNs;
   //propSetXmlNs.append(XMLNS)
-  //propSetXmlNs.append(SOAP::DELIM)
+  //propSetXmlNs.append(uSOAP::SOAP::DELIM)
   propSetXmlNs.append(PROPERTYSET);
   uXML::Node *propSetNode = new uXML::Node(propSetXmlNs.c_str());
   propSetNode->setNameSpace(XMLNS, Subscription::XMLNS);
 
   string propXmlNs;
   //propXmlNs.append(XMLNS)
-  //propXmlNs.append(SOAP::DELIM)
+  //propXmlNs.append(uSOAP::SOAP::DELIM)
   propXmlNs.append(PROPERTY);
   uXML::Node *propNode = new uXML::Node(propXmlNs.c_str());
   propSetNode->addNode(propNode);

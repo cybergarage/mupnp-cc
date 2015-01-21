@@ -37,7 +37,7 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
     
   setRequestHost(service);
 
-  setEnvelopeNode(SOAP::CreateEnvelopeBodyNode());
+  setEnvelopeNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
   uXML::Node *envNode = getEnvelopeNode();
   uXML::Node *bodyNode = getBodyNode();
   uXML::Node *qeuryNode = createContentNode(stateVar);

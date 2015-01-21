@@ -13,7 +13,7 @@
 
 #include <mupnp/xml/Node.h>
 
-namespace mUPnP {
+namespace uSOAP {
 namespace SOAP {
 const char ENVELOPE[] = "Envelope";
 const char BODY[] = "Body";

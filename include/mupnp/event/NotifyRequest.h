@@ -22,7 +22,7 @@
 #include <sstream>
 
 namespace mUPnP {
-class NotifyRequest : public mUPnP::SOAPRequest {
+class NotifyRequest : public uSOAP::SOAPRequest {
   PropertyList propList;
 
  public:

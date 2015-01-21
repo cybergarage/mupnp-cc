@@ -62,17 +62,17 @@ void ActionResponse::setResponse(Action *action) {
 
 uXML::Node *ActionResponse::createResponseNode(Action *action) {
   string nodeName;
-  nodeName = mUPnP::SOAP::METHODNS;
-  nodeName += mUPnP::SOAP::DELIM;
+  nodeName = uSOAP::SOAP::METHODNS;
+  nodeName += uSOAP::SOAP::DELIM;
   nodeName += action->getName();
-  nodeName += mUPnP::SOAP::RESPONSE;
+  nodeName += uSOAP::SOAP::RESPONSE;
   uXML::Node *actionNameResNode = new uXML::Node(nodeName.c_str());
     
   Service *service = action->getService();    
   if (service != NULL) {
     string attrName;
     attrName ="xmlns:";
-    attrName += mUPnP::SOAP::METHODNS;
+    attrName += uSOAP::SOAP::METHODNS;
     actionNameResNode->setAttribute(
       attrName.c_str(),
       service->getServiceType());

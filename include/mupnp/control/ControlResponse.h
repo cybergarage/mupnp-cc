@@ -20,7 +20,7 @@
 #include <sstream>
 
 namespace mUPnP {
-class ControlResponse : public mUPnP::SOAPResponse {
+class ControlResponse : public uSOAP::SOAPResponse {
   UPnPStatus upnpErr;
 
 public:
@@ -70,21 +70,21 @@ private:
     uXML::Node *detailNode = getFaultDetailNode();
     if (detailNode == NULL)
       return NULL;
-    return detailNode->getNodeEndsWith(SOAP::UPNP_ERROR);
+    return detailNode->getNodeEndsWith(uSOAP::SOAP::UPNP_ERROR);
   }
 
   uXML::Node *getUPnPErrorCodeNode() {
     uXML::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
-    return errorNode->getNodeEndsWith(SOAP::ERROR_CODE);
+    return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_CODE);
   }
 
   uXML::Node *getUPnPErrorDescriptionNode() {
     uXML::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
-    return errorNode->getNodeEndsWith(SOAP::ERROR_DESCRIPTION);
+    return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_DESCRIPTION);
   }
 
  public:

@@ -19,7 +19,7 @@
 namespace mUPnP {
 class Service;
 
-class ControlRequest : public mUPnP::SOAPRequest {
+class ControlRequest : public uSOAP::SOAPRequest {
 public:
   ////////////////////////////////////////////////
   // Constructor

@@ -14,36 +14,31 @@
 #include <mupnp/soap/SOAP.h>
 #include <uhttp/util/StringUtil.h>
 
-using namespace std;
-using namespace mUPnP;
-using namespace mUPnP;
-using namespace uHTTP;
-
 ////////////////////////////////////////////////
 // CreateEnvelopeBodyNode
 ////////////////////////////////////////////////
 
-uXML::Node *mUPnP::SOAP::CreateEnvelopeBodyNode() {
+uXML::Node *uSOAP::SOAP::CreateEnvelopeBodyNode() {
   // <Envelope>
-  string envNodeName;
+  std::string envNodeName;
   envNodeName += XMLNS;
   envNodeName += DELIM;
   envNodeName += ENVELOPE;
   uXML::Node *envNode = new uXML::Node(envNodeName.c_str());
 
-  string xmlNs;
+  std::string xmlNs;
   xmlNs += "xmlns";
   xmlNs += DELIM;
   xmlNs += XMLNS;
   envNode->setAttribute(xmlNs.c_str(), XMLNS_URL);
-  string encStyle;
+  std::string encStyle;
   encStyle += XMLNS;
   encStyle += DELIM;
   encStyle += "encodingStyle";
   envNode->setAttribute(encStyle.c_str(), ENCSTYLE_URL);
 
   // <Body>
-  string bodyNodeName;
+  std::string bodyNodeName;
   bodyNodeName += XMLNS;
   bodyNodeName += DELIM;
   bodyNodeName += BODY;
@@ -57,12 +52,12 @@ uXML::Node *mUPnP::SOAP::CreateEnvelopeBodyNode() {
 // Header
 ////////////////////////////////////////////////
 
-const char *mUPnP::SOAP::GetHeader(const std::string &content, std::string &header) {
+const char *uSOAP::SOAP::GetHeader(const std::string &content, std::string &header) {
   header = "";
   if (content.length() <= 0)
     return header.c_str();
-  string::size_type gtIdx = content.find(">");
-  if (gtIdx == string::npos)
+  std::string::size_type gtIdx = content.find(">");
+  if (gtIdx == std::string::npos)
     return header.c_str();
   header = content.substr(0, gtIdx+1);
   return header.c_str();
@@ -72,26 +67,26 @@ const char *mUPnP::SOAP::GetHeader(const std::string &content, std::string &head
 // Encoding
 ////////////////////////////////////////////////
 
-const char *mUPnP::SOAP::GetEncording(const std::string &content, std::string &encording) {
+const char *uSOAP::SOAP::GetEncording(const std::string &content, std::string &encording) {
   encording = "";
-  string header;
+  std::string header;
   SOAP::GetHeader(content, header);
   if (header.size() <= 0)
     return encording.c_str();
-  string::size_type encIdx = header.find(SOAP::ENCORDING);
-  if (encIdx == string::npos)
+  std::string::size_type encIdx = header.find(uSOAP::SOAP::ENCORDING);
+  if (encIdx == std::string::npos)
     return encording.c_str();
-  string::size_type startIdx = header.find('\"', encIdx+strlen(SOAP::ENCORDING)+1);
-  if (startIdx == string::npos)
+  std::string::size_type startIdx = header.find('\"', encIdx+strlen(uSOAP::SOAP::ENCORDING)+1);
+  if (startIdx == std::string::npos)
     return encording.c_str();
-  string::size_type endIdx = header.find('\"', startIdx+1);
+  std::string::size_type endIdx = header.find('\"', startIdx+1);
   encording = header.substr(startIdx+1, (endIdx-startIdx-1));
   return encording.c_str();
 }
 
-bool mUPnP::SOAP::IsEncording(const std::string &content, const std::string &encType) {
-  string enc;
+bool uSOAP::SOAP::IsEncording(const std::string &content, const std::string &encType) {
+  std::string enc;
   SOAP::GetEncording(content, enc);
-  String encStr(enc);
+  uHTTP::String encStr(enc);
   return encStr.equalsIgnoreCase(encType);
 }

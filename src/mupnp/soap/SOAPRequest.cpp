@@ -12,9 +12,8 @@
 #include <uhttp/util/StringUtil.h>
 #include <mupnp/xml/Parser.h>
 
-using namespace mUPnP;
 using namespace uHTTP;
-using namespace mUPnP;
+using namespace uSOAP;
 using namespace std;
 
 ////////////////////////////////////////////////
@@ -108,7 +107,7 @@ void SOAPRequest::setContent(uXML::Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   string buf;
-  buf.append(SOAP::VERSION_HEADER);
+  buf.append(uSOAP::SOAP::VERSION_HEADER);
   buf.append("\n");
   buf.append(nodeBuf);
   HTTPRequest::setContent(buf.c_str());

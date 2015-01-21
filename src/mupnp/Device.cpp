@@ -1141,7 +1141,7 @@ uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq) {
 ////////////////////////////////////////////////
 
 uHTTP::HTTP::StatusCode Device::soapBadActionRecieved(HTTPRequest *soapReq) {
-  SOAPResponse soapRes;
+  uSOAP::SOAPResponse soapRes;
   soapRes.setStatusCode(HTTP::BAD_REQUEST);
   soapReq->post(&soapRes);
   return soapRes.getStatusCode();
