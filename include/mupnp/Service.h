@@ -33,7 +33,7 @@ namespace mUPnP {
 class Device;
 
 class Service {
-  mUPnP::Node *serviceNode;
+  uXML::Node *serviceNode;
   
   ActionList actionList;
   ServiceStateTable serviceStateTable;
@@ -57,7 +57,7 @@ public:
   // Member
   ////////////////////////////////////////////////
 
-  mUPnP::Node *getServiceNode() {
+  uXML::Node *getServiceNode() {
     return serviceNode;
   }
 
@@ -70,7 +70,7 @@ public:
   ////////////////////////////////////////////////
 
  public:
-  Service(Node *node);
+  Service(uXML::Node *node);
 
   ~Service();
 
@@ -100,7 +100,7 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  static bool isServiceNode(Node *node) {
+  static bool isServiceNode(uXML::Node *node) {
     if (node == NULL)
       return false;
     return node->isName(Service::ELEM_NAME);
@@ -112,18 +112,18 @@ private:
 
 private:
 
-  mUPnP::Node *getDeviceNode() {
-    mUPnP::Node *serviceNode = getServiceNode();
+  uXML::Node *getDeviceNode() {
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return NULL;
-    mUPnP::Node *parentNode = serviceNode->getParentNode();
+    uXML::Node *parentNode = serviceNode->getParentNode();
     if (parentNode == NULL)
       return NULL;
     return parentNode->getParentNode();
   }
 
-  mUPnP::Node *getRootNode() {
-    mUPnP::Node *serviceNode = getServiceNode();
+  uXML::Node *getRootNode() {
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return NULL;
     return serviceNode->getRootNode();
@@ -135,7 +135,7 @@ private:
 
  public:
   Device *getDevice() {
-    mUPnP::Node *node = getDeviceNode();
+    uXML::Node *node = getDeviceNode();
     if (node == NULL)
       return NULL;
     DeviceData *data = dynamic_cast<DeviceData *>(node->getUserData());
@@ -152,14 +152,14 @@ private:
 
  public:
   void setServiceType(const std::string &value) {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(SERVICE_TYPE, value);
   }
 
   const char *getServiceType() {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(SERVICE_TYPE);
@@ -171,14 +171,14 @@ private:
 
  public:
   void setServiceID(const std::string &value) {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(SERVICE_ID, value);
   }
 
   const char *getServiceID() {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(SERVICE_ID);
@@ -198,14 +198,14 @@ private:
 
  public:
   void setSCPDURL(const std::string &value) {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
    serviceNode->setNode(SCPDURL, value);
   }
 
   const char *getSCPDURL() {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(SCPDURL);
@@ -223,14 +223,14 @@ private:
 
  public:
   void setControlURL(const std::string &value) {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(CONTROL_URL, value);
   }
 
   const char *getControlURL() {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(CONTROL_URL);
@@ -246,14 +246,14 @@ private:
 
  public:
   void setEventSubURL(const std::string &value) {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return;
     serviceNode->setNode(EVENT_SUB_URL, value);
   }
 
   const char *getEventSubURL() {
-    mUPnP::Node *serviceNode = getServiceNode();
+    uXML::Node *serviceNode = getServiceNode();
     if (serviceNode == NULL)
       return "";
     return serviceNode->getNodeValue(EVENT_SUB_URL);
@@ -274,12 +274,12 @@ private:
 #endif
 
 private:
-  mUPnP::Node *getSCPDNode(uHTTP::URL *url);
+  uXML::Node *getSCPDNode(uHTTP::URL *url);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-  mUPnP::Node *getSCPDNode(uHTTP::File *file);
+  uXML::Node *getSCPDNode(uHTTP::File *file);
 #endif
-  mUPnP::Node *getSCPDNode(const std::string &description);
-  mUPnP::Node *getSCPDNode();
+  uXML::Node *getSCPDNode(const std::string &description);
+  uXML::Node *getSCPDNode();
 
 public:
   ////////////////////////////////////////////////
@@ -334,7 +334,7 @@ private:
   ////////////////////////////////////////////////
 
   ServiceData *getServiceData() {
-    mUPnP::Node *node = getServiceNode();
+    uXML::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
     ServiceData *userData = dynamic_cast<ServiceData *>(node->getUserData());

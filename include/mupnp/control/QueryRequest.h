@@ -42,7 +42,7 @@ public:
 
 private:
 
-  mUPnP::Node *getVarNameNode();
+  uXML::Node *getVarNameNode();
   
  public:
   const char *getVarName();
@@ -59,7 +59,7 @@ private:
 
 private:
 
-  mUPnP::Node *createContentNode(StateVariable *stateVar);
+  uXML::Node *createContentNode(StateVariable *stateVar);
 
   ////////////////////////////////////////////////
   // post

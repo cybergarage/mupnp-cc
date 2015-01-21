@@ -30,22 +30,20 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace mUPnP;
-using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // initArgumentList
 ////////////////////////////////////////////////
 
 void ActionRequest::initArgumentList() {
-  Node *actNode = getActionNode();
+  uXML::Node *actNode = getActionNode();
   if (actNode == NULL)
     return;
   size_t nArgNodes = actNode->getNNodes();
   argumentList.clear();
   for (size_t n = 0; n < nArgNodes; n++) {
     Argument *arg = new Argument();
-    Node *argNode = actNode->getNode(n);
+    uXML::Node *argNode = actNode->getNode(n);
     arg->setName(argNode->getName());
     arg->setValue(argNode->getValue());
     argumentList.add(arg);
@@ -56,8 +54,8 @@ void ActionRequest::initArgumentList() {
 // getActionNode
 ////////////////////////////////////////////////
 
-mUPnP::Node *ActionRequest::getActionNode() {
-  mUPnP::Node *bodyNode = getBodyNode();
+uXML::Node *ActionRequest::getActionNode() {
+  uXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
@@ -70,7 +68,7 @@ mUPnP::Node *ActionRequest::getActionNode() {
 ////////////////////////////////////////////////
 
 const char *ActionRequest::getActionName(std::string &buf) {
-  mUPnP::Node *node = getActionNode();
+  uXML::Node *node = getActionNode();
   if (node == NULL)
     return "";
   const char *name = node->getName();
@@ -95,9 +93,9 @@ void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
   setRequestHost(service);
 
   setEnvelopeNode(SOAP::CreateEnvelopeBodyNode());
-  Node *envNode = getEnvelopeNode();
-  Node *bodyNode = getBodyNode();
-  Node *argNode = createContentNode(service, action, argList);
+  uXML::Node *envNode = getEnvelopeNode();
+  uXML::Node *bodyNode = getBodyNode();
+  uXML::Node *argNode = createContentNode(service, action, argList);
   bodyNode->addNode(argNode);
   setContent(envNode);
 
@@ -116,17 +114,17 @@ void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
 // Contents
 ////////////////////////////////////////////////
 
-Node *ActionRequest::createContentNode(Service *service, mUPnP::Action *action, ArgumentList *argList) {
+uXML::Node *ActionRequest::createContentNode(Service *service, mUPnP::Action *action, ArgumentList *argList) {
   const char *actionName = action->getName();
   const char *serviceType = service->getServiceType();
 
-  Node *actionNode = new Node();
+  uXML::Node *actionNode = new uXML::Node();
   actionNode->setName(Control::NS, actionName);
   actionNode->setNameSpace(Control::NS, serviceType);
   size_t argListCnt = argList->size();
   for (size_t n = 0; n < argListCnt; n++) {
     Argument *arg = argList->getArgument(n);
-    Node *argNode = new Node();
+    uXML::Node *argNode = new uXML::Node();
     string name = arg->getName();
     string value = arg->getValue();
     argNode->setName(name.c_str());

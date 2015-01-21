@@ -11,19 +11,16 @@
 #include <mupnp/control/ControlResponse.h>
 #include <mupnp/xml/ActionData.h>
 
-using namespace mUPnP;
-using namespace mUPnP;
-
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
 
-ActionData::ActionData()  {
+mUPnP::ActionData::ActionData()  {
   setActionListener(NULL);
   ctrlRes = NULL;
 }
 
-ActionData::~ActionData()  {
+mUPnP::ActionData::~ActionData()  {
   if (ctrlRes != NULL)
     delete ctrlRes;
 }
@@ -32,7 +29,7 @@ ActionData::~ActionData()  {
 // ControlResponse
 ////////////////////////////////////////////////
 
-void ActionData::setControlResponse(ControlResponse *res)  {
+void mUPnP::ActionData::setControlResponse(ControlResponse *res)  {
   if (ctrlRes != NULL)
     delete ctrlRes;
   ctrlRes = res;

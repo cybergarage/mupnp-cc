@@ -52,21 +52,21 @@ ActionResponse::ActionResponse(SOAPResponse *soapRes) {
 void ActionResponse::setResponse(Action *action) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
   
-  mUPnP::Node *bodyNode = getBodyNode();
-  mUPnP::Node *resNode = createResponseNode(action);
+  uXML::Node *bodyNode = getBodyNode();
+  uXML::Node *resNode = createResponseNode(action);
   bodyNode->addNode(resNode);
 
-  mUPnP::Node *envNode = getEnvelopeNode();
+  uXML::Node *envNode = getEnvelopeNode();
   setContent(envNode);
 }
 
-mUPnP::Node *ActionResponse::createResponseNode(Action *action) {
+uXML::Node *ActionResponse::createResponseNode(Action *action) {
   string nodeName;
   nodeName = mUPnP::SOAP::METHODNS;
   nodeName += mUPnP::SOAP::DELIM;
   nodeName += action->getName();
   nodeName += mUPnP::SOAP::RESPONSE;
-  Node *actionNameResNode = new mUPnP::Node(nodeName.c_str());
+  uXML::Node *actionNameResNode = new uXML::Node(nodeName.c_str());
     
   Service *service = action->getService();    
   if (service != NULL) {
@@ -84,7 +84,7 @@ mUPnP::Node *ActionResponse::createResponseNode(Action *action) {
     Argument *arg = argList->getArgument(n);
     if (arg->isOutDirection() == false)
       continue;
-    mUPnP::Node *argNode = new mUPnP::Node();
+    uXML::Node *argNode = new uXML::Node();
     argNode->setName(arg->getName());
     argNode->setValue(arg->getValue());
     actionNameResNode->addNode(argNode);
@@ -97,8 +97,8 @@ mUPnP::Node *ActionResponse::createResponseNode(Action *action) {
 // getResponse
 ////////////////////////////////////////////////
 
-Node *ActionResponse::getActionResponseNode() {
-  Node *bodyNode = getBodyNode();
+uXML::Node *ActionResponse::getActionResponseNode() {
+  uXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL || bodyNode->hasNodes() == false)
     return NULL;
   return bodyNode->getNode(0);
@@ -107,13 +107,13 @@ Node *ActionResponse::getActionResponseNode() {
 ArgumentList *ActionResponse::getResponse() {
   argList.clear();
     
-  Node *resNode = getActionResponseNode();
+  uXML::Node *resNode = getActionResponseNode();
   if (resNode == NULL)
     return &argList;
       
   size_t nArgs = resNode->getNNodes();
   for (size_t n = 0; n < nArgs; n++) {
-    Node *node = resNode->getNode(n);
+    uXML::Node *node = resNode->getNode(n);
     const char *name = node->getName();
     const char *value = node->getValue();
     Argument *arg = new Argument(name, value);

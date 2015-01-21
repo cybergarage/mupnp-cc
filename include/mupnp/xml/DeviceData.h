@@ -20,9 +20,10 @@
 #include <string>
 
 namespace mUPnP {
+
 class Device;
 
-class DeviceData : public mUPnP::NodeData {
+class DeviceData : public ::uXML::NodeData {
   Device *device;
 
   std::string descriptionURI; 

@@ -37,7 +37,7 @@ Argument::Argument() {
   serviceNode = &defaultServiceNode;
 }
   
-Argument::Argument(Node *servNode, mUPnP::Node *argNode) {
+Argument::Argument(uXML::Node *servNode, uXML::Node *argNode) {
   argumentNode = argNode;
   serviceNode = servNode;
 }
@@ -67,7 +67,7 @@ void Argument::setValue(int value) {
 ////////////////////////////////////////////////
 
 Service *Argument::getService() {
-  mUPnP::Node *node = getServiceNode();
+  uXML::Node *node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;

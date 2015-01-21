@@ -38,7 +38,7 @@ public:
 
 private:
 
-  mUPnP::Node *getReturnNode();
+  uXML::Node *getReturnNode();
   
  public:
   const char *getReturnValue();
@@ -52,7 +52,7 @@ private:
 
 private:
 
-  mUPnP::Node *createResponseNode(const std::string &value);
+  uXML::Node *createResponseNode(const std::string &value);
 };
 
 }

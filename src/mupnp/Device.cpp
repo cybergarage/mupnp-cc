@@ -66,7 +66,7 @@ const char *Device::presentationURL = "presentationURL";
 // Constructor
 ////////////////////////////////////////////////
 
-Device::Device(Node *root, mUPnP::Node *device) {
+Device::Device(uXML::Node *root, uXML::Node *device) {
   setLocalRootDeviceFlag(false);
   rootNode = root;
   deviceNode = device;
@@ -87,7 +87,7 @@ Device::Device() {
   initChildList();
 }
   
-Device::Device(Node *device) {
+Device::Device(uXML::Node *device) {
   setLocalRootDeviceFlag(false);
   rootNode = NULL;
   deviceNode = device;
@@ -155,7 +155,7 @@ Device::Device(const std::string &descriptionFileName) {
 // Member
 ////////////////////////////////////////////////
 
-mUPnP::Node *Device::getRootNode() {
+uXML::Node *Device::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
   if (deviceNode == NULL)
@@ -168,7 +168,7 @@ mUPnP::Node *Device::getRootNode() {
 ////////////////////////////////////////////////
   
 void Device::setNMPRMode(bool flag) {
-  Node *devNode = getDeviceNode();
+  uXML::Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
   if (flag == true) {
@@ -181,7 +181,7 @@ void Device::setNMPRMode(bool flag) {
 }
 
 bool Device::isNMPRMode() {
-  Node *devNode = getDeviceNode();
+  uXML::Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return false;
   return (devNode->getNode(UPnP::INMPR03) != NULL) ? true : false;
@@ -193,12 +193,12 @@ bool Device::isNMPRMode() {
 
 void Device::setURLBase(const std::string &value) {
   if (isRootDevice() == true) {
-    Node *node = getRootNode()->getNode(URLBASE_NAME);
+    uXML::Node *node = getRootNode()->getNode(URLBASE_NAME);
     if (node != NULL) {
       node->setValue(value);
       return;
     }
-    node = new Node(URLBASE_NAME);
+    node = new uXML::Node(URLBASE_NAME);
     node->setValue(value);
     int index = 1;
     if (getRootNode()->hasNodes() == false)
@@ -289,10 +289,10 @@ bool Device::isExpired() {
 Device *Device::getRootDevice() {
   if (rootDevice != NULL)
     return rootDevice;
-  mUPnP::Node *rootNode = getRootNode();
+  uXML::Node *rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
-  mUPnP::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
+  uXML::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
   if (devNode == NULL)
     return NULL;
   rootDevice = new Device();
@@ -314,17 +314,17 @@ Device *Device::getParentDevice() {
   if(isRootDevice() == true)
     return NULL;
   
-  mUPnP::Node *rootNode = getRootNode();
+  uXML::Node *rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
   
-  Node *devNode = getDeviceNode();
+  uXML::Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return NULL;
   
   //<device><deviceList><device>
   
-  mUPnP::Node *parentNode = devNode->getParentNode();
+  uXML::Node *parentNode = devNode->getParentNode();
   if (!parentNode)
     return NULL;
   devNode = parentNode->getParentNode();
@@ -343,7 +343,7 @@ Device *Device::getParentDevice() {
 ////////////////////////////////////////////////
 
 DeviceData *Device::getDeviceData() {
-  mUPnP::Node *node = getDeviceNode();
+  uXML::Node *node = getDeviceNode();
   if (node == NULL)
     return NULL;
   DeviceData *userData = dynamic_cast<DeviceData *>(node->getUserData());
@@ -376,10 +376,10 @@ const char *Device::getDeviceNodeValue(const std::string &name) {
 
 bool Device::loadDescription(const std::string &description) {
   try {
-    Parser parser;
+    uXML::Parser parser;
     rootNode = parser.parse(description);
   }
-  catch (ParserException e) {
+  catch (uXML::ParserException e) {
     string msg;
     msg = "Couldn't load description";
     Debug::warning(msg);
@@ -453,15 +453,15 @@ bool Device::loadDescription(uHTTP::File *file) {
 
 void Device::initDeviceList() {
   deviceList.clear();
-  Node *devNode = getDeviceNode();
+  uXML::Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  mUPnP::Node *devListNode = devNode->getNode(DeviceList::ELEM_NAME);
+  uXML::Node *devListNode = devNode->getNode(DeviceList::ELEM_NAME);
   if (devListNode == NULL)
     return;
   size_t nNode = devListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    mUPnP::Node *node = devListNode->getNode(n);
+    uXML::Node *node = devListNode->getNode(n);
     if (Device::isDeviceNode(node) == false)
       continue;
     Device *dev = new Device(node);
@@ -514,15 +514,15 @@ Device *Device::getDeviceByDescriptionURI(const std::string &uri) {
 
 void Device::initServiceList() {
   serviceList.clear();
-  Node *devNode = getDeviceNode();
+  uXML::Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  mUPnP::Node *serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
+  uXML::Node *serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
   if (serviceListNode == NULL)
     return;
   size_t nNode = serviceListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    mUPnP::Node *node = serviceListNode->getNode(n);
+    uXML::Node *node = serviceListNode->getNode(n);
     if (Service::isServiceNode(node) == false)
       continue;
     Service *service = new Service(node);
@@ -726,15 +726,15 @@ mUPnP::Action *Device::getAction(const std::string &name) {
 
 void Device::initIconList() {
   iconList.clear();
-  Node *devNode = getDeviceNode();
+  uXML::Node *devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  Node *iconListNode = devNode->getNode(IconList::ELEM_NAME);
+  uXML::Node *iconListNode = devNode->getNode(IconList::ELEM_NAME);
   if (iconListNode == NULL)
     return;
   size_t nNode = iconListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    Node *node = iconListNode->getNode(n);
+    uXML::Node *node = iconListNode->getNode(n);
     if (Icon::isIconNode(node) == false)
       continue;
     Icon *icon = new Icon(node);
@@ -1079,7 +1079,7 @@ const char *Device::getDescriptionData(const std::string &host, string &buf) {
   lock();
   if (isNMPRMode() == false)
     updateURLBase(host);
-  Node *rootNode = getRootNode();
+  uXML::Node *rootNode = getRootNode();
   buf = "";
   if (rootNode != NULL) {
     string nodeBuf;
@@ -1122,7 +1122,7 @@ uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq) {
 
   HTTPResponse httpRes;
   if (File::isXMLFileName(uri.c_str()) == true)
-    httpRes.setContentType(XML::CONTENT_TYPE);
+    httpRes.setContentType(uXML::XML::CONTENT_TYPE);
   httpRes.setStatusCode(HTTP::OK_REQUEST);
   httpRes.setContent(fileByte);
   return httpReq->post(&httpRes);

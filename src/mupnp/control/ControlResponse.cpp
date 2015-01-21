@@ -20,9 +20,7 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace mUPnP;
 using namespace uHTTP;
-using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants
@@ -38,24 +36,24 @@ const char *ControlResponse::FAULT_STRING = "UPnPError";
 void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr) {
   setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
   
-  Node *bodyNode = getBodyNode();
-  Node *faultNode = createFaultResponseNode(errCode, errDescr);
+  uXML::Node *bodyNode = getBodyNode();
+  uXML::Node *faultNode = createFaultResponseNode(errCode, errDescr);
   bodyNode->addNode(faultNode);
 
-  Node *envNode = getEnvelopeNode();
+  uXML::Node *envNode = getEnvelopeNode();
   setContent(envNode);
 }
 
-Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &errDescr) {
+uXML::Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &errDescr) {
   // <s:Fault>
   string faultNodeName;
   faultNodeName = SOAP::XMLNS;
   faultNodeName += SOAP::DELIM;
   faultNodeName += SOAP::FAULT;
-  Node *faultNode = new Node(faultNodeName.c_str());
+  uXML::Node *faultNode = new uXML::Node(faultNodeName.c_str());
 
   // <faultcode>s:Client</faultcode>
-  Node *faultCodeNode = new Node(SOAP::FAULT_CODE);
+  uXML::Node *faultCodeNode = new uXML::Node(SOAP::FAULT_CODE);
   string faultCodeNodeValue;
   faultCodeNodeValue = SOAP::XMLNS;
   faultCodeNodeValue += SOAP::DELIM;
@@ -64,26 +62,26 @@ Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &e
   faultNode->addNode(faultCodeNode);
     
   // <faultstring>UPnPError</faultstring>
-  Node *faultStringNode = new Node(SOAP::FAULT_STRING);
+  uXML::Node *faultStringNode = new uXML::Node(SOAP::FAULT_STRING);
   faultStringNode->setValue(FAULT_STRING);
   faultNode->addNode(faultStringNode);
 
   // <detail>
-  Node *detailNode = new Node(SOAP::DETAIL);
+  uXML::Node *detailNode = new uXML::Node(SOAP::DETAIL);
   faultNode->addNode(detailNode);
 
   // <UPnPError xmlns="urn:schemas-upnp-org:control-1-0">
-  Node *upnpErrorNode = new Node(FAULT_STRING);
+  uXML::Node *upnpErrorNode = new uXML::Node(FAULT_STRING);
   upnpErrorNode->setAttribute("xmlns", Control::XMLNS);
   detailNode->addNode(upnpErrorNode);
 
   // <errorCode>error code</errorCode>
-  Node *errorCodeNode = new Node(SOAP::ERROR_CODE);
+  uXML::Node *errorCodeNode = new uXML::Node(SOAP::ERROR_CODE);
   errorCodeNode->setValue(errCode);
   upnpErrorNode->addNode(errorCodeNode);
 
   // <errorDescription>error string</errorDescription>
-  Node *errorDesctiprionNode = new Node(SOAP::ERROR_DESCRIPTION);
+  uXML::Node *errorDesctiprionNode = new uXML::Node(SOAP::ERROR_DESCRIPTION);
   errorDesctiprionNode->setValue(errDescr);
   upnpErrorNode->addNode(errorDesctiprionNode);
     

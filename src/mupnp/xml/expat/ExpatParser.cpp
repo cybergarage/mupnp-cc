@@ -39,8 +39,7 @@
 #include <stdio.h>
 
 using namespace std;
-using namespace mUPnP;
-using namespace uHTTP;
+using namespace uXML;
 
 ////////////////////////////////////////////////
 // Constructor

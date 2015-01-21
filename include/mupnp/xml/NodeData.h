@@ -11,7 +11,8 @@
 #ifndef _MUPMPCC_XMLNODEDATA_H_
 #define _MUPMPCC_XMLNODEDATA_H_
 
-namespace mUPnP {
+namespace uXML {
+
 class Node;
 
 class NodeData {
@@ -33,7 +34,7 @@ public:
     this->node = node;
   }
 
-  mUPnP::Node *getNode() {
+  Node *getNode() {
     return node;
   }
 

@@ -19,10 +19,11 @@
 #include <string>
 
 namespace mUPnP {
+
 class QueryListener;
 class Service;
 
-class ServiceData : public mUPnP::NodeData {
+class ServiceData : public ::uXML::NodeData {
   Service *service;
 
   std::string sid;
@@ -30,7 +31,7 @@ class ServiceData : public mUPnP::NodeData {
 
   SubscriberList subscriberList;
 
-  mUPnP::Node *scpdNode;
+  uXML::Node *scpdNode;
 
  public:
   ////////////////////////////////////////////////
@@ -56,11 +57,11 @@ class ServiceData : public mUPnP::NodeData {
   // scpdNode
   ////////////////////////////////////////////////
 
-  mUPnP::Node *getSCPDNode() {
+  uXML::Node *getSCPDNode() {
     return scpdNode;
   }
 
-  void setSCPDNode(Node *node);
+  void setSCPDNode(uXML::Node *node);
 
   ////////////////////////////////////////////////
   // SubscriberList

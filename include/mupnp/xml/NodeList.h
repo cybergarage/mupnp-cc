@@ -14,7 +14,7 @@
 #include <uhttp/util/Vector.h>
 #include <uhttp/util/StringUtil.h>
 
-namespace mUPnP {
+namespace uXML {
 
 class Node;
 

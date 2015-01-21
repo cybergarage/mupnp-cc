@@ -22,7 +22,7 @@ using namespace std;
 ////////////////////////////////////////////////
   
 SOAPRequest::SOAPRequest() {
-  setContentType(XML::CONTENT_TYPE);
+  setContentType(uXML::XML::CONTENT_TYPE);
   setMethod(uHTTP::HTTP::POST);
   setRootNode(NULL);
 }
@@ -58,11 +58,11 @@ bool SOAPRequest::isSOAPAction(const std::string &value) {
 // parseMessage
 ////////////////////////////////////////////////
 
-mUPnP::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
+uXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
   if (contentLen <= 0)
     return NULL;
 
-  Parser xmlParser;
+  uXML::Parser xmlParser;
   return xmlParser.parse(content, contentLen);
 }
 
@@ -70,7 +70,7 @@ mUPnP::Node *SOAPRequest::parseMessage(const std::string &content, size_t conten
 // Node
 ////////////////////////////////////////////////
 
-mUPnP::Node *SOAPRequest::getRootNode() {
+uXML::Node *SOAPRequest::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
       
@@ -94,7 +94,7 @@ SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPRe
   if (contentLen <= 0)
     return soapRes;
 
-  Node *retNode = parseMessage(content, contentLen);
+  uXML::Node *retNode = parseMessage(content, contentLen);
   soapRes->setEnvelopeNode(retNode);
 
   return soapRes;
@@ -104,7 +104,7 @@ SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPRe
 // setContent
 ////////////////////////////////////////////////
 
-void SOAPRequest::setContent(Node *node) {
+void SOAPRequest::setContent(uXML::Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   string buf;

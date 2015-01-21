@@ -28,10 +28,10 @@ namespace mUPnP {
 class Service;
 
 class StateVariable {
-  mUPnP::Node *stateVariableNode;
-  mUPnP::Node *serviceNode;
+  uXML::Node *stateVariableNode;
+  uXML::Node *serviceNode;
   
-  mUPnP::Node stateVarNode;
+  uXML::Node stateVarNode;
   UPnPStatus upnpStatus;
   
   AllowedValueList allowedValueList;
@@ -54,12 +54,12 @@ class StateVariable {
   ////////////////////////////////////////////////
 
  public:
-  mUPnP::Node *getServiceNode() {
+  uXML::Node *getServiceNode() {
     return serviceNode;
   }
 
   Service *getService() {
-    mUPnP::Node *node = getServiceNode();
+    uXML::Node *node = getServiceNode();
     if (node == NULL)
       return NULL;
     ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
@@ -68,7 +68,7 @@ class StateVariable {
     return data->getService();
   }
 
-  mUPnP::Node *getStateVariableNode() {
+  uXML::Node *getStateVariableNode() {
     return stateVariableNode;
   }
   
@@ -78,7 +78,7 @@ class StateVariable {
 
  public:
   StateVariable();
-  StateVariable(Node *serviceNode, mUPnP::Node *stateVarNode);
+  StateVariable(uXML::Node *serviceNode, uXML::Node *stateVarNode);
 
   ~StateVariable();
 
@@ -87,7 +87,7 @@ class StateVariable {
   ////////////////////////////////////////////////
 
  public:
-  static bool isStateVariableNode(Node *node) {
+  static bool isStateVariableNode(uXML::Node *node) {
     return node->isName(ELEM_NAME);
   }
 
@@ -178,7 +178,7 @@ private:
 
  public:
   StateVariableData *getStateVariableData () {
-    mUPnP::Node *node = getStateVariableNode();
+    uXML::Node *node = getStateVariableNode();
     StateVariableData *userData = dynamic_cast<StateVariableData *>(node->getUserData());
     if (userData == NULL) {
       userData = new StateVariableData();

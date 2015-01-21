@@ -43,7 +43,7 @@ class ActionRequest : public ControlRequest {
   ////////////////////////////////////////////////
 
  public:
-  mUPnP::Node *getActionNode();
+  uXML::Node *getActionNode();
 
   const char *getActionName(std::string &buf);
 
@@ -69,7 +69,7 @@ private:
 
 private:
 
-  mUPnP::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
+  uXML::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
 
   ////////////////////////////////////////////////
   // post

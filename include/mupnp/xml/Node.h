@@ -19,7 +19,8 @@
 #include <mupnp/xml/NodeList.h>
 #include <mupnp/xml/NodeData.h>
 
-namespace mUPnP {
+namespace uXML {
+
 class Node  {
   Node *parentNode;
 

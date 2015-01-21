@@ -20,7 +20,7 @@ using namespace std;
 SOAPResponse::SOAPResponse() {
   rootNode = NULL;
   setRootNode(SOAP::CreateEnvelopeBodyNode());
-  setContentType(XML::CONTENT_TYPE);
+  setContentType(uXML::XML::CONTENT_TYPE);
 }
 
 /*
@@ -46,7 +46,7 @@ SOAPResponse::~SOAPResponse() {
 // setContent
 ////////////////////////////////////////////////
   
-void SOAPResponse::setContent(Node *node) {
+void SOAPResponse::setContent(uXML::Node *node) {
   string nodeBuf;
   node->toString(nodeBuf);
   std::string buf;

@@ -55,10 +55,10 @@ ControlPoint::~ControlPoint() {
 // Device List
 ////////////////////////////////////////////////
 
-Device *ControlPoint::getDevice(Node *rootNode) {
+Device *ControlPoint::getDevice(uXML::Node *rootNode) {
   if (rootNode == NULL)
       return NULL;
-  Node *devNode = rootNode->getNode(Device::ELEM_NAME);
+  uXML::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
   if (devNode == NULL)
       return NULL;
   return new Device(rootNode, devNode);
@@ -69,7 +69,7 @@ void ControlPoint::initDeviceList() {
   
   size_t nRoots = devNodeList.size();
   for (size_t n = 0; n < nRoots; n++) {
-    Node *rootNode = devNodeList.getNode(n);
+    uXML::Node *rootNode = devNodeList.getNode(n);
     Device *dev = getDevice(rootNode);
     if (dev == NULL)
       continue;
@@ -95,7 +95,7 @@ Device *ControlPoint::getDevice(const std::string &name) {
 // add
 ////////////////////////////////////////////////
 
-bool ControlPoint::addDevice(Node *rootNode) {
+bool ControlPoint::addDevice(uXML::Node *rootNode) {
   if (!devNodeList.add(rootNode))
     return false;
   initDeviceList();
@@ -122,8 +122,8 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   string locationBuf;
   const char *location = ssdpPacket->getLocation(locationBuf);
   URL locationURL(location);
-  Parser parser;
-  Node *rootNode = parser.parse(&locationURL);
+  uXML::Parser parser;
+  uXML::Node *rootNode = parser.parse(&locationURL);
   Device *rootDev = getDevice(rootNode);
   if (rootDev == NULL) {
     unlock();
@@ -145,8 +145,8 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 // remove
 ////////////////////////////////////////////////
 
-bool ControlPoint::removeDevice(Node *rootNode) {
-  if (!devNodeList.erase(rootNode))
+bool ControlPoint::removeDevice(uXML::Node *rootNode) {
+  if (!devNodeList.remove(rootNode))
     return false;
   removedDevNodeList.add(rootNode);
   initDeviceList();
@@ -205,7 +205,7 @@ void ControlPoint::removeExpiredDevices() {
       string msg = "Expired device = ";
       msg += dev[n]->getFriendlyName();
       Debug::message(msg.c_str());
-      Node *rootNode = dev[n]->getRootNode();
+      uXML::Node *rootNode = dev[n]->getRootNode();
       removeDevice(rootNode);
     }
   }

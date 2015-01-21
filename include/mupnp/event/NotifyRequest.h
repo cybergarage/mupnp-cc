@@ -96,9 +96,9 @@ class NotifyRequest : public mUPnP::SOAPRequest {
 
 private:
   
-  mUPnP::Node *createPropertySetNode(const std::string &varName, const std::string &value);
+  uXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
 
-  mUPnP::Node *getVariableNode();
+  uXML::Node *getVariableNode();
 
   ////////////////////////////////////////////////
   // Property
@@ -106,7 +106,7 @@ private:
 
 private:
   
-  Property *getProperty(Node *varNode);
+  Property *getProperty(uXML::Node *varNode);
 
  public:
   PropertyList *getPropertyList();

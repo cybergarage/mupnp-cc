@@ -41,7 +41,7 @@ const char *Service::EVENT_SUB_URL = "eventSubURL";
 // Constructor
 ////////////////////////////////////////////////
 
-Service::Service(Node *node) {
+Service::Service(uXML::Node *node) {
   serviceNode = node;
   
   initServiceData();
@@ -69,16 +69,16 @@ Device *Service::getRootDevice() {
 
 void Service::initActionList() {
   actionList.clear();
-  Node *scdpNode = getSCPDNode();
+  uXML::Node *scdpNode = getSCPDNode();
   if (scdpNode == NULL)
     return;
-  Node *actionListNode = scdpNode->getNode(ActionList::ELEM_NAME);
+  uXML::Node *actionListNode = scdpNode->getNode(ActionList::ELEM_NAME);
   if (actionListNode == NULL)
     return;
-  Node *serviceNode = getServiceNode();
+  uXML::Node *serviceNode = getServiceNode();
   size_t nNode = actionListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    Node *node = actionListNode->getNode(n);
+    uXML::Node *node = actionListNode->getNode(n);
     if (Action::isActionNode(node) == false)
       continue;
     Action *action = new Action(serviceNode, node);
@@ -107,16 +107,16 @@ mUPnP::Action *Service::getAction(const std::string &actionName) {
 
 void Service::initServiceStateTable() {
   serviceStateTable.clear();
-  Node *scpdNode = getSCPDNode();
+  uXML::Node *scpdNode = getSCPDNode();
   if (scpdNode == NULL)
     return;
-  Node *stateTableNode = scpdNode->getNode(ServiceStateTable::ELEM_NAME);
+  uXML::Node *stateTableNode = scpdNode->getNode(ServiceStateTable::ELEM_NAME);
   if (stateTableNode == NULL)
     return;
-  Node *serviceNode = getServiceNode();
+  uXML::Node *serviceNode = getServiceNode();
   size_t nNode = stateTableNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    Node *node = stateTableNode->getNode(n);
+    uXML::Node *node = stateTableNode->getNode(n);
     if (StateVariable::isStateVariableNode(node) == false)
       continue;
     StateVariable *serviceVar = new StateVariable(serviceNode, node);
@@ -143,28 +143,28 @@ StateVariable *Service::getStateVariable(const std::string &name) {
 // SCPD node
 ////////////////////////////////////////////////
 
-mUPnP::Node *Service::getSCPDNode(uHTTP::URL *url) {
-  mUPnP::Parser parser;
+uXML::Node *Service::getSCPDNode(uHTTP::URL *url) {
+  uXML::Parser parser;
   return parser.parse(url);
 }
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-mUPnP::Node *Service::getSCPDNode(uHTTP::File *file) {
-  mUPnP::Parser parser;
+uXML::Node *Service::getSCPDNode(uHTTP::File *file) {
+  uXML::Parser parser;
   return parser.parse(file);
 }
 
 #endif
 
-mUPnP::Node *Service::getSCPDNode(const std::string &description) {
-  mUPnP::Parser parser;
+uXML::Node *Service::getSCPDNode(const std::string &description) {
+  uXML::Parser parser;
   return parser.parse(description);
 }
 
-Node *Service::getSCPDNode() {
+uXML::Node *Service::getSCPDNode() {
   ServiceData *data = getServiceData();
-  Node *scpdNode = data->getSCPDNode();
+  uXML::Node *scpdNode = data->getSCPDNode();
   if (scpdNode != NULL)
     return scpdNode;
   
@@ -230,7 +230,7 @@ Node *Service::getSCPDNode() {
 }
 
 const char *Service::getSCPDData(string &buf) {
-  Node *scpdNode = getSCPDNode();
+  uXML::Node *scpdNode = getSCPDNode();
   buf = "";
   if (scpdNode != NULL) {
     string nodeBuf;
@@ -247,12 +247,12 @@ const char *Service::getSCPDData(string &buf) {
 ////////////////////////////////////////////////
 
 bool Service::loadSCPD(const std::string &description) {
-  Node *scpdNode = NULL;
+  uXML::Node *scpdNode = NULL;
 
   try {
     scpdNode = getSCPDNode(description);
   }
-  catch (ParserException e) {
+  catch (uXML::ParserException e) {
     string msg;
     msg = "Couldn't load description";
     Debug::warning(msg);

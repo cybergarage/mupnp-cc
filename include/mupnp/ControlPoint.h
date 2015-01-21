@@ -42,8 +42,8 @@ class ControlPoint : public uHTTP::HTTPRequestListener {
   int httpPort;
   size_t httpWorkerCount;
   
-  mUPnP::NodeList  devNodeList;
-  mUPnP::NodeList  removedDevNodeList;
+  uXML::NodeList  devNodeList;
+  uXML::NodeList  removedDevNodeList;
 
   NotifyListenerList deviceNotifyListenerList;
   SearchResponseListenerList deviceSearchResponseListenerList;
@@ -151,7 +151,7 @@ private:
 
 private:
 
-  bool addDevice(Node *rootNode);
+  bool addDevice(uXML::Node *rootNode);
   bool addDevice(SSDPPacket *ssdpPacket);
 
 private:
@@ -159,7 +159,7 @@ private:
   void initDeviceList();
 
  public:
-  Device *getDevice(Node *rootNode);
+  Device *getDevice(uXML::Node *rootNode);
 
   DeviceList *getDeviceList() {
     return &deviceList;
@@ -173,7 +173,7 @@ private:
 
 private:
 
-  bool removeDevice(Node *rootNode);
+  bool removeDevice(uXML::Node *rootNode);
   bool removeDevice(SSDPPacket *packet);
 
   ////////////////////////////////////////////////

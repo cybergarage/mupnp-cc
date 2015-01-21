@@ -33,34 +33,30 @@
 
 #include <stdio.h>
 
-using namespace std;
-using namespace mUPnP;
-using namespace uHTTP;
-
 #ifndef WIN32
-static Mutex iconvMutex;
+static uHTTP::Mutex iconvMutex;
 #endif
 
 ////////////////////////////////////////////////
 // EscapeXMLChars
 ////////////////////////////////////////////////
 
-const char *mUPnP::XML::EscapeXMLChars(const std::string &in, std::string &out) {
+const char *uXML::XML::EscapeXMLChars(const std::string &in, std::string &out) {
   out = in;
   
   // Thanks for Smolander Visa (09/06/05)
-  StringReplaceChars(out, "&", "&amp;");
+  uHTTP::StringReplaceChars(out, "&", "&amp;");
 
-  StringReplaceChars(out, "<", "&lt;");
-  StringReplaceChars(out, ">", "&gt;");
-  StringReplaceChars(out, "\"", "&quot;");
+  uHTTP::StringReplaceChars(out, "<", "&lt;");
+  uHTTP::StringReplaceChars(out, ">", "&gt;");
+  uHTTP::StringReplaceChars(out, "\"", "&quot;");
   
   // Thanks for Brian Owens (12/02/04)
-  StringReplaceChars(out, "'", "&apos;");
+  uHTTP::StringReplaceChars(out, "'", "&apos;");
   
   return out.c_str();
 }
 
-const char *mUPnP::XML::EscapeXMLChars(std::string &in, std::string &out) {
+const char *uXML::XML::EscapeXMLChars(std::string &in, std::string &out) {
   return EscapeXMLChars(in.c_str(), out);
 }

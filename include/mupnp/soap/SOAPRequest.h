@@ -22,7 +22,7 @@ namespace mUPnP {
 const char SOAPACTION[] = "SOAPACTION";
 
 class SOAPRequest : public uHTTP::HTTPRequest {
-  mUPnP::Node *rootNode;
+  uXML::Node *rootNode;
   SOAPResponse soapRes;
     
   ////////////////////////////////////////////////
@@ -78,7 +78,7 @@ class SOAPRequest : public uHTTP::HTTPRequest {
 
 private:
 
-  mUPnP::Node *parseMessage(const std::string &content, size_t contentLen);
+  uXML::Node *parseMessage(const std::string &content, size_t contentLen);
 
  public:
   SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
@@ -93,27 +93,27 @@ private:
 
 private:
 
-  void setRootNode(Node *node) {
+  void setRootNode(uXML::Node *node) {
     rootNode = node;
   }
 
-  mUPnP::Node *getRootNode();
+  uXML::Node *getRootNode();
   
   ////////////////////////////////////////////////
   // XML
   ////////////////////////////////////////////////
 
  public:
-  void setEnvelopeNode(Node *node) {
+  void setEnvelopeNode(uXML::Node *node) {
     setRootNode(node);
   }
   
-  mUPnP::Node *getEnvelopeNode() {
+  uXML::Node *getEnvelopeNode() {
     return getRootNode();
   }
     
-  mUPnP::Node *getBodyNode() {
-    mUPnP::Node *envNode = getEnvelopeNode();
+  uXML::Node *getBodyNode() {
+    uXML::Node *envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
     if (envNode->hasNodes() == false)
@@ -126,7 +126,7 @@ private:
   ////////////////////////////////////////////////
   
  public:
-  void setContent(Node *node);
+  void setContent(uXML::Node *node);
 };
 
 }

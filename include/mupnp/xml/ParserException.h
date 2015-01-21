@@ -13,7 +13,8 @@
 
 #include <uhttp/util/Exception.h>
 
-namespace mUPnP {
+namespace uXML {
+
 class ParserException : public uHTTP::Exception {
  public:
   ParserException(const std::string &msg) : Exception(msg) {

@@ -15,7 +15,8 @@
 #include <mupnp/xml/NodeData.h>
 
 namespace mUPnP {
-class ArgumentData : public mUPnP::NodeData {
+
+class ArgumentData : public uXML::NodeData {
   std::string value;
   
  public:

@@ -28,24 +28,24 @@ const std::string XML_TEST_SAMPLE_01 =
 
 BOOST_AUTO_TEST_CASE(XMLParserTests)
 {
-    Parser xmlParser;
+  uXML::Parser xmlParser;
     
-    Node *rootNode = xmlParser.parse(XML_TEST_SAMPLE_01);
-    BOOST_CHECK(rootNode);
-    Attribute *rootAttr = rootNode->getAttribute("xmlns");
-    string rootAttrValue = rootAttr->getValue();
-    BOOST_CHECK_EQUAL(rootAttrValue.compare("urn:schemas-upnp-org:device-1-0"), 0);
+  uXML::Node *rootNode = xmlParser.parse(XML_TEST_SAMPLE_01);
+  BOOST_CHECK(rootNode);
+  uXML::Attribute *rootAttr = rootNode->getAttribute("xmlns");
+  string rootAttrValue = rootAttr->getValue();
+  BOOST_CHECK_EQUAL(rootAttrValue.compare("urn:schemas-upnp-org:device-1-0"), 0);
     
-    Node *specNode = rootNode->getNode("specVersion");
-    BOOST_CHECK(specNode);
+  uXML::Node *specNode = rootNode->getNode("specVersion");
+  BOOST_CHECK(specNode);
     
-    Node *majorNode = specNode->getNode("major");
-    BOOST_CHECK(majorNode);
-    string majorValue = majorNode->getValue();
-    BOOST_CHECK_EQUAL(majorValue.compare("1"), 0);
+  uXML::Node *majorNode = specNode->getNode("major");
+  BOOST_CHECK(majorNode);
+  string majorValue = majorNode->getValue();
+  BOOST_CHECK_EQUAL(majorValue.compare("1"), 0);
     
-    Node *minorNode = specNode->getNode("minor");
-    BOOST_CHECK(minorNode);
-    string minorValue = minorNode->getValue();
-    BOOST_CHECK_EQUAL(minorValue.compare("0"), 0);
+  uXML::Node *minorNode = specNode->getNode("minor");
+  BOOST_CHECK(minorNode);
+  string minorValue = minorNode->getValue();
+  BOOST_CHECK_EQUAL(minorValue.compare("0"), 0);
 }

@@ -27,8 +27,8 @@ namespace mUPnP {
 class Service;
 
 class Action {
-  mUPnP::Node *serviceNode;
-  mUPnP::Node *actionNode;
+  uXML::Node *serviceNode;
+  uXML::Node *actionNode;
   
   ArgumentList *argumentList;
   ArgumentList *argumentInList;
@@ -52,14 +52,14 @@ class Action {
 
 private:
 
-  mUPnP::Node *getServiceNode() {
+  uXML::Node *getServiceNode() {
     return serviceNode;
   }
 
  public:
   Service *getService();
   
-  mUPnP::Node *getActionNode() {
+  uXML::Node *getActionNode() {
     return actionNode;
   }
   
@@ -67,7 +67,7 @@ private:
   // Constructor
   ////////////////////////////////////////////////
 
-  Action(Node *serviceNode, mUPnP::Node *actionNode);
+  Action(uXML::Node *serviceNode, uXML::Node *actionNode);
   Action(Action *action);
 
   ~Action();
@@ -89,7 +89,7 @@ private:
   // isActionNode
   ////////////////////////////////////////////////
 
-  static bool isActionNode(Node *node) {
+  static bool isActionNode(uXML::Node *node) {
     std::string nodeName = node->getName();
     if (nodeName.compare(Action::ELEM_NAME) == 0)
       return true;
@@ -169,7 +169,7 @@ private:
   ////////////////////////////////////////////////
 
   ActionData *getActionData() {
-    mUPnP::Node *node = getActionNode();
+    uXML::Node *node = getActionNode();
     ActionData *userData = dynamic_cast<ActionData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ActionData();

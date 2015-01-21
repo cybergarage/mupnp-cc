@@ -26,7 +26,7 @@ ServiceData::ServiceData()  {
 // scpdNode
 ////////////////////////////////////////////////
 
-void ServiceData::setSCPDNode(Node *node) {
+void ServiceData::setSCPDNode(uXML::Node *node) {
   scpdNode = node;
 }
 

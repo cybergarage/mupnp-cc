@@ -58,7 +58,7 @@ public:
 
 private:
   
-  mUPnP::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
+  uXML::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
 
   ////////////////////////////////////////////////
   // UPnP Error
@@ -66,22 +66,22 @@ private:
 
 private:
 
-  mUPnP::Node *getUPnPErrorNode() {
-    mUPnP::Node *detailNode = getFaultDetailNode();
+  uXML::Node *getUPnPErrorNode() {
+    uXML::Node *detailNode = getFaultDetailNode();
     if (detailNode == NULL)
       return NULL;
     return detailNode->getNodeEndsWith(SOAP::UPNP_ERROR);
   }
 
-  mUPnP::Node *getUPnPErrorCodeNode() {
-    mUPnP::Node *errorNode = getUPnPErrorNode();
+  uXML::Node *getUPnPErrorCodeNode() {
+    uXML::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
     return errorNode->getNodeEndsWith(SOAP::ERROR_CODE);
   }
 
-  mUPnP::Node *getUPnPErrorDescriptionNode() {
-    mUPnP::Node *errorNode = getUPnPErrorNode();
+  uXML::Node *getUPnPErrorDescriptionNode() {
+    uXML::Node *errorNode = getUPnPErrorNode();
     if (errorNode == NULL)
       return NULL;
     return errorNode->getNodeEndsWith(SOAP::ERROR_DESCRIPTION);
@@ -89,7 +89,7 @@ private:
 
  public:
   int getUPnPErrorCode() {
-    mUPnP::Node *errorCodeNode = getUPnPErrorCodeNode();
+    uXML::Node *errorCodeNode = getUPnPErrorCodeNode();
     if (errorCodeNode == NULL)
       return -1;
     const char *errorCodeStr = errorCodeNode->getValue();
@@ -97,7 +97,7 @@ private:
   }
 
   const char *getUPnPErrorDescription() {
-    mUPnP::Node *errorDescNode = getUPnPErrorDescriptionNode();
+    uXML::Node *errorDescNode = getUPnPErrorDescriptionNode();
     if (errorDescNode == NULL)
       return "";
     return errorDescNode->getValue();

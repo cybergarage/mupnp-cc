@@ -46,43 +46,43 @@ bool NotifyRequest::setRequest(Subscriber *sub, const std::string &varName, cons
   setSID(sid);
   setSEQ(notifyCnt);
 
-  setContentType(XML::CONTENT_TYPE);
-  mUPnP::Node *propSetNode = createPropertySetNode(varName, value);
+  setContentType(uXML::XML::CONTENT_TYPE);
+  uXML::Node *propSetNode = createPropertySetNode(varName, value);
 
   setContent(propSetNode);
   return true;
 }
 
 
-mUPnP::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value) {
+uXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, const std::string &value) {
   string propSetXmlNs;
   //propSetXmlNs.append(XMLNS)
   //propSetXmlNs.append(SOAP::DELIM)
   propSetXmlNs.append(PROPERTYSET);
-  Node *propSetNode = new mUPnP::Node(propSetXmlNs.c_str());
+  uXML::Node *propSetNode = new uXML::Node(propSetXmlNs.c_str());
   propSetNode->setNameSpace(XMLNS, Subscription::XMLNS);
 
   string propXmlNs;
   //propXmlNs.append(XMLNS)
   //propXmlNs.append(SOAP::DELIM)
   propXmlNs.append(PROPERTY);
-  Node *propNode = new mUPnP::Node(propXmlNs.c_str());
+  uXML::Node *propNode = new uXML::Node(propXmlNs.c_str());
   propSetNode->addNode(propNode);
 
-  Node *varNameNode = new mUPnP::Node(varName);
+  uXML::Node *varNameNode = new uXML::Node(varName);
   varNameNode->setValue(value);
   propNode->addNode(varNameNode);
 
   return propSetNode;
 }
 
-mUPnP::Node *NotifyRequest::getVariableNode() {
-  Node *rootNode = getEnvelopeNode();
+uXML::Node *NotifyRequest::getVariableNode() {
+  uXML::Node *rootNode = getEnvelopeNode();
   if (rootNode == NULL)
     return NULL;
   if (rootNode->hasNodes() == false)
     return NULL;
-  Node *propNode = rootNode->getNode(0);
+  uXML::Node *propNode = rootNode->getNode(0);
   if (propNode->hasNodes() == false)
     return NULL;
   return propNode->getNode(0);
@@ -93,7 +93,7 @@ mUPnP::Node *NotifyRequest::getVariableNode() {
 ////////////////////////////////////////////////
 
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)
-Property *NotifyRequest::getProperty(Node *varNode) {
+Property *NotifyRequest::getProperty(uXML::Node *varNode) {
   Property *prop = new Property();
   if (varNode == NULL) {
     prop->setName("");
@@ -113,9 +113,9 @@ Property *NotifyRequest::getProperty(Node *varNode) {
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)
 PropertyList *NotifyRequest::getPropertyList()  {
   propList.clear();
-  Node *propSetNode = getEnvelopeNode();
+  uXML::Node *propSetNode = getEnvelopeNode();
   for (int i = 0; i<propSetNode->getNNodes(); i++){
-    Node *propNode = propSetNode->getNode(i);
+    uXML::Node *propNode = propSetNode->getNode(i);
     if (propNode == NULL)
       continue;
     Property *prop = getProperty(propNode->getNode(0));

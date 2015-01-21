@@ -18,28 +18,24 @@
 
 using namespace std;
 using namespace uHTTP;
-using namespace mUPnP;
-using namespace uHTTP;
-using namespace mUPnP;
-using namespace uHTTP;
 
 ////////////////////////////////////////////////
 // Constants
 ////////////////////////////////////////////////
 
-const char *StateVariable::ELEM_NAME = "stateVariable";
+const char *mUPnP::StateVariable::ELEM_NAME = "stateVariable";
 
-const char *StateVariable::NAME = "name";
-const char *StateVariable::DATATYPE = "dataType";
-const char *StateVariable::SENDEVENTS = "sendEvents";
-const char *StateVariable::SENDEVENTS_YES = "yes";
-const char *StateVariable::SENDEVENTS_NO = "no";
+const char *mUPnP::StateVariable::NAME = "name";
+const char *mUPnP::StateVariable::DATATYPE = "dataType";
+const char *mUPnP::StateVariable::SENDEVENTS = "sendEvents";
+const char *mUPnP::StateVariable::SENDEVENTS_YES = "yes";
+const char *mUPnP::StateVariable::SENDEVENTS_NO = "no";
 
 ////////////////////////////////////////////////
 // StateVariable::StateVariable
 ////////////////////////////////////////////////
 
-StateVariable::StateVariable() {
+mUPnP::StateVariable::StateVariable() {
   this->serviceNode = NULL;
   this->stateVariableNode = &stateVarNode;
 
@@ -47,7 +43,7 @@ StateVariable::StateVariable() {
   initAllowedValueRange();
 }
 
-StateVariable::StateVariable(Node *serviceNode, mUPnP::Node *stateVarNode) {
+mUPnP::StateVariable::StateVariable(uXML::Node *serviceNode, uXML::Node *stateVarNode) {
   this->serviceNode = serviceNode;
   this->stateVariableNode = stateVarNode;
 
@@ -55,21 +51,21 @@ StateVariable::StateVariable(Node *serviceNode, mUPnP::Node *stateVarNode) {
   initAllowedValueRange();
 }
 
-StateVariable::~StateVariable() {
+mUPnP::StateVariable::~StateVariable() {
 }
 
 ////////////////////////////////////////////////
 // AllowedallowedValueList
 ////////////////////////////////////////////////
 
-void StateVariable::initAllowedValueList() {
+void mUPnP::StateVariable::initAllowedValueList() {
   allowedValueList.clear();
-  Node *allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
+  uXML::Node *allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
   if (allowedValueListNode == NULL)
     return;
   size_t nNode = allowedValueListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    Node *node = allowedValueListNode->getNode(n);
+    uXML::Node *node = allowedValueListNode->getNode(n);
     if (AllowedValue::isAllowedValueNode(node) == false)
       continue;
     AllowedValue *allowedVal = new AllowedValue(node);
@@ -81,8 +77,8 @@ void StateVariable::initAllowedValueList() {
 // AllowedValueRange
 ////////////////////////////////////////////////
 
-void StateVariable::initAllowedValueRange() {
-  Node *valueRangeNode = getStateVariableNode()->getNode(AllowedValueRange::ELEM_NAME);
+void mUPnP::StateVariable::initAllowedValueRange() {
+  uXML::Node *valueRangeNode = getStateVariableNode()->getNode(AllowedValueRange::ELEM_NAME);
   allowedValueRange.setAllowedValueRangeNode(valueRangeNode);
 }
 
@@ -90,7 +86,7 @@ void StateVariable::initAllowedValueRange() {
 // Value
 ////////////////////////////////////////////////
 
-void StateVariable::setValue(const std::string &value) {
+void mUPnP::StateVariable::setValue(const std::string &value) {
   // Thnaks for Tho Beisch (11/09/04)
   string currValue = getStateVariableData()->getValue();
   // Thnaks for Tho Rick Keiner (11/18/04)
@@ -108,12 +104,12 @@ void StateVariable::setValue(const std::string &value) {
   service->notify(this);
 }
 
-void StateVariable::setValue(int value)  {
+void mUPnP::StateVariable::setValue(int value)  {
   string strValue;
   setValue(Integer2String(value, strValue));
 }
 
-void StateVariable::setValue(long value)  {
+void mUPnP::StateVariable::setValue(long value)  {
   string strValue;
   setValue(Long2String(value, strValue));
 }
@@ -122,7 +118,7 @@ void StateVariable::setValue(long value)  {
 // set
 ////////////////////////////////////////////////
 
-void StateVariable::set(StateVariable *stateVar)  {
+void mUPnP::StateVariable::set(StateVariable *stateVar)  {
   setName(stateVar->getName());
   setValue(stateVar->getValue());
   setDataType(stateVar->getDataType());
@@ -133,7 +129,7 @@ void StateVariable::set(StateVariable *stateVar)  {
 // queryAction
 ////////////////////////////////////////////////
 
-bool StateVariable::performQueryListener(QueryRequest *queryReq) {
+bool mUPnP::StateVariable::performQueryListener(QueryRequest *queryReq) {
   QueryListener *listener = getQueryListener();
   if (listener == NULL)
     return false;
@@ -158,7 +154,7 @@ bool StateVariable::performQueryListener(QueryRequest *queryReq) {
 // ActionControl
 ////////////////////////////////////////////////
 
-bool StateVariable::postQuerylAction() {
+bool mUPnP::StateVariable::postQuerylAction() {
   QueryRequest queryReq;
   queryReq.setRequest(this);
   if (Debug::isOn() == true)

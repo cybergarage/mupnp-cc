@@ -22,8 +22,7 @@
 #endif
 
 using namespace std;
-using namespace mUPnP;
-using namespace uHTTP;
+using namespace uXML;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////t

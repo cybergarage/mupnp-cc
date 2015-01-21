@@ -15,7 +15,7 @@
 
 namespace mUPnP{
 class AllowedValueRange {
-  mUPnP::Node *allowedValueRangeNode;
+  uXML::Node *allowedValueRangeNode;
 
   ////////////////////////////////////////////////
   // Constants
@@ -35,11 +35,11 @@ public:
   ////////////////////////////////////////////////
 
  public:
-  void setAllowedValueRangeNode(Node *node) {
+  void setAllowedValueRangeNode(uXML::Node *node) {
     allowedValueRangeNode = node;
   }
 
-  mUPnP::Node *getAllowedValueRangeNode() {
+  uXML::Node *getAllowedValueRangeNode() {
     return allowedValueRangeNode;
   }
 
@@ -53,7 +53,7 @@ public:
     setAllowedValueRangeNode(NULL);
   }
 
-  AllowedValueRange(Node *node) {
+  AllowedValueRange(uXML::Node *node) {
     setAllowedValueRangeNode(node);
   }
 
@@ -62,7 +62,7 @@ public:
   ////////////////////////////////////////////////
 
  public:
-  static bool isAllowedValueRangeNode(Node *node) {
+  static bool isAllowedValueRangeNode(uXML::Node *node) {
     return node->isName(AllowedValueRange::ELEM_NAME);
   }
 

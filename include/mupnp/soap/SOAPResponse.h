@@ -17,7 +17,7 @@
 
 namespace mUPnP {
 class SOAPResponse : public uHTTP::HTTPResponse {
-  mUPnP::Node *rootNode;
+  uXML::Node *rootNode;
   
  public:
   ////////////////////////////////////////////////
@@ -61,13 +61,13 @@ class SOAPResponse : public uHTTP::HTTPResponse {
 
 private:
 
-  void setRootNode(Node *node) {
+  void setRootNode(uXML::Node *node) {
     if (rootNode != NULL)
       delete rootNode;
     rootNode = node;
   }
   
-  mUPnP::Node *getRootNode() {
+  uXML::Node *getRootNode() {
     return rootNode;
   }
   
@@ -76,23 +76,23 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  void setEnvelopeNode(Node *node) {
+  void setEnvelopeNode(uXML::Node *node) {
     setRootNode(node);
   }
 
-  mUPnP::Node *getEnvelopeNode() {
+  uXML::Node *getEnvelopeNode() {
     return getRootNode();
   }
   
-  mUPnP::Node *getBodyNode() {
-    mUPnP::Node *envNode = getEnvelopeNode();
+  uXML::Node *getBodyNode() {
+    uXML::Node *envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
     return envNode->getNodeEndsWith(SOAP::BODY);
   }
 
-  mUPnP::Node *getMethodResponseNode(const std::string & name) {
-    mUPnP::Node *bodyNode = getBodyNode();
+  uXML::Node *getMethodResponseNode(const std::string & name) {
+    uXML::Node *bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
     std::string methodResName;
@@ -101,57 +101,57 @@ private:
     return bodyNode->getNodeEndsWith(methodResName.c_str());
   }
 
-  mUPnP::Node *getFaultNode() {
-    mUPnP::Node *bodyNode = getBodyNode();
+  uXML::Node *getFaultNode() {
+    uXML::Node *bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
     return bodyNode->getNodeEndsWith(SOAP::FAULT);
   }
 
-  mUPnP::Node *getFaultCodeNode() {
-    mUPnP::Node *faultNode = getFaultNode();
+  uXML::Node *getFaultCodeNode() {
+    uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::FAULT_CODE);
   }
 
-  mUPnP::Node *getFaultStringNode() {
-    mUPnP::Node *faultNode = getFaultNode();
+  uXML::Node *getFaultStringNode() {
+    uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::FAULT_STRING);
   }
 
-  mUPnP::Node *getFaultActorNode() {
-    mUPnP::Node *faultNode = getFaultNode();
+  uXML::Node *getFaultActorNode() {
+    uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::FAULTACTOR);
   }
 
-  mUPnP::Node *getFaultDetailNode() {
-    mUPnP::Node *faultNode = getFaultNode();
+  uXML::Node *getFaultDetailNode() {
+    uXML::Node *faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(SOAP::DETAIL);
   }
 
   const char *getFaultCode() {
-    mUPnP::Node *node = getFaultCodeNode();
+    uXML::Node *node = getFaultCodeNode();
     if (node == NULL)
       return "";
     return node->getValue();
   }
   
   const char *getFaultString() {
-    mUPnP::Node *node = getFaultStringNode();
+    uXML::Node *node = getFaultStringNode();
     if (node == NULL)
       return "";
     return node->getValue();
   }
   
   const char *getFaultActor() {
-    mUPnP::Node *node = getFaultActorNode();
+    uXML::Node *node = getFaultActorNode();
     if (node == NULL)
       return "";
     return node->getValue();
@@ -162,22 +162,8 @@ private:
   ////////////////////////////////////////////////
   
  public:
-  void setContent(Node *node);
+  void setContent(uXML::Node *node);
 
-  ////////////////////////////////////////////////
-  // print
-  ////////////////////////////////////////////////
-/*  
-  public void print() {
-    System.out.println(toconst char *());
-    if (hasContent() == true)
-      return;
-    Node rootElem = getRootNode();
-    if (rootElem == NULL)
-      return;
-    System.out.println(rootElem.toconst char *());
-  }
-*/
 };
 
 }

@@ -29,11 +29,11 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
     
   const char *value = stateVar->getValue();
-  mUPnP::Node *bodyNode = getBodyNode();
-  mUPnP::Node *resNode = createResponseNode(value);
+  uXML::Node *bodyNode = getBodyNode();
+  uXML::Node *resNode = createResponseNode(value);
   bodyNode->addNode(resNode);
     
-  mUPnP::Node *envNodee = getEnvelopeNode();
+  uXML::Node *envNodee = getEnvelopeNode();
   setContent(envNodee);
 }
 
@@ -41,13 +41,13 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
 // getReturn
 ////////////////////////////////////////////////
 
-mUPnP::Node *QueryResponse::getReturnNode() {
-  mUPnP::Node *bodyNode = getBodyNode();
+uXML::Node *QueryResponse::getReturnNode() {
+  uXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
     return NULL;
-  mUPnP::Node *queryResNode = bodyNode->getNode(0);
+  uXML::Node *queryResNode = bodyNode->getNode(0);
   if (queryResNode == NULL)
     return NULL;
   if (queryResNode->hasNodes() == false)
@@ -56,7 +56,7 @@ mUPnP::Node *QueryResponse::getReturnNode() {
 }
   
 const char *QueryResponse::getReturnValue() {
-  mUPnP::Node *node = getReturnNode();
+  uXML::Node *node = getReturnNode();
   if (node == NULL)
     return "";
   return node->getValue();
@@ -66,12 +66,12 @@ const char *QueryResponse::getReturnValue() {
 // setRequest
 ////////////////////////////////////////////////
 
-Node *QueryResponse::createResponseNode(const std::string &value) {
-  mUPnP::Node *queryResNode = new mUPnP::Node();
+uXML::Node *QueryResponse::createResponseNode(const std::string &value) {
+  uXML::Node *queryResNode = new uXML::Node();
   queryResNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE_RESPONSE);
   queryResNode->setNameSpace(Control::NS, Control::XMLNS);
     
-  mUPnP::Node *returnNode = new mUPnP::Node();
+  uXML::Node *returnNode = new uXML::Node();
   returnNode->setName(Control::RETURN);
   returnNode->setValue(value);
   queryResNode->addNode(returnNode);

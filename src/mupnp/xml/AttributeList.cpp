@@ -11,9 +11,7 @@
 #include <mupnp/xml/AttributeList.h>
 #include <uhttp/util/StringUtil.h>
 
-using namespace mUPnP;
-
-Attribute *AttributeList::getAttribute(const std::string &name)  {
+uXML::Attribute *uXML::AttributeList::getAttribute(const std::string &name)  {
   size_t nLists = size();
   for (size_t n = 0; n < nLists; n++) {
     Attribute *elem = getAttribute(n);

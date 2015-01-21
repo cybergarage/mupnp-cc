@@ -20,7 +20,8 @@
 #include <uhttp/net/URL.h>
 #include <mupnp/xml/ParserException.h>
 
-namespace mUPnP {
+namespace uXML {
+
 const int PARSER_DEFAULT_READ_BUF_SIZE = 1024;
 
 class Parser  {

@@ -38,9 +38,9 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
   setRequestHost(service);
 
   setEnvelopeNode(SOAP::CreateEnvelopeBodyNode());
-  mUPnP::Node *envNode = getEnvelopeNode();
-  mUPnP::Node *bodyNode = getBodyNode();
-  mUPnP::Node *qeuryNode = createContentNode(stateVar);
+  uXML::Node *envNode = getEnvelopeNode();
+  uXML::Node *bodyNode = getBodyNode();
+  uXML::Node *qeuryNode = createContentNode(stateVar);
   bodyNode->addNode(qeuryNode);
   setContent(envNode);
 
@@ -51,12 +51,12 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
 // Contents
 ////////////////////////////////////////////////
 
-mUPnP::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
-  mUPnP::Node *queryVarNode = new mUPnP::Node();
+uXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
+  uXML::Node *queryVarNode = new uXML::Node();
   queryVarNode->setName(Control::NS, Control::QUERY_STATE_VARIABLE);
   queryVarNode->setNameSpace(Control::NS, Control::XMLNS);
 
-  mUPnP::Node *varNode = new mUPnP::Node();
+  uXML::Node *varNode = new uXML::Node();
   varNode->setName(Control::NS, Control::VAR_NAME);
   varNode->setValue(stateVar->getName());
   queryVarNode->addNode(varNode);
@@ -68,13 +68,13 @@ mUPnP::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
 // getVarName
 ////////////////////////////////////////////////
 
-mUPnP::Node *QueryRequest::getVarNameNode() {
-  mUPnP::Node *bodyNode = getBodyNode();
+uXML::Node *QueryRequest::getVarNameNode() {
+  uXML::Node *bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
     return NULL;
-  mUPnP::Node *queryStateVarNode = bodyNode->getNode(0);
+  uXML::Node *queryStateVarNode = bodyNode->getNode(0);
   if (queryStateVarNode == NULL)
     return NULL;
   if (queryStateVarNode->hasNodes() == false)
@@ -83,7 +83,7 @@ mUPnP::Node *QueryRequest::getVarNameNode() {
 }
   
 const char *QueryRequest::getVarName() {
-  mUPnP::Node *node = getVarNameNode();
+  uXML::Node *node = getVarNameNode();
   if (node == NULL)
     return "";
   return node->getValue();

@@ -13,9 +13,9 @@
 
 #include <string>
 
-namespace mUPnP {
+namespace uXML {
 
-  class Attribute  {
+class Attribute  {
   std::string name; 
   std::string value; 
 

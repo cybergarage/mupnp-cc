@@ -11,8 +11,7 @@
 #include <mupnp/xml/NodeList.h>
 #include <mupnp/xml/Node.h>
 
-using namespace mUPnP;
-using namespace uHTTP;
+using namespace uXML;
 
 ////////////////////////////////////////////////
 // get*
@@ -23,7 +22,7 @@ Node *NodeList::getNode(const std::string &name)  {
   for (size_t n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
-    if (StringEquals(name, nodeName) == true)
+    if (uHTTP::StringEquals(name, nodeName) == true)
       return node;
   }
   return NULL;
@@ -36,7 +35,7 @@ Node *NodeList::getEndsWith(const std::string &name)  {
     const char *nodeName = node->getName();
     if (nodeName == NULL)
       continue;
-    if (StringEndsWith(nodeName, name) == true)
+    if (uHTTP::StringEndsWith(nodeName, name) == true)
       return node;
   }
   return NULL;
@@ -47,10 +46,10 @@ Node *NodeList::getNode(const std::string &name, const std::string &value)  {
   for (size_t n = 0; n < nLists; n++) {
     Node *node = getNode(n);
     const char *nodeName = node->getName();
-    if (StringEquals(name, nodeName) == false)
+    if (uHTTP::StringEquals(name, nodeName) == false)
       continue;
     const char *nodeValue = node->getValue();
-    if (StringEquals(value, nodeValue) == true)
+    if (uHTTP::StringEquals(value, nodeValue) == true)
       return node;
   }
   return NULL;

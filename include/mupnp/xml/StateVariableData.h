@@ -16,10 +16,11 @@
 #include <mupnp/xml/NodeData.h>
 
 namespace mUPnP {
+
 class QueryResponse;
 class QueryListener;
 
-class StateVariableData : public mUPnP::NodeData {
+class StateVariableData : public ::uXML::NodeData {
   std::string value;
   QueryResponse *queryRes;
   QueryListener *queryListener;

@@ -13,7 +13,8 @@
 
 #include <string>
 
-namespace mUPnP {
+namespace uXML {
+
 typedef unsigned char UnicodeStr;
 
 namespace XML {

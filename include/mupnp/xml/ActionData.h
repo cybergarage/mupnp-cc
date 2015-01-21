@@ -16,10 +16,11 @@
 #include <mupnp/xml/NodeData.h>
 
 namespace mUPnP {
+
 class ActionListener;
 class ControlResponse;
 
-class ActionData : public mUPnP::NodeData {
+class ActionData : public uXML::NodeData {
   ActionListener *actionListener;
   ControlResponse *ctrlRes;
 

@@ -40,7 +40,7 @@ class ActionResponse : public ControlResponse {
 
 private:
 
-  mUPnP::Node *createResponseNode(Action *action);
+  uXML::Node *createResponseNode(Action *action);
 
   ////////////////////////////////////////////////
   // getResponse
@@ -48,7 +48,7 @@ private:
 
 private:
 
-  mUPnP::Node *getActionResponseNode();
+  uXML::Node *getActionResponseNode();
   
  public:
   ArgumentList *getResponse();

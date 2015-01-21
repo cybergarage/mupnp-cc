@@ -29,7 +29,7 @@ const char *Action::NAME = "name";
 // Constructor
 ////////////////////////////////////////////////
 
-Action::Action(Node *serviceNode, mUPnP::Node *actionNode) {
+Action::Action(uXML::Node *serviceNode, uXML::Node *actionNode) {
   this->serviceNode = serviceNode;
   this->actionNode = actionNode;
 
@@ -54,7 +54,7 @@ Action::~Action() {
 ////////////////////////////////////////////////
 
 Service *Action::getService() {
-  mUPnP::Node *node = getServiceNode();
+  uXML::Node *node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;
@@ -70,14 +70,14 @@ void Action::initArgumentList() {
   argumentInList = new ArgumentList(false);
   argumentOutList = new ArgumentList(false);
 
-  mUPnP::Node *serviceNode = getServiceNode();
-  mUPnP::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
+  uXML::Node *serviceNode = getServiceNode();
+  uXML::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
   if (serviceNode == NULL || argumentListNode == NULL)
     return;
 
   size_t nodeCnt = argumentListNode->getNNodes();
   for (size_t n = 0; n < nodeCnt; n++) {
-    mUPnP::Node *argNode = argumentListNode->getNode(n);
+    uXML::Node *argNode = argumentListNode->getNode(n);
     if (Argument::isArgumentNode(argNode) == false)
       continue;
     Argument *arg = new Argument(serviceNode, argNode);

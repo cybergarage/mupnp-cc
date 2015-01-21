@@ -14,7 +14,7 @@
 #include <uhttp/util/Vector.h>
 #include <mupnp/xml/Attribute.h>
 
-namespace mUPnP {
+namespace uXML {
 
 class AttributeList : public uHTTP::Vector<Attribute> {
 public:

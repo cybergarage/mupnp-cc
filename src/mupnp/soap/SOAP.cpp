@@ -23,13 +23,13 @@ using namespace uHTTP;
 // CreateEnvelopeBodyNode
 ////////////////////////////////////////////////
 
-mUPnP::Node *mUPnP::SOAP::CreateEnvelopeBodyNode() {
+uXML::Node *mUPnP::SOAP::CreateEnvelopeBodyNode() {
   // <Envelope>
   string envNodeName;
   envNodeName += XMLNS;
   envNodeName += DELIM;
   envNodeName += ENVELOPE;
-  Node *envNode = new mUPnP::Node(envNodeName.c_str());
+  uXML::Node *envNode = new uXML::Node(envNodeName.c_str());
 
   string xmlNs;
   xmlNs += "xmlns";
@@ -47,7 +47,7 @@ mUPnP::Node *mUPnP::SOAP::CreateEnvelopeBodyNode() {
   bodyNodeName += XMLNS;
   bodyNodeName += DELIM;
   bodyNodeName += BODY;
-  Node *bodyNode = new mUPnP::Node(bodyNodeName.c_str());
+  uXML::Node *bodyNode = new uXML::Node(bodyNodeName.c_str());
   envNode->addNode(bodyNode);
 
   return envNode;

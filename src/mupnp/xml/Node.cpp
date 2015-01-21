@@ -16,7 +16,7 @@
 #include <mupnp/xml/Node.h>
 
 using namespace std;
-using namespace mUPnP;
+using namespace uXML;
 
 ////////////////////////////////////////////////
 // Node
