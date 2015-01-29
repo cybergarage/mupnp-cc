@@ -41,7 +41,7 @@ private:
     std::vector< mupnp_shared_ptr<T> >::push_back(obj);
     return true;
   }
-  
+
   bool add(T *obj) {
     if (!obj)
       return false;
