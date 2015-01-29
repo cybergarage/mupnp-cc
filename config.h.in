@@ -3,6 +3,9 @@
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #undef HAVE_ARPA_INET_H
 
+/* HAVE_BOOST_SHAREDPTR */
+#undef HAVE_BOOST_SHRAEDPTR
+
 /* Define to 1 if you have the <expat.h> header file. */
 #undef HAVE_EXPAT_H
 
@@ -107,6 +110,9 @@
 
 /* STD_COUT */
 #undef HAVE_STD_COUT
+
+/* HAVE_STD_SHAREDPTR */
+#undef HAVE_STD_SHRAEDPTR
 
 /* Define to 1 if you have the `strchr' function. */
 #undef HAVE_STRCHR

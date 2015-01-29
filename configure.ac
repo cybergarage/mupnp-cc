@@ -9,7 +9,7 @@
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(config.h)
 
-AC_INIT([clinkc++], [1.0])
+AC_INIT([mupnp++], [1.0])
 AC_CONFIG_SRCDIR([include/mupnp/mUPnP.h])
 AM_INIT_AUTOMAKE([subdir-objects])
 
@@ -220,6 +220,36 @@ AC_CHECK_HEADERS([uuid/uuid.h])
 AC_C_CONST
 AC_C_INLINE
 AC_STRUCT_TM
+
+##############################
+# Checks for shared_ptr
+##############################
+
+AC_MSG_CHECKING(for std::shared_ptr)
+AC_TRY_COMPILE([
+#include <iostream>
+void testFunc(){
+std::shared_ptr<int> p(new int(0));
+}
+],
+[],
+[AC_MSG_RESULT(yes)
+AC_DEFINE([HAVE_STD_SHRAEDPTR],1,[HAVE_STD_SHAREDPTR])],
+[AC_MSG_RESULT(no)]
+)
+
+AC_MSG_CHECKING(for boost::shared_ptr)
+AC_TRY_COMPILE([
+#include <boost/shared_ptr.hpp>
+void testFunc(){
+boost::shared_ptr<int> p(new int(0));
+}
+],
+[],
+[AC_MSG_RESULT(yes)
+AC_DEFINE([HAVE_BOOST_SHRAEDPTR],1,[HAVE_BOOST_SHAREDPTR])],
+[AC_MSG_RESULT(no)]
+)
 
 ##############################
 # Checks for Network functions

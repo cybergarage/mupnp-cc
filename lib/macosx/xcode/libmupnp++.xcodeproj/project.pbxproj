@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		215252E91A5E460700A226B5 /* mUPnP.h in Headers */ = {isa = PBXBuildFile; fileRef = 215252E81A5E460700A226B5 /* mUPnP.h */; };
+		2162925F1A7A879800792A5B /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 2162925E1A7A879800792A5B /* platform.h */; };
+		216292621A7A87A100792A5B /* Vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 216292611A7A87A100792A5B /* Vector.h */; };
 		21CDAC3F1A5E347000171E09 /* Action.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABE51A5E347000171E09 /* Action.h */; };
 		21CDAC401A5E347000171E09 /* ActionList.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABE61A5E347000171E09 /* ActionList.h */; };
 		21CDAC411A5E347000171E09 /* AllowedValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 21CDABE71A5E347000171E09 /* AllowedValue.h */; };
@@ -158,6 +160,8 @@
 
 /* Begin PBXFileReference section */
 		215252E81A5E460700A226B5 /* mUPnP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mUPnP.h; sourceTree = "<group>"; };
+		2162925E1A7A879800792A5B /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		216292611A7A87A100792A5B /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
 		219C21ED155C7877003ABA46 /* liblibmupnp++.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "liblibmupnp++.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CDABE51A5E347000171E09 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		21CDABE61A5E347000171E09 /* ActionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionList.h; sourceTree = "<group>"; };
@@ -318,6 +322,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		216292601A7A87A100792A5B /* common */ = {
+			isa = PBXGroup;
+			children = (
+				216292611A7A87A100792A5B /* Vector.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		2184A73E155C79EA00D1E138 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +368,8 @@
 		21CDABE41A5E347000171E09 /* mupnp */ = {
 			isa = PBXGroup;
 			children = (
+				216292601A7A87A100792A5B /* common */,
+				2162925E1A7A879800792A5B /* platform.h */,
 				215252E81A5E460700A226B5 /* mUPnP.h */,
 				21CDABE51A5E347000171E09 /* Action.h */,
 				21CDABE61A5E347000171E09 /* ActionList.h */,
@@ -689,6 +703,7 @@
 				21CDAC6F1A5E347000171E09 /* ServiceList.h in Headers */,
 				21CDAC681A5E347000171E09 /* SubscriptionRequest.h in Headers */,
 				21CDAC721A5E347000171E09 /* SOAPRequest.h in Headers */,
+				2162925F1A7A879800792A5B /* platform.h in Headers */,
 				21CDAC761A5E347000171E09 /* SSDP.h in Headers */,
 				21CDAC6B1A5E347000171E09 /* IconList.h in Headers */,
 				21CDAC701A5E347000171E09 /* ServiceStateTable.h in Headers */,
@@ -725,6 +740,7 @@
 				21CDAC841A5E347000171E09 /* UPnP.h in Headers */,
 				21CDAC911A5E347000171E09 /* StateVariableData.h in Headers */,
 				21CDAC7A1A5E347000171E09 /* SSDPPacket.h in Headers */,
+				216292621A7A87A100792A5B /* Vector.h in Headers */,
 				21CDAC661A5E347000171E09 /* SubscriberList.h in Headers */,
 				21CDAC791A5E347000171E09 /* SSDPNotifySocketList.h in Headers */,
 			);
