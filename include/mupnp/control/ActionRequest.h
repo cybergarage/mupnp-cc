@@ -38,6 +38,10 @@ class ActionRequest : public ControlRequest {
     initArgumentList();
   }
 
+  ~ActionRequest() {
+    setSocket(NULL);
+  }
+  
   ////////////////////////////////////////////////
   // Action
   ////////////////////////////////////////////////

@@ -14,6 +14,7 @@ mupnpcc_headers = \
 	./mupnp/AllowedValueRange.h \
 	./mupnp/Argument.h \
 	./mupnp/ArgumentList.h \
+	./mupnp/common/Vector.h \
 	./mupnp/control/ActionListener.h \
 	./mupnp/control/ActionRequest.h \
 	./mupnp/control/ActionResponse.h \
@@ -54,6 +55,7 @@ mupnpcc_headers = \
 	./mupnp/Log.h \
 	./mupnp/MediaServer.h \
 	./mupnp/mUPnP.h \
+	./mupnp/platform.h \
 	./mupnp/Service.h \
 	./mupnp/ServiceList.h \
 	./mupnp/ServiceStateTable.h \
