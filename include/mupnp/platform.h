@@ -20,11 +20,13 @@
 #if (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201103L)) || defined(__APPLE__)
 #define HAVE_STD_SHRAEDPTR 1
 #define mupnp_shared_ptr std::shared_ptr
+#define mupnp_weak_ptr std::weak_ptr
 #endif
 
 #if !defined(HAVE_STD_SHRAEDPTR)
 #include <boost/shared_ptr.hpp>
 #define mupnp_shared_ptr boost::shared_ptr
+#define mupnp_weark_ptr boost::weak_ptr
 #endif
 
 #endif

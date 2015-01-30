@@ -37,13 +37,13 @@ const char *mUPnP::StateVariable::SENDEVENTS_NO = "no";
 
 mUPnP::StateVariable::StateVariable() {
   this->serviceNode = NULL;
-  this->stateVariableNode = &stateVarNode;
+  this->stateVariableNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
 
   initAllowedValueList();
   initAllowedValueRange();
 }
 
-mUPnP::StateVariable::StateVariable(uXML::Node *serviceNode, uXML::Node *stateVarNode) {
+mUPnP::StateVariable::StateVariable(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> stateVarNode) {
   this->serviceNode = serviceNode;
   this->stateVariableNode = stateVarNode;
 
@@ -60,12 +60,12 @@ mUPnP::StateVariable::~StateVariable() {
 
 void mUPnP::StateVariable::initAllowedValueList() {
   allowedValueList.clear();
-  uXML::Node *allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
   if (allowedValueListNode == NULL)
     return;
   size_t nNode = allowedValueListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    uXML::Node *node = allowedValueListNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = allowedValueListNode->getNode(n);
     if (AllowedValue::isAllowedValueNode(node) == false)
       continue;
     AllowedValue *allowedVal = new AllowedValue(node);
@@ -78,8 +78,36 @@ void mUPnP::StateVariable::initAllowedValueList() {
 ////////////////////////////////////////////////
 
 void mUPnP::StateVariable::initAllowedValueRange() {
-  uXML::Node *valueRangeNode = getStateVariableNode()->getNode(AllowedValueRange::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> valueRangeNode = getStateVariableNode()->getNode(AllowedValueRange::ELEM_NAME);
   allowedValueRange.setAllowedValueRangeNode(valueRangeNode);
+}
+
+////////////////////////////////////////////////
+// getService
+////////////////////////////////////////////////
+
+mUPnP::Service *mUPnP::StateVariable::getService() {
+  mupnp_shared_ptr<uXML::Node> node = getServiceNode();
+  if (!node)
+    return NULL;
+  ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
+  if (data == NULL)
+    return NULL;
+  return data->getService();
+}
+
+////////////////////////////////////////////////
+// getStateVariableData
+////////////////////////////////////////////////
+
+mUPnP::StateVariableData *mUPnP::StateVariable::getStateVariableData () {
+  mupnp_shared_ptr<uXML::Node> node = getStateVariableNode();
+  StateVariableData *userData = dynamic_cast<StateVariableData *>(node->getUserData());
+  if (userData == NULL) {
+    userData = new StateVariableData();
+    node->setUserData(userData);
+  }
+  return userData;
 }
 
 ////////////////////////////////////////////////

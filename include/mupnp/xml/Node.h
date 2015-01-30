@@ -15,9 +15,9 @@
 #include <sstream>
 #include <string>
 
-#include <mupnp/xml/AttributeList.h>
 #include <mupnp/xml/NodeList.h>
 #include <mupnp/xml/NodeData.h>
+#include <mupnp/xml/AttributeList.h>
 
 namespace uXML {
 
@@ -53,7 +53,7 @@ public:
 
   Node *getParentNode() 
   {
-    return dynamic_cast<Node *>(this->parentNode);
+    return this->parentNode;
   }
 
   ////////////////////////////////////////////////
@@ -199,19 +199,19 @@ public:
     return nodeList.size();
   }
 
-  Node *getNode(size_t index) {
+  mupnp_shared_ptr<Node> getNode(size_t index) {
     return nodeList.getNode(index);
   }
 
-  Node *getNode(const std::string & name) {
+  mupnp_shared_ptr<Node> getNode(const std::string & name) {
     return nodeList.getNode(name);
   }
 
-  Node *getNode(const std::string & name, const std::string &value) {
+  mupnp_shared_ptr<Node> getNode(const std::string & name, const std::string &value) {
     return nodeList.getNode(name, value);
   }
 
-  Node *getNodeEndsWith(const std::string & name) {
+  mupnp_shared_ptr<Node> getNodeEndsWith(const std::string & name) {
     return nodeList.getEndsWith(name);
   }
 
@@ -227,7 +227,7 @@ public:
     return true;
   }
 
-  bool removeNode(Node *node) {
+  bool removeNode(mupnp_shared_ptr<Node> node) {
     node->setParentNode(NULL);
     return nodeList.removeNode(node);
   }
@@ -251,18 +251,18 @@ public:
   ////////////////////////////////////////////////
 
   bool setNode(const std::string & name, const std::string & value) {
-    Node *node = getNode(name);
+    mupnp_shared_ptr<Node> node = getNode(name);
     if (node != NULL) {
       node->setValue(value);
       return false;
     }
-    node = new Node(name);
-    node->setValue(value);
-    return addNode(node);
+    Node *newNode = new Node(name);
+    newNode->setValue(value);
+    return addNode(newNode);
   }
 
   const char *getNodeValue(const std::string & name) {
-    Node *node = getNode(name);
+    mupnp_shared_ptr<Node> node = getNode(name);
     if (node != NULL)
       return node->getValue();
     return "";

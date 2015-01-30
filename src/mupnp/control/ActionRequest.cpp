@@ -36,14 +36,14 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 
 void ActionRequest::initArgumentList() {
-  uXML::Node *actNode = getActionNode();
+  mupnp_shared_ptr<uXML::Node> actNode = getActionNode();
   if (actNode == NULL)
     return;
   size_t nArgNodes = actNode->getNNodes();
   argumentList.clear();
   for (size_t n = 0; n < nArgNodes; n++) {
     Argument *arg = new Argument();
-    uXML::Node *argNode = actNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> argNode = actNode->getNode(n);
     arg->setName(argNode->getName());
     arg->setValue(argNode->getValue());
     argumentList.add(arg);
@@ -54,8 +54,8 @@ void ActionRequest::initArgumentList() {
 // getActionNode
 ////////////////////////////////////////////////
 
-uXML::Node *ActionRequest::getActionNode() {
-  uXML::Node *bodyNode = getBodyNode();
+mupnp_shared_ptr<uXML::Node> ActionRequest::getActionNode() {
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
@@ -68,8 +68,8 @@ uXML::Node *ActionRequest::getActionNode() {
 ////////////////////////////////////////////////
 
 const char *ActionRequest::getActionName(std::string &buf) {
-  uXML::Node *node = getActionNode();
-  if (node == NULL)
+  mupnp_shared_ptr<uXML::Node> node = getActionNode();
+  if (!node)
     return "";
   const char *name = node->getName();
   if (name == NULL)
@@ -93,11 +93,11 @@ void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
   setRequestHost(service);
 
   setEnvelopeNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
-  uXML::Node *envNode = getEnvelopeNode();
-  uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   uXML::Node *argNode = createContentNode(service, action, argList);
   bodyNode->addNode(argNode);
-  setContent(envNode);
+  setContent(envNode.get());
 
   const char *serviceType = service->getServiceType();
   const char *actionName = action->getName();

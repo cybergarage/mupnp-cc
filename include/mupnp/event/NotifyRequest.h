@@ -98,7 +98,7 @@ private:
   
   uXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
 
-  uXML::Node *getVariableNode();
+  mupnp_shared_ptr<uXML::Node> getVariableNode();
 
   ////////////////////////////////////////////////
   // Property

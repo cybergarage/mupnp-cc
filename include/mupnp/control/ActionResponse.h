@@ -48,7 +48,7 @@ private:
 
 private:
 
-  uXML::Node *getActionResponseNode();
+  mupnp_shared_ptr<uXML::Node> getActionResponseNode();
   
  public:
   ArgumentList *getResponse();

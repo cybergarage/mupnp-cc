@@ -42,7 +42,7 @@ public:
 
 private:
 
-  uXML::Node *getVarNameNode();
+  mupnp_shared_ptr<uXML::Node> getVarNameNode();
   
  public:
   const char *getVarName();

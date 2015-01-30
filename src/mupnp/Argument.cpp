@@ -33,18 +33,18 @@ const char *Argument::RELATED_STATE_VARIABLE = "relatedStateVariable";
 ////////////////////////////////////////////////
 
 Argument::Argument() {
-  argumentNode = &defaultArgumentNode;
-  serviceNode = &defaultServiceNode;
+  argumentNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
+  serviceNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
 }
   
-Argument::Argument(uXML::Node *servNode, uXML::Node *argNode) {
+Argument::Argument(mupnp_shared_ptr<uXML::Node> servNode, mupnp_shared_ptr<uXML::Node> argNode) {
   argumentNode = argNode;
   serviceNode = servNode;
 }
 
 Argument::Argument(const std::string &name, const std::string &value) {
-  argumentNode = &defaultArgumentNode;
-  serviceNode = &defaultServiceNode;
+  argumentNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
+  serviceNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
   setName(name);
   setValue(value);
 }
@@ -67,7 +67,7 @@ void Argument::setValue(int value) {
 ////////////////////////////////////////////////
 
 Service *Argument::getService() {
-  uXML::Node *node = getServiceNode();
+  mupnp_shared_ptr<uXML::Node> node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;

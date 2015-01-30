@@ -41,7 +41,7 @@ const char *Service::EVENT_SUB_URL = "eventSubURL";
 // Constructor
 ////////////////////////////////////////////////
 
-Service::Service(uXML::Node *node) {
+Service::Service(mupnp_shared_ptr<uXML::Node> node) {
   serviceNode = node;
   
   initServiceData();
@@ -69,16 +69,16 @@ Device *Service::getRootDevice() {
 
 void Service::initActionList() {
   actionList.clear();
-  uXML::Node *scdpNode = getSCPDNode();
+  mupnp_shared_ptr<uXML::Node> scdpNode = getSCPDNode();
   if (scdpNode == NULL)
     return;
-  uXML::Node *actionListNode = scdpNode->getNode(ActionList::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> actionListNode = scdpNode->getNode(ActionList::ELEM_NAME);
   if (actionListNode == NULL)
     return;
-  uXML::Node *serviceNode = getServiceNode();
+  mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
   size_t nNode = actionListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    uXML::Node *node = actionListNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = actionListNode->getNode(n);
     if (Action::isActionNode(node) == false)
       continue;
     Action *action = new Action(serviceNode, node);
@@ -107,16 +107,16 @@ mUPnP::Action *Service::getAction(const std::string &actionName) {
 
 void Service::initServiceStateTable() {
   serviceStateTable.clear();
-  uXML::Node *scpdNode = getSCPDNode();
+  mupnp_shared_ptr<uXML::Node> scpdNode = getSCPDNode();
   if (scpdNode == NULL)
     return;
-  uXML::Node *stateTableNode = scpdNode->getNode(ServiceStateTable::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> stateTableNode = scpdNode->getNode(ServiceStateTable::ELEM_NAME);
   if (stateTableNode == NULL)
     return;
-  uXML::Node *serviceNode = getServiceNode();
+  mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
   size_t nNode = stateTableNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    uXML::Node *node = stateTableNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = stateTableNode->getNode(n);
     if (StateVariable::isStateVariableNode(node) == false)
       continue;
     StateVariable *serviceVar = new StateVariable(serviceNode, node);
@@ -143,28 +143,28 @@ StateVariable *Service::getStateVariable(const std::string &name) {
 // SCPD node
 ////////////////////////////////////////////////
 
-uXML::Node *Service::getSCPDNode(uHTTP::URL *url) {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(uHTTP::URL *url) {
   uXML::Parser parser;
   return parser.parse(url);
 }
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-uXML::Node *Service::getSCPDNode(uHTTP::File *file) {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(uHTTP::File *file) {
   uXML::Parser parser;
   return parser.parse(file);
 }
 
 #endif
 
-uXML::Node *Service::getSCPDNode(const std::string &description) {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(const std::string &description) {
   uXML::Parser parser;
   return parser.parse(description);
 }
 
-uXML::Node *Service::getSCPDNode() {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   ServiceData *data = getServiceData();
-  uXML::Node *scpdNode = data->getSCPDNode();
+  mupnp_shared_ptr<uXML::Node> scpdNode = data->getSCPDNode();
   if (scpdNode != NULL)
     return scpdNode;
   
@@ -230,7 +230,7 @@ uXML::Node *Service::getSCPDNode() {
 }
 
 const char *Service::getSCPDData(string &buf) {
-  uXML::Node *scpdNode = getSCPDNode();
+  mupnp_shared_ptr<uXML::Node> scpdNode = getSCPDNode();
   buf = "";
   if (scpdNode != NULL) {
     string nodeBuf;
@@ -247,8 +247,8 @@ const char *Service::getSCPDData(string &buf) {
 ////////////////////////////////////////////////
 
 bool Service::loadSCPD(const std::string &description) {
-  uXML::Node *scpdNode = NULL;
-
+  mupnp_shared_ptr<uXML::Node> scpdNode;
+  
   try {
     scpdNode = getSCPDNode(description);
   }

@@ -29,25 +29,25 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
     
   const char *value = stateVar->getValue();
-  uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   uXML::Node *resNode = createResponseNode(value);
   bodyNode->addNode(resNode);
     
-  uXML::Node *envNodee = getEnvelopeNode();
-  setContent(envNodee);
+  mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
+  setContent(envNode.get());
 }
 
 ////////////////////////////////////////////////
 // getReturn
 ////////////////////////////////////////////////
 
-uXML::Node *QueryResponse::getReturnNode() {
-  uXML::Node *bodyNode = getBodyNode();
+mupnp_shared_ptr<uXML::Node> QueryResponse::getReturnNode() {
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
     return NULL;
-  uXML::Node *queryResNode = bodyNode->getNode(0);
+  mupnp_shared_ptr<uXML::Node> queryResNode = bodyNode->getNode(0);
   if (queryResNode == NULL)
     return NULL;
   if (queryResNode->hasNodes() == false)
@@ -56,8 +56,8 @@ uXML::Node *QueryResponse::getReturnNode() {
 }
   
 const char *QueryResponse::getReturnValue() {
-  uXML::Node *node = getReturnNode();
-  if (node == NULL)
+  mupnp_shared_ptr<uXML::Node> node = getReturnNode();
+  if (!node)
     return "";
   return node->getValue();
 }

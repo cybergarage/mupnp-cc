@@ -18,7 +18,7 @@ namespace uXML {
 
 class Node;
 
-class NodeList : public mUPnP::Vector<Node> {
+class NodeList : public mUPnP::SharedVector<Node> {
 public:
   
   ////////////////////////////////////////////////
@@ -38,7 +38,7 @@ public:
     return add(node);
   }
   
-  bool removeNode(Node *node) {
+  bool removeNode(mupnp_shared_ptr<Node> node) {
     return remove(node);
   }
   
@@ -46,13 +46,13 @@ public:
     return insertAt(node, index);
   }
   
-  Node *getNode(size_t n) {
-    return Vector::get(n);
+  mupnp_shared_ptr<Node> getNode(size_t n) {
+    return get(n);
   }
   
-  Node *getNode(const std::string &name);
-  Node *getEndsWith(const std::string &name);
-  Node *getNode(const std::string &name, const std::string &value);
+  mupnp_shared_ptr<Node> getNode(const std::string &name);
+  mupnp_shared_ptr<Node> getEndsWith(const std::string &name);
+  mupnp_shared_ptr<Node> getNode(const std::string &name, const std::string &value);
 };
 
 }

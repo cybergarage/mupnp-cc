@@ -28,10 +28,9 @@ namespace mUPnP {
 class Service;
 
 class StateVariable {
-  uXML::Node *stateVariableNode;
-  uXML::Node *serviceNode;
+  mupnp_shared_ptr<uXML::Node> stateVariableNode;
+  mupnp_shared_ptr<uXML::Node> serviceNode;
   
-  uXML::Node stateVarNode;
   UPnPStatus upnpStatus;
   
   AllowedValueList allowedValueList;
@@ -54,21 +53,13 @@ class StateVariable {
   ////////////////////////////////////////////////
 
  public:
-  uXML::Node *getServiceNode() {
+  mupnp_shared_ptr<uXML::Node> getServiceNode() {
     return serviceNode;
   }
 
-  Service *getService() {
-    uXML::Node *node = getServiceNode();
-    if (node == NULL)
-      return NULL;
-    ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
-    if (data == NULL)
-      return NULL;
-    return data->getService();
-  }
+  Service *getService();
 
-  uXML::Node *getStateVariableNode() {
+  mupnp_shared_ptr<uXML::Node> getStateVariableNode() {
     return stateVariableNode;
   }
   
@@ -78,7 +69,7 @@ class StateVariable {
 
  public:
   StateVariable();
-  StateVariable(uXML::Node *serviceNode, uXML::Node *stateVarNode);
+  StateVariable(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> stateVarNode);
 
   ~StateVariable();
 
@@ -87,7 +78,7 @@ class StateVariable {
   ////////////////////////////////////////////////
 
  public:
-  static bool isStateVariableNode(uXML::Node *node) {
+  static bool isStateVariableNode(mupnp_shared_ptr<uXML::Node> node) {
     return node->isName(ELEM_NAME);
   }
 
@@ -177,15 +168,7 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  StateVariableData *getStateVariableData () {
-    uXML::Node *node = getStateVariableNode();
-    StateVariableData *userData = dynamic_cast<StateVariableData *>(node->getUserData());
-    if (userData == NULL) {
-      userData = new StateVariableData();
-      node->setUserData(userData);
-    }
-    return userData;
-  }
+  StateVariableData *getStateVariableData ();
 
   ////////////////////////////////////////////////
   // Value

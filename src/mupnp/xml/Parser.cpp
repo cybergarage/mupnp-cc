@@ -31,7 +31,7 @@ using namespace uHTTP;
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
-Node *Parser::parse(uHTTP::File *file) {
+mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::File *file) {
   const char *filename = file->getName();
 #if defined(WIN32) || defined(HAVE_FOPEN)
   FILE *fp = fopen(filename, "r");
@@ -73,7 +73,7 @@ Node *Parser::parse(uHTTP::File *file) {
 // parse (URL)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(uHTTP::URL *url) {
+mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::URL *url) {
   const char *host = url->getHost();
   int port = url->getPort();
   const char *uri = url->getPath();

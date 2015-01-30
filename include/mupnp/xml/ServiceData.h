@@ -31,7 +31,7 @@ class ServiceData : public ::uXML::NodeData {
 
   SubscriberList subscriberList;
 
-  uXML::Node *scpdNode;
+  mupnp_shared_ptr<uXML::Node> scpdNode;
 
  public:
   ////////////////////////////////////////////////
@@ -57,11 +57,13 @@ class ServiceData : public ::uXML::NodeData {
   // scpdNode
   ////////////////////////////////////////////////
 
-  uXML::Node *getSCPDNode() {
+  mupnp_shared_ptr<uXML::Node> getSCPDNode() {
     return scpdNode;
   }
 
-  void setSCPDNode(uXML::Node *node);
+  void setSCPDNode(mupnp_shared_ptr<uXML::Node> node) {
+    this->scpdNode = node;
+  }
 
   ////////////////////////////////////////////////
   // SubscriberList

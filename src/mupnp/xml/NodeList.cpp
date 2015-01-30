@@ -17,10 +17,10 @@ using namespace uXML;
 // get*
 ////////////////////////////////////////////////
 
-Node *NodeList::getNode(const std::string &name)  {
+mupnp_shared_ptr<uXML::Node> NodeList::getNode(const std::string &name)  {
   size_t nLists = size();
   for (size_t n = 0; n < nLists; n++) {
-    Node *node = getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = getNode(n);
     const char *nodeName = node->getName();
     if (uHTTP::StringEquals(name, nodeName) == true)
       return node;
@@ -28,10 +28,10 @@ Node *NodeList::getNode(const std::string &name)  {
   return NULL;
 }
 
-Node *NodeList::getEndsWith(const std::string &name)  {
+mupnp_shared_ptr<uXML::Node> NodeList::getEndsWith(const std::string &name)  {
   size_t nLists = size();
   for (size_t n = 0; n < nLists; n++) {
-    Node *node = getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = getNode(n);
     const char *nodeName = node->getName();
     if (nodeName == NULL)
       continue;
@@ -41,10 +41,10 @@ Node *NodeList::getEndsWith(const std::string &name)  {
   return NULL;
 }
 
-Node *NodeList::getNode(const std::string &name, const std::string &value)  {
+mupnp_shared_ptr<uXML::Node> NodeList::getNode(const std::string &name, const std::string &value)  {
   size_t nLists = size();
   for (size_t n = 0; n < nLists; n++) {
-    Node *node = getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = getNode(n);
     const char *nodeName = node->getName();
     if (uHTTP::StringEquals(name, nodeName) == false)
       continue;

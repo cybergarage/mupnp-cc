@@ -151,7 +151,7 @@ private:
 
 private:
 
-  bool addDevice(uXML::Node *rootNode);
+  bool addDevice(mupnp_shared_ptr<uXML::Node> rootNode);
   bool addDevice(SSDPPacket *ssdpPacket);
 
 private:
@@ -163,7 +163,7 @@ private:
     return &deviceList;
   }
 
-  mupnp_shared_ptr<Device> getDevice(uXML::Node *rootNode);
+  mupnp_shared_ptr<Device> getDevice(mupnp_shared_ptr<uXML::Node> rootNode);
   mupnp_shared_ptr<Device> getDevice(const std::string &name);
 
   bool hasDevice(const std::string &name) {
@@ -172,7 +172,7 @@ private:
 
 private:
 
-  bool removeDevice(uXML::Node *rootNode);
+  bool removeDevice(mupnp_shared_ptr<uXML::Node> rootNode);
   bool removeDevice(SSDPPacket *packet);
 
   ////////////////////////////////////////////////

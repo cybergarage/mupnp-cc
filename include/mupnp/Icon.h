@@ -16,7 +16,7 @@
 
 namespace mUPnP {
 class Icon {
-  uXML::Node *iconNode;
+  mupnp_shared_ptr<uXML::Node> iconNode;
 
  public:
   ////////////////////////////////////////////////
@@ -34,7 +34,7 @@ class Icon {
   // Member
   ////////////////////////////////////////////////
 
-  uXML::Node *getIconNode() {
+  mupnp_shared_ptr<uXML::Node> getIconNode() {
     return iconNode;
   }
   
@@ -42,7 +42,7 @@ class Icon {
   // Constructor
   ////////////////////////////////////////////////
 
-  Icon(uXML::Node *node) {
+  Icon(mupnp_shared_ptr<uXML::Node> node) {
     iconNode = node;
   }
 
@@ -50,7 +50,7 @@ class Icon {
   // isIconNode
   ////////////////////////////////////////////////
 
-  static bool isIconNode(uXML::Node *node) {
+  static bool isIconNode(mupnp_shared_ptr<uXML::Node> node) {
     return node->isName(ELEM_NAME);
   }
 

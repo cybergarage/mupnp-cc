@@ -23,18 +23,13 @@ using namespace std;
 SOAPRequest::SOAPRequest() {
   setContentType(uXML::XML::CONTENT_TYPE);
   setMethod(uHTTP::HTTP::POST);
-  setRootNode(NULL);
 }
 
 SOAPRequest::SOAPRequest(uHTTP::HTTPRequest *httpReq) {
   set(httpReq);
-  setRootNode(NULL);
 }
 
 SOAPRequest::~SOAPRequest() {
-  if (rootNode != NULL) {
-    delete rootNode;
-  }
 }
 
 ////////////////////////////////////////////////
@@ -58,7 +53,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value) {
 // parseMessage
 ////////////////////////////////////////////////
 
-uXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
+mupnp_shared_ptr<uXML::Node> SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
   if (contentLen <= 0)
     return NULL;
 
@@ -70,7 +65,7 @@ uXML::Node *SOAPRequest::parseMessage(const std::string &content, size_t content
 // Node
 ////////////////////////////////////////////////
 
-uXML::Node *SOAPRequest::getRootNode() {
+mupnp_shared_ptr<uXML::Node> SOAPRequest::getRootNode() {
   if (rootNode != NULL)
     return rootNode;
       
@@ -94,7 +89,7 @@ SOAPResponse *SOAPRequest::postMessage(const std::string &host, int port, SOAPRe
   if (contentLen <= 0)
     return soapRes;
 
-  uXML::Node *retNode = parseMessage(content, contentLen);
+  mupnp_shared_ptr<uXML::Node> retNode = parseMessage(content, contentLen);
   soapRes->setEnvelopeNode(retNode);
 
   return soapRes;

@@ -52,12 +52,12 @@ ActionResponse::ActionResponse(SOAPResponse *soapRes) {
 void ActionResponse::setResponse(Action *action) {
   setStatusCode(uHTTP::HTTP::OK_REQUEST);
   
-  uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   uXML::Node *resNode = createResponseNode(action);
   bodyNode->addNode(resNode);
 
-  uXML::Node *envNode = getEnvelopeNode();
-  setContent(envNode);
+  mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
+  setContent(envNode.get());
 }
 
 uXML::Node *ActionResponse::createResponseNode(Action *action) {
@@ -97,8 +97,8 @@ uXML::Node *ActionResponse::createResponseNode(Action *action) {
 // getResponse
 ////////////////////////////////////////////////
 
-uXML::Node *ActionResponse::getActionResponseNode() {
-  uXML::Node *bodyNode = getBodyNode();
+mupnp_shared_ptr<uXML::Node> ActionResponse::getActionResponseNode() {
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (bodyNode == NULL || bodyNode->hasNodes() == false)
     return NULL;
   return bodyNode->getNode(0);
@@ -107,13 +107,13 @@ uXML::Node *ActionResponse::getActionResponseNode() {
 ArgumentList *ActionResponse::getResponse() {
   argList.clear();
     
-  uXML::Node *resNode = getActionResponseNode();
+  mupnp_shared_ptr<uXML::Node> resNode = getActionResponseNode();
   if (resNode == NULL)
     return &argList;
       
   size_t nArgs = resNode->getNNodes();
   for (size_t n = 0; n < nArgs; n++) {
-    uXML::Node *node = resNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = resNode->getNode(n);
     const char *name = node->getName();
     const char *value = node->getValue();
     Argument *arg = new Argument(name, value);

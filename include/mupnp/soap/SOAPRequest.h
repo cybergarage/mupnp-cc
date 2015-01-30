@@ -22,7 +22,7 @@ namespace uSOAP {
 const char SOAPACTION[] = "SOAPACTION";
 
 class SOAPRequest : public uHTTP::HTTPRequest {
-  uXML::Node *rootNode;
+  mupnp_shared_ptr<uXML::Node> rootNode;
   SOAPResponse soapRes;
     
   ////////////////////////////////////////////////
@@ -78,7 +78,7 @@ class SOAPRequest : public uHTTP::HTTPRequest {
 
 private:
 
-  uXML::Node *parseMessage(const std::string &content, size_t contentLen);
+  mupnp_shared_ptr<uXML::Node> parseMessage(const std::string &content, size_t contentLen);
 
  public:
   SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
@@ -93,27 +93,27 @@ private:
 
 private:
 
-  void setRootNode(uXML::Node *node) {
+  void setRootNode(mupnp_shared_ptr<uXML::Node> node) {
     rootNode = node;
   }
 
-  uXML::Node *getRootNode();
+  mupnp_shared_ptr<uXML::Node> getRootNode();
   
   ////////////////////////////////////////////////
   // XML
   ////////////////////////////////////////////////
 
  public:
-  void setEnvelopeNode(uXML::Node *node) {
+  void setEnvelopeNode(mupnp_shared_ptr<uXML::Node> node) {
     setRootNode(node);
   }
   
-  uXML::Node *getEnvelopeNode() {
+  mupnp_shared_ptr<uXML::Node> getEnvelopeNode() {
     return getRootNode();
   }
     
-  uXML::Node *getBodyNode() {
-    uXML::Node *envNode = getEnvelopeNode();
+  mupnp_shared_ptr<uXML::Node> getBodyNode() {
+    mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
     if (envNode->hasNodes() == false)

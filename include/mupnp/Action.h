@@ -27,8 +27,8 @@ namespace mUPnP {
 class Service;
 
 class Action {
-  uXML::Node *serviceNode;
-  uXML::Node *actionNode;
+  mupnp_shared_ptr<uXML::Node> serviceNode;
+  mupnp_shared_ptr<uXML::Node> actionNode;
   
   ArgumentList *argumentList;
   ArgumentList *argumentInList;
@@ -52,14 +52,15 @@ class Action {
 
 private:
 
-  uXML::Node *getServiceNode() {
+  mupnp_shared_ptr<uXML::Node> getServiceNode() {
     return serviceNode;
   }
 
- public:
+public:
+  
   Service *getService();
   
-  uXML::Node *getActionNode() {
+  mupnp_shared_ptr<uXML::Node> getActionNode() {
     return actionNode;
   }
   
@@ -67,7 +68,7 @@ private:
   // Constructor
   ////////////////////////////////////////////////
 
-  Action(uXML::Node *serviceNode, uXML::Node *actionNode);
+  Action(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> actionNode);
   Action(Action *action);
 
   ~Action();
@@ -89,7 +90,7 @@ private:
   // isActionNode
   ////////////////////////////////////////////////
 
-  static bool isActionNode(uXML::Node *node) {
+  static bool isActionNode(mupnp_shared_ptr<uXML::Node> node) {
     std::string nodeName = node->getName();
     if (nodeName.compare(Action::ELEM_NAME) == 0)
       return true;
@@ -169,7 +170,7 @@ private:
   ////////////////////////////////////////////////
 
   ActionData *getActionData() {
-    uXML::Node *node = getActionNode();
+    mupnp_shared_ptr<uXML::Node> node = getActionNode();
     ActionData *userData = dynamic_cast<ActionData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ActionData();

@@ -215,7 +215,7 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
 
   size_t nChildNodes = getNNodes();
   for (size_t n = 0; n < nChildNodes; n++) {
-    Node *cnode = getNode(n);
+    mupnp_shared_ptr<uXML::Node> cnode = getNode(n);
     cnode->output(ps, indentLevel+1, true);
   }
 

@@ -15,7 +15,7 @@
 
 namespace mUPnP{
 class AllowedValue {
-  uXML::Node *allowedValueNode;
+  mupnp_shared_ptr<uXML::Node> allowedValueNode;
   
   ////////////////////////////////////////////////
   // Constants
@@ -28,11 +28,11 @@ class AllowedValue {
   ////////////////////////////////////////////////
 
  public:
-  void setAllowedValueNode(uXML::Node *node) {
+  void setAllowedValueNode(mupnp_shared_ptr<uXML::Node> node) {
     allowedValueNode = node;
   }
 
-  uXML::Node *getAllowedValueNode() {
+  mupnp_shared_ptr<uXML::Node> getAllowedValueNode() {
     return allowedValueNode;
   }
 
@@ -46,7 +46,7 @@ public:
     setAllowedValueNode(NULL);
   }
 
-  AllowedValue(uXML::Node *node) {
+  AllowedValue(mupnp_shared_ptr<uXML::Node> node) {
     setAllowedValueNode(node);
   }
 
@@ -55,7 +55,7 @@ public:
   ////////////////////////////////////////////////
 
  public:
-  static bool isAllowedValueNode(uXML::Node *node) {
+  static bool isAllowedValueNode(mupnp_shared_ptr<uXML::Node> node) {
     return node->isName(AllowedValue::ELEM_NAME);
   }
 

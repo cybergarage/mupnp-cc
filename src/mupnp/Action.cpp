@@ -29,7 +29,7 @@ const char *Action::NAME = "name";
 // Constructor
 ////////////////////////////////////////////////
 
-Action::Action(uXML::Node *serviceNode, uXML::Node *actionNode) {
+Action::Action(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> actionNode) {
   this->serviceNode = serviceNode;
   this->actionNode = actionNode;
 
@@ -54,7 +54,7 @@ Action::~Action() {
 ////////////////////////////////////////////////
 
 Service *Action::getService() {
-  uXML::Node *node = getServiceNode();
+  mupnp_shared_ptr<uXML::Node> node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
   if (data == NULL)
     return NULL;
@@ -70,15 +70,15 @@ void Action::initArgumentList() {
   argumentInList = new ArgumentList(false);
   argumentOutList = new ArgumentList(false);
 
-  uXML::Node *serviceNode = getServiceNode();
-  uXML::Node *argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
+  mupnp_shared_ptr<uXML::Node> argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
   if (serviceNode == NULL || argumentListNode == NULL)
     return;
 
   size_t nodeCnt = argumentListNode->getNNodes();
   for (size_t n = 0; n < nodeCnt; n++) {
-    uXML::Node *argNode = argumentListNode->getNode(n);
-    if (Argument::isArgumentNode(argNode) == false)
+    mupnp_shared_ptr<uXML::Node> argNode = argumentListNode->getNode(n);
+    if (Argument::isArgumentNode(argNode.get()) == false)
       continue;
     Argument *arg = new Argument(serviceNode, argNode);
     argumentList->add(arg);

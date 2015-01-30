@@ -98,7 +98,7 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 // parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, size_t len) {
+mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) {
   XML_Parser p = XML_ParserCreate(NULL);
   if (!p)
     return NULL;
@@ -122,7 +122,7 @@ Node *Parser::parse(const std::string &data, size_t len) {
   //if (expatData.rootNode != NULL)
   // expatData.rootNode->print();
 
-  return expatData.rootNode;
+  return mupnp_shared_ptr<uXML::Node>(expatData.rootNode);
 }
 
 ////////////////////////////////////////////////

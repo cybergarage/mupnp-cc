@@ -119,7 +119,7 @@ static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
 // parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-Node *Parser::parse(const std::string &data, size_t len) {
+mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) {
   // First, parse the XML memory buffer ito a DOM object
   xmlDocPtr doc = xmlReadMemory(data.c_str(), (int)len, NULL, NULL, XML_PARSE_NOERROR);
   if ( doc == NULL ) {
@@ -143,7 +143,7 @@ Node *Parser::parse(const std::string &data, size_t len) {
   // Now all data is copied to mUPnP, release the original DOM object tree
   xmlFreeDoc(doc);
 
-  return rootNode;
+  return mupnp_shared_ptr<uXML::Node>(rootNode);
 }
 
 ////////////////////////////////////////////////

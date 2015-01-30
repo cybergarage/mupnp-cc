@@ -15,14 +15,11 @@
 ////////////////////////////////////////////////
   
 uSOAP::SOAPResponse::SOAPResponse() {
-  rootNode = NULL;
   setRootNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
   setContentType(uXML::XML::CONTENT_TYPE);
 }
 
 uSOAP::SOAPResponse::~SOAPResponse() {
-  if (rootNode != NULL)
-    delete rootNode;
 }
 
 ////////////////////////////////////////////////

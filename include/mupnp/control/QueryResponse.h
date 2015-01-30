@@ -38,7 +38,7 @@ public:
 
 private:
 
-  uXML::Node *getReturnNode();
+  mupnp_shared_ptr<uXML::Node> getReturnNode();
   
  public:
   const char *getReturnValue();

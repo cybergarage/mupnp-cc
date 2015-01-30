@@ -23,12 +23,9 @@ class StateVariable;
 
 class Argument {
   
-  uXML::Node *serviceNode;
-  uXML::Node *argumentNode;
+  mupnp_shared_ptr<uXML::Node> serviceNode;
+  mupnp_shared_ptr<uXML::Node> argumentNode;
 
-  uXML::Node defaultArgumentNode;
-  uXML::Node defaultServiceNode;
-  
  public:
   ////////////////////////////////////////////////
   // Constants
@@ -46,11 +43,11 @@ class Argument {
   // Member
   ////////////////////////////////////////////////
 
-  uXML::Node *getServiceNode() {
+  mupnp_shared_ptr<uXML::Node> getServiceNode() {
     return serviceNode;
   }
 
-  uXML::Node *getArgumentNode() {
+  mupnp_shared_ptr<uXML::Node> getArgumentNode() {
     return argumentNode;
   }
   
@@ -61,7 +58,7 @@ class Argument {
   ////////////////////////////////////////////////
 
   Argument();
-  Argument(uXML::Node *servNode, uXML::Node *argNode);
+  Argument(mupnp_shared_ptr<uXML::Node> servNode, mupnp_shared_ptr<uXML::Node> argNode);
   Argument(const std::string &name, const std::string &value);
 
   ~Argument();
@@ -129,7 +126,7 @@ class Argument {
   ////////////////////////////////////////////////
 
   ArgumentData *getArgumentData() {
-    uXML::Node *node = getArgumentNode();
+    mupnp_shared_ptr<uXML::Node> node = getArgumentNode();
     ArgumentData *userData = dynamic_cast<ArgumentData *>(node->getUserData());
     if (userData == NULL) {
       userData = new ArgumentData();

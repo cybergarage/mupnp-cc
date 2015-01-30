@@ -66,7 +66,7 @@ const char *Device::presentationURL = "presentationURL";
 // Constructor
 ////////////////////////////////////////////////
 
-Device::Device(uXML::Node *root, uXML::Node *device) {
+Device::Device(mupnp_shared_ptr<uXML::Node> root, mupnp_shared_ptr<uXML::Node> device) {
   setLocalRootDeviceFlag(false);
   rootNode = root;
   deviceNode = device;
@@ -87,7 +87,7 @@ Device::Device() {
   initChildList();
 }
   
-Device::Device(uXML::Node *device) {
+Device::Device(mupnp_shared_ptr<uXML::Node> device) {
   setLocalRootDeviceFlag(false);
   rootNode = NULL;
   deviceNode = device;
@@ -152,23 +152,11 @@ Device::Device(const std::string &descriptionFileName) {
 #endif
 
 ////////////////////////////////////////////////
-// Member
-////////////////////////////////////////////////
-
-uXML::Node *Device::getRootNode() {
-  if (rootNode != NULL)
-    return rootNode;
-  if (deviceNode == NULL)
-    return NULL;
-  return deviceNode->getRootNode();
-}
-
-////////////////////////////////////////////////
 // NMPR
 ////////////////////////////////////////////////
   
 void Device::setNMPRMode(bool flag) {
-  uXML::Node *devNode = getDeviceNode();
+  mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
   if (devNode == NULL)
     return;
   if (flag == true) {
@@ -181,7 +169,7 @@ void Device::setNMPRMode(bool flag) {
 }
 
 bool Device::isNMPRMode() {
-  uXML::Node *devNode = getDeviceNode();
+  mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
   if (devNode == NULL)
     return false;
   return (devNode->getNode(UPnP::INMPR03) != NULL) ? true : false;
@@ -193,17 +181,17 @@ bool Device::isNMPRMode() {
 
 void Device::setURLBase(const std::string &value) {
   if (isRootDevice() == true) {
-    uXML::Node *node = getRootNode()->getNode(URLBASE_NAME);
+    mupnp_shared_ptr<uXML::Node> node = getRootNode()->getNode(URLBASE_NAME);
     if (node != NULL) {
       node->setValue(value);
       return;
     }
-    node = new uXML::Node(URLBASE_NAME);
-    node->setValue(value);
+    uXML::Node *newNode = new uXML::Node(URLBASE_NAME);
+    newNode->setValue(value);
     int index = 1;
     if (getRootNode()->hasNodes() == false)
       index = 1;
-    getRootNode()->insertNode(node, index);
+    getRootNode()->insertNode(newNode, index);
   }
 }
 
@@ -289,10 +277,10 @@ bool Device::isExpired() {
 Device *Device::getRootDevice() {
   if (rootDevice != NULL)
     return rootDevice;
-  uXML::Node *rootNode = getRootNode();
+  mupnp_shared_ptr<uXML::Node> rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
-  uXML::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> devNode = rootNode->getNode(Device::ELEM_NAME);
   if (devNode == NULL)
     return NULL;
   rootDevice = new Device();
@@ -314,11 +302,11 @@ Device *Device::getParentDevice() {
   if(isRootDevice() == true)
     return NULL;
   
-  uXML::Node *rootNode = getRootNode();
+  mupnp_shared_ptr<uXML::Node> rootNode = getRootNode();
   if (rootNode == NULL)
     return NULL;
   
-  uXML::Node *devNode = getDeviceNode();
+  mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
   if (devNode == NULL)
     return NULL;
   
@@ -327,7 +315,7 @@ Device *Device::getParentDevice() {
   uXML::Node *parentNode = devNode->getParentNode();
   if (!parentNode)
     return NULL;
-  devNode = parentNode->getParentNode();
+  devNode = mupnp_shared_ptr<uXML::Node>(parentNode->getParentNode());
   if (!devNode)
     return NULL;
   
@@ -343,8 +331,8 @@ Device *Device::getParentDevice() {
 ////////////////////////////////////////////////
 
 DeviceData *Device::getDeviceData() {
-  uXML::Node *node = getDeviceNode();
-  if (node == NULL)
+  mupnp_shared_ptr<uXML::Node> node = getDeviceNode();
+  if (!node)
     return NULL;
   DeviceData *userData = dynamic_cast<DeviceData *>(node->getUserData());
   if (userData == NULL) {
@@ -453,15 +441,15 @@ bool Device::loadDescription(uHTTP::File *file) {
 
 void Device::initDeviceList() {
   deviceList.clear();
-  uXML::Node *devNode = getDeviceNode();
+  mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  uXML::Node *devListNode = devNode->getNode(DeviceList::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> devListNode = devNode->getNode(DeviceList::ELEM_NAME);
   if (devListNode == NULL)
     return;
   size_t nNode = devListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    uXML::Node *node = devListNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = devListNode->getNode(n);
     if (Device::isDeviceNode(node) == false)
       continue;
     Device *dev = new Device(node);
@@ -514,15 +502,15 @@ mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &ur
 
 void Device::initServiceList() {
   serviceList.clear();
-  uXML::Node *devNode = getDeviceNode();
+  mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  uXML::Node *serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
   if (serviceListNode == NULL)
     return;
   size_t nNode = serviceListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    uXML::Node *node = serviceListNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = serviceListNode->getNode(n);
     if (Service::isServiceNode(node) == false)
       continue;
     Service *service = new Service(node);
@@ -726,15 +714,15 @@ mUPnP::Action *Device::getAction(const std::string &name) {
 
 void Device::initIconList() {
   iconList.clear();
-  uXML::Node *devNode = getDeviceNode();
+  mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
   if (devNode == NULL)
     return;
-  uXML::Node *iconListNode = devNode->getNode(IconList::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> iconListNode = devNode->getNode(IconList::ELEM_NAME);
   if (iconListNode == NULL)
     return;
   size_t nNode = iconListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
-    uXML::Node *node = iconListNode->getNode(n);
+    mupnp_shared_ptr<uXML::Node> node = iconListNode->getNode(n);
     if (Icon::isIconNode(node) == false)
       continue;
     Icon *icon = new Icon(node);
@@ -1079,7 +1067,7 @@ const char *Device::getDescriptionData(const std::string &host, string &buf) {
   lock();
   if (isNMPRMode() == false)
     updateURLBase(host);
-  uXML::Node *rootNode = getRootNode();
+  mupnp_shared_ptr<uXML::Node> rootNode = getRootNode();
   buf = "";
   if (rootNode != NULL) {
     string nodeBuf;

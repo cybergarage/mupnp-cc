@@ -36,12 +36,12 @@ const char *ControlResponse::FAULT_STRING = "UPnPError";
 void ControlResponse::setFaultResponse(int errCode, const std::string &errDescr) {
   setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
   
-  uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   uXML::Node *faultNode = createFaultResponseNode(errCode, errDescr);
   bodyNode->addNode(faultNode);
 
-  uXML::Node *envNode = getEnvelopeNode();
-  setContent(envNode);
+  mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
+  setContent(envNode.get());
 }
 
 uXML::Node *ControlResponse::createFaultResponseNode(int errCode, const std::string &errDescr) {

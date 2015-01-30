@@ -14,10 +14,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <string>
-#include <mupnp/xml/XML.h>
-#include <mupnp/xml/Node.h>
+
 #include <uhttp/io/File.h>
 #include <uhttp/net/URL.h>
+
+#include <mupnp/xml/XML.h>
+#include <mupnp/xml/Node.h>
 #include <mupnp/xml/ParserException.h>
 
 namespace uXML {
@@ -38,22 +40,22 @@ class Parser  {
   ////////////////////////////////////////////////
 
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-  Node *parse(uHTTP::File *file);
+  mupnp_shared_ptr<uXML::Node> parse(uHTTP::File *file);
 #endif
 
-  Node *parse(uHTTP::URL *url);
+  mupnp_shared_ptr<uXML::Node> parse(uHTTP::URL *url);
   
-  Node *parse(const std::string &data, size_t len);
+  mupnp_shared_ptr<uXML::Node> parse(const std::string &data, size_t len);
 
-  Node *parse(const std::string &data) {
+  mupnp_shared_ptr<uXML::Node> parse(const std::string &data) {
     return parse(data, data.length());
   }
   
-  Node *parse(std::string *data) {
+  mupnp_shared_ptr<uXML::Node> parse(std::string *data) {
     return parse(data->c_str(), data->length());
   }
   
-  Node *parse(UnicodeStr *data, size_t len) {
+  mupnp_shared_ptr<uXML::Node> parse(UnicodeStr *data, size_t len) {
     return parse((const std::string &)data, len);
   }
 };

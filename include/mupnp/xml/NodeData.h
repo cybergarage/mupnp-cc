@@ -16,7 +16,7 @@ namespace uXML {
 class Node;
 
 class NodeData {
-  Node *node;
+  uXML::Node *node;
 
 public:
   
@@ -30,11 +30,11 @@ public:
   // node
   ////////////////////////////////////////////////
 
-  void setNode(Node *node) {
+  void setNode(uXML::Node *node) {
     this->node = node;
   }
 
-  Node *getNode() {
+  uXML::Node *getNode() {
     return node;
   }
 

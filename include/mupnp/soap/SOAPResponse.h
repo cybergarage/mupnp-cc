@@ -17,7 +17,7 @@
 
 namespace uSOAP {
 class SOAPResponse : public uHTTP::HTTPResponse {
-  uXML::Node *rootNode;
+  mupnp_shared_ptr<uXML::Node> rootNode;
   
  public:
   ////////////////////////////////////////////////
@@ -55,13 +55,11 @@ class SOAPResponse : public uHTTP::HTTPResponse {
 
 private:
 
-  void setRootNode(uXML::Node *node) {
-    if (rootNode != NULL)
-      delete rootNode;
+  void setRootNode(mupnp_shared_ptr<uXML::Node> node) {
     rootNode = node;
   }
   
-  uXML::Node *getRootNode() {
+  mupnp_shared_ptr<uXML::Node> getRootNode() {
     return rootNode;
   }
   
@@ -70,23 +68,23 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  void setEnvelopeNode(uXML::Node *node) {
+  void setEnvelopeNode(mupnp_shared_ptr<uXML::Node> node) {
     setRootNode(node);
   }
 
-  uXML::Node *getEnvelopeNode() {
+  mupnp_shared_ptr<uXML::Node> getEnvelopeNode() {
     return getRootNode();
   }
   
-  uXML::Node *getBodyNode() {
-    uXML::Node *envNode = getEnvelopeNode();
+  mupnp_shared_ptr<uXML::Node> getBodyNode() {
+    mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
     if (envNode == NULL)
       return NULL;
     return envNode->getNodeEndsWith(uSOAP::SOAP::BODY);
   }
 
-  uXML::Node *getMethodResponseNode(const std::string & name) {
-    uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> getMethodResponseNode(const std::string & name) {
+    mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
     std::string methodResName;
@@ -95,58 +93,58 @@ private:
     return bodyNode->getNodeEndsWith(methodResName.c_str());
   }
 
-  uXML::Node *getFaultNode() {
-    uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> getFaultNode() {
+    mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
     if (bodyNode == NULL)
       return NULL;
     return bodyNode->getNodeEndsWith(uSOAP::SOAP::FAULT);
   }
 
-  uXML::Node *getFaultCodeNode() {
-    uXML::Node *faultNode = getFaultNode();
+  mupnp_shared_ptr<uXML::Node> getFaultCodeNode() {
+    mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_CODE);
   }
 
-  uXML::Node *getFaultStringNode() {
-    uXML::Node *faultNode = getFaultNode();
+  mupnp_shared_ptr<uXML::Node> getFaultStringNode() {
+    mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_STRING);
   }
 
-  uXML::Node *getFaultActorNode() {
-    uXML::Node *faultNode = getFaultNode();
+  mupnp_shared_ptr<uXML::Node> getFaultActorNode() {
+    mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULTACTOR);
   }
 
-  uXML::Node *getFaultDetailNode() {
-    uXML::Node *faultNode = getFaultNode();
+  mupnp_shared_ptr<uXML::Node> getFaultDetailNode() {
+    mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (faultNode == NULL)
       return NULL;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::DETAIL);
   }
 
   const char *getFaultCode() {
-    uXML::Node *node = getFaultCodeNode();
-    if (node == NULL)
+    mupnp_shared_ptr<uXML::Node> node = getFaultCodeNode();
+    if (!node)
       return "";
     return node->getValue();
   }
   
   const char *getFaultString() {
-    uXML::Node *node = getFaultStringNode();
-    if (node == NULL)
+    mupnp_shared_ptr<uXML::Node> node = getFaultStringNode();
+    if (!node)
       return "";
     return node->getValue();
   }
   
   const char *getFaultActor() {
-    uXML::Node *node = getFaultActorNode();
-    if (node == NULL)
+    mupnp_shared_ptr<uXML::Node> node = getFaultActorNode();
+    if (!node)
       return "";
     return node->getValue();
   }

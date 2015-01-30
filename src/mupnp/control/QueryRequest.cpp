@@ -38,11 +38,11 @@ void QueryRequest::setRequest(StateVariable *stateVar) {
   setRequestHost(service);
 
   setEnvelopeNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
-  uXML::Node *envNode = getEnvelopeNode();
-  uXML::Node *bodyNode = getBodyNode();
+  mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   uXML::Node *qeuryNode = createContentNode(stateVar);
   bodyNode->addNode(qeuryNode);
-  setContent(envNode);
+  setContent(envNode.get());
 
   setSOAPAction(Control::QUERY_SOAPACTION);
 }
@@ -68,13 +68,13 @@ uXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
 // getVarName
 ////////////////////////////////////////////////
 
-uXML::Node *QueryRequest::getVarNameNode() {
-  uXML::Node *bodyNode = getBodyNode();
+mupnp_shared_ptr<uXML::Node> QueryRequest::getVarNameNode() {
+  mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (bodyNode == NULL)
     return NULL;
   if (bodyNode->hasNodes() == false)
     return NULL;
-  uXML::Node *queryStateVarNode = bodyNode->getNode(0);
+  mupnp_shared_ptr<uXML::Node> queryStateVarNode = bodyNode->getNode(0);
   if (queryStateVarNode == NULL)
     return NULL;
   if (queryStateVarNode->hasNodes() == false)
@@ -83,8 +83,8 @@ uXML::Node *QueryRequest::getVarNameNode() {
 }
   
 const char *QueryRequest::getVarName() {
-  uXML::Node *node = getVarNameNode();
-  if (node == NULL)
+  mupnp_shared_ptr<uXML::Node> node = getVarNameNode();
+  if (!node)
     return "";
   return node->getValue();
 }

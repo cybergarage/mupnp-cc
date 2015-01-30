@@ -42,7 +42,7 @@ class ActionRequest : public ControlRequest {
   ////////////////////////////////////////////////
 
  public:
-  uXML::Node *getActionNode();
+  mupnp_shared_ptr<uXML::Node> getActionNode();
 
   const char *getActionName(std::string &buf);
 

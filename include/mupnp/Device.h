@@ -37,8 +37,8 @@
 
 namespace mUPnP {
 class Device : public uHTTP::HTTPRequestListener, public SearchListener {
-  uXML::Node *rootNode;
-  uXML::Node *deviceNode;
+  mupnp_shared_ptr<uXML::Node> rootNode;
+  mupnp_shared_ptr<uXML::Node> deviceNode;
 
   Device *rootDevice;
   Device *parentDevice;
@@ -88,9 +88,11 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   ////////////////////////////////////////////////
 
  public:
-  uXML::Node *getRootNode();
+  mupnp_shared_ptr<uXML::Node> getRootNode() {
+    return rootNode;
+  }
 
-  uXML::Node *getDeviceNode() {
+  mupnp_shared_ptr<uXML::Node> getDeviceNode() {
     return deviceNode;
   }
 
@@ -98,11 +100,11 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
     return (deviceNode != NULL) ? true : false;
   }
   
-  void setRootNode(uXML::Node *node) {
+  void setRootNode(mupnp_shared_ptr<uXML::Node> node) {
     rootNode = node;
   }
 
-  void setDeviceNode(uXML::Node *node) {
+  void setDeviceNode(mupnp_shared_ptr<uXML::Node> node) {
     deviceNode = node;
   }
         
@@ -111,8 +113,8 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   ////////////////////////////////////////////////
 
   Device();
-  Device(uXML::Node *root, uXML::Node *device);
-  Device(uXML::Node *device);
+  Device(mupnp_shared_ptr<uXML::Node> root, mupnp_shared_ptr<uXML::Node> device);
+  Device(mupnp_shared_ptr<uXML::Node> device);
 #if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
   Device(uHTTP::File *descriptionFile);
   Device(const std::string &descriptionFileName);
@@ -307,7 +309,7 @@ private:
   ////////////////////////////////////////////////
 
  public:
-  static bool isDeviceNode(uXML::Node *node) {
+  static bool isDeviceNode(mupnp_shared_ptr<uXML::Node> node) {
     return node->isName(Device::ELEM_NAME);
   }
   

@@ -43,7 +43,7 @@ const char ENCORDING[] = "encoding";
 const char UTF_8[] = "utf-8";
 const char VERSION_HEADER[] = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
-uXML::Node *CreateEnvelopeBodyNode();
+mupnp_shared_ptr<uXML::Node> CreateEnvelopeBodyNode();
 
 const char *GetHeader(const std::string &content, std::string &header);
 const char *GetEncording(const std::string &content, std::string &encording);

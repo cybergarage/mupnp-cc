@@ -18,7 +18,7 @@
 // CreateEnvelopeBodyNode
 ////////////////////////////////////////////////
 
-uXML::Node *uSOAP::SOAP::CreateEnvelopeBodyNode() {
+mupnp_shared_ptr<uXML::Node> uSOAP::SOAP::CreateEnvelopeBodyNode() {
   // <Envelope>
   std::string envNodeName;
   envNodeName += XMLNS;
@@ -45,7 +45,7 @@ uXML::Node *uSOAP::SOAP::CreateEnvelopeBodyNode() {
   uXML::Node *bodyNode = new uXML::Node(bodyNodeName.c_str());
   envNode->addNode(bodyNode);
 
-  return envNode;
+  return mupnp_shared_ptr<uXML::Node>(envNode);
 }
 
 ////////////////////////////////////////////////

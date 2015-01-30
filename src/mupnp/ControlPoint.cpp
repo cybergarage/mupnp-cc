@@ -55,10 +55,10 @@ ControlPoint::~ControlPoint() {
 // Device List
 ////////////////////////////////////////////////
 
-mupnp_shared_ptr<Device> ControlPoint::getDevice(uXML::Node *rootNode) {
+mupnp_shared_ptr<Device> ControlPoint::getDevice(mupnp_shared_ptr<uXML::Node> rootNode) {
   if (rootNode == NULL)
       return NULL;
-  uXML::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
+  mupnp_shared_ptr<uXML::Node> devNode = rootNode->getNode(Device::ELEM_NAME);
   if (devNode == NULL)
       return NULL;
   return mupnp_shared_ptr<Device>(new Device(rootNode, devNode));
@@ -69,7 +69,7 @@ void ControlPoint::initDeviceList() {
   
   size_t nRoots = devNodeList.size();
   for (size_t n = 0; n < nRoots; n++) {
-    uXML::Node *rootNode = devNodeList.getNode(n);
+    mupnp_shared_ptr<uXML::Node> rootNode = devNodeList.getNode(n);
     mupnp_shared_ptr<Device> dev = getDevice(rootNode);
     if (dev == NULL)
       continue;
@@ -95,7 +95,7 @@ mupnp_shared_ptr<Device> ControlPoint::getDevice(const std::string &name) {
 // add
 ////////////////////////////////////////////////
 
-bool ControlPoint::addDevice(uXML::Node *rootNode) {
+bool ControlPoint::addDevice(mupnp_shared_ptr<uXML::Node> rootNode) {
   if (!devNodeList.add(rootNode))
     return false;
   initDeviceList();
@@ -123,7 +123,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   const char *location = ssdpPacket->getLocation(locationBuf);
   URL locationURL(location);
   uXML::Parser parser;
-  uXML::Node *rootNode = parser.parse(&locationURL);
+  mupnp_shared_ptr<uXML::Node> rootNode = parser.parse(&locationURL);
   mupnp_shared_ptr<Device> rootDev = getDevice(rootNode);
   if (rootDev == NULL) {
     unlock();
@@ -145,7 +145,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
 // remove
 ////////////////////////////////////////////////
 
-bool ControlPoint::removeDevice(uXML::Node *rootNode) {
+bool ControlPoint::removeDevice(mupnp_shared_ptr<uXML::Node> rootNode) {
   if (!devNodeList.remove(rootNode))
     return false;
   removedDevNodeList.add(rootNode);
@@ -205,7 +205,7 @@ void ControlPoint::removeExpiredDevices() {
       string msg = "Expired device = ";
       msg += dev[n]->getFriendlyName();
       Debug::message(msg.c_str());
-      uXML::Node *rootNode = dev[n]->getRootNode();
+      mupnp_shared_ptr<uXML::Node> rootNode = dev[n]->getRootNode();
       removeDevice(rootNode);
     }
   }
