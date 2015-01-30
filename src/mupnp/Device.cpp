@@ -1130,7 +1130,6 @@ uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq) {
 
 uHTTP::HTTP::StatusCode Device::httpPostRequestRecieved(HTTPRequest *httpReq) {
   if (httpReq->isSOAPAction() == true) {
-    //SOAPRequest soapReq = new SOAPRequest(httpReq);
     return soapActionRecieved(httpReq);
   }
   return httpReq->returnBadRequest();
@@ -1152,7 +1151,7 @@ uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq) {
   soapReq->getURI(uri);
   Service *ctlService = getServiceByControlURL(uri.c_str());
   if (ctlService != NULL)  {
-    ActionRequest crlReq(soapReq);
+    ControlRequest crlReq(soapReq);
     return deviceControlRequestRecieved(&crlReq, ctlService);
   }
   return soapBadActionRecieved(soapReq);

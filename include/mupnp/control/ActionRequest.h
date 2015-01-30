@@ -33,15 +33,10 @@ class ActionRequest : public ControlRequest {
   ActionRequest() {
   }
 
-  ActionRequest(uHTTP::HTTPRequest *httpReq) {
-    set(httpReq);
+  ActionRequest(uHTTP::HTTPRequest *httpReq) : ControlRequest(httpReq) {
     initArgumentList();
   }
 
-  ~ActionRequest() {
-    setSocket(NULL);
-  }
-  
   ////////////////////////////////////////////////
   // Action
   ////////////////////////////////////////////////

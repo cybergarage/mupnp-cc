@@ -28,8 +28,7 @@ public:
   ControlRequest() {
   }
 
-  ControlRequest(uHTTP::HTTPRequest *httpReq) {
-    set(httpReq);
+  ControlRequest(uHTTP::HTTPRequest *httpReq) : uSOAP::SOAPRequest(httpReq) {
   }
 
   ////////////////////////////////////////////////

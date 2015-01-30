@@ -32,8 +32,9 @@ SOAPRequest::SOAPRequest(uHTTP::HTTPRequest *httpReq) {
 }
 
 SOAPRequest::~SOAPRequest() {
-  if (rootNode != NULL)
+  if (rootNode != NULL) {
     delete rootNode;
+  }
 }
 
 ////////////////////////////////////////////////
