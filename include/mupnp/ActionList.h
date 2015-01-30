@@ -16,7 +16,7 @@
 
 namespace mUPnP {
 
-class ActionList : public uHTTP::Vector<Action>  {
+class ActionList : public Vector<Action>  {
 
 public:
     

@@ -16,7 +16,7 @@
 namespace mUPnP {
 class Service;
 
-class ServiceList : public uHTTP::Vector<Service> {
+class ServiceList : public Vector<Service> {
 public:
     
   ////////////////////////////////////////////////

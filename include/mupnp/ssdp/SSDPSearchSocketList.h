@@ -11,14 +11,13 @@
 #ifndef _MUPMPCC_SSDPSEARCHSOCKETLIST_H_
 #define _MUPMPCC_SSDPSEARCHSOCKETLIST_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/util/Vector.h>
+#include <mupnp/common/Vector.h>
 #include <mupnp/ssdp/SSDPSearchSocket.h>
 #include <mupnp/device/SearchListener.h>
 
 namespace mUPnP {
     
-class SSDPSearchSocketList : public uHTTP::Vector<SSDPSearchSocket>  {
+class SSDPSearchSocketList : public Vector<SSDPSearchSocket>  {
 public:
     
   ////////////////////////////////////////////////

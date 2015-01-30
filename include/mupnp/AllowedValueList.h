@@ -17,7 +17,7 @@
 
 namespace mUPnP {
     
-class AllowedValueList : public uHTTP::Vector<AllowedValue>  {
+class AllowedValueList : public Vector<AllowedValue>  {
 public:
     
   ////////////////////////////////////////////////

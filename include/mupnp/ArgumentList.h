@@ -17,7 +17,7 @@
 
 namespace mUPnP {
     
-class ArgumentList : public uHTTP::Vector<Argument>  {
+class ArgumentList : public Vector<Argument>  {
 public:
     
   ////////////////////////////////////////////////

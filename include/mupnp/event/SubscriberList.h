@@ -16,7 +16,7 @@
 
 namespace mUPnP {
     
-class SubscriberList : public uHTTP::Vector<Subscriber>  {
+class SubscriberList : public Vector<Subscriber>  {
 public:
     
   ////////////////////////////////////////////////

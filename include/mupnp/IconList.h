@@ -16,7 +16,7 @@
 
 namespace mUPnP{
     
-class IconList : public uHTTP::Vector<Icon> {
+class IconList : public Vector<Icon> {
  public:
     
   ////////////////////////////////////////////////

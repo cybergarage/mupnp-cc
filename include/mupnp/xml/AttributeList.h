@@ -11,12 +11,12 @@
 #ifndef _MUPMPCC_ATTRIBUTELIST_H_
 #define _MUPMPCC_ATTRIBUTELIST_H_
 
-#include <uhttp/util/Vector.h>
+#include <mupnp/common/Vector.h>
 #include <mupnp/xml/Attribute.h>
 
 namespace uXML {
 
-class AttributeList : public uHTTP::Vector<Attribute> {
+  class AttributeList : public mUPnP::Vector<Attribute> {
 public:
   
   ////////////////////////////////////////////////

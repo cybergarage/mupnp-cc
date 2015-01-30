@@ -11,14 +11,14 @@
 #ifndef _MUPMPCC_NODELIST_H_
 #define _MUPMPCC_NODELIST_H_
 
-#include <uhttp/util/Vector.h>
+#include <mupnp/common/Vector.h>
 #include <uhttp/util/StringUtil.h>
 
 namespace uXML {
 
 class Node;
 
-class NodeList : public uHTTP::Vector<Node> {
+class NodeList : public mUPnP::Vector<Node> {
 public:
   
   ////////////////////////////////////////////////

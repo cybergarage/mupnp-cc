@@ -19,7 +19,7 @@
 namespace mUPnP {
 class ControlPoint;
 
-class SSDPSearchResponseSocketList : public uHTTP::Vector<SSDPSearchResponseSocket>  {
+class SSDPSearchResponseSocketList : public Vector<SSDPSearchResponseSocket>  {
 
 public:
     

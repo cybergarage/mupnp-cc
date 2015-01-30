@@ -11,14 +11,13 @@
 #ifndef _MUPMPCC_SSDPNOTIFYSOCKETLIST_H_
 #define _MUPMPCC_SSDPNOTIFYSOCKETLIST_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/util/Vector.h>
+#include <mupnp/common/Vector.h>
 #include <mupnp/ssdp/SSDPNotifySocket.h>
 
 namespace mUPnP {
 class ControlPoint;
 
-class SSDPNotifySocketList : public uHTTP::Vector<SSDPNotifySocket>  {
+class SSDPNotifySocketList : public Vector<SSDPNotifySocket>  {
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////

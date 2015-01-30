@@ -11,12 +11,12 @@
 #ifndef _MUPMPCC_DEVICELIST_H_
 #define _MUPMPCC_DEVICELIST_H_
 
-#include <uhttp/util/Vector.h>
+#include <mupnp/common/Vector.h>
 
 namespace mUPnP {
 class Device;
 
-class DeviceList : public uHTTP::Vector<Device> {
+class DeviceList : public Vector<Device> {
 public:
   ////////////////////////////////////////////////
   // Constants

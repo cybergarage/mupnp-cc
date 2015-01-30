@@ -11,12 +11,12 @@
 #ifndef _MUPMPCC_PROPERTYLIST_H_
 #define _MUPMPCC_PROPERTYLIST_H_
 
-#include <uhttp/util/Vector.h>
+#include <mupnp/common/Vector.h>
 #include <mupnp/event/Property.h>
 
 namespace mUPnP {
 
-class PropertyList : public uHTTP::Vector<Property>  {
+class PropertyList : public Vector<Property>  {
  public:
     
   ////////////////////////////////////////////////

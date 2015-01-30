@@ -16,7 +16,7 @@
 namespace mUPnP {
 class StateVariable;
 
-class ServiceStateTable : public uHTTP::Vector<StateVariable>  {
+class ServiceStateTable : public Vector<StateVariable>  {
 public:
   ////////////////////////////////////////////////
   // Constants
