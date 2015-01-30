@@ -43,7 +43,7 @@ class AllowedValue {
 public:
   
   AllowedValue() {
-    setAllowedValueNode(nullptr);
+    setAllowedValueNode(mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr));
   }
 
   AllowedValue(mupnp_shared_ptr<uXML::Node> node) {

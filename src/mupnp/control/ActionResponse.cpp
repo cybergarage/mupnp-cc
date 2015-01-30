@@ -100,7 +100,7 @@ uXML::Node *ActionResponse::createResponseNode(Action *action) {
 mupnp_shared_ptr<uXML::Node> ActionResponse::getActionResponseNode() {
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (!bodyNode || !bodyNode->hasNodes())
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   return bodyNode->getNode(0);
 }
 

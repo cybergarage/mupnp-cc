@@ -36,7 +36,7 @@ const char *mUPnP::StateVariable::SENDEVENTS_NO = "no";
 ////////////////////////////////////////////////
 
 mUPnP::StateVariable::StateVariable() {
-  this->serviceNode = nullptr;
+  this->serviceNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   this->stateVariableNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
 
   initAllowedValueList();

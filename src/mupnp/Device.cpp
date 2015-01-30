@@ -79,8 +79,8 @@ Device::Device(mupnp_shared_ptr<uXML::Node> root, mupnp_shared_ptr<uXML::Node> d
 
 Device::Device() {
   setLocalRootDeviceFlag(false);
-  rootNode = nullptr;
-  deviceNode = nullptr;
+  rootNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+  deviceNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   initUUID();
   updateBootID();
   initDeviceData();
@@ -89,7 +89,7 @@ Device::Device() {
   
 Device::Device(mupnp_shared_ptr<uXML::Node> device) {
   setLocalRootDeviceFlag(false);
-  rootNode = nullptr;
+  rootNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   deviceNode = device;
   initUUID();
   updateBootID();
@@ -128,8 +128,8 @@ void Device::initChildList() {
 
 Device::Device(uHTTP::File *descriptionFile) {
   setLocalRootDeviceFlag(true);
-  rootNode = nullptr;
-  deviceNode = nullptr;
+  rootNode =  mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);;
+  deviceNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   initUUID();
   updateBootID();
   bool ret = loadDescription(descriptionFile);
@@ -139,8 +139,8 @@ Device::Device(uHTTP::File *descriptionFile) {
 
 Device::Device(const std::string &descriptionFileName) {
   setLocalRootDeviceFlag(true);
-  rootNode = nullptr;
-  deviceNode = nullptr;
+  rootNode =  mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);;
+  deviceNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   initUUID();
   updateBootID();
   uHTTP::File descriptionFile(descriptionFileName);
@@ -479,7 +479,7 @@ mupnp_shared_ptr<Device> Device::getDevice(const std::string &name) {
     if (cdev)
       return cdev;
   }
-  return nullptr;
+  return mupnp_shared_ptr<Device>((Device *)nullptr);
 }
 
 mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &uri) {
@@ -493,7 +493,7 @@ mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &ur
     if (cdev)
       return cdev;
   }
-  return nullptr;
+  return mupnp_shared_ptr<Device>((Device *)nullptr);
 }
 
 ////////////////////////////////////////////////

@@ -57,9 +57,9 @@ void ActionRequest::initArgumentList() {
 mupnp_shared_ptr<uXML::Node> ActionRequest::getActionNode() {
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (!bodyNode)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   if (bodyNode->hasNodes() == false)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   return bodyNode->getNode(0);
 }
 

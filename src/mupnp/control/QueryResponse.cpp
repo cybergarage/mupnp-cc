@@ -44,14 +44,14 @@ void QueryResponse::setResponse(StateVariable *stateVar) {
 mupnp_shared_ptr<uXML::Node> QueryResponse::getReturnNode() {
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (!bodyNode)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   if (bodyNode->hasNodes() == false)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   mupnp_shared_ptr<uXML::Node> queryResNode = bodyNode->getNode(0);
   if (!queryResNode)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   if (queryResNode->hasNodes() == false)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   return queryResNode->getNode(0);
 }
   

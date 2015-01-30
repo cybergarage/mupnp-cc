@@ -19,5 +19,5 @@ using namespace mUPnP;
 
 ServiceData::ServiceData()  {
   service = nullptr;
-  scpdNode = nullptr;
+  scpdNode = mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 }

@@ -55,7 +55,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value) {
 
 mupnp_shared_ptr<uXML::Node> SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
   if (contentLen <= 0)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 
   uXML::Parser xmlParser;
   return xmlParser.parse(content, contentLen);

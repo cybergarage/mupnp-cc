@@ -178,14 +178,14 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
 
   Device *rootDev = getRootDevice();
   if (!rootDev)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 
   string urlBaseStr = rootDev->getURLBase();
   // Thanks for Steven Yen (2003/09/03)
   if (urlBaseStr.length() <= 0) {
     string location = rootDev->getLocation();
     if (location.length() <= 0)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     string locationHost;
     HTTP::GetHost(location, locationHost);
     int locationPort = HTTP::GetPort(location);
@@ -226,7 +226,7 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   }
 #endif
 
-  return nullptr;
+  return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 }
 
 const char *Service::getSCPDData(string &buf) {

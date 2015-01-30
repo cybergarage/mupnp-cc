@@ -69,21 +69,21 @@ private:
   mupnp_shared_ptr<uXML::Node> getUPnPErrorNode() {
     mupnp_shared_ptr<uXML::Node> detailNode = getFaultDetailNode();
     if (!detailNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return detailNode->getNodeEndsWith(uSOAP::SOAP::UPNP_ERROR);
   }
 
   mupnp_shared_ptr<uXML::Node> getUPnPErrorCodeNode() {
     mupnp_shared_ptr<uXML::Node> errorNode = getUPnPErrorNode();
     if (!errorNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_CODE);
   }
 
   mupnp_shared_ptr<uXML::Node> getUPnPErrorDescriptionNode() {
     mupnp_shared_ptr<uXML::Node> errorNode = getUPnPErrorNode();
     if (!errorNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_DESCRIPTION);
   }
 

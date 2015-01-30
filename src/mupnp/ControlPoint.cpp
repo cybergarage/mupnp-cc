@@ -57,10 +57,10 @@ ControlPoint::~ControlPoint() {
 
 mupnp_shared_ptr<Device> ControlPoint::getDevice(mupnp_shared_ptr<uXML::Node> rootNode) {
   if (!rootNode)
-      return nullptr;
+    return mupnp_shared_ptr<Device>((Device *)nullptr);
   mupnp_shared_ptr<uXML::Node> devNode = rootNode->getNode(Device::ELEM_NAME);
   if (!devNode)
-      return nullptr;
+    return mupnp_shared_ptr<Device>((Device *)nullptr);
   return mupnp_shared_ptr<Device>(new Device(rootNode, devNode));
 }
 
@@ -88,7 +88,7 @@ mupnp_shared_ptr<Device> ControlPoint::getDevice(const std::string &name) {
     if (cdev)
       return cdev;
   } 
-  return nullptr;
+  return mupnp_shared_ptr<Device>((Device *)nullptr);
 }
 
 ////////////////////////////////////////////////

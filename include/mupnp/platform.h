@@ -27,6 +27,7 @@
 #include <boost/shared_ptr.hpp>
 #define mupnp_shared_ptr boost::shared_ptr
 #define mupnp_weark_ptr boost::weak_ptr
+#define nullptr NULL
 #endif
 
 #endif

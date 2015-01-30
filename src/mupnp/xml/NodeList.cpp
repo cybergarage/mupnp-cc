@@ -25,7 +25,7 @@ mupnp_shared_ptr<uXML::Node> NodeList::getNode(const std::string &name)  {
     if (uHTTP::StringEquals(name, nodeName) == true)
       return node;
   }
-  return nullptr;
+  return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 }
 
 mupnp_shared_ptr<uXML::Node> NodeList::getEndsWith(const std::string &name)  {
@@ -38,7 +38,7 @@ mupnp_shared_ptr<uXML::Node> NodeList::getEndsWith(const std::string &name)  {
     if (uHTTP::StringEndsWith(nodeName, name) == true)
       return node;
   }
-  return nullptr;
+  return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 }
 
 mupnp_shared_ptr<uXML::Node> NodeList::getNode(const std::string &name, const std::string &value)  {
@@ -52,5 +52,5 @@ mupnp_shared_ptr<uXML::Node> NodeList::getNode(const std::string &name, const st
     if (uHTTP::StringEquals(value, nodeValue) == true)
       return node;
   }
-  return nullptr;
+  return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
 }

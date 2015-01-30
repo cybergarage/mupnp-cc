@@ -79,12 +79,12 @@ uXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, con
 mupnp_shared_ptr<uXML::Node> NotifyRequest::getVariableNode() {
   mupnp_shared_ptr<uXML::Node> rootNode = getEnvelopeNode();
   if (!rootNode)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   if (rootNode->hasNodes() == false)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   mupnp_shared_ptr<uXML::Node> propNode = rootNode->getNode(0);
   if (propNode->hasNodes() == false)
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   return propNode->getNode(0);
 }
 

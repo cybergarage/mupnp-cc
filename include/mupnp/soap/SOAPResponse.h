@@ -79,14 +79,14 @@ private:
   mupnp_shared_ptr<uXML::Node> getBodyNode() {
     mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
     if (!envNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return envNode->getNodeEndsWith(uSOAP::SOAP::BODY);
   }
 
   mupnp_shared_ptr<uXML::Node> getMethodResponseNode(const std::string & name) {
     mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
     if (!bodyNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     std::string methodResName;
     methodResName = name;
     methodResName += SOAP::RESPONSE;
@@ -96,35 +96,35 @@ private:
   mupnp_shared_ptr<uXML::Node> getFaultNode() {
     mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
     if (!bodyNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return bodyNode->getNodeEndsWith(uSOAP::SOAP::FAULT);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultCodeNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (!faultNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_CODE);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultStringNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (!faultNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_STRING);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultActorNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (!faultNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULTACTOR);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultDetailNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
     if (!faultNode)
-      return nullptr;
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
     return faultNode->getNodeEndsWith(uSOAP::SOAP::DETAIL);
   }
 

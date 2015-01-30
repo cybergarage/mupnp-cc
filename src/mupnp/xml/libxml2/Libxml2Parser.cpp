@@ -125,7 +125,7 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) 
   if (!doc) {
     LogWarn("XML file parsing failed:");
     LogWarn("%s", data.c_str());
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   }
 
   // Then get a pointer to the root node
@@ -134,7 +134,7 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) 
   if (!cur) {
     LogWarn("Empty document");
     xmlFreeDoc(doc);
-    return nullptr;
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
   }
 
   // Then convert the libxml2 type node tree into mUPnP XML node tree
