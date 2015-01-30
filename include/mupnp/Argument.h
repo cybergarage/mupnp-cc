@@ -97,7 +97,7 @@ class Argument {
 
   bool isInDirection() {
     const char *dir = getDirection();
-    if (dir == NULL)
+    if (!dir)
       return false;
     uHTTP::String dirStr(dir);
     return dirStr.equalsIgnoreCase(IN_DIR);
@@ -128,7 +128,7 @@ class Argument {
   ArgumentData *getArgumentData() {
     mupnp_shared_ptr<uXML::Node> node = getArgumentNode();
     ArgumentData *userData = dynamic_cast<ArgumentData *>(node->getUserData());
-    if (userData == NULL) {
+    if (!userData) {
       userData = new ArgumentData();
       node->setUserData(userData);
     }

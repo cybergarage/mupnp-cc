@@ -50,7 +50,7 @@ public:
 public:
   
   AllowedValueRange() {
-    setAllowedValueRangeNode(NULL);
+    setAllowedValueRangeNode(nullptr);
   }
 
   AllowedValueRange(mupnp_shared_ptr<uXML::Node> node) {

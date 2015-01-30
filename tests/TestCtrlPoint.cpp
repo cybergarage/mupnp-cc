@@ -125,7 +125,7 @@ void PrintDeviceInfo(Device *dev, int indent)
           Argument *arg = argList->getArgument(j);
           cout << indentStr << "    arg[" << j << "] = " << arg->getName() << "("  << arg->getDirection() << ")";
           StateVariable *stateVar = arg->getRelatedStateVariable();
-          if (stateVar != NULL)
+          if (stateVar)
             cout << " - " << stateVar->getName();
           cout << endl;
       }
@@ -142,7 +142,7 @@ void PrintDeviceInfo(Device *dev, int indent)
           cout << indentStr << "    AllowedValueList[" << j << "] = " << valueList->getAllowedValue(j) << endl;
       }
       AllowedValueRange *valueRange = stateVar->getAllowedValueRange();
-      if (valueRange != NULL) {
+      if (valueRange) {
           cout << indentStr << "    AllowedRange[minimum] = " << valueRange->getMinimum() << endl;
           cout << indentStr << "    AllowedRange[maximum] = " << valueRange->getMaximum() << endl;
           cout << indentStr << "    AllowedRange[step] = " << valueRange->getStep() << endl;

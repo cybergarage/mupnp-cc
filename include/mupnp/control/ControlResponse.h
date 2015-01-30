@@ -68,29 +68,29 @@ private:
 
   mupnp_shared_ptr<uXML::Node> getUPnPErrorNode() {
     mupnp_shared_ptr<uXML::Node> detailNode = getFaultDetailNode();
-    if (detailNode == NULL)
-      return NULL;
+    if (!detailNode)
+      return nullptr;
     return detailNode->getNodeEndsWith(uSOAP::SOAP::UPNP_ERROR);
   }
 
   mupnp_shared_ptr<uXML::Node> getUPnPErrorCodeNode() {
     mupnp_shared_ptr<uXML::Node> errorNode = getUPnPErrorNode();
-    if (errorNode == NULL)
-      return NULL;
+    if (!errorNode)
+      return nullptr;
     return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_CODE);
   }
 
   mupnp_shared_ptr<uXML::Node> getUPnPErrorDescriptionNode() {
     mupnp_shared_ptr<uXML::Node> errorNode = getUPnPErrorNode();
-    if (errorNode == NULL)
-      return NULL;
+    if (!errorNode)
+      return nullptr;
     return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_DESCRIPTION);
   }
 
  public:
   int getUPnPErrorCode() {
     mupnp_shared_ptr<uXML::Node> errorCodeNode = getUPnPErrorCodeNode();
-    if (errorCodeNode == NULL)
+    if (!errorCodeNode)
       return -1;
     const char *errorCodeStr = errorCodeNode->getValue();
     return atoi(errorCodeStr);
@@ -98,7 +98,7 @@ private:
 
   const char *getUPnPErrorDescription() {
     mupnp_shared_ptr<uXML::Node> errorDescNode = getUPnPErrorDescriptionNode();
-    if (errorDescNode == NULL)
+    if (!errorDescNode)
       return "";
     return errorDescNode->getValue();
   }

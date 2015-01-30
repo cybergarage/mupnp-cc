@@ -69,7 +69,7 @@ uXML::Node *ActionResponse::createResponseNode(Action *action) {
   uXML::Node *actionNameResNode = new uXML::Node(nodeName.c_str());
     
   Service *service = action->getService();    
-  if (service != NULL) {
+  if (service) {
     string attrName;
     attrName ="xmlns:";
     attrName += uSOAP::SOAP::METHODNS;
@@ -99,8 +99,8 @@ uXML::Node *ActionResponse::createResponseNode(Action *action) {
 
 mupnp_shared_ptr<uXML::Node> ActionResponse::getActionResponseNode() {
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
-  if (bodyNode == NULL || bodyNode->hasNodes() == false)
-    return NULL;
+  if (!bodyNode || !bodyNode->hasNodes())
+    return nullptr;
   return bodyNode->getNode(0);
 }
 
@@ -108,7 +108,7 @@ ArgumentList *ActionResponse::getResponse() {
   argList.clear();
     
   mupnp_shared_ptr<uXML::Node> resNode = getActionResponseNode();
-  if (resNode == NULL)
+  if (!resNode)
     return &argList;
       
   size_t nArgs = resNode->getNNodes();

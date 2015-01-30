@@ -56,11 +56,11 @@ ControlPoint::~ControlPoint() {
 ////////////////////////////////////////////////
 
 mupnp_shared_ptr<Device> ControlPoint::getDevice(mupnp_shared_ptr<uXML::Node> rootNode) {
-  if (rootNode == NULL)
-      return NULL;
+  if (!rootNode)
+      return nullptr;
   mupnp_shared_ptr<uXML::Node> devNode = rootNode->getNode(Device::ELEM_NAME);
-  if (devNode == NULL)
-      return NULL;
+  if (!devNode)
+      return nullptr;
   return mupnp_shared_ptr<Device>(new Device(rootNode, devNode));
 }
 
@@ -71,7 +71,7 @@ void ControlPoint::initDeviceList() {
   for (size_t n = 0; n < nRoots; n++) {
     mupnp_shared_ptr<uXML::Node> rootNode = devNodeList.getNode(n);
     mupnp_shared_ptr<Device> dev = getDevice(rootNode);
-    if (dev == NULL)
+    if (!dev)
       continue;
     deviceList.add(dev);
   }
@@ -85,10 +85,10 @@ mupnp_shared_ptr<Device> ControlPoint::getDevice(const std::string &name) {
     if (dev->isDevice(name) == true)
       return dev;
     mupnp_shared_ptr<Device> cdev = dev->getDevice(name);
-    if (cdev != NULL)
+    if (cdev)
       return cdev;
   } 
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -113,7 +113,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   const char *usn = ssdpPacket->getUSN(usnBuf);
   const char *udn = USN::GetUDN(usn, udnBuf);
   mupnp_shared_ptr<Device> dev = getDevice(udn);
-  if (dev != NULL) {
+  if (dev) {
     dev->setSSDPPacket(ssdpPacket);
     unlock();
     return false;
@@ -125,7 +125,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   uXML::Parser parser;
   mupnp_shared_ptr<uXML::Node> rootNode = parser.parse(&locationURL);
   mupnp_shared_ptr<Device> rootDev = getDevice(rootNode);
-  if (rootDev == NULL) {
+  if (!rootDev) {
     unlock();
     return false;
   }
@@ -165,7 +165,7 @@ bool ControlPoint::removeDevice(SSDPPacket *packet) {
   const char *udn = USN::GetUDN(usn, udnBuf);
   
   mupnp_shared_ptr<Device> dev = getDevice(udn);
-  if (dev == NULL) {
+  if (!dev) {
     unlock();
     return false;
   }
@@ -361,7 +361,7 @@ bool ControlPoint::subscribe(Service *service, long timeout) {
   }
   
   Device *rootDev = service->getRootDevice();
-  if (rootDev == NULL)
+  if (!rootDev)
     return false;
   
   lock();
@@ -409,7 +409,7 @@ bool ControlPoint::subscribe(Service *service, const std::string &uuid, long tim
 }
 
 bool ControlPoint::isSubscribed(Service *service) {
-  if (service == NULL)
+  if (!service)
     return false;
   return service->isSubscribed();
 }
@@ -509,10 +509,10 @@ Service *ControlPoint::getSubscriberService(const std::string &uuid) {
   for (size_t n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getSubscriberService(uuid);
-    if (service != NULL)
+    if (service)
       return service;
   }
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -643,7 +643,7 @@ bool ControlPoint::stop() {
   ////////////////////////////////////////
 
   Disposer *disposer = getDeviceDisposer();
-  if (disposer != NULL) {
+  if (disposer) {
     disposer->stop();
     setDeviceDisposer(NULL);
   }
@@ -653,7 +653,7 @@ bool ControlPoint::stop() {
   ////////////////////////////////////////
     
   RenewSubscriber *renewSub = getRenewSubscriber();
-  if (renewSub != NULL) {
+  if (renewSub) {
     renewSub->stop();
     setRenewSubscriber(NULL);
   }

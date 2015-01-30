@@ -57,7 +57,7 @@ bool SSDPPacket::isRootDevice() {
 ////////////////////////////////////////////////
 
 void SSDPPacket::set(SSDPPacket *ssdpPacket) {
-  if (ssdpPacket == NULL) {
+  if (!ssdpPacket) {
     setLocalAddress("");
     setTimeStamp(0);
     setDatagramPacket(NULL);

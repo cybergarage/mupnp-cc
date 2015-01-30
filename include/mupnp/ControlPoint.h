@@ -167,7 +167,7 @@ private:
   mupnp_shared_ptr<Device> getDevice(const std::string &name);
 
   bool hasDevice(const std::string &name) {
-    return (getDevice(name) != NULL) ? true : false;
+    return (getDevice(name)) ? true : false;
   }
 
 private:
@@ -189,7 +189,7 @@ private:
   }
   
   void setDeviceDisposer(Disposer *disposer) {
-    if (deviceDisposer != NULL)
+    if (deviceDisposer)
       delete deviceDisposer;
     deviceDisposer = disposer;
   }
@@ -369,7 +369,7 @@ private:
   
  public:
   void setRenewSubscriber(RenewSubscriber *sub) {
-    if (renewSubscriber != NULL)
+    if (renewSubscriber)
       delete renewSubscriber;
     renewSubscriber = sub;
   }

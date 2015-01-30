@@ -36,7 +36,7 @@ const char *mUPnP::StateVariable::SENDEVENTS_NO = "no";
 ////////////////////////////////////////////////
 
 mUPnP::StateVariable::StateVariable() {
-  this->serviceNode = NULL;
+  this->serviceNode = nullptr;
   this->stateVariableNode = mupnp_shared_ptr<uXML::Node>(new uXML::Node());
 
   initAllowedValueList();
@@ -61,7 +61,7 @@ mUPnP::StateVariable::~StateVariable() {
 void mUPnP::StateVariable::initAllowedValueList() {
   allowedValueList.clear();
   mupnp_shared_ptr<uXML::Node> allowedValueListNode = getStateVariableNode()->getNode(AllowedValueList::ELEM_NAME);
-  if (allowedValueListNode == NULL)
+  if (!allowedValueListNode)
     return;
   size_t nNode = allowedValueListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
@@ -89,10 +89,10 @@ void mUPnP::StateVariable::initAllowedValueRange() {
 mUPnP::Service *mUPnP::StateVariable::getService() {
   mupnp_shared_ptr<uXML::Node> node = getServiceNode();
   if (!node)
-    return NULL;
+    return nullptr;
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
-  if (data == NULL)
-    return NULL;
+  if (!data)
+    return nullptr;
   return data->getService();
 }
 
@@ -103,7 +103,7 @@ mUPnP::Service *mUPnP::StateVariable::getService() {
 mUPnP::StateVariableData *mUPnP::StateVariable::getStateVariableData () {
   mupnp_shared_ptr<uXML::Node> node = getStateVariableNode();
   StateVariableData *userData = dynamic_cast<StateVariableData *>(node->getUserData());
-  if (userData == NULL) {
+  if (!userData) {
     userData = new StateVariableData();
     node->setUserData(userData);
   }
@@ -125,7 +125,7 @@ void mUPnP::StateVariable::setValue(const std::string &value) {
 
   // notify event
   Service *service = getService();
-  if (service == NULL)
+  if (!service)
     return;
   if (isSendEvents() == false)
     return;
@@ -159,7 +159,7 @@ void mUPnP::StateVariable::set(StateVariable *stateVar)  {
 
 bool mUPnP::StateVariable::performQueryListener(QueryRequest *queryReq) {
   QueryListener *listener = getQueryListener();
-  if (listener == NULL)
+  if (!listener)
     return false;
   QueryResponse queryRes;
   StateVariable retVar;

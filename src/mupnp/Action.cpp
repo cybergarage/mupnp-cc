@@ -56,8 +56,8 @@ Action::~Action() {
 Service *Action::getService() {
   mupnp_shared_ptr<uXML::Node> node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
-  if (data == NULL)
-    return NULL;
+  if (!data)
+    return nullptr;
   return data->getService();
 }
 
@@ -72,7 +72,7 @@ void Action::initArgumentList() {
 
   mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
   mupnp_shared_ptr<uXML::Node> argumentListNode = getActionNode()->getNode(ArgumentList::ELEM_NAME);
-  if (serviceNode == NULL || argumentListNode == NULL)
+  if (!serviceNode || !argumentListNode)
     return;
 
   size_t nodeCnt = argumentListNode->getNNodes();
@@ -95,13 +95,13 @@ Argument *Action::getArgument(const std::string &name) {
   for (size_t n = 0; n < nArgs; n++) {
     Argument *arg = argList->getArgument(n);
     const char *argName = arg->getName();
-    if (argName == NULL)
+    if (!argName)
       continue;
     string argNameStr = argName;
     if (argNameStr.compare(name) == 0)
       return arg;
   }
-  return NULL;
+  return nullptr;
 }
 
 void Action::clearOutputAgumentValues() {
@@ -119,7 +119,7 @@ void Action::clearOutputAgumentValues() {
 
 bool Action::performActionListener(ActionRequest *actionReq) {
   ActionListener *listener = (ActionListener *)getActionListener();
-  if (listener == NULL)
+  if (!listener)
     return false;
   ActionResponse actionRes;
   setStatus(UPnP::INVALID_ACTION);

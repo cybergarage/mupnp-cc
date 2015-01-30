@@ -18,5 +18,5 @@ uXML::Attribute *uXML::AttributeList::getAttribute(const std::string &name)  {
     if (uHTTP::StringEquals(name, elem->getName()) == true)
       return elem;
   }
-  return NULL;
+  return nullptr;
 }

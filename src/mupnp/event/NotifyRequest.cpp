@@ -78,13 +78,13 @@ uXML::Node *NotifyRequest::createPropertySetNode(const std::string &varName, con
 
 mupnp_shared_ptr<uXML::Node> NotifyRequest::getVariableNode() {
   mupnp_shared_ptr<uXML::Node> rootNode = getEnvelopeNode();
-  if (rootNode == NULL)
-    return NULL;
+  if (!rootNode)
+    return nullptr;
   if (rootNode->hasNodes() == false)
-    return NULL;
+    return nullptr;
   mupnp_shared_ptr<uXML::Node> propNode = rootNode->getNode(0);
   if (propNode->hasNodes() == false)
-    return NULL;
+    return nullptr;
   return propNode->getNode(0);
 }
 
@@ -95,7 +95,7 @@ mupnp_shared_ptr<uXML::Node> NotifyRequest::getVariableNode() {
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)
 Property *NotifyRequest::getProperty(uXML::Node *varNode) {
   Property *prop = new Property();
-  if (varNode == NULL) {
+  if (!varNode) {
     prop->setName("");
     prop->setValue("");
     return prop;
@@ -116,7 +116,7 @@ PropertyList *NotifyRequest::getPropertyList()  {
   mupnp_shared_ptr<uXML::Node> propSetNode = getEnvelopeNode();
   for (int i = 0; i<propSetNode->getNNodes(); i++){
     mupnp_shared_ptr<uXML::Node> propNode = propSetNode->getNode(i);
-    if (propNode == NULL)
+    if (!propNode)
       continue;
     Property *prop = getProperty(propNode->getNode(0).get());
     propList.add(prop);

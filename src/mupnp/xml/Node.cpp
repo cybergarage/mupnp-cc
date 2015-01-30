@@ -41,7 +41,7 @@ Node::Node(const std::string &ns, const std::string &name)  {
 
 Node::~Node() {
   removeAllNodes();
-  if (userData != NULL)
+  if (userData)
     delete userData;
 }
 
@@ -50,10 +50,10 @@ Node::~Node() {
 ////////////////////////////////////////////////
 
 void Node::setUserData(NodeData *data) {
-  if (userData != NULL)
+  if (userData)
     delete userData;
   userData = data;
-  if (userData != NULL)
+  if (userData)
     userData->setNode(this);
 }
 
@@ -84,7 +84,7 @@ void Node::setValue(int val) {
 
 void Node::setAttribute(const std::string & name, const std::string &value) {
   Attribute *attr = getAttribute(name);
-  if (attr == NULL) {
+  if (!attr) {
     attr = new Attribute(name, value);
     addAttribute(attr);
   }
@@ -111,7 +111,7 @@ void Node::setAttribute(const std::string &name, int value) {
 
 const char *Node::getAttributeValue(const std::string & name) {
   Attribute *attr = getAttribute(name);
-  if (attr != NULL)
+  if (attr)
     return attr->getValue();
   return "";
 }
@@ -173,7 +173,7 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
 #endif
     outputAttributes(ps);
     // Thnaks for Tho Beisch (11/09/04)
-    if (value == NULL|| strlen(value) == 0) {
+    if (!value || strlen(value) == 0) {
       // No value, so use short notation <node />
 #ifndef NO_USE_OSTRINGSTREAM
       ps << " />";

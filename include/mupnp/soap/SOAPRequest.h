@@ -114,10 +114,10 @@ private:
     
   mupnp_shared_ptr<uXML::Node> getBodyNode() {
     mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
-    if (envNode == NULL)
-      return NULL;
+    if (!envNode)
+      return nullptr;
     if (envNode->hasNodes() == false)
-      return NULL;
+      return nullptr;
     return envNode->getNode(0);
   }
 

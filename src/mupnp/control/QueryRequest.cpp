@@ -70,15 +70,15 @@ uXML::Node *QueryRequest::createContentNode(StateVariable *stateVar) {
 
 mupnp_shared_ptr<uXML::Node> QueryRequest::getVarNameNode() {
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
-  if (bodyNode == NULL)
-    return NULL;
+  if (!bodyNode)
+    return nullptr;
   if (bodyNode->hasNodes() == false)
-    return NULL;
+    return nullptr;
   mupnp_shared_ptr<uXML::Node> queryStateVarNode = bodyNode->getNode(0);
-  if (queryStateVarNode == NULL)
-    return NULL;
+  if (!queryStateVarNode)
+    return nullptr;
   if (queryStateVarNode->hasNodes() == false)
-    return NULL;
+    return nullptr;
   return queryStateVarNode->getNode(0);
 }
   

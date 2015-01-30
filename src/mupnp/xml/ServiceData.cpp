@@ -18,6 +18,6 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 
 ServiceData::ServiceData()  {
-  service = NULL;
-  scpdNode = NULL;
+  service = nullptr;
+  scpdNode = nullptr;
 }

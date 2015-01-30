@@ -139,28 +139,28 @@ private:
   
   void setArgumentValue(const std::string &name, const std::string &value) {
     Argument *arg = getArgument(name);
-    if (arg == NULL)
+    if (!arg)
       return;
     arg->setValue(value);
   }
 
   void setArgumentValue(const std::string &name, int value) {
     Argument *arg = getArgument(name);
-    if (arg == NULL)
+    if (!arg)
       return;
     arg->setValue(value);
   }
 
   const char *getArgumentValue(const std::string &name) {
     Argument *arg = getArgument(name);
-    if (arg == NULL)
+    if (!arg)
       return "";
     return arg->getValue();
   }
 
   int getArgumentIntegerValue(const std::string &name) {
     Argument *arg = getArgument(name);
-    if (arg == NULL)
+    if (!arg)
       return 0;
     return arg->getIntegerValue();
   }
@@ -172,7 +172,7 @@ private:
   ActionData *getActionData() {
     mupnp_shared_ptr<uXML::Node> node = getActionNode();
     ActionData *userData = dynamic_cast<ActionData *>(node->getUserData());
-    if (userData == NULL) {
+    if (!userData) {
       userData = new ActionData();
       node->setUserData(userData);
     }

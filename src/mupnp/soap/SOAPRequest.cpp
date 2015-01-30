@@ -38,13 +38,13 @@ SOAPRequest::~SOAPRequest() {
 
 bool SOAPRequest::isSOAPAction(const std::string &value) {
   const char *headerValue = getHeaderValue(SOAPACTION);
-  if (headerValue == NULL)
+  if (!headerValue)
     return false;
   if (uHTTP::StringEquals(headerValue, value) == true)
     return true;
   std::string buf;
   const char *soapAction = getSOAPAction(buf);
-  if (soapAction == NULL)
+  if (!soapAction)
     return false;
   return uHTTP::StringEquals(soapAction, value);
 }
@@ -55,7 +55,7 @@ bool SOAPRequest::isSOAPAction(const std::string &value) {
 
 mupnp_shared_ptr<uXML::Node> SOAPRequest::parseMessage(const std::string &content, size_t contentLen) {
   if (contentLen <= 0)
-    return NULL;
+    return nullptr;
 
   uXML::Parser xmlParser;
   return xmlParser.parse(content, contentLen);
@@ -66,7 +66,7 @@ mupnp_shared_ptr<uXML::Node> SOAPRequest::parseMessage(const std::string &conten
 ////////////////////////////////////////////////
 
 mupnp_shared_ptr<uXML::Node> SOAPRequest::getRootNode() {
-  if (rootNode != NULL)
+  if (rootNode)
     return rootNode;
       
   const char *content = getContent();

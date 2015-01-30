@@ -59,7 +59,7 @@ Service::~Service() {
 Device *Service::getRootDevice() {
   Device *dev = getDevice();
   if (!dev)
-    return NULL;
+    return nullptr;
   return dev->getRootDevice();
 }
 
@@ -70,10 +70,10 @@ Device *Service::getRootDevice() {
 void Service::initActionList() {
   actionList.clear();
   mupnp_shared_ptr<uXML::Node> scdpNode = getSCPDNode();
-  if (scdpNode == NULL)
+  if (!scdpNode)
     return;
   mupnp_shared_ptr<uXML::Node> actionListNode = scdpNode->getNode(ActionList::ELEM_NAME);
-  if (actionListNode == NULL)
+  if (!actionListNode)
     return;
   mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
   size_t nNode = actionListNode->getNNodes();
@@ -92,13 +92,13 @@ mUPnP::Action *Service::getAction(const std::string &actionName) {
   for (size_t n = 0; n < nActions; n++) {
     Action *action = actionList->getAction(n);
     const char *name = action->getName();
-    if (name == NULL)
+    if (!name)
       continue;
     string nameStr = name;
     if (nameStr.compare(actionName) == 0)
       return action;
   }
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -108,10 +108,10 @@ mUPnP::Action *Service::getAction(const std::string &actionName) {
 void Service::initServiceStateTable() {
   serviceStateTable.clear();
   mupnp_shared_ptr<uXML::Node> scpdNode = getSCPDNode();
-  if (scpdNode == NULL)
+  if (!scpdNode)
     return;
   mupnp_shared_ptr<uXML::Node> stateTableNode = scpdNode->getNode(ServiceStateTable::ELEM_NAME);
-  if (stateTableNode == NULL)
+  if (!stateTableNode)
     return;
   mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
   size_t nNode = stateTableNode->getNNodes();
@@ -130,13 +130,13 @@ StateVariable *Service::getStateVariable(const std::string &name) {
   for (size_t n = 0; n < tableSize; n++) {
     StateVariable *var = stateTable->getStateVariable(n);
     const char *varName = var->getName();
-    if (varName == NULL)
+    if (!varName)
       continue;
     string varNameStr = varName;
     if (varNameStr.compare(name) == 0)
       return var;
   }
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -165,27 +165,27 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(const std::string &description
 mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   ServiceData *data = getServiceData();
   mupnp_shared_ptr<uXML::Node> scpdNode = data->getSCPDNode();
-  if (scpdNode != NULL)
+  if (scpdNode)
     return scpdNode;
   
   const char *scpdURLStr = getSCPDURL();
   URL scpdURL(scpdURLStr);
   scpdNode = getSCPDNode(&scpdURL);
-  if (scpdNode != NULL) {
+  if (scpdNode) {
     data->setSCPDNode(scpdNode);
     return scpdNode;
   }
 
   Device *rootDev = getRootDevice();
-  if (rootDev == NULL)
-    return NULL;
+  if (!rootDev)
+    return nullptr;
 
   string urlBaseStr = rootDev->getURLBase();
   // Thanks for Steven Yen (2003/09/03)
   if (urlBaseStr.length() <= 0) {
     string location = rootDev->getLocation();
     if (location.length() <= 0)
-      return NULL;
+      return nullptr;
     string locationHost;
     HTTP::GetHost(location, locationHost);
     int locationPort = HTTP::GetPort(location);
@@ -199,7 +199,7 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   newScpdURLStr.append(scpdURLStr);
   URL newScpdURL(newScpdURLStr.c_str());
   scpdNode = getSCPDNode(&newScpdURL);
-  if (scpdNode != NULL) {
+  if (scpdNode) {
     data->setSCPDNode(scpdNode);
     return scpdNode;
   }
@@ -208,7 +208,7 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   newScpdURLStr = HTTP::GetAbsoluteURL(urlBaseStr.c_str(), scpdURLStr, newScpdURLStrBuf);
   newScpdURL.setString(newScpdURLStr.c_str());
   scpdNode = getSCPDNode(&newScpdURL);
-  if (scpdNode != NULL) {
+  if (scpdNode) {
     data->setSCPDNode(scpdNode);
     return scpdNode;
   }
@@ -220,19 +220,19 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   newScpdFileStr.append(scpdURLStr);
   File newScpdFile(newScpdFileStr.c_str());
   scpdNode = getSCPDNode(&newScpdFile);
-  if (scpdNode != NULL) {
+  if (scpdNode) {
     data->setSCPDNode(scpdNode);
     return scpdNode;
   }
 #endif
 
-  return NULL;
+  return nullptr;
 }
 
 const char *Service::getSCPDData(string &buf) {
   mupnp_shared_ptr<uXML::Node> scpdNode = getSCPDNode();
   buf = "";
-  if (scpdNode != NULL) {
+  if (scpdNode) {
     string nodeBuf;
     // Thanks for Mikael Hakman (04/25/05)
     buf = UPnP::XML_DECLARATION;
@@ -261,7 +261,7 @@ bool Service::loadSCPD(const std::string &description) {
     return false;
   }
 
-  if (scpdNode == NULL)
+  if (!scpdNode)
     return false;
 
   ServiceData *data = getServiceData();
@@ -333,7 +333,7 @@ void Service::notify(StateVariable *stateVar) {
     subArray[n] = subList->getSubscriber(n);
   for (n = 0; n < subArrayCnt; n++) {
     Subscriber *sub = subArray[n];
-    if (sub == NULL)
+    if (!sub)
       continue;
     if (sub->isExpired() == true)
       removeSubscriber(sub);
@@ -347,7 +347,7 @@ void Service::notify(StateVariable *stateVar) {
     subArray[n] = subList->getSubscriber(n);
   for (n = 0; n < subArrayCnt; n++) {
     Subscriber *sub = subArray[n];
-    if (sub == NULL)
+    if (!sub)
       continue;
     if (notify(sub, stateVar) == false) {
       /* Don't remove for NMPR specification.
@@ -488,7 +488,7 @@ Subscriber *Service::getSubscriberBySID(const std::string &name) {
     Subscriber *sub = subList->getSubscriber(n);
     const char *sid = sub->getSID();
     //cout << "[" << n << "] = " << sid << endl;
-    if (sid == NULL)
+    if (!sid)
       continue;
     string sidStr = sid;
     if (sidStr.compare(name) == 0) {
@@ -507,10 +507,10 @@ Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name) {
   size_t subListCnt = subList->size();
   for (size_t n = 0; n < subListCnt; n++) {
     Subscriber *sub = subList->getSubscriber(n);
-    if (sub == NULL)
+    if (!sub)
       continue;
     const char *url = sub->getDeliveryURL();
-    if (url == NULL)
+    if (!url)
       continue;
     string urlStr = url;
     if (urlStr.compare(name) == 0) {

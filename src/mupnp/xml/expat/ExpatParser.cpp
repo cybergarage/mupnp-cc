@@ -69,8 +69,8 @@ static void XMLCALL ExpatElementStart(void *userData, const XML_Char *el, const 
   for (int n = 0; attr[n]; n += 2)
     node->setAttribute(attr[n], attr[n+1]);
 
-  if (expatData->rootNode != NULL) {
-    if (expatData->currNode != NULL)
+  if (expatData->rootNode) {
+    if (expatData->currNode)
       expatData->currNode->addNode(node);
     else
       expatData->rootNode->addNode(node);
@@ -83,14 +83,14 @@ static void XMLCALL ExpatElementStart(void *userData, const XML_Char *el, const 
 
 static void XMLCALL ExpatElementEnd(void *userData, const XML_Char *el) {
   ExpatData *expatData = (ExpatData *)userData;
-  if (expatData->currNode != NULL)
+  if (expatData->currNode)
     expatData->currNode = expatData->currNode->getParentNode();
 }
 
 static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int len) {
   ExpatData *expatData = (ExpatData *)userData;
 
-  if (expatData->currNode != NULL)
+  if (expatData->currNode)
     expatData->currNode->addValue(s, len);
 }
 
@@ -101,7 +101,7 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) {
   XML_Parser p = XML_ParserCreate(NULL);
   if (!p)
-    return NULL;
+    return nullptr;
 
   ExpatData expatData;
   expatData.rootNode = NULL;
@@ -114,12 +114,12 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) 
   XML_ParserFree(p);
 
   if (parseRet == 0 /*XML_STATUS_ERROR*/) {
-    if (expatData.rootNode != NULL)
+    if (expatData.rootNode)
         delete expatData.rootNode;
-    return NULL;
+    return nullptr;
   }
 
-  //if (expatData.rootNode != NULL)
+  //if (expatData.rootNode)
   // expatData.rootNode->print();
 
   return mupnp_shared_ptr<uXML::Node>(expatData.rootNode);

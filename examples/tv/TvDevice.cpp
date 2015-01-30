@@ -100,12 +100,12 @@ bool TVDevice::isDevice(SSDPPacket *packet, const char * deviceType)
 	
 Service *TVDevice::getDeviceService(const char * deviceType, const char * serviceType)
 {
-	Device *dev = ctrlPoint->getDevice(deviceType);
-	if (dev == NULL)
+	mupnp_shared_ptr<Device> dev = ctrlPoint->getDevice(deviceType);
+	if (!dev)
 		return NULL;
 	Service *service = dev->getService(serviceType);
-	if (service == NULL)
-		return NULL;
+	if (!service)
+		return nullptr;
 	return service;
 }
 

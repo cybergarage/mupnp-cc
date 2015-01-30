@@ -29,13 +29,13 @@ Argument *ArgumentList::getArgument(const std::string &name) {
   for (size_t n = 0; n < nArgs; n++) {
     Argument *arg = getArgument(n);
     const char *argName = arg->getName();
-    if (argName == NULL)
+    if (!argName)
       continue;
     uHTTP::String argNameStr(argName);
     if (argNameStr.equals(name) == true)
       return arg;
   }
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -48,7 +48,7 @@ void ArgumentList::set(ArgumentList *inArgList) {
     Argument *inArg = inArgList->getArgument(n);
     const char *inArgName = inArg->getName();
     Argument *arg = getArgument(inArgName);
-    if (arg == NULL)
+    if (!arg)
       continue;
     string inArgValue = inArg->getValue();
     arg->setValue(inArgValue.c_str());

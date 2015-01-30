@@ -46,22 +46,22 @@ Parser::~Parser() {
 ////////////////////////////////////////////////
 
 static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
-  if ( cur == NULL ) {
+  if (!cur) {
     // This should never happen...
     LogFatal("convertToCLinkFormat: This should never happen!");
     exit( 0 );
-    return NULL;
+    return nullptr;
   }
 
-  if ( depth > 12 ) {
+  if (depth > 12) {
     LogWarn("convertToCLinkFormat: Recursion depth > 10. Are you sure this is OK!?");
-    return NULL;
+    return nullptr;
   }
   
   // We are only interested in XML_ELEMENT_NODEs.
   // Note, that the resulting Node tree will only contain them...
   if ( cur->type != XML_ELEMENT_NODE )
-    return NULL;
+    return nullptr;
   
   Node *newNode = new Node();
     
@@ -104,7 +104,7 @@ static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
 
   // Then convert (recursively) all the children of the current node
   xmlNodePtr child = cur->xmlChildrenNode;
-  while ( child != NULL ) {
+  while ( child ) {
     Node *newChildNode = convertToCLinkFormat( doc, child, 1);
     if ( newChildNode ) {
       newNode->addNode( newChildNode );
@@ -122,19 +122,19 @@ static Node *convertToCLinkFormat( xmlDocPtr doc, xmlNodePtr cur, int depth ) {
 mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) {
   // First, parse the XML memory buffer ito a DOM object
   xmlDocPtr doc = xmlReadMemory(data.c_str(), (int)len, NULL, NULL, XML_PARSE_NOERROR);
-  if ( doc == NULL ) {
+  if (!doc) {
     LogWarn("XML file parsing failed:");
     LogWarn("%s", data.c_str());
-    return NULL;
+    return nullptr;
   }
 
   // Then get a pointer to the root node
   xmlNodePtr cur;
   cur = xmlDocGetRootElement( doc );
-  if (cur == NULL) {
+  if (!cur) {
     LogWarn("Empty document");
     xmlFreeDoc(doc);
-    return NULL;
+    return nullptr;
   }
 
   // Then convert the libxml2 type node tree into mUPnP XML node tree

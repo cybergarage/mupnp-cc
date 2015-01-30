@@ -172,7 +172,7 @@ public:
   
   T *get(size_t index) {
     if (std::vector<T*>::size() < (index+1))
-      return NULL;
+      return nullptr;
     return std::vector<T*>::at(index);
   }
   

@@ -97,7 +97,7 @@ class Device : public uHTTP::HTTPRequestListener, public SearchListener {
   }
 
   bool hasDeviceNode() {
-    return (deviceNode != NULL) ? true : false;
+    return (deviceNode) ? true : false;
   }
   
   void setRootNode(mupnp_shared_ptr<uXML::Node> node) {
@@ -280,7 +280,7 @@ public:
 
   bool isDescriptionURI(const std::string &uri) {
     const char *descriptionURI = getDescriptionURI();
-    if (descriptionURI == NULL)
+    if (!descriptionURI)
       return false;
     uHTTP::String descriptionURIStr(descriptionURI);
     return descriptionURIStr.equals(uri);
@@ -288,7 +288,7 @@ public:
 
   const char *getDescriptionFilePath(std::string &buf) {
     const char *descriptionFileName = getDescriptionFile();
-    if (descriptionFileName == NULL)
+    if (!descriptionFileName)
       return "";
     uHTTP::File descriptionFile(descriptionFileName);
     buf = descriptionFile.getAbsoluteFile()->getParent();
@@ -318,7 +318,7 @@ private:
   ////////////////////////////////////////////////
 
   bool isRootDevice() {
-    return (getRootNode() != NULL) ? true : false;
+    return (getRootNode()) ? true : false;
   }
   
   ////////////////////////////////////////////////
@@ -333,9 +333,9 @@ private:
 
   SSDPPacket *getSSDPPacket() {
     if (isRootDevice() == false)
-      return NULL;
+      return nullptr;
     if (!hasDeviceData())
-      return NULL;
+      return nullptr;
     return getDeviceData()->getSSDPPacket();
   }
   
@@ -349,7 +349,7 @@ private:
 
   const char *getLocation() {
     SSDPPacket *packet = getSSDPPacket();
-    if (packet != NULL) {
+    if (packet) {
       std::string buf;
       setLocation(packet->getLocation(buf));
     }
@@ -527,7 +527,7 @@ public:
 
   bool hasUDN() {
     const char *udn = getUDN();
-    if (udn == NULL)
+    if (!udn)
       return false;
     std::string udnStr = udn;
     if (udnStr.length() <= 0)
@@ -630,7 +630,7 @@ private:
   Icon *getIcon(size_t n) {
     IconList *iconList = getIconList();
     if ((iconList->size()-1) < n)
-      return NULL;
+      return nullptr;
     return iconList->getIcon(n);
   }
 
@@ -743,14 +743,14 @@ private:
   uHTTP::HTTPServerList *getHTTPServerList() 
   {
     if (!hasDeviceData())
-      return NULL;
+      return nullptr;
     return getDeviceData()->getHTTPServerList();
   }
 
   SSDPSearchSocketList *getSSDPSearchSocketList() 
   {
     if (!hasDeviceData())
-      return NULL;
+      return nullptr;
     return getDeviceData()->getSSDPSearchSocketList();
   }
 
@@ -762,7 +762,7 @@ private:
 
   Advertiser *getAdvertiser() {
     if (!hasDeviceData())
-      return NULL;
+      return nullptr;
     return getDeviceData()->getAdvertiser();
   }
 
@@ -785,7 +785,7 @@ private:
   const char *getInterfaceAddress() 
   {
     SSDPPacket *ssdpPacket = getSSDPPacket();
-    if (ssdpPacket == NULL)
+    if (!ssdpPacket)
       return "";
     return ssdpPacket->getLocalAddress();
   }

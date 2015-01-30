@@ -46,24 +46,24 @@ void SubscriptionRequest::setService(Service *service) {
   const char *urlBaseStr = "";
 
   Device *dev = service->getDevice();
-  if (dev != NULL)
+  if (dev)
     urlBaseStr = dev->getURLBase();
 
-  if (urlBaseStr == NULL || strlen(urlBaseStr) <= 0) {
+  if (!urlBaseStr || strlen(urlBaseStr) <= 0) {
     Device *rootDev = service->getRootDevice();
-    if (rootDev != NULL)
+    if (rootDev)
       urlBaseStr = rootDev->getURLBase();
   }
     
   // Thansk for Markus Thurner <markus.thurner@fh-hagenberg.at> (06/11/2004)
-  if (urlBaseStr == NULL || strlen(urlBaseStr) <= 0) {
+  if (!urlBaseStr || strlen(urlBaseStr) <= 0) {
     Device *rootDev = service->getRootDevice();
-    if (rootDev != NULL)
+    if (rootDev)
       urlBaseStr = rootDev->getLocation();
   }
 
   // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (05/21/03)
-  if (urlBaseStr == NULL || strlen(urlBaseStr) <= 0) {
+  if (!urlBaseStr || strlen(urlBaseStr) <= 0) {
     if (HTTP::IsAbsoluteURL(eventSubURL))
       urlBaseStr = eventSubURL;
   }

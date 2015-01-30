@@ -70,7 +70,7 @@ Parser::~Parser() {
 
 const char *XMLCh2Char(const XMLCh *value, string &buf) {
   char *xmlChars = XMLString::transcode(value);
-  if (xmlChars == NULL) {
+  if (xmlChars!) {
     buf = "";
     return buf.c_str();
   }
@@ -89,7 +89,7 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
   DOMNamedNodeMap *attrs = domNode->getAttributes(); 
   
   int arrrsLen = 0;
-  if (attrs != NULL)
+  if (attrs)
     arrrsLen = attrs->getLength();
 
 // Debug.message("[" + rank + "] ELEM : " + domNodeName + ", " + domNodeValue + ", type = " + domNodeType + ", attrs = " + arrrsLen);
@@ -106,7 +106,7 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
   node->setName(domNodeName.c_str());
   node->setValue(domNodeValue.c_str());
 
-  if (parentNode != NULL)
+  if (parentNode)
     parentNode->addNode(node);
 
   DOMNamedNodeMap *attrMap = domNode->getAttributes(); 
@@ -122,7 +122,7 @@ Node *XMLParse(Node *parentNode, DOMNode *domNode, int rank) {
   }
     
   DOMNode *child = domNode->getFirstChild();
-  while (child != NULL) {
+  while (child) {
     XMLParse(node, child, rank+1);
     child = child->getNextSibling();
   }
@@ -142,17 +142,17 @@ Node *XMLParse(InputSource &inSrc) {
   try {
     parser.parse(inSrc);
     xercesc::DOMDocument *doc = parser.getDocument();
-    if (doc == NULL)
-      return NULL;
+    if (doc!)
+      return nullptr;
     DOMElement *docElem = doc->getDocumentElement();
-    if (docElem != NULL)
+    if (docElem)
       root = XMLParse(root, docElem, 0);
   }
   catch (const XMLException &toCatch) {
     string msg;
     XMLCh2Char(toCatch.getMessage(), msg);
     throw ParserException(msg.c_str()); 
-    return NULL;
+    return nullptr;
   }
   
   return root;

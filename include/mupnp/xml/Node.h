@@ -63,7 +63,7 @@ public:
   Node *getRootNode() {
     Node *rootNode = NULL;
     Node *parentNode = getParentNode();
-    while (parentNode != NULL) {
+    while (parentNode) {
        rootNode = parentNode;
        parentNode = rootNode->getParentNode();
     }
@@ -252,7 +252,7 @@ public:
 
   bool setNode(const std::string & name, const std::string & value) {
     mupnp_shared_ptr<Node> node = getNode(name);
-    if (node != NULL) {
+    if (node) {
       node->setValue(value);
       return false;
     }
@@ -263,7 +263,7 @@ public:
 
   const char *getNodeValue(const std::string & name) {
     mupnp_shared_ptr<Node> node = getNode(name);
-    if (node != NULL)
+    if (node)
       return node->getValue();
     return "";
   }

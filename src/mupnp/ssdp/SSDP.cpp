@@ -38,7 +38,7 @@ const char *mUPnP::SSDP::GetIPv6Address() {
   
 int mUPnP::SSDP::GetLeaseTime(const std::string &cacheCnt) {
   char *eqStrPos = strchr((char *)cacheCnt.c_str(), '=');
-  if (eqStrPos == NULL)
+  if (!eqStrPos)
     return 0;
   return atoi((eqStrPos + 1));
 }

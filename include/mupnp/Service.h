@@ -62,7 +62,7 @@ public:
   }
 
   bool hasServiceNode() {
-    return (serviceNode != NULL) ? true : false;
+    return (serviceNode) ? true : false;
   }
   
   ////////////////////////////////////////////////
@@ -78,7 +78,7 @@ private:
 
   void initServiceData() {
     ServiceData *data = getServiceData();
-    if (data != NULL)
+    if (data)
       data->setService(this);
   }
 
@@ -114,18 +114,18 @@ private:
 
     uXML::Node *getDeviceNode() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
-      return NULL;
+    if (!serviceNode)
+      return nullptr;
     uXML::Node *parentNode = serviceNode->getParentNode();
-    if (parentNode == NULL)
-      return NULL;
+    if (!parentNode)
+      return nullptr;
     return parentNode->getParentNode();
   }
 
   uXML::Node* getRootNode() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
-      return NULL;
+    if (!serviceNode)
+      return nullptr;
     return serviceNode->getRootNode();
   }
 
@@ -138,10 +138,10 @@ private:
   Device *getDevice() {
     uXML::Node *node = getDeviceNode();
     if (!node)
-      return NULL;
+      return nullptr;
     DeviceData *data = dynamic_cast<DeviceData *>(node->getUserData());
-    if (data == NULL)
-      return NULL;
+    if (!data)
+      return nullptr;
     return data->getDevice();
   }
 
@@ -154,14 +154,14 @@ private:
  public:
   void setServiceType(const std::string &value) {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return;
     serviceNode->setNode(SERVICE_TYPE, value);
   }
 
   const char *getServiceType() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(SERVICE_TYPE);
   }
@@ -173,14 +173,14 @@ private:
  public:
   void setServiceID(const std::string &value) {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return;
     serviceNode->setNode(SERVICE_ID, value);
   }
 
   const char *getServiceID() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(SERVICE_ID);
   }
@@ -200,14 +200,14 @@ private:
  public:
   void setSCPDURL(const std::string &value) {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return;
    serviceNode->setNode(SCPDURL, value);
   }
 
   const char *getSCPDURL() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(SCPDURL);
   }
@@ -225,14 +225,14 @@ private:
  public:
   void setControlURL(const std::string &value) {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return;
     serviceNode->setNode(CONTROL_URL, value);
   }
 
   const char *getControlURL() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(CONTROL_URL);
   }
@@ -248,14 +248,14 @@ private:
  public:
   void setEventSubURL(const std::string &value) {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return;
     serviceNode->setNode(EVENT_SUB_URL, value);
   }
 
   const char *getEventSubURL() {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
-    if (serviceNode == NULL)
+    if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(EVENT_SUB_URL);
   }
@@ -314,7 +314,7 @@ private:
   StateVariable *getStateVariable(const std::string &name);
   
   bool hasStateVariable(const std::string &name) {
-    return (getStateVariable(name) != NULL) ? true : false;
+    return (getStateVariable(name)) ? true : false;
   }
 
   ////////////////////////////////////////////////
@@ -337,9 +337,9 @@ private:
   ServiceData *getServiceData() {
     mupnp_shared_ptr<uXML::Node> node = getServiceNode();
     if (!node)
-      return NULL;
+      return nullptr;
     ServiceData *userData = dynamic_cast<ServiceData *>(node->getUserData());
-    if (userData == NULL) {
+    if (!userData) {
       userData = new ServiceData();
       node->setUserData(userData);
     }

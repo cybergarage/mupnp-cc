@@ -79,8 +79,8 @@ Device::Device(mupnp_shared_ptr<uXML::Node> root, mupnp_shared_ptr<uXML::Node> d
 
 Device::Device() {
   setLocalRootDeviceFlag(false);
-  rootNode = NULL;
-  deviceNode = NULL;
+  rootNode = nullptr;
+  deviceNode = nullptr;
   initUUID();
   updateBootID();
   initDeviceData();
@@ -89,7 +89,7 @@ Device::Device() {
   
 Device::Device(mupnp_shared_ptr<uXML::Node> device) {
   setLocalRootDeviceFlag(false);
-  rootNode = NULL;
+  rootNode = nullptr;
   deviceNode = device;
   initUUID();
   updateBootID();
@@ -110,7 +110,7 @@ void Device::initDeviceData() {
   rootDevice = NULL;
   parentDevice = NULL;
   DeviceData *data = getDeviceData();
-  if (data != NULL)
+  if (data)
     data->setDevice(this);
 }
 
@@ -128,8 +128,8 @@ void Device::initChildList() {
 
 Device::Device(uHTTP::File *descriptionFile) {
   setLocalRootDeviceFlag(true);
-  rootNode = NULL;
-  deviceNode = NULL;
+  rootNode = nullptr;
+  deviceNode = nullptr;
   initUUID();
   updateBootID();
   bool ret = loadDescription(descriptionFile);
@@ -139,8 +139,8 @@ Device::Device(uHTTP::File *descriptionFile) {
 
 Device::Device(const std::string &descriptionFileName) {
   setLocalRootDeviceFlag(true);
-  rootNode = NULL;
-  deviceNode = NULL;
+  rootNode = nullptr;
+  deviceNode = nullptr;
   initUUID();
   updateBootID();
   uHTTP::File descriptionFile(descriptionFileName);
@@ -157,7 +157,7 @@ Device::Device(const std::string &descriptionFileName) {
   
 void Device::setNMPRMode(bool flag) {
   mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
-  if (devNode == NULL)
+  if (!devNode)
     return;
   if (flag == true) {
     devNode->setNode(UPnP::INMPR03, UPnP::INMPR03_VER);
@@ -170,9 +170,9 @@ void Device::setNMPRMode(bool flag) {
 
 bool Device::isNMPRMode() {
   mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
-  if (devNode == NULL)
+  if (!devNode)
     return false;
-  return (devNode->getNode(UPnP::INMPR03) != NULL) ? true : false;
+  return (devNode->getNode(UPnP::INMPR03)) ? true : false;
 }
 
 ////////////////////////////////////////////////
@@ -182,7 +182,7 @@ bool Device::isNMPRMode() {
 void Device::setURLBase(const std::string &value) {
   if (isRootDevice() == true) {
     mupnp_shared_ptr<uXML::Node> node = getRootNode()->getNode(URLBASE_NAME);
-    if (node != NULL) {
+    if (node) {
       node->setValue(value);
       return;
     }
@@ -234,7 +234,7 @@ void Device::setLeaseTime(int value) {
   if (hasDeviceData())
     getDeviceData()->setLeaseTime(value);
   Advertiser *adv = getAdvertiser();
-  if (adv != NULL) {
+  if (adv) {
     announce();
     adv->restart();
   }
@@ -242,7 +242,7 @@ void Device::setLeaseTime(int value) {
 
 int Device::getLeaseTime() {
   SSDPPacket *packet = getSSDPPacket();
-  if (packet != NULL)
+  if (packet)
     return packet->getLeaseTime();
   if (hasDeviceData())
     return getDeviceData()->getLeaseTime();
@@ -255,7 +255,7 @@ int Device::getLeaseTime() {
 
 long Device::getTimeStamp() {
   SSDPPacket *packet = getSSDPPacket();
-  if (packet != NULL)
+  if (packet)
     return packet->getTimeStamp();    
   return 0;
 }
@@ -275,14 +275,14 @@ bool Device::isExpired() {
 ////////////////////////////////////////////////
 
 Device *Device::getRootDevice() {
-  if (rootDevice != NULL)
+  if (rootDevice)
     return rootDevice;
   mupnp_shared_ptr<uXML::Node> rootNode = getRootNode();
-  if (rootNode == NULL)
-    return NULL;
+  if (!rootNode)
+    return nullptr;
   mupnp_shared_ptr<uXML::Node> devNode = rootNode->getNode(Device::ELEM_NAME);
-  if (devNode == NULL)
-    return NULL;
+  if (!devNode)
+    return nullptr;
   rootDevice = new Device();
   rootDevice->setDeviceNode(devNode);
   rootDevice->setRootNode(rootNode);
@@ -296,28 +296,28 @@ Device *Device::getRootDevice() {
 // Thanks for Stefano Lenzi (07/24/04)
 
 Device *Device::getParentDevice() {
-  if (parentDevice != NULL)
+  if (parentDevice)
     return parentDevice;
   
   if(isRootDevice() == true)
-    return NULL;
+    return nullptr;
   
   mupnp_shared_ptr<uXML::Node> rootNode = getRootNode();
-  if (rootNode == NULL)
-    return NULL;
+  if (!rootNode)
+    return nullptr;
   
   mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
-  if (devNode == NULL)
-    return NULL;
+  if (!devNode)
+    return nullptr;
   
   //<device><deviceList><device>
   
   uXML::Node *parentNode = devNode->getParentNode();
   if (!parentNode)
-    return NULL;
+    return nullptr;
   devNode = mupnp_shared_ptr<uXML::Node>(parentNode->getParentNode());
   if (!devNode)
-    return NULL;
+    return nullptr;
   
   parentDevice = new Device();
   parentDevice->setDeviceNode(devNode);
@@ -333,9 +333,9 @@ Device *Device::getParentDevice() {
 DeviceData *Device::getDeviceData() {
   mupnp_shared_ptr<uXML::Node> node = getDeviceNode();
   if (!node)
-    return NULL;
+    return nullptr;
   DeviceData *userData = dynamic_cast<DeviceData *>(node->getUserData());
-  if (userData == NULL) {
+  if (!userData) {
     userData = new DeviceData();
     node->setUserData(userData);
   }
@@ -376,14 +376,14 @@ bool Device::loadDescription(const std::string &description) {
     return false;
   }
 
-  if (rootNode == NULL)
+  if (!rootNode)
     return false;
 
   if (Debug::isOn() == true)
     rootNode->print();
   
   deviceNode = rootNode->getNode(Device::ELEM_NAME);
-  if (deviceNode == NULL)
+  if (!deviceNode)
     return false;
     
   setDescriptionFile("");
@@ -442,10 +442,10 @@ bool Device::loadDescription(uHTTP::File *file) {
 void Device::initDeviceList() {
   deviceList.clear();
   mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
-  if (devNode == NULL)
+  if (!devNode)
     return;
   mupnp_shared_ptr<uXML::Node> devListNode = devNode->getNode(DeviceList::ELEM_NAME);
-  if (devListNode == NULL)
+  if (!devListNode)
     return;
   size_t nNode = devListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
@@ -476,10 +476,10 @@ mupnp_shared_ptr<Device> Device::getDevice(const std::string &name) {
     if (dev->isDevice(name) == true)
       return dev;
     mupnp_shared_ptr<Device> cdev = dev->getDevice(name);
-    if (cdev != NULL)
+    if (cdev)
       return cdev;
   }
-  return NULL;
+  return nullptr;
 }
 
 mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &uri) {
@@ -490,10 +490,10 @@ mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &ur
     if (dev->isDescriptionURI(uri) == true)
       return dev;
     mupnp_shared_ptr<Device> cdev = dev->getDeviceByDescriptionURI(uri);
-    if (cdev != NULL)
+    if (cdev)
       return cdev;
   }
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -503,10 +503,10 @@ mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &ur
 void Device::initServiceList() {
   serviceList.clear();
   mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
-  if (devNode == NULL)
+  if (!devNode)
     return;
   mupnp_shared_ptr<uXML::Node> serviceListNode = devNode->getNode(ServiceList::ELEM_NAME);
-  if (serviceListNode == NULL)
+  if (!serviceListNode)
     return;
   size_t nNode = serviceListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
@@ -534,11 +534,11 @@ Service *Device::getService(const std::string &name) {
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getService(name);
-    if (service != NULL)
+    if (service)
       return service;
   }
     
-  return NULL;
+  return nullptr;
 }
 
 Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
@@ -557,11 +557,11 @@ Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getServiceBySCPDURL(searchUrl);
-    if (service != NULL)
+    if (service)
       return service;
   }
   
-  return NULL;
+  return nullptr;
 }
 
 Service *Device::getServiceByControlURL(const std::string &searchUrl) {
@@ -580,11 +580,11 @@ Service *Device::getServiceByControlURL(const std::string &searchUrl) {
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getServiceByControlURL(searchUrl);
-    if (service != NULL)
+    if (service)
       return service;
   }
   
-  return NULL;
+  return nullptr;
 }
 
 Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
@@ -603,11 +603,11 @@ Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getServiceByEventSubURL(searchUrl);
-    if (service != NULL)
+    if (service)
       return service;
   }
     
-  return NULL;
+  return nullptr;
 }
 
 Service *Device::getSubscriberService(const std::string &uuid) {
@@ -628,11 +628,11 @@ Service *Device::getSubscriberService(const std::string &uuid) {
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getSubscriberService(uuid);
-    if (service != NULL)
+    if (service)
       return service;
   }
   
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -652,7 +652,7 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
         continue;
     }
     StateVariable *stateVar = service->getStateVariable(name);
-    if (stateVar != NULL)
+    if (stateVar)
       return stateVar;
   }
   
@@ -661,11 +661,11 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     StateVariable *stateVar = dev->getStateVariable(name);
-    if (stateVar != NULL)
+    if (stateVar)
       return stateVar;
   }
     
-  return NULL;
+  return nullptr;
 }
 
 StateVariable *Device::getStateVariable(const std::string &name) {
@@ -689,7 +689,7 @@ mUPnP::Action *Device::getAction(const std::string &name) {
     for (size_t i = 0; i<actionCnt; i++) {
       Action *action = actionList->getAction(i);
       const char *actionName = action->getName();
-      if (actionName == NULL)
+      if (!actionName)
         continue;
       if (nameStr.equals(actionName) == true)
         return action;
@@ -701,11 +701,11 @@ mUPnP::Action *Device::getAction(const std::string &name) {
   for (n = 0; n < devCnt; n++) {
     mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Action *action = dev->getAction(name);
-    if (action != NULL)
+    if (action)
       return action;
   }
     
-  return NULL;
+  return nullptr;
 }
 
 ////////////////////////////////////////////////
@@ -715,10 +715,10 @@ mUPnP::Action *Device::getAction(const std::string &name) {
 void Device::initIconList() {
   iconList.clear();
   mupnp_shared_ptr<uXML::Node> devNode = getDeviceNode();
-  if (devNode == NULL)
+  if (!devNode)
     return;
   mupnp_shared_ptr<uXML::Node> iconListNode = devNode->getNode(IconList::ELEM_NAME);
-  if (iconListNode == NULL)
+  if (!iconListNode)
     return;
   size_t nNode = iconListNode->getNNodes();
   for (size_t n = 0; n < nNode; n++) {
@@ -1069,7 +1069,7 @@ const char *Device::getDescriptionData(const std::string &host, string &buf) {
     updateURLBase(host);
   mupnp_shared_ptr<uXML::Node> rootNode = getRootNode();
   buf = "";
-  if (rootNode != NULL) {
+  if (rootNode) {
     string nodeBuf;
     // Thanks for Mikael Hakman (04/25/05)
     buf = UPnP::XML_DECLARATION;
@@ -1097,11 +1097,11 @@ uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq) {
     const char *localAddr = httpReq->getLocalAddress();
     fileByte = getDescriptionData(localAddr, fileByteBuf);
   }
-  else if ((embDev = getDeviceByDescriptionURI(uri.c_str())) != NULL) {
+  else if ((embDev = getDeviceByDescriptionURI(uri.c_str()))) {
     const char *localAddr = httpReq->getLocalAddress();
     fileByte = embDev->getDescriptionData(localAddr, fileByteBuf);
   }
-  else if ((embService = getServiceBySCPDURL(uri.c_str())) != NULL) {
+  else if ((embService = getServiceBySCPDURL(uri.c_str()))) {
     fileByte = embService->getSCPDData(fileByteBuf);
   }
   else {
@@ -1138,7 +1138,7 @@ uHTTP::HTTP::StatusCode Device::soapActionRecieved(HTTPRequest *soapReq) {
   string uri;
   soapReq->getURI(uri);
   Service *ctlService = getServiceByControlURL(uri.c_str());
-  if (ctlService != NULL)  {
+  if (ctlService)  {
     ControlRequest crlReq(soapReq);
     return deviceControlRequestRecieved(&crlReq, ctlService);
   }
@@ -1172,7 +1172,7 @@ uHTTP::HTTP::StatusCode Device::deviceActionControlRecieved(ActionRequest *ctlRe
   string actionNameBuf;
   const char *actionName = ctlReq->getActionName(actionNameBuf);
   Action *action = service->getAction(actionName);
-  if (action == NULL) {
+  if (!action) {
     return invalidActionControlRecieved(ctlReq);
   }
   ArgumentList *actionArgList = action->getArgumentList();
@@ -1212,7 +1212,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventSubscriptionRecieved(SubscriptionRequ
   string uri;
   subReq->getURI(uri);
   Service *service = getServiceByEventSubURL(uri.c_str());
-  if (service == NULL) {
+  if (!service) {
     return subReq->returnBadRequest();
   }
   if (subReq->hasCallback() == false && subReq->hasSID() == false) {
@@ -1269,7 +1269,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventRenewSubscriptionRecieved(Service *se
   const char *sid = subReq->getSID(sidBuf);
   Subscriber *sub = service->getSubscriberBySID(sid);
 
-  if (sub == NULL) {
+  if (!sub) {
     return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
   }
 
@@ -1289,7 +1289,7 @@ uHTTP::HTTP::StatusCode Device::deviceEventUnsubscriptionRecieved(Service *servi
   const char *sid = subReq->getSID(sidBuf);
 
   Subscriber *sub = service->getSubscriberBySID(sid);
-  if (sub == NULL) {
+  if (!sub) {
     return upnpBadSubscriptionRecieved(subReq, uHTTP::HTTP::PRECONDITION_FAILED);
   }
 
@@ -1391,7 +1391,7 @@ bool Device::stop(bool doByeBye) {
   ssdpSearchSockList->clear();
     
   Advertiser *adv = getAdvertiser();
-  if (adv != NULL) {
+  if (adv) {
     adv->stop();
     setAdvertiser(NULL);
   }

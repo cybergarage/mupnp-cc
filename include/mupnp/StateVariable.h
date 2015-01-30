@@ -109,13 +109,13 @@ private:
 
  public:
   AllowedValueRange *getAllowedValueRange() {
-    if (allowedValueRange.getAllowedValueRangeNode() == NULL)
-        return NULL;
+    if (!allowedValueRange.getAllowedValueRangeNode())
+        return nullptr;
     return &allowedValueRange;
   }
 
   bool hasAllowedValueRange() {
-    return (getAllowedValueRange() != NULL) ? true : false;
+    return (getAllowedValueRange()) ? true : false;
   }
 
   ////////////////////////////////////////////////
@@ -155,7 +155,7 @@ private:
   
   bool isSendEvents() {
     const char *state = getStateVariableNode()->getAttributeValue(SENDEVENTS);
-    if (state == NULL)
+    if (!state)
       return false;
     uHTTP::String stateStr(state);
     if (stateStr.equalsIgnoreCase(SENDEVENTS_YES) == true)

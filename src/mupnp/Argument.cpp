@@ -69,8 +69,8 @@ void Argument::setValue(int value) {
 Service *Argument::getService() {
   mupnp_shared_ptr<uXML::Node> node = getServiceNode();
   ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
-  if (data == NULL)
-    return NULL;
+  if (!data)
+    return nullptr;
   return data->getService();
 }
 
@@ -80,8 +80,8 @@ Service *Argument::getService() {
 
 StateVariable *Argument::getRelatedStateVariable() {
   Service *service = getService();
-  if (service == NULL)
-    return NULL;
+  if (!service)
+    return nullptr;
   const char *relatedStatVarName = getRelatedStateVariableName();
   return service->getStateVariable(relatedStatVarName);
 }

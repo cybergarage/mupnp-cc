@@ -21,7 +21,7 @@ mUPnP::ActionData::ActionData()  {
 }
 
 mUPnP::ActionData::~ActionData()  {
-  if (ctrlRes != NULL)
+  if (ctrlRes)
     delete ctrlRes;
 }
 
@@ -30,7 +30,7 @@ mUPnP::ActionData::~ActionData()  {
 ////////////////////////////////////////////////
 
 void mUPnP::ActionData::setControlResponse(ControlResponse *res)  {
-  if (ctrlRes != NULL)
+  if (ctrlRes)
     delete ctrlRes;
   ctrlRes = res;
 }

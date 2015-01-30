@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
   /////////////////////////////
     
   StateVariable *statVal = testDev->getStateVariable("Count");
-  BOOST_CHECK(statVal != NULL);
+  BOOST_CHECK(statVal);
   statVal->setValue(10);
   BOOST_CHECK(atoi(statVal->getValue()) == 10);
   statVal->setValue("");
@@ -60,7 +60,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
   
   mupnp_shared_ptr<Device> ctrlpDev;
   
-  while (ctrlpDev == NULL) {
+  while (!ctrlpDev) {
     BOOST_CHECK(ctrlp->search());
     Wait((SSDP::DEFAULT_MSEARCH_MX * 1000));
     BOOST_CHECK(testDev->announce());
@@ -68,19 +68,19 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
     ctrlpDev = ctrlp->getDevice("CyberGarageCountDevice");
   }
   
-  BOOST_CHECK(ctrlpDev != NULL);
+  BOOST_CHECK(ctrlpDev);
     
   /////////////////////////////
   // Action Test
   /////////////////////////////
     
   Action *ctrlpSetCountAction = ctrlpDev->getAction("SetCount");
-  BOOST_CHECK(ctrlpSetCountAction != NULL);
+  BOOST_CHECK(ctrlpSetCountAction);
   ctrlpSetCountAction->setArgumentValue("NewCount", 12);
   BOOST_CHECK(ctrlpSetCountAction->postControlAction() == true);
     
   Action *ctrlpGetCountAction = ctrlpDev->getAction("GetCount");
-  BOOST_CHECK(ctrlpGetCountAction != NULL);
+  BOOST_CHECK(ctrlpGetCountAction);
   BOOST_CHECK(ctrlpGetCountAction->postControlAction() == true);
   BOOST_CHECK(ctrlpGetCountAction->getArgumentIntegerValue("CurrentCount") == 12);
 
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
   /////////////////////////////
 
   Service *ctrlpCountService = ctrlpDev->getService("urn:schemas-upnp-org:service:count:1");
-  BOOST_CHECK(ctrlpCountService != NULL);
+  BOOST_CHECK(ctrlpCountService);
   BOOST_CHECK(ctrlp->subscribe(ctrlpCountService) == true);
   BOOST_CHECK(ctrlp->unsubscribe(ctrlpCountService) == true);
 

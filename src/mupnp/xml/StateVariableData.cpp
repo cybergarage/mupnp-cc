@@ -22,7 +22,7 @@ StateVariableData::StateVariableData()  {
 }
 
 StateVariableData::~StateVariableData() {
-  if (queryRes != NULL)
+  if (queryRes)
     delete queryRes;
 }
 
@@ -31,7 +31,7 @@ StateVariableData::~StateVariableData() {
 ////////////////////////////////////////////////
 
 void StateVariableData::setQueryResponse(QueryResponse *res)  {
-  if (queryRes != NULL)
+  if (queryRes)
     delete queryRes;
   queryRes = res;
 }

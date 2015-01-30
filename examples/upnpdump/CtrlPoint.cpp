@@ -89,11 +89,12 @@ bool CtrlPoint::eventNotifyReceived(const std::string &uuid, long seq, const std
 void GetIndentString(int indent, string &buf)
 {
 	buf = "";
-	for (int n=0; n<indent; n++)
+	for (int n=0; n<indent; n++) {
 		buf.append("    ");
+	}
 }
 
-void PrintDeviceInfo(Device *dev, int indent)
+void PrintDeviceInfo(mupnp_shared_ptr<Device> dev, int indent)
 {
 	string indentStr;
 	GetIndentString(indent, indentStr);
@@ -143,14 +144,14 @@ void PrintDeviceInfo(Device *dev, int indent)
 	}
 }
 
-void PrintDevice(Device *dev, int indent)
+void PrintDevice(mupnp_shared_ptr<Device> dev, int indent)
 {
 	PrintDeviceInfo(dev, indent);
 
 	DeviceList *childDevList = dev->getDeviceList();
 	int nChildDevs = childDevList->size();
 	for (int n=0; n<nChildDevs; n++) {
-		Device *childDev = childDevList->getDevice(n);
+		mupnp_shared_ptr<Device> childDev = childDevList->getDevice(n);
 		PrintDevice(childDev, indent);
 	}
 }
@@ -161,7 +162,7 @@ void CtrlPoint::print()
 	int nRootDevs = rootDevList->size();
 	cout << "Device Num = " << nRootDevs << endl;
 	for (int n=0; n<nRootDevs; n++) {
-		Device *dev = rootDevList->getDevice(n);
+		mupnp_shared_ptr<Device> dev = rootDevList->getDevice(n);
 		const char *devName = dev->getFriendlyName();
 		cout << "[" << n << "] = " << devName << endl;
 		PrintDevice(dev, 1);

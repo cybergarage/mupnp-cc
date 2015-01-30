@@ -37,7 +37,7 @@ using namespace mUPnP;
 
 void ActionRequest::initArgumentList() {
   mupnp_shared_ptr<uXML::Node> actNode = getActionNode();
-  if (actNode == NULL)
+  if (!actNode)
     return;
   size_t nArgNodes = actNode->getNNodes();
   argumentList.clear();
@@ -56,10 +56,10 @@ void ActionRequest::initArgumentList() {
 
 mupnp_shared_ptr<uXML::Node> ActionRequest::getActionNode() {
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
-  if (bodyNode == NULL)
-    return NULL;
+  if (!bodyNode)
+    return nullptr;
   if (bodyNode->hasNodes() == false)
-    return NULL;
+    return nullptr;
   return bodyNode->getNode(0);
 }
 
@@ -72,7 +72,7 @@ const char *ActionRequest::getActionName(std::string &buf) {
   if (!node)
     return "";
   const char *name = node->getName();
-  if (name == NULL)
+  if (!name)
     return "";
   uHTTP::String nameStr(name);
   int idx = nameStr.indexOf(uSOAP::SOAP::DELIM)+1;

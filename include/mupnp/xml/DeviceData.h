@@ -148,7 +148,7 @@ public:
   SSDPPacket *getSSDPPacket() 
   {
     if (ssdpPacket.isNull() == true)
-      return NULL;
+      return nullptr;
     return &ssdpPacket;
   }
 
@@ -163,7 +163,7 @@ public:
 
   void setAdvertiser(Advertiser *adv) 
   {
-    if (advertiser != NULL)
+    if (advertiser)
       delete advertiser;
     advertiser = adv;
   }

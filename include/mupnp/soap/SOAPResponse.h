@@ -78,15 +78,15 @@ private:
   
   mupnp_shared_ptr<uXML::Node> getBodyNode() {
     mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
-    if (envNode == NULL)
-      return NULL;
+    if (!envNode)
+      return nullptr;
     return envNode->getNodeEndsWith(uSOAP::SOAP::BODY);
   }
 
   mupnp_shared_ptr<uXML::Node> getMethodResponseNode(const std::string & name) {
     mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
-    if (bodyNode == NULL)
-      return NULL;
+    if (!bodyNode)
+      return nullptr;
     std::string methodResName;
     methodResName = name;
     methodResName += SOAP::RESPONSE;
@@ -95,36 +95,36 @@ private:
 
   mupnp_shared_ptr<uXML::Node> getFaultNode() {
     mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
-    if (bodyNode == NULL)
-      return NULL;
+    if (!bodyNode)
+      return nullptr;
     return bodyNode->getNodeEndsWith(uSOAP::SOAP::FAULT);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultCodeNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
-    if (faultNode == NULL)
-      return NULL;
+    if (!faultNode)
+      return nullptr;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_CODE);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultStringNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
-    if (faultNode == NULL)
-      return NULL;
+    if (!faultNode)
+      return nullptr;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULT_STRING);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultActorNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
-    if (faultNode == NULL)
-      return NULL;
+    if (!faultNode)
+      return nullptr;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::FAULTACTOR);
   }
 
   mupnp_shared_ptr<uXML::Node> getFaultDetailNode() {
     mupnp_shared_ptr<uXML::Node> faultNode = getFaultNode();
-    if (faultNode == NULL)
-      return NULL;
+    if (!faultNode)
+      return nullptr;
     return faultNode->getNodeEndsWith(uSOAP::SOAP::DETAIL);
   }
 

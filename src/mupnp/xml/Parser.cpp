@@ -36,11 +36,11 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::File *file) {
 #if defined(WIN32) || defined(HAVE_FOPEN)
   FILE *fp = fopen(filename, "r");
   if (!fp)
-    return NULL;
+    return nullptr;
 #else
   int fd = open(filename, O_RDONLY);
   if (fd == -1)
-    return NULL;
+    return nullptr;
 #endif
   char readBuf[PARSER_DEFAULT_READ_BUF_SIZE+1];
   string contents;
@@ -82,7 +82,7 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::URL *url) {
   httpReq.setURI(uri);
   HTTPResponse *httpRes = httpReq.post(host, port);
   if (httpRes->isSuccessful() == false)
-    return NULL;
+    return nullptr;
   const char *contents = httpRes->getContent();
   return parse(contents);
 }
