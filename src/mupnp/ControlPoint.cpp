@@ -55,13 +55,13 @@ ControlPoint::~ControlPoint() {
 // Device List
 ////////////////////////////////////////////////
 
-Device *ControlPoint::getDevice(uXML::Node *rootNode) {
+mupnp_shared_ptr<Device> ControlPoint::getDevice(uXML::Node *rootNode) {
   if (rootNode == NULL)
       return NULL;
   uXML::Node *devNode = rootNode->getNode(Device::ELEM_NAME);
   if (devNode == NULL)
       return NULL;
-  return new Device(rootNode, devNode);
+  return mupnp_shared_ptr<Device>(new Device(rootNode, devNode));
 }
 
 void ControlPoint::initDeviceList() {
@@ -70,21 +70,21 @@ void ControlPoint::initDeviceList() {
   size_t nRoots = devNodeList.size();
   for (size_t n = 0; n < nRoots; n++) {
     uXML::Node *rootNode = devNodeList.getNode(n);
-    Device *dev = getDevice(rootNode);
+    mupnp_shared_ptr<Device> dev = getDevice(rootNode);
     if (dev == NULL)
       continue;
     deviceList.add(dev);
   }
 }
 
-Device *ControlPoint::getDevice(const std::string &name) {
+mupnp_shared_ptr<Device> ControlPoint::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
   size_t nDevs = devList->size();
   for (size_t n = 0; n < nDevs; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     if (dev->isDevice(name) == true)
       return dev;
-    Device *cdev = dev->getDevice(name);
+    mupnp_shared_ptr<Device> cdev = dev->getDevice(name);
     if (cdev != NULL)
       return cdev;
   } 
@@ -112,7 +112,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   string udnBuf;
   const char *usn = ssdpPacket->getUSN(usnBuf);
   const char *udn = USN::GetUDN(usn, udnBuf);
-  Device *dev = getDevice(udn);
+  mupnp_shared_ptr<Device> dev = getDevice(udn);
   if (dev != NULL) {
     dev->setSSDPPacket(ssdpPacket);
     unlock();
@@ -124,7 +124,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   URL locationURL(location);
   uXML::Parser parser;
   uXML::Node *rootNode = parser.parse(&locationURL);
-  Device *rootDev = getDevice(rootNode);
+  mupnp_shared_ptr<Device> rootDev = getDevice(rootNode);
   if (rootDev == NULL) {
     unlock();
     return false;
@@ -134,7 +134,7 @@ bool ControlPoint::addDevice(SSDPPacket *ssdpPacket) {
   addDevice(rootNode);
 
   // Thanks for Oliver Newell (2004/10/16)
-  performAddDeviceListener( rootDev );
+  performAddDeviceListener(rootDev.get());
 
   unlock();
   
@@ -164,7 +164,7 @@ bool ControlPoint::removeDevice(SSDPPacket *packet) {
   const char *usn = packet->getUSN(usnBuf);
   const char *udn = USN::GetUDN(usn, udnBuf);
   
-  Device *dev = getDevice(udn);
+  mupnp_shared_ptr<Device> dev = getDevice(udn);
   if (dev == NULL) {
     unlock();
     return false;
@@ -172,7 +172,7 @@ bool ControlPoint::removeDevice(SSDPPacket *packet) {
   
   // Thanks for Oliver Newell (2004/10/16)
   if(dev->isRootDevice() == true)
-    performRemoveDeviceListener(dev);
+    performRemoveDeviceListener(dev.get());
   
   bool isRemoved = removeDevice(dev->getRootNode());
   
@@ -192,7 +192,7 @@ void ControlPoint::removeExpiredDevices() {
   
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
-  Device **dev = new Device*[devCnt];
+  mupnp_shared_ptr<Device> *dev = new mupnp_shared_ptr<Device>[devCnt];
 
   for (n = 0; n < devCnt; n++) {
     dev[n] = devList->getDevice(n);
@@ -443,9 +443,18 @@ void ControlPoint::unsubscribe(Device *device) {
   DeviceList *childDevList = device->getDeviceList();
   size_t childDevCnt = childDevList->size();
   for (n = 0; n < childDevCnt; n++) {
-    Device *cdev = childDevList->getDevice(n);
-    unsubscribe(cdev);
+    mupnp_shared_ptr<Device> cdev = childDevList->getDevice(n);
+    unsubscribe(cdev.get());
   }    
+}
+
+void ControlPoint::unsubscribe() {
+  DeviceList *devList = getDeviceList();
+  size_t devCnt = devList->size();
+  for (size_t n = 0; n < devCnt; n++) {
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
+    unsubscribe(dev.get());
+  }
 }
 
 ////////////////////////////////////////////////
@@ -470,8 +479,8 @@ void ControlPoint::renewSubscriberService(Device *dev, long timeout) {
   DeviceList *cdevList = dev->getDeviceList();
   size_t cdevCnt = cdevList->size();
   for (n = 0; n < cdevCnt; n++) {
-    Device *cdev = cdevList->getDevice(n);
-    renewSubscriberService(cdev, timeout);
+    mupnp_shared_ptr<Device> cdev = cdevList->getDevice(n);
+    renewSubscriberService(cdev.get(), timeout);
   }
 }
   
@@ -480,14 +489,30 @@ void ControlPoint::renewSubscriberService(long timeout) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (size_t n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
-    renewSubscriberService(dev, timeout);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
+    renewSubscriberService(dev.get(), timeout);
   }
   unlock();
 }
   
 void ControlPoint::renewSubscriberService() {
   renewSubscriberService(Subscription::INFINITE_VALUE);
+}
+
+////////////////////////////////////////////////
+// getSubscriberService
+////////////////////////////////////////////////
+
+Service *ControlPoint::getSubscriberService(const std::string &uuid) {
+  DeviceList *devList = getDeviceList();
+  size_t devCnt = devList->size();
+  for (size_t n = 0; n < devCnt; n++) {
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
+    Service *service = dev->getSubscriberService(uuid);
+    if (service != NULL)
+      return service;
+  }
+  return NULL;
 }
 
 ////////////////////////////////////////////////
@@ -647,7 +672,7 @@ void ControlPoint::print() {
     size_t devCnt = devList->size();
     cout << "Device Num = " << devCnt << endl;
     for (size_t n = 0; n < devCnt; n++) {
-      Device *dev = devList->getDevice(n);
+      mupnp_shared_ptr<Device> dev = devList->getDevice(n);
       cout << "[" << n <<  "] " << dev->getFriendlyName() << ", " << dev->getLeaseTime() << ", " << dev->getElapsedTime() << endl;
     }    
 }

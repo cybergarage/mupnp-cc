@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE(TestDeviceTests)
   // Search Device
   /////////////////////////////
   
-  Device *ctrlpDev = NULL;
+  mupnp_shared_ptr<Device> ctrlpDev;
   
   while (ctrlpDev == NULL) {
     BOOST_CHECK(ctrlp->search());

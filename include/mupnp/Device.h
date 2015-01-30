@@ -572,8 +572,8 @@ private:
 
   bool isDevice(const std::string &name);
   
-  Device *getDevice(const std::string &name);
-  Device *getDeviceByDescriptionURI(const std::string &uri);
+  mupnp_shared_ptr<Device> getDevice(const std::string &name);
+  mupnp_shared_ptr<Device> getDeviceByDescriptionURI(const std::string &uri);
   
   ////////////////////////////////////////////////
   // serviceList

@@ -480,28 +480,28 @@ bool Device::isDevice(const std::string &name) {
   return false;
 }
   
-Device *Device::getDevice(const std::string &name) {
+mupnp_shared_ptr<Device> Device::getDevice(const std::string &name) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (size_t n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     if (dev->isDevice(name) == true)
       return dev;
-    Device *cdev = dev->getDevice(name);
+    mupnp_shared_ptr<Device> cdev = dev->getDevice(name);
     if (cdev != NULL)
       return cdev;
   }
   return NULL;
 }
 
-Device *Device::getDeviceByDescriptionURI(const std::string &uri) {
+mupnp_shared_ptr<Device> Device::getDeviceByDescriptionURI(const std::string &uri) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (size_t n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     if (dev->isDescriptionURI(uri) == true)
       return dev;
-    Device *cdev = dev->getDeviceByDescriptionURI(uri);
+    mupnp_shared_ptr<Device> cdev = dev->getDeviceByDescriptionURI(uri);
     if (cdev != NULL)
       return cdev;
   }
@@ -544,7 +544,7 @@ Service *Device::getService(const std::string &name) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getService(name);
     if (service != NULL)
       return service;
@@ -567,7 +567,7 @@ Service *Device::getServiceBySCPDURL(const std::string &searchUrl) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getServiceBySCPDURL(searchUrl);
     if (service != NULL)
       return service;
@@ -590,7 +590,7 @@ Service *Device::getServiceByControlURL(const std::string &searchUrl) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getServiceByControlURL(searchUrl);
     if (service != NULL)
       return service;
@@ -613,7 +613,7 @@ Service *Device::getServiceByEventSubURL(const std::string &searchUrl) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getServiceByEventSubURL(searchUrl);
     if (service != NULL)
       return service;
@@ -638,7 +638,7 @@ Service *Device::getSubscriberService(const std::string &uuid) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Service *service = dev->getSubscriberService(uuid);
     if (service != NULL)
       return service;
@@ -671,7 +671,7 @@ StateVariable *Device::getStateVariable(const std::string &serviceType, const st
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     StateVariable *stateVar = dev->getStateVariable(name);
     if (stateVar != NULL)
       return stateVar;
@@ -711,7 +711,7 @@ mUPnP::Action *Device::getAction(const std::string &name) {
   DeviceList *devList = getDeviceList();
   size_t devCnt = devList->size();
   for (n = 0; n < devCnt; n++) {
-    Device *dev = devList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = devList->getDevice(n);
     Action *action = dev->getAction(name);
     if (action != NULL)
       return action;
@@ -832,7 +832,7 @@ bool Device::announce(const std::string &ifAddr) {
   DeviceList *childDeviceList = getDeviceList();
   size_t childDeviceCnt = childDeviceList->size();
   for (size_t n = 0; n < childDeviceCnt; n++) {
-    Device *childDevice = childDeviceList->getDevice(n);
+    mupnp_shared_ptr<Device> childDevice = childDeviceList->getDevice(n);
     if (!childDevice->announce(ifAddr))
       isSuccess = false;
   }
@@ -903,7 +903,7 @@ bool Device::byebye(const std::string &ifAddr) {
   DeviceList *childDeviceList = getDeviceList();
   size_t childDeviceCnt = childDeviceList->size();
   for (size_t n = 0; n < childDeviceCnt; n++) {
-    Device *childDevice = childDeviceList->getDevice(n);
+    mupnp_shared_ptr<Device> childDevice = childDeviceList->getDevice(n);
     if (!childDevice->byebye(ifAddr))
       isSuccess = false;
   }
@@ -1033,7 +1033,7 @@ bool Device::deviceSearchResponse(SSDPPacket *ssdpPacket) {
   DeviceList *childDeviceList = getDeviceList();
   size_t childDeviceCnt = childDeviceList->size();
   for (n = 0; n < childDeviceCnt; n++) {
-    Device *childDevice = childDeviceList->getDevice(n);
+    mupnp_shared_ptr<Device> childDevice = childDeviceList->getDevice(n);
     if (childDevice->deviceSearchResponse(ssdpPacket) == false) {
       areEmbeddedDeviceResponsesSuccess = false;
     }
@@ -1102,7 +1102,7 @@ uHTTP::HTTP::StatusCode Device::httpGetRequestRecieved(HTTPRequest *httpReq) {
   string fileByteBuf;
   const char *fileByte = "";
 
-  Device *embDev;
+  mupnp_shared_ptr<Device> embDev;
   Service *embService;
 
   if (isDescriptionURI(uri.c_str()) == true) {
@@ -1449,7 +1449,7 @@ void Device::setActionListener(ActionListener *listener, bool includeSubDevices)
     DeviceList *devList = getDeviceList();
     size_t devCnt = devList->size();
     for (size_t n = 0; n < devCnt; n++) {
-      Device *dev = devList->getDevice(n);
+      mupnp_shared_ptr<Device> dev = devList->getDevice(n);
       dev->setActionListener(listener, true);
     }
   }
@@ -1462,7 +1462,7 @@ void Device::setQueryListener(QueryListener *listener, bool includeSubDevices) {
     DeviceList *devList = getDeviceList();
     size_t devCnt = devList->size();
     for (size_t n = 0; n < devCnt; n++) {
-      Device *dev = devList->getDevice(n);
+      mupnp_shared_ptr<Device> dev = devList->getDevice(n);
       dev->setQueryListener(listener, true);
     }
   }

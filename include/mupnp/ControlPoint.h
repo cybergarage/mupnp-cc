@@ -159,13 +159,12 @@ private:
   void initDeviceList();
 
  public:
-  Device *getDevice(uXML::Node *rootNode);
-
   DeviceList *getDeviceList() {
     return &deviceList;
   }
 
-  Device *getDevice(const std::string &name);
+  mupnp_shared_ptr<Device> getDevice(uXML::Node *rootNode);
+  mupnp_shared_ptr<Device> getDevice(const std::string &name);
 
   bool hasDevice(const std::string &name) {
     return (getDevice(name) != NULL) ? true : false;
@@ -346,32 +345,14 @@ private:
   
   bool unsubscribe(Service *service);
   void unsubscribe(Device *device);
-
-  void unsubscribe() {
-    DeviceList *devList = getDeviceList();
-    size_t devCnt = devList->size();
-    for (size_t n = 0; n < devCnt; n++) {
-      Device *dev = devList->getDevice(n);
-      unsubscribe(dev);
-    }    
-  }
+  void unsubscribe();
 
   ////////////////////////////////////////////////
   // getSubscriberService  
   ////////////////////////////////////////////////
 
  public:
-  Service *getSubscriberService(const std::string &uuid) {
-    DeviceList *devList = getDeviceList();
-    size_t devCnt = devList->size();
-    for (size_t n = 0; n < devCnt; n++) {
-      Device *dev = devList->getDevice(n);
-      Service *service = dev->getSubscriberService(uuid);
-      if (service != NULL)
-        return service;
-    }    
-    return NULL;
-  }
+  Service *getSubscriberService(const std::string &uuid);
   
   ////////////////////////////////////////////////
   // getSubscriberService  

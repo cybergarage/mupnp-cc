@@ -158,8 +158,8 @@ void PrintDevice(Device *dev, int indent)
   DeviceList *childDevList = dev->getDeviceList();
   size_t nChildDevs = childDevList->size();
   for (size_t n=0; n<nChildDevs; n++) {
-    Device *childDev = childDevList->getDevice(n);
-    PrintDevice(childDev, indent);
+    mupnp_shared_ptr<Device> childDev = childDevList->getDevice(n);
+    PrintDevice(childDev.get(), indent);
   }
 }
 
@@ -169,9 +169,9 @@ void TestCtrlPoint::print()
   size_t nRootDevs = rootDevList->size();
   cout << "Device Num = " << nRootDevs << endl;
   for (size_t n=0; n<nRootDevs; n++) {
-    Device *dev = rootDevList->getDevice(n);
+    mupnp_shared_ptr<Device> dev = rootDevList->getDevice(n);
     const char *devName = dev->getFriendlyName();
     cout << "[" << n << "] = " << devName << endl;
-    PrintDevice(dev, 1);
+    PrintDevice(dev.get(), 1);
   }
 }
