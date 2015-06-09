@@ -1,8 +1,6 @@
 ############################################################
 #
-#	mUPnP for C++
-#/Users/skonno/Src/go-xml-xpath/src/xml/xpath.go
-#	Copyright (C) Satoshi Konno 2003-2013
+# mUPnP for C++
 #
 ############################################################
 
