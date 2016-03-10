@@ -109,11 +109,12 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_mupnpcctestunit_OBJECTS = ../TestDevice.$(OBJEXT) \
-	../TestHTTPServer.$(OBJEXT) ../XMLParserTests.$(OBJEXT) \
-	../TestCtrlPoint.$(OBJEXT) ../TestMain.$(OBJEXT) \
-	../UPnPMiscTests.$(OBJEXT) ../UPnPDeviceParseTests.$(OBJEXT) \
-	../UPnPDeviceTests.$(OBJEXT) ../NotifSocketTests.$(OBJEXT)
+am_mupnpcctestunit_OBJECTS = ..//NotifSocketTests.$(OBJEXT) \
+	..//TestCtrlPoint.$(OBJEXT) ..//TestDevice.$(OBJEXT) \
+	..//TestHTTPServer.$(OBJEXT) ..//TestMain.$(OBJEXT) \
+	..//UPnPDeviceParseTests.$(OBJEXT) \
+	..//UPnPDeviceTests.$(OBJEXT) ..//UPnPMiscTests.$(OBJEXT) \
+	..//XMLParserTests.$(OBJEXT)
 mupnpcctestunit_OBJECTS = $(am_mupnpcctestunit_OBJECTS)
 mupnpcctestunit_DEPENDENCIES = ../../lib/unix/libmupnp++.a
 AM_V_P = $(am__v_P_@AM_V@)
@@ -278,20 +279,20 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_srcdir)/include -I../
 noinst_HEADERS = \
-	../TestHTTPServer.h \
-	../TestCtrlPoint.h \
-	../TestDevice.h
+	..//TestCtrlPoint.h \
+	..//TestDevice.h \
+	..//TestHTTPServer.h
 
 mupnpcctestunit_SOURCES = \
-	../TestDevice.cpp \
-	../TestHTTPServer.cpp \
-	../XMLParserTests.cpp \
-	../TestCtrlPoint.cpp \
-	../TestMain.cpp \
-	../UPnPMiscTests.cpp \
-	../UPnPDeviceParseTests.cpp \
-	../UPnPDeviceTests.cpp \
-	../NotifSocketTests.cpp
+	..//NotifSocketTests.cpp \
+	..//TestCtrlPoint.cpp \
+	..//TestDevice.cpp \
+	..//TestHTTPServer.cpp \
+	..//TestMain.cpp \
+	..//UPnPDeviceParseTests.cpp \
+	..//UPnPDeviceTests.cpp \
+	..//UPnPMiscTests.cpp \
+	..//XMLParserTests.cpp
 
 mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@
 all: all-am
@@ -331,27 +332,28 @@ $(am__aclocal_m4_deps):
 clean-noinstPROGRAMS:
 	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
 ../$(am__dirstamp):
-	@$(MKDIR_P) ..
+	@$(MKDIR_P) ../
 	@: > ../$(am__dirstamp)
 ../$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) ../$(DEPDIR)
+	@$(MKDIR_P) ..//$(DEPDIR)
 	@: > ../$(DEPDIR)/$(am__dirstamp)
-../TestDevice.$(OBJEXT): ../$(am__dirstamp) \
+..//NotifSocketTests.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../TestHTTPServer.$(OBJEXT): ../$(am__dirstamp) \
+..//TestCtrlPoint.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../XMLParserTests.$(OBJEXT): ../$(am__dirstamp) \
+..//TestDevice.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../TestCtrlPoint.$(OBJEXT): ../$(am__dirstamp) \
+..//TestHTTPServer.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../TestMain.$(OBJEXT): ../$(am__dirstamp) ../$(DEPDIR)/$(am__dirstamp)
-../UPnPMiscTests.$(OBJEXT): ../$(am__dirstamp) \
+..//TestMain.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../UPnPDeviceParseTests.$(OBJEXT): ../$(am__dirstamp) \
+..//UPnPDeviceParseTests.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../UPnPDeviceTests.$(OBJEXT): ../$(am__dirstamp) \
+..//UPnPDeviceTests.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
-../NotifSocketTests.$(OBJEXT): ../$(am__dirstamp) \
+..//UPnPMiscTests.$(OBJEXT): ../$(am__dirstamp) \
+	../$(DEPDIR)/$(am__dirstamp)
+..//XMLParserTests.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 
 mupnpcctestunit$(EXEEXT): $(mupnpcctestunit_OBJECTS) $(mupnpcctestunit_DEPENDENCIES) $(EXTRA_mupnpcctestunit_DEPENDENCIES) 
@@ -360,7 +362,7 @@ mupnpcctestunit$(EXEEXT): $(mupnpcctestunit_OBJECTS) $(mupnpcctestunit_DEPENDENC
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f ../*.$(OBJEXT)
+	-rm -f ..//*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c

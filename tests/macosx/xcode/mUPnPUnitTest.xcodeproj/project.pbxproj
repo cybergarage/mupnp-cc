@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210A2EF21A5E3A37002DA63C /* libmupnp++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210A2EEF1A5E35A0002DA63C /* libmupnp++.a */; };
-		214BD315192DE5CD00426493 /* libuhttp++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 214BD312192DE5A800426493 /* libuhttp++.a */; };
+		210A2EF21A5E3A37002DA63C /* liblibmupnp++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210A2EEF1A5E35A0002DA63C /* liblibmupnp++.a */; };
 		214CE3641564D75400115E8A /* TestCtrlPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE35F1564D75400115E8A /* TestCtrlPoint.cpp */; };
 		214CE3651564D75400115E8A /* TestDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3601564D75400115E8A /* TestDevice.cpp */; };
 		214CE3661564D75400115E8A /* TestHTTPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 214CE3611564D75400115E8A /* TestHTTPServer.cpp */; };
@@ -35,20 +34,6 @@
 			remoteGlobalIDString = 219C21EC155C7877003ABA46;
 			remoteInfo = "libmupnp++";
 		};
-		214BD311192DE5A800426493 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 21E1EB1C1535D1E0005AA247;
-			remoteInfo = libuhttp;
-		};
-		214BD313192DE5C700426493 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 21E1EB1B1535D1E0005AA247;
-			remoteInfo = libuhttp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "libmupnp++.xcodeproj"; path = "../../../lib/macosx/xcode/libmupnp++.xcodeproj"; sourceTree = "<group>"; };
-		214BD30D192DE5A700426493 /* libuhttp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libuhttp.xcodeproj; path = ../../../../uhttp/lib/macosx/xcode/libuhttp.xcodeproj; sourceTree = "<group>"; };
 		214CE35A1564D75400115E8A /* TestCtrlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCtrlPoint.h; path = ../../TestCtrlPoint.h; sourceTree = "<group>"; };
 		214CE35B1564D75400115E8A /* TestDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDevice.h; path = ../../TestDevice.h; sourceTree = "<group>"; };
 		214CE35C1564D75400115E8A /* TestHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestHTTPServer.h; path = ../../TestHTTPServer.h; sourceTree = "<group>"; };
@@ -86,8 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				210A2EF21A5E3A37002DA63C /* libmupnp++.a in Frameworks */,
-				214BD315192DE5CD00426493 /* libuhttp++.a in Frameworks */,
+				210A2EF21A5E3A37002DA63C /* liblibmupnp++.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,15 +80,7 @@
 		210A2EEB1A5E35A0002DA63C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				210A2EEF1A5E35A0002DA63C /* libmupnp++.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		214BD30E192DE5A700426493 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				214BD312192DE5A800426493 /* libuhttp++.a */,
+				210A2EEF1A5E35A0002DA63C /* liblibmupnp++.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */,
-				214BD30D192DE5A700426493 /* libuhttp.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,7 +144,6 @@
 			);
 			dependencies = (
 				210A2EF11A5E3A33002DA63C /* PBXTargetDependency */,
-				214BD314192DE5C700426493 /* PBXTargetDependency */,
 			);
 			name = mUPnPUnitTest;
 			productName = mUPnPUnitTest;
@@ -183,7 +156,7 @@
 		216397D81564C6D100CF258B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = 216397DB1564C6D100CF258B /* Build configuration list for PBXProject "mUPnPUnitTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -200,10 +173,6 @@
 					ProductGroup = 210A2EEB1A5E35A0002DA63C /* Products */;
 					ProjectRef = 210A2EEA1A5E35A0002DA63C /* libmupnp++.xcodeproj */;
 				},
-				{
-					ProductGroup = 214BD30E192DE5A700426493 /* Products */;
-					ProjectRef = 214BD30D192DE5A700426493 /* libuhttp.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -213,19 +182,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		210A2EEF1A5E35A0002DA63C /* libmupnp++.a */ = {
+		210A2EEF1A5E35A0002DA63C /* liblibmupnp++.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			name = "libmupnp++.a";
 			path = "liblibmupnp++.a";
 			remoteRef = 210A2EEE1A5E35A0002DA63C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		214BD312192DE5A800426493 /* libuhttp++.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libuhttp++.a";
-			remoteRef = 214BD311192DE5A800426493 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -255,11 +216,6 @@
 			name = "libmupnp++";
 			targetProxy = 210A2EF01A5E3A33002DA63C /* PBXContainerItemProxy */;
 		};
-		214BD314192DE5C700426493 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libuhttp;
-			targetProxy = 214BD313192DE5C700426493 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -278,9 +234,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -327,6 +285,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
