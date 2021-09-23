@@ -18,12 +18,42 @@ protocols to create your devices of UPnP™.
 
 \* UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
 
-## Repositories
+## Building and Installation
 
-The project is hosted on the following site. To use the mUPnP after
-v2.0, you have to install [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) which is a HTTP server
-framework too.
+µHTTP for C++ for C depend on [µHTTP for C++](https://github.com/cybergarage/uhttp-cc), ando so you need to install [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) first.
+Next, µHTTP for C++ for C is distributed as an Automake project, and so you can install the library from the source codes with the following commands:
 
-- [Programming Guide](http://www.cybergarage.org:8080/pdfdoc/clinkccproguide.pdf)
-- [Doxygen](http://www.cybergarage.org:8080/doxygen/mupnp4cc/)
-- [GitHub](https://github.com/cybergarage/mupnp-cc)
+```
+./boostrap
+./configure
+make install
+```
+
+### macOS
+
+For macOS platforms, you can easily install using Homebrew without [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) setup with the following `brew` commands:
+
+```
+brew tap cybergarage/homebrew
+brew install mupnp++
+```
+
+## References
+
+- [Programming Guide](doc/mupnpcxxproguide.pdf)
+- [Doxygen](http://cybergarage.github.io/mupnp-cc/)
+
+## Examples
+
+- UPnP control point examples
+  - UPnP controller for UPnP devices
+    - [UPnP multicast dump utility](examples/upnpdump)
+  - UPnP controller for UPnP stardard devices
+    - [UPnP/AV media server utility ](examples/media/serverdump)
+ 
+- UPnP device examples
+  - UPnP stardard devices
+    - [UPnP/AV media sever](examples/media/server)
+  - UPnP non-standard devices
+    - [UPnP clock device](examples/clock)
+    - [UPnP television device](examples/tv)
