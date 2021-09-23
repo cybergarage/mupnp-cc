@@ -1,0 +1,27 @@
+var UPnP_8h =
+[
+    [ "CreateBootID", "UPnP_8h.html#ad717dda5b1178011b8f0e657baadda67", null ],
+    [ "CreateUUID", "UPnP_8h.html#af97e339bb6cf2b88cab9a7f799040619", null ],
+    [ "GetServerName", "UPnP_8h.html#aeb8590276faac1fed7ca887e00516f89", null ],
+    [ "IsEnabled", "UPnP_8h.html#aed65a66fa3cb88caa07cea4aa573061a", null ],
+    [ "SetDisable", "UPnP_8h.html#ad185c90f47e1555d42a5ce60fefad666", null ],
+    [ "SetEnable", "UPnP_8h.html#a746e1c3cb7b14a5ab2c8c72bc348c6c7", null ],
+    [ "DEFAULT_EXPIRED_DEVICE_EXTRA_TIME", "UPnP_8h.html#af6e6cf106ba8f32e4d04473f8a47cc22", null ],
+    [ "INMPR03", "UPnP_8h.html#a2c38ef47f8002a90ff87c08f601d95d4", null ],
+    [ "INMPR03_DISCOVERY_OVER_WIRELESS_COUNT", "UPnP_8h.html#ab4ff89e1538b6aba33c5c1a43d9e09db", null ],
+    [ "INMPR03_VER", "UPnP_8h.html#a22151033c5b577081762c2a951a5ee65", null ],
+    [ "NAME", "UPnP_8h.html#a9c9b9a4acc0e9a6b1a71187b10b38b61", null ],
+    [ "SERVER_RETRY_COUNT", "UPnP_8h.html#aba4607e2419dfdab5a4278810a700d95", null ],
+    [ "USE_IPV6_ADMINISTRATIVE_SCOPE", "UPnP_8h.html#a45e40ddc66469c529c270f00bf47d110", null ],
+    [ "USE_IPV6_GLOBAL_SCOPE", "UPnP_8h.html#ac76518a21b2ecc6f23adf32408dff112", null ],
+    [ "USE_IPV6_LINK_LOCAL_SCOPE", "UPnP_8h.html#a84e54d035f82e524797dc3451cae4e0d", null ],
+    [ "USE_IPV6_SITE_LOCAL_SCOPE", "UPnP_8h.html#a3b65effbf9d67204a956d56d0f2b65dc", null ],
+    [ "USE_IPV6_SUBNET_SCOPE", "UPnP_8h.html#a92c31301f522083b8012b7c8051dc88a", null ],
+    [ "USE_LOOPBACK_ADDR", "UPnP_8h.html#a458966a0a688c1730a5e8b70c56db883", null ],
+    [ "USE_ONLY_IPV4_ADDR", "UPnP_8h.html#a725900700953bd74316e0b9ec364b041", null ],
+    [ "USE_ONLY_IPV6_ADDR", "UPnP_8h.html#adb0186102ee2bf91b1753a6e1d933f44", null ],
+    [ "USE_SSDP_SEARCHRESPONSE_MULTIPLE_INTERFACES", "UPnP_8h.html#a6d92b627e3e6c3f683b46766c80d5e21", null ],
+    [ "VER", "UPnP_8h.html#a5ed163a1b18b375f05570950d7f6c901", null ],
+    [ "VER", "UPnP_8h.html#a29a77b81f46d1c63e9d7eaba51837c95", null ],
+    [ "XML_DECLARATION", "UPnP_8h.html#a8fa5f9b417e2449d220dcfc9e98326f4", null ]
+];
