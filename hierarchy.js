@@ -88,6 +88,18 @@ var hierarchy =
       [ "mUPnP::SharedVector< Node >", "classmUPnP_1_1SharedVector.html", [
         [ "uXML::NodeList", "classuXML_1_1NodeList.html", null ]
       ] ],
+      [ "mUPnP::WeakVector< Action >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< AllowedValue >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< Argument >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< Icon >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< Property >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< SSDPNotifySocket >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< SSDPSearchResponseSocket >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< SSDPSearchSocket >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< Service >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< StateVariable >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< Subscriber >", "classmUPnP_1_1WeakVector.html", null ],
+      [ "mUPnP::WeakVector< Attribute >", "classmUPnP_1_1WeakVector.html", null ],
       [ "mUPnP::SharedVector< T >", "classmUPnP_1_1SharedVector.html", null ],
       [ "mUPnP::WeakVector< T >", "classmUPnP_1_1WeakVector.html", [
         [ "mUPnP::Vector< Action >", "classmUPnP_1_1Vector.html", [
