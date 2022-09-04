@@ -1,0 +1,30 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup
+      run: |
+        sudo apt update
+        sudo apt install -y g++ automake libboost-all-dev pkg-config
+    - name: setup uhttp-cc
+      run: |
+        wget https://github.com/cybergarage/uhttp-cc/archive/refs/tags/0.8.1.tar.gz
+        tar xvfz 0.8.1.tar.gz
+        pushd uhttp-cc-0.8.1 && ./bootstrap && ./confugure && make install && popd
+    - name: configure
+      run: ./configure --enable-test --enable-examples
+    - name: make
+      run: make
+    - name: make check
+      run: make check || more test/unix/test-suite.log 
