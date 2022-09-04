@@ -21,7 +21,7 @@ jobs:
       run: |
         wget https://github.com/cybergarage/uhttp-cc/archive/refs/tags/0.8.2.tar.gz
         tar xvfz 0.8.2.tar.gz
-        pushd uhttp-cc-0.8.2 && ./bootstrap && ./confugure && make install && popd
+        pushd uhttp-cc-0.8.2 && ./confugure && make install && popd
     - name: configure
       run: ./configure --enable-test --enable-examples
     - name: make
