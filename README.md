@@ -1,5 +1,7 @@
 # mUPnP for C++
 
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/mupnp-cc)
+
 ## Overview
 
 mUPnP for C++ is a development package for UPnP™ developers. mUPnP
