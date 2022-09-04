@@ -1,6 +1,7 @@
 # mUPnP for C++
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/mupnp-cc)
+[![build](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml)
 
 ## Overview
 
