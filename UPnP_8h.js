@@ -21,7 +21,7 @@ var UPnP_8h =
     [ "USE_ONLY_IPV4_ADDR", "UPnP_8h.html#a725900700953bd74316e0b9ec364b041", null ],
     [ "USE_ONLY_IPV6_ADDR", "UPnP_8h.html#adb0186102ee2bf91b1753a6e1d933f44", null ],
     [ "USE_SSDP_SEARCHRESPONSE_MULTIPLE_INTERFACES", "UPnP_8h.html#a6d92b627e3e6c3f683b46766c80d5e21", null ],
-    [ "VER", "UPnP_8h.html#a5ed163a1b18b375f05570950d7f6c901", null ],
     [ "VER", "UPnP_8h.html#a29a77b81f46d1c63e9d7eaba51837c95", null ],
+    [ "VER", "UPnP_8h.html#a5ed163a1b18b375f05570950d7f6c901", null ],
     [ "XML_DECLARATION", "UPnP_8h.html#a8fa5f9b417e2449d220dcfc9e98326f4", null ]
 ];
