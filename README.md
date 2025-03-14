@@ -50,13 +50,13 @@ brew install mupnp++
 
 - UPnP control point examples
   - UPnP controller for UPnP devices
-    - [UPnP multicast dump utility](examples/upnpdump)
+    - [UPnP multicast dump utility](https://github.com/cybergarage/mupnp-cc/tree/master/examples/upnpdump)
   - UPnP controller for UPnP stardard devices
-    - [UPnP/AV media server utility ](examples/media/serverdump)
+    - [UPnP/AV media server utility ](https://github.com/cybergarage/mupnp-cc/tree/master/examples/media/serverdump)
  
 - UPnP device examples
   - UPnP stardard devices
-    - [UPnP/AV media sever](examples/media/server)
+    - [UPnP/AV media sever](https://github.com/cybergarage/mupnp-cc/tree/master/examples/media/server)
   - UPnP non-standard devices
-    - [UPnP clock device](examples/clock)
-    - [UPnP television device](examples/tv)
+    - [UPnP clock device](https://github.com/cybergarage/mupnp-cc/tree/master/examples/clock)
+    - [UPnP television device](https://github.com/cybergarage/mupnp-cc/tree/master/examples/tv)
