@@ -22,10 +22,10 @@ jobs:
         wget https://github.com/cybergarage/uhttp-cc/archive/refs/tags/0.8.2.tar.gz
         tar xvfz 0.8.2.tar.gz
         pushd uhttp-cc-0.8.2
-        ./configure && sudo make install
+        ./boostrap && ./configure && sudo make install
         popd
     - name: configure
-      run: ./configure --enable-test --enable-examples
+      run: ./boostrap && ./configure --enable-test --enable-examples
     - name: make
       run: make
     - name: make check
