@@ -17,7 +17,7 @@ UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP,
 HTTPU and HTTP. Therefore you have to understand and implement these
 protocols to create your devices of UPnP™.
 
-![upnp-app](doc/img/upnpapp.png)
+![UPnP Applications](doc/img/upnpapp.png)
 
 \* UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
 
