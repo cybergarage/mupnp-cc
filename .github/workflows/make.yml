@@ -19,9 +19,8 @@ jobs:
         sudo apt install -y g++ automake libboost-all-dev pkg-config
     - name: setup uhttp-cc
       run: |
-        wget https://github.com/cybergarage/uhttp-cc/archive/refs/tags/0.8.2.tar.gz
-        tar xvfz 0.8.2.tar.gz
-        pushd uhttp-cc-0.8.2
+        git clone https://github.com/cybergarage/uhttp-cc.git
+        pushd uhttp-cc
         ./bootstrap && ./configure && sudo make install
         popd
     - name: configure
