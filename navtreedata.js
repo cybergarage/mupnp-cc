@@ -25,6 +25,12 @@
 var NAVTREE =
 [
   [ "mUPnP for C++", "index.html", [
+    [ "Overview", "index.html#autotoc_md1", null ],
+    [ "Building and Installation", "index.html#autotoc_md2", [
+      [ "macOS", "index.html#autotoc_md3", null ]
+    ] ],
+    [ "References", "index.html#autotoc_md4", null ],
+    [ "Examples", "index.html#autotoc_md5", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -56,17 +62,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ActionData_8h.html",
-"classmUPnP_1_1Action.html#a637fe88ca9d170622dd40fc81b9b62a5",
-"classmUPnP_1_1Argument.html#ac03ae9b86c4f4809f89db4903ee10e0f",
-"classmUPnP_1_1ControlResponse.html#a23d2b117bd980f349e6656bb164e0529",
-"classmUPnP_1_1Device.html#aa431ca722d7fbe1a3cc532079e5baccb",
-"classmUPnP_1_1HTTPMUSocket.html#aef36455640fd68a32ca52770575e1fe6",
-"classmUPnP_1_1SSDPPacket.html#a1f6f8e4ad6e37b78e6d10aea830a4af6",
-"classmUPnP_1_1Service.html#a2a96b5f9a033528e6fef0357e09fc143",
-"classmUPnP_1_1StateVariable.html#a94a1a4cfff9af1a81c2e385804aff2c5",
-"classuSOAP_1_1SOAPRequest.html#a38c82580a388e3ea35714ee8351b0dc0",
-"classuXML_1_1NodeList.html#af3221728d726049d50427a4dece4c0d5"
+"classmUPnP_1_1Advertiser.html",
+"classmUPnP_1_1ControlPoint.html#a72b37a6c9cd7c3c773508088f4f62af3",
+"classmUPnP_1_1Device.html#a5152ee4e0b0165420e6cbd8e3585feb8",
+"classmUPnP_1_1Device.html#af69bd37764fc5775057d7389b47b609a",
+"classmUPnP_1_1Property.html#a465a8c706e0bde4237ad990500581f62",
+"classmUPnP_1_1SSDPSearchRequest.html#a83f63cfd8518e18bf07d916dc6294a5b",
+"classmUPnP_1_1ServiceData.html#a188340059b9ded35ab93635d50b2a25b",
+"classmUPnP_1_1SubscriptionRequest.html",
+"classuXML_1_1Node.html#a36ee4087dc50132458c282d32e5b269e",
+"namespacemUPnP_1_1SSDP.html#a0cb0c533afcdc70104895240c343aafb"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
