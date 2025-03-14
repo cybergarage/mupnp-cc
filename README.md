@@ -6,17 +6,11 @@
 
 ## Overview
 
-mUPnP for C++ is a development package for UPnP™ developers. mUPnP
-controls these protocols automatically, and supports to create your
-devices and control points quickly.
+mUPnP for C++ is a development package for UPnP™ developers. mUPnP controls these protocols automatically, and supports to create your devices and control points quickly.
 
-UPnP™ \* architecture is an open network to enable discovery and control
-of networked devices and services, such as media servers and players at
-home.
+UPnP™ \* architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home.
 
-UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP,
-HTTPU and HTTP. Therefore you have to understand and implement these
-protocols to create your devices of UPnP™.
+UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
 
 ![UPnP Applications](doc/img/upnpapp.png)
 
