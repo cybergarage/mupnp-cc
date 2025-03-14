@@ -2,6 +2,7 @@
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/mupnp-cc)
 [![build](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml)
+[![doxygen](https://github.com/cybergarage/mupnp-cc/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/mupnp-cc/)
 
 ## Overview
 
@@ -23,8 +24,7 @@ protocols to create your devices of UPnP™.
 
 ## Building and Installation
 
-µHTTP for C++ for C depend on [µHTTP for C++](https://github.com/cybergarage/uhttp-cc), ando so you need to install [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) first.
-Next, µHTTP for C++ for C is distributed as an Automake project, and so you can install the library from the source codes with the following commands:
+mUPnP for C++ for C depend on [µHTTP for C++](https://github.com/cybergarage/uhttp-cc), ando so you need to install [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) first. Next, µHTTP for C++ for C is distributed as an Automake project, and so you can install the libary from the source codes with the following commands:
 
 ```
 ./boostrap
