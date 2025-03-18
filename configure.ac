@@ -5,9 +5,9 @@
 ############################################################
 
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 
-AC_INIT([mupnp++], [1.0])
+AC_INIT([mupnp++],[1.0])
 AC_CONFIG_SRCDIR([include/mupnp/mUPnP.h])
 AM_INIT_AUTOMAKE([subdir-objects])
 
@@ -38,33 +38,14 @@ AC_PROG_CPP
 AC_PROG_INSTALL
 AC_PROG_AWK
 AC_PROG_RANLIB
-AC_LANG_CPLUSPLUS
-
-##############################
-#Checks for CYGWIN an MinGW
-##############################
-
-#AC_CYGWIN
-#if [ test $CYGWIN = yes || test $MINGW = yes ]; then
-  #AC_LIBTOOL_WIN32_DLL
-  #AM_DISABLE_STATIC
-  #AC_PROG_LIBTOOL
-  AC_CHECK_LIB([ws2_32],[main])
-  #AC_CHECK_LIB([iphlpapi],[main])
-#fi
+AC_LANG([C++])
 
 ##############################
 # Checks for header files.
 ##############################
 
-AC_HEADER_STDC
+AC_PROG_EGREP
 AC_CHECK_HEADERS([arpa/inet.h limits.h netdb.h netinet/in.h stdlib.h string.h sys/param.h sys/socket.h unistd.h])
-
-##############################
-# Checks for uHTTP libraries.
-##############################
-
-AC_CHECK_LIB([uhttp++],[main],,[AC_MSG_ERROR(mUPnP needs uHTTP for C++)])
 
 ##############################
 # Checks for Xerces C++ libraries.
@@ -161,7 +142,7 @@ fi
 # Checks for xUnit
 ##############################
 
-AC_ARG_ENABLE([tests], AC_HELP_STRING([--enable-tests], [ build tests (default = no) ]), [build_tests="yes"], [])
+AC_ARG_ENABLE([tests], AS_HELP_STRING([--enable-tests],[ build tests (default = no) ]), [build_tests="yes"], [])
 AM_CONDITIONAL(UNITTESTS,test "$build_tests" = yes)
 if [ test "$build_tests" = yes ]; then
 	AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,[AC_MSG_ERROR(uHTTP unittests need boost::unit_test_framework)])
@@ -224,30 +205,24 @@ AC_STRUCT_TM
 ##############################
 
 AC_MSG_CHECKING(for std::shared_ptr)
-AC_TRY_COMPILE([
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <iostream>
 void testFunc(){
 std::shared_ptr<int> p(new int(0));
 }
-],
-[],
-[AC_MSG_RESULT(yes)
-AC_DEFINE([HAVE_STD_SHRAEDPTR],1,[HAVE_STD_SHAREDPTR])],
-[AC_MSG_RESULT(no)]
-)
+]], [[]])],[AC_MSG_RESULT(yes)
+AC_DEFINE([HAVE_STD_SHRAEDPTR],1,[HAVE_STD_SHAREDPTR])],[AC_MSG_RESULT(no)
+])
 
 AC_MSG_CHECKING(for boost::shared_ptr)
-AC_TRY_COMPILE([
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <boost/shared_ptr.hpp>
 void testFunc(){
 boost::shared_ptr<int> p(new int(0));
 }
-],
-[],
-[AC_MSG_RESULT(yes)
-AC_DEFINE([HAVE_BOOST_SHRAEDPTR],1,[HAVE_BOOST_SHAREDPTR])],
-[AC_MSG_RESULT(no)]
-)
+]], [[]])],[AC_MSG_RESULT(yes)
+AC_DEFINE([HAVE_BOOST_SHRAEDPTR],1,[HAVE_BOOST_SHAREDPTR])],[AC_MSG_RESULT(no)
+])
 
 ##############################
 # Checks for Network functions
@@ -259,16 +234,13 @@ AC_CHECK_HEADERS([ifaddrs.h])
 AC_CHECK_FUNCS([getifaddrs])
 
 AC_MSG_CHECKING(for socklen_t)
-AC_TRY_COMPILE([
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <sys/types.h>
 #include <sys/socket.h>
 socklen_t foosocket;
-],
-[],
-[AC_MSG_RESULT(yes)
-AC_DEFINE([HAVE_SOCKLEN_T],1,[SOCKLEN_T])],
-[AC_MSG_RESULT(no)]
-)
+]], [[]])],[AC_MSG_RESULT(yes)
+AC_DEFINE([HAVE_SOCKLEN_T],1,[SOCKLEN_T])],[AC_MSG_RESULT(no)
+])
 
 ##############################
 # Checks for C++ stream.
@@ -277,17 +249,14 @@ AC_DEFINE([HAVE_SOCKLEN_T],1,[SOCKLEN_T])],
 AC_CHECK_HEADERS([sstream])
 
 AC_MSG_CHECKING(for std::cout)
-AC_TRY_COMPILE([
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
 #include <iostream>
 void testFunc(){
 std::cout << "" << std::endl;
 }
-],
-[],
-[AC_MSG_RESULT(yes)
-AC_DEFINE([HAVE_STD_COUT],1,[STD_COUT])],
-[AC_MSG_RESULT(no)]
-)
+]], [[]])],[AC_MSG_RESULT(yes)
+AC_DEFINE([HAVE_STD_COUT],1,[STD_COUT])],[AC_MSG_RESULT(no)
+])
 
 ##############################
 # Checks for other functions.
@@ -306,7 +275,7 @@ AC_CHECK_FUNCS([uname])
 # Makefiles
 ##############################
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 include/Makefile
 lib/Makefile
@@ -321,3 +290,4 @@ examples/tv/unix/Makefile
 tests/Makefile
 tests/unix/Makefile
 ])
+AC_OUTPUT
