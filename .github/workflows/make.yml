@@ -16,15 +16,9 @@ jobs:
     - name: setup
       run: |
         sudo apt update
-        sudo apt install -y g++ automake libboost-all-dev pkg-config
-    - name: setup uhttp-cc
-      run: |
-        git clone https://github.com/cybergarage/uhttp-cc.git
-        pushd uhttp-cc
-        ./bootstrap && ./configure && sudo make install
-        popd
+        sudo apt install -y libboost-all-dev libedit-dev pkg-config
     - name: configure
-      run: ./bootstrap && ./configure --enable-test --enable-examples
+      run: ./configure --enable-test --enable-examples
     - name: make
       run: make
     - name: make check
