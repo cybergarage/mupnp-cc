@@ -151,7 +151,7 @@ am__define_uniq_tagged_files = \
   unique=`for i in $$list; do \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
-DIST_SUBDIRS = include lib examples tests
+DIST_SUBDIRS = include lib examples test
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/config/compile $(top_srcdir)/config/install-sh \
 	$(top_srcdir)/config/missing \
@@ -308,8 +308,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@UNITTESTS_FALSE@SUBDIRS = include lib examples
-@UNITTESTS_TRUE@SUBDIRS = include lib tests examples
+@ENABLE_UNITTEST_FALSE@SUBDIRS = include lib examples
+@ENABLE_UNITTEST_TRUE@SUBDIRS = include lib test examples
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 

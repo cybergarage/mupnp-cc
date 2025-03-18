@@ -66,10 +66,10 @@ mupnpcc_sources = \
 	../../src/mupnp/net/URI.cpp \
 	../../src/mupnp/net/Socket.cpp \
 	../../src/mupnp/net/URL.cpp \
+	../../src/mupnp/net/SocketCore.cpp \
 	../../src/mupnp/net/HostInterface.cpp \
 	../../src/mupnp/net/ServerSocket.cpp \
 	../../src/mupnp/net/MulticastSocket.cpp \
-	../../src/mupnp/net/SocketImp.cpp \
 	../../src/mupnp/event/Subscriber.cpp \
 	../../src/mupnp/event/SubscriptionRequest.cpp \
 	../../src/mupnp/event/PropertyList.cpp \
@@ -77,10 +77,11 @@ mupnpcc_sources = \
 	../../src/mupnp/event/Subscription.cpp \
 	../../src/mupnp/UPnP.cpp \
 	../../src/mupnp/http/HTTPDate.cpp \
+	../../src/mupnp/http/HTTPWorkerThread.cpp \
 	../../src/mupnp/http/HTTPRequest.cpp \
 	../../src/mupnp/http/HTTPSocket.cpp \
-	../../src/mupnp/http/HTTPServerThread.cpp \
 	../../src/mupnp/http/HTTP.cpp \
+	../../src/mupnp/http/HTTPMessageQueue.cpp \
 	../../src/mupnp/http/HTTPHeader.cpp \
 	../../src/mupnp/http/HTTPResponse.cpp \
 	../../src/mupnp/http/HTTPPacket.cpp \
@@ -88,11 +89,21 @@ mupnpcc_sources = \
 	../../src/mupnp/http/HTTPServerList.cpp \
 	../../src/mupnp/http/HTTPServer.cpp \
 	../../src/mupnp/util/Mutex.cpp \
+	../../src/mupnp/util/Semaphore.cpp \
+	../../src/mupnp/util/Logger.cpp \
 	../../src/mupnp/util/StringTokenizer.cpp \
+	../../src/mupnp/util/Log.cpp \
 	../../src/mupnp/util/Date.cpp \
 	../../src/mupnp/util/TimeUtil.cpp \
+	../../src/mupnp/util/LoggerTargetList.cpp \
+	../../src/mupnp/util/Message.cpp \
 	../../src/mupnp/util/StringUtil.cpp \
+	../../src/mupnp/util/MessageQueue.cpp \
+	../../src/mupnp/util/ThreadList.cpp \
 	../../src/mupnp/util/Thread.cpp \
+	../../src/mupnp/util/LoggerTarget.cpp \
+	../../src/mupnp/util/LoggerFileTarget.cpp \
+	../../src/mupnp/util/Random.cpp \
 	../../src/mupnp/util/Debug.cpp \
 	../../src/mupnp/ArgumentList.cpp \
 	../../src/mupnp/AllowedValueRange.cpp \
@@ -100,7 +111,6 @@ mupnpcc_sources = \
 	../../src/mupnp/Icon.cpp \
 	../../src/mupnp/io/File.cpp \
 	../../src/mupnp/io/FileInputStream.cpp \
-	../../src/mupnp/io/FileList.cpp \
 	../../src/mupnp/io/StringBufferInputStream.cpp \
 	../../src/mupnp/io/BufferedReader.cpp \
 	../../src/mupnp/io/StringReader.cpp \

@@ -142,12 +142,12 @@ fi
 # Checks for xUnit
 ##############################
 
-AC_ARG_ENABLE([tests], AS_HELP_STRING([--enable-tests],[ build tests (default = no) ]), [build_tests="yes"], [])
-AM_CONDITIONAL(UNITTESTS,test "$build_tests" = yes)
-if [ test "$build_tests" = yes ]; then
-	AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,[AC_MSG_ERROR(uHTTP unittests need boost::unit_test_framework)])
-	AC_CHECK_LIB([boost_system-mt],[main],,[AC_MSG_ERROR(uHTTP unittests need boost::system)])
-	AC_CHECK_LIB([boost_filesystem-mt],[main],,[AC_MSG_ERROR(uHTTP unittests need boost::filesystem)])
+AC_ARG_ENABLE([test], AS_HELP_STRING([--enable-test],[ build test (default = no) ]), [build_tests="yes"], [])
+AM_CONDITIONAL(ENABLE_UNITTEST,test "$build_test" = yes)
+if [ test "$build_test" = yes ]; then
+	AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,[AC_MSG_ERROR(uHTTP unittest need boost::unit_test_framework)])
+	AC_CHECK_LIB([boost_system-mt],[main],,[AC_MSG_ERROR(uHTTP unit test need boost::system)])
+	AC_CHECK_LIB([boost_filesystem-mt],[main],,[AC_MSG_ERROR(uHTTP unit test need boost::filesystem)])
 fi
 
 ##############################
@@ -287,7 +287,7 @@ examples/clock/Makefile
 examples/clock/unix/Makefile
 examples/tv/Makefile
 examples/tv/unix/Makefile
-tests/Makefile
-tests/unix/Makefile
+test/Makefile
+test/unix/Makefile
 ])
 AC_OUTPUT

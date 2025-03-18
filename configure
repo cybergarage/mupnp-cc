@@ -655,8 +655,8 @@ GTK_LIBS
 GDK_IMLIB_CFLAGS
 GTK_CFLAGS
 GTK_CONFIG
-UNITTESTS_FALSE
-UNITTESTS_TRUE
+ENABLE_UNITTEST_FALSE
+ENABLE_UNITTEST_TRUE
 XML_LIBS
 XML_CFLAGS
 XML2_CONFIG
@@ -764,7 +764,7 @@ enable_dependency_tracking
 enable_xercescc
 enable_expat
 enable_libxml2
-enable_tests
+enable_test
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1410,7 +1410,7 @@ Optional Features:
   --enable-xercescc	enable Xerces C++ support default=no
   --enable-expat       enable Expat support default=no
   --enable-libxml2	enable Libxml2 support default=no
-  --enable-tests          build tests (default = no)
+  --enable-test           build test (default = no)
 
 Some influential environment variables:
   CC          C compiler command
@@ -5933,21 +5933,21 @@ fi
 # Checks for xUnit
 ##############################
 
-# Check whether --enable-tests was given.
-if test ${enable_tests+y}
+# Check whether --enable-test was given.
+if test ${enable_test+y}
 then :
-  enableval=$enable_tests; build_tests="yes"
+  enableval=$enable_test; build_tests="yes"
 fi
 
- if test "$build_tests" = yes; then
-  UNITTESTS_TRUE=
-  UNITTESTS_FALSE='#'
+ if test "$build_test" = yes; then
+  ENABLE_UNITTEST_TRUE=
+  ENABLE_UNITTEST_FALSE='#'
 else
-  UNITTESTS_TRUE='#'
-  UNITTESTS_FALSE=
+  ENABLE_UNITTEST_TRUE='#'
+  ENABLE_UNITTEST_FALSE=
 fi
 
-if  test "$build_tests" = yes ; then
+if  test "$build_test" = yes ; then
 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_unit_test_framework-mt" >&5
 printf %s "checking for main in -lboost_unit_test_framework-mt... " >&6; }
 if test ${ac_cv_lib_boost_unit_test_framework_mt_main+y}
@@ -5989,7 +5989,7 @@ then :
   LIBS="-lboost_unit_test_framework-mt $LIBS"
 
 else $as_nop
-  as_fn_error $? "uHTTP unittests need boost::unit_test_framework" "$LINENO" 5
+  as_fn_error $? "uHTTP unittest need boost::unit_test_framework" "$LINENO" 5
 fi
 
 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_system-mt" >&5
@@ -6033,7 +6033,7 @@ then :
   LIBS="-lboost_system-mt $LIBS"
 
 else $as_nop
-  as_fn_error $? "uHTTP unittests need boost::system" "$LINENO" 5
+  as_fn_error $? "uHTTP unit test need boost::system" "$LINENO" 5
 fi
 
 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_filesystem-mt" >&5
@@ -6077,7 +6077,7 @@ then :
   LIBS="-lboost_filesystem-mt $LIBS"
 
 else $as_nop
-  as_fn_error $? "uHTTP unittests need boost::filesystem" "$LINENO" 5
+  as_fn_error $? "uHTTP unit test need boost::filesystem" "$LINENO" 5
 fi
 
 fi
@@ -6728,7 +6728,7 @@ fi
 # Makefiles
 ##############################
 
-ac_config_files="$ac_config_files Makefile include/Makefile lib/Makefile lib/unix/Makefile examples/Makefile examples/upnpdump/Makefile examples/upnpdump/unix/Makefile examples/clock/Makefile examples/clock/unix/Makefile examples/tv/Makefile examples/tv/unix/Makefile tests/Makefile tests/unix/Makefile"
+ac_config_files="$ac_config_files Makefile include/Makefile lib/Makefile lib/unix/Makefile examples/Makefile examples/upnpdump/Makefile examples/upnpdump/unix/Makefile examples/clock/Makefile examples/clock/unix/Makefile examples/tv/Makefile examples/tv/unix/Makefile test/Makefile test/unix/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -6867,8 +6867,8 @@ if test -z "${am__fastdepCXX_TRUE}" && test -z "${am__fastdepCXX_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCXX\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${UNITTESTS_TRUE}" && test -z "${UNITTESTS_FALSE}"; then
-  as_fn_error $? "conditional \"UNITTESTS\" was never defined.
+if test -z "${ENABLE_UNITTEST_TRUE}" && test -z "${ENABLE_UNITTEST_FALSE}"; then
+  as_fn_error $? "conditional \"ENABLE_UNITTEST\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 
@@ -7471,8 +7471,8 @@ do
     "examples/clock/unix/Makefile") CONFIG_FILES="$CONFIG_FILES examples/clock/unix/Makefile" ;;
     "examples/tv/Makefile") CONFIG_FILES="$CONFIG_FILES examples/tv/Makefile" ;;
     "examples/tv/unix/Makefile") CONFIG_FILES="$CONFIG_FILES examples/tv/unix/Makefile" ;;
-    "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
-    "tests/unix/Makefile") CONFIG_FILES="$CONFIG_FILES tests/unix/Makefile" ;;
+    "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
+    "test/unix/Makefile") CONFIG_FILES="$CONFIG_FILES test/unix/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

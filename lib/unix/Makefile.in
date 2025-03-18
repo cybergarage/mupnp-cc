@@ -197,10 +197,10 @@ am__objects_1 = ../../src/mupnp/ActionList.$(OBJEXT) \
 	../../src/mupnp/net/URI.$(OBJEXT) \
 	../../src/mupnp/net/Socket.$(OBJEXT) \
 	../../src/mupnp/net/URL.$(OBJEXT) \
+	../../src/mupnp/net/SocketCore.$(OBJEXT) \
 	../../src/mupnp/net/HostInterface.$(OBJEXT) \
 	../../src/mupnp/net/ServerSocket.$(OBJEXT) \
 	../../src/mupnp/net/MulticastSocket.$(OBJEXT) \
-	../../src/mupnp/net/SocketImp.$(OBJEXT) \
 	../../src/mupnp/event/Subscriber.$(OBJEXT) \
 	../../src/mupnp/event/SubscriptionRequest.$(OBJEXT) \
 	../../src/mupnp/event/PropertyList.$(OBJEXT) \
@@ -208,10 +208,11 @@ am__objects_1 = ../../src/mupnp/ActionList.$(OBJEXT) \
 	../../src/mupnp/event/Subscription.$(OBJEXT) \
 	../../src/mupnp/UPnP.$(OBJEXT) \
 	../../src/mupnp/http/HTTPDate.$(OBJEXT) \
+	../../src/mupnp/http/HTTPWorkerThread.$(OBJEXT) \
 	../../src/mupnp/http/HTTPRequest.$(OBJEXT) \
 	../../src/mupnp/http/HTTPSocket.$(OBJEXT) \
-	../../src/mupnp/http/HTTPServerThread.$(OBJEXT) \
 	../../src/mupnp/http/HTTP.$(OBJEXT) \
+	../../src/mupnp/http/HTTPMessageQueue.$(OBJEXT) \
 	../../src/mupnp/http/HTTPHeader.$(OBJEXT) \
 	../../src/mupnp/http/HTTPResponse.$(OBJEXT) \
 	../../src/mupnp/http/HTTPPacket.$(OBJEXT) \
@@ -219,11 +220,21 @@ am__objects_1 = ../../src/mupnp/ActionList.$(OBJEXT) \
 	../../src/mupnp/http/HTTPServerList.$(OBJEXT) \
 	../../src/mupnp/http/HTTPServer.$(OBJEXT) \
 	../../src/mupnp/util/Mutex.$(OBJEXT) \
+	../../src/mupnp/util/Semaphore.$(OBJEXT) \
+	../../src/mupnp/util/Logger.$(OBJEXT) \
 	../../src/mupnp/util/StringTokenizer.$(OBJEXT) \
+	../../src/mupnp/util/Log.$(OBJEXT) \
 	../../src/mupnp/util/Date.$(OBJEXT) \
 	../../src/mupnp/util/TimeUtil.$(OBJEXT) \
+	../../src/mupnp/util/LoggerTargetList.$(OBJEXT) \
+	../../src/mupnp/util/Message.$(OBJEXT) \
 	../../src/mupnp/util/StringUtil.$(OBJEXT) \
+	../../src/mupnp/util/MessageQueue.$(OBJEXT) \
+	../../src/mupnp/util/ThreadList.$(OBJEXT) \
 	../../src/mupnp/util/Thread.$(OBJEXT) \
+	../../src/mupnp/util/LoggerTarget.$(OBJEXT) \
+	../../src/mupnp/util/LoggerFileTarget.$(OBJEXT) \
+	../../src/mupnp/util/Random.$(OBJEXT) \
 	../../src/mupnp/util/Debug.$(OBJEXT) \
 	../../src/mupnp/ArgumentList.$(OBJEXT) \
 	../../src/mupnp/AllowedValueRange.$(OBJEXT) \
@@ -231,7 +242,6 @@ am__objects_1 = ../../src/mupnp/ActionList.$(OBJEXT) \
 	../../src/mupnp/Icon.$(OBJEXT) \
 	../../src/mupnp/io/File.$(OBJEXT) \
 	../../src/mupnp/io/FileInputStream.$(OBJEXT) \
-	../../src/mupnp/io/FileList.$(OBJEXT) \
 	../../src/mupnp/io/StringBufferInputStream.$(OBJEXT) \
 	../../src/mupnp/io/BufferedReader.$(OBJEXT) \
 	../../src/mupnp/io/StringReader.$(OBJEXT) \
@@ -296,18 +306,18 @@ am__depfiles_remade = ../../src/mupnp/$(DEPDIR)/Action.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTP.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPDate.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPHeader.Po \
+	../../src/mupnp/http/$(DEPDIR)/HTTPMessageQueue.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPPacket.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPRequest.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPResponse.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPServer.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPServerList.Po \
-	../../src/mupnp/http/$(DEPDIR)/HTTPServerThread.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPSocket.Po \
 	../../src/mupnp/http/$(DEPDIR)/HTTPStatus.Po \
+	../../src/mupnp/http/$(DEPDIR)/HTTPWorkerThread.Po \
 	../../src/mupnp/io/$(DEPDIR)/BufferedReader.Po \
 	../../src/mupnp/io/$(DEPDIR)/File.Po \
 	../../src/mupnp/io/$(DEPDIR)/FileInputStream.Po \
-	../../src/mupnp/io/$(DEPDIR)/FileList.Po \
 	../../src/mupnp/io/$(DEPDIR)/StringBufferInputStream.Po \
 	../../src/mupnp/io/$(DEPDIR)/StringReader.Po \
 	../../src/mupnp/net/$(DEPDIR)/DatagramSocket.Po \
@@ -315,7 +325,7 @@ am__depfiles_remade = ../../src/mupnp/$(DEPDIR)/Action.Po \
 	../../src/mupnp/net/$(DEPDIR)/MulticastSocket.Po \
 	../../src/mupnp/net/$(DEPDIR)/ServerSocket.Po \
 	../../src/mupnp/net/$(DEPDIR)/Socket.Po \
-	../../src/mupnp/net/$(DEPDIR)/SocketImp.Po \
+	../../src/mupnp/net/$(DEPDIR)/SocketCore.Po \
 	../../src/mupnp/net/$(DEPDIR)/SocketInputStream.Po \
 	../../src/mupnp/net/$(DEPDIR)/SocketUtil.Po \
 	../../src/mupnp/net/$(DEPDIR)/URI.Po \
@@ -336,10 +346,20 @@ am__depfiles_remade = ../../src/mupnp/$(DEPDIR)/Action.Po \
 	../../src/mupnp/ssdp/$(DEPDIR)/SSDPSearchSocketList.Po \
 	../../src/mupnp/util/$(DEPDIR)/Date.Po \
 	../../src/mupnp/util/$(DEPDIR)/Debug.Po \
+	../../src/mupnp/util/$(DEPDIR)/Log.Po \
+	../../src/mupnp/util/$(DEPDIR)/Logger.Po \
+	../../src/mupnp/util/$(DEPDIR)/LoggerFileTarget.Po \
+	../../src/mupnp/util/$(DEPDIR)/LoggerTarget.Po \
+	../../src/mupnp/util/$(DEPDIR)/LoggerTargetList.Po \
+	../../src/mupnp/util/$(DEPDIR)/Message.Po \
+	../../src/mupnp/util/$(DEPDIR)/MessageQueue.Po \
 	../../src/mupnp/util/$(DEPDIR)/Mutex.Po \
+	../../src/mupnp/util/$(DEPDIR)/Random.Po \
+	../../src/mupnp/util/$(DEPDIR)/Semaphore.Po \
 	../../src/mupnp/util/$(DEPDIR)/StringTokenizer.Po \
 	../../src/mupnp/util/$(DEPDIR)/StringUtil.Po \
 	../../src/mupnp/util/$(DEPDIR)/Thread.Po \
+	../../src/mupnp/util/$(DEPDIR)/ThreadList.Po \
 	../../src/mupnp/util/$(DEPDIR)/TimeUtil.Po \
 	../../src/mupnp/xml/$(DEPDIR)/ActionData.Po \
 	../../src/mupnp/xml/$(DEPDIR)/AttributeList.Po \
@@ -556,10 +576,10 @@ mupnpcc_sources = \
 	../../src/mupnp/net/URI.cpp \
 	../../src/mupnp/net/Socket.cpp \
 	../../src/mupnp/net/URL.cpp \
+	../../src/mupnp/net/SocketCore.cpp \
 	../../src/mupnp/net/HostInterface.cpp \
 	../../src/mupnp/net/ServerSocket.cpp \
 	../../src/mupnp/net/MulticastSocket.cpp \
-	../../src/mupnp/net/SocketImp.cpp \
 	../../src/mupnp/event/Subscriber.cpp \
 	../../src/mupnp/event/SubscriptionRequest.cpp \
 	../../src/mupnp/event/PropertyList.cpp \
@@ -567,10 +587,11 @@ mupnpcc_sources = \
 	../../src/mupnp/event/Subscription.cpp \
 	../../src/mupnp/UPnP.cpp \
 	../../src/mupnp/http/HTTPDate.cpp \
+	../../src/mupnp/http/HTTPWorkerThread.cpp \
 	../../src/mupnp/http/HTTPRequest.cpp \
 	../../src/mupnp/http/HTTPSocket.cpp \
-	../../src/mupnp/http/HTTPServerThread.cpp \
 	../../src/mupnp/http/HTTP.cpp \
+	../../src/mupnp/http/HTTPMessageQueue.cpp \
 	../../src/mupnp/http/HTTPHeader.cpp \
 	../../src/mupnp/http/HTTPResponse.cpp \
 	../../src/mupnp/http/HTTPPacket.cpp \
@@ -578,11 +599,21 @@ mupnpcc_sources = \
 	../../src/mupnp/http/HTTPServerList.cpp \
 	../../src/mupnp/http/HTTPServer.cpp \
 	../../src/mupnp/util/Mutex.cpp \
+	../../src/mupnp/util/Semaphore.cpp \
+	../../src/mupnp/util/Logger.cpp \
 	../../src/mupnp/util/StringTokenizer.cpp \
+	../../src/mupnp/util/Log.cpp \
 	../../src/mupnp/util/Date.cpp \
 	../../src/mupnp/util/TimeUtil.cpp \
+	../../src/mupnp/util/LoggerTargetList.cpp \
+	../../src/mupnp/util/Message.cpp \
 	../../src/mupnp/util/StringUtil.cpp \
+	../../src/mupnp/util/MessageQueue.cpp \
+	../../src/mupnp/util/ThreadList.cpp \
 	../../src/mupnp/util/Thread.cpp \
+	../../src/mupnp/util/LoggerTarget.cpp \
+	../../src/mupnp/util/LoggerFileTarget.cpp \
+	../../src/mupnp/util/Random.cpp \
 	../../src/mupnp/util/Debug.cpp \
 	../../src/mupnp/ArgumentList.cpp \
 	../../src/mupnp/AllowedValueRange.cpp \
@@ -590,7 +621,6 @@ mupnpcc_sources = \
 	../../src/mupnp/Icon.cpp \
 	../../src/mupnp/io/File.cpp \
 	../../src/mupnp/io/FileInputStream.cpp \
-	../../src/mupnp/io/FileList.cpp \
 	../../src/mupnp/io/StringBufferInputStream.cpp \
 	../../src/mupnp/io/BufferedReader.cpp \
 	../../src/mupnp/io/StringReader.cpp \
@@ -886,6 +916,9 @@ clean-libLIBRARIES:
 ../../src/mupnp/net/URL.$(OBJEXT):  \
 	../../src/mupnp/net/$(am__dirstamp) \
 	../../src/mupnp/net/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/net/SocketCore.$(OBJEXT):  \
+	../../src/mupnp/net/$(am__dirstamp) \
+	../../src/mupnp/net/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/net/HostInterface.$(OBJEXT):  \
 	../../src/mupnp/net/$(am__dirstamp) \
 	../../src/mupnp/net/$(DEPDIR)/$(am__dirstamp)
@@ -893,9 +926,6 @@ clean-libLIBRARIES:
 	../../src/mupnp/net/$(am__dirstamp) \
 	../../src/mupnp/net/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/net/MulticastSocket.$(OBJEXT):  \
-	../../src/mupnp/net/$(am__dirstamp) \
-	../../src/mupnp/net/$(DEPDIR)/$(am__dirstamp)
-../../src/mupnp/net/SocketImp.$(OBJEXT):  \
 	../../src/mupnp/net/$(am__dirstamp) \
 	../../src/mupnp/net/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/event/$(am__dirstamp):
@@ -930,16 +960,19 @@ clean-libLIBRARIES:
 ../../src/mupnp/http/HTTPDate.$(OBJEXT):  \
 	../../src/mupnp/http/$(am__dirstamp) \
 	../../src/mupnp/http/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/http/HTTPWorkerThread.$(OBJEXT):  \
+	../../src/mupnp/http/$(am__dirstamp) \
+	../../src/mupnp/http/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/http/HTTPRequest.$(OBJEXT):  \
 	../../src/mupnp/http/$(am__dirstamp) \
 	../../src/mupnp/http/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/http/HTTPSocket.$(OBJEXT):  \
 	../../src/mupnp/http/$(am__dirstamp) \
 	../../src/mupnp/http/$(DEPDIR)/$(am__dirstamp)
-../../src/mupnp/http/HTTPServerThread.$(OBJEXT):  \
+../../src/mupnp/http/HTTP.$(OBJEXT):  \
 	../../src/mupnp/http/$(am__dirstamp) \
 	../../src/mupnp/http/$(DEPDIR)/$(am__dirstamp)
-../../src/mupnp/http/HTTP.$(OBJEXT):  \
+../../src/mupnp/http/HTTPMessageQueue.$(OBJEXT):  \
 	../../src/mupnp/http/$(am__dirstamp) \
 	../../src/mupnp/http/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/http/HTTPHeader.$(OBJEXT):  \
@@ -969,7 +1002,16 @@ clean-libLIBRARIES:
 ../../src/mupnp/util/Mutex.$(OBJEXT):  \
 	../../src/mupnp/util/$(am__dirstamp) \
 	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/Semaphore.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/Logger.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/util/StringTokenizer.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/Log.$(OBJEXT):  \
 	../../src/mupnp/util/$(am__dirstamp) \
 	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/util/Date.$(OBJEXT):  \
@@ -978,10 +1020,31 @@ clean-libLIBRARIES:
 ../../src/mupnp/util/TimeUtil.$(OBJEXT):  \
 	../../src/mupnp/util/$(am__dirstamp) \
 	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/LoggerTargetList.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/Message.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/util/StringUtil.$(OBJEXT):  \
 	../../src/mupnp/util/$(am__dirstamp) \
 	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/MessageQueue.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/ThreadList.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/util/Thread.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/LoggerTarget.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/LoggerFileTarget.$(OBJEXT):  \
+	../../src/mupnp/util/$(am__dirstamp) \
+	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
+../../src/mupnp/util/Random.$(OBJEXT):  \
 	../../src/mupnp/util/$(am__dirstamp) \
 	../../src/mupnp/util/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/util/Debug.$(OBJEXT):  \
@@ -1006,9 +1069,6 @@ clean-libLIBRARIES:
 ../../src/mupnp/io/File.$(OBJEXT): ../../src/mupnp/io/$(am__dirstamp) \
 	../../src/mupnp/io/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/io/FileInputStream.$(OBJEXT):  \
-	../../src/mupnp/io/$(am__dirstamp) \
-	../../src/mupnp/io/$(DEPDIR)/$(am__dirstamp)
-../../src/mupnp/io/FileList.$(OBJEXT):  \
 	../../src/mupnp/io/$(am__dirstamp) \
 	../../src/mupnp/io/$(DEPDIR)/$(am__dirstamp)
 ../../src/mupnp/io/StringBufferInputStream.$(OBJEXT):  \
@@ -1096,18 +1156,18 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTP.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPDate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPHeader.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPMessageQueue.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPPacket.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPRequest.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPResponse.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPServer.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPServerList.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPServerThread.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPSocket.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPStatus.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/http/$(DEPDIR)/HTTPWorkerThread.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/io/$(DEPDIR)/BufferedReader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/io/$(DEPDIR)/File.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/io/$(DEPDIR)/FileInputStream.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/io/$(DEPDIR)/FileList.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/io/$(DEPDIR)/StringBufferInputStream.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/io/$(DEPDIR)/StringReader.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/DatagramSocket.Po@am__quote@ # am--include-marker
@@ -1115,7 +1175,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/MulticastSocket.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/ServerSocket.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/Socket.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/SocketImp.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/SocketCore.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/SocketInputStream.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/SocketUtil.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/net/$(DEPDIR)/URI.Po@am__quote@ # am--include-marker
@@ -1136,10 +1196,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/ssdp/$(DEPDIR)/SSDPSearchSocketList.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Date.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Debug.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Log.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Logger.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/LoggerFileTarget.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/LoggerTarget.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/LoggerTargetList.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Message.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/MessageQueue.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Mutex.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Random.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Semaphore.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/StringTokenizer.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/StringUtil.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/Thread.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/ThreadList.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/util/$(DEPDIR)/TimeUtil.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/xml/$(DEPDIR)/ActionData.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@../../src/mupnp/xml/$(DEPDIR)/AttributeList.Po@am__quote@ # am--include-marker
@@ -1370,18 +1440,18 @@ distclean: distclean-am
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTP.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPDate.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPHeader.Po
+	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPMessageQueue.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPPacket.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPRequest.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPResponse.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPServer.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPServerList.Po
-	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPServerThread.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPSocket.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPStatus.Po
+	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPWorkerThread.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/BufferedReader.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/File.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/FileInputStream.Po
-	-rm -f ../../src/mupnp/io/$(DEPDIR)/FileList.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/StringBufferInputStream.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/StringReader.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/DatagramSocket.Po
@@ -1389,7 +1459,7 @@ distclean: distclean-am
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/MulticastSocket.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/ServerSocket.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/Socket.Po
-	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketImp.Po
+	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketCore.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketInputStream.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketUtil.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/URI.Po
@@ -1410,10 +1480,20 @@ distclean: distclean-am
 	-rm -f ../../src/mupnp/ssdp/$(DEPDIR)/SSDPSearchSocketList.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Date.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Debug.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Log.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Logger.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/LoggerFileTarget.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/LoggerTarget.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/LoggerTargetList.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Message.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/MessageQueue.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Mutex.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Random.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Semaphore.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/StringTokenizer.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/StringUtil.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Thread.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/ThreadList.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/TimeUtil.Po
 	-rm -f ../../src/mupnp/xml/$(DEPDIR)/ActionData.Po
 	-rm -f ../../src/mupnp/xml/$(DEPDIR)/AttributeList.Po
@@ -1512,18 +1592,18 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTP.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPDate.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPHeader.Po
+	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPMessageQueue.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPPacket.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPRequest.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPResponse.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPServer.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPServerList.Po
-	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPServerThread.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPSocket.Po
 	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPStatus.Po
+	-rm -f ../../src/mupnp/http/$(DEPDIR)/HTTPWorkerThread.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/BufferedReader.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/File.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/FileInputStream.Po
-	-rm -f ../../src/mupnp/io/$(DEPDIR)/FileList.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/StringBufferInputStream.Po
 	-rm -f ../../src/mupnp/io/$(DEPDIR)/StringReader.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/DatagramSocket.Po
@@ -1531,7 +1611,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/MulticastSocket.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/ServerSocket.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/Socket.Po
-	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketImp.Po
+	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketCore.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketInputStream.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/SocketUtil.Po
 	-rm -f ../../src/mupnp/net/$(DEPDIR)/URI.Po
@@ -1552,10 +1632,20 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ../../src/mupnp/ssdp/$(DEPDIR)/SSDPSearchSocketList.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Date.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Debug.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Log.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Logger.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/LoggerFileTarget.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/LoggerTarget.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/LoggerTargetList.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Message.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/MessageQueue.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Mutex.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Random.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/Semaphore.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/StringTokenizer.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/StringUtil.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/Thread.Po
+	-rm -f ../../src/mupnp/util/$(DEPDIR)/ThreadList.Po
 	-rm -f ../../src/mupnp/util/$(DEPDIR)/TimeUtil.Po
 	-rm -f ../../src/mupnp/xml/$(DEPDIR)/ActionData.Po
 	-rm -f ../../src/mupnp/xml/$(DEPDIR)/AttributeList.Po
