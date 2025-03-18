@@ -19,7 +19,7 @@
 #include <mupnp/xml/ActionData.h>
 #include <mupnp/ArgumentList.h>
 #include <mupnp/control/ActionListener.h>
-#include <uhttp/util/Mutex.h>
+#include <mupnp/util/Mutex.h>
 
 #include <sstream>
 

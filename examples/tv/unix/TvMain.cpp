@@ -20,7 +20,7 @@
 #endif
 
 #include "TvDevice.h"
-#include <uhttp/util/TimeUtil.h>
+#include <mupnp/util/TimeUtil.h>
 
 #include <string>
 #include <iostream>

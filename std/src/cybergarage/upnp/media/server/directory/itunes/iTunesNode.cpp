@@ -15,9 +15,9 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesNode.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesNode.h>
 
-#include <cybergarage/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 using namespace CyberLink;
 using namespace CyberXML;

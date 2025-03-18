@@ -12,7 +12,7 @@
 #define _MUPMPCC_DESCRIPTON_H_
 
 #include <sstream>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 namespace mUPnP {
 namespace Description {

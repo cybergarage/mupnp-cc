@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_SORTCAPLIST_H_
 #define _CLINK_MEDIA_SORTCAPLIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 

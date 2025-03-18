@@ -1,45 +1,36 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: MulticastSocket.h
-*
-*	Revision;
-*
-*	05/29/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_MULTICASTSOCKET_H_
-#define _CNET_MULTICASTSOCKET_H_
+#ifndef _UHTTP_NET_MULTICASTSOCKET_H_
+#define _UHTTP_NET_MULTICASTSOCKET_H_
 
-#include <cybergarage/net/DatagramSocket.h>
-#include <cybergarage/net/InetSocketAddress.h>
-#include <cybergarage/net/NetworkInterface.h>
+#include <mupnp/net/DatagramSocket.h>
+#include <mupnp/net/InetSocketAddress.h>
+#include <mupnp/net/NetworkInterface.h>
 
-namespace CyberNet {
+namespace uHTTP {
+class MulticastSocket : public DatagramSocket {
+  public:
+  MulticastSocket();
+  MulticastSocket(int port, const std::string& bindAddr);
+  ~MulticastSocket();
 
-class MulticastSocket : public DatagramSocket
-{
+  bool bind(int port, const std::string& addr);
 
-public:
+  bool joinGroup(const std::string& mcastAddr, const std::string& ifAddr = NULL);
+  bool joinGroup(InetSocketAddress* mcastAddr, NetworkInterface* ifAddr)
+  {
+    return joinGroup(mcastAddr->getAddress(), ifAddr->getAddress());
+  }
 
-	MulticastSocket();
-	MulticastSocket(int port, const char *bindAddr);
-	~MulticastSocket();
-
-	bool bind(int port, const char *addr);
-	
-	bool joinGroup(const char *mcastAddr, const char *ifAddr = NULL);
-	bool joinGroup(InetSocketAddress *mcastAddr, NetworkInterface *ifAddr)
-	{
-		return joinGroup(mcastAddr->getAddress(), ifAddr->getAddress());
-	}
-
-	void setTimeToLive(int ttl);
+  void setTimeToLive(int ttl);
 };
 
 }

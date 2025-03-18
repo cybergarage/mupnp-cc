@@ -22,8 +22,8 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesTrack.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesTrack.h>
 
 namespace CyberLink {
 

@@ -1,50 +1,42 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: StringBufferInputStream.h
-*
-*	Revision;
-*
-*	09/19/04
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CIO_STRINGBUFFERINPUTSTREAM_H_
-#define _CIO_STRINGBUFFERINPUTSTREAM_H_
+#ifndef _UHTTP_IO_STRINGBUFFERINPUTSTREAM_H_
+#define _UHTTP_IO_STRINGBUFFERINPUTSTREAM_H_
 
 #include <stdio.h>
 #include <string>
-#include <cybergarage/io/File.h>
-#include <cybergarage/io/InputStream.h>
+#include <mupnp/io/File.h>
+#include <mupnp/io/InputStream.h>
 
-namespace CyberIO {
+namespace uHTTP {
+class StringBufferInputStream : public InputStream {
+  std::string buf;
+  long pos;
 
-class StringBufferInputStream : public InputStream
-{
-	std::string buf;
-	long pos;
+  public:
+  StringBufferInputStream(const std::string& str);
 
-public:
+  ssize_t read(std::string& b, size_t len);
+  ssize_t read(char* b, size_t len);
 
-	StringBufferInputStream(const char *str);
+  void unread(std::string& b, size_t off, size_t len)
+  {
+    // Not Implemented yet
+  }
 
-	int read(std::string &b, int len);
-	int read(char *b, int len);
+  long skip(long n);
 
-	void unread(std::string &b, int off, int len)
-	{
-		// Not Implemented yet
-	}
-
-	long skip(long n);
-
-	void close()
-	{
-	}
+  void close()
+  {
+  }
 };
 
 }

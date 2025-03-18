@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <time.h>
-#include <uhttp/net/HostInterface.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/ssdp/HTTPMUSocket.h>
 
 using namespace mUPnP;

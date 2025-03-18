@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/device/NTS.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
   
 bool mUPnP::NTS::IsAlive(const std::string &ntsValue) {
   uHTTP::String ntsStr = ntsValue;

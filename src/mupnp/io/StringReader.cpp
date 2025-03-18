@@ -1,43 +1,36 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: StringReader.cpp
-*
-*	Revision:
-*
-*	07/05/03
-*		- first revision
-*	02/28/05
-*		- Added skip().
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#include <cybergarage/io/StringReader.h>
+#include <mupnp/io/StringReader.h>
 
-using namespace CyberIO;
+using namespace uHTTP;
 
-StringReader::StringReader(const char *str)
+StringReader::StringReader(const std::string& str)
 {
-	buf = str;
-	pos = 0;
+  buf = str;
+  pos = 0;
 }
 
-int StringReader::read(std::string &b, int len)
+ssize_t StringReader::read(std::string& b, size_t len)
 {
-	int bufLen = buf.length() - pos;
-	if (bufLen <= 0)
-		return 0;
-	int copyLen = (len < bufLen) ? len : bufLen;
-	b.append(buf, pos, copyLen);
-	pos += copyLen;
-	return copyLen;
+  size_t bufLen = buf.length() - pos;
+  if (bufLen <= 0)
+    return 0;
+  size_t copyLen = (len < bufLen) ? len : bufLen;
+  b.append(buf, pos, copyLen);
+  pos += copyLen;
+  return copyLen;
 }
 
 long StringReader::skip(long skipLen)
 {
-	pos += skipLen;
-	return skipLen;
+  pos += skipLen;
+  return skipLen;
 }

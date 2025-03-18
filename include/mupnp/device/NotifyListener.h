@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_NOTIFYLISTENER_H_
 #define _MUPMPCC_NOTIFYLISTENER_H_
 
-#include <uhttp/util/Listener.h>
+#include <mupnp/util/Listener.h>
 #include <mupnp/ssdp/SSDPPacket.h>
 
 namespace mUPnP {

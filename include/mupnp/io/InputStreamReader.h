@@ -1,77 +1,67 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: InputStreamReader.h
-*
-*	Revision;
-*
-*	04/02/03
-*		- first revision
-*	02/28/05
-*		- Added skip().
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CIO_INPUTSTREAMREADER_H_
-#define _CIO_INPUTSTREAMREADER_H_
+#ifndef _UHTTP_IO_INPUTSTREAMREADER_H_
+#define _UHTTP_IO_INPUTSTREAMREADER_H_
 
-#include <cybergarage/io/Reader.h>
-#include <cybergarage/io/InputStream.h>
+#include <mupnp/io/InputStream.h>
+#include <mupnp/io/Reader.h>
 
-namespace CyberIO {
+namespace uHTTP {
+class InputStreamReader : public Reader {
+  InputStream* in;
 
-class InputStreamReader : public Reader
-{
-	InputStream *in;
+  public:
+  InputStreamReader(InputStream* in)
+  {
+    this->in = in;
+  }
 
-public:
+  virtual ~InputStreamReader()
+  {
+  }
 
-	InputStreamReader(InputStream *in)
-	{
-		this->in = in;
-	}
+  ssize_t read(std::string& b, size_t len)
+  {
+    return in->read(b, len);
+  }
 
-	virtual ~InputStreamReader()
-	{
-	}
+  long skip(long n)
+  {
+    return in->skip(n);
+  }
 
-	int read(std::string &b, int len)
-	{
-		return in->read(b, len);
-	}
+  void unread(std::string& b, size_t off, size_t len)
+  {
+    in->unread(b, off, len);
+  }
 
-	long skip(long n)
-	{
-		return in->skip(n);
-	}
+  void unread(std::string& b, size_t len)
+  {
+    in->unread(b, len);
+  }
 
-	void unread(std::string &b, int off, int len)
-	{
-		in->unread(b, off, len);
-	}
+  void unread(std::string& b)
+  {
+    in->unread(b);
+  }
 
-	void unread(std::string &b, int len)
-	{
-		in->unread(b, len);
-	}
+  void unread(char c)
+  {
+    in->unread(c);
+  }
 
-	void unread(std::string &b)
-	{
-		in->unread(b);
-	}
-
-	void unread(char c)
-	{
-		in->unread(c);
-	}
-	
-	void close()
-	{
-		in->close();
-	}
+  void close()
+  {
+    in->close();
+  }
 };
 
 }

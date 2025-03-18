@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_INVALIDDESCRIPTIONEXCEPTION_H_
 #define _MUPMPCC_INVALIDDESCRIPTIONEXCEPTION_H_
 
-#include <uhttp/util/Exception.h>
+#include <mupnp/util/Exception.h>
 
 namespace mUPnP {
 const char INVALIDDESCRIPTIONEXCEPTION_FILENOTFOUND[] = "File not found";

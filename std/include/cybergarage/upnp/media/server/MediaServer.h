@@ -14,10 +14,10 @@
 #ifndef _CLINK_MEDIA_MEDIASERVER_H_
 #define _CLINK_MEDIA_MEDIASERVER_H_
 
-#include <cybergarage/upnp/Device.h>
-#include <cybergarage/upnp/media/server/ContentDirectory.h>
-#include <cybergarage/upnp/media/server/ConnectionManager.h>
-#include <cybergarage/net/HostInterface.h>
+#include <mupnp/upnp/Device.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/ConnectionManager.h>
+#include <mupnp/net/HostInterface.h>
 
 namespace CyberLink {
 

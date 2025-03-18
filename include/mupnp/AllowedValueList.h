@@ -12,7 +12,7 @@
 #define _MUPMPCC_ALLOWEDVALUELIST_H_
 
 #include <string>
-#include <uhttp/util/Vector.h>
+#include <mupnp/util/Vector.h>
 #include <mupnp/AllowedValue.h>
 
 namespace mUPnP {

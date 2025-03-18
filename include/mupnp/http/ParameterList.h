@@ -1,76 +1,57 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2004
-*
-*	File: ParameterList.h
-*
-*	Revision;
-*
-*	03/09/04
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_PARAMETERLIST_H_
-#define _CHTTP_PARAMETERLIST_H_
+#ifndef _UHTTP_PARAMETERLIST_H_
+#define _UHTTP_PARAMETERLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/util/StringUtil.h>
-#include <cybergarage/http/Parameter.h>
+#include <mupnp/http/Parameter.h>
+#include <mupnp/util/StringUtil.h>
+#include <mupnp/util/Vector.h>
 
-namespace CyberHTTP {
+namespace uHTTP {
 
-class ParameterList : public CyberUtil::Vector
-{
+class ParameterList : public ::uHTTP::SharedVector<Parameter> {
+  public:
+  ParameterList()
+  {
+  }
 
-public:
-	
-	ParameterList() 
-	{
-	}
-	
-	~ParameterList() 
-	{
-		int nLists = size(); 
-		for (int n=0; n<nLists; n++) {
-			Parameter *param = at(n);
-			delete param;
-		}
-	}
+  Parameter* at(size_t n)
+  {
+    return get(n).get();
+  }
 
-	Parameter *at(int n)
-	{
-		return (Parameter *)Vector::get(n);
-	}
+  Parameter* getParameter(int n)
+  {
+    return get(n).get();
+  }
 
-	Parameter *getParameter(int n)
-	{
-		return (Parameter *)Vector::get(n);
-	}
+  Parameter* getParameter(const std::string& name)
+  {
+    size_t nLists = size();
+    for (size_t n = 0; n < nLists; n++) {
+      Parameter* param = at(n);
+      if (uHTTP::StringEquals(name, param->getName()) == true)
+        return param;
+    }
+    return nullptr;
+  }
 
-	Parameter *getParameter(const char *name) 
-	{
-		if (name == NULL)
-			return NULL;
-		
-		int nLists = size(); 
-		for (int n=0; n<nLists; n++) {
-			Parameter *param = at(n);
-			if (CyberUtil::StringEquals(name, param->getName()) == true)
-				return param;
-		}
-		return NULL;
-	}
-
-	const char *getValue(const char *name) 
-	{
-		Parameter *param = getParameter(name);
-		if (param == NULL)
-			return "";
-		return param->getValue();
-	}
+  bool getParameterValue(const std::string& name, std::string* value)
+  {
+    Parameter* param = getParameter(name);
+    if (!param)
+      return false;
+    *value = param->getValue();
+    return true;
+  }
 };
 
 }

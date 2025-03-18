@@ -1,69 +1,61 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2004
-*
-*	File: Parameter.h
-*
-*	Revision;
-*
-*	03/09/04
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_PARAMETER_H_
-#define _CHTTP_PARAMETER_H_
+#ifndef _UHTTP_PARAMETER_H_
+#define _UHTTP_PARAMETER_H_
 
 #include <string>
 
-namespace CyberHTTP {
+namespace uHTTP {
+class Parameter {
+  std::string name;
+  std::string value;
 
-class Parameter 
-{
-	std::string name; 
-	std::string value; 
+  public:
+  Parameter()
+  {
+  }
 
-public:
+  Parameter(const std::string& name, const std::string& value)
+  {
+    setName(name);
+    setValue(value);
+  }
 
-	Parameter() 
-	{
-	}
+  ////////////////////////////////////////////////
+  //  name
+  ////////////////////////////////////////////////
 
-	Parameter(const char *name, const char *value) 
-	{
-		setName(name);
-		setValue(value);
-	}
+  void setName(const std::string& val)
+  {
+    name = val;
+  }
 
-	////////////////////////////////////////////////
-	//	name
-	////////////////////////////////////////////////
+  const char* getName()
+  {
+    return name.c_str();
+  }
 
-	void setName(const char *val) 
-	{
-		name = val;
-	}
+  ////////////////////////////////////////////////
+  //  value
+  ////////////////////////////////////////////////
 
-	const char *getName() 
-	{
-		return name.c_str();
-	}
+  void setValue(const std::string& val)
+  {
+    value = val;
+  }
 
-	////////////////////////////////////////////////
-	//	value
-	////////////////////////////////////////////////
-
-	void setValue(const char *val) 
-	{
-		value = val;
-	}
-
-	const char *getValue() 
-	{
-		return value.c_str();
-	}
+  const char* getValue()
+  {
+    return value.c_str();
+  }
 };
 
 }

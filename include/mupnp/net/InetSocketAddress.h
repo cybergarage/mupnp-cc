@@ -1,90 +1,80 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: InetSocketAddress.h
-*
-*	Revision;
-*
-*	07/01/03
-*		- first revision.
-*	01/06/04
-*		- Added set().
-*	
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_INETSOCKETADDRESS_H_
-#define _CNET_INETSOCKETADDRESS_H_
+#ifndef _UHTTP_NET_INETSOCKETADDRESS_H_
+#define _UHTTP_NET_INETSOCKETADDRESS_H_
 
 #include <string>
 
-namespace CyberNet {
+namespace uHTTP {
+class InetSocketAddress {
+  std::string addr;
+  int port;
 
-class InetSocketAddress 
-{
-	std::string addr;
-	int port;
+  public:
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-public:
+  InetSocketAddress()
+  {
+    setAddress("");
+    setPort(-1);
+  }
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  InetSocketAddress(int port)
+  {
+    setAddress("");
+    setPort(port);
+  }
 
-	InetSocketAddress()
-	{
-		setAddress("");
-		setPort(-1);
-	}
+  InetSocketAddress(const std::string& addr, int port)
+  {
+    setAddress(addr);
+    setPort(port);
+  }
 
-	InetSocketAddress(int port)
-	{
-		setAddress("");
-		setPort(port);
-	}
+  ////////////////////////////////////////////////
+  //  Member
+  ////////////////////////////////////////////////
 
-	InetSocketAddress(const char *addr, int port)
-	{
-		setAddress(addr);
-		setPort(port);
-	}
-	
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  void setAddress(const std::string& value)
+  {
+    addr = value;
+  }
 
-	void setAddress(const char *value)
-	{
-		addr = (value != NULL) ? value : "";
-	}
-		
-	const char *getAddress()
-	{
-		return addr.c_str();
-	}
-		
-	void setPort(int value)
-	{
-		port = value;
-	}
-		
-	int getPort()
-	{
-		return port;
-	}
+  const char* getAddress()
+  {
+    return addr.c_str();
+  }
 
-	void set(InetSocketAddress *isaddr)
-	{
-		if (isaddr == NULL) {
-			setAddress("");
-			setPort(0);
-			return;
-		}
-		setAddress(isaddr->getAddress());
-		setPort(isaddr->getPort());
-	}
+  void setPort(int value)
+  {
+    port = value;
+  }
+
+  int getPort()
+  {
+    return port;
+  }
+
+  void set(InetSocketAddress* isaddr)
+  {
+    if (!isaddr) {
+      setAddress("");
+      setPort(0);
+      return;
+    }
+    setAddress(isaddr->getAddress());
+    setPort(isaddr->getPort());
+  }
 };
 
 }

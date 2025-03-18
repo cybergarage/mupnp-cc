@@ -13,7 +13,7 @@
 
 #include <stdlib.h>
 
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 #include <mupnp/xml/Node.h>
 #include <mupnp/xml/ArgumentData.h>
 

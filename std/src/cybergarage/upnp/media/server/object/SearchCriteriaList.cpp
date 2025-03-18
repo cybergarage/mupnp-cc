@@ -13,10 +13,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/SearchCap.h>
-#include <cybergarage/upnp/media/server/object/SearchCapList.h>
-#include <cybergarage/upnp/media/server/object/SearchCapList.h>
-#include <cybergarage/upnp/media/server/object/SearchCriteriaList.h>
+#include <mupnp/upnp/media/server/object/SearchCap.h>
+#include <mupnp/upnp/media/server/object/SearchCapList.h>
+#include <mupnp/upnp/media/server/object/SearchCapList.h>
+#include <mupnp/upnp/media/server/object/SearchCriteriaList.h>
 
 using namespace std;
 using namespace CyberLink;

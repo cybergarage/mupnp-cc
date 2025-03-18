@@ -16,9 +16,9 @@
 #ifndef _CLINK_MEDIA_FILEITEMNODE_H_
 #define _CLINK_MEDIA_FILEITEMNODE_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/io/FileInputStream.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/io/File.h>
+#include <mupnp/io/FileInputStream.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 
 namespace CyberLink {
 

@@ -14,10 +14,10 @@
 #ifndef _CLINK_MEDIA_MEDIAPLAYER_H_
 #define _CLINK_MEDIA_MEDIAPLAYER_H_
 
-#include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/upnp/media/server/action/BrowseAction.h>
-#include <cybergarage/xml/Node.h>
-#include <cybergarage/upnp/ControlPoint.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
+#include <mupnp/upnp/media/server/action/BrowseAction.h>
+#include <mupnp/xml/Node.h>
+#include <mupnp/upnp/ControlPoint.h>
 
 namespace CyberLink {
 

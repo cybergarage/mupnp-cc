@@ -1,87 +1,136 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPServer.h
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_HTTPSERVER_H_
-#define _CHTTP_HTTPSERVER_H_
+#ifndef _UHTTP_HTTPSERVER_H_
+#define _UHTTP_HTTPSERVER_H_
 
-#include <cybergarage/net/ServerSocket.h>
-#include <cybergarage/util/ListenerList.h>
-#include <cybergarage/http/HTTPRequest.h>
-#include <cybergarage/http/HTTPRequestListener.h>
-#include <cybergarage/util/Thread.h>
+#include <mupnp/http/HTTPMessageQueue.h>
+#include <mupnp/http/HTTPRequest.h>
+#include <mupnp/http/HTTPRequestListener.h>
+#include <mupnp/net/ServerSocket.h>
+#include <mupnp/util/Listener.h>
+#include <mupnp/util/Thread.h>
 
 #include <string>
 
-namespace CyberHTTP {
+namespace uHTTP {
 
-class HTTPServer : public CyberUtil::Thread
-{
-	CyberNet::ServerSocket *serverSock;
-	CyberUtil::ListenerList httpRequestListenerList;
+class HTTPServer : public uHTTP::Thread {
 
-public:
-	
-	HTTPServer();
-	~HTTPServer();
+  public:
+  static const long DEFAULT_SERVER_THREAD_WAIT_TIME;
+  static const size_t DEFAULT_SERVER_WORKER_THREAD_NUM;
 
-	////////////////////////////////////////////////
-	//	ServerSocket
-	////////////////////////////////////////////////
+  public:
+  HTTPServer();
+  ~HTTPServer();
 
-	CyberNet::ServerSocket *getServerSock()
-	{
-		return serverSock;
-	}
+  ////////////////////////////////////////////////
+  // open/close
+  ////////////////////////////////////////////////
 
-	bool open(const char *addr, int port);
-	bool close();
-	bool accept(CyberNet::Socket *socket);
-	bool isOpened();
+  bool open(int port, const std::string& addr = "");
+  bool close();
 
-	////////////////////////////////////////////////
-	//	httpRequest
-	////////////////////////////////////////////////
-	 	
-	void addRequestListener(HTTPRequestListener *listener)
-	{
-		httpRequestListenerList.add(listener);
-	}		
+  ////////////////////////////////////////////////
+  // binding address and port
+  ////////////////////////////////////////////////
 
-	void removeRequestListener(HTTPRequestListener *listener)
-	{
-		httpRequestListenerList.remove(listener);
-	}		
+  const char* getAddress()
+  {
+    if (!serverSock)
+      return "";
+    return serverSock->getLocalAddress();
+  }
 
-	void performRequestListener(HTTPRequest *httpReq)
-	{
-		int listenerSize = httpRequestListenerList.size();
-		for (int n=0; n<listenerSize; n++) {
-			HTTPRequestListener *listener = (HTTPRequestListener *)httpRequestListenerList.get(n);
-			listener->httpRequestRecieved(httpReq);
-		}
-	}		
+  int getPort()
+  {
+    if (!serverSock)
+      return 0;
+    return serverSock->getLocalPort();
+  }
 
-	////////////////////////////////////////////////
-	//	run	
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  httpRequest
+  ////////////////////////////////////////////////
 
-	void run();
+  void addRequestListener(HTTPRequestListener* listener)
+  {
+    httpRequestListenerList.add(listener);
+  }
 
+  void removeRequestListener(HTTPRequestListener* listener)
+  {
+    httpRequestListenerList.remove(listener);
+  }
+
+  HTTP::StatusCode performRequestListener(HTTPRequest* httpReq)
+  {
+    HTTP::StatusCode lastStatusCode = HTTP::INTERNAL_SERVER_ERROR;
+    size_t listenerSize = httpRequestListenerList.size();
+    for (size_t n = 0; n < listenerSize; n++) {
+      HTTPRequestListener* listener = httpRequestListenerList.get(n);
+      lastStatusCode = listener->httpRequestRecieved(httpReq);
+      if (lastStatusCode == HTTP::OK_REQUEST)
+        break;
+    }
+    return lastStatusCode;
+  }
+
+  ////////////////////////////////////////////////
+  //  run
+  ////////////////////////////////////////////////
+
+  bool start();
+  void run();
+  bool stop();
+
+  ////////////////////////////////////////////////
+  //  Worker Threads
+  ////////////////////////////////////////////////
+
+  void setWorkerCount(size_t count)
+  {
+    this->workerThreadMax = count;
+  }
+
+  size_t getWorkerCount()
+  {
+    return this->workerThreadMax;
+  }
+
+  bool waitMessage(HTTPMessage** httpMsg, time_t timeoutSec = 0)
+  {
+    return messageQueue.waitMessage(httpMsg, timeoutSec);
+  }
+
+  private:
+  ServerSocket* serverSock;
+  ListenerList<HTTPRequestListener> httpRequestListenerList;
+
+  HTTPMessageQueue messageQueue;
+
+  size_t workerThreadMax;
+  ThreadList workerThreadList;
+
+  bool bind(int port, const std::string& addr = "");
+  bool accept(uHTTP::Socket* socket);
+  bool isOpened();
+
+  uHTTP::ServerSocket* getServerSock()
+  {
+    return serverSock;
+  }
 };
 
-const char *GetServerName(std::string &buf);
+const char* GetServerName(std::string& buf);
 
 }
 

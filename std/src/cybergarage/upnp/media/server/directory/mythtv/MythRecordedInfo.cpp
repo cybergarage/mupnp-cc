@@ -13,9 +13,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
-#include <cybergarage/util/Date.h>
-#include <cybergarage/util/Debug.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
+#include <mupnp/util/Date.h>
+#include <mupnp/util/Debug.h>
 #include <sstream>
 
 #ifdef HAVE_CONFIG_H

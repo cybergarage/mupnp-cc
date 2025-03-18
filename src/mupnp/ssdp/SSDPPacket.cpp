@@ -10,7 +10,7 @@
 
 #include <string>
 #include <string.h>
-#include <uhttp/HTTP.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/ssdp/SSDPPacket.h>
 
 using namespace mUPnP;

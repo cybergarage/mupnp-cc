@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/format/ID3FrameList.h>
+#include <mupnp/upnp/media/server/object/format/ID3FrameList.h>
 #include <string>
 
 using namespace std;

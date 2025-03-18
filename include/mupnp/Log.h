@@ -11,7 +11,7 @@
 #ifndef _CLINKCC_LOG_H_
 #define _CLINKCC_LOG_H_
 
-#include <uhttp/util/Log.h>
+#include <mupnp/util/Log.h>
 
 namespace mUPnP {
   

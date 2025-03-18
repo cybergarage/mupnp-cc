@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/device/USN.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 bool mUPnP::USN::IsRootDevice(const std::string &usnValue) {
   uHTTP::String usnStr = usnValue;

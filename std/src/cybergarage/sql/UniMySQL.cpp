@@ -13,8 +13,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/sql/UniMySQL.h>
-#include <cybergarage/util/Date.h>
+#include <mupnp/sql/UniMySQL.h>
+#include <mupnp/util/Date.h>
 #include <iostream>
 
 #ifdef SUPPORT_MYSQL

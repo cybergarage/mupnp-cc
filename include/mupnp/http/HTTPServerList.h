@@ -1,78 +1,61 @@
 /******************************************************************
-*
-*	CyberXML for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPServerList.h
-*
-*	Revision;
-*
-*	05/18/03
-*		- first revision
-*	05/19/04
-*		- Changed the header include order for Cygwin.
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_HTTPSERVERLIST_H_
-#define _CHTTP_HTTPSERVERLIST_H_
+#ifndef _UHTTP_HTTPSERVERLIST_H_
+#define _UHTTP_HTTPSERVERLIST_H_
 
-#include <cybergarage/http/HTTPServer.h>
-#include <cybergarage/net/HostInterface.h>
-#include <cybergarage/util/Vector.h>
+#include <mupnp/http/HTTPServer.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/util/Vector.h>
 
-namespace CyberHTTP {
+namespace uHTTP {
 
-class HTTPServerList : public CyberUtil::Vector 
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-public:
+class HTTPServerList : public ::uHTTP::SharedVector<HTTPServer> {
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	HTTPServerList();
-	~HTTPServerList();
+  public:
+  HTTPServerList();
+  ~HTTPServerList();
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  HTTPServer* getHTTPServer(size_t n)
+  {
+    return get(n).get();
+  }
 
-	HTTPServer *getHTTPServer(int n)
-	{
-		return (HTTPServer *)get(n);
-	}
+  void addRequestListener(HTTPRequestListener* listener);
+  void removeRequestListener(HTTPRequestListener* listener);
 
-	void addRequestListener(HTTPRequestListener *listener);
-	
-	////////////////////////////////////////////////
-	//	open/close
-	////////////////////////////////////////////////
+  void setWorkerCount(size_t count);
 
-public:
+  ////////////////////////////////////////////////
+  //  open/close
+  ////////////////////////////////////////////////
 
-	void close();
-	bool open(int port);
+  public:
+  bool close();
+  bool open(int port);
 
-	////////////////////////////////////////////////
-	//	start/stop
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  start/stop
+  ////////////////////////////////////////////////
 
-public:
-
-	void start();
-	void stop();
-
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
-
-public:
-
-	void clear();
+  public:
+  bool start();
+  bool stop();
 };
 
 }

@@ -21,11 +21,11 @@
 #include <uuid/uuid.h>
 #endif
 
-#include <uhttp/net/HostInterface.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/UPnP.h>
 #include <mupnp/Icon.h>
 #include <mupnp/ssdp/SSDP.h>
-#include <uhttp/http/HTTPServer.h>
+#include <mupnp/http/HTTPServer.h>
 
 #include <stdio.h>
 #include <time.h>

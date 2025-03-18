@@ -11,11 +11,11 @@
 #ifndef _MUPMPCC_CONTROLPOINT_H_
 #define _MUPMPCC_CONTROLPOINT_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/util/Listener.h>
-#include <uhttp/util/Mutex.h>
-#include <uhttp/http/HTTPRequestListener.h>
-#include <uhttp/http/HTTPServerList.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/util/Listener.h>
+#include <mupnp/util/Mutex.h>
+#include <mupnp/http/HTTPRequestListener.h>
+#include <mupnp/http/HTTPServerList.h>
 #include <mupnp/xml/NodeList.h>
 #include <mupnp/ssdp/SSDPPacket.h>
 #include <mupnp/ssdp/SSDPNotifySocketList.h>

@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/xml/AttributeList.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 uXML::Attribute *uXML::AttributeList::getAttribute(const std::string &name)  {
   size_t nLists = size();

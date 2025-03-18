@@ -22,8 +22,8 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/upnp/media/server/Directory.h>
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesLibrary.h>
+#include <mupnp/upnp/media/server/Directory.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesLibrary.h>
 
 namespace CyberLink {
 

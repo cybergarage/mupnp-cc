@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_GATEWAYITEMNODELIST_H_
 #define _CLINK_MEDIA_GATEWAYITEMNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/object/item/gateway/GatewayItemNode.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/object/item/gateway/GatewayItemNode.h>
 
 namespace CyberLink {
 

@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_DEVICECHANGELISTENER_H_
 #define _MUPMPCC_DEVICECHANGELISTENER_H_
 
-#include <uhttp/util/Listener.h>
+#include <mupnp/util/Listener.h>
 
 namespace mUPnP {
 class Device;

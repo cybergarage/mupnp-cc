@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_SSDPRESPONSE_H_
 #define _MUPMPCC_SSDPRESPONSE_H_
 
-#include <uhttp/http/HTTPResponse.h>
-#include <uhttp/http/HTTP.h>
+#include <mupnp/http/HTTPResponse.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/ssdp/SSDP.h>
 
 namespace mUPnP {

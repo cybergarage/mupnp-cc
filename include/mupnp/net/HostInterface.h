@@ -1,48 +1,42 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HostInterface.h
-*
-*	Revision;
-*
-*	05/18/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_HOSTINTERFACE_H_
-#define _CNET_HOSTINTERFACE_H_
+#ifndef _UHTTP_NET_HOSTINTERFACE_H_
+#define _UHTTP_NET_HOSTINTERFACE_H_
 
-#include <cybergarage/net/Socket.h>
-#include <cybergarage/net/NetworkInterfaceList.h>
+#include <mupnp/net/NetworkInterfaceList.h>
+#include <mupnp/net/Socket.h>
 
 #include <string>
 
-namespace CyberNet {
-
+namespace uHTTP {
 class HostInterface {
-public:
-	static bool USE_LOOPBACK_ADDR;
-	static bool USE_ONLY_IPV4_ADDR;
-	static bool USE_ONLY_IPV6_ADDR;
-	const static char *DEFAULT_IFNAME;
+  public:
+  static bool USE_LOOPBACK_ADDR;
+  static bool USE_ONLY_IPV4_ADDR;
+  static bool USE_ONLY_IPV6_ADDR;
+  const static char* DEFAULT_IFNAME;
 };
 
-int GetNHostAddresses();
-const char *GetHostAddress(int n, std::string &buf);
-int GetHostAddresses(NetworkInterfaceList &netifList);
+size_t GetNHostAddresses();
+const char* GetHostAddress(size_t n, std::string& buf);
+size_t GetHostAddresses(NetworkInterfaceList& netifList);
 
-bool IsIPv6Address(const char *host);
-const char *StripIPv6ScopeID(const char *addr, std::string &buf);
-int GetIPv6ScopeID(const char *addr);
+bool IsIPv6Address(const std::string& host);
+const char* StripIPv6ScopeID(const std::string& addr, std::string& buf);
+int GetIPv6ScopeID(const std::string& addr);
 bool HasIPv4Addresses();
 bool HasIPv6Addresses();
 
-void SetHostInterface(const char *ifaddr);
-const char *GetHostInterface();
+void SetHostInterface(const std::string& ifaddr);
+const char* GetHostInterface();
 bool HasAssignedHostInterface();
 
 }

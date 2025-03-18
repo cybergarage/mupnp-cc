@@ -16,19 +16,19 @@
 #ifndef _CLINK_MEDIA_CONTENTDIRECTORY_H_
 #define _CLINK_MEDIA_CONTENTDIRECTORY_H_
 
-#include <cybergarage/upnp/media/server/action/BrowseAction.h>
-#include <cybergarage/upnp/media/server/action/SearchAction.h>
-#include <cybergarage/upnp/media/server/DirectoryList.h>
-#include <cybergarage/upnp/media/server/object/FormatList.h>
-#include <cybergarage/upnp/media/server/object/SearchCapList.h>
-#include <cybergarage/upnp/media/server/object/SortCapList.h>
-#include <cybergarage/upnp/media/server/object/container/RootNode.h>
-#include <cybergarage/upnp/media/server/object/ContentNodeList.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNodeList.h>
-#include <cybergarage/upnp/control/ActionListener.h>
-#include <cybergarage/upnp/control/QueryListener.h>
-#include <cybergarage/util/Mutex.h>
-#include <cybergarage/util/Thread.h>
+#include <mupnp/upnp/media/server/action/BrowseAction.h>
+#include <mupnp/upnp/media/server/action/SearchAction.h>
+#include <mupnp/upnp/media/server/DirectoryList.h>
+#include <mupnp/upnp/media/server/object/FormatList.h>
+#include <mupnp/upnp/media/server/object/SearchCapList.h>
+#include <mupnp/upnp/media/server/object/SortCapList.h>
+#include <mupnp/upnp/media/server/object/container/RootNode.h>
+#include <mupnp/upnp/media/server/object/ContentNodeList.h>
+#include <mupnp/upnp/media/server/object/item/ItemNodeList.h>
+#include <mupnp/upnp/control/ActionListener.h>
+#include <mupnp/upnp/control/QueryListener.h>
+#include <mupnp/util/Mutex.h>
+#include <mupnp/util/Thread.h>
 
 #include <string>
 

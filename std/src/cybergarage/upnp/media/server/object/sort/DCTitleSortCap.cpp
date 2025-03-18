@@ -14,8 +14,8 @@
 ******************************************************************/
 
 #include <string>
-#include <cybergarage/upnp/media/server/object/ContentNode.h>
-#include <cybergarage/upnp/media/server/object/sort/DCTitleSortCap.h>
+#include <mupnp/upnp/media/server/object/ContentNode.h>
+#include <mupnp/upnp/media/server/object/sort/DCTitleSortCap.h>
 
 using namespace std;
 using namespace CyberLink;

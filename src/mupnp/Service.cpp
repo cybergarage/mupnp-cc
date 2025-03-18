@@ -18,7 +18,7 @@
 #include <mupnp/control/QueryRequest.h>
 #include <mupnp/control/QueryListener.h>
 #include <mupnp/xml/Parser.h>
-#include <uhttp/util/Debug.h>
+#include <mupnp/util/Debug.h>
 #include <string>
 
 using namespace mUPnP;

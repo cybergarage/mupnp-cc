@@ -11,9 +11,9 @@
 #ifndef _MUPMPCC_SERVICE_H_
 #define _MUPMPCC_SERVICE_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/io/File.h>
-#include <uhttp/net/URL.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/io/File.h>
+#include <mupnp/net/URL.h>
 
 #include <mupnp/xml/DeviceData.h>
 #include <mupnp/ActionList.h>
@@ -24,9 +24,9 @@
 #include <mupnp/event/SubscriberList.h>
 #include <mupnp/control/QueryRequest.h>
 #include <mupnp/control/ActionListener.h>
-#include <uhttp/util/Mutex.h>
-#include <uhttp/util/Vector.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/Mutex.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/util/StringUtil.h>
 #include <mupnp/xml/Node.h>
 
 namespace mUPnP {

@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_ICONLIST_H_
 #define _MUPMPCC_ICONLIST_H_
 
-#include <uhttp/util/Vector.h>
+#include <mupnp/util/Vector.h>
 #include <mupnp/Icon.h>
 
 namespace mUPnP{

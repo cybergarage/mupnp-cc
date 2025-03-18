@@ -1,324 +1,344 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPRequest.cpp
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*	03/16/04
-*		- Removed setVersion() because the method is added to the super class.
-*		- Changed getVersion() to return the version when the first line string has the length.
-*	04/25/04
-*		- Added post(const char *host, int port, HTTPResponse *httpRes);
-*	05/19/04
-*		- Changed the header include order for Cygwin.
-*	05/19/04
-*		- Changed post(HTTPResponse *) to close the socket stream from the server.
-*	08/19/04
-*		- Fixed getHeader() and getHTTPVersion() no to return "HTTP/HTTP/version".
-*	08/25/04
-*		- Added isHeadRequest().
-*	08/26/04
-*		- Changed post(HTTPResponse *) not to close the connection.
-*		- Changed post(const char *, int) to add a connection header to close.
-*	08/27/04
-*		- Changed post(String, int) to support the persistent connection.
-*	08/28/04
-*		- Added isKeepAlive().
-*	10/22/04
-*		- Added isSuccessful().
-*	10/26/04
-*		- Brent Hills <bhills@openshores.com>
-*		- Added a fix to post() when the last position of Content-Range header is 0.
-*		- Added a Content-Range header to the response in post().
-*		- Changed the status code for the Content-Range request in post().
-*	06/10/05
-*		- Changed post() to add a HOST headedr before the posting.
-*	07/07/05
-*		- Lee Peik Feng <pflee@users.sourceforge.net>
-*		- Fixed post() to output the chunk size as a hex string.
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
+#include <errno.h>
 #include <string.h>
 
-#include <string>
 #include <iostream>
 #include <sstream>
+#include <string>
 
-#include <cybergarage/http/HTTPRequest.h>
-#include <cybergarage/util/StringTokenizer.h>
-#include <cybergarage/net/SocketInputStream.h>
-#include <cybergarage/util/StringUtil.h>
+#include <mupnp/http/HTTPRequest.h>
+#include <mupnp/net/SocketInputStream.h>
+#include <mupnp/util/StringTokenizer.h>
+#include <mupnp/util/StringUtil.h>
 
 using namespace std;
-using namespace CyberNet;
-using namespace CyberHTTP;
-using namespace CyberUtil;
+using namespace uHTTP;
 
- ////////////////////////////////////////////////
-//	Constructor
+////////////////////////////////////////////////
+//  Constructor
 ////////////////////////////////////////////////
 
 HTTPRequest::HTTPRequest()
 {
-	httpSocket = NULL;
-	postSock = NULL;
-	requestPort = -1;
+  postSocket = NULL;
+  requestPort = -1;
 
-	setVersion(HTTP::VER_10);
+  setVersion(HTTP::VER_11);
+
+  ostringstream defaultUserAgent;
+  defaultUserAgent << uHTTP::PRODUCT_NAME << "/" << uHTTP::LIBRARY_VERSION << " " << uHTTP::LIBRARY_NAME << "/" << uHTTP::LIBRARY_VERSION;
+  setUserAgent(defaultUserAgent.str());
+
+  setAccept("*/*");
 }
 
-HTTPRequest::HTTPRequest(HTTPSocket *httpSock) : HTTPPacket(httpSock)
+HTTPRequest::HTTPRequest(mupnp_shared_ptr<HTTPSocket> httpSock)
+    : HTTPPacket(httpSock.get())
 {
-	setSocket(httpSock);
-	postSock = NULL;
-	requestPort = -1;
+  setSocket(httpSock);
+  postSocket = NULL;
+  requestPort = -1;
 }
 
-////////////////////////////////////////////////
-//	Method
-////////////////////////////////////////////////
-
-bool HTTPRequest::isMethod(const char *method)
+HTTPRequest::~HTTPRequest()
 {
-	string headerMethod;
-	getMethod(headerMethod);
-	return CyberUtil::StringEqualsIgnoreCase(headerMethod.c_str(), method);
+  if (postSocket) {
+    delete postSocket;
+    postSocket = NULL;
+  }
 }
 
 ////////////////////////////////////////////////
-//	URI
+//  Method
 ////////////////////////////////////////////////
 
-void HTTPRequest::setURI(const char *value, bool isCheckRelativeURL)
+bool HTTPRequest::isMethod(const std::string& method)
 {
-	uri = value;
-	if (isCheckRelativeURL == false)
-		return;
-	HTTP::GetRelativeURL(value, uri);
+  string headerMethod;
+  getMethod(headerMethod);
+  return StringEqualsIgnoreCase(headerMethod.c_str(), method);
 }
 
-const char *HTTPRequest::getURI(std::string &uriBuf)
+////////////////////////////////////////////////
+//  URI
+////////////////////////////////////////////////
+
+void uHTTP::HTTPRequest::setURI(const std::string& value)
 {
-	if (0 < uri.length())
-		uriBuf = uri;
-	else
-		getFirstLineToken(1, uriBuf);
-	return uriBuf.c_str();
+  uri = value;
 }
 
-
-////////////////////////////////////////////////
-//	URI Parameter
-////////////////////////////////////////////////
-	
-ParameterList *HTTPRequest::getParameterList(ParameterList &paramList)
+const char* uHTTP::HTTPRequest::getURI(std::string& uriBuf)
 {
-	string uri;
-	getURI(uri);
-	if (uri.length() <= 0)
-		return &paramList;
-	string::size_type paramIdx = uri.find('?');
-	if (paramIdx == string::npos)
-		return &paramList;
-	while (paramIdx != string::npos) {
-		string::size_type eqIdx = uri.find('=', (paramIdx+1));
-		string name = uri.substr(paramIdx+1, eqIdx-(paramIdx+1));
-		string::size_type nextParamIdx = uri.find('&', (eqIdx+1));
-		string value = uri.substr(eqIdx+1, ((nextParamIdx != string::npos) ? nextParamIdx : uri.length()) - (eqIdx+1));
-		Parameter *param = new Parameter(name.c_str(), value.c_str());
-		paramList.add(param);
-		paramIdx = nextParamIdx;
-	}
-	return &paramList;
+  if (0 < uri.length())
+    uriBuf = uri;
+  else
+    getFirstLineToken(1, uriBuf);
+  return uriBuf.c_str();
 }
 
-////////////////////////////////////////////////
-//	parseRequest
-////////////////////////////////////////////////
-
-bool HTTPRequest::parseRequestLine(const char *lineStr)
+void uHTTP::HTTPRequest::getURI(URI& uri)
 {
-	CyberUtil::StringTokenizer st(lineStr, HTTP::REQEST_LINE_DELIM);
-	if (st.hasMoreTokens() == false)
-		return false;
-	setMethod(st.nextToken());
-	if (st.hasMoreTokens() == false)
-		return false;
-	setURI(st.nextToken());
-	if (st.hasMoreTokens() == false)
-		return false;
-	setVersion(st.nextToken());
-	return true;
+  std::string uriString;
+  getURI(uriString);
+  uri.setString(uriString);
 }
 
 ////////////////////////////////////////////////
-//	getHeader
+//  URI
 ////////////////////////////////////////////////
-	
-const char *HTTPRequest::getHTTPVersion(std::string &verBuf)
+
+void uHTTP::HTTPRequest::setURL(const std::string& urlString)
 {
-	if (hasFirstLine() == true)
-		return getFirstLineToken(2, verBuf);
-	verBuf = "";
-	verBuf += "HTTP/";
-	verBuf += HTTPPacket::getVersion();
-	return verBuf.c_str();
+  URL url(urlString);
+  setURL(&url);
 }
 
-const char *HTTPRequest::getHeader(std::string &headerBuf)
+void uHTTP::HTTPRequest::setURL(URL* url)
 {
-	std::string buf;
-	headerBuf = "";
-	headerBuf += getMethod(buf);
-	headerBuf += " ";
-	headerBuf += getURI(buf);
-	headerBuf += " ";
-	headerBuf += getHTTPVersion(buf);
-	headerBuf += HTTP::CRLF;
-	headerBuf += getHeaderString(buf);
-	return headerBuf.c_str();
+  setRequestHost(url->getHost());
+  setRequestPort(url->getPort());
+
+  setHost(getRequestHost(), getRequestPort());
+  std::stringstream uriBuf;
+
+  if (url->hasPath())
+    uriBuf << url->getPath();
+  if (url->hasFragment())
+    uriBuf << URL::SHARP_DELIM << url->getFragment();
+  if (url->hasQuery())
+    uriBuf << URL::QUESTION_DELIM << url->getQuery();
+  setURI(uriBuf.str());
 }
-	
+
 ////////////////////////////////////////////////
-//	isKeepAlive
+//  URI Parameter
 ////////////////////////////////////////////////
-	
+
+ParameterList* HTTPRequest::getParameterList(ParameterList& paramList)
+{
+  string uri;
+  getURI(uri);
+  if (uri.length() <= 0)
+    return &paramList;
+  string::size_type paramIdx = uri.find('?');
+  if (paramIdx == string::npos)
+    return &paramList;
+  while (paramIdx != string::npos) {
+    string::size_type eqIdx = uri.find('=', (paramIdx + 1));
+    string name = uri.substr(paramIdx + 1, eqIdx - (paramIdx + 1));
+    string::size_type nextParamIdx = uri.find('&', (eqIdx + 1));
+    string value = uri.substr(eqIdx + 1, ((nextParamIdx != string::npos) ? nextParamIdx : uri.length()) - (eqIdx + 1));
+    Parameter* param = new Parameter(name.c_str(), value.c_str());
+    paramList.add(param);
+    paramIdx = nextParamIdx;
+  }
+  return &paramList;
+}
+
+////////////////////////////////////////////////
+//  parseRequest
+////////////////////////////////////////////////
+
+bool HTTPRequest::parseRequestLine(const std::string& lineStr)
+{
+  StringTokenizer st(lineStr, HTTP::REQEST_LINE_DELIM);
+  if (st.hasMoreTokens() == false)
+    return false;
+  setMethod(st.nextToken());
+  if (st.hasMoreTokens() == false)
+    return false;
+  setURI(st.nextToken());
+  if (st.hasMoreTokens() == false)
+    return false;
+  setVersion(st.nextToken());
+  return true;
+}
+
+////////////////////////////////////////////////
+//  getHeader
+////////////////////////////////////////////////
+
+const char* HTTPRequest::getHTTPVersion(std::string& verBuf)
+{
+  if (hasFirstLine() == true)
+    return getFirstLineToken(2, verBuf);
+  verBuf = "";
+  verBuf += "HTTP/";
+  verBuf += HTTPPacket::getVersion();
+  return verBuf.c_str();
+}
+
+const char* HTTPRequest::getRequestLine(std::string& requestLineBuf)
+{
+  std::string buf;
+  requestLineBuf = "";
+  requestLineBuf += getMethod(buf);
+  requestLineBuf += " ";
+  requestLineBuf += getURI(buf);
+  requestLineBuf += " ";
+  requestLineBuf += getHTTPVersion(buf);
+  return requestLineBuf.c_str();
+}
+
+const char* HTTPRequest::getHeader(std::string& headerBuf)
+{
+  getRequestLine(headerBuf);
+  headerBuf += HTTP::CRLF;
+  std::string buf;
+  headerBuf += getHeaderString(buf);
+  return headerBuf.c_str();
+}
+
+////////////////////////////////////////////////
+//  isKeepAlive
+////////////////////////////////////////////////
+
 bool HTTPRequest::isKeepAlive()
 {
-	if (isCloseConnection() == true)
-		return false;
-	if (isKeepAliveConnection() == true)
-		return true;
-	string httpVer;
-	getHTTPVersion(httpVer);
-	bool isHTTP10 = (httpVer.find("1.0") != string::npos) ? true : false;
-	if (isHTTP10 == true)
-		return false;
-	return true;
+  if (isCloseConnection() == true)
+    return false;
+  if (isKeepAliveConnection() == true)
+    return true;
+  string httpVer;
+  getHTTPVersion(httpVer);
+  bool isHTTP10 = (httpVer.find("1.0") != string::npos) ? true : false;
+  if (isHTTP10 == true)
+    return false;
+  return true;
 }
 
 ////////////////////////////////////////////////
-//	returnResponse
+//  returnResponse
 ////////////////////////////////////////////////
 
-bool HTTPRequest::returnResponse(int statusCode)
+HTTP::StatusCode HTTPRequest::returnResponse(int statusCode)
 {
-	HTTPResponse httpRes;
-	httpRes.setStatusCode(statusCode);
-	httpRes.setContentLength(0);
-	return post(&httpRes);
+  HTTPResponse httpRes;
+  httpRes.setStatusCode(statusCode);
+  httpRes.setContentLength(0);
+  return post(&httpRes) ? statusCode : HTTP::INTERNAL_SERVER_ERROR;
 }
 
 ////////////////////////////////////////////////
-//	POST (Response)
+//  POST (Response)
 ////////////////////////////////////////////////
 
-bool HTTPRequest::post(HTTPResponse *httpRes)
+HTTP::StatusCode HTTPRequest::post(HTTPResponse* httpRes, bool isOnlyHeader)
 {
-	HTTPSocket *httpSock = getSocket();
-	long offset = 0;
-	long length = httpRes->getContentLength();
-	if (hasContentRange() == true) {
-		long firstPos = getContentRangeFirstPosition();
-		long lastPos = getContentRangeLastPosition();
-		
-		// Thanks for Brent Hills (10/26/04)
-		if (lastPos <= 0) 
-			lastPos = length - 1;
-		if ((firstPos > length ) || (lastPos > length))
-			return returnResponse(HTTP::INVALID_RANGE);
-		httpRes->setContentRange(firstPos, lastPos, length);
-		httpRes->setStatusCode(HTTP::PARTIAL_CONTENT);
+  mupnp_shared_ptr<HTTPSocket> httpSock = getSocket();
+  size_t offset = 0;
+  size_t length = httpRes->getContentLength();
+  if (hasContentRange() == true) {
+    long firstPos = getContentRangeFirstPosition();
+    long lastPos = getContentRangeLastPosition();
 
-		offset = firstPos;
-		length = lastPos - firstPos + 1;
-	}
-	return httpSock->post(httpRes, offset, length, isHeadRequest(), isChunked());
+    // Thanks for Brent Hills (10/26/04)
+    if (lastPos <= 0)
+      lastPos = length - 1;
+    if ((firstPos > length) || (lastPos > length))
+      return returnResponse(HTTP::INVALID_RANGE);
+    httpRes->setContentRange(firstPos, lastPos, length);
+    httpRes->setStatusCode(HTTP::PARTIAL_CONTENT);
+
+    offset = firstPos;
+    length = lastPos - firstPos + 1;
+  }
+  return httpSock->post(httpRes, offset, length, isOnlyHeader, isChunked()) ? HTTP::OK_REQUEST : HTTP::INTERNAL_SERVER_ERROR;
 }
 
 ////////////////////////////////////////////////
-//	POST (Request)
+//  POST (Request)
 ////////////////////////////////////////////////
 
-HTTPResponse *HTTPRequest::post(const char *host, int port, HTTPResponse *httpRes, bool isKeepAlive)
+HTTPResponse* HTTPRequest::post(const std::string& host, int port, HTTPResponse* httpRes, bool isKeepAlive)
 {
-	if (postSock == NULL) {
-		postSock = new Socket();
-		if (postSock->connect(host, port) == false) {
-			httpRes->setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
-			return httpRes;
-		}
-	}	
+  if (!postSocket) {
+    postSocket = new Socket();
+    bool isConnected = postSocket->connect(host, port);
+    bool isTimeoutSet = false;
+    if (isConnected) {
+      isTimeoutSet = postSocket->setTimeout(HTTP::DEFAULT_TIMEOUT_SECOND);
+    }
+    if (!isConnected || !isTimeoutSet) {
+      int socketErrno = postSocket->getErrorCode();
+      delete postSocket;
+      postSocket = NULL;
+      httpRes->setStatusCode((HTTP::INTERNAL_CLIENT_ERROR + socketErrno));
+      return httpRes;
+    }
+  }
 
-	setHost(host);
+  setHost(host, port);
+  setConnection((isKeepAlive == true) ? HTTP::KEEP_ALIVE : HTTP::CLOSE);
 
-	setConnection((isKeepAlive == true) ? HTTP::KEEP_ALIVE : HTTP::CLOSE);
+  string header;
+  postSocket->send(getHeader(header));
+  postSocket->send(HTTP::CRLF);
 
-	string header;
-	postSock->send(getHeader(header));
-	postSock->send(HTTP::CRLF);
-	
-	bool isChunkedRequest = isChunked();
+  bool isChunkedRequest = isChunked();
 
-	const char *content = getContent();
-	int contentLength = 0;
-	if (content != NULL)
-		contentLength = strlen(content);
+  const char* content = getContent();
+  size_t contentLength = 0;
+  if (content)
+    contentLength = strlen(content);
 
-	if (0 < contentLength) {
-		if (isChunkedRequest == true) {
-			string chunSizeBuf;
-			Integer2HexString(strlen(content), chunSizeBuf);
-			postSock->send(chunSizeBuf.c_str());
-			postSock->send(HTTP::CRLF);
-		}
-		postSock->send(content);
-		if (isChunkedRequest == true)
-			postSock->send(HTTP::CRLF);
-	}
+  if (0 < contentLength) {
+    if (isChunkedRequest == true) {
+      string chunSizeBuf;
+      Sizet2HexString(strlen(content), chunSizeBuf);
+      postSocket->send(chunSizeBuf.c_str());
+      postSocket->send(HTTP::CRLF);
+    }
+    postSocket->send(content);
+    if (isChunkedRequest == true)
+      postSocket->send(HTTP::CRLF);
+  }
 
-	if (isChunkedRequest == true) {
-		postSock->send("0");
-		postSock->send(HTTP::CRLF);
-	}
+  if (isChunkedRequest == true) {
+    postSocket->send("0");
+    postSocket->send(HTTP::CRLF);
+  }
 
-	httpRes->set(postSock, isHeadRequest());			
+  httpRes->set(postSocket, isHeadRequest());
 
-	if (isKeepAlive == false) {	
-		postSock->close();
-		delete postSock;
-		postSock = NULL;
-	}
+  if (isKeepAlive == false) {
+    postSocket->close();
+    delete postSocket;
+    postSocket = NULL;
+  }
 
-	return httpRes;
+  return httpRes;
 }
 
 ////////////////////////////////////////////////
-//	toString
+//  toString
 ////////////////////////////////////////////////
 
-const char *HTTPRequest::toString(std::string &buf)
+const char* HTTPRequest::toString(std::string& buf)
 {
-	getHeader(buf);
-	buf += HTTP::CRLF;
-	buf += getContent();
-		
-	return buf.c_str();
+  getHeader(buf);
+  buf += HTTP::CRLF;
+  buf += getContent();
+
+  return buf.c_str();
 }
 
 void HTTPRequest::print()
 {
-	std::string buf;
+  std::string buf;
 #ifndef NO_USE_STD_COUT
-	std::cout << toString(buf) << std::endl;
+  std::cout << toString(buf) << std::endl;
 #else
-	printf("%s\n", toString(buf));
+  printf("%s\n", toString(buf));
 #endif
 }

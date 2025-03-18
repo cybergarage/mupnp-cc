@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/Device.h>
-#include <uhttp/util/TimeUtil.h>
+#include <mupnp/util/TimeUtil.h>
 
 using namespace mUPnP;
 using namespace uHTTP;

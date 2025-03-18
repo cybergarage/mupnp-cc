@@ -14,7 +14,7 @@
 ******************************************************************/
 
 #include <mupnp/ControlPoint.h>
-#include <uhttp/util/TimeUtil.h>
+#include <mupnp/util/TimeUtil.h>
 
 using namespace mUPnP;
 using namespace uHTTP;

@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_DCDATESORTCAP_H_
 #define _CLINK_MEDIA_DCDATESORTCAP_H_
 
-#include <cybergarage/upnp/media/server/DC.h>
-#include <cybergarage/upnp/media/server/object/SortCap.h>
+#include <mupnp/upnp/media/server/DC.h>
+#include <mupnp/upnp/media/server/object/SortCap.h>
 
 namespace CyberLink {
 

@@ -28,8 +28,8 @@
 ******************************************************************/
 
 #include <mupnp/control/ControlRequest.h>
-#include <uhttp/net/URL.h>
-#include <uhttp/http/HTTP.h>
+#include <mupnp/net/URL.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
 

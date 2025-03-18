@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_SSDPSEARCHRESPONSESYSOCKET_H_
 #define _MUPMPCC_SSDPSEARCHRESPONSESYSOCKET_H_
 
-#include <uhttp/util/Thread.h>
+#include <mupnp/util/Thread.h>
 #include <mupnp/ssdp/HTTPUSocket.h>
 #include <mupnp/ssdp/SSDPSearchResponse.h>
 #include <mupnp/ssdp/SSDPSearchRequest.h>

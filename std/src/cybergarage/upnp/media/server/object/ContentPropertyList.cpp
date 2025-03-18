@@ -15,7 +15,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/ContentPropertyList.h>
+#include <mupnp/upnp/media/server/object/ContentPropertyList.h>
 
 using namespace CyberLink;
 

@@ -1,22 +1,15 @@
 /******************************************************************
-*
-*	CyberUtil for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File : Debug.cpp
-*
-*	Revision;
-*
-*	08/16/03
-*		- first revision
-*	05/19/04
-*		- Added message(s,fname) and warning(s,fname);
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#include <cybergarage/util/Debug.h>
+#include <mupnp/util/Debug.h>
 
-using namespace CyberUtil;
+using namespace uHTTP;
 
 bool Debug::enabled = false;

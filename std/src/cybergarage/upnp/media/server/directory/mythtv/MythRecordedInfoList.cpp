@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfoList.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfoList.h>
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"

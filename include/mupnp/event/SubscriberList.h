@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_SUBSCRIBERLIST_H_
 #define _MUPMPCC_SUBSCRIBERLIST_H_
 
-#include <uhttp/util/Vector.h>
+#include <mupnp/util/Vector.h>
 #include <mupnp/event/Subscriber.h>
 
 namespace mUPnP {

@@ -10,7 +10,7 @@
 
 #include <mupnp/UPnP.h>
 #include <mupnp/event/Subscription.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 #include <stdio.h>
 #include <time.h>

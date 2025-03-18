@@ -20,7 +20,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/container/ContainerNode.h>
+#include <mupnp/upnp/media/server/object/container/ContainerNode.h>
 
 using namespace std;
 using namespace CyberLink;

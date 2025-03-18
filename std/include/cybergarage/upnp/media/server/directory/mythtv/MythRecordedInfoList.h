@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDINFOLIST_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDINFOLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"

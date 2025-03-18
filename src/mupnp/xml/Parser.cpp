@@ -12,9 +12,9 @@
 #include <string.h>
 #include <string>
 
-#include <uhttp/net/HostInterface.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/xml/Parser.h>
-#include <uhttp/http/HTTPRequest.h>
+#include <mupnp/http/HTTPRequest.h>
 
 #if !defined(WIN32) && !defined(HAVE_FOPEN) && !defined(TENGINE) && !defined(ITRON) && !defined(BTRON)
 #include <fcntl.h>

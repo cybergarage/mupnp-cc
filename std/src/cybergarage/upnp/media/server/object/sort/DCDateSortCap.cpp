@@ -15,9 +15,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/ContentNode.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
-#include <cybergarage/upnp/media/server/object/sort/DCDateSortCap.h>
+#include <mupnp/upnp/media/server/object/ContentNode.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/object/sort/DCDateSortCap.h>
 
 #include <string>
 #include <typeinfo>

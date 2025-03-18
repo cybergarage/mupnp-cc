@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_ARGUMENTLIST_H_
 #define _MUPMPCC_ARGUMENTLIST_H_
 
-#include <uhttp/util/Vector.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/util/StringUtil.h>
 #include <mupnp/Argument.h>
 
 namespace mUPnP {

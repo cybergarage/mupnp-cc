@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_BROWSERESULT_H_
 #define _CLINK_MEDIA_BROWSERESULT_H_
 
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 
 namespace CyberLink {
 

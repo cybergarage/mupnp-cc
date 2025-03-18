@@ -1,43 +1,34 @@
 /******************************************************************
-*
-*	CyberXML for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File:	Exception.h
-*
-*	Revision;
-*
-*	08/30/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CUTIL_EXCEPTION_H_
-#define _CUTIL_EXCEPTION_H_
+#ifndef _UHTTP_UTIL_EXCEPTION_H_
+#define _UHTTP_UTIL_EXCEPTION_H_
 
 #include <string>
 
-namespace CyberUtil {
+namespace uHTTP {
+class Exception {
+  std::string msg;
 
-class Exception
-{
-	std::string msg;
+  public:
+  Exception(const std::string& msg)
+  {
+    this->msg = msg;
+  }
 
-public:
-
-	Exception(const char *msg)
-	{
-		this->msg = msg;
-	}
-
-	const char *getMessage()
-	{
-		return msg.c_str();
-	}
+  const char* getMessage()
+  {
+    return msg.c_str();
+  }
 };
 
 }
 
 #endif
-

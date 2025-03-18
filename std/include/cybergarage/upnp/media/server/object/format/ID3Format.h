@@ -16,10 +16,10 @@
 #ifndef _CLINK_MEDIA_ID3FORMAT_H_
 #define _CLINK_MEDIA_ID3FORMAT_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/io/InputStream.h>
-#include <cybergarage/upnp/media/server/object/format/AudioFormat.h>
-#include <cybergarage/upnp/media/server/object/format/ID3FrameList.h>
+#include <mupnp/io/File.h>
+#include <mupnp/io/InputStream.h>
+#include <mupnp/upnp/media/server/object/format/AudioFormat.h>
+#include <mupnp/upnp/media/server/object/format/ID3FrameList.h>
 #include <string>
 
 namespace CyberLink {

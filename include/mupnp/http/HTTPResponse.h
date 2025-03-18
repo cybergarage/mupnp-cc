@@ -1,88 +1,75 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPResponse.cpp
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_HTTPRESPONSE_H_
-#define _CHTTP_HTTPRESPONSE_H_
+#ifndef _UHTTP_HTTPRESPONSE_H_
+#define _UHTTP_HTTPRESPONSE_H_
 
-#include <cybergarage/http/HTTPPacket.h>
-#include <cybergarage/http/HTTPStatus.h>
+#include <mupnp/http/HTTPPacket.h>
+#include <mupnp/http/HTTPStatus.h>
 
 #include <string>
 
-namespace CyberHTTP {
+namespace uHTTP {
+class HTTPResponse : public HTTPPacket {
+  int statusCode;
 
-class HTTPResponse : public HTTPPacket
-{
-	int statusCode;
+  public:
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  HTTPResponse();
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-public:
+  HTTPResponse(HTTPResponse* httpRes);
 
-	HTTPResponse();
+  ////////////////////////////////////////////////
+  //  Status Line
+  ////////////////////////////////////////////////
 
-	HTTPResponse(HTTPResponse *httpRes);
+  public:
+  void setStatusCode(int code)
+  {
+    statusCode = code;
+  }
 
-	////////////////////////////////////////////////
-	//	Status Line
-	////////////////////////////////////////////////
+  int getStatusCode()
+  {
+    if (statusCode != 0)
+      return statusCode;
+    HTTPStatus httpStatus(getFirstLine());
+    return httpStatus.getStatusCode();
+  }
 
-public:
+  bool isSuccessful()
+  {
+    return HTTP::IsStatusCodeSuccess(getStatusCode());
+  }
 
-	void setStatusCode(int code)
-	{
-		statusCode = code;
-	}
+  const char* getStatusLineString(std::string& statusLineBuf);
 
-	int getStatusCode()
-	{
-		if (statusCode != 0)
-			return statusCode;
-		HTTPStatus httpStatus(getFirstLine());
-		return httpStatus.getStatusCode();
-	}
-	
-	bool isSuccessful()
-	{
-		return HTTPStatus::isSuccessful(getStatusCode());
-	}
+  ////////////////////////////////////////////////
+  //  getHeader
+  ////////////////////////////////////////////////
 
-	const char *getStatusLineString(std::string &statusLineBuf);
+  public:
+  const char* getHeader(std::string& headerBuf);
 
-	////////////////////////////////////////////////
-	//	getHeader
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  //  toString
+  ////////////////////////////////////////////////
 
-	const char *getHeader(std::string &headerBuf);
+  public:
+  const char* toString(std::string& buf);
 
-	////////////////////////////////////////////////
-	//	toString
-	////////////////////////////////////////////////
-
-public:
-
-	const char *toString(std::string &buf);
-
-	void print();
-
+  void print();
 };
 
 }

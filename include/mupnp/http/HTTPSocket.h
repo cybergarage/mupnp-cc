@@ -1,98 +1,86 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPSocket.cpp
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_HTTPSOCKET_H_
-#define _CHTTP_HTTPSOCKET_H_
+#ifndef _UHTTP_HTTPSOCKET_H_
+#define _UHTTP_HTTPSOCKET_H_
 
-#include <cybergarage/net/Socket.h>
-#include <cybergarage/io/InputStream.h>
+#include <mupnp/io/InputStream.h>
+#include <mupnp/net/Socket.h>
 
-namespace CyberHTTP {
-
+namespace uHTTP {
 class HTTPResponse;
 
-class HTTPSocket
-{
+class HTTPSocket {
+  uHTTP::Socket* socket;
 
-	CyberNet::Socket *socket;
-	
-public:
+  public:
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	HTTPSocket(CyberNet::Socket *socket);
-	HTTPSocket(HTTPSocket *socket);
-	~HTTPSocket();
-	
-	////////////////////////////////////////////////
-	//	Socket
-	////////////////////////////////////////////////
+  HTTPSocket(uHTTP::Socket* socket);
+  HTTPSocket(HTTPSocket* socket);
+  ~HTTPSocket();
 
-	void setSocket(CyberNet::Socket *socket)
-	{
-		this->socket = socket;
-	}
+  ////////////////////////////////////////////////
+  //  Socket
+  ////////////////////////////////////////////////
 
-	CyberNet::Socket *getSocket()
-	{
-		return socket;
-	}
+  void setSocket(uHTTP::Socket* socket)
+  {
+    this->socket = socket;
+  }
 
-	////////////////////////////////////////////////
-	//	local address/port
-	////////////////////////////////////////////////
-	
-public:
+  uHTTP::Socket* getSocket()
+  {
+    return socket;
+  }
 
-	const char *getLocalAddress()
-	{
-		return getSocket()->getLocalAddress();	
-	}
+  ////////////////////////////////////////////////
+  //  local address/port
+  ////////////////////////////////////////////////
 
-	int getLocalPort()
-	{
-		return getSocket()->getLocalPort();	
-	}
+  public:
+  const char* getLocalAddress()
+  {
+    return getSocket()->getLocalAddress();
+  }
 
-	////////////////////////////////////////////////
-	//	open/close
-	////////////////////////////////////////////////
+  int getLocalPort()
+  {
+    return getSocket()->getLocalPort();
+  }
 
-public:
+  ////////////////////////////////////////////////
+  //  open/close
+  ////////////////////////////////////////////////
 
-	bool open();
-	bool close();
-	
-	////////////////////////////////////////////////
-	//	post
-	////////////////////////////////////////////////
+  public:
+  bool open();
+  bool close();
 
-private:
+  ////////////////////////////////////////////////
+  //  post
+  ////////////////////////////////////////////////
 
-	bool post(HTTPResponse *httpRes, const char *content, int contentOffset, int contentLength, bool isOnlyHeader, bool isChunked);
-	bool post(HTTPResponse *httpRes, CyberIO::InputStream *in, long contentOffset, long contentLength, bool isOnlyHeader, bool isChunked);
+  private:
+  bool post(HTTPResponse* httpRes, const std::string& content, size_t contentOffset, size_t contentLength, bool isOnlyHeader, bool isChunked);
+  bool post(HTTPResponse* httpRes, uHTTP::InputStream* in, size_t contentOffset, size_t contentLength, bool isOnlyHeader, bool isChunked);
 
-public:
-
-	bool post(HTTPResponse *httpRes, int contentOffset, int contentLength, bool isOnlyHeader, bool isChunked);
-
+  public:
+  bool post(HTTPResponse* httpRes, size_t contentOffset, size_t contentLength, bool isOnlyHeader, bool isChunked);
+  bool post(HTTPResponse* httpRes);
+  bool post(const std::string& content);
+  bool post(const char c);
 };
 
 }
 
 #endif
-

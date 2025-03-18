@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_FORMAT_H_
 #define _CLINK_MEDIA_FORMAT_H_
 
-#include <cybergarage/io/File.h>
+#include <mupnp/io/File.h>
 
 namespace CyberLink {
 

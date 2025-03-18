@@ -22,10 +22,10 @@
 #include <sstream>
 #include <iostream>
 
-#include <cybergarage/xml/Node.h>
-#include <cybergarage/upnp/media/server/UPnP.h>
-#include <cybergarage/upnp/media/server/DC.h>
-#include <cybergarage/upnp/media/server/object/ContentPropertyList.h>
+#include <mupnp/xml/Node.h>
+#include <mupnp/upnp/media/server/UPnP.h>
+#include <mupnp/upnp/media/server/DC.h>
+#include <mupnp/upnp/media/server/object/ContentPropertyList.h>
 
 namespace CyberLink {
 

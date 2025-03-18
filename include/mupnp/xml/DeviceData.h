@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_DEVICEDATA_H_
 #define _MUPMPCC_DEVICEDATA_H_
 
-#include <uhttp/http/HTTPServerList.h>
-#include <uhttp/util/Listener.h>
+#include <mupnp/http/HTTPServerList.h>
+#include <mupnp/util/Listener.h>
 #include <mupnp/ssdp/SSDPSearchSocketList.h>
 #include <mupnp/device/Advertiser.h>
 #include <mupnp/xml/NodeData.h>

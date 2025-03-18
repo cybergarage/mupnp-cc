@@ -23,7 +23,7 @@
 #include <ctype.h>
 #endif
 
-#include <uhttp/util/Debug.h>
+#include <mupnp/util/Debug.h>
 
 using namespace std;
 using namespace uHTTP;

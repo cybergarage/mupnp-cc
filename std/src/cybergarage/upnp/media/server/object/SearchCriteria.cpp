@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/SearchCriteria.h>
+#include <mupnp/upnp/media/server/object/SearchCriteria.h>
 
 using namespace CyberLink;
 

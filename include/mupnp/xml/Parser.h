@@ -15,8 +15,8 @@
 #include <string.h>
 #include <string>
 
-#include <uhttp/io/File.h>
-#include <uhttp/net/URL.h>
+#include <mupnp/io/File.h>
+#include <mupnp/net/URL.h>
 
 #include <mupnp/xml/XML.h>
 #include <mupnp/xml/Node.h>

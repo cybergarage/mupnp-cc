@@ -16,9 +16,9 @@
 #ifndef _CLINK_MEDIA_MYTH_DIRECTORY_H_
 #define _CLINK_MEDIA_MYTH_DIRECTORY_H_
 
-#include <cybergarage/upnp/media/server/Directory.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfoList.h>
-#include <cybergarage/upnp/media/server/object/item/mythtv/MythRecordedItemNodeList.h>
+#include <mupnp/upnp/media/server/Directory.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfoList.h>
+#include <mupnp/upnp/media/server/object/item/mythtv/MythRecordedItemNodeList.h>
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"

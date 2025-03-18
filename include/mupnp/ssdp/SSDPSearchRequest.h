@@ -17,7 +17,7 @@
 #include <mupnp/ssdp/SSDPRequest.h>
 #include <mupnp/device/ST.h>
 #include <mupnp/device/MAN.h>
-#include <uhttp/net/HostInterface.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/event/SubscriptionResponse.h>
 
 namespace mUPnP {

@@ -18,9 +18,9 @@
 #include <string>
 #include <sstream>
 
-#include <cybergarage/io/FileInputStream.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
-#include <cybergarage/upnp/media/server/object/format/ID3Format.h>
+#include <mupnp/io/FileInputStream.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/object/format/ID3Format.h>
 
 using namespace std;
 using namespace CyberIO;

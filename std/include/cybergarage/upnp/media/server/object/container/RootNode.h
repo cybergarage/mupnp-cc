@@ -16,11 +16,11 @@
 #ifndef _CLINK_MEDIA_ROOTNODE_H_
 #define _CLINK_MEDIA_ROOTNODE_H_
 
-#include <cybergarage/util/Mutex.h>
-#include <cybergarage/util/Thread.h>
-#include <cybergarage/upnp/control/ActionListener.h>
-#include <cybergarage/upnp/control/QueryListener.h>
-#include <cybergarage/upnp/media/server/object/container/ContainerNode.h>
+#include <mupnp/util/Mutex.h>
+#include <mupnp/util/Thread.h>
+#include <mupnp/upnp/control/ActionListener.h>
+#include <mupnp/upnp/control/QueryListener.h>
+#include <mupnp/upnp/media/server/object/container/ContainerNode.h>
 
 namespace CyberLink {
 

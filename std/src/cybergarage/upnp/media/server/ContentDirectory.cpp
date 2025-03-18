@@ -23,26 +23,26 @@
 
 #include <string.h>
 
-#include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/upnp/media/server/ContentDirectory.h>
-#include <cybergarage/upnp/media/server/object/DIDLLite.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
-#include <cybergarage/upnp/media/server/object/SortCriteriaList.h>
-#include <cybergarage/upnp/media/server/object/SearchCriteriaList.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/object/DIDLLite.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/object/SortCriteriaList.h>
+#include <mupnp/upnp/media/server/object/SearchCriteriaList.h>
 
-#include <cybergarage/util/Debug.h>
-#include <cybergarage/util/TimeUtil.h>
-#include <cybergarage/http/HTTPStatus.h>
-#include <cybergarage/util/StringTokenizer.h>
-#include <cybergarage/util/StringUtil.h>
+#include <mupnp/util/Debug.h>
+#include <mupnp/util/TimeUtil.h>
+#include <mupnp/http/HTTPStatus.h>
+#include <mupnp/util/StringTokenizer.h>
+#include <mupnp/util/StringUtil.h>
 
-#include <cybergarage/upnp/media/server/object/SortCap.h>
-#include <cybergarage/upnp/media/server/object/sort/UPnPClassSortCap.h>
-#include <cybergarage/upnp/media/server/object/sort/DCTitleSortCap.h>
-#include <cybergarage/upnp/media/server/object/sort/DCDateSortCap.h>
+#include <mupnp/upnp/media/server/object/SortCap.h>
+#include <mupnp/upnp/media/server/object/sort/UPnPClassSortCap.h>
+#include <mupnp/upnp/media/server/object/sort/DCTitleSortCap.h>
+#include <mupnp/upnp/media/server/object/sort/DCDateSortCap.h>
 
-#include <cybergarage/upnp/media/server/object/SearchCap.h>
-#include <cybergarage/upnp/media/server/object/search/IdSearchCap.h>
+#include <mupnp/upnp/media/server/object/SearchCap.h>
+#include <mupnp/upnp/media/server/object/search/IdSearchCap.h>
 
 #include <sstream>
 

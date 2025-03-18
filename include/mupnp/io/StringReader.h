@@ -1,49 +1,41 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: StringReader.h
-*
-*	Revision;
-*
-*	07/05/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CIO_STRINGREADER_H_
-#define _CIO_STRINGREADER_H_
+#ifndef _UHTTP_IO_STRINGREADER_H_
+#define _UHTTP_IO_STRINGREADER_H_
 
 #include <string>
 
-#include <cybergarage/io/Reader.h>
-#include <cybergarage/io/InputStream.h>
+#include <mupnp/io/InputStream.h>
+#include <mupnp/io/Reader.h>
 
-namespace CyberIO {
+namespace uHTTP {
+class StringReader : public Reader {
+  std::string buf;
+  int pos;
 
-class StringReader : public Reader
-{
-	std::string buf;
-	int pos;
+  public:
+  StringReader(const std::string& str);
 
-public:
+  ssize_t read(std::string& b, size_t len);
 
-	StringReader(const char *str);
-	
-	int read(std::string &b, int len);
-	
-	long skip(long n);
+  long skip(long n);
 
-	void unread(std::string &b, int off, int len)
-	{
-		// Not Implemented yet.
-	}
+  void unread(std::string& b, size_t off, size_t len)
+  {
+    // Not Implemented yet.
+  }
 
-	void close()
-	{
-	}
+  void close()
+  {
+  }
 };
 
 }

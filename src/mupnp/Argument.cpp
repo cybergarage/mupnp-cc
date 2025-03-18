@@ -10,7 +10,7 @@
 
 #include <mupnp/Service.h>
 #include <mupnp/Argument.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 using namespace std;
 using namespace mUPnP;

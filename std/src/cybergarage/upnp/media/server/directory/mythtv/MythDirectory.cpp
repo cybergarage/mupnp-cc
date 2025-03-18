@@ -15,9 +15,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/ContentDirectory.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythDirectory.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythDatabase.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythDirectory.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythDatabase.h>
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"

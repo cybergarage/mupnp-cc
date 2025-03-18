@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/ConnectionInfo.h>
+#include <mupnp/upnp/media/server/ConnectionInfo.h>
 
 using namespace CyberLink;
 

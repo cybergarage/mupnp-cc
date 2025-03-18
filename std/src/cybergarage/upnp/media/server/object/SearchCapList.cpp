@@ -15,8 +15,8 @@
 
 #include <string>
 
-#include <cybergarage/upnp/media/server/object/SearchCap.h>
-#include <cybergarage/upnp/media/server/object/SearchCapList.h>
+#include <mupnp/upnp/media/server/object/SearchCap.h>
+#include <mupnp/upnp/media/server/object/SearchCapList.h>
 
 using namespace std;
 using namespace CyberLink;

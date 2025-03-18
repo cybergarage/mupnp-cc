@@ -1,54 +1,48 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: StringReader.cpp
-*
-*	Revision:
-*
-*	09/19/04
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <string.h>
-#include <cybergarage/io/StringBufferInputStream.h>
+#include <mupnp/io/StringBufferInputStream.h>
 
-using namespace CyberIO;
+using namespace uHTTP;
 
-StringBufferInputStream::StringBufferInputStream(const char *str)
+StringBufferInputStream::StringBufferInputStream(const std::string& str)
 {
-	buf = str;
-	pos = 0;
+  buf = str;
+  pos = 0;
 }
 
-int StringBufferInputStream::read(std::string &b, int len)
+ssize_t StringBufferInputStream::read(std::string& b, size_t len)
 {
-	int bufLen = buf.length() - pos;
-	if (bufLen <= 0)
-		return 0;
-	int copyLen = (len < bufLen) ? len : bufLen;
-	b.append(buf, pos, copyLen);
-	pos += copyLen;
-	return copyLen;
+  size_t bufLen = buf.length() - pos;
+  if (bufLen <= 0)
+    return 0;
+  size_t copyLen = (len < bufLen) ? len : bufLen;
+  b.append(buf, pos, copyLen);
+  pos += copyLen;
+  return copyLen;
 }
 
-int StringBufferInputStream::read(char *b, int len)
+ssize_t StringBufferInputStream::read(char* b, size_t len)
 {
-	int bufLen = buf.length() - pos;
-	if (bufLen <= 0)
-		return 0;
-	int copyLen = (len < bufLen) ? len : bufLen;
-	strncpy(b, (buf.c_str() + pos), copyLen);
-	pos += copyLen;
-	return copyLen;
+  size_t bufLen = buf.length() - pos;
+  if (bufLen <= 0)
+    return 0;
+  size_t copyLen = (len < bufLen) ? len : bufLen;
+  strncpy(b, (buf.c_str() + pos), copyLen);
+  pos += copyLen;
+  return copyLen;
 }
 
 long StringBufferInputStream::skip(long n)
 {
-	pos += n;
-	return n;
+  pos += n;
+  return n;
 }
-

@@ -13,8 +13,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/format/MPEGFormat.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/object/format/MPEGFormat.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 #include <sstream>
 
 using namespace std;

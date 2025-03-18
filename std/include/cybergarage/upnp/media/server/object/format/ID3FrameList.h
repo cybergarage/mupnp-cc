@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_ID3FRAMELIST_H_
 #define _CLINK_MEDIA_ID3FRAMELIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/object/format/ID3Frame.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/object/format/ID3Frame.h>
 #include <string>
 
 namespace CyberLink {

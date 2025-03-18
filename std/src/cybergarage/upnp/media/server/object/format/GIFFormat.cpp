@@ -15,7 +15,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <cybergarage/upnp/media/server/object/format/GIFFormat.h>
+#include <mupnp/upnp/media/server/object/format/GIFFormat.h>
 
 using namespace CyberLink;
 

@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_PARSEREXCEPTION_H_
 #define _MUPMPCC_PARSEREXCEPTION_H_
 
-#include <uhttp/util/Exception.h>
+#include <mupnp/util/Exception.h>
 
 namespace uXML {
 

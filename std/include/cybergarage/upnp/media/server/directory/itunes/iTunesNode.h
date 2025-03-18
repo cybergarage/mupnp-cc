@@ -22,7 +22,7 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/xml/Node.h>
+#include <mupnp/xml/Node.h>
 
 namespace CyberLink {
 

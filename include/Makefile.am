@@ -81,6 +81,7 @@ mupnpcc_headers = \
 	./mupnp/net/URL.h \
 	./mupnp/net/NetworkInterfaceList.h \
 	./mupnp/net/ServerSocket.h \
+	./mupnp/net/SocketCore.h \
 	./mupnp/net/SocketImp.h \
 	./mupnp/net/URI.h \
 	./mupnp/net/SocketInputStream.h \
@@ -104,7 +105,6 @@ mupnpcc_headers = \
 	./mupnp/http/HTTPResponse.h \
 	./mupnp/http/ParameterList.h \
 	./mupnp/http/HTTP.h \
-	./mupnp/http/HTTPServerThread.h \
 	./mupnp/http/HTTPServerList.h \
 	./mupnp/http/HTTPPacket.h \
 	./mupnp/http/HTML.h \
@@ -112,20 +112,30 @@ mupnpcc_headers = \
 	./mupnp/http/Parameter.h \
 	./mupnp/http/HTTPHeader.h \
 	./mupnp/http/HTTPSocket.h \
+	./mupnp/http/HTTPWorkerThread.h \
 	./mupnp/http/HTTPServer.h \
 	./mupnp/http/HTTPDate.h \
 	./mupnp/http/HTTPRequestListener.h \
 	./mupnp/http/HTTPRequest.h \
+	./mupnp/http/HTTPMessageQueue.h \
 	./mupnp/IconList.h \
 	./mupnp/util/Debug.h \
-	./mupnp/util/ListenerList.h \
 	./mupnp/util/StringUtil.h \
+	./mupnp/util/MessageQueue.h \
+	./mupnp/util/Random.h \
+	./mupnp/util/Log.h \
 	./mupnp/util/Mutex.h \
 	./mupnp/util/Date.h \
 	./mupnp/util/Vector.h \
+	./mupnp/util/LoggerTarget.h \
 	./mupnp/util/StringTokenizer.h \
 	./mupnp/util/Exception.h \
+	./mupnp/util/LoggerFileTarget.h \
 	./mupnp/util/TimeUtil.h \
+	./mupnp/util/Semaphore.h \
+	./mupnp/util/LoggerStdTarget.h \
+	./mupnp/util/Listener.h \
+	./mupnp/util/Logger.h \
 	./mupnp/util/Thread.h \
 	./mupnp/mUPnP.h \
 	./mupnp/Device.h \

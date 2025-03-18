@@ -10,7 +10,7 @@
 
 #include "TestHTTPServer.h"
 
-#include <uhttp/io/StringBufferInputStream.h>
+#include <mupnp/io/StringBufferInputStream.h>
 #include <iostream>
 #include <sstream>
 

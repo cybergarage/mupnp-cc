@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_FORMATLIST_H_
 #define _CLINK_MEDIA_FORMATLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/io/File.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/io/File.h>
 
 namespace CyberLink {
 

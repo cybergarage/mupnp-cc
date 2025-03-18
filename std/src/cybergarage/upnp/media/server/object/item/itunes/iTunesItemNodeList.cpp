@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/item/itunes/iTunesItemNodeList.h>
+#include <mupnp/upnp/media/server/object/item/itunes/iTunesItemNodeList.h>
 
 using namespace CyberLink;
 

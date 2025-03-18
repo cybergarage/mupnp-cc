@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_JPEGFORMT_H_
 #define _CLINK_MEDIA_JPEGFORMT_H_
 
-#include <cybergarage/upnp/media/server/object/format/ImageFormat.h>
+#include <mupnp/upnp/media/server/object/format/ImageFormat.h>
 
 namespace CyberLink {
 

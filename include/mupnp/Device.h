@@ -11,11 +11,11 @@
 #ifndef _MUPMPCC_DEVICE_H_
 #define _MUPMPCC_DEVICE_H_
 
-#include <uhttp/http/HTTPRequestListener.h>
-#include <uhttp/util/StringUtil.h>
-#include <uhttp/util/TimeUtil.h>
+#include <mupnp/http/HTTPRequestListener.h>
+#include <mupnp/util/StringUtil.h>
+#include <mupnp/util/TimeUtil.h>
 #include <mupnp/xml/Node.h>
-#include <uhttp/io/File.h>
+#include <mupnp/io/File.h>
 #include <mupnp/UPnP.h>
 #include <mupnp/Device.h>
 #include <mupnp/DeviceList.h>
@@ -31,7 +31,7 @@
 #include <mupnp/event/SubscriptionRequest.h>
 #include <mupnp/event/SubscriptionResponse.h>
 #include <mupnp/device/Advertiser.h>
-#include <uhttp/util/Mutex.h>
+#include <mupnp/util/Mutex.h>
 
 #include <sstream>
 

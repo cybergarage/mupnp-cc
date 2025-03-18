@@ -20,7 +20,7 @@
 
 #include <string>
 #include <sstream>
-#include <cybergarage/xml/AttributeList.h>
+#include <mupnp/xml/AttributeList.h>
 
 namespace CyberLink {
 

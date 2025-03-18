@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_SUBSCRIPTIONREQUEST_H_
 #define _MUPMPCC_SUBSCRIPTIONREQUEST_H_
 
-#include <uhttp/http/HTTPRequest.h>
-#include <uhttp/http/HTTP.h>
+#include <mupnp/http/HTTPRequest.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/event/Subscription.h>
 #include <mupnp/device/NT.h>
 #include <mupnp/event/SubscriptionRequest.h>

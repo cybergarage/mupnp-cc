@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_BROWSWRRESULTNODE_H_
 #define _CLINK_MEDIA_BROWSWRRESULTNODE_H_
 
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 
 namespace CyberLink {
 

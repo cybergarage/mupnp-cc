@@ -14,15 +14,15 @@
 
 #include "MediaGate.h"
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/util/StringUtil.h>
-#include <cybergarage/xml/Parser.h>
-#include <cybergarage/upnp/media/server/object/format/GIFFormat.h>
-#include <cybergarage/upnp/media/server/object/format/JPEGFormat.h>
-#include <cybergarage/upnp/media/server/object/format/PNGFormat.h>
-#include <cybergarage/upnp/media/server/object/format/ID3Format.h>
-#include <cybergarage/upnp/media/server/object/format/MPEGFormat.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythDirectory.h>
+#include <mupnp/io/File.h>
+#include <mupnp/util/StringUtil.h>
+#include <mupnp/xml/Parser.h>
+#include <mupnp/upnp/media/server/object/format/GIFFormat.h>
+#include <mupnp/upnp/media/server/object/format/JPEGFormat.h>
+#include <mupnp/upnp/media/server/object/format/PNGFormat.h>
+#include <mupnp/upnp/media/server/object/format/ID3Format.h>
+#include <mupnp/upnp/media/server/object/format/MPEGFormat.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythDirectory.h>
 
 #include <fstream>
 

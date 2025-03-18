@@ -1,113 +1,103 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: DatagramPacket.h
-*
-*	Revision;
-*
-*	05/27/03
-*		- first revision
-*	01/06/04
-*		- Added set().
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_DATAGRAMPACKET_H_
-#define _CNET_DATAGRAMPACKET_H_
+#ifndef _UHTTP_NET_DATAGRAMPACKET_H_
+#define _UHTTP_NET_DATAGRAMPACKET_H_
 
-#include <cybergarage/net/InetSocketAddress.h>
+#include <mupnp/net/InetSocketAddress.h>
 
 #include <string>
 
-namespace CyberNet {
+namespace uHTTP {
+class DatagramPacket {
+  InetSocketAddress sockAddr;
+  std::string data;
 
-class DatagramPacket
-{
-	InetSocketAddress sockAddr;
-	std::string data;
+  public:
+  DatagramPacket()
+  {
+  }
 
-public:
+  DatagramPacket(const std::string& msg, InetSocketAddress* addr)
+  {
+    setData(msg);
+    setSocketAddress(addr);
+  }
 
-	DatagramPacket()
-	{
-	}
+  ~DatagramPacket()
+  {
+  }
 
-	DatagramPacket(const char *msg, InetSocketAddress *addr)
-	{
-		setData(msg);
-		setSocketAddress(addr);
-	}
+  ////////////////////////////////////////////////
+  //  date
+  ////////////////////////////////////////////////
 
-	~DatagramPacket()
-	{
-	}
+  void setData(const std::string& value)
+  {
+    data = value;
+  }
 
-	////////////////////////////////////////////////
-	//	date
-	////////////////////////////////////////////////
+  const char* getData()
+  {
+    return data.c_str();
+  }
 
-	void setData(const char *value)
-	{
-		data = value;
-	}
+  int getLength()
+  {
+    return (int)data.length();
+  }
 
-	const char *getData()
-	{
-		return data.c_str();
-	}
+  ////////////////////////////////////////////////
+  //  address/port
+  ////////////////////////////////////////////////
 
-	int getLength()
-	{
-		return (int)data.length();
-	}
+  void setSocketAddress(InetSocketAddress* addr)
+  {
+    sockAddr.set(addr);
+  }
 
-	////////////////////////////////////////////////
-	//	address/port
-	////////////////////////////////////////////////
+  InetSocketAddress* getSocketAddress()
+  {
+    return &sockAddr;
+  }
 
-	void setSocketAddress(InetSocketAddress *addr)
-	{
-		sockAddr.set(addr);
-	}
+  void setAddress(const std::string& addr)
+  {
+    sockAddr.setAddress(addr);
+  }
 
-	InetSocketAddress *getSocketAddress()
-	{
-		return &sockAddr;
-	}
+  void setPort(int port)
+  {
+    sockAddr.setPort(port);
+  }
 
-	void setAddress(const char *addr)
-	{
-		sockAddr.setAddress(addr);
-	}
+  const char* getAddress()
+  {
+    return sockAddr.getAddress();
+  }
 
-	void setPort(int port)
-	{
-		sockAddr.setPort(port);
-	}
+  int getPort()
+  {
+    return sockAddr.getPort();
+  }
 
-	const char *getAddress()
-	{
-		return sockAddr.getAddress();
-	}
-
-	int getPort()
-	{
-		return sockAddr.getPort();
-	}
-
-	void set(DatagramPacket *dgmPack)
-	{
-		if (dgmPack == NULL) {
-			setSocketAddress(NULL);
-			setData("");
-			return;
-		}
-		setSocketAddress(dgmPack->getSocketAddress());
-		setData(dgmPack->getData());
-	}
+  void set(DatagramPacket* dgmPack)
+  {
+    if (!dgmPack) {
+      setSocketAddress(NULL);
+      setData("");
+      return;
+    }
+    setSocketAddress(dgmPack->getSocketAddress());
+    setData(dgmPack->getData());
+  }
 };
 
 }

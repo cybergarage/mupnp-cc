@@ -1,48 +1,41 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: LineNumberReader.h
-*
-*	Revision;
-*
-*	06/11/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CIO_LINENUMBERREADER_H_
-#define _CIO_LINENUMBERREADER_H_
+#ifndef _UHTTP_IO_LINENUMBERREADER_H_
+#define _UHTTP_IO_LINENUMBERREADER_H_
 
 #include <string>
 
-#include <cybergarage/io/BufferedReader.h>
+#include <mupnp/io/BufferedReader.h>
 
-namespace CyberIO {
+namespace uHTTP {
+class LineNumberReader : public BufferedReader {
+  int lineNum;
 
-class LineNumberReader : public BufferedReader
-{
-	int lineNum;
+  public:
+  LineNumberReader(Reader* reader)
+      : BufferedReader(reader)
+  {
+    lineNum = -1;
+  }
 
-public:
+  int getLineNumber()
+  {
+    return lineNum;
+  }
 
-	LineNumberReader(Reader *reader) : BufferedReader(reader)
-	{
-		lineNum = -1;
-	}
-
-	int getLineNumber()
-	{
-		return lineNum;
-	}
-
-	const char *readLine()
-	{
-		lineNum++;
-		return BufferedReader::readLine();
-	}
+  const char* readLine()
+  {
+    lineNum++;
+    return BufferedReader::readLine();
+  }
 };
 
 }

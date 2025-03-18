@@ -11,11 +11,11 @@
 #ifndef _MUPMPCC_SSDPREQUEST_H_
 #define _MUPMPCC_SSDPREQUEST_H_
 
-#include <uhttp/http/HTTP.h>
-#include <uhttp/http/HTTPRequest.h>
+#include <mupnp/http/HTTP.h>
+#include <mupnp/http/HTTPRequest.h>
 #include <mupnp/ssdp/SSDP.h>
 
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 namespace mUPnP {
 

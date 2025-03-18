@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_DIRECTORY_H_
 #define _CLINK_MEDIA_DIRECTORY_H_
 
-#include <cybergarage/upnp/media/server/object/container/ContainerNode.h>
-#include <cybergarage/util/Mutex.h>
+#include <mupnp/upnp/media/server/object/container/ContainerNode.h>
+#include <mupnp/util/Mutex.h>
 
 namespace CyberLink {
 

@@ -13,9 +13,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/ContentDirectory.h>
-#include <cybergarage/upnp/media/server/object/Format.h>
-#include <cybergarage/upnp/media/server/object/item/itunes/iTunesItemNode.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/object/Format.h>
+#include <mupnp/upnp/media/server/object/item/itunes/iTunesItemNode.h>
 
 using namespace CyberLink;
 using namespace CyberIO;

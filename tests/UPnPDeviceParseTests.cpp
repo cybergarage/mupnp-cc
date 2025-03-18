@@ -12,7 +12,7 @@
 #include <boost/thread.hpp>
 
 #include <mupnp/UPnP.h>
-#include <uhttp/util/TimeUtil.h>
+#include <mupnp/util/TimeUtil.h>
 
 #include "TestDevice.h"
 #include "TestCtrlPoint.h"

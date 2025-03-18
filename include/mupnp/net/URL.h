@@ -1,40 +1,32 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: URL.h
-*
-*	Revision;
-*
-*	04/07/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_URL_H_
-#define _CNET_URL_H_
+#ifndef _UHTTP_NET_URL_H_
+#define _UHTTP_NET_URL_H_
 
 #include <string>
-#include <cybergarage/net/URI.h>
+#include <mupnp/net/URI.h>
 
-namespace CyberNet {
-
-class URL : public URI
-{
-public:
-
-	URL();
-	URL(const char *urlStr);
+namespace uHTTP {
+class URL : public URI {
+  public:
+  URL();
+  URL(const std::string& urlStr);
 };
 
-bool IsAbsoluteURL(const char *urlStr);
-const char *URLGetHost(const char *urlStr, std::string &buf);
-int URLGetPort(const char *urlStr);
-const char *URLGetRelativeURL(const char *urlStr, std::string &buf, bool withParam = true);
-const char *URLGetAbsoluteURL(const char *baseURLStr, const char *relURlStr, std::string &buf);
-const char *GetHostURL(const char *host, int port, const char *uri, std::string &buf);
+bool IsAbsoluteURL(const std::string& urlStr);
+const char* URLGetHost(const std::string& urlStr, std::string& buf);
+int URLGetPort(const std::string& urlStr);
+const char* URLGetRelativeURL(const std::string& urlStr, std::string& buf, bool withParam = true);
+const char* URLGetAbsoluteURL(const std::string& baseURLStr, const std::string& relURlStr, std::string& buf);
+const char* GetHostURL(const std::string& host, int port, const std::string& uri, std::string& buf);
 
 }
 

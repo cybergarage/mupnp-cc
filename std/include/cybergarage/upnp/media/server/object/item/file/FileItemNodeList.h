@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_FILEITEMNODELIST_H_
 #define _CLINK_MEDIA_FILEITEMNODELIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/object/item/file/FileItemNode.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/object/item/file/FileItemNode.h>
 
 namespace CyberLink {
 

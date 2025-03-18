@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/format/DefaultFormat.h>
+#include <mupnp/upnp/media/server/object/format/DefaultFormat.h>
 
 using namespace std;
 using namespace CyberLink;

@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_SERVICEDATA_H_
 #define _MUPMPCC_SERVICEDATA_H_
 
-#include <uhttp/util/Listener.h>
+#include <mupnp/util/Listener.h>
 #include <mupnp/xml/Node.h>
 #include <mupnp/xml/NodeData.h>
 #include <mupnp/event/SubscriberList.h>

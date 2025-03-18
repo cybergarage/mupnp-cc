@@ -16,10 +16,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/ContentDirectory.h>
-#include <cybergarage/upnp/media/server/ConnectionManager.h>
-#include <cybergarage/upnp/media/server/object/item/mythtv/MythRecordedItemNode.h>
-#include <cybergarage/io/File.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/ConnectionManager.h>
+#include <mupnp/upnp/media/server/object/item/mythtv/MythRecordedItemNode.h>
+#include <mupnp/io/File.h>
 #include <string>
 #include <sstream>
 

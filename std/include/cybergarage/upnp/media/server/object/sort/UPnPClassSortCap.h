@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_UPNPCLADDSORTCAP_H_
 #define _CLINK_MEDIA_UPNPCLADDSORTCAP_H_
 
-#include <cybergarage/upnp/media/server/UPnP.h>
-#include <cybergarage/upnp/media/server/object/SortCap.h>
+#include <mupnp/upnp/media/server/UPnP.h>
+#include <mupnp/upnp/media/server/object/SortCap.h>
 
 namespace CyberLink {
 

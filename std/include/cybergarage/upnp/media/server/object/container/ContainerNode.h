@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_CONTAINERNODE_H_
 #define _CLINK_MEDIA_CONTAINERNODE_H_
 
-#include <cybergarage/upnp/media/server/object/ContentNode.h>
+#include <mupnp/upnp/media/server/object/ContentNode.h>
 
 namespace CyberLink {
 

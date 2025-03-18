@@ -22,7 +22,7 @@
 
 #ifdef SUPPORT_MYSQL
 
-#include <cybergarage/sql/UniDatabase.h>
+#include <mupnp/sql/UniDatabase.h>
 #ifdef WIN32
 #include <windows.h>
 #include <mysql.h>

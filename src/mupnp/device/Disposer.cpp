@@ -10,7 +10,7 @@
 
 #include <mupnp/ControlPoint.h>
 #include <mupnp/device/Disposer.h>
-#include <uhttp/util/TimeUtil.h>
+#include <mupnp/util/TimeUtil.h>
 
 using namespace mUPnP;
 

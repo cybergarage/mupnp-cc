@@ -23,10 +23,10 @@
 #ifdef SUPPORT_ITUNES
 
 #include <string>
-#include <cybergarage/io/File.h>
-#include <cybergarage/xml/Parser.h>
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesTrackList.h>
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesPlaylistList.h>
+#include <mupnp/io/File.h>
+#include <mupnp/xml/Parser.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesTrackList.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesPlaylistList.h>
 
 namespace CyberLink {
 

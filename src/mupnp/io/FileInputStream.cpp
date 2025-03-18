@@ -1,116 +1,107 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: FileInputStream.cpp
-*
-*	Revision;
-*
-*	04/14/04
-*		- first revision
-*	05/24/04
-*		- Added read(chat *, int).
-*	08/29/04
-*		- Added skip().
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#include <cybergarage/io/FileInputStream.h>
+#include <mupnp/io/FileInputStream.h>
 
-using namespace CyberIO;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
-FileInputStream::FileInputStream(File *file, const char *mode)
+FileInputStream::FileInputStream(File* file, const std::string& mode)
 {
-	inBuf = new char[FILE_INBUF_SIZE];
-	fp = fopen(file->getName(), mode);
-	if (fp == NULL)
-		return;
+  inBuf = new char[FILE_INBUF_SIZE];
+  fp = fopen(file->getName(), mode.c_str());
+  if (!fp)
+    return;
 }
 
 ////////////////////////////////////////////////
-//	Destructor
+//  Destructor
 ////////////////////////////////////////////////
 
 FileInputStream::~FileInputStream()
 {
-	delete[] inBuf;
+  delete[] inBuf;
 }
 
 ////////////////////////////////////////////////
-//	read
+//  read
 ////////////////////////////////////////////////
 
-int FileInputStream::read(std::string &b, int len)
+ssize_t FileInputStream::read(std::string& b, size_t len)
 {
-	if (fp == NULL)
-		return 0;
+  if (!fp)
+    return 0;
 
-	int readCnt = 0;
-	while (readCnt < len) {
-		int readSize = len - readCnt;
-		if (FILE_INBUF_SIZE < readSize)
-			readSize = FILE_INBUF_SIZE;
-		int readLen = fread(inBuf, sizeof(char), readSize, fp);
-		if (readLen <= 0)
-			break;
-		if (0 < readLen) {
-			b.append(inBuf, 0, readLen);
-			readCnt += readLen;
-		}
-	}
-	return readCnt;
+  int readCnt = 0;
+  while (readCnt < len) {
+    size_t readSize = len - readCnt;
+    if (FILE_INBUF_SIZE < readSize)
+      readSize = FILE_INBUF_SIZE;
+    size_t readLen = fread(inBuf, sizeof(char), readSize, fp);
+    if (readLen <= 0)
+      break;
+    if (0 < readLen) {
+      b.append(inBuf, 0, readLen);
+      readCnt += readLen;
+    }
+  }
+  return readCnt;
 }
 
-int FileInputStream::read(char *b, int len)
+ssize_t FileInputStream::read(char* b, size_t len)
 {
-	if (fp == NULL)
-		return 0;
+  if (!fp)
+    return 0;
 
-	int readCnt = 0;
-	while (readCnt < len) {
-		int readSize = len - readCnt;
-		int readLen = fread(b+readCnt, sizeof(char), readSize, fp);
-		if (readLen <= 0)
-			break;
-		readCnt += readLen;
-	}
-	return readCnt;
+  int readCnt = 0;
+  while (readCnt < len) {
+    size_t readSize = len - readCnt;
+    size_t readLen = fread(b + readCnt, sizeof(char), readSize, fp);
+    if (readLen <= 0)
+      break;
+    readCnt += readLen;
+  }
+  return readCnt;
 }
 
 ////////////////////////////////////////////////
-//	unread
+//  unread
 ////////////////////////////////////////////////
 
-void FileInputStream::unread(std::string &b, int off, int len)
+void FileInputStream::unread(std::string& b, size_t off, size_t len)
 {
-	// Not Implemented
+  // Not Implemented
 }
 
 ////////////////////////////////////////////////
-//	skip
+//  skip
 ////////////////////////////////////////////////
 
 long FileInputStream::skip(long n)
 {
-	if (fp == NULL)
-		return 0;
-	int ret = fseek(fp, n, SEEK_CUR);
-	return (ret == 0) ? n : 0;
+  if (!fp)
+    return 0;
+  int ret = fseek(fp, n, SEEK_CUR);
+  return (ret == 0) ? n : 0;
 }
 
 ////////////////////////////////////////////////
-//	close
+//  close
 ////////////////////////////////////////////////
 
 void FileInputStream::close()
 {
-	if (fp == NULL)
-		return;
-	fclose(fp);
+  if (!fp)
+    return;
+  fclose(fp);
 }

@@ -14,7 +14,7 @@
 #include <time.h>
 #include <string>
 #include <limits.h>
-#include <uhttp/net/URL.h>
+#include <mupnp/net/URL.h>
 
 namespace mUPnP {
 class Subscriber {

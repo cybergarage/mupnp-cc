@@ -16,9 +16,9 @@
 #ifndef _CLINK_MEDIA_DEFAULTFORMT_H_
 #define _CLINK_MEDIA_DEFAULTFORMT_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/upnp/media/server/object/Format.h>
-#include <cybergarage/upnp/media/server/object/FormatObject.h>
+#include <mupnp/io/File.h>
+#include <mupnp/upnp/media/server/object/Format.h>
+#include <mupnp/upnp/media/server/object/FormatObject.h>
 
 namespace CyberLink {
 

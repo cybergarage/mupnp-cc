@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/SortCriteriaList.h>
+#include <mupnp/upnp/media/server/object/SortCriteriaList.h>
 
 using namespace std;
 using namespace CyberLink;

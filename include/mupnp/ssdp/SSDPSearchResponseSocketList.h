@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_SSDPSEARCHRESPONSESYSOCKETLIST_H_
 #define _MUPMPCC_SSDPSEARCHRESPONSESYSOCKETLIST_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/util/Vector.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/util/Vector.h>
 #include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/SSDPSearchResponseSocket.h>
 

@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_STATEVARIABLE_H_
 #define _MUPMPCC_STATEVARIABLE_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/util/StringUtil.h>
 #include <mupnp/xml/Node.h>
 #include <mupnp/UPnPStatus.h>
 #include <mupnp/AllowedValueList.h>

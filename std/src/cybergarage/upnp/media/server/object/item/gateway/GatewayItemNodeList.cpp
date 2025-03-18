@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/item/gateway/GatewayItemNodeList.h>
+#include <mupnp/upnp/media/server/object/item/gateway/GatewayItemNodeList.h>
 
 using namespace CyberLink;
 

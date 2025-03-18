@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_MPEGFORMT_H_
 #define _CLINK_MEDIA_MPEGFORMT_H_
 
-#include <cybergarage/upnp/media/server/object/format/MovieFormat.h>
+#include <mupnp/upnp/media/server/object/format/MovieFormat.h>
 
 namespace CyberLink {
 

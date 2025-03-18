@@ -16,10 +16,10 @@
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODET_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODET_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/io/FileInputStream.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
+#include <mupnp/io/File.h>
+#include <mupnp/io/FileInputStream.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
 
 #ifdef HAVE_CONFIG_H
 #  include "config.h"

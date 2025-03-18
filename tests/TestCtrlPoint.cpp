@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include "TestCtrlPoint.h"
-#include <uhttp/util/Debug.h>
+#include <mupnp/util/Debug.h>
 #include <iostream>
 
 using namespace std;

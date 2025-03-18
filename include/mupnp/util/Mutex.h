@@ -1,22 +1,17 @@
 /******************************************************************
-*
-*	CyberUtil for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: Mutex.h
-*
-*	Revision;
-*
-*	08/14/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CUTIL_MUTEX_H_
-#define _CUTIL_MUTEX_H_
+#ifndef _UHTTP_UTIL_MUTEX_H_
+#define _UHTTP_UTIL_MUTEX_H_
 
-#if defined(WIN32) && defined(ITRON) && defined (_AFXDLL)
+#if defined(WIN32) && defined(ITRON) && defined(_AFXDLL)
 #include <afxwin.h>
 #endif
 
@@ -34,32 +29,28 @@
 #include <pthread.h>
 #endif
 
-namespace CyberUtil {
-
-class Mutex
-{
-
+namespace uHTTP {
+class Mutex {
 #if defined(WIN32) && !defined(ITRON)
-	HANDLE	mutexID;
+  HANDLE mutexID;
 #elif defined(BTRON)
-	WERR	mutexID;
+  WERR mutexID;
 #elif defined(ITRON)
-	ER_ID	mutexID;
+  ER_ID mutexID;
 #elif defined(TENGINE) && !defined(PROCESS_BASE)
-	ID mutexID;
+  ID mutexID;
 #elif defined(TENGINE) && defined(PROCESS_BASE)
-	WERR	mutexID;
+  WERR mutexID;
 #else
-	pthread_mutex_t mutexID;
+  pthread_mutex_t mutexID;
 #endif
 
-public:
+  public:
+  Mutex();
+  ~Mutex();
 
-	Mutex();
-	~Mutex();
-
-	bool lock();
-	bool unlock();
+  bool lock();
+  bool unlock();
 };
 
 }

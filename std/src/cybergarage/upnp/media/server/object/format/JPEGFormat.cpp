@@ -14,7 +14,7 @@
 ******************************************************************/
 
 #include <stdio.h>
-#include <cybergarage/upnp/media/server/object/format/JPEGFormat.h>
+#include <mupnp/upnp/media/server/object/format/JPEGFormat.h>
 
 using namespace CyberLink;
 

@@ -12,7 +12,7 @@
 #define _MUPMPCC_ACTIONRESPONSE_H_
 
 #include <mupnp/control/ControlResponse.h>
-#include <uhttp/http/HTTPStatus.h>
+#include <mupnp/http/HTTPStatus.h>
 #include <mupnp/ArgumentList.h>
 
 #include <sstream>

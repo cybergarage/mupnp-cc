@@ -26,9 +26,9 @@
 #endif
 
 #include <mupnp/xml/XML.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 #ifndef WIN32
-#include <uhttp/util/Mutex.h>
+#include <mupnp/util/Mutex.h>
 #endif
 
 #include <stdio.h>

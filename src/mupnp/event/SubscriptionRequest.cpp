@@ -14,10 +14,10 @@
 #include <sstream>
 
 #include <mupnp/event/SubscriptionRequest.h>
-#include <uhttp/http/HTTP.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
-#include <uhttp/net/URL.h>
+#include <mupnp/net/URL.h>
 
 using namespace std;
 using namespace mUPnP;

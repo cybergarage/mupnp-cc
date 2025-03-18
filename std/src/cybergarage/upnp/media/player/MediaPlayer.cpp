@@ -13,14 +13,14 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
-#include <cybergarage/upnp/media/player/MediaPlayer.h>
-#include <cybergarage/upnp/media/player/action/BrowseResult.h>
-#include <cybergarage/upnp/media/player/action/BrowseResultNode.h>
-#include <cybergarage/xml/XML.h>
-#include <cybergarage/xml/Parser.h>
-#include <cybergarage/util/Debug.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/player/MediaPlayer.h>
+#include <mupnp/upnp/media/player/action/BrowseResult.h>
+#include <mupnp/upnp/media/player/action/BrowseResultNode.h>
+#include <mupnp/xml/XML.h>
+#include <mupnp/xml/Parser.h>
+#include <mupnp/util/Debug.h>
 
 #include <string>
 #include <fstream>

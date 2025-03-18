@@ -16,10 +16,10 @@
 #ifndef _CLINK_MEDIA_GATEWAY_DIRECTORY_H_
 #define _CLINK_MEDIA_GATEWAY_DIRECTORY_H_
 
-#include <cybergarage/io/File.h>
-#include <cybergarage/upnp/media/server/Directory.h>
-#include <cybergarage/upnp/media/server/object/item/file/FileItemNode.h>
-#include <cybergarage/upnp/media/server/object/item/file/FileItemNodeList.h>
+#include <mupnp/io/File.h>
+#include <mupnp/upnp/media/server/Directory.h>
+#include <mupnp/upnp/media/server/object/item/file/FileItemNode.h>
+#include <mupnp/upnp/media/server/object/item/file/FileItemNodeList.h>
 
 namespace CyberLink {
 

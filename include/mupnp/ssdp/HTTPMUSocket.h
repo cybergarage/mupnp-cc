@@ -11,10 +11,10 @@
 #ifndef _MUPMPCC_HTTPMUSOCKET_H_
 #define _MUPMPCC_HTTPMUSOCKET_H_
 
-#include <uhttp/net/MulticastSocket.h>
-#include <uhttp/net/InetSocketAddress.h>
-#include <uhttp/net/NetworkInterface.h>
-#include <uhttp/http/HTTPRequest.h>
+#include <mupnp/net/MulticastSocket.h>
+#include <mupnp/net/InetSocketAddress.h>
+#include <mupnp/net/NetworkInterface.h>
+#include <mupnp/http/HTTPRequest.h>
 #include <mupnp/ssdp/SSDPPacket.h>
 
 namespace mUPnP {

@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/ssdp/SSDPResponse.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 using namespace std;
 using namespace mUPnP;

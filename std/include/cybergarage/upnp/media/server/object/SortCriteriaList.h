@@ -17,7 +17,7 @@
 #define _CLINK_MEDIA_SORTCRITERIONLIST_H_
 
 #include <string>
-#include <cybergarage/util/Vector.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 

@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/item/file/FileItemNodeList.h>
+#include <mupnp/upnp/media/server/object/item/file/FileItemNodeList.h>
 
 using namespace CyberLink;
 

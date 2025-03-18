@@ -1,58 +1,52 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: Socket.h
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_SOCKET_H_
-#define _CNET_SOCKET_H_
+#ifndef _UHTTP_NET_SOCKET_H_
+#define _UHTTP_NET_SOCKET_H_
 
-#include <cybergarage/net/SocketImp.h>
+#include <mupnp/net/SocketCore.h>
 
-namespace CyberNet {
+namespace uHTTP {
 
-class Socket : public SocketImp
-{
+class SocketList;
 
+class Socket : public SocketCore {
+
+  public:
+  Socket();
+  ~Socket();
+
+  bool listen();
+
+  bool bind(int port, const std::string& addr);
+
+  bool accept(Socket* socket);
+
+  bool connect(const std::string& addr, int port);
+
+  ssize_t send(const char* cmd, size_t cmdLen);
+  ssize_t send(const std::string& cmd);
+  ssize_t send(const char c);
+
+  ssize_t recv(char* buffer, size_t bufferLen);
+
+  private:
 #if defined(ITRON)
-	static const int WINDOW_BUF_SIZE;
-	UH *sendWinBuf;
-	UH *recvWinBuf;
+  static const int WINDOW_BUF_SIZE;
+  UH* sendWinBuf;
+  UH* recvWinBuf;
 #endif
 
-private:
-
 #if defined(ITRON)
-	void initWindowBuffer();
+  void initWindowBuffer();
 #endif
-
-public:
-
-	Socket();
-	~Socket();
-
-	bool listen();
-
-	bool bind(int port, const char *addr);
-
-	bool accept(Socket *socket);
-
-	bool connect(const char *addr, int port);
-
-	int send(const char *cmd, int cmdLen);
-	int send(const char *cmd);
-
-	int recv(char *buffer, int bufferLen);
-
 };
 
 }

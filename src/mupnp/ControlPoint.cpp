@@ -8,7 +8,7 @@
  *
  ******************************************************************/
 
-#include <uhttp/util/Debug.h>
+#include <mupnp/util/Debug.h>
 #include <mupnp/ControlPoint.h>
 #include <mupnp/xml/Parser.h>
 #include <mupnp/Log.h>

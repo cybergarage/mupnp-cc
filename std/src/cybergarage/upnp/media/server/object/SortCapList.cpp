@@ -15,8 +15,8 @@
 
 #include <string>
 
-#include <cybergarage/upnp/media/server/object/SortCap.h>
-#include <cybergarage/upnp/media/server/object/SortCapList.h>
+#include <mupnp/upnp/media/server/object/SortCap.h>
+#include <mupnp/upnp/media/server/object/SortCapList.h>
 
 using namespace std;
 using namespace CyberLink;

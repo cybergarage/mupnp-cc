@@ -22,7 +22,7 @@
 // Header Files
 ////////////////////////////////////////////////
 
-#include <uhttp/util/Mutex.h>
+#include <mupnp/util/Mutex.h>
 #include <mupnp/xml/Parser.h>
 
 #include <xercesc/dom/DOM.hpp>

@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_CONNECTIONINFOLIST_H_
 #define _CLINK_MEDIA_CONNECTIONINFOLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/ConnectionInfo.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/ConnectionInfo.h>
 
 namespace CyberLink {
 

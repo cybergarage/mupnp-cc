@@ -15,11 +15,11 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/upnp/media/server/ContentDirectory.h>
-#include <cybergarage/upnp/media/server/ConnectionManager.h>
-#include <cybergarage/upnp/media/server/object/Format.h>
-#include <cybergarage/upnp/media/server/object/FormatObject.h>
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesDirectory.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/ConnectionManager.h>
+#include <mupnp/upnp/media/server/object/Format.h>
+#include <mupnp/upnp/media/server/object/FormatObject.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesDirectory.h>
 
 using namespace std;
 using namespace CyberLink;

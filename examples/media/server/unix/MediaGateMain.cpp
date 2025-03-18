@@ -18,7 +18,7 @@
 #include <iostream>
 
 #include "MediaGate.h"
-#include <cybergarage/util/Debug.h>
+#include <mupnp/util/Debug.h>
 
 
 #include <stdio.h>

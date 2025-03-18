@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_EVENTLISTENER_H_
 #define _MUPMPCC_EVENTLISTENER_H_
 
-#include <uhttp/util/Listener.h>
+#include <mupnp/util/Listener.h>
 
 namespace mUPnP {
 

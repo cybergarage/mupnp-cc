@@ -1,122 +1,151 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPStatus.java
-*
-*	Revision;
-*
-*	03/23/03
-*		- first revision.
-*	10/20/04 
-*		- Brent Hills <bhills@openshores.com>
-*		- Added PARTIAL_CONTENT and INVALID_RANGE;
-*	10/22/04
-*		- Added isSuccessful().
-*	10/29/04
-*		- Fixed set() to set the verion and the response code when the mothod is null.
-*		- Fixed set() to read multi words of the response sring such as Not Found.
-*	
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
 #include <stdlib.h>
 
-#include <cybergarage/http/HTTP.h>
-#include <cybergarage/http/HTTPStatus.h>
-#include <cybergarage/util/StringTokenizer.h>
-#include <cybergarage/util/StringUtil.h>
+#include <mupnp/http/HTTP.h>
+#include <mupnp/http/HTTPStatus.h>
+#include <mupnp/util/StringTokenizer.h>
+#include <mupnp/util/StringUtil.h>
 
-using namespace CyberHTTP;
-using namespace CyberUtil;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
 HTTPStatus::HTTPStatus()
 {
-	setVersion("");
-	setStatusCode(0);
-	setReasonPhrase("");
+  setVersion("");
+  setStatusCode(0);
+  setReasonPhrase("");
 }
-	
-HTTPStatus::HTTPStatus(const char *ver, int code, const char *reason)
+
+HTTPStatus::HTTPStatus(const std::string& ver, int code, const std::string& reason)
 {
-	setVersion(ver);
-	setStatusCode(code);
-	setReasonPhrase(reason);
+  setVersion(ver);
+  setStatusCode(code);
+  setReasonPhrase(reason);
 }
 
-HTTPStatus::HTTPStatus(const char *lineStr)
+HTTPStatus::HTTPStatus(const std::string& lineStr)
 {
-	set(lineStr);
+  set(lineStr);
 }
 
 ////////////////////////////////////////////////
-//	set
+//  set
 ////////////////////////////////////////////////
 
-void HTTPStatus::set(const char *lineStr)
+void HTTPStatus::set(const std::string& lineStr)
 {
-		if (StringHasData(lineStr) == false) {
-			setVersion(HTTP::VER);
-			setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
-			setReasonPhrase(HTTP::StatusCode2String(HTTP::INTERNAL_SERVER_ERROR));
-			return;
-		}
+  if (lineStr.length() <= 0) {
+    setVersion(HTTP::VER);
+    setStatusCode(HTTP::INTERNAL_SERVER_ERROR);
+    setReasonPhrase(HTTP::StatusCodeToString(HTTP::INTERNAL_SERVER_ERROR));
+    return;
+  }
 
-		StringTokenizer st(lineStr, HTTP::STATUS_LINE_DELIM);
-		std::string trimBuf;
-		
-		if (st.hasMoreTokens() == false)
-			return;
-		std::string ver = st.nextToken();
-		setVersion(StringTrim(ver.c_str(), trimBuf));
+  StringTokenizer st(lineStr, HTTP::STATUS_LINE_DELIM);
+  std::string trimBuf;
 
-		if (st.hasMoreTokens() == false)
-			return;
-		std::string codeStr = st.nextToken();
-		int code = atoi(codeStr.c_str());
-		setStatusCode(code);
+  if (st.hasMoreTokens() == false)
+    return;
+  std::string ver = st.nextToken();
+  setVersion(StringTrim(ver.c_str(), trimBuf));
 
-		std::string reason = "";
-		while (st.hasMoreTokens() == true) {
-			if (0 <= reason.length())
-				reason.append(" ");
-			reason.append(st.nextToken());
-		}
-		setReasonPhrase(StringTrim(reason.c_str(), trimBuf));
+  if (st.hasMoreTokens() == false)
+    return;
+  std::string codeStr = st.nextToken();
+  int code = atoi(codeStr.c_str());
+  setStatusCode(code);
+
+  std::string reason = "";
+  while (st.hasMoreTokens() == true) {
+    if (0 < reason.length())
+      reason.append(" ");
+    reason.append(st.nextToken());
+  }
+  setReasonPhrase(StringTrim(reason.c_str(), trimBuf));
 }
 
 ////////////////////////////////////////////////
-//	Status
+//  IsStatusCodeSuccess
 ////////////////////////////////////////////////
-	
-bool HTTPStatus::isSuccessful(int statCode)
+
+bool uHTTP::HTTP::IsStatusCodeSuccess(int statCode)
 {
-	if (200 <= statCode && statCode < 300)
-		return true;
-	return false;
+  if (200 <= statCode && statCode < 300)
+    return true;
+  return false;
 }
 
 ////////////////////////////////////////////////
-//	StatusCode2String
+//  StatusCodeToString
 ////////////////////////////////////////////////
-	
-const char *CyberHTTP::HTTP::StatusCode2String(int code)
+
+const std::string& uHTTP::HTTP::StatusCodeToString(int code)
 {
-	switch (code) {
-	case HTTP::CONTINUE: return "Continue";
-	case HTTP::OK_REQUEST: return "OK";
-	case HTTP::PARTIAL_CONTENT: return "Partial Content";
-	case HTTP::BAD_REQUEST: return "Bad Request";
-	case HTTP::NOT_FOUND: return "Not Found";
-	case HTTP::PRECONDITION_FAILED: return "Precondition Failed";
-	case HTTP::INVALID_RANGE: return "Invalid Range";
-	case HTTP::INTERNAL_SERVER_ERROR: return "Internal Server Error";
-	}
-	 return "";
-}
+  int errType = code - (code % 100);
 
+  if (errType == 100) {
+    switch (code) {
+    case PROCESSING:
+      return PROCESSING_STRING;
+    }
+    return CONTINUE_STRING;
+  }
+
+  if (errType == 200) {
+    switch (code) {
+    case ACCEPTED:
+      return ACCEPTED_STRING;
+    case NO_CONTENT:
+      return NO_CONTENT_STRING;
+    case PARTIAL_CONTENT:
+      return PARTIAL_CONTENT_STRING;
+    }
+    return OK_REQUEST_STRING;
+  }
+
+  if (errType == 300) {
+    switch (code) {
+    case MOVED_PERMANENTLY:
+      return MOVED_PERMANENTLY_STRING;
+    case FOUND:
+      return FOUND_STRING;
+    }
+    return FOUND_STRING;
+  }
+
+  if (errType == 400) {
+    switch (code) {
+    case NOT_FOUND:
+      return NOT_FOUND_STING;
+    case NOT_ACCEPTABLE:
+      return NOT_ACCEPTABLE_STING;
+    case PRECONDITION_FAILED:
+      return PRECONDITION_FAILED_STING;
+    case INVALID_RANGE:
+      return INVALID_RANGE_STING;
+    }
+    return BAD_REQUEST_STRING;
+  }
+
+  if (errType == 500) {
+    return INTERNAL_SERVER_ERROR_STRING;
+  }
+
+  if (errType == 600) {
+    return INTERNAL_CLIENT_ERROR_STRING;
+  }
+
+  return UNKOWN_ERROR_STRING;
+}

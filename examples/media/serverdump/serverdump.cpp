@@ -8,9 +8,9 @@
  *
  ******************************************************************/
 
-#include <cybergarage/upnp/media/player/MediaPlayer.h>
-#include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/util/Debug.h>
+#include <mupnp/upnp/media/player/MediaPlayer.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
+#include <mupnp/util/Debug.h>
 
 #include <iostream>
 

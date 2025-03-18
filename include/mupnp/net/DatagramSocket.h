@@ -1,43 +1,33 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: DatagramSocket.h
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_DATAGRAMSOCKET_H_
-#define _CNET_DATAGRAMSOCKET_H_
+#ifndef _UHTTP_NET_DATAGRAMSOCKET_H_
+#define _UHTTP_NET_DATAGRAMSOCKET_H_
 
-#include <cybergarage/net/SocketImp.h>
-#include <cybergarage/net/DatagramPacket.h>
+#include <mupnp/net/DatagramPacket.h>
+#include <mupnp/net/SocketCore.h>
 
-namespace CyberNet {
+namespace uHTTP {
+class DatagramSocket : public SocketCore {
+  public:
+  DatagramSocket();
+  DatagramSocket(int port, const std::string& bindAddr, bool bindAddrFlag = true, bool reuseAddrFlag = false);
+  ~DatagramSocket();
 
-class DatagramSocket : public SocketImp
-{
+  bool bind(int port, const std::string& addr, bool bindAddrFlag = true, bool reuseAddrFlag = false);
 
-public:
+  ssize_t send(const std::string& addr, int port, const std::string& data, size_t dataLen = 0);
 
-	DatagramSocket();
-	DatagramSocket(int port, const char *bindAddr, bool bindAddrFlag = true, bool reuseAddrFlag = false);
-	~DatagramSocket();
+  ssize_t send(DatagramPacket* dataPack);
 
-	bool bind(int port, const char *addr, bool bindAddrFlag = true, bool reuseAddrFlag = false);
-
-	int send(const char *addr, int port, const char *data, int dataLen = -1);
-
-	int send(DatagramPacket *dataPack);
-
-	int receive(DatagramPacket &dataPack);
-
+  ssize_t receive(DatagramPacket& dataPack);
 };
 
 }

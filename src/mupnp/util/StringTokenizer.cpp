@@ -1,43 +1,28 @@
 /******************************************************************
-*
-*	CyberUtil for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: StringTokenizer.cpp
-*
-*	Revision;
-*
-*	04/02/03
-*		- first revision
-*	07/13/03
-*		- Changed to implement no using strtok().
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#include <cybergarage/util/StringTokenizer.h>
+#include <mupnp/util/StringTokenizer.h>
 
 #include <string.h>
 
 using namespace std;
-using namespace CyberUtil;
+using namespace uHTTP;
 
-StringTokenizer::StringTokenizer(const char *str, const char *delim)
+StringTokenizer::StringTokenizer(const std::string& str, const std::string& delim)
 {
-	if (str == NULL) {
-		hasNextTokens = false;
-		lastDelimPos = 0;
-		strNextToken = "";
-		strBuf = "";
-		return;
-	}
+  hasNextTokens = true;
+  strBuf = str;
+  strDelim = delim;
+  lastDelimPos = string::npos;
 
-	hasNextTokens = true;
-	strBuf = str;
-	strDelim = delim;
-	lastDelimPos = string::npos;
-
-	nextToken(delim);
+  nextToken(delim);
 }
 
 StringTokenizer::~StringTokenizer()
@@ -46,32 +31,32 @@ StringTokenizer::~StringTokenizer()
 
 bool StringTokenizer::hasMoreTokens()
 {
-	return hasNextTokens;
+  return hasNextTokens;
 }
 
-const char *StringTokenizer::nextToken()
+const char* StringTokenizer::nextToken()
 {
-	return nextToken(strDelim.c_str());
+  return nextToken(strDelim.c_str());
 }
 
-const char *StringTokenizer::nextToken(const char *delim)
+const char* StringTokenizer::nextToken(const std::string& delim)
 {
-	strCurrToken = strNextToken;
+  strCurrToken = strNextToken;
 
-	string::size_type findStartDelimPos = (lastDelimPos == string::npos) ? 0 : (lastDelimPos+1);
-	string::size_type startDelimPos = strBuf.find_first_not_of(delim, findStartDelimPos);
-	if (startDelimPos == string::npos) {
-		hasNextTokens = false;
-		strNextToken = "";
-		return strCurrToken.c_str();
-	}
+  string::size_type findStartDelimPos = (lastDelimPos == string::npos) ? 0 : (lastDelimPos + 1);
+  string::size_type startDelimPos = strBuf.find_first_not_of(delim, findStartDelimPos);
+  if (startDelimPos == string::npos) {
+    hasNextTokens = false;
+    strNextToken = "";
+    return strCurrToken.c_str();
+  }
 
-	string::size_type endDelimPos = strBuf.find_first_of(delim, startDelimPos);
-	if (endDelimPos == string::npos)
-		endDelimPos = strBuf.length();
-	strNextToken = strBuf.substr(startDelimPos, endDelimPos-startDelimPos);
+  string::size_type endDelimPos = strBuf.find_first_of(delim, startDelimPos);
+  if (endDelimPos == string::npos)
+    endDelimPos = strBuf.length();
+  strNextToken = strBuf.substr(startDelimPos, endDelimPos - startDelimPos);
 
-	lastDelimPos = endDelimPos;
+  lastDelimPos = endDelimPos;
 
-	return strCurrToken.c_str();
+  return strCurrToken.c_str();
 }

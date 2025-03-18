@@ -8,7 +8,7 @@
  *
  ******************************************************************/
 
-#include <uhttp/http/HTTP.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/UPnPStatus.h>
   
 const char *mUPnP::UPnP::StatusCodeToString(int code) {

@@ -9,12 +9,12 @@
  ******************************************************************/
 
 #include <mupnp/StateVariable.h>
-#include <uhttp/util/Debug.h>
+#include <mupnp/util/Debug.h>
 #include <mupnp/Service.h>
 #include <mupnp/Service.h>
 #include <mupnp/AllowedValue.h>
 #include <mupnp/control/QueryListener.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 using namespace std;
 using namespace uHTTP;

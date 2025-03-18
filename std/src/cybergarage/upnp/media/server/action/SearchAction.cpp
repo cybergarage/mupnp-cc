@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/action/SearchAction.h>
+#include <mupnp/upnp/media/server/action/SearchAction.h>
 
 using namespace CyberLink;
 

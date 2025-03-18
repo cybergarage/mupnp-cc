@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_GIFFORMT_H_
 #define _CLINK_MEDIA_GIFFORMT_H_
 
-#include <cybergarage/upnp/media/server/object/format/ImageFormat.h>
+#include <mupnp/upnp/media/server/object/format/ImageFormat.h>
 
 namespace CyberLink {
 

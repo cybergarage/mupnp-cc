@@ -1,22 +1,17 @@
 /******************************************************************
-*
-*	CyberUtil for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File : TimeUtil.h
-*
-*	Revision;
-*
-*	04/04/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CUTIL_TIMERUTIL_H_
-#define _CUTIL_TIMERUTIL_H_
+#ifndef _UHTTP_UTIL_TIMERUTIL_H_
+#define _UHTTP_UTIL_TIMERUTIL_H_
 
-namespace CyberUtil {
+namespace uHTTP {
 
 void Wait(long mtime);
 void WaitRandom(long mtime);

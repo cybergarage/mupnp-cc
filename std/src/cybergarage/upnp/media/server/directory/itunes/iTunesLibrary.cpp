@@ -15,7 +15,7 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesLibrary.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesLibrary.h>
 
 #include <typeinfo>
 #include <sstream>

@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/soap/SOAPRequest.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 #include <mupnp/xml/Parser.h>
 
 using namespace uHTTP;

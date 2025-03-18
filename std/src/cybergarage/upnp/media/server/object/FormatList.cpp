@@ -13,8 +13,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/Format.h>
-#include <cybergarage/upnp/media/server/object/FormatList.h>
+#include <mupnp/upnp/media/server/object/Format.h>
+#include <mupnp/upnp/media/server/object/FormatList.h>
 
 using namespace CyberLink;
 

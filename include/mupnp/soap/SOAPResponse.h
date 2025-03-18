@@ -11,7 +11,7 @@
 #ifndef _MUPNP_SOAPRESPONSE_H_
 #define _MUPNP_SOAPRESPONSE_H_
 
-#include <uhttp/http/HTTPResponse.h>
+#include <mupnp/http/HTTPResponse.h>
 #include <mupnp/xml/XML.h>
 #include <mupnp/soap/SOAP.h>
 

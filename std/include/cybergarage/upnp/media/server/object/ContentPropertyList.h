@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_CONTENTPROPERTYLIST_H_
 #define _CLINK_MEDIA_CONTENTPROPERTYLIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/object/ContentProperty.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/object/ContentProperty.h>
 
 namespace CyberLink {
 

@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_SSDPNOTIFYSOCKET_H_
 #define _MUPMPCC_SSDPNOTIFYSOCKET_H_
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/util/Thread.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/util/Thread.h>
 #include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/HTTPMUSocket.h>
 #include <mupnp/ssdp/SSDPNotifyRequest.h>

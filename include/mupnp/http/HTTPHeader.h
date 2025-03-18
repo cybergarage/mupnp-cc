@@ -1,72 +1,72 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPHeader.h
-*
-*	Revision;
-*
-*	03/22/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CHTTP_HTTPHEADER_H_
-#define _CHTTP_HTTPHEADER_H_
+#ifndef _UHTTP_HTTPHEADER_H_
+#define _UHTTP_HTTPHEADER_H_
 
-#include <string>
 #include <stdio.h>
+#include <string>
+#include <vector>
 
-#include <cybergarage/io/LineNumberReader.h>
+#include <mupnp/io/LineNumberReader.h>
 
-namespace CyberHTTP {
+namespace uHTTP {
+class HTTPHeader {
+  std::string name;
+  std::string value;
 
-class HTTPHeader 
-{
-	std::string name;
-	std::string value;
+  public:
+  HTTPHeader(const std::string& lineStr);
+  HTTPHeader(const std::string& name, const std::string& value);
+  HTTPHeader(HTTPHeader* header);
 
-public:
+  ~HTTPHeader();
 
-	HTTPHeader(const char *lineStr);
-	HTTPHeader(const char *name, const char *value);
-	HTTPHeader(HTTPHeader *header);
+  void setName(const std::string& name)
+  {
+    this->name = name;
+  }
 
-	~HTTPHeader();
+  const char* getName()
+  {
+    return name.c_str();
+  }
 
-	void setName(const char *name)
-	{
-		this->name = name;
-	}
+  bool hasName()
+  {
+    if (name.length() <= 0)
+      return false;
+    return true;
+  }
 
-	const char *getName()
-	{
-		return name.c_str();
-	}
+  void setValue(const std::string& value)
+  {
+    this->value = value;
+  }
 
-	bool hasName()
-	{
-		if (name.length() <= 0)
-			return false;
-		return true;
-	}
-
-	void setValue(const char *value)
-	{
-		this->value = value;
-	}
-
-	const char *getValue()
-	{
-		return value.c_str();
-	}
+  const char* getValue()
+  {
+    return value.c_str();
+  }
 };
 
-const char *HTTPHeaderGetValue(CyberIO::LineNumberReader *reader, const char *name, std::string &buf);
-const char *HTTPHeaderGetValue(const char *data, const char *name, std::string &buf);
-int HTTPHeaderGetIntegerValue(const char *data, const char *name);
+class HTTPHeaderList : public std::vector<HTTPHeader*> {
+  public:
+  HTTPHeaderList()
+  {
+  }
+};
+
+const char* HTTPHeaderGetValue(uHTTP::LineNumberReader* reader, const std::string& name, std::string& buf);
+const char* HTTPHeaderGetValue(const std::string& data, const std::string& name, std::string& buf);
+int HTTPHeaderGetIntegerValue(const std::string& data, const std::string& name);
 
 }
 

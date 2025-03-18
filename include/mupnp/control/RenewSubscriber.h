@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_RENEWSUBSCRIBER_H_
 #define _MUPMPCC_RENEWSUBSCRIBER_H_
 
-#include <uhttp/util/Thread.h>
+#include <mupnp/util/Thread.h>
 
 namespace mUPnP {
 class ControlPoint;

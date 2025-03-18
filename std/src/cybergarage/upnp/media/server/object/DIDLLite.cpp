@@ -18,10 +18,10 @@
 *
 ******************************************************************/
 
-#include <cybergarage/soap/SOAP.h>
-#include <cybergarage/upnp/media/server/object/DIDLLite.h>
-#include <cybergarage/upnp/media/server/object/DIDLLiteNode.h>
-#include <cybergarage/xml/XML.h>
+#include <mupnp/soap/SOAP.h>
+#include <mupnp/upnp/media/server/object/DIDLLite.h>
+#include <mupnp/upnp/media/server/object/DIDLLiteNode.h>
+#include <mupnp/xml/XML.h>
 
 using namespace std;
 using namespace CyberLink;

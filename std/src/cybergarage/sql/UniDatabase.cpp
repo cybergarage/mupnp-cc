@@ -13,8 +13,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/util/Date.h>
-#include <cybergarage/sql/UniDatabase.h>
+#include <mupnp/util/Date.h>
+#include <mupnp/sql/UniDatabase.h>
 #include <stdio.h>
 #include <stdlib.h>
 

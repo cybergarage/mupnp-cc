@@ -13,9 +13,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/upnp/media/server/ConnectionManager.h>
-#include <cybergarage/upnp/media/server/object/Format.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
+#include <mupnp/upnp/media/server/ConnectionManager.h>
+#include <mupnp/upnp/media/server/object/Format.h>
 
 #include <string>
 #include <sstream>

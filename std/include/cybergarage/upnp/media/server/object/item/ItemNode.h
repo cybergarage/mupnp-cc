@@ -16,13 +16,13 @@
 #ifndef _CLINK_MEDIA_ITEMNODE_H_
 #define _CLINK_MEDIA_ITEMNODE_H_
 
-#include <cybergarage/io/InputStream.h>
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/xml/AttributeList.h>
-#include <cybergarage/upnp/media/server/DC.h>
-#include <cybergarage/upnp/media/server/UPnP.h>
-#include <cybergarage/upnp/media/server/object/DIDLLite.h>
-#include <cybergarage/upnp/media/server/object/ContentNode.h>
+#include <mupnp/io/InputStream.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/xml/AttributeList.h>
+#include <mupnp/upnp/media/server/DC.h>
+#include <mupnp/upnp/media/server/UPnP.h>
+#include <mupnp/upnp/media/server/object/DIDLLite.h>
+#include <mupnp/upnp/media/server/object/ContentNode.h>
 
 namespace CyberLink {
 

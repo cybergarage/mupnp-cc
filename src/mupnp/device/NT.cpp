@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/device/NT.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 bool mUPnP::NT::IsRootDevice(const std::string &ntValue) {
   uHTTP::String ntStr = ntValue;

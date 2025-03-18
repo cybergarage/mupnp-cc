@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_SUBSCRIPTIONRESPONSE_H_
 #define _MUPMPCC_SUBSCRIPTIONRESPONSE_H_
 
-#include <uhttp/http/HTTPResponse.h>
+#include <mupnp/http/HTTPResponse.h>
 #include <mupnp/UPnP.h>
 #include <mupnp/event/Subscription.h>
 

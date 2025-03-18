@@ -11,9 +11,9 @@
 #ifndef _CLINK_MEDIAGATE_H_
 #define _CLINK_MEDIAGATE_H_
 
-#include <cybergarage/upnp/CyberLink.h>
-#include <cybergarage/upnp/media/server/MediaServer.h>
-#include <cybergarage/upnp/media/server/directory/file/FileDirectory.h>
+#include <mupnp/upnp/CyberLink.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
+#include <mupnp/upnp/media/server/directory/file/FileDirectory.h>
 
 using namespace std;
 using namespace CyberLink;

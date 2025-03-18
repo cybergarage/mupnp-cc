@@ -17,7 +17,7 @@
 #define _CLINK_MEDIA_FORMATOBJECT_H_
 
 #include <string>
-#include <cybergarage/xml/AttributeList.h>
+#include <mupnp/xml/AttributeList.h>
 
 namespace CyberLink {
 

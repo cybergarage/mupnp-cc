@@ -12,7 +12,7 @@
 #define _MUPMPCC_NODELIST_H_
 
 #include <mupnp/common/Vector.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 namespace uXML {
 

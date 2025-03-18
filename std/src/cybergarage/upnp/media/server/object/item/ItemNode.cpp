@@ -20,8 +20,8 @@
 *
 ******************************************************************/
 
-#include <cybergarage/util/Date.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/util/Date.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 
 #include <string>
 #include <iostream>

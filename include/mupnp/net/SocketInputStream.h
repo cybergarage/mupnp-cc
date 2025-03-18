@@ -1,53 +1,43 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: SocketInputStream.h
-*
-*	Revision;
-*
-*	04/02/03
-*		- first revision
-*	05/19/04
-*		- Changed the header include order for Cygwin.
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CNET_SOCKETINPUTSTREAM_H_
-#define _CNET_SOCKETINPUTSTREAM_H_
+#ifndef _UHTTP_NET_SOCKETINPUTSTREAM_H_
+#define _UHTTP_NET_SOCKETINPUTSTREAM_H_
 
-#include <cybergarage/net/Socket.h>
-#include <cybergarage/io/InputStream.h>
 #include <string>
+#include <mupnp/io/InputStream.h>
+#include <mupnp/net/Socket.h>
 
-namespace CyberNet {
-
+namespace uHTTP {
 const long SOCKET_RECV_WAIT_TIME = 100;
 const long SOCKET_RECV_RETRY_CNT = 10;
-const long SOCKET_INBUF_SIZE = 512*1024;
+const long SOCKET_INBUF_SIZE = 512 * 1024;
 
-class SocketInputStream : public CyberIO::InputStream
-{
-	Socket *sock;
-	std::string unputBuf;
-	char *inBuf;
+class SocketInputStream : public uHTTP::InputStream {
+  Socket* sock;
+  std::string unputBuf;
+  char* inBuf;
 
-public:
+  public:
+  SocketInputStream(Socket* sock);
 
-	SocketInputStream(Socket *sock);
+  virtual ~SocketInputStream();
 
-	virtual ~SocketInputStream();
+  ssize_t read(std::string& b, size_t len);
+  ssize_t read(char* b, size_t len); // Not support the unput buffer;
 
-	int read(std::string &b, int len);  
-	int read(char *b, int len);  // Not support the unput buffer;
+  void unread(std::string& b, size_t off, size_t len);
 
-	void unread(std::string &b, int off, int len);  
+  long skip(long n);
 
-	long skip(long n);
-
-	void close();
+  void close();
 };
 
 }

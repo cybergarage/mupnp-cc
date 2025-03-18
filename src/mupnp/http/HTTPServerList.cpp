@@ -1,39 +1,24 @@
 /******************************************************************
-*
-*	CyberHTTP for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: HTTPServerList.cpp
-*
-*	Revision:
-*
-*	05/18/03
-*		- first revision
-*	05/19/04
-*		- Changed the header include order for Cygwin.
-*	07/16/03
-*		- Thanks for Ilkka Poutanen <poutsi at users.sourceforge.net >and Stefano Lenzi <kismet-sl@users.sourceforge.net >.
-*		- Changed open() not to abort when the interface can not be bound.
-*	07/17/04
-*		- Added clear() to call in close().
-*		- Changed the destructor to call stop() and close();
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#include <cybergarage/http/HTTPServerList.h>
-#include <cybergarage/util/StringUtil.h>
-#include <cybergarage/util/Debug.h>
+#include <mupnp/http/HTTPServerList.h>
+#include <mupnp/util/Debug.h>
+#include <mupnp/util/StringUtil.h>
 
 #include <sstream>
 
 using namespace std;
-using namespace CyberHTTP;
-using namespace CyberUtil;
-using namespace CyberNet;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//	Constructor
+//  Constructor
 ////////////////////////////////////////////////
 
 HTTPServerList::HTTPServerList()
@@ -42,94 +27,121 @@ HTTPServerList::HTTPServerList()
 
 HTTPServerList::~HTTPServerList()
 {
-	stop();
-	close();
+  stop();
 }
 
 ////////////////////////////////////////////////
-//	addRequestListener
+//  addRequestListener
 ////////////////////////////////////////////////
 
-void HTTPServerList::addRequestListener(HTTPRequestListener *listener)
+void HTTPServerList::addRequestListener(HTTPRequestListener* listener)
 {
-	int nServers = size();
-	for (int n=0; n<nServers; n++) {
-		HTTPServer *server = getHTTPServer(n);
-		server->addRequestListener(listener);
-	}
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    HTTPServer* server = getHTTPServer(n);
+    server->addRequestListener(listener);
+  }
 }
 
 ////////////////////////////////////////////////
-//	open/close
+//  addRequestListener
 ////////////////////////////////////////////////
 
-void HTTPServerList::close()
+void HTTPServerList::removeRequestListener(HTTPRequestListener* listener)
 {
-	int nServers = size();
-	for (int n=0; n<nServers; n++) {
-		HTTPServer *server = getHTTPServer(n);
-		server->close();
-	}
-	clear();
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    HTTPServer* server = getHTTPServer(n);
+    server->removeRequestListener(listener);
+  }
+}
+
+////////////////////////////////////////////////
+//  addRequestListener
+////////////////////////////////////////////////
+
+void HTTPServerList::setWorkerCount(size_t count)
+{
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    HTTPServer* server = getHTTPServer(n);
+    server->setWorkerCount(count);
+  }
+}
+
+////////////////////////////////////////////////
+//  open/close
+////////////////////////////////////////////////
+
+bool HTTPServerList::close()
+{
+  bool areAllSocketsClosed = true;
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    HTTPServer* server = getHTTPServer(n);
+    if (server->close() == false) {
+      areAllSocketsClosed = false;
+    }
+  }
+  clear();
+  return areAllSocketsClosed;
 }
 
 bool HTTPServerList::open(int port)
 {
-	bool ret = true;
-	int nHostAddrs = GetNHostAddresses();
-	for (int n=0; n<nHostAddrs; n++) {
-		string buf;
-		const char *bindAddr = GetHostAddress(n, buf);
-		HTTPServer *httpServer = new HTTPServer();
-		// Thanks for Ilkka Poutanen and Stefano Lenzi (07/16/04)
-		if (httpServer->open(bindAddr, port) == false) {
-			string msg;
-			string ibuf;
-			msg += "Couldn't bind to ";
-			msg += bindAddr;
-			msg += ":";
-			msg += Integer2String(port, ibuf);;
-			Debug::warning(msg.c_str());
-			ret = false;
-			continue;
-		}
-		add(httpServer);
-	}
-	return ret;
+  bool ret = true;
+  size_t nHostAddrs = GetNHostAddresses();
+  if (nHostAddrs == 0)
+    return false;
+  for (int n = 0; n < nHostAddrs; n++) {
+    string buf;
+    const char* bindAddr = GetHostAddress(n, buf);
+    HTTPServer* httpServer = new HTTPServer();
+    // Thanks for Ilkka Poutanen and Stefano Lenzi (07/16/04)
+    if (httpServer->open(port, bindAddr) == false) {
+      string msg;
+      string ibuf;
+      msg += "Couldn't bind to ";
+      msg += bindAddr;
+      msg += ":";
+      msg += Integer2String(port, ibuf);
+      ;
+      Debug::warning(msg.c_str());
+      ret = false;
+      continue;
+    }
+    add(httpServer);
+  }
+  return ret;
 }
 
 ////////////////////////////////////////////////
-//	start/stop
+//  start/stop
 ////////////////////////////////////////////////
 
-void HTTPServerList::start()
+bool HTTPServerList::start()
 {
-	int nServers = size();
-	for (int n=0; n<nServers; n++) {
-		HTTPServer *server = getHTTPServer(n);
-		server->start();
-	}
+  bool areAllSocketsStarted = true;
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    HTTPServer* server = getHTTPServer(n);
+    if (server->start() == false) {
+      areAllSocketsStarted = false;
+    }
+  }
+  return areAllSocketsStarted;
 }
 
-void HTTPServerList::stop()
+bool HTTPServerList::stop()
 {
-	int nServers = size();
-	for (int n=0; n<nServers; n++) {
-		HTTPServer *server = getHTTPServer(n);
-		server->stop();
-	}
-}
-
-////////////////////////////////////////////////
-// clear
-////////////////////////////////////////////////
-
-void HTTPServerList::clear()
-{
-	int nServers = size();
-	for (int n=0; n<nServers; n++) {
-		HTTPServer *server = getHTTPServer(n);
-		delete server;
-	}
-	Vector::clear();
+  bool areAllSocketsStopped = true;
+  size_t nServers = size();
+  for (size_t n = 0; n < nServers; n++) {
+    HTTPServer* server = getHTTPServer(n);
+    if (server->stop() == false) {
+      areAllSocketsStopped = false;
+    }
+  }
+  close();
+  return areAllSocketsStopped;
 }

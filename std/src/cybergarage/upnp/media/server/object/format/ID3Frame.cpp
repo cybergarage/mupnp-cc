@@ -14,7 +14,7 @@
 ******************************************************************/
 
 #include <string.h>
-#include <cybergarage/upnp/media/server/object/format/ID3Frame.h>
+#include <mupnp/upnp/media/server/object/format/ID3Frame.h>
 
 using namespace std;
 using namespace CyberLink;

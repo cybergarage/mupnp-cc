@@ -1,24 +1,19 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: ServerSocket.cpp
-*
-*	Revision;
-*
-*	04/13/03
-*		- first revision
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#include <cybergarage/net/ServerSocket.h>
+#include <mupnp/net/ServerSocket.h>
 
-using namespace CyberNet;
+using namespace uHTTP;
 
 ////////////////////////////////////////////////
-//	Socket
+//  Socket
 ////////////////////////////////////////////////
 
 ServerSocket::ServerSocket()

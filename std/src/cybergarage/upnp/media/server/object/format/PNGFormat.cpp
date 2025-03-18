@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <cybergarage/upnp/media/server/object/format/PNGFormat.h>
+#include <mupnp/upnp/media/server/object/format/PNGFormat.h>
 
 using namespace CyberLink;
 

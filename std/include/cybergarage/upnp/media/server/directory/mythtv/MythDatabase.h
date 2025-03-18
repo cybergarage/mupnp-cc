@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_MYTH_DATABASE_H_
 #define _CLINK_MEDIA_MYTH_DATABASE_H_
 
-#include <cybergarage/sql/UniMySQL.h>
-#include <cybergarage/upnp/media/server/directory/mythtv/MythRecordedInfoList.h>
+#include <mupnp/sql/UniMySQL.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfoList.h>
 #include <string>
 
 #ifdef HAVE_CONFIG_H

@@ -16,7 +16,7 @@
 #ifndef _CLINK_MEDIA_BROWSEACTION_H_
 #define _CLINK_MEDIA_BROWSEACTION_H_
 
-#include <cybergarage/upnp/Action.h>
+#include <mupnp/upnp/Action.h>
 
 #include <string>
 

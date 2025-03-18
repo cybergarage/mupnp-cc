@@ -16,8 +16,8 @@
 #ifndef _CLINK_MEDIA_SEARCHCRITERIALIST_H_
 #define _CLINK_MEDIA_SEARCHCRITERIALIST_H_
 
-#include <cybergarage/util/Vector.h>
-#include <cybergarage/upnp/media/server/object/SearchCriteria.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/upnp/media/server/object/SearchCriteria.h>
 
 namespace CyberLink {
 

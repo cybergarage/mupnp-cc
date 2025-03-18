@@ -17,7 +17,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/action/BrowseAction.h>
+#include <mupnp/upnp/media/server/action/BrowseAction.h>
 
 using namespace CyberLink;
 

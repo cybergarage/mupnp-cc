@@ -11,7 +11,7 @@
 #ifndef _MUPMPCC_HTTPUSOCKET_H_
 #define _MUPMPCC_HTTPUSOCKET_H_
 
-#include <uhttp/net/DatagramSocket.h>
+#include <mupnp/net/DatagramSocket.h>
 #include <mupnp/ssdp/SSDPPacket.h>
 
 namespace mUPnP {

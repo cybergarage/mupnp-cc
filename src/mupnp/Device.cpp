@@ -8,12 +8,12 @@
  *
  ******************************************************************/
 
-#include <uhttp/net/HostInterface.h>
-#include <uhttp/net/URL.h>
-#include <uhttp/util/Debug.h>
-#include <uhttp/util/TimeUtil.h>
-#include <uhttp/http/HTTPDate.h>
-#include <uhttp/io/File.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/net/URL.h>
+#include <mupnp/util/Debug.h>
+#include <mupnp/util/TimeUtil.h>
+#include <mupnp/http/HTTPDate.h>
+#include <mupnp/io/File.h>
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
 #include <mupnp/UPnPStatus.h>

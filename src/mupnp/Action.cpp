@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #include <mupnp/Action.h>
-#include <uhttp/util/Debug.h>
+#include <mupnp/util/Debug.h>
 #include <mupnp/Service.h>
 
 #include <string>

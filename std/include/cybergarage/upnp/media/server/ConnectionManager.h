@@ -16,10 +16,10 @@
 #ifndef _CLINK_MEDIA_CONNECTIONMANAGER_H_
 #define _CLINK_MEDIA_CONNECTIONMANAGER_H_
 
-#include <cybergarage/upnp/control/ActionListener.h>
-#include <cybergarage/upnp/control/QueryListener.h>
-#include <cybergarage/upnp/media/server/ConnectionInfoList.h>
-#include <cybergarage/util/Mutex.h>
+#include <mupnp/upnp/control/ActionListener.h>
+#include <mupnp/upnp/control/QueryListener.h>
+#include <mupnp/upnp/media/server/ConnectionInfoList.h>
+#include <mupnp/util/Mutex.h>
 
 namespace CyberLink {
 

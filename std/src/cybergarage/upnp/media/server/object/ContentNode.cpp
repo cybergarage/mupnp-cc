@@ -24,9 +24,9 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/object/ContentNode.h>
-#include <cybergarage/upnp/media/server/object/container/ContainerNode.h>
-#include <cybergarage/upnp/media/server/object/item/ItemNode.h>
+#include <mupnp/upnp/media/server/object/ContentNode.h>
+#include <mupnp/upnp/media/server/object/container/ContainerNode.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 
 using namespace std;
 using namespace CyberLink;

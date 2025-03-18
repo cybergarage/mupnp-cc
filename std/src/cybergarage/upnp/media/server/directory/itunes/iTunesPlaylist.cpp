@@ -15,7 +15,7 @@
 
 #ifdef SUPPORT_ITUNES
 
-#include <cybergarage/upnp/media/server/directory/itunes/iTunesPlaylist.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesPlaylist.h>
 
 using namespace CyberLink;
 

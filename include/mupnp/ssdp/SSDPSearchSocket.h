@@ -13,8 +13,8 @@
 
 #include <string>
 
-#include <uhttp/util/Thread.h>
-#include <uhttp/net/HostInterface.h>
+#include <mupnp/util/Thread.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/HTTPMUSocket.h>
 #include <mupnp/device/SearchListener.h>

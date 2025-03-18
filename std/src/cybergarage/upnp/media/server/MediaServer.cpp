@@ -15,7 +15,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/MediaServer.h>
+#include <mupnp/upnp/media/server/MediaServer.h>
 
 #include <string>
 

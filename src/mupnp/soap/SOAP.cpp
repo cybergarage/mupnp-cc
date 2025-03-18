@@ -12,7 +12,7 @@
 #include <sstream>
 #include <string.h>
 #include <mupnp/soap/SOAP.h>
-#include <uhttp/util/StringUtil.h>
+#include <mupnp/util/StringUtil.h>
 
 ////////////////////////////////////////////////
 // CreateEnvelopeBodyNode

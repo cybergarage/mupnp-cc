@@ -1,67 +1,42 @@
 /******************************************************************
-*
-*	CyberIO for C++
-*
-*	Copyright (C) Satoshi Konno 2003-2004
-*
-*	File: FileList.h
-*
-*	Revision:
-*
-*	04/15/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ * uHTTP for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
 
-#ifndef _CIO_FILELIST_H_
-#define _CIO_FILELIST_H_
+#ifndef _UHTTP_IO_FILELIST_H_
+#define _UHTTP_IO_FILELIST_H_
 
-#include <cybergarage/util/Vector.h>
+#include <mupnp/util/Vector.h>
 
-namespace CyberIO {
-
+namespace uHTTP {
 class File;
 
-class FileList : public CyberUtil::Vector 
-{
+class FileList : public ::uHTTP::SharedVector<File> {
+  public:
+  ////////////////////////////////////////////////
+  //  Constructor
+  ////////////////////////////////////////////////
 
-public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	FileList() 
-	{
-	}
+  FileList()
+  {
+  }
 
-	~FileList() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //  Methods
+  ////////////////////////////////////////////////
 
-public:
-
-	File *getFile(int n)
-	{
-		return (File*)Vector::get(n);
-	}
-
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
-
-public:
-
-	void clear();
+  public:
+  File* getFile(size_t n)
+  {
+    return get(n).get();
+  }
 };
 
 }
 
 #endif
-
-
-

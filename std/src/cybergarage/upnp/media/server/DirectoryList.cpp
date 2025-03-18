@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/DirectoryList.h>
+#include <mupnp/upnp/media/server/DirectoryList.h>
 
 using namespace CyberLink;
 

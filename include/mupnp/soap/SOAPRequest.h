@@ -11,9 +11,9 @@
 #ifndef _MUPNP_SOAPREQUEST_H_
 #define _MUPNP_SOAPREQUEST_H_
 
-#include <uhttp/http/HTTPRequest.h>
-#include <uhttp/http/HTTPResponse.h>
-#include <uhttp/http/HTTP.h>
+#include <mupnp/http/HTTPRequest.h>
+#include <mupnp/http/HTTPResponse.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/soap/SOAP.h>
 #include <mupnp/soap/SOAPResponse.h>
 #include <mupnp/xml/Node.h>

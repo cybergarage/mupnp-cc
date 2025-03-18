@@ -14,9 +14,9 @@
 #include <iostream>
 #include <string>
 
-#include <uhttp/net/DatagramPacket.h>
-#include <uhttp/http/HTTP.h>
-#include <uhttp/http/HTTPHeader.h>
+#include <mupnp/net/DatagramPacket.h>
+#include <mupnp/http/HTTP.h>
+#include <mupnp/http/HTTPHeader.h>
 #include <mupnp/ssdp/SSDP.h>
 #include <mupnp/device/NTS.h>
 #include <mupnp/device/MAN.h>

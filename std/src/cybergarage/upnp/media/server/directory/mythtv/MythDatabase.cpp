@@ -13,7 +13,7 @@
 *
 ******************************************************************/
 
-#include <cybergarage/upnp/media/server/directory/mythtv/MythDatabase.h>
+#include <mupnp/upnp/media/server/directory/mythtv/MythDatabase.h>
 #include <string>
 
 #ifdef HAVE_CONFIG_H
