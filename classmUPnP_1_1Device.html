@@ -83,7 +83,10 @@ Inheritance diagram for mUPnP::Device:</div>
  <div class="center">
   <img src="classmUPnP_1_1Device.png" usemap="#mUPnP::Device_map" alt=""/>
   <map id="mUPnP::Device_map" name="mUPnP::Device_map">
+<area href="classuHTTP_1_1HTTPRequestListener.html" alt="uHTTP::HTTPRequestListener" shape="rect" coords="0,56,176,80"/>
 <area href="classmUPnP_1_1SearchListener.html" alt="mUPnP::SearchListener" shape="rect" coords="186,56,362,80"/>
+<area href="classuHTTP_1_1Listener.html" alt="uHTTP::Listener" shape="rect" coords="0,0,176,24"/>
+<area href="classuHTTP_1_1Listener.html" alt="uHTTP::Listener" shape="rect" coords="186,0,362,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -105,7 +108,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaddb3ed805605806491cf73248e1d980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae618d3a375bc845a7c055f8897445efd" id="r_ae618d3a375bc845a7c055f8897445efd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae618d3a375bc845a7c055f8897445efd">Device</a> (<a class="el" href="platform_8h.html#af5ed11e57a8ebdbf0d0b8bc99c6f10fb">mupnp_shared_ptr</a>&lt; <a class="el" href="classuXML_1_1Node.html">uXML::Node</a> &gt; device)</td></tr>
 <tr class="separator:ae618d3a375bc845a7c055f8897445efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3e9b6af6f032a8b5ce7ffb7d264a40d" id="r_ae3e9b6af6f032a8b5ce7ffb7d264a40d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3e9b6af6f032a8b5ce7ffb7d264a40d">Device</a> (uHTTP::File *descriptionFile)</td></tr>
+<tr class="memitem:ae3e9b6af6f032a8b5ce7ffb7d264a40d" id="r_ae3e9b6af6f032a8b5ce7ffb7d264a40d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3e9b6af6f032a8b5ce7ffb7d264a40d">Device</a> (<a class="el" href="classuHTTP_1_1File.html">uHTTP::File</a> *descriptionFile)</td></tr>
 <tr class="separator:ae3e9b6af6f032a8b5ce7ffb7d264a40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada58040d4fa8fa4f46d29478492e60cc" id="r_ada58040d4fa8fa4f46d29478492e60cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada58040d4fa8fa4f46d29478492e60cc">Device</a> (const std::string &amp;descriptionFileName)</td></tr>
 <tr class="separator:ada58040d4fa8fa4f46d29478492e60cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,7 +154,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae7a2447b0d0981c8dcd9c45e62160a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a096488d0af1c183471c2d2dc69f004d8" id="r_a096488d0af1c183471c2d2dc69f004d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a096488d0af1c183471c2d2dc69f004d8">loadDescription</a> (const std::string &amp;descString)</td></tr>
 <tr class="separator:a096488d0af1c183471c2d2dc69f004d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5df3d715f4de350f430dd2adb39d5a9f" id="r_a5df3d715f4de350f430dd2adb39d5a9f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5df3d715f4de350f430dd2adb39d5a9f">loadDescription</a> (uHTTP::File *file)</td></tr>
+<tr class="memitem:a5df3d715f4de350f430dd2adb39d5a9f" id="r_a5df3d715f4de350f430dd2adb39d5a9f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5df3d715f4de350f430dd2adb39d5a9f">loadDescription</a> (<a class="el" href="classuHTTP_1_1File.html">uHTTP::File</a> *file)</td></tr>
 <tr class="separator:a5df3d715f4de350f430dd2adb39d5a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c87f20859a4bb6033e99e0459da9c4a" id="r_a3c87f20859a4bb6033e99e0459da9c4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c87f20859a4bb6033e99e0459da9c4a">isRootDevice</a> ()</td></tr>
 <tr class="separator:a3c87f20859a4bb6033e99e0459da9c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -281,9 +284,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4ce2b1e689405e0eb55de29a3d86c9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5302cae222bf68a312f0915ae6693275" id="r_a5302cae222bf68a312f0915ae6693275"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5302cae222bf68a312f0915ae6693275">getHTTPWorkerCount</a> ()</td></tr>
 <tr class="separator:a5302cae222bf68a312f0915ae6693275"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f3b5e664d4d5f2810177fe277bcf88" id="r_a53f3b5e664d4d5f2810177fe277bcf88"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53f3b5e664d4d5f2810177fe277bcf88">httpRequestRecieved</a> (uHTTP::HTTPRequest *httpReq)</td></tr>
+<tr class="memitem:a53f3b5e664d4d5f2810177fe277bcf88" id="r_a53f3b5e664d4d5f2810177fe277bcf88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53f3b5e664d4d5f2810177fe277bcf88">httpRequestRecieved</a> (<a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *httpReq)</td></tr>
 <tr class="separator:a53f3b5e664d4d5f2810177fe277bcf88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad21c0041cfe1ff6e5891cbf5a1ebdac" id="r_aad21c0041cfe1ff6e5891cbf5a1ebdac"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTPServerList *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad21c0041cfe1ff6e5891cbf5a1ebdac">getHTTPServerList</a> ()</td></tr>
+<tr class="memitem:aad21c0041cfe1ff6e5891cbf5a1ebdac" id="r_aad21c0041cfe1ff6e5891cbf5a1ebdac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classuHTTP_1_1HTTPServerList.html">uHTTP::HTTPServerList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad21c0041cfe1ff6e5891cbf5a1ebdac">getHTTPServerList</a> ()</td></tr>
 <tr class="separator:aad21c0041cfe1ff6e5891cbf5a1ebdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc710db736028ebab9063ba6882e27ad" id="r_abc710db736028ebab9063ba6882e27ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmUPnP_1_1SSDPSearchSocketList.html">SSDPSearchSocketList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc710db736028ebab9063ba6882e27ad">getSSDPSearchSocketList</a> ()</td></tr>
 <tr class="separator:abc710db736028ebab9063ba6882e27ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -305,6 +308,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab4b545501011edb4d6a85a0bb2286a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8931820efcbbcb0ce33f858d80d3d6d1" id="r_a8931820efcbbcb0ce33f858d80d3d6d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8931820efcbbcb0ce33f858d80d3d6d1">setQueryListener</a> (<a class="el" href="classmUPnP_1_1QueryListener.html">QueryListener</a> *listener, bool includeSubDevices)</td></tr>
 <tr class="separator:a8931820efcbbcb0ce33f858d80d3d6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classuHTTP_1_1HTTPRequestListener"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classuHTTP_1_1HTTPRequestListener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classuHTTP_1_1HTTPRequestListener.html">uHTTP::HTTPRequestListener</a></td></tr>
+<tr class="inherit_header pub_methods_classuHTTP_1_1Listener"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classuHTTP_1_1Listener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classuHTTP_1_1Listener.html">uHTTP::Listener</a></td></tr>
+<tr class="memitem:a648f9dd83c9c093dbe19994209721046 inherit pub_methods_classuHTTP_1_1Listener" id="r_a648f9dd83c9c093dbe19994209721046"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuHTTP_1_1Listener.html#a648f9dd83c9c093dbe19994209721046">Listener</a> ()</td></tr>
+<tr class="separator:a648f9dd83c9c093dbe19994209721046 inherit pub_methods_classuHTTP_1_1Listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b08138131a99bf56bc7d1167ad37133 inherit pub_methods_classuHTTP_1_1Listener" id="r_a6b08138131a99bf56bc7d1167ad37133"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classuHTTP_1_1Listener.html#a6b08138131a99bf56bc7d1167ad37133">~Listener</a> ()</td></tr>
+<tr class="separator:a6b08138131a99bf56bc7d1167ad37133 inherit pub_methods_classuHTTP_1_1Listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classmUPnP_1_1SearchListener"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classmUPnP_1_1SearchListener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classmUPnP_1_1SearchListener.html">mUPnP::SearchListener</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -405,31 +414,31 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:acc6d07fbf198a47ab152f9b87d2fd3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa788704479d57038da47f832e1c45a92" id="r_aa788704479d57038da47f832e1c45a92"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa788704479d57038da47f832e1c45a92">getDescriptionData</a> (const std::string &amp;host, std::string &amp;buf)</td></tr>
 <tr class="separator:aa788704479d57038da47f832e1c45a92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a183a34127d364e4ae3af4e9ea9ffe7" id="r_a1a183a34127d364e4ae3af4e9ea9ffe7"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a183a34127d364e4ae3af4e9ea9ffe7">httpGetRequestRecieved</a> (uHTTP::HTTPRequest *httpReq)</td></tr>
+<tr class="memitem:a1a183a34127d364e4ae3af4e9ea9ffe7" id="r_a1a183a34127d364e4ae3af4e9ea9ffe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a183a34127d364e4ae3af4e9ea9ffe7">httpGetRequestRecieved</a> (<a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *httpReq)</td></tr>
 <tr class="separator:a1a183a34127d364e4ae3af4e9ea9ffe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9db26a895011214a9380830176f203cb" id="r_a9db26a895011214a9380830176f203cb"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9db26a895011214a9380830176f203cb">httpPostRequestRecieved</a> (uHTTP::HTTPRequest *httpReq)</td></tr>
+<tr class="memitem:a9db26a895011214a9380830176f203cb" id="r_a9db26a895011214a9380830176f203cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9db26a895011214a9380830176f203cb">httpPostRequestRecieved</a> (<a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *httpReq)</td></tr>
 <tr class="separator:a9db26a895011214a9380830176f203cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad812cec865c3805e4fb82d6479e88570" id="r_ad812cec865c3805e4fb82d6479e88570"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad812cec865c3805e4fb82d6479e88570">soapBadActionRecieved</a> (uHTTP::HTTPRequest *soapReq)</td></tr>
+<tr class="memitem:ad812cec865c3805e4fb82d6479e88570" id="r_ad812cec865c3805e4fb82d6479e88570"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad812cec865c3805e4fb82d6479e88570">soapBadActionRecieved</a> (<a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *soapReq)</td></tr>
 <tr class="separator:ad812cec865c3805e4fb82d6479e88570"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38e17e3977bfd2d063e36504f952c689" id="r_a38e17e3977bfd2d063e36504f952c689"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38e17e3977bfd2d063e36504f952c689">soapActionRecieved</a> (uHTTP::HTTPRequest *soapReq)</td></tr>
+<tr class="memitem:a38e17e3977bfd2d063e36504f952c689" id="r_a38e17e3977bfd2d063e36504f952c689"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38e17e3977bfd2d063e36504f952c689">soapActionRecieved</a> (<a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *soapReq)</td></tr>
 <tr class="separator:a38e17e3977bfd2d063e36504f952c689"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a466bea148e0584b320269eb1a5d623e2" id="r_a466bea148e0584b320269eb1a5d623e2"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a466bea148e0584b320269eb1a5d623e2">invalidActionControlRecieved</a> (<a class="el" href="classmUPnP_1_1ControlRequest.html">ControlRequest</a> *ctlReq)</td></tr>
+<tr class="memitem:a466bea148e0584b320269eb1a5d623e2" id="r_a466bea148e0584b320269eb1a5d623e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a466bea148e0584b320269eb1a5d623e2">invalidActionControlRecieved</a> (<a class="el" href="classmUPnP_1_1ControlRequest.html">ControlRequest</a> *ctlReq)</td></tr>
 <tr class="separator:a466bea148e0584b320269eb1a5d623e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa431ca722d7fbe1a3cc532079e5baccb" id="r_aa431ca722d7fbe1a3cc532079e5baccb"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa431ca722d7fbe1a3cc532079e5baccb">deviceControlRequestRecieved</a> (<a class="el" href="classmUPnP_1_1ControlRequest.html">ControlRequest</a> *ctlReq, <a class="el" href="classmUPnP_1_1Service.html">Service</a> *service)</td></tr>
+<tr class="memitem:aa431ca722d7fbe1a3cc532079e5baccb" id="r_aa431ca722d7fbe1a3cc532079e5baccb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa431ca722d7fbe1a3cc532079e5baccb">deviceControlRequestRecieved</a> (<a class="el" href="classmUPnP_1_1ControlRequest.html">ControlRequest</a> *ctlReq, <a class="el" href="classmUPnP_1_1Service.html">Service</a> *service)</td></tr>
 <tr class="separator:aa431ca722d7fbe1a3cc532079e5baccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47fd64321190d06e8875be59fa49bcc0" id="r_a47fd64321190d06e8875be59fa49bcc0"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47fd64321190d06e8875be59fa49bcc0">deviceActionControlRecieved</a> (<a class="el" href="classmUPnP_1_1ActionRequest.html">ActionRequest</a> *ctlReq, <a class="el" href="classmUPnP_1_1Service.html">Service</a> *service)</td></tr>
+<tr class="memitem:a47fd64321190d06e8875be59fa49bcc0" id="r_a47fd64321190d06e8875be59fa49bcc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47fd64321190d06e8875be59fa49bcc0">deviceActionControlRecieved</a> (<a class="el" href="classmUPnP_1_1ActionRequest.html">ActionRequest</a> *ctlReq, <a class="el" href="classmUPnP_1_1Service.html">Service</a> *service)</td></tr>
 <tr class="separator:a47fd64321190d06e8875be59fa49bcc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d5bc0a642acdc89a9eca9479da07e17" id="r_a9d5bc0a642acdc89a9eca9479da07e17"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d5bc0a642acdc89a9eca9479da07e17">deviceQueryControlRecieved</a> (<a class="el" href="classmUPnP_1_1QueryRequest.html">QueryRequest</a> *ctlReq, <a class="el" href="classmUPnP_1_1Service.html">Service</a> *service)</td></tr>
+<tr class="memitem:a9d5bc0a642acdc89a9eca9479da07e17" id="r_a9d5bc0a642acdc89a9eca9479da07e17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d5bc0a642acdc89a9eca9479da07e17">deviceQueryControlRecieved</a> (<a class="el" href="classmUPnP_1_1QueryRequest.html">QueryRequest</a> *ctlReq, <a class="el" href="classmUPnP_1_1Service.html">Service</a> *service)</td></tr>
 <tr class="separator:a9d5bc0a642acdc89a9eca9479da07e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8adaa95fd8bf95f22d0b0483276c8a5" id="r_ae8adaa95fd8bf95f22d0b0483276c8a5"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8adaa95fd8bf95f22d0b0483276c8a5">upnpBadSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq, int code)</td></tr>
+<tr class="memitem:ae8adaa95fd8bf95f22d0b0483276c8a5" id="r_ae8adaa95fd8bf95f22d0b0483276c8a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8adaa95fd8bf95f22d0b0483276c8a5">upnpBadSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq, int code)</td></tr>
 <tr class="separator:ae8adaa95fd8bf95f22d0b0483276c8a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c7b441ced2da2030e23786d433eaf43" id="r_a7c7b441ced2da2030e23786d433eaf43"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c7b441ced2da2030e23786d433eaf43">deviceEventSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
+<tr class="memitem:a7c7b441ced2da2030e23786d433eaf43" id="r_a7c7b441ced2da2030e23786d433eaf43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c7b441ced2da2030e23786d433eaf43">deviceEventSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
 <tr class="separator:a7c7b441ced2da2030e23786d433eaf43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ad2aa6679ab4bc1bffcbb86fb1aaf06" id="r_a0ad2aa6679ab4bc1bffcbb86fb1aaf06"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ad2aa6679ab4bc1bffcbb86fb1aaf06">deviceEventNewSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1Service.html">Service</a> *service, <a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
+<tr class="memitem:a0ad2aa6679ab4bc1bffcbb86fb1aaf06" id="r_a0ad2aa6679ab4bc1bffcbb86fb1aaf06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ad2aa6679ab4bc1bffcbb86fb1aaf06">deviceEventNewSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1Service.html">Service</a> *service, <a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
 <tr class="separator:a0ad2aa6679ab4bc1bffcbb86fb1aaf06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c75086861ad0edb858cd733d317fb88" id="r_a1c75086861ad0edb858cd733d317fb88"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c75086861ad0edb858cd733d317fb88">deviceEventRenewSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1Service.html">Service</a> *service, <a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
+<tr class="memitem:a1c75086861ad0edb858cd733d317fb88" id="r_a1c75086861ad0edb858cd733d317fb88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c75086861ad0edb858cd733d317fb88">deviceEventRenewSubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1Service.html">Service</a> *service, <a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
 <tr class="separator:a1c75086861ad0edb858cd733d317fb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d84bd480b39da5b0d96e0800f324ca9" id="r_a6d84bd480b39da5b0d96e0800f324ca9"><td class="memItemLeft" align="right" valign="top">uHTTP::HTTP::StatusCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d84bd480b39da5b0d96e0800f324ca9">deviceEventUnsubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1Service.html">Service</a> *service, <a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
+<tr class="memitem:a6d84bd480b39da5b0d96e0800f324ca9" id="r_a6d84bd480b39da5b0d96e0800f324ca9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d84bd480b39da5b0d96e0800f324ca9">deviceEventUnsubscriptionRecieved</a> (<a class="el" href="classmUPnP_1_1Service.html">Service</a> *service, <a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *subReq)</td></tr>
 <tr class="separator:a6d84bd480b39da5b0d96e0800f324ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06cacc1076b62dbd12f72ecf159d390f" id="r_a06cacc1076b62dbd12f72ecf159d390f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06cacc1076b62dbd12f72ecf159d390f">stop</a> (bool doByeBye)</td></tr>
 <tr class="separator:a06cacc1076b62dbd12f72ecf159d390f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -456,7 +465,7 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a163927e9ae2a689c8ac35ceff2e02d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab286f6bb4556ad7a3eede397642a0690" id="r_ab286f6bb4556ad7a3eede397642a0690"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab286f6bb4556ad7a3eede397642a0690">devBootID</a></td></tr>
 <tr class="separator:ab286f6bb4556ad7a3eede397642a0690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a752b36e0b5632fe1c335f49dec778227" id="r_a752b36e0b5632fe1c335f49dec778227"><td class="memItemLeft" align="right" valign="top">uHTTP::Mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752b36e0b5632fe1c335f49dec778227">mutex</a></td></tr>
+<tr class="memitem:a752b36e0b5632fe1c335f49dec778227" id="r_a752b36e0b5632fe1c335f49dec778227"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classuHTTP_1_1Mutex.html">uHTTP::Mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752b36e0b5632fe1c335f49dec778227">mutex</a></td></tr>
 <tr class="separator:a752b36e0b5632fe1c335f49dec778227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53f3de3f78d249c7fcaeb6aca70d2a46" id="r_a53f3de3f78d249c7fcaeb6aca70d2a46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53f3de3f78d249c7fcaeb6aca70d2a46">wirelessMode</a></td></tr>
 <tr class="separator:a53f3de3f78d249c7fcaeb6aca70d2a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -526,7 +535,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">mUPnP::Device::Device </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::File *</td>          <td class="paramname"><span class="paramname"><em>descriptionFile</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1File.html">uHTTP::File</a> *</td>          <td class="paramname"><span class="paramname"><em>descriptionFile</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -655,7 +664,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceActionControlRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceActionControlRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1ActionRequest.html">ActionRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>ctlReq</em></span>, </td>
         </tr>
@@ -684,7 +693,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceControlRequestRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceControlRequestRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1ControlRequest.html">ControlRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>ctlReq</em></span>, </td>
         </tr>
@@ -713,7 +722,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceEventNewSubscriptionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceEventNewSubscriptionRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1Service.html">Service</a> *</td>          <td class="paramname"><span class="paramname"><em>service</em></span>, </td>
         </tr>
@@ -742,7 +751,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceEventRenewSubscriptionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceEventRenewSubscriptionRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1Service.html">Service</a> *</td>          <td class="paramname"><span class="paramname"><em>service</em></span>, </td>
         </tr>
@@ -771,7 +780,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceEventSubscriptionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceEventSubscriptionRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>subReq</em></span></td><td>)</td>
           <td></td>
@@ -796,7 +805,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceEventUnsubscriptionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceEventUnsubscriptionRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1Service.html">Service</a> *</td>          <td class="paramname"><span class="paramname"><em>service</em></span>, </td>
         </tr>
@@ -825,7 +834,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::deviceQueryControlRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::deviceQueryControlRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1QueryRequest.html">QueryRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>ctlReq</em></span>, </td>
         </tr>
@@ -1295,7 +1304,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTPServerList * mUPnP::Device::getHTTPServerList </td>
+          <td class="memname"><a class="el" href="classuHTTP_1_1HTTPServerList.html">uHTTP::HTTPServerList</a> * mUPnP::Device::getHTTPServerList </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -2249,9 +2258,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::httpGetRequestRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::httpGetRequestRecieved </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::HTTPRequest *</td>          <td class="paramname"><span class="paramname"><em>httpReq</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>httpReq</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2274,9 +2283,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::httpPostRequestRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::httpPostRequestRecieved </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::HTTPRequest *</td>          <td class="paramname"><span class="paramname"><em>httpReq</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>httpReq</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2294,15 +2303,25 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::httpRequestRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::httpRequestRecieved </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::HTTPRequest *</td>          <td class="paramname"><span class="paramname"><em>httpReq</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>httpReq</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Implements <a class="el" href="classuHTTP_1_1HTTPRequestListener.html#a9c69d756e8e8e66dda69ff62c682a28f">uHTTP::HTTPRequestListener</a>.</p>
 
 </div>
 </div>
@@ -2491,7 +2510,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::invalidActionControlRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::invalidActionControlRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1ControlRequest.html">ControlRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>ctlReq</em></span></td><td>)</td>
           <td></td>
@@ -2725,7 +2744,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool mUPnP::Device::loadDescription </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::File *</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1File.html">uHTTP::File</a> *</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -3608,9 +3627,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::soapActionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::soapActionRecieved </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::HTTPRequest *</td>          <td class="paramname"><span class="paramname"><em>soapReq</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>soapReq</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -3633,9 +3652,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::soapBadActionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::soapBadActionRecieved </td>
           <td>(</td>
-          <td class="paramtype">uHTTP::HTTPRequest *</td>          <td class="paramname"><span class="paramname"><em>soapReq</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classuHTTP_1_1HTTPRequest.html">uHTTP::HTTPRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>soapReq</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -3825,7 +3844,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::HTTP::StatusCode mUPnP::Device::upnpBadSubscriptionRecieved </td>
+          <td class="memname"><a class="el" href="namespaceuHTTP_1_1HTTP.html#a1f362cc814fedba6bec7934a1ca9b69e">uHTTP::HTTP::StatusCode</a> mUPnP::Device::upnpBadSubscriptionRecieved </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmUPnP_1_1SubscriptionRequest.html">SubscriptionRequest</a> *</td>          <td class="paramname"><span class="paramname"><em>subReq</em></span>, </td>
         </tr>
@@ -4317,7 +4336,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uHTTP::Mutex mUPnP::Device::mutex</td>
+          <td class="memname"><a class="el" href="classuHTTP_1_1Mutex.html">uHTTP::Mutex</a> mUPnP::Device::mutex</td>
         </tr>
       </table>
   </td>

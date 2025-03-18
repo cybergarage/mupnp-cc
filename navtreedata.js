@@ -34,7 +34,7 @@ var NAVTREE =
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ]
@@ -46,13 +46,16 @@ var NAVTREE =
       [ "Data Fields", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerator", "functions_eval.html", null ],
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -62,16 +65,25 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ActionData_8h.html",
-"classmUPnP_1_1Action.html#a637fe88ca9d170622dd40fc81b9b62a5",
-"classmUPnP_1_1Argument.html#ac03ae9b86c4f4809f89db4903ee10e0f",
-"classmUPnP_1_1ControlResponse.html#a23d2b117bd980f349e6656bb164e0529",
-"classmUPnP_1_1Device.html#aa431ca722d7fbe1a3cc532079e5baccb",
-"classmUPnP_1_1HTTPMUSocket.html#aef36455640fd68a32ca52770575e1fe6",
-"classmUPnP_1_1SSDPPacket.html#a1f6f8e4ad6e37b78e6d10aea830a4af6",
-"classmUPnP_1_1Service.html#a2a96b5f9a033528e6fef0357e09fc143",
-"classmUPnP_1_1StateVariable.html#a94a1a4cfff9af1a81c2e385804aff2c5",
-"classuSOAP_1_1SOAPRequest.html#a38c82580a388e3ea35714ee8351b0dc0",
-"classuXML_1_1NodeList.html#af3221728d726049d50427a4dece4c0d5"
+"SOAP_8h.html#a5cbff39c746415538de4fb739327eb4e",
+"classmUPnP_1_1Action.html#a3357271e55a2771264fb8d03d4df920f",
+"classmUPnP_1_1Argument.html#a73032525c82f5cf285f64b4d8bba2644",
+"classmUPnP_1_1ControlPoint.html#afb9c612bc51c025c50c2cd018e146121",
+"classmUPnP_1_1Device.html#a97b77b094ec7b006aad27c0a6ed62467",
+"classmUPnP_1_1HTTPMUSocket.html",
+"classmUPnP_1_1SSDPNotifySocketList.html#a7902d97ac84ff41e5e4b064d126027da",
+"classmUPnP_1_1Service.html#a0bd59b0d672dc9a3dc6b86cbc8ba57f9",
+"classmUPnP_1_1StateVariable.html#a581a2619ed02fdb846f16e397ed3c20b",
+"classmUPnP_1_1WeakVector.html#a2a6e5f05e34fecafa14cc4b7d434209f",
+"classuHTTP_1_1HTTPHeader.html",
+"classuHTTP_1_1HTTPRequest.html#a19ef0b6f1cea5b83538f96acfe2cab27",
+"classuHTTP_1_1HTTPStatus.html#a4fb61657de284d5d77d723bdd1a17cb1",
+"classuHTTP_1_1MessageQueue.html#a6d2ed0a16ffbdc5010f09b9afb853ca3",
+"classuHTTP_1_1SocketCore.html#a861ae0eef679621b345dbaf3ff3eb8c7",
+"classuHTTP_1_1URI.html#a3724d51376ed982803811e51285f5d79",
+"classuXML_1_1Node.html#a217fa33a1f3dbad20b63311e98a85275",
+"index.html#autotoc_md3",
+"namespaceuHTTP_1_1HTTP.html#a6c849b872bde75b06627fd1d05623f80"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
