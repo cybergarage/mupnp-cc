@@ -94,7 +94,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 	$(am__configure_deps) $(am__DIST_COMMON)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
-mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
+mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
@@ -154,12 +154,9 @@ am__define_uniq_tagged_files = \
 DIST_SUBDIRS = include lib examples test
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/config/compile $(top_srcdir)/config/install-sh \
-	$(top_srcdir)/config/missing \
-	$(top_srcdir)/config/mkinstalldirs AUTHORS COPYING ChangeLog \
-	INSTALL NEWS README.md config/compile config/config.guess \
-	config/config.sub config/depcomp config/install-sh \
-	config/ltmain.sh config/missing config/mkinstalldirs \
-	install-sh missing mkinstalldirs
+	$(top_srcdir)/config/missing AUTHORS COPYING ChangeLog INSTALL \
+	NEWS README.md config/compile config/depcomp config/install-sh \
+	config/missing install-sh missing mkinstalldirs
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
