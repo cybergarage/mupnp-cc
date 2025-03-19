@@ -8,7 +8,8 @@
  *
  ******************************************************************/
 
-#define BOOST_TEST_MODULE mUPnPTests
+#define BOOST_TEST_MODULE MUPNP
 #define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MAIN
 
 #include <boost/test/unit_test.hpp>
