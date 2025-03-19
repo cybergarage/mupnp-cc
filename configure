@@ -5936,7 +5936,7 @@ fi
 # Check whether --enable-test was given.
 if test ${enable_test+y}
 then :
-  enableval=$enable_test; build_tests="yes"
+  enableval=$enable_test; build_test="yes"
 fi
 
  if test "$build_test" = yes; then
@@ -5989,7 +5989,50 @@ then :
   LIBS="-lboost_unit_test_framework-mt $LIBS"
 
 else $as_nop
-  as_fn_error $? "uHTTP unittest need boost::unit_test_framework" "$LINENO" 5
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_unit_test_framework" >&5
+printf %s "checking for main in -lboost_unit_test_framework... " >&6; }
+if test ${ac_cv_lib_boost_unit_test_framework_main+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lboost_unit_test_framework  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+namespace conftest {
+  extern "C" int main ();
+}
+int
+main (void)
+{
+return conftest::main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"
+then :
+  ac_cv_lib_boost_unit_test_framework_main=yes
+else $as_nop
+  ac_cv_lib_boost_unit_test_framework_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_boost_unit_test_framework_main" >&5
+printf "%s\n" "$ac_cv_lib_boost_unit_test_framework_main" >&6; }
+if test "x$ac_cv_lib_boost_unit_test_framework_main" = xyes
+then :
+  printf "%s\n" "#define HAVE_LIBBOOST_UNIT_TEST_FRAMEWORK 1" >>confdefs.h
+
+  LIBS="-lboost_unit_test_framework $LIBS"
+
+else $as_nop
+  as_fn_error $? "mUPnP++ needs boost::boost_unit_test_framework" "$LINENO" 5
+fi
+
 fi
 
 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_system-mt" >&5
@@ -6033,7 +6076,50 @@ then :
   LIBS="-lboost_system-mt $LIBS"
 
 else $as_nop
-  as_fn_error $? "uHTTP unit test need boost::system" "$LINENO" 5
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_system" >&5
+printf %s "checking for main in -lboost_system... " >&6; }
+if test ${ac_cv_lib_boost_system_main+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lboost_system  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+namespace conftest {
+  extern "C" int main ();
+}
+int
+main (void)
+{
+return conftest::main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"
+then :
+  ac_cv_lib_boost_system_main=yes
+else $as_nop
+  ac_cv_lib_boost_system_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_boost_system_main" >&5
+printf "%s\n" "$ac_cv_lib_boost_system_main" >&6; }
+if test "x$ac_cv_lib_boost_system_main" = xyes
+then :
+  printf "%s\n" "#define HAVE_LIBBOOST_SYSTEM 1" >>confdefs.h
+
+  LIBS="-lboost_system $LIBS"
+
+else $as_nop
+  as_fn_error $? "mUPnP++ needs boost::boost_unit_test_framework" "$LINENO" 5
+fi
+
 fi
 
 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_filesystem-mt" >&5
@@ -6077,7 +6163,50 @@ then :
   LIBS="-lboost_filesystem-mt $LIBS"
 
 else $as_nop
-  as_fn_error $? "uHTTP unit test need boost::filesystem" "$LINENO" 5
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for main in -lboost_filesystem" >&5
+printf %s "checking for main in -lboost_filesystem... " >&6; }
+if test ${ac_cv_lib_boost_filesystem_main+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lboost_filesystem  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+namespace conftest {
+  extern "C" int main ();
+}
+int
+main (void)
+{
+return conftest::main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"
+then :
+  ac_cv_lib_boost_filesystem_main=yes
+else $as_nop
+  ac_cv_lib_boost_filesystem_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_boost_filesystem_main" >&5
+printf "%s\n" "$ac_cv_lib_boost_filesystem_main" >&6; }
+if test "x$ac_cv_lib_boost_filesystem_main" = xyes
+then :
+  printf "%s\n" "#define HAVE_LIBBOOST_FILESYSTEM 1" >>confdefs.h
+
+  LIBS="-lboost_filesystem $LIBS"
+
+else $as_nop
+  as_fn_error $? "mUPnP++ needs boost::boost_unit_test_framework" "$LINENO" 5
+fi
+
 fi
 
 fi

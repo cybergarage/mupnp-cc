@@ -6,7 +6,8 @@
 #
 ############################################################
 
-noinst_PROGRAMS = mupnptest
+TESTS = mupnptest
+check_PROGRAMS = mupnptest
 
 AM_CPPFLAGS = -I$(top_srcdir)/include -I../
 

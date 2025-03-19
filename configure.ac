@@ -142,12 +142,15 @@ fi
 # Checks for xUnit
 ##############################
 
-AC_ARG_ENABLE([test], AS_HELP_STRING([--enable-test],[ build test (default = no) ]), [build_tests="yes"], [])
+AC_ARG_ENABLE([test], AS_HELP_STRING([--enable-test],[ build test (default = no) ]), [build_test="yes"], [])
 AM_CONDITIONAL(ENABLE_UNITTEST,test "$build_test" = yes)
 if [ test "$build_test" = yes ]; then
-	AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,[AC_MSG_ERROR(uHTTP unittest need boost::unit_test_framework)])
-	AC_CHECK_LIB([boost_system-mt],[main],,[AC_MSG_ERROR(uHTTP unit test need boost::system)])
-	AC_CHECK_LIB([boost_filesystem-mt],[main],,[AC_MSG_ERROR(uHTTP unit test need boost::filesystem)])
+	AC_CHECK_LIB([boost_unit_test_framework-mt],[main],,
+		[AC_CHECK_LIB([boost_unit_test_framework],[main],,[AC_MSG_ERROR(mUPnP++ needs boost::boost_unit_test_framework)])])
+	AC_CHECK_LIB([boost_system-mt],[main],,
+		[AC_CHECK_LIB([boost_system],[main],,[AC_MSG_ERROR(mUPnP++ needs boost::boost_unit_test_framework)])])
+	AC_CHECK_LIB([boost_filesystem-mt],[main],,
+		[AC_CHECK_LIB([boost_filesystem],[main],,[AC_MSG_ERROR(mUPnP++ needs boost::boost_unit_test_framework)])])
 fi
 
 ##############################
