@@ -6,7 +6,7 @@
 #
 ############################################################
 
-noinst_PROGRAMS = mupnpcctestunit
+noinst_PROGRAMS = mupnptest
 
 AM_CPPFLAGS = -I$(top_srcdir)/include -I../
 
@@ -15,7 +15,7 @@ noinst_HEADERS = \
 	../TestDevice.h \
 	../TestCtrlPoint.h
 
-mupnpcctestunit_SOURCES = \
+mupnptest_SOURCES = \
 	../TestDevice.cpp \
 	../TestMain.cpp \
 	../XMLParserTests.cpp \
@@ -26,4 +26,4 @@ mupnpcctestunit_SOURCES = \
 	../TestCtrlPoint.cpp \
 	../UPnPDeviceParseTests.cpp
 
-mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@
+mupnptest_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@

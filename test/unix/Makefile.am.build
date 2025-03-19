@@ -8,7 +8,7 @@ print<<HEADER;
 #
 ############################################################
 
-noinst_PROGRAMS = mupnpcctestunit
+noinst_PROGRAMS = mupnptest
 
 AM_CPPFLAGS = -I\$(top_srcdir)/include -I../
 
@@ -29,7 +29,7 @@ print join(" \\\n", @include_files) . "\n";
 
 print<<SOURCES;
 
-mupnpcctestunit_SOURCES = \\
+mupnptest_SOURCES = \\
 SOURCES
 
 my @find_files = `find ../ -name *.cpp -or -name *.cpp`;
@@ -43,6 +43,6 @@ print join(" \\\n", @source_files) . "\n";
 
 print<<FOTTER;
 
-mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl \@XML_LIBS\@
+mupnptest_LDADD = ../../lib/unix/libmupnp++.a -ldl \@XML_LIBS\@
 FOTTER
 

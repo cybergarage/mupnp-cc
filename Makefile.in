@@ -151,7 +151,7 @@ am__define_uniq_tagged_files = \
   unique=`for i in $$list; do \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
-DIST_SUBDIRS = include lib examples test
+DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/config/compile $(top_srcdir)/config/install-sh \
 	$(top_srcdir)/config/missing AUTHORS COPYING ChangeLog INSTALL \
@@ -305,8 +305,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@ENABLE_UNITTEST_FALSE@SUBDIRS = include lib examples
-@ENABLE_UNITTEST_TRUE@SUBDIRS = include lib test examples
+
+# if ENABLE_UNITTEST
+SUBDIRS = include lib test examples
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -786,6 +787,9 @@ uninstall-am:
 
 .PRECIOUS: Makefile
 
+# else
+# SUBDIRS = include lib examples
+# endif
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

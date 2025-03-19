@@ -95,7 +95,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-noinst_PROGRAMS = mupnpcctestunit$(EXEEXT)
+noinst_PROGRAMS = mupnptest$(EXEEXT)
 subdir = test/unix
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
@@ -109,13 +109,13 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_mupnpcctestunit_OBJECTS = ../TestDevice.$(OBJEXT) \
-	../TestMain.$(OBJEXT) ../XMLParserTests.$(OBJEXT) \
-	../UPnPDeviceTests.$(OBJEXT) ../TestHTTPServer.$(OBJEXT) \
-	../UPnPMiscTests.$(OBJEXT) ../NotifSocketTests.$(OBJEXT) \
-	../TestCtrlPoint.$(OBJEXT) ../UPnPDeviceParseTests.$(OBJEXT)
-mupnpcctestunit_OBJECTS = $(am_mupnpcctestunit_OBJECTS)
-mupnpcctestunit_DEPENDENCIES = ../../lib/unix/libmupnp++.a
+am_mupnptest_OBJECTS = ../TestDevice.$(OBJEXT) ../TestMain.$(OBJEXT) \
+	../XMLParserTests.$(OBJEXT) ../UPnPDeviceTests.$(OBJEXT) \
+	../TestHTTPServer.$(OBJEXT) ../UPnPMiscTests.$(OBJEXT) \
+	../NotifSocketTests.$(OBJEXT) ../TestCtrlPoint.$(OBJEXT) \
+	../UPnPDeviceParseTests.$(OBJEXT)
+mupnptest_OBJECTS = $(am_mupnptest_OBJECTS)
+mupnptest_DEPENDENCIES = ../../lib/unix/libmupnp++.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -151,8 +151,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(mupnpcctestunit_SOURCES)
-DIST_SOURCES = $(mupnpcctestunit_SOURCES)
+SOURCES = $(mupnptest_SOURCES)
+DIST_SOURCES = $(mupnptest_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -288,7 +288,7 @@ noinst_HEADERS = \
 	../TestDevice.h \
 	../TestCtrlPoint.h
 
-mupnpcctestunit_SOURCES = \
+mupnptest_SOURCES = \
 	../TestDevice.cpp \
 	../TestMain.cpp \
 	../XMLParserTests.cpp \
@@ -299,7 +299,7 @@ mupnpcctestunit_SOURCES = \
 	../TestCtrlPoint.cpp \
 	../UPnPDeviceParseTests.cpp
 
-mupnpcctestunit_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@
+mupnptest_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@
 all: all-am
 
 .SUFFIXES:
@@ -360,9 +360,9 @@ clean-noinstPROGRAMS:
 ../UPnPDeviceParseTests.$(OBJEXT): ../$(am__dirstamp) \
 	../$(DEPDIR)/$(am__dirstamp)
 
-mupnpcctestunit$(EXEEXT): $(mupnpcctestunit_OBJECTS) $(mupnpcctestunit_DEPENDENCIES) $(EXTRA_mupnpcctestunit_DEPENDENCIES) 
-	@rm -f mupnpcctestunit$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(mupnpcctestunit_OBJECTS) $(mupnpcctestunit_LDADD) $(LIBS)
+mupnptest$(EXEEXT): $(mupnptest_OBJECTS) $(mupnptest_DEPENDENCIES) $(EXTRA_mupnptest_DEPENDENCIES) 
+	@rm -f mupnptest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(mupnptest_OBJECTS) $(mupnptest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
