@@ -13,6 +13,8 @@ configure~
 *.dirstamp
 .deps/
 
+test/unix/mupnptest
+test/unix/mupnptest.*
 examples/clock/unix/upnpclock
 examples/tv/unix/upnptv
 examples/upnpdump/unix/upnpdump
