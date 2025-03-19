@@ -22,7 +22,6 @@
 #include <string>
 
 using namespace mUPnP;
-using namespace mUPnP;
 using namespace uHTTP;
 using namespace std;
 

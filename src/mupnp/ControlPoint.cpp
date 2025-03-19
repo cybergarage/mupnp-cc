@@ -17,7 +17,6 @@
 
 using namespace std;
 using namespace mUPnP;
-using namespace mUPnP;
 using namespace uHTTP;
 
 ////////////////////////////////////////////////

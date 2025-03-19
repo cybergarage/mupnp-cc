@@ -22,7 +22,6 @@
 using namespace std;
 using namespace mUPnP;
 using namespace uHTTP;
-using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // CALLBACK

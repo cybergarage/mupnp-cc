@@ -31,9 +31,7 @@
 using namespace std;
 using namespace uHTTP;
 using namespace mUPnP;
-using namespace mUPnP;
 using namespace uHTTP;
-using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // Constants

@@ -26,7 +26,6 @@
 #include <mupnp/StateVariable.h>
 
 using namespace mUPnP;
-using namespace mUPnP;
 
 ////////////////////////////////////////////////
 // setRequest
