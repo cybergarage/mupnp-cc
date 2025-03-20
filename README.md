@@ -18,7 +18,7 @@ UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU
 
 ## Building and Installation
 
-mUPnP for C++ for C depend on [µHTTP for C++](https://github.com/cybergarage/uhttp-cc), ando so you need to install [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) first. Next, µHTTP for C++ for C is distributed as an Automake project, and so you can install the libary from the source codes with the following commands:
+mUPnP for C++ is distributed as an Automake project, and so you can install the libary from the source codes with the following commands:
 
 ```
 ./boostrap
@@ -37,8 +37,7 @@ brew install mupnp++
 
 ## References
 
-- [Programming Guide](doc/mupnpcxxproguide.pdf)
-- [Doxygen](http://cybergarage.github.io/mupnp-cc/)
+- [Programming Guide (Doxygen)](http://cybergarage.github.io/mupnp-cc/)
 
 ## Examples
 
