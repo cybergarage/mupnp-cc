@@ -33,7 +33,7 @@ The mUPnP package has the header files, the source files, the project files to b
 | Example files |                                  | mupnp-cc/examples      |
 | Project files | Unix (Automake)                  | mupnp-cc               |
 |               | WindowsXP (Visual C / Sudio)     | mupnp-cc/*/win32/      |
-|               | MacOSX (XCode) / Project Builder | mupnp-cc/*/macosx      |
+|               | MacOSX (XCode)                   | mupnp-cc/*/macosx      |
 
 ## System Requirements
 
