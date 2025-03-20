@@ -8,7 +8,7 @@ UPnP™*[^1] architecture is based on open networking to enable discovery and co
 
 UPnP™ architecture is based on many standard protocols, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
 
-mUPnP for C is a development package for UPnP™ developers. The mUPnP controls these protocols automatically, and supports to create your devices and control points quickly.
+mUPnP for C++ is a development package for UPnP™ developers. The mUPnP controls these protocols automatically, and supports to create your devices and control points quickly.
 
 Please see the following site and documents to know about UPnP™ in more detail.
 
