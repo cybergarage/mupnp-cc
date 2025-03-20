@@ -2,7 +2,7 @@
 
 The programming guide describes how to create your UPnP™ devices and control points using mUPnP for C++. The guide is divided into the following sections.
 
-# 1 Introduction
+# Introduction
 
 UPnP™*[^1] architecture is based on open networking to enable discovery and control of networked devices and services, such as media servers and players at home.
 
@@ -18,11 +18,11 @@ Please see the following site and documents to know about UPnP™ in more detail
 | Universal Plug and Play Device Architecture            | http://www.upnp.org/download/UPnPDA10_20000613.htm                        |
 | Universal Plug and Play Vendor\'s Implementation Guide | http://www.upnp.org/download/UPnP_Vendor_Implementation_Guide_Jan2001.htm |
 
-# 2 Setup
+# Setup
 
 This section describes how to build and install the mUPnP package.
 
-## 2.1 Package Contents
+## Package Contents
 
 The mUPnP package has the header files, the source files, the project files to build the package and the some samples. The files are included the following directories.
 
@@ -35,7 +35,7 @@ The mUPnP package has the header files, the source files, the project files to b
 |               | WindowsXP (Visual C / Sudio)     | mupnp-cc/*/win32/      |
 |               | MacOSX (XCode) / Project Builder | mupnp-cc/*/macosx      |
 
-## 2.2 System Requirements
+## System Requirements
 
 mUPnP supports the following XML parsers for UPnP SOAP requests. To compile mUPnP, you need to install the following packages on your platform.
 
@@ -47,7 +47,7 @@ mUPnP supports the following XML parsers for UPnP SOAP requests. To compile mUPn
 
 mUPnP uses libxml2 as the default XML parser, but you can use Expat as the parser by using a compiler option.
 
-### 2.2.1 WindowsXP
+### WindowsXP
 
 On Windows platform, you have to install latest Platform SDK and build on WindowsXP if you can. Please get the SDK and install in your platform.
 
@@ -55,51 +55,29 @@ On Windows platform, you have to install latest Platform SDK and build on Window
 |--------------|------------------------------------------------------------|
 | Platform SDK | http://www.microsoft.com/msdownload/platformsdk/sdkupdate/ |
 
-## 2.3 Building library and samples
+## Building library and samples
 
-#### 2.4.1 Unix
+This sction describes how to build the mUPnP library and samples.
 
-On Unix platforms, you can build the library and samples using the following steps. Use use the –enable-libxml2 option of the configure script instead of the compiler option. to use libxml2.
+#### Unix
 
-cd mUPnP
+On Unix platforms, you can build the library and samples using the following steps.
 
-./boostrap
+```
+cd mupnp-cc
+./configure
+make
+```
 
-./configure make
+For more information about configure options, please use `configure --help`.
 
-### 2.4.2 Windows
+### Windows
 
-The mUPnP has the platform projects for Visual C++ 6.0. Please check the platform directories, mUPnPC/\*/win32/vc60, to use the projects. On WindowsCE, the mUPnP has no the platform projects, but a contributer have been
+The mUPnP has platform projects for Visual C++ 6.0. Please check the platform directories, `mupnp-cc/*/win32/vc60`, to use the projects. On WindowsCE, mUPnP does not have platform projects, but a contributor has verified that the source code compiles normally.
 
-checked to compile the source codes normally.
+### MacOSX
 
-### 2.4.3 MacOSX
-
-On MacOSX, you can buuld the library and samples using same steps of Unix platform or using Xcode or Project Bulider projects. Please check the platform directories to use the projects, mUPnPC/\*/macx.
-
-### 2.4.4 T-Engine
-
-On T-Engine platforms, you have to set the following compiler options. The mUPnP supports the process based and T-
-
-Kernel based program. Use PROCESS_BASE option to compile the process based program. Please see the development manual of your T-Engine development kit.
-
-| Option              | URL                                 |
-|---------------------|-------------------------------------|
-| TENGINE             | Enable the platform option.         |
-| TENGINE_NET_KASAGO  | Enable KASAGO for T-Engine option.. |
-| USE_XMLPARSER_EXPAT | Use Expat as the XML parser         |
-
-The mUPnP is compiled using the functions for PMC T-Shell Kit as the TCP/IP protocol stack, but it is no good because the protocol stack doesn’t support the multicast protocol and the functions are not implemented yet.
-
-To run applications using the mUPnP, the driver of the TCP/IP protocol stack has to be loaded and the network address has to be determined. Please see the manual of the protocol stack how to set the network interface.
-
-You have to set EXPATROOT environment to an installed top directory of Expat on your shell as the following.
-
-The source codes of Expat have to be included the “lib” directory.
-
-export EXPATROOT=/usr/local/expat-1.95.8
-
-I have built the library with T-Engine/SH7727 development kit with KASAGO for T-Engine. Please check the platform directories, mUPnPC/\*/tengine/gnu , for the sample projects. To compile the samples, run configure script in the directory at first. Please see the development manual of your T-Engine development kit if you want to use on other TEngine platforms.
+On MacOSX, you can build the library and samples using the same steps as the Unix platform or using Xcode or Project Builder projects. Please check the platform directories to use the projects, `mupnp-cc/*/macosx`.
 
 # Device
 
