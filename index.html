@@ -71,27 +71,24 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p><img src="https://img.shields.io/github/v/tag/cybergarage/mupnp-cc" alt="GitHub tag (latest SemVer)" class="inline"/> <a href="https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml"><img src="https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml/badge.svg" alt="build" style="pointer-events: none;" class="inline"/></a> <a href="http://cybergarage.github.io/mupnp-cc/"><img src="https://github.com/cybergarage/mupnp-cc/actions/workflows/doxygen.yml/badge.svg" alt="doxygen" style="pointer-events: none;" class="inline"/></a></p>
+<p><a class="el" href="namespacemUPnP.html">mUPnP</a> for C++ is a development package for UPnP™ [^1] (Universal Plug and Play) developers. It provides a set of APIs to create UPnP™ devices and control points quickly and easily. This README file provides an overview of the package, its contents, and instructions on how to set up and use it.</p>
 <h1><a class="anchor" id="autotoc_md34"></a>
 Overview</h1>
-<p><a class="el" href="namespacemUPnP.html">mUPnP</a> for C++ is a development package for UPnP™ developers. <a class="el" href="namespacemUPnP.html">mUPnP</a> controls these protocols automatically, and supports to create your devices and control points quickly.</p>
-<p>UPnP™ * architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home.</p>
-<p>UPnP™ * protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.</p>
+<p>The UPnP™ architecture is designed to enable the discovery and control of networked devices and services, such as media servers and players, within a home network. UPnP™ is based on several standard protocols, including GENA, SSDP, SOAP, HTTPU, and HTTP. To create UPnP™ devices, you need to understand and implement these protocols.</p>
 <div class="image">
 <img src="upnpapp.png" alt=""/>
 <div class="caption">
-UPnP Applications</div></div>
-    <ul>
-<li>UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.</li>
-</ul>
+UPnP applications</div></div>
+    <p><a class="el" href="namespacemUPnP.html">mUPnP</a> for C++ simplifies this process by handling these protocols automatically. It allows developers to focus on creating their devices and control points without worrying about the underlying protocol details.</p>
 <h1><a class="anchor" id="autotoc_md35"></a>
 Building and Installation</h1>
 <p><a class="el" href="namespacemUPnP.html">mUPnP</a> for C++ is distributed as an Automake project, and so you can install the libary from the source codes with the following commands:</p>
-<div class="fragment"><div class="line">./boostrap</div>
+<div class="fragment"><div class="line">cd mupnp-cc</div>
 <div class="line">./configure</div>
 <div class="line">make install</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md36"></a>
 macOS</h2>
-<p>For macOS platforms, you can easily install using Homebrew without <a href="https://github.com/cybergarage/uhttp-cc">µHTTP for C++</a> setup with the following <code>brew</code> commands:</p>
+<p>For macOS platforms, you can easily install using Homebrew with the following <code>brew</code> commands:</p>
 <div class="fragment"><div class="line">brew tap cybergarage/homebrew</div>
 <div class="line">brew install mupnp++</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
