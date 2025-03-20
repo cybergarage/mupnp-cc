@@ -81,352 +81,88 @@ On MacOSX, you can build the library and samples using the same steps as the Uni
 
 # Device
 
-**3.1 Class Overview**
+UPnP™ device is a networked device that supports the UPnP™ architecture. The device has some embedded devices and services, and the services have some actions and state variables. The device is created as a root device, and the root device is active using mUPnP for C. 
+
+This section describes how to create your UPnP™ device using mUPnP for C.
+
+## Class Overview
 
 The following static structure diagram is related classes of mUPnP to create your device of UPnP™. The device has some embedded devices and services, and the services have some actions and state variables.
 
-<img src="medi/media/image1.png" style="width:6.61667in;height:6.87in" /
+![](img/device-class-overview.png)
 
 The above static structure diagram is modified simplify to explain.
 
-**3.2 Description**
+## Description
 
-At first, you have to make some description files of your devices and the services when you want to create your
+At first, you have to make some description files of your devices and the services when you want to create your UPnP™ device..
 
-UPnP™ device. The URLs in the device description should be relative locations from the directory of the device description file.
-
-<table
-<colgroup
-<col style="width: 30%" /
-<col style="width: 69%" /
-</colgroup
-<thead
-<tr
-<th rowspan="2"><p>&gt;</p
-<p>&lt;</p
-<p>?xml version="1.0" ?</p
-<p>&lt;</p
-<p>root xmlns="urn:schemas-upnp-org:device-1-0"</p
-<p>&gt;</p
-<p>........</p
-<p>&lt;device&gt;</p
-<p>........</p
-<p>&lt;serviceList&gt;</p
-<p>........</p
-<p>&lt;service&gt;</p
-<p>........</p
-<p>&lt;SCPDURL&gt;</p
-<p><u>/service/name/description.xml</u></p
-<p>&gt;</p
-<p>/SCPDURL</p
-<p>&lt;</p
-<p>&lt;/service&gt;</p
-<p>&lt;/serviceList&gt;</p
-<p>&lt;presentationURL&gt;</p
-<p><u>/presentation.html</u></p
-<p>&lt;</p
-<p>/presentationURL</p
-<p>&gt;</p
-<p>&lt;iconList&gt;</p
-<p>&lt;icon&gt;</p
-<p>........</p
-<p>&lt;url&gt;</p
-<p><u>/icon.gif</u></p
-<p>&lt;</p
-<p>/url</p
-<p>&gt;</p
-<p>&lt;/icon&gt;</p
-<p>&lt;/iconList&gt;</p
-<p>&lt;/device&gt;</p
-<p>&lt;</p
-<p>/root</p
-<p>&gt;</p
-<p>filename : /yourdevice/descripton/descriptoin.xml</p></th
-<th><table
-<colgroup
-<col style="width: 93%" /
-<col style="width: 6%" /
-</colgroup
-<thead
-<tr
-<th>filename : /yourdevice/descripton/service/name/descriptoin.xml</th
-<th></th
-</tr
-</thead
-<tbody
-<tr
-<td colspan="2"><p>&lt;?xml version="1.0"?&gt;</p
-<p>&lt;scpd xmlns="urn:schemas-upnp-org:service-1-0" &gt;</p
-<p>........</p
-<p>&lt;actionList&gt;</p
-<p>........</p
-<p>&lt;action&gt;</p
-<p>........</p
-<p>&lt;/action&gt;</p
-<p>&lt;/actionList&gt; &lt;serviceStateTable&gt;</p
-<p>........</p
-<p>&lt;stateVariable&gt;</p
-<p>........</p
-<p>&lt;/stateVariable&gt;</p
-<p>&lt;/serviceStateTable&gt;</p
-<p>&lt;/scpd&gt;</p></td
-</tr
-</tbody
-</table></th
-</tr
-<tr
-<th rowspan="2"><table
-<colgroup
-<col style="width: 90%" /
-<col style="width: 9%" /
-</colgroup
-<thead
-<tr
-<th>filename : /yourdevice/presentation.html</th
-<th></th
-</tr
-</thead
-<tbody
-<tr
-<td colspan="2"><p>&lt;html&gt;</p
-<p>&lt;head&gt;</p
-<p>........</p
-<p>&lt;/head&gt; &lt;body&gt;</p
-<p>........</p
-<p>&lt;/body&gt;</p
-<p>&lt;/html&gt;</p></td
-</tr
-</tbody
-</table></th
-</tr
-<tr
-<th><table
-<colgroup
-<col style="width: 90%" /
-<col style="width: 9%" /
-</colgroup
-<thead
-<tr
-<th>filename : /yourdevice/icon.gif</th
-<th></th
-</tr
-</thead
-<tbody
-<tr
-<td colspan="2"></td
-</tr
-</tbody
-</table></th
-</tr
-</thead
-<tbody
-</tbody
-</table
+![](img/device-description.png)
 
 The description of the root device should not have URLBase element because the element is added automatically when the device is created using the description.
 
 The service descriptions are required to create a device, but the presentationURL and the iconList are recommended option. Please see UPnP™ specifications about the description format in more detail.
 
-**3.3 Initiating**
+## Initiating
 
-To create a UPnP™ device, create a instance of Device class with the root description file. The created device is a root device, and only root device can be active using Device::start(). The device is announced to the UPnP™
+To create a UPnP™ device, create a instance of Device class with the root description file. The created device is a root device, and only root device can be active using `Device::start()`. The device is announced to the UPnP™ network when the device is started. The following shows an example of the initiating device.
 
-network when the device is started. The following shows an example of the initiating device.
-
-\#include \<cybergarage/upnp/mUPnP.h\using namespace mUPnP;
-
+```
+#include <cybergarage/upnp/mUPnP.h>
+using namespace mUPnP;
 ……
-
-const char \*descriptionFileName = "description/description.xml";
-
+const char *descriptionFileName = "description/description.xml";
 Try {
-
-Device \*upnpDev = new Device(descriptionFileName);
-
-……
-
-upnpDev-\>start();
-
+    Device *upnpDev = new Device(descriptionFileName);
+    ……
+    upnpDev->start();
 }
-
 catch (InvalidDescriptionException e){
-
-const char \*errMsg = e.getMessage();
-
-cout \<\< “InvalidDescriptionException = ” \<\< errMsg \<\< endl;
-
+    const char *errMsg = e.getMessage();
+    cout << “InvalidDescriptionException = ” << errMsg << endl;
 }
+```
 
 The InvalidDescriptionException is occurred when the description is invalid. Use the getMessage() to know the exception reason in more detail.
 
 Alternatively, you can load the descriptions using Device::loadDescription() and Service::loadSCPD() instead of the description files as the following. The loading methods doesn’t occur the exception.
 
-const char DEVICE_DESCRIPTION\[\] =
+```
+const char DEVICE_DESCRIPTION[] =
+    "<?xml version=\"1.0\" ?>\n"
+    "<root xmlns=\"urn:schemas-upnp-org:device-1-0\">\n"
+    ……
+    "</root>";
 
-"\<?xml version=\\1.0\\ ?\>\n"
+const char SERVICE_DESCRIPTION[] =
+    "<?xml version=\"1.0\"?>\n"
+    "<scpd xmlns=\"urn:schemas-upnp-org:service-1-0\" >\n"
+    ……
+    “</scpd>”;
 
-"\<root xmlns=\\urn:schemas-upnp-org:device-1-0\\\>\n"
+Device *upnpDev = new Device();
+bool descSuccess = upnpDev->loadDescription(DEVICE_DESCRIPTION);
+Service *upnpService = getService("urn:schemas-upnp-org:service-1-0");
+bool scpdSuccess = upnpService->loadSCPD(SERVICE_DESCRIPTION);
+```
 
-. . . .
+The active root device has some server processes, and returns the responses automatically when a control points sends a request to the device. For example, the device has a HTTP server to return the description files when a control point gets the description file. The device searches an available port for the HTTP server automatically on the machine when the device is started.
 
-"\</root\>";
-
-const char SERVICE_DESCRIPTION\[\] =
-
-"\<?xml version=\\1.0\\?\>\n"
-
-"\<scpd xmlns=\\urn:schemas-upnp-org:service-1-0\\ \>\n"
-
-. . . .
-
-“\</scpd\>”;
-
-Device \*upnpDev = new Device(); bool descSuccess = upnpDev-\>loadDescription(DEVICE_DESCRIPTION); Service \*upnpService = getService("urn:schemas-upnp-org:service:\*\*\*\*:1"); bool scpdSuccess = upnpService-\>loadSCPD(SERVICE_DESCRIPTION\[);
-
-The active root device has some server processes, and returns the responses automatically when a control points sends a request to the device. For example, the device has a HTTP server to return the description files when a
-
-control point gets the description file. The device searches an available port for the HTTP server automatically on the machine when the device is started.
-
-HTTP
-
-HTTPMU
-
-HTTPU
-
-GENA
-
-SOAP
-
-Device
-
-Control Point
-
-Control
-
-Description
-
-Notify/Search
-
-Event
-
-Search Response
+![](img/device-ports.png)
 
 The root device is created with the following default parameters, you can change the parameters using the following methods before the root device is started.
 
-<table
-<colgroup
-<col style="width: 3%" /
-<col style="width: 17%" /
-<col style="width: 16%" /
-<col style="width: 19%" /
-<col style="width: 43%" /
-</colgroup
-<thead
-<tr
-<th></th
-<th><blockquote
-<p>Parameter</p
-</blockquote></th
-<th>Default</th
-<th><blockquote
-<p>Method</p
-</blockquote></th
-<th>Detail</th
-</tr
-</thead
-<tbody
-<tr
-<td><blockquote
-<p>1</p
-</blockquote></td
-<td><blockquote
-<p>HTTP port</p
-</blockquote></td
-<td>4004</td
-<td><blockquote
-<p>setHTTPPort()</p
-</blockquote></td
-<td>The http server uses the port in the root device.</td
-</tr
-<tr
-<td><blockquote
-<p>2</p
-</blockquote></td
-<td><blockquote
-<p>Description URI</p
-</blockquote></td
-<td>/description.xml</td
-<td><blockquote
-<p>setDescriptionURI()</p
-</blockquote></td
-<td>The description URI of the root device.</td
-</tr
-<tr
-<td><blockquote
-<p>3</p
-</blockquote></td
-<td><blockquote
-<p>Lease time</p
-</blockquote></td
-<td>1800</td
-<td><blockquote
-<p>setLeaseTime()</p
-</blockquote></td
-<td>The lease time of the root device.</td
-</tr
-</tbody
-</table
+|   | Parameter       | Default          | Method                           |
+|---|-----------------|------------------|------------------------------------|
+| 1 | HTTP port       | 4004             | Device::setHTTPPort()       |
+| 2 | Description URI | /description.xml | Device::setDescriptionURI() |
+| 3 | Lease time      | 1800             | Device::setLeaseTime        |
 
 ## Notify
 
-Your device is announced using Device::start() to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started. When device is stopped using Device::stop(), a notify message is posted with ssdp::byebye. You can announce the notify messages using Device::announce() and Device::byebye().
+Your device is announced using `Device::start()` to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started. When device is stopped using `Device::stop()`, a notify message is posted with ssdp::byebye. You can announce the notify messages using `Device::announce()` and Device::byebye().
 
-<table
-<colgroup
-<col style="width: 100%" /
-</colgroup
-<thead
-<tr
-<th><p>NOTIFY * HTTP/1.1</p
-<p>HOST: 239.255.255.250:1900</p
-<p>CACHE-CONTROL: max-age = seconds until advertisement expires</p
-<p>LOCATION: URL for UPnP description for root device</p
-<p>NT: search target</p
-<p>NTS: ssdp:alive</p
-<p>SERVER: OS/version UPnP/1.0 product/version</p
-<p>USN: advertisement UUID</p></th
-</tr
-</thead
-<tbody
-</tbody
-</table
-
-Device dev ....
-
-.....
-
-dev.start();
-
-.....
-
-<table
-<colgroup
-<col style="width: 100%" /
-</colgroup
-<thead
-<tr
-<th><p>NOTIFY * HTTP/1.1</p
-<p>HOST: 239.255.255.250:1900</p
-<p>NT: search target</p
-<p>NTS: ssdp:byebye</p
-<p>USN: advertisement UUID</p></th
-</tr
-</thead
-<tbody
-</tbody
-</table
-
-dev.stop();
+![](img/device-notify.png)
 
 When a control point sends a search request with M-SEARCH to the UPnP™ network, the active device send the search response to the control point automatically. The device repeats the announcement in the lease time automatically.
 
@@ -628,13 +364,13 @@ StateVariable timeVar = clockDevice-\>getStateVariable("Time"); const char \*tim
 
 # Control Point
 
-**4.1 Class Overview**
+4.1 Class Overview
 
 The following static structure diagram is related classes of mUPnP to create your control point of UPnP™. The control point has some root devices in the UPnP™ network.
 
 <img src="medi/media/image2.png" style="width:6.66667in;height:6.37333in" /
 
-**4.2 Initiating**
+4.2 Initiating
 
 To create a UPnP™ control point, create a instance of ControlPoint class. Use ControlPoint::start() to active the contol point. The control point multicasts a discovery message searching for all devices to the UPnP™ network
 
@@ -755,7 +491,7 @@ The control point is created with the following default parameters. You can chan
 </tbody
 </table
 
-**4.3 Notify**
+4.3 Notify
 
 The control point receives notify events from devices in the UPnP™ network, and the devices are added or removed form the control point automatically. The expired device is removed from the device list of the control point automatically too. You don’t manage the notify events, but you can receive the event to implement the NotifyListener interface. The following sample receives the notify messages.
 
@@ -1015,7 +751,7 @@ long timeout = timeService-\>getTimeout();
 
 }
 
-5.  **Networked Media Product Requirements**
+5.  Networked Media Product Requirements
 
 The Intel Networked Media Product Requirements (NMPR) is a implementation guidelins for digital networked devices. Please see the following page about NMPR in more detail.
 
@@ -1042,7 +778,7 @@ The Intel Networked Media Product Requirements (NMPR) is a implementation guidel
 </tbody
 </table
 
-1.  **NMPR Mode**
+1.  NMPR Mode
 
 <table style="width:100%;"
 <colgroup
@@ -1329,7 +1065,7 @@ Device \*device = … device-\>setNMPRMode(true);
 
 device-\>setWirelessMode(true); // if your device is on wireless network. device-\>start().;
 
-2.  **Implementaion Status**
+2.  Implementaion Status
 
 <table
 <colgroup
@@ -1760,7 +1496,7 @@ device-\>setWirelessMode(true); // if your device is on wireless network. device
 </tbody
 </table
 
-**XML Parser**
+XML Parser
 
 mUPnP supports the following XML parsers to read device descriptions or execute actions of UPnP.
 
@@ -1810,7 +1546,7 @@ On Unix platform, use –enable-expat, or –enable-libxml2 to the configure scr
 
 ./configure --enable-expat
 
-**IPv6**
+IPv6
 
 mUPnP binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.
 
@@ -1826,9 +1562,9 @@ UPnP::SetEnable(UPnP::USE_IPV6_SITE_LOCAL_SCOPE)
 
 On Unix platform, mUPnP get the local interfaces IPv4 and IPv6 using getifaddrs(). If you want to use mUPnP with IPv6, please check the function supports IPv6 on your platform. I know that the function doesn’t support IPv6 yet on Redhat 9 and MacOSX 10.2.6.
 
-**Inside mUPnP**
+Inside mUPnP
 
-**8.1 Overriding HTTP Service**
+8.1 Overriding HTTP Service
 
 The Device class of mUPnP implements a HTTPRequestListner interface of CyberHTTP package to handle some HTTP requests from the control points. The HTTPRequestListener interface is bellow.
 
@@ -1874,9 +1610,9 @@ HTTPResponse httpRes; httpRes.setStatusCode(HTTP::OK_REQUEST); httpRes.setConten
 
 }
 
-9.  **Transitioning From Version 1.2**
+9.  Transitioning From Version 1.2
 
-**9.1 QueryListner**
+9.1 QueryListner
 
 mUPnP v1.3 has changed the QueryListner interface to return user error infomation and set the listener to the StateVariable instance instead of the Service instance. The difference is bellow.
 
@@ -1945,7 +1681,7 @@ StateVariable \*var = stateTable-\>getStateVariable(n); var-\>setQueryListener(l
 
 }
 
-10. **ChangeLog**
+10. ChangeLog
 
 <table
 <colgroup
@@ -2176,7 +1912,7 @@ StateVariable \*var = stateTable-\>getStateVariable(n); var-\>setQueryListener(l
 </tbody
 </table
 
-11. **License**
+11. License
 
 Copyright (C) 2002-2005 Satoshi Konno All rights reserved.
 
