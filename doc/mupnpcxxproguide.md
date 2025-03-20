@@ -1,255 +1,57 @@
-CyberGarage
+# Programming Guide
 
-> mUPnP for C++
->
-> Programming Guide
->
-> Document Version 1.7.1 © Satoshi Konno, 2002-2011
->
-> **Table of Contents**
+The programming guide describes how to create your UPnP™ devices and control points using mUPnP for C++. The guide is divided into the following sections.
 
-1.  <u>Introduction ......................................................................................................................................................... 1</u>
+# 1 Introduction
 
-2.  <u>Setup ................................................................................................................................................................. 2</u>
+UPnP™*[^1] architecture is based on open networking to enable discovery and control of networked devices and services, such as media servers and players at home.
 
-    1.  <u>Package Contents ......................................................................................................................................... 2</u>
+UPnP™ architecture is based on many standard protocols, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
 
-    2.  <u>System Requirement ..................................................................................................................................... 2</u>
+mUPnP for C is a development package for UPnP™ developers. The mUPnP controls these protocols automatically, and supports to create your devices and control points quickly.
 
-        1.  <u>WindowsXP ......................................................................................................................................... 2</u>
+Please see the following site and documents to know about UPnP™ in more detail.
 
-        2.  <u>T-Engine ............................................................................................................................................. 2</u>
+| Document                                               | URL                                                                       |
+|----------------------------------------------------------|---------------------------------------------------------------------------|
+| UPnP™ Forum                                            | http://www.upnp.org/                                                      |
+| Universal Plug and Play Device Architecture            | http://www.upnp.org/download/UPnPDA10_20000613.htm                        |
+| Universal Plug and Play Vendor\'s Implementation Guide | http://www.upnp.org/download/UPnP_Vendor_Implementation_Guide_Jan2001.htm |
 
-    3.  <u>Building library and samples ..................................................................................................................... 4</u>
+# 2 Setup
 
-        1.  <u>Unix ..................................................................................................................................................... 4</u>
-
-        2.  <u>Windows ............................................................................................................................................. 4</u>
-
-        3.  <u>MacOSX ............................................................................................................................................. 4</u>
-
-        4.  <u>T-Engine ............................................................................................................................................. 4</u>
-
-3.  <u>Device ................................................................................................................................................................. 6</u>
-
-    1.  <u>Class Overview ............................................................................................................................................. 6</u>
-
-    2.  <u>Description ................................................................................................................................................. 7</u>
-
-    3.  <u>Initiating ..................................................................................................................................................... 7</u>
-
-    4.  <u>Notify ......................................................................................................................................................... 9</u>
-
-    5.  <u>Embedded Devices ..................................................................................................................................... 10</u>
-
-    6.  <u>Service ......................................................................................................................................................... 10</u>
-
-    7.  <u>Control ......................................................................................................................................................... 11</u>
-
-    8.  <u>Event ............................................................................................................................................................. 13</u>
-
-4.  <u>Control Point ..................................................................................................................................................... 15</u>
-
-    1.  <u>Class Overview ............................................................................................................................................. 15</u>
-
-    2.  <u>Initiating ..................................................................................................................................................... 16</u>
-
-    3.  <u>Notify ......................................................................................................................................................... 16</u>
-
-    4.  <u>Search ......................................................................................................................................................... 17</u>
-
-    5.  <u>Root Devices ................................................................................................................................................. 18</u>
-
-    6.  <u>Control ......................................................................................................................................................... 19</u>
-
-    7.  <u>Event ............................................................................................................................................................. 20</u>
-
-5.  <u>Networked Media Product Requirements ......................................................................................................... 22</u>
-
-    1.  <u>NMPR Mode ................................................................................................................................................. 22</u>
-
-    2.  <u>Implementaion Status ................................................................................................................................. 22</u>
-
-6.  <u>XML Parser ......................................................................................................................................................... 24</u>
-
-7.  <u>IPv6 ..................................................................................................................................................................... 25</u>
-
-8.  <u>Inside mUPnP ..................................................................................................................................................... 26</u>
-
-    1.  <u>Overriding HTTP Service ............................................................................................................................. 26</u>
-
-9.  <u>Transitioning From Version 1.2 ......................................................................................................................... 28</u>
-
-    1.  <u>QueryListner ................................................................................................................................................. 28</u>
-
-10. <u>ChangeLog ......................................................................................................................................................... 29</u>
-
-11. <u>License ............................................................................................................................................................. 34</u>
-
-<!-- -->
-
-1.  **Introduction**
-
-> UPnP™\*[^1] architecture is based on open networking to enable discovery and control of networked devices and services, such as media servers and players at home.
->
-> UPnP™ architecture is based on many standard protocols, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
->
-> mUPnP for C++ is a development package for UPnP™ developers. mUPnP controls these protocols automatically, and supports to create your devices and control points quickly.
->
-> Please see the following site and documents to know about UPnP™ in more detail.
-
-<table>
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 59%" />
-</colgroup>
-<thead>
-<tr>
-<th>Document</th>
-<th><blockquote>
-<p>URL</p>
-</blockquote></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UPnP™ Forum</td>
-<td><blockquote>
-<p>http://www.upnp.org/</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>Universal Plug and Play Device Architecture</td>
-<td><blockquote>
-<p>http://www.upnp.org/download/UPnPDA10_20000613.htm</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>Universal Plug and Play Vendor's Implementation Guide</td>
-<td><blockquote>
-<p>http://www.upnp.org/download/UPnP_Vendor_Implementation_Guide_Jan2001.htm</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
-
-2.  **Setup**
+This section describes how to build and install the mUPnP package.
 
 ## 2.1 Package Contents
 
-> The mUPnP package has the header files, the source files, the project files to build the package and the some samples. The files are included the following directories.
+The mUPnP package has the header files, the source files, the project files to build the package and the some samples. The files are included the following directories.
 
-<table>
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 33%" />
-<col style="width: 47%" />
-</colgroup>
-<thead>
-<tr>
-<th>File Type</th>
-<th></th>
-<th><blockquote>
-<p>Directory</p>
-</blockquote></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source files</td>
-<td></td>
-<td><blockquote>
-<p>mUPnP/src</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>Header Files</td>
-<td></td>
-<td><blockquote>
-<p>mUPnP/include</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>Sample files</td>
-<td></td>
-<td><blockquote>
-<p>mUPnP/sample</p>
-</blockquote></td>
-</tr>
-<tr>
-<td rowspan="5">Project files</td>
-<td>Unix (Automake)</td>
-<td><blockquote>
-<p>mUPnP</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>WindowsXP (VisualC++ 6.0)</td>
-<td><blockquote>
-<p>mUPnP/*/win32/vc60</p>
-</blockquote></td>
-</tr>
-<tr>
-<td><p>MacOSX (Project Builder)</p>
-<blockquote>
-<p>(Xcode)</p>
-</blockquote></td>
-<td><blockquote>
-<p>mUPnP/*/macx/ProjectBuilder</p>
-<p>mUPnP/*/macx/xcode</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>T-Engine (GNU)</td>
-<td><blockquote>
-<p>mUPnPC/*/tengine/gnu</p>
-</blockquote></td>
-</tr>
-<tr>
-<td>uITRON</td>
-<td><blockquote>
-<p>mUPnPC/*/itron</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+| File Type     |                         | Directory             |
+|---------------|-------------------------|-----------------------|
+| Source files  |                         | mupnp/src            |
+| Header Files  |                         | mupnp/include        |
+| Sample files  |                         | mupnp/sample         |
+| Project files | Unix (Automake)         | mupnp                |
+|               | WindowsXP (VisualC 6.0) | mupnp/*/win32/vc60  |
+|               | T-Engine (GNU)          | mupnp/*/tengine/gnu |
+|               | uITRON                  | mupnp/*/itron       |
+|               | MacOSX                  | mupnp/*/macosx      |
 
-> On MacOSX platform, the package is distributed using Disk Copy utility. To build the package, you have to copy the all files from the mounted disk image folder into your local file systems.
->
-> **2.2 System Requirement**
->
-> mUPnP needs the following package to parse the XML and SOAP requests. Please get the parser package and
->
-> install in your platform.
+## 2.2 System Requirements
 
-<table>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 74%" />
-</colgroup>
-<thead>
-<tr>
-<th>Package</th>
-<th><blockquote>
-<p>URL</p>
-</blockquote></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Apache Xerces C++</td>
-<td><blockquote>
-<p>http://xml.apache.org/xerces-c/index.html</p>
-</blockquote></td>
-</tr>
-</tbody>
-</table>
+mUPnP supports the following XML parsers for UPnP SOAP requests. To compile mUPnP, you need to install the following packages on your platform.
 
-> On Unix Platform, the samples are built using the window system if GTK+/GDK and Imlib are installed in the platform. Otherwise, the samples are built using the command line version.
+| Package               | URL                                 |
+|-----------------------|-------------------------------------|
+| libxml2               | https://github.com/GNOME/libxml2    |
+| Expat                 | https://libexpat.github.io/         |
+| Xerces-C++ XML Parser | https://xerces.apache.org/xerces-c/ |
+
+mUPnP uses libxml2 as the default parser, but you can use Expat as the parser by using a compiler option.
 
 ### 2.2.1 WindowsXP
 
-> On Windows platform, you have to install latest Platform SDK and build on WindowsXP if you can. Please get the SDK and install in your platform.
+On Windows platform, you have to install latest Platform SDK and build on WindowsXP if you can. Please get the SDK and install in your platform.
 
 <table>
 <colgroup>
@@ -276,7 +78,7 @@ CyberGarage
 
 ### 2.2.2 T-Engine
 
-> On T-Engine platform, you have to use the following development kit based on GNU GCC and TCP/IP protocol stack that supports the multicast protocol. The mUPnP uses the multicast protocol to search and announce UPnP devices and you have to use the protocol stack because the old package doesn’t support the multicast protocol.
+On T-Engine platform, you have to use the following development kit based on GNU GCC and TCP/IP protocol stack that supports the multicast protocol. The mUPnP uses the multicast protocol to search and announce UPnP devices and you have to use the protocol stack because the old package doesn’t support the multicast protocol.
 
 <table>
 <colgroup>
@@ -307,7 +109,7 @@ CyberGarage
 </tbody>
 </table>
 
-> The mUPnP supports the following TCP/IP protocol stack for T-Engine too, but the protocol stack doesn’t support the multicast protocol and the functions are not implemented yet.
+The mUPnP supports the following TCP/IP protocol stack for T-Engine too, but the protocol stack doesn’t support the multicast protocol and the functions are not implemented yet.
 
 <table>
 <colgroup>
@@ -332,7 +134,7 @@ CyberGarage
 </tbody>
 </table>
 
-> On T-Engile, the mUPnP needs the following package as the default XML parser. Please get the parser package and install in your platform.
+On T-Engile, the mUPnP needs the following package as the default XML parser. Please get the parser package and install in your platform.
 
 <table>
 <colgroup>
@@ -357,7 +159,7 @@ CyberGarage
 </tbody>
 </table>
 
-> On MacOSX platform you have to install latest Project Builder and gcc. Please get the tools and install in your platform.
+On MacOSX platform you have to install latest Project Builder and gcc. Please get the tools and install in your platform.
 
 <table>
 <colgroup>
@@ -386,29 +188,29 @@ CyberGarage
 
 #### 2.4.1 Unix
 
-> On Unix platforms, you can build the library and samples using the following steps. Use use the –enable-libxml2 option of the configure script instead of the compiler option. to use libxml2.
+On Unix platforms, you can build the library and samples using the following steps. Use use the –enable-libxml2 option of the configure script instead of the compiler option. to use libxml2.
 >
-> cd mUPnP
+cd mUPnP
 >
-> ./boostrap
+./boostrap
 >
-> ./configure make
+./configure make
 
 ### 2.4.2 Windows
 
-> The mUPnP has the platform projects for Visual C++ 6.0. Please check the platform directories, mUPnPC/\*/win32/vc60, to use the projects. On WindowsCE, the mUPnP has no the platform projects, but a contributer have been
+The mUPnP has the platform projects for Visual C++ 6.0. Please check the platform directories, mUPnPC/\*/win32/vc60, to use the projects. On WindowsCE, the mUPnP has no the platform projects, but a contributer have been
 >
-> checked to compile the source codes normally.
+checked to compile the source codes normally.
 
 ### 2.4.3 MacOSX
 
-> On MacOSX, you can buuld the library and samples using same steps of Unix platform or using Xcode or Project Bulider projects. Please check the platform directories to use the projects, mUPnPC/\*/macx.
+On MacOSX, you can buuld the library and samples using same steps of Unix platform or using Xcode or Project Bulider projects. Please check the platform directories to use the projects, mUPnPC/\*/macx.
 
 ### 2.4.4 T-Engine
 
-> On T-Engine platforms, you have to set the following compiler options. The mUPnP supports the process based and T-
+On T-Engine platforms, you have to set the following compiler options. The mUPnP supports the process based and T-
 >
-> Kernel based program. Use PROCESS_BASE option to compile the process based program. Please see the development manual of your T-Engine development kit.
+Kernel based program. Use PROCESS_BASE option to compile the process based program. Please see the development manual of your T-Engine development kit.
 
 | Option              | URL                                 |
 |---------------------|-------------------------------------|
@@ -416,33 +218,33 @@ CyberGarage
 | TENGINE_NET_KASAGO  | Enable KASAGO for T-Engine option.. |
 | USE_XMLPARSER_EXPAT | Use Expat as the XML parser         |
 
-> The mUPnP is compiled using the functions for PMC T-Shell Kit as the TCP/IP protocol stack, but it is no good because the protocol stack doesn’t support the multicast protocol and the functions are not implemented yet.
+The mUPnP is compiled using the functions for PMC T-Shell Kit as the TCP/IP protocol stack, but it is no good because the protocol stack doesn’t support the multicast protocol and the functions are not implemented yet.
 >
-> To run applications using the mUPnP, the driver of the TCP/IP protocol stack has to be loaded and the network address has to be determined. Please see the manual of the protocol stack how to set the network interface.
+To run applications using the mUPnP, the driver of the TCP/IP protocol stack has to be loaded and the network address has to be determined. Please see the manual of the protocol stack how to set the network interface.
 >
-> You have to set EXPATROOT environment to an installed top directory of Expat on your shell as the following.
+You have to set EXPATROOT environment to an installed top directory of Expat on your shell as the following.
 >
-> The source codes of Expat have to be included the “lib” directory.
+The source codes of Expat have to be included the “lib” directory.
 >
-> export EXPATROOT=/usr/local/expat-1.95.8
+export EXPATROOT=/usr/local/expat-1.95.8
 >
-> I have built the library with T-Engine/SH7727 development kit with KASAGO for T-Engine. Please check the platform directories, mUPnPC/\*/tengine/gnu , for the sample projects. To compile the samples, run configure script in the directory at first. Please see the development manual of your T-Engine development kit if you want to use on other TEngine platforms.
+I have built the library with T-Engine/SH7727 development kit with KASAGO for T-Engine. Please check the platform directories, mUPnPC/\*/tengine/gnu , for the sample projects. To compile the samples, run configure script in the directory at first. Please see the development manual of your T-Engine development kit if you want to use on other TEngine platforms.
 
 # Device
 
-> **3.1 Class Overview**
+**3.1 Class Overview**
 >
-> The following static structure diagram is related classes of mUPnP to create your device of UPnP™. The device has some embedded devices and services, and the services have some actions and state variables.
+The following static structure diagram is related classes of mUPnP to create your device of UPnP™. The device has some embedded devices and services, and the services have some actions and state variables.
 >
-> <img src="medi/media/image1.png" style="width:6.61667in;height:6.87in" />
+<img src="medi/media/image1.png" style="width:6.61667in;height:6.87in" />
 >
-> The above static structure diagram is modified simplify to explain.
+The above static structure diagram is modified simplify to explain.
 >
-> **3.2 Description**
+**3.2 Description**
 >
-> At first, you have to make some description files of your devices and the services when you want to create your
+At first, you have to make some description files of your devices and the services when you want to create your
 >
-> UPnP™ device. The URLs in the device description should be relative locations from the directory of the device description file.
+UPnP™ device. The URLs in the device description should be relative locations from the directory of the device description file.
 
 <table>
 <colgroup>
@@ -572,69 +374,69 @@ CyberGarage
 </tbody>
 </table>
 
-> The description of the root device should not have URLBase element because the element is added automatically when the device is created using the description.
+The description of the root device should not have URLBase element because the element is added automatically when the device is created using the description.
 >
-> The service descriptions are required to create a device, but the presentationURL and the iconList are recommended option. Please see UPnP™ specifications about the description format in more detail.
+The service descriptions are required to create a device, but the presentationURL and the iconList are recommended option. Please see UPnP™ specifications about the description format in more detail.
 >
-> **3.3 Initiating**
+**3.3 Initiating**
 >
-> To create a UPnP™ device, create a instance of Device class with the root description file. The created device is a root device, and only root device can be active using Device::start(). The device is announced to the UPnP™
+To create a UPnP™ device, create a instance of Device class with the root description file. The created device is a root device, and only root device can be active using Device::start(). The device is announced to the UPnP™
 >
-> network when the device is started. The following shows an example of the initiating device.
+network when the device is started. The following shows an example of the initiating device.
 >
-> \#include \<cybergarage/upnp/mUPnP.h\> using namespace mUPnP;
+\#include \<cybergarage/upnp/mUPnP.h\using namespace mUPnP;
 >
-> ……
+……
 >
-> const char \*descriptionFileName = "description/description.xml";
+const char \*descriptionFileName = "description/description.xml";
 >
-> Try {
+Try {
 >
-> Device \*upnpDev = new Device(descriptionFileName);
+Device \*upnpDev = new Device(descriptionFileName);
 >
-> ……
+……
 >
-> upnpDev-\>start();
+upnpDev-\>start();
 >
-> }
+}
 >
-> catch (InvalidDescriptionException e){
+catch (InvalidDescriptionException e){
 >
-> const char \*errMsg = e.getMessage();
+const char \*errMsg = e.getMessage();
 >
-> cout \<\< “InvalidDescriptionException = ” \<\< errMsg \<\< endl;
+cout \<\< “InvalidDescriptionException = ” \<\< errMsg \<\< endl;
 >
-> }
+}
 >
-> The InvalidDescriptionException is occurred when the description is invalid. Use the getMessage() to know the exception reason in more detail.
+The InvalidDescriptionException is occurred when the description is invalid. Use the getMessage() to know the exception reason in more detail.
 >
-> Alternatively, you can load the descriptions using Device::loadDescription() and Service::loadSCPD() instead of the description files as the following. The loading methods doesn’t occur the exception.
+Alternatively, you can load the descriptions using Device::loadDescription() and Service::loadSCPD() instead of the description files as the following. The loading methods doesn’t occur the exception.
 >
-> const char DEVICE_DESCRIPTION\[\] =
+const char DEVICE_DESCRIPTION\[\] =
 >
-> "\<?xml version=\\1.0\\ ?\>\n"
+"\<?xml version=\\1.0\\ ?\>\n"
 >
-> "\<root xmlns=\\urn:schemas-upnp-org:device-1-0\\\>\n"
+"\<root xmlns=\\urn:schemas-upnp-org:device-1-0\\\>\n"
 >
-> . . . .
+. . . .
 >
-> "\</root\>";
+"\</root\>";
 >
-> const char SERVICE_DESCRIPTION\[\] =
+const char SERVICE_DESCRIPTION\[\] =
 >
-> "\<?xml version=\\1.0\\?\>\n"
+"\<?xml version=\\1.0\\?\>\n"
 >
-> "\<scpd xmlns=\\urn:schemas-upnp-org:service-1-0\\ \>\n"
+"\<scpd xmlns=\\urn:schemas-upnp-org:service-1-0\\ \>\n"
 >
-> . . . .
+. . . .
 >
-> “\</scpd\>”;
+“\</scpd\>”;
 >
-> Device \*upnpDev = new Device(); bool descSuccess = upnpDev-\>loadDescription(DEVICE_DESCRIPTION); Service \*upnpService = getService("urn:schemas-upnp-org:service:\*\*\*\*:1"); bool scpdSuccess = upnpService-\>loadSCPD(SERVICE_DESCRIPTION\[);
+Device \*upnpDev = new Device(); bool descSuccess = upnpDev-\>loadDescription(DEVICE_DESCRIPTION); Service \*upnpService = getService("urn:schemas-upnp-org:service:\*\*\*\*:1"); bool scpdSuccess = upnpService-\>loadSCPD(SERVICE_DESCRIPTION\[);
 >
-> The active root device has some server processes, and returns the responses automatically when a control points sends a request to the device. For example, the device has a HTTP server to return the description files when a
+The active root device has some server processes, and returns the responses automatically when a control points sends a request to the device. For example, the device has a HTTP server to return the description files when a
 >
-> control point gets the description file. The device searches an available port for the HTTP server automatically on the machine when the device is started.
+control point gets the description file. The device searches an available port for the HTTP server automatically on the machine when the device is started.
 
 HTTP
 
@@ -660,7 +462,7 @@ Event
 
 Search Response
 
-> The root device is created with the following default parameters, you can change the parameters using the following methods before the root device is started.
+The root device is created with the following default parameters, you can change the parameters using the following methods before the root device is started.
 
 <table>
 <colgroup>
@@ -728,7 +530,7 @@ Search Response
 
 ## Notify
 
-> Your device is announced using Device::start() to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started. When device is stopped using Device::stop(), a notify message is posted with ssdp::byebye. You can announce the notify messages using Device::announce() and Device::byebye().
+Your device is announced using Device::start() to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started. When device is stopped using Device::stop(), a notify message is posted with ssdp::byebye. You can announce the notify messages using Device::announce() and Device::byebye().
 
 <table>
 <colgroup>
@@ -750,13 +552,13 @@ Search Response
 </tbody>
 </table>
 
-> Device dev ....
+Device dev ....
 >
-> .....
+.....
 
 dev.start();
 
-> .....
+.....
 
 <table>
 <colgroup>
@@ -777,233 +579,233 @@ dev.start();
 
 dev.stop();
 
-> When a control point sends a search request with M-SEARCH to the UPnP™ network, the active device send the search response to the control point automatically. The device repeats the announcement in the lease time automatically.
+When a control point sends a search request with M-SEARCH to the UPnP™ network, the active device send the search response to the control point automatically. The device repeats the announcement in the lease time automatically.
 
 ## Embedded Devices
 
-> The devices may have some embedded devices. Use Device::getDeviceList() to get the embedded device list.
+The devices may have some embedded devices. Use Device::getDeviceList() to get the embedded device list.
 >
-> The following example outputs friendly names of all embedded devices in the device.
+The following example outputs friendly names of all embedded devices in the device.
 >
-> void printDevice(Device \*dev)
+void printDevice(Device \*dev)
 >
-> {
+{
 >
-> counst char \*devName = dev-\>getFriendlyName();
+counst char \*devName = dev-\>getFriendlyName();
 >
-> cout \<\< devName \<\< endl;
+cout \<\< devName \<\< endl;
 >
-> DeviceList \*childDevList = dev-\>getDeviceList(); int nChildDevs = childDevList-\>size();
+DeviceList \*childDevList = dev-\>getDeviceList(); int nChildDevs = childDevList-\>size();
 >
-> for (int ｎ =0; ｎ \<nChildDevs; ｎ ++) {
+for (int ｎ =0; ｎ \<nChildDevs; ｎ ++) {
 >
-> Device \*childDev = childDevList -\>getDevice(n); printDevice(childDev);
+Device \*childDev = childDevList -\>getDevice(n); printDevice(childDev);
 >
-> }
+}
 >
-> }
+}
 >
-> ......
+......
 >
-> Dev \*rootDev = ....;
+Dev \*rootDev = ....;
 >
-> ……
+……
 >
-> DeviceList \*childDevList = rootDev-\>getDeviceList(); int childDevs = childDevList-\>size();
+DeviceList \*childDevList = rootDev-\>getDeviceList(); int childDevs = childDevList-\>size();
 >
-> for (int n=0; n\< childDevs; n++) {
+for (int n=0; n\< childDevs; n++) {
 >
-> Device \*childDev = rootDevList-\>getDevice(n); printDevice(childDev);
+Device \*childDev = rootDevList-\>getDevice(n); printDevice(childDev);
 >
-> }
+}
 >
-> You can find a embedded device by the friendly name or UDN using Device::getDevice(). The following example gets a embedded device by the friendly name.
+You can find a embedded device by the friendly name or UDN using Device::getDevice(). The following example gets a embedded device by the friendly name.
 >
-> Device \*homeServerDev ....
+Device \*homeServerDev ....
 >
-> Device \*musicDev = homeServerDev-\>getDevice(“music”);
+Device \*musicDev = homeServerDev-\>getDevice(“music”);
 
 ## Service
 
-> Use Device::getServiceList() to access embedded services of the device. The service may has some actions and state variables. Use Service::getActionList() to get the actions, and use Service::getServiceStateTable() to the state variables by the name. The following example outputs the all actions and state variables in a device.
+Use Device::getServiceList() to access embedded services of the device. The service may has some actions and state variables. Use Service::getActionList() to get the actions, and use Service::getServiceStateTable() to the state variables by the name. The following example outputs the all actions and state variables in a device.
 >
-> Device \*dev ....
+Device \*dev ....
 >
-> ServiceList \*serviceList = dev-\>getServiceList(); int serviceCnt = serviceList-\>size();
+ServiceList \*serviceList = dev-\>getServiceList(); int serviceCnt = serviceList-\>size();
 >
-> for (int n=0; n\<serviceCnt; n++) {
+for (int n=0; n\<serviceCnt; n++) {
 >
-> Service \*service = serviceList-\>getService(n); ActionList \*actionList = service-\>getActionList(); int actionCnt = actionList-\>size();
+Service \*service = serviceList-\>getService(n); ActionList \*actionList = service-\>getActionList(); int actionCnt = actionList-\>size();
 >
-> for (int i=0; i\<actionCnt; i++) {
+for (int i=0; i\<actionCnt; i++) {
 >
-> Action \*action = actionList-\>getAction(i); cout \<\< “action \[“ \<\< i \<\< “\] = “\<\< action-\>getName() \<\< endl;
+Action \*action = actionList-\>getAction(i); cout \<\< “action \[“ \<\< i \<\< “\] = “\<\< action-\>getName() \<\< endl;
 >
-> }
+}
 >
-> ServiceStateTable \*stateTable = service-\> getServiceStateTable ();
+ServiceStateTable \*stateTable = service-\getServiceStateTable ();
 >
-> int varCnt = stateTable-\>size();
+int varCnt = stateTable-\>size();
 >
-> for (int i=0; i\<actionCnt; i++) {
+for (int i=0; i\<actionCnt; i++) {
 >
-> StateVariable \*stateVar = stateTable-\>getServiceStateVariable(i); cout \<\< “stateVar \[“ \<\< i \<\< “\] = “ \<\< stateVar-\>getName() \<\< endl;
+StateVariable \*stateVar = stateTable-\>getServiceStateVariable(i); cout \<\< “stateVar \[“ \<\< i \<\< “\] = “ \<\< stateVar-\>getName() \<\< endl;
 >
-> }
+}
 >
-> }
+}
 >
-> You can find a service in the device by the service ID using Device::getService(), and you can find an action or state variable in the service by name too. Use Device::getAction() or Service::getAction() to find the action, and use Device::getStateariable() or Service::getStateVariable() to find the state variable. The following example gets a service, a action and a state variable in a device by name.
+You can find a service in the device by the service ID using Device::getService(), and you can find an action or state variable in the service by name too. Use Device::getAction() or Service::getAction() to find the action, and use Device::getStateariable() or Service::getStateVariable() to find the state variable. The following example gets a service, a action and a state variable in a device by name.
 >
-> Device \*clockDev ....
+Device \*clockDev ....
 >
-> Service \*timerSev = clockDev-\>getService(“timer”);
+Service \*timerSev = clockDev-\>getService(“timer”);
 >
-> Action \*getTimeAct = clockDev-\>getAction(“GetTime”);
+Action \*getTimeAct = clockDev-\>getAction(“GetTime”);
 >
-> StateVariable \*timeStat = clockDev-\>getStateVariable(“time”);
+StateVariable \*timeStat = clockDev-\>getStateVariable(“time”);
 
 ## Control
 
-> To receive action control events from control points, the device needs to implement the ActionListener interface. The listener have to implement a actionControlReceived() that has the action and argument list parameter. The input arguments has the passed values from the control point, set the response values in the output arguments and return true when the request is valid. Otherwise return a false when the request is invalid. UPnPError response is returned to the control point automatically when the returned value is false or the device has no the interface. The UPnPError is INVALID_ACTION as default, but use Action::setSetStatus() to return other UPnP errors.
+To receive action control events from control points, the device needs to implement the ActionListener interface. The listener have to implement a actionControlReceived() that has the action and argument list parameter. The input arguments has the passed values from the control point, set the response values in the output arguments and return true when the request is valid. Otherwise return a false when the request is invalid. UPnPError response is returned to the control point automatically when the returned value is false or the device has no the interface. The UPnPError is INVALID_ACTION as default, but use Action::setSetStatus() to return other UPnP errors.
 >
-> To receive query control events from control points, the device needs to implement the QueryListener interface.
+To receive query control events from control points, the device needs to implement the QueryListener interface.
 >
-> The listener have to implement a queryControlReceived() that has the service variable parameter and return a true when the request is valid. Otherwise return a false when the request is invalid. UPnPError response is returned to the control point automatically when the returned value is false or the device has no the interface. The UPnPError is INVALID_ACTION as default, but use ServiceVariable::setSetStatus() to return other UPnP errors.
+The listener have to implement a queryControlReceived() that has the service variable parameter and return a true when the request is valid. Otherwise return a false when the request is invalid. UPnPError response is returned to the control point automatically when the returned value is false or the device has no the interface. The UPnPError is INVALID_ACTION as default, but use ServiceVariable::setSetStatus() to return other UPnP errors.
 >
-> The following sample is a clock device. The device executes two action control requests and a query control request.
+The following sample is a clock device. The device executes two action control requests and a query control request.
 >
-> class ClockDevice : public Device, public ActionListener, public QueryListener
+class ClockDevice : public Device, public ActionListener, public QueryListener
 >
-> { public:
+{ public:
 >
-> ClockDevice() : Device(“/clock/www/description.xml”)
+ClockDevice() : Device(“/clock/www/description.xml”)
 >
-> {
+{
 >
-> Action \*setTimeAction = getAction(“SetTime”); setTimeAction-\>setActionListener(this);
+Action \*setTimeAction = getAction(“SetTime”); setTimeAction-\>setActionListener(this);
 >
-> Action \*getTimeAction = getAction(“GetTime”);
+Action \*getTimeAction = getAction(“GetTime”);
 >
-> getTimeAction-\>setActionListener(this);
+getTimeAction-\>setActionListener(this);
 >
-> StateVariable \*timeVar = getStateVariable(“Timer”); timeVar-\>setQueryListener(this);
+StateVariable \*timeVar = getStateVariable(“Timer”); timeVar-\>setQueryListener(this);
 >
-> }
+}
 >
-> bool actionControlRecieved(Action \*action)
+bool actionControlRecieved(Action \*action)
 >
-> {
+{
 >
-> ArgumentList \*argList = action-\>getArgumentList(); const char \*actionName = action-\>getName();
+ArgumentList \*argList = action-\>getArgumentList(); const char \*actionName = action-\>getName();
 >
-> if (strcmp(actionName, "SetTime") == 0 {
+if (strcmp(actionName, "SetTime") == 0 {
 >
-> Argument \*inTime = argList-\>getArgument(“time”); const char \*timeValue = inTime-\>getValue();
+Argument \*inTime = argList-\>getArgument(“time”); const char \*timeValue = inTime-\>getValue();
 >
-> If (timeValue == NULL \|\| strlen(timeValue) \<= 0) return false;
+If (timeValue == NULL \|\| strlen(timeValue) \<= 0) return false;
 >
-> ……..
+……..
 >
-> Argument \*outResult = argList-\>getArgument(“result”); arg-\>setValue(“TRUE”);
+Argument \*outResult = argList-\>getArgument(“result”); arg-\>setValue(“TRUE”);
 >
-> return true;
+return true;
 >
-> }
+}
 >
-> else if (strcmp(actionName, “GetTime”) == 0) {
+else if (strcmp(actionName, “GetTime”) == 0) {
 >
-> const char \*currTimeStr = …..
+const char \*currTimeStr = …..
 >
-> Argument \*currTimeArg = argList-\>getArgument(“currTime”); currTimeArg-\>setValue(currTimeStrs);
+Argument \*currTimeArg = argList-\>getArgument(“currTime”); currTimeArg-\>setValue(currTimeStrs);
 >
-> return true;
+return true;
 >
-> }
+}
 >
-> action-\>setStatus(UPnP::INVALID_ACTION, “…..”); return false;
+action-\>setStatus(UPnP::INVALID_ACTION, “…..”); return false;
 >
-> }
+}
 >
-> bool queryControlReceived(StatusVariable \*stateVar)
+bool queryControlReceived(StatusVariable \*stateVar)
 >
-> {
+{
 >
-> if (strcmp(varName, “Time”) == 0) {
+if (strcmp(varName, “Time”) == 0) {
 >
-> cont char \*currTimeStr = ….; stateVar.setValue(currTimeStr); return true;
+cont char \*currTimeStr = ….; stateVar.setValue(currTimeStr); return true;
 >
-> }
+}
 >
-> stateVar-\>setStatus(UPnP::INVALID_VAR, “…..”); return false;
+stateVar-\>setStatus(UPnP::INVALID_VAR, “…..”); return false;
 >
-> }
+}
 >
-> }
+}
 >
-> Use Device::setActionListner() or Service::setActionListnerer() to add a listener into all control actions in a device or a service. Use Device::setQueryListner() or Service::setQueryListner() to add a listener into all query
+Use Device::setActionListner() or Service::setActionListnerer() to add a listener into all control actions in a device or a service. Use Device::setQueryListner() or Service::setQueryListner() to add a listener into all query
 >
-> actions in a device or a service. The following sample sets a listener into all actions in a device.
+actions in a device or a service. The following sample sets a listener into all actions in a device.
 >
-> class ClockDevice : public Device, public ActionListener, public QueryListener
+class ClockDevice : public Device, public ActionListener, public QueryListener
 >
-> { public:
+{ public:
 >
-> ClockDevice() : Device(“/clock/www/description.xml”)
+ClockDevice() : Device(“/clock/www/description.xml”)
 >
-> {
+{
 >
-> setActionListner(this);
+setActionListner(this);
 >
-> setQueryListener (this);
+setQueryListener (this);
 >
-> }
+}
 >
-> bool actionControlRecieved(Action \*action) { ……. }
+bool actionControlRecieved(Action \*action) { ……. }
 >
-> bool queryControlReceived(StateVariable \*stateVar) { ……. }
+bool queryControlReceived(StateVariable \*stateVar) { ……. }
 >
-> }
+}
 
 ## Event
 
-> The control point may subscribe some events of the device. You don’t need manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point into the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends a unsubscription message.
+The control point may subscribe some events of the device. You don’t need manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point into the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends a unsubscription message.
 >
-> Use ServiceStateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using ServiceStateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.
+Use ServiceStateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using ServiceStateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.
 >
-> Device \*clockDevice = ....
+Device \*clockDevice = ....
 >
-> StateVariable timeVar = clockDevice-\>getStateVariable("Time"); const char \*timeStr = ..... timeVar-\>setValue(timeStr);
+StateVariable timeVar = clockDevice-\>getStateVariable("Time"); const char \*timeStr = ..... timeVar-\>setValue(timeStr);
 
 # Control Point
 
-> **4.1 Class Overview**
+**4.1 Class Overview**
 >
-> The following static structure diagram is related classes of mUPnP to create your control point of UPnP™. The control point has some root devices in the UPnP™ network.
+The following static structure diagram is related classes of mUPnP to create your control point of UPnP™. The control point has some root devices in the UPnP™ network.
 >
-> <img src="medi/media/image2.png" style="width:6.66667in;height:6.37333in" />
+<img src="medi/media/image2.png" style="width:6.66667in;height:6.37333in" />
 >
-> **4.2 Initiating**
+**4.2 Initiating**
 
 To create a UPnP™ control point, create a instance of ControlPoint class. Use ControlPoint::start() to active the contol point. The control point multicasts a discovery message searching for all devices to the UPnP™ network
 
-> automatically when the control point is active.
+automatically when the control point is active.
 >
-> \#include \<cybergarage/upnp/mUPnP.h\> using namespace mUPnP;
+\#include \<cybergarage/upnp/mUPnP.h\using namespace mUPnP;
 >
-> ……
+……
 >
-> ControlPoint \*ctrlPoint = new ControlPoint();
+ControlPoint \*ctrlPoint = new ControlPoint();
 >
-> ……
+……
 >
-> ctrlPoint-\>start();
+ctrlPoint-\>start();
 >
-> The active control point has some server processes, and returns the responses automatically when other UPnP™ devices send the messages to the control point. For example, the control point has a SSDP server to get M-
+The active control point has some server processes, and returns the responses automatically when other UPnP™ devices send the messages to the control point. For example, the control point has a SSDP server to get M-
 >
-> SEARCH responses, and the control point searches a available port for the SSDP server automatically on the machine when the control point is started.
+SEARCH responses, and the control point searches a available port for the SSDP server automatically on the machine when the control point is started.
 >
-> The control point is created with the following default parameters. You can change the parameters using the following methods before the control point is started.
+The control point is created with the following default parameters. You can change the parameters using the following methods before the control point is started.
 
 <table>
 <colgroup>
@@ -1104,269 +906,269 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 </tbody>
 </table>
 
-> **4.3 Notify**
+**4.3 Notify**
 >
-> The control point receives notify events from devices in the UPnP™ network, and the devices are added or removed form the control point automatically. The expired device is removed from the device list of the control point automatically too. You don’t manage the notify events, but you can receive the event to implement the NotifyListener interface. The following sample receives the notify messages.
+The control point receives notify events from devices in the UPnP™ network, and the devices are added or removed form the control point automatically. The expired device is removed from the device list of the control point automatically too. You don’t manage the notify events, but you can receive the event to implement the NotifyListener interface. The following sample receives the notify messages.
 >
-> class MyCtrlPoint : public ControlPoint, public NotifyListener
+class MyCtrlPoint : public ControlPoint, public NotifyListener
 >
-> { public:
+{ public:
 >
-> MyCtrlPoint()
+MyCtrlPoint()
 >
-> {
+{
 >
-> ........
+........
 >
-> addNotifyListener(this);
+addNotifyListener(this);
 >
-> start();
+start();
 >
-> }
+}
 >
-> void deviceNotifyReceived(SSDPPacket \*ssdpPacket)
+void deviceNotifyReceived(SSDPPacket \*ssdpPacket)
 >
-> { string use, nt, nts, location; const char \*uuid = ssdpPacket.getUSN(usn); const char \*target = ssdpPacket.getNT(nt);
+{ string use, nt, nts, location; const char \*uuid = ssdpPacket.getUSN(usn); const char \*target = ssdpPacket.getNT(nt);
 >
-> const char \*subType = ssdpPacket.getNTS(nts);
+const char \*subType = ssdpPacket.getNTS(nts);
 >
-> const char \*where = ssdpPacket.getLocation(location);
+const char \*where = ssdpPacket.getLocation(location);
 >
-> .......
+.......
 >
-> }
+}
 >
-> To know only the added and removed device, you may use the following interface, DeviceChangeListener.
+To know only the added and removed device, you may use the following interface, DeviceChangeListener.
 >
-> class MyCtrlPoint : public ControlPoint, public DeviceChangeListener
+class MyCtrlPoint : public ControlPoint, public DeviceChangeListener
 >
-> { public:
+{ public:
 >
-> MyCtrlPoint()
+MyCtrlPoint()
 >
-> {
+{
 >
-> ........
+........
 >
-> addDeviceChangeListener (this); start();
+addDeviceChangeListener (this); start();
 >
-> }
+}
 >
-> void deviceAdded (Device \*dev)
+void deviceAdded (Device \*dev)
 >
-> {
+{
 >
-> ……..
+……..
 >
-> }
+}
 >
-> void deviceRemoved(Device \*dev)
+void deviceRemoved(Device \*dev)
 >
-> {
+{
 >
-> ……..
+……..
 >
-> }
+}
 >
-> }
+}
 
 ## Search
 
-> You can update the device lists using ControlPoint::search(). The discovered root devices are added to the control point automatically, and you can receive the response to implement the SearchResponseListener interface. The following sample receives the notify messages.
+You can update the device lists using ControlPoint::search(). The discovered root devices are added to the control point automatically, and you can receive the response to implement the SearchResponseListener interface. The following sample receives the notify messages.
 >
-> class MyCtrlPoint : public ControlPoint, public SearchResponseListener
+class MyCtrlPoint : public ControlPoint, public SearchResponseListener
 >
-> { public:
+{ public:
 >
-> MyCtrlPoint()
+MyCtrlPoint()
 >
-> {
+{
 >
-> ........
+........
 >
-> addSearchResponseListener(this); start();
+addSearchResponseListener(this); start();
 >
-> ........
+........
 >
-> search(“upnp:rootdevice”);
+search(“upnp:rootdevice”);
 >
-> }
+}
 >
-> void deviceSearchResponseReceived(SSDPPacket \*ssdpPacket)
+void deviceSearchResponseReceived(SSDPPacket \*ssdpPacket)
 >
-> { string usn, st, location; const char \*uuid = ssdpPacket.getUSN(usn);
+{ string usn, st, location; const char \*uuid = ssdpPacket.getUSN(usn);
 >
-> const char \*target = ssdpPacket.getST(st);
+const char \*target = ssdpPacket.getST(st);
 >
-> const char \*where = ssdpPacket.getLocation(location);
+const char \*where = ssdpPacket.getLocation(location);
 >
-> ........
+........
 >
-> }
+}
 
 ## Root Devices
 
-> Use ControlPoint::getDeviceList() that returns only root devices to get the discovered device list. The following example outputs friendly names of the root devices.
+Use ControlPoint::getDeviceList() that returns only root devices to get the discovered device list. The following example outputs friendly names of the root devices.
 >
-> ControlPoint \*ctrlPoint = new ControlPoint();
+ControlPoint \*ctrlPoint = new ControlPoint();
 >
-> ……
+……
 >
-> ctrlPoint-\>start();
+ctrlPoint-\>start();
 >
-> ……
+……
 >
-> DeviceList \*rootDevList = ctrlPoint-\>getDeviceList(); int nRootDevs = rootDevList-\>size();
+DeviceList \*rootDevList = ctrlPoint-\>getDeviceList(); int nRootDevs = rootDevList-\>size();
 >
-> for (int n=0; n\<nRootDevs; n++) {
+for (int n=0; n\<nRootDevs; n++) {
 >
-> Device \*dev = rootDevList-\>getDevice(n); const char \*devName = dev-\>getFriendlyName(); cout \<\< “\[“ \<\< n \<\< “\] = ” \<\< devName \<\< endl;
+Device \*dev = rootDevList-\>getDevice(n); const char \*devName = dev-\>getFriendlyName(); cout \<\< “\[“ \<\< n \<\< “\] = ” \<\< devName \<\< endl;
 >
-> }
+}
 >
-> You can find a root device by the friendly name, the device type, or the UDN using ControlPoint::getDevice().
+You can find a root device by the friendly name, the device type, or the UDN using ControlPoint::getDevice().
 >
-> The following example gets a root device by the friendly name.
+The following example gets a root device by the friendly name.
 >
-> ControlPoint \*ctrlPoint = new ControlPoint();
+ControlPoint \*ctrlPoint = new ControlPoint();
 >
-> ……
+……
 >
-> ctrlPoint-\>start();
+ctrlPoint-\>start();
 >
-> ……
+……
 >
-> Device \*homeServerDev = ctrlPoint-\>getDevice(“xxxx-home-server”);
+Device \*homeServerDev = ctrlPoint-\>getDevice(“xxxx-home-server”);
 
 ## Control
 
-> The control point can send action or query control messages to the discovered devices. To send the action control message, use Action::setArgumentValue() and Action::postControlAction (). You should set the action values to the all input arguments, and the output argument values is ignored if you set. The following sample posts a action control request that sets a new time, and output the response result.
+The control point can send action or query control messages to the discovered devices. To send the action control message, use Action::setArgumentValue() and Action::postControlAction (). You should set the action values to the all input arguments, and the output argument values is ignored if you set. The following sample posts a action control request that sets a new time, and output the response result.
 >
-> Device \*clockDev = ....
+Device \*clockDev = ....
 >
-> Action \*setTimeAct = clockDev-\>getAction(“SetTime”); char \*newTime = ....
+Action \*setTimeAct = clockDev-\>getAction(“SetTime”); char \*newTime = ....
 >
-> setTimeAct-\>setArgumentValue(“time”, newTime); // setTimeAct-\>getArgument(“time”)-\>setValue(newTime);
+setTimeAct-\>setArgumentValue(“time”, newTime); // setTimeAct-\>getArgument(“time”)-\>setValue(newTime);
 >
-> if (setTimeAct-\>postControlAction() == true) {
+if (setTimeAct-\>postControlAction() == true) {
 >
-> ArgumentList \*outArgList = setTimeAct-\>getOutputArgumentList(); int nOutArgs = outArgList-\>size();
+ArgumentList \*outArgList = setTimeAct-\>getOutputArgumentList(); int nOutArgs = outArgList-\>size();
 >
-> for (int n=0; n\<nOutArgs; n++) {
+for (int n=0; n\<nOutArgs; n++) {
 >
-> Argument \*outArg = outArgList-\>getArgument(n); const char \*name = outArg-\>getName(); const char \*value = outArg-\>getValue();
+Argument \*outArg = outArgList-\>getArgument(n); const char \*name = outArg-\>getName(); const char \*value = outArg-\>getValue();
 >
-> ......
+......
 >
-> }
+}
 >
-> } else {
+} else {
 >
-> UPnPStatus \*err = setTimeAct-\>getUPnPStatus();
+UPnPStatus \*err = setTimeAct-\>getUPnPStatus();
 >
-> System.out.println("Error Code = " + err-\>getCode());
+System.out.println("Error Code = " + err-\>getCode());
 >
-> System.out.println("Error Desc = " + err-\>getDescription());
+System.out.println("Error Desc = " + err-\>getDescription());
 >
-> }
+}
 >
-> To send the query control message, use StateVariable::postQueryControl(). The following sample posts a query control request, and output the return value.
+To send the query control message, use StateVariable::postQueryControl(). The following sample posts a query control request, and output the return value.
 >
-> Device \*clockDev = ....
+Device \*clockDev = ....
 >
-> StateVariable \*timeStateVar = clockDev-\>getStateVariable(“time”); if (timeStateVar-\>postQueryControl() == true) { String value = timeStateVar.getValue();
+StateVariable \*timeStateVar = clockDev-\>getStateVariable(“time”); if (timeStateVar-\>postQueryControl() == true) { String value = timeStateVar.getValue();
 >
-> ......
+......
 >
-> } else {
+} else {
 >
-> UPnPStatus \*err = timeStateVar-\>getUPnPStatus();
+UPnPStatus \*err = timeStateVar-\>getUPnPStatus();
 >
-> System.out.println("Error Code = " + err-\>getCode());
+System.out.println("Error Code = " + err-\>getCode());
 >
-> System.out.println("Error Desc = " + err-\>getDescription());
+System.out.println("Error Desc = " + err-\>getDescription());
 >
-> }
+}
 >
-> Use Argument::getRelatedStateVariable() to get the related StatiVariable of the argument, and use StateVariable:: getAllowedValueRange() or getAllowedValueList() to get the the allowed value range or list.
+Use Argument::getRelatedStateVariable() to get the related StatiVariable of the argument, and use StateVariable:: getAllowedValueRange() or getAllowedValueList() to get the the allowed value range or list.
 >
-> Device \*clockDev = ....
+Device \*clockDev = ....
 >
-> Action \*timeAct = clockDev-\>getAction(“SetTime”);
+Action \*timeAct = clockDev-\>getAction(“SetTime”);
 >
-> Argument \*timeArg = timeAct-\>getArgument(“time”);
+Argument \*timeArg = timeAct-\>getArgument(“time”);
 >
-> StataVariable \*stateVar = timeArg-\>getRelatedStateVariable(); if (stateVar != NULL) {
+StataVariable \*stateVar = timeArg-\>getRelatedStateVariable(); if (stateVar != NULL) {
 >
-> if (stateVar-\>hasAllowedValueRange() == true) {
+if (stateVar-\>hasAllowedValueRange() == true) {
 >
-> AllowedValueRange \*valRange = stateVar-\>getAllowedValueRange();
+AllowedValueRange \*valRange = stateVar-\>getAllowedValueRange();
 >
-> ......
+......
 >
-> }
+}
 >
-> if (stateVar-\>hasAllowedValueList() == true) {
+if (stateVar-\>hasAllowedValueList() == true) {
 >
-> AllowedValueList \*valList = stateVar-\>getAllowedValueList ();
+AllowedValueList \*valList = stateVar-\>getAllowedValueList ();
 >
-> ......
+......
 >
-> }
+}
 >
-> }
+}
 
 ## Event
 
-> The control point can subscribe events of the discovered devices, get the state changes of the services Use
+The control point can subscribe events of the discovered devices, get the state changes of the services Use
 >
-> ControlPoint::subscribe() and implement the EventListener interface. The listener have to implement a eventNotifyReceived().
+ControlPoint::subscribe() and implement the EventListener interface. The listener have to implement a eventNotifyReceived().
 >
-> MyControlPoint : public ControlPoint, public EventListener
+MyControlPoint : public ControlPoint, public EventListener
 >
-> { public:
+{ public:
 >
-> MyControlPoint()
+MyControlPoint()
 >
-> {
+{
 >
-> .....
+.....
 >
-> addEventListener(this);
+addEventListener(this);
 >
-> }
+}
 >
-> .....
+.....
 >
-> void eventNotifyReceived(const char \*uuid, long seq, const char \*name, const char \*value)
+void eventNotifyReceived(const char \*uuid, long seq, const char \*name, const char \*value)
 >
-> {
+{
 >
-> ....
+....
 >
-> }
+}
 >
-> }
+}
 >
-> The ControlPoint::subscribe() returns true when the subscription is accepted from the service, and you can get the subscription id and timeout.
+The ControlPoint::subscribe() returns true when the subscription is accepted from the service, and you can get the subscription id and timeout.
 >
-> ControlPoint \*ctrlPoint = .....
+ControlPoint \*ctrlPoint = .....
 >
-> Device \*clockDev = ctrlPoint-\>getDevice(“xxxx-clock”);
+Device \*clockDev = ctrlPoint-\>getDevice(“xxxx-clock”);
 >
-> Service \*timeService = clockDev-\>getService(“time:1”); bool subRet = ctrlPoint-\>subscribe(timeService);
+Service \*timeService = clockDev-\>getService(“time:1”); bool subRet = ctrlPoint-\>subscribe(timeService);
 >
-> if (subRet == true) {
+if (subRet == true) {
 >
-> const char \*sid = timeService-\>getSID();
+const char \*sid = timeService-\>getSID();
 >
-> long timeout = timeService-\>getTimeout();
+long timeout = timeService-\>getTimeout();
 >
-> }
+}
 
 5.  **Networked Media Product Requirements**
 
-> The Intel Networked Media Product Requirements (NMPR) is a implementation guidelins for digital networked devices. Please see the following page about NMPR in more detail.
+The Intel Networked Media Product Requirements (NMPR) is a implementation guidelins for digital networked devices. Please see the following page about NMPR in more detail.
 
 <table>
 <colgroup>
@@ -1670,13 +1472,13 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 </tbody>
 </table>
 
-> The NMPR features are include Device and ControlPoint class of the mUPnP, but the features are not available as default. Please use Device::setNMPRMode() and ControlPoint::setNMPRMode() as the following.
+The NMPR features are include Device and ControlPoint class of the mUPnP, but the features are not available as default. Please use Device::setNMPRMode() and ControlPoint::setNMPRMode() as the following.
 >
-> ControlPoint \*ctrlPoint = ..... ctrlPoint-\>setNMPRMode(true); ctrlPoint-\>start();
+ControlPoint \*ctrlPoint = ..... ctrlPoint-\>setNMPRMode(true); ctrlPoint-\>start();
 >
-> Device \*device = … device-\>setNMPRMode(true);
+Device \*device = … device-\>setNMPRMode(true);
 >
-> device-\>setWirelessMode(true); // if your device is on wireless network. device-\>start().;
+device-\>setWirelessMode(true); // if your device is on wireless network. device-\>start().;
 
 2.  **Implementaion Status**
 
@@ -2109,9 +1911,9 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 </tbody>
 </table>
 
-> **XML Parser**
+**XML Parser**
 >
-> mUPnP supports the following XML parsers to read device descriptions or execute actions of UPnP.
+mUPnP supports the following XML parsers to read device descriptions or execute actions of UPnP.
 
 <table>
 <colgroup>
@@ -2153,81 +1955,81 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 </tbody>
 </table>
 
-> mUPnP uses Xerces as the default XML parser. Use the compiler options to your compiler to use Expat or libxml2 instead of the Xerces.
+mUPnP uses Xerces as the default XML parser. Use the compiler options to your compiler to use Expat or libxml2 instead of the Xerces.
 >
-> On Unix platform, use –enable-expat, or –enable-libxml2 to the configure script instead of the compiler options as the following.
+On Unix platform, use –enable-expat, or –enable-libxml2 to the configure script instead of the compiler options as the following.
 >
-> ./configure --enable-expat
+./configure --enable-expat
 >
-> **IPv6**
+**IPv6**
 >
-> mUPnP binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.
+mUPnP binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.
 >
-> mUPnP supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following
+mUPnP supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following
 >
-> method before the devices or control points are created.
+method before the devices or control points are created.
 >
-> UPnP::SetEnable(UPnP::USE_ONLY_IPV6_ADDR)
+UPnP::SetEnable(UPnP::USE_ONLY_IPV6_ADDR)
 >
-> Link local is the default scope for multicasting of mUPnP. Use UPnP::SetEnable() to change the scope. The following example changes the scope to the site local.
+Link local is the default scope for multicasting of mUPnP. Use UPnP::SetEnable() to change the scope. The following example changes the scope to the site local.
 >
-> UPnP::SetEnable(UPnP::USE_IPV6_SITE_LOCAL_SCOPE)
+UPnP::SetEnable(UPnP::USE_IPV6_SITE_LOCAL_SCOPE)
 >
-> On Unix platform, mUPnP get the local interfaces IPv4 and IPv6 using getifaddrs(). If you want to use mUPnP with IPv6, please check the function supports IPv6 on your platform. I know that the function doesn’t support IPv6 yet on Redhat 9 and MacOSX 10.2.6.
+On Unix platform, mUPnP get the local interfaces IPv4 and IPv6 using getifaddrs(). If you want to use mUPnP with IPv6, please check the function supports IPv6 on your platform. I know that the function doesn’t support IPv6 yet on Redhat 9 and MacOSX 10.2.6.
 >
-> **Inside mUPnP**
+**Inside mUPnP**
 
 **8.1 Overriding HTTP Service**
 
-> The Device class of mUPnP implements a HTTPRequestListner interface of CyberHTTP package to handle some HTTP requests from the control points. The HTTPRequestListener interface is bellow.
+The Device class of mUPnP implements a HTTPRequestListner interface of CyberHTTP package to handle some HTTP requests from the control points. The HTTPRequestListener interface is bellow.
 >
-> class HTTPRequestListener
+class HTTPRequestListener
 >
-> { public: virtual void httpRequestRecieved(HTTPRequest \*httpReq) = 0;
+{ public: virtual void httpRequestRecieved(HTTPRequest \*httpReq) = 0;
 >
-> };
+};
 >
-> To overide the interface, use CyberHTTP namespace and override the httpRequestRecieved method in your device that is a sub class of the Device class. The following example is a clock device using mUPnP, and adds
+To overide the interface, use CyberHTTP namespace and override the httpRequestRecieved method in your device that is a sub class of the Device class. The following example is a clock device using mUPnP, and adds
 >
-> the override method to return the presentation page.
+the override method to return the presentation page.
 >
-> using namespace CyberHTTP;
+using namespace CyberHTTP;
 >
-> const char PRESENTATION_URI\[\] = "/presentation";
+const char PRESENTATION_URI\[\] = "/presentation";
 >
-> ……
+……
 >
-> class ClockDevice : public Device, public ActionListener, public QueryListener
+class ClockDevice : public Device, public ActionListener, public QueryListener
 >
-> {
+{
 >
-> ……
+……
 >
-> void httpRequestRecieved(HTTPRequest \*httpReq) { string uri = httpReq-\>getURI();
+void httpRequestRecieved(HTTPRequest \*httpReq) { string uri = httpReq-\>getURI();
 >
-> if (uri.find(PRESENTATION_URI) == string::npos) { Device::httpRequestRecieved(httpReq); return;
+if (uri.find(PRESENTATION_URI) == string::npos) { Device::httpRequestRecieved(httpReq); return;
 >
-> }
+}
 >
-> string clockStr = …….;
+string clockStr = …….;
 >
-> string contents;
+string contents;
 >
-> contents = "\<HTML\>\<BODY\>\<H1\>"; contents += clockStr;
+contents = "\<HTML\>\<BODY\>\<H1\>"; contents += clockStr;
 >
-> contents += "\</H1\>\</BODY\>\</HTML\>";
+contents += "\</H1\>\</BODY\>\</HTML\>";
 >
-> HTTPResponse httpRes; httpRes.setStatusCode(HTTP::OK_REQUEST); httpRes.setContent(contents); httpReq-\>post(&httpRes);
+HTTPResponse httpRes; httpRes.setStatusCode(HTTP::OK_REQUEST); httpRes.setContent(contents); httpReq-\>post(&httpRes);
 
 }
 
-> }
+}
 
 9.  **Transitioning From Version 1.2**
 
 **9.1 QueryListner**
 
-> mUPnP v1.3 has changed the QueryListner interface to return user error infomation and set the listener to the StateVariable instance instead of the Service instance. The difference is bellow.
+mUPnP v1.3 has changed the QueryListner interface to return user error infomation and set the listener to the StateVariable instance instead of the Service instance. The difference is bellow.
 
 <table>
 <colgroup>
@@ -2258,41 +2060,41 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 </tbody>
 </table>
 
-> Use StateVariable::getName() to know the variable name, and use StateVariable::setValue() to return the result value. The following sample shows the difference between v1.2 and v1.3.
+Use StateVariable::getName() to know the variable name, and use StateVariable::setValue() to return the result value. The following sample shows the difference between v1.2 and v1.3.
 >
-> v1.2:
+v1.2:
 >
-> bool queryControlReceived(Service \*service, const char \*varName, string &result) { result = Clock::GetCurrentTimeString();
+bool queryControlReceived(Service \*service, const char \*varName, string &result) { result = Clock::GetCurrentTimeString();
 >
-> return true;
+return true;
 >
-> }
+}
 >
-> v1.3:
+v1.3:
 >
-> bool queryControlReceived(StateVariable \*stateVar) { const char \*varName = stateVar-\>getName();
+bool queryControlReceived(StateVariable \*stateVar) { const char \*varName = stateVar-\>getName();
 >
-> stateVar-\>setValue(Clock::GetCurrentTimeString());
+stateVar-\>setValue(Clock::GetCurrentTimeString());
 >
-> return true;
+return true;
 >
-> }
+}
 >
-> To set the query listener, use StateVariable:: setQueryListener() instead of Service::setQueryListner().
+To set the query listener, use StateVariable:: setQueryListener() instead of Service::setQueryListner().
 >
-> However, Service::setQueryListner() that sets the specifed listener to all state variables in the service is not deprecated to ensure the compatibility. The implematation is bellow.
+However, Service::setQueryListner() that sets the specifed listener to all state variables in the service is not deprecated to ensure the compatibility. The implematation is bellow.
 >
-> void Service::setQueryListener(QueryListener \*listener)
+void Service::setQueryListener(QueryListener \*listener)
 >
-> {
+{
 >
-> ServiceStateTable \*stateTable = getServiceStateTable(); for (int n=0; n\< stateTable-\>size(); n++)
+ServiceStateTable \*stateTable = getServiceStateTable(); for (int n=0; n\< stateTable-\>size(); n++)
 >
-> StateVariable \*var = stateTable-\>getStateVariable(n); var-\>setQueryListener(listener);
+StateVariable \*var = stateTable-\>getStateVariable(n); var-\>setQueryListener(listener);
 >
-> }
+}
 >
-> }
+}
 
 10. **ChangeLog**
 
@@ -2527,9 +2329,9 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 
 11. **License**
 
-> Copyright (C) 2002-2005 Satoshi Konno All rights reserved.
+Copyright (C) 2002-2005 Satoshi Konno All rights reserved.
 >
-> Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
 1.  Redistributions of source code must retain the above copyright notice, this list of conditions and thefollowing disclaimer.
 
@@ -2537,22 +2339,22 @@ To create a UPnP™ control point, create a instance of ControlPoint class. Use 
 
 3.  The name of the author may not be used to endorse or promote products derived from this software withoutspecific prior written permission.
 
-> THIS SOFTWARE IS PROVIDED BY THE AUTHOR \`\`AS IS'' AND ANY EXPRESS OR IMPLIED
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR \`\`AS IS'' AND ANY EXPRESS OR IMPLIED
 >
-> WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 >
-> MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
 >
-> EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
 >
-> EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
 >
-> PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
 >
-> BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 >
-> WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 >
-> OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [^1]: UPnP™ is a certification mark of the UPnP™ Implementers Corporation.　
