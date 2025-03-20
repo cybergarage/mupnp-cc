@@ -579,7 +579,7 @@ device->start().;
 | \<UPnP Discovery Flood Control\> | M | Y | O | O | |
 | \<UPnP SSDP Default Port\> | M | Y | O | O | |
 | \<UPnP Device Advertisement Frequency\> | M | Y | O | O | Use Device::setWirelessMode() too. |
-| \<UPnP Discovery over Wireless\> | M | Y | X | O | T h e s u b s c r i p t i on i s u p d a t e automatically when the NMPR mode is true. |
+| \<UPnP Discovery over Wireless\> | M | Y | X | O | The subscription is update automatically when the NMPR mode is true. |
 | \<UPnP Device Sync Rules\> | M | Y | X | O | Depend on your platform and device implemenation. |
 | \<UPnP Auto-IP Support\> | M | - | - | - | Not support to the dynamic changes in network configuration. |
 | \<UPnP Device Reset\> | M | N | X | X | The inavtivity connection close and HTTP HEAD request are not supported yet. |
@@ -601,7 +601,7 @@ device->start().;
 | \<UPnP Device Icon Support for .ICO\> | S | - | - | - | |
 | \<UPnP UTF-8 Support\> | M | Y | O | O | |
 | \<UPnP XML Comments\> | M | Y | O | O | Depend on implementation. |
-| \<UPnP Boolean Type\> | M | - | - | - | Depend on your device implementation. Tonot implement theQuaryStateVariable, don't useDevice::setQueryListner. |
+| \<UPnP Boolean Type\> | M | - | - | - | Depend on your device implementation. |
 | \<UPnP QueryStateVariable\> | M | - | - | - | |
 | \<UPnP Action Arguments Encoding\> | M | Y | O | O | The BaseURL is removed only when the NMPR mode is true. The service descriptions must be relative in the device description. |
 | \<UPnP URI Rules\> | M | Y | O/X | O | There is no limitation for he UDN length. To change the device descriptions and the services, create the new device and start it. |
@@ -612,9 +612,7 @@ device->start().;
 
 # IPv6
 
-mUPnP binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.
-
-mUPnP supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following
+mUPnP binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.mUPnP supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following
 
 method before the devices or control points are created.
 
