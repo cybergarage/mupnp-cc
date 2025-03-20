@@ -572,28 +572,43 @@ device->start().;
 
 ## Implementaion Status
 
-| <UPnP Error Codes> | M | - | - | - | D e p e n d              o n             y o u r                 d e v i c e implementation. |
+| UPnP Technology Requirements | M/S/O | Support | Default | NMPR | Detail |
 | --- | --- | --- | --- | --- | --- |
-| <UPnP Device Responsiveness> | M | - | - | - | D e p e n d              o n             y o u r                 d e v i c e implementation. |
-| <UPnP SOAP Packet Size> | S | Y | O | O | There is no limitation for the embedded devices. |
-| <UPnP Embedded Device Support> | M | N | X | X |  |
-| <UPnP Multi-Homing Rules> | M | Y | O | O | D e p e n d o n y o u r d e v i c e implementation. The UPnP errors are returned automatically when the services are defined and not implemented. |
-| <UPnP Service Descriptions Rules> | M | - | - | - |  |  |
-| <UPnP Subscription Handling> | M | Y | O | O |  |  |
-| <UPnP Event Notification Handling> | M | Y | O | O | D e p e n d                 o n implementation. | y o u r     d e v i c e |
-| <UPnP Device Icons> | M | - | - | - | D e p e n d                 o n implementation. | y o u r     d e v i c e |
-| <UPnP PNG Icon Recommendations> | M | - | - | - | D e p e n d                 o n implementation. | y o u r     d e v i c e |
-| <UPnP Device Icon Support for .ICO> | S | - | - | - |  |  |
-| <UPnP UTF-8 Support> | M | Y | O | O |  |  |
-| <UPnP XML Comments> | M | Y | O | O | D e p e n d                 o n implementation. | y o u r     d e v i c e |
-| <UPnP Boolean Type> | M | - | - | - | D e p e n d o n y o u r d e v i c e implementation. To not implement theQuaryStateVariable, don't useDevice::setQueryListner. |
-| < UPnP QueryStateVariable> | M | - | - | - |  |
-| < UPnP Action Arguments Encoding> | M | Y | O | O | The BaseURL is removed only when the NMPR mode is true. The service descriptions must be relative in the device description. |
-| <UPnP URI Rules> | M | Y | O/X | O | There is no limitation for he UDN length. To change the device descriptions and the services, create the new device and start it. |
-| <UPnP UDN Usage> | M | Y | O | O | The control point is not renew the subscriptions automatically. |
-| <UPnP Subscription Renewals> | O | Y | X | O |  |
-| <UPnP Device Handling of SubscriptionRenewals> | M | Y | O | O |  |
-| <UPnP IP Address Rules> | M | Y | O | O |  |
+| \<Device Discovery and Control\> | M | Y | O | O | The NMPR tag is added automatically when the NMPR mode is true. |
+| \<UPnP iNMPR’03 Description Tag\> | M | Y | X | O | |
+| \<UPnP Discovery Flood Control\> | M | Y | O | O | |
+| \<UPnP SSDP Default Port\> | M | Y | O | O | |
+| \<UPnP Device Advertisement Frequency\> | M | Y | O | O | Use Device::setWirelessMode() too. |
+| \<UPnP Discovery over Wireless\> | M | Y | X | O | T h e s u b s c r i p t i on i s u p d a t e automatically when the NMPR mode is true. |
+| \<UPnP Device Sync Rules\> | M | Y | X | O | Depend on your platform and device implemenation. |
+| \<UPnP Auto-IP Support\> | M | - | - | - | Not support to the dynamic changes in network configuration. |
+| \<UPnP Device Reset\> | M | N | X | X | The inavtivity connection close and HTTP HEAD request are not supported yet. |
+| \<UPnP HTTP Support and General Rules\> | M | N | X | X | |
+| \<UPnP HTTP1.0 Rules\> | M | Y | O | O | Only HTTP1.0 is supported. |
+| \<UPnP HTTP 1.1 Rules\> | M | N | X | X | The HTTP pipelining is not supported yet. |
+| \<UPnP HTTP Pipelining General Rules\> | M | N | X | X | |
+| \<UPnP Unknown Tag/Field Decoding\> | M | Y | O | O | |
+| \<UPnP Error Codes\> | M | - | - | - | Depend on your device implementation. |
+| \<UPnP Device Responsiveness\> | M | - | - | - | Depend on your device implementation. |
+| \<UPnP SOAP Packet Size\> | S | Y | O | O | There is no limitation for the embedded devices. |
+| \<UPnP Embedded Device Support\> | M | N | X | X | |
+| \<UPnP Multi-Homing Rules\> | M | Y | O | O | Depend on your device implementation. The UPnP errors are returned automatically when the services are defined and not implemented. |
+| \<UPnP Service Descriptions Rules\> | M | - | - | - | |
+| \<UPnP Subscription Handling\> | M | Y | O | O | |
+| \<UPnP Event Notification Handling\> | M | Y | O | O | Depend on implementation. |
+| \<UPnP Device Icons\> | M | - | - | - | Depend on implementation. |
+| \<UPnP PNG Icon Recommendations\> | M | - | - | - | Depend on implementation. |
+| \<UPnP Device Icon Support for .ICO\> | S | - | - | - | |
+| \<UPnP UTF-8 Support\> | M | Y | O | O | |
+| \<UPnP XML Comments\> | M | Y | O | O | Depend on implementation. |
+| \<UPnP Boolean Type\> | M | - | - | - | Depend on your device implementation. Tonot implement theQuaryStateVariable, don't useDevice::setQueryListner. |
+| \<UPnP QueryStateVariable\> | M | - | - | - | |
+| \<UPnP Action Arguments Encoding\> | M | Y | O | O | The BaseURL is removed only when the NMPR mode is true. The service descriptions must be relative in the device description. |
+| \<UPnP URI Rules\> | M | Y | O/X | O | There is no limitation for he UDN length. To change the device descriptions and the services, create the new device and start it. |
+| \<UPnP UDN Usage\> | M | Y | O | O | The control point is not renew the subscriptions automatically. |
+| \<UPnP Subscription Renewals\> | O | Y | X | O | |
+| \<UPnP Device Handling of SubscriptionRenewals\> | M | Y | O | O | |
+| \<UPnP IP Address Rules\> | M | Y | O | O | |
 
 # IPv6
 
