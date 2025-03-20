@@ -4,31 +4,29 @@
 [![build](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml)
 [![doxygen](https://github.com/cybergarage/mupnp-cc/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/mupnp-cc/)
 
+mUPnP for C++ is a development package for UPnP™ [^1] (Universal Plug and Play) developers. It provides a set of APIs to create UPnP™ devices and control points quickly and easily. This README file provides an overview of the package, its contents, and instructions on how to set up and use it.
+
 ## Overview
 
-mUPnP for C++ is a development package for UPnP™ developers. mUPnP controls these protocols automatically, and supports to create your devices and control points quickly.
+The UPnP™ architecture is designed to enable the discovery and control of networked devices and services, such as media servers and players, within a home network. UPnP™ is based on several standard protocols, including GENA, SSDP, SOAP, HTTPU, and HTTP. To create UPnP™ devices, you need to understand and implement these protocols.
 
-UPnP™ \* architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home.
+![UPnP applications](doc/img/upnpapp.png)
 
-UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
-
-![UPnP Applications](doc/img/upnpapp.png)
-
-\* UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
+mUPnP for C++ simplifies this process by handling these protocols automatically. It allows developers to focus on creating their devices and control points without worrying about the underlying protocol details.
 
 ## Building and Installation
 
 mUPnP for C++ is distributed as an Automake project, and so you can install the libary from the source codes with the following commands:
 
 ```
-./boostrap
+cd mupnp-cc
 ./configure
 make install
 ```
 
 ### macOS
 
-For macOS platforms, you can easily install using Homebrew without [µHTTP for C++](https://github.com/cybergarage/uhttp-cc) setup with the following `brew` commands:
+For macOS platforms, you can easily install using Homebrew with the following `brew` commands:
 
 ```
 brew tap cybergarage/homebrew
