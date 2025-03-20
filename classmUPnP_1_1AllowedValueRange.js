@@ -12,8 +12,8 @@ var classmUPnP_1_1AllowedValueRange =
     [ "setMinimum", "classmUPnP_1_1AllowedValueRange.html#a22204d40c377942bd035618da12b18bc", null ],
     [ "setStep", "classmUPnP_1_1AllowedValueRange.html#a932c7069ba5dabcb3d0f5648bde888e5", null ],
     [ "allowedValueRangeNode", "classmUPnP_1_1AllowedValueRange.html#a6f5268a2f7484223ec7cb2b08ddc5721", null ],
-    [ "ELEM_NAME", "classmUPnP_1_1AllowedValueRange.html#a28822022dc6c93992b598cee5846a306", null ],
-    [ "MAXIMUM", "classmUPnP_1_1AllowedValueRange.html#ae0e435b4ab56f7173d970096185b75ab", null ],
-    [ "MINIMUM", "classmUPnP_1_1AllowedValueRange.html#a64243d48477410c4472ba1f1bf095ac2", null ],
-    [ "STEP", "classmUPnP_1_1AllowedValueRange.html#a1a3d4917e384e7d93f012ed3e7962de3", null ]
+    [ "ELEM_NAME", "classmUPnP_1_1AllowedValueRange.html#a4a6321e15b425317d708d3c907b9fd3b", null ],
+    [ "MAXIMUM", "classmUPnP_1_1AllowedValueRange.html#aecf70bbf0c67f79d340a46a0bdecdb3e", null ],
+    [ "MINIMUM", "classmUPnP_1_1AllowedValueRange.html#a8906ad2228b790b3f04f6aff7c557c05", null ],
+    [ "STEP", "classmUPnP_1_1AllowedValueRange.html#a4068e7f28c988e9688e829d57e7cded7", null ]
 ];

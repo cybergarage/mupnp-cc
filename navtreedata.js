@@ -25,12 +25,53 @@
 var NAVTREE =
 [
   [ "mUPnP for C++", "index.html", [
-    [ "Overview", "index.html#autotoc_md1", null ],
-    [ "Building and Installation", "index.html#autotoc_md2", [
-      [ "macOS", "index.html#autotoc_md3", null ]
+    [ "Overview", "index.html#autotoc_md34", null ],
+    [ "Building and Installation", "index.html#autotoc_md35", [
+      [ "macOS", "index.html#autotoc_md36", null ]
     ] ],
-    [ "References", "index.html#autotoc_md4", null ],
-    [ "Examples", "index.html#autotoc_md5", null ],
+    [ "References", "index.html#autotoc_md37", null ],
+    [ "Examples", "index.html#autotoc_md38", null ],
+    [ "Programming Guide", "md_doc_2mupnpcxxproguide.html", [
+      [ "Introduction", "md_doc_2mupnpcxxproguide.html#autotoc_md1", null ],
+      [ "Setup", "md_doc_2mupnpcxxproguide.html#autotoc_md2", [
+        [ "Package Contents", "md_doc_2mupnpcxxproguide.html#autotoc_md3", null ],
+        [ "System Requirements", "md_doc_2mupnpcxxproguide.html#autotoc_md4", [
+          [ "WindowsXP", "md_doc_2mupnpcxxproguide.html#autotoc_md5", null ]
+        ] ],
+        [ "Building library and samples", "md_doc_2mupnpcxxproguide.html#autotoc_md6", [
+          [ "Windows", "md_doc_2mupnpcxxproguide.html#autotoc_md8", null ],
+          [ "MacOSX", "md_doc_2mupnpcxxproguide.html#autotoc_md9", null ]
+        ] ]
+      ] ],
+      [ "Device", "md_doc_2mupnpcxxproguide.html#autotoc_md10", [
+        [ "Class Overview", "md_doc_2mupnpcxxproguide.html#autotoc_md11", null ],
+        [ "Description", "md_doc_2mupnpcxxproguide.html#autotoc_md12", null ],
+        [ "Initiating", "md_doc_2mupnpcxxproguide.html#autotoc_md13", null ],
+        [ "Notify", "md_doc_2mupnpcxxproguide.html#autotoc_md14", null ],
+        [ "Embedded Devices", "md_doc_2mupnpcxxproguide.html#autotoc_md15", null ],
+        [ "Service", "md_doc_2mupnpcxxproguide.html#autotoc_md16", null ],
+        [ "Control", "md_doc_2mupnpcxxproguide.html#autotoc_md17", null ],
+        [ "Event", "md_doc_2mupnpcxxproguide.html#autotoc_md18", null ]
+      ] ],
+      [ "Control Point", "md_doc_2mupnpcxxproguide.html#autotoc_md19", [
+        [ "Class Overview", "md_doc_2mupnpcxxproguide.html#autotoc_md20", null ],
+        [ "Search", "md_doc_2mupnpcxxproguide.html#autotoc_md21", null ],
+        [ "Root Devices", "md_doc_2mupnpcxxproguide.html#autotoc_md22", null ],
+        [ "Control", "md_doc_2mupnpcxxproguide.html#autotoc_md23", null ],
+        [ "Event", "md_doc_2mupnpcxxproguide.html#autotoc_md24", null ]
+      ] ],
+      [ "Networked Media Product Requirements", "md_doc_2mupnpcxxproguide.html#autotoc_md25", [
+        [ "NMPR Mode", "md_doc_2mupnpcxxproguide.html#autotoc_md26", null ],
+        [ "Implementaion Status", "md_doc_2mupnpcxxproguide.html#autotoc_md27", null ]
+      ] ],
+      [ "IPv6", "md_doc_2mupnpcxxproguide.html#autotoc_md28", null ],
+      [ "Inside mUPnP", "md_doc_2mupnpcxxproguide.html#autotoc_md29", [
+        [ "Overriding HTTP Service", "md_doc_2mupnpcxxproguide.html#autotoc_md30", null ]
+      ] ],
+      [ "Transitioning From Version 1.2", "md_doc_2mupnpcxxproguide.html#autotoc_md31", [
+        [ "QueryListner", "md_doc_2mupnpcxxproguide.html#autotoc_md32", null ]
+      ] ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -55,6 +96,8 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -64,26 +107,27 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ActionData_8h.html",
-"SOAP_8h.html#a5cbff39c746415538de4fb739327eb4e",
-"classmUPnP_1_1Action.html#a3357271e55a2771264fb8d03d4df920f",
-"classmUPnP_1_1Argument.html#a73032525c82f5cf285f64b4d8bba2644",
-"classmUPnP_1_1ControlPoint.html#afb9c612bc51c025c50c2cd018e146121",
-"classmUPnP_1_1Device.html#a97b77b094ec7b006aad27c0a6ed62467",
-"classmUPnP_1_1HTTPMUSocket.html",
-"classmUPnP_1_1SSDPNotifySocketList.html#a7902d97ac84ff41e5e4b064d126027da",
-"classmUPnP_1_1Service.html#a0bd59b0d672dc9a3dc6b86cbc8ba57f9",
-"classmUPnP_1_1StateVariable.html#a581a2619ed02fdb846f16e397ed3c20b",
-"classmUPnP_1_1WeakVector.html#a2a6e5f05e34fecafa14cc4b7d434209f",
-"classuHTTP_1_1HTTPHeader.html",
-"classuHTTP_1_1HTTPRequest.html#a19ef0b6f1cea5b83538f96acfe2cab27",
-"classuHTTP_1_1HTTPStatus.html#a4fb61657de284d5d77d723bdd1a17cb1",
-"classuHTTP_1_1MessageQueue.html#a6d2ed0a16ffbdc5010f09b9afb853ca3",
-"classuHTTP_1_1SocketCore.html#a861ae0eef679621b345dbaf3ff3eb8c7",
-"classuHTTP_1_1URI.html#a3724d51376ed982803811e51285f5d79",
-"classuXML_1_1Node.html#a217fa33a1f3dbad20b63311e98a85275",
-"index.html#autotoc_md3",
-"namespaceuHTTP_1_1HTTP.html#a6c849b872bde75b06627fd1d05623f80"
+"ActionData_8cpp.html",
+"Log_8h.html#a22a9b11a19d75d92543945279b683b24",
+"Thread_8cpp.html",
+"classmUPnP_1_1ActionRequest.html#a9e2a6c51b2f06cdd7471b5baa1cc3184",
+"classmUPnP_1_1ControlPoint.html#a584414303fcc0d5d4280b11017bf1b10",
+"classmUPnP_1_1Device.html#a36eef924f652baeb9f866f49daeac8ec",
+"classmUPnP_1_1Device.html#ae1b78ad0589e2c5f7354ffd99b6cf4be",
+"classmUPnP_1_1NotifyRequest.html#a81d7181d530c4dcb3a595563b0a94e73",
+"classmUPnP_1_1SSDPResponse.html#a3a9035c6aa6499ebee670c9626a6857e",
+"classmUPnP_1_1Service.html#ae3d2a5a9a41cc8df30639acd3b2ceae6",
+"classmUPnP_1_1Subscriber.html#ab13d0e294e27122f2575eca96d8b098b",
+"classuHTTP_1_1Debug.html#a43a5aad1b410c2c8ac15c838cc171400",
+"classuHTTP_1_1HTTPPacket.html#a74fb3cf516c19927bc707419e2b236fd",
+"classuHTTP_1_1HTTPResponse.html#ac5a0ae54aa75da2db7fcdc69751128ba",
+"classuHTTP_1_1ListenerList.html",
+"classuHTTP_1_1Reader.html#a396b4f8ab2e30f799948db771eca301a",
+"classuHTTP_1_1String.html#ae719be2d0568148f3c7ec3dd708d7809",
+"classuSOAP_1_1SOAPRequest.html",
+"classuXML_1_1NodeList.html#a28a2852c768f2d46db96747ab031df8c",
+"namespacemUPnP_1_1Subscription.html#a7322adcae29e54ea0b215a5cd0c05943",
+"namespaceuSOAP_1_1SOAP.html#a7f5b93bb0dce8a1aa306981445fa6332"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

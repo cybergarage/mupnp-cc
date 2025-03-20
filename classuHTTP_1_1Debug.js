@@ -12,5 +12,5 @@ var classuHTTP_1_1Debug =
     [ "warning", "classuHTTP_1_1Debug.html#ad9ffa6c6c69e881e916c7907fdd1b721", null ],
     [ "warning", "classuHTTP_1_1Debug.html#a166b4657e3ff3670c8cf78daff323336", null ],
     [ "warning", "classuHTTP_1_1Debug.html#a43a5aad1b410c2c8ac15c838cc171400", null ],
-    [ "enabled", "classuHTTP_1_1Debug.html#a66cf2710fc314e6c7ec02c7e42f268ac", null ]
+    [ "enabled", "classuHTTP_1_1Debug.html#a1bc0e814f5cc9a86b2e70e4ece422ef5", null ]
 ];

@@ -170,7 +170,7 @@ var namespaceuHTTP =
     [ "DecodeSocketError", "namespaceuHTTP.html#ac90e647df4f95451df86ce5865747d72", null ],
     [ "GetCurrentSystemTime", "namespaceuHTTP.html#a676617a70e6c16a8068ed374bd7052f1", null ],
     [ "GetHostAddress", "namespaceuHTTP.html#a135d8609137be1c65da277e31da42130", null ],
-    [ "GetHostAddresses", "namespaceuHTTP.html#a4357c696bed9a84da418e3a585839fea", null ],
+    [ "GetHostAddresses", "namespaceuHTTP.html#ab2e4d89f4f876335023f2bd4f44dbef2", null ],
     [ "GetHostInterface", "namespaceuHTTP.html#aef80a5282731394489936dbe47222437", null ],
     [ "GetHostURL", "namespaceuHTTP.html#a99d5d1c48a995e6d0a6779ab6260985d", null ],
     [ "GetIPv6ScopeID", "namespaceuHTTP.html#a3bb4e4bca9349ef353a81c4dfd5c8c84", null ],

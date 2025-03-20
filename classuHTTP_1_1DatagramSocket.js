@@ -1,10 +1,10 @@
 var classuHTTP_1_1DatagramSocket =
 [
-    [ "DatagramSocket", "classuHTTP_1_1DatagramSocket.html#a6b8332a3a7d04c8937a596cc6978e7be", null ],
-    [ "DatagramSocket", "classuHTTP_1_1DatagramSocket.html#a49dbbfdcf8e84f853ff70c3c081de3bd", null ],
-    [ "~DatagramSocket", "classuHTTP_1_1DatagramSocket.html#ad353910a08e8f5681003a1003c891704", null ],
-    [ "bind", "classuHTTP_1_1DatagramSocket.html#a333884535986c576e09097c9a2001d2d", null ],
-    [ "receive", "classuHTTP_1_1DatagramSocket.html#ad866eb8de8e392cc69d34794f80ecc62", null ],
-    [ "send", "classuHTTP_1_1DatagramSocket.html#a46518fac3bbdae8836d85056d03689fc", null ],
-    [ "send", "classuHTTP_1_1DatagramSocket.html#a0f86c7626d161458b08e07b0419505de", null ]
+    [ "DatagramSocket", "classuHTTP_1_1DatagramSocket.html#ad6bb06a22f358ab12369e79c4a600033", null ],
+    [ "DatagramSocket", "classuHTTP_1_1DatagramSocket.html#a1b14d05bb2b87909a50b4f9f6a8ee1d2", null ],
+    [ "~DatagramSocket", "classuHTTP_1_1DatagramSocket.html#a67749ad62429e5a9aac2b2d9faaff89e", null ],
+    [ "bind", "classuHTTP_1_1DatagramSocket.html#aefb080ec0e1ecefbb38b3475365aa132", null ],
+    [ "receive", "classuHTTP_1_1DatagramSocket.html#a6dd044e44eab2a7eb57342687bf3cf08", null ],
+    [ "send", "classuHTTP_1_1DatagramSocket.html#a55d724c4859286dea8838b78e809dabc", null ],
+    [ "send", "classuHTTP_1_1DatagramSocket.html#a4da08941404a5025987da2a7e93a66ca", null ]
 ];

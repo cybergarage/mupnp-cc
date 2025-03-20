@@ -1,7 +1,7 @@
 var classmUPnP_1_1Subscriber =
 [
-    [ "Subscriber", "classmUPnP_1_1Subscriber.html#a0356f496cda4e62ce5b32153cadce7a5", null ],
-    [ "~Subscriber", "classmUPnP_1_1Subscriber.html#a744e4b6aab9d3a4339674de9557fe94d", null ],
+    [ "Subscriber", "classmUPnP_1_1Subscriber.html#acf994baa7d26eaa3d05c767b695e5d64", null ],
+    [ "~Subscriber", "classmUPnP_1_1Subscriber.html#a699f864e05fe964363aeaeb600eeb6b4", null ],
     [ "getDeliveryHost", "classmUPnP_1_1Subscriber.html#ab8ddcef682352dacb2acbe59d23655bd", null ],
     [ "getDeliveryPath", "classmUPnP_1_1Subscriber.html#a5724c518c2aef162a7b83998943d010a", null ],
     [ "getDeliveryPort", "classmUPnP_1_1Subscriber.html#a7735a4a2816d8adde2b5653c7cf9ef65", null ],
@@ -11,9 +11,9 @@ var classmUPnP_1_1Subscriber =
     [ "getSID", "classmUPnP_1_1Subscriber.html#ac6fb5d5f48e86df0ac416164b3819897", null ],
     [ "getSubscriptionTime", "classmUPnP_1_1Subscriber.html#a4b3d1f71b43b0c23a73846721b81a042", null ],
     [ "getTimeOut", "classmUPnP_1_1Subscriber.html#a3f7aa513e0058cab76f363fa7de8b0e9", null ],
-    [ "incrementNotifyCount", "classmUPnP_1_1Subscriber.html#abedad789dda12a3bba697f9efe3b17fe", null ],
-    [ "isExpired", "classmUPnP_1_1Subscriber.html#a440eaceff25e32612222dc1e329dea01", null ],
-    [ "renew", "classmUPnP_1_1Subscriber.html#aef076e46d0bfc23bac05a9be2629f2cc", null ],
+    [ "incrementNotifyCount", "classmUPnP_1_1Subscriber.html#ac7e86b8dcb05a0b08e1377e52f9e5570", null ],
+    [ "isExpired", "classmUPnP_1_1Subscriber.html#aca1bd61a03a3491dcd0b26c8f687d09b", null ],
+    [ "renew", "classmUPnP_1_1Subscriber.html#a6e9cbbd51951ca736320943028debac4", null ],
     [ "setDeliveryURL", "classmUPnP_1_1Subscriber.html#af244e36b36b6a9425c5ac5b58e66268e", null ],
     [ "setInterfaceAddress", "classmUPnP_1_1Subscriber.html#ab6287a30db9fee5415ff31a07ff1a33b", null ],
     [ "setNotifyCount", "classmUPnP_1_1Subscriber.html#a2c5bb37145c1b630b6a552a6a0731559", null ],

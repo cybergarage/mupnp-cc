@@ -13,11 +13,11 @@ var classmUPnP_1_1Icon =
     [ "setMimeType", "classmUPnP_1_1Icon.html#a19b263a3c0725682cb0689e9a3081b09", null ],
     [ "setURL", "classmUPnP_1_1Icon.html#a01136e4b3d6efe93cef0a30e07b981ba", null ],
     [ "setWidth", "classmUPnP_1_1Icon.html#a0f39cdd92fb63a8c207d1a4120e62b0f", null ],
-    [ "DEPTH", "classmUPnP_1_1Icon.html#a01743f31f8c3e6cb7489df10faf2ef3a", null ],
-    [ "ELEM_NAME", "classmUPnP_1_1Icon.html#ac16f55715be0a3b75470ed3c7333662c", null ],
-    [ "HEIGHT", "classmUPnP_1_1Icon.html#afdba9531aa6e19bc28b89e3691d45dbf", null ],
+    [ "DEPTH", "classmUPnP_1_1Icon.html#a3c2e3a2385a9c69e7cdfd777c36a89d4", null ],
+    [ "ELEM_NAME", "classmUPnP_1_1Icon.html#a9774083f61f3859a2d717efc73fe74f1", null ],
+    [ "HEIGHT", "classmUPnP_1_1Icon.html#a8b051f65a7cf0c5c29e0b1291f0e787b", null ],
     [ "iconNode", "classmUPnP_1_1Icon.html#a9e2bcac0c40115b339b1b0708120069d", null ],
-    [ "MIME_TYPE", "classmUPnP_1_1Icon.html#a1c02da77e3d5dab8ab4d17bd2e46dcc6", null ],
-    [ "URL", "classmUPnP_1_1Icon.html#aa41ff4e71f02a219c5a45e10d9ea2b1b", null ],
-    [ "WIDTH", "classmUPnP_1_1Icon.html#af973cc6804533f02f2fac3023da46588", null ]
+    [ "MIME_TYPE", "classmUPnP_1_1Icon.html#afdc4f7f803d6bcafc2c31a15247f51a4", null ],
+    [ "URL", "classmUPnP_1_1Icon.html#ac2c58c381cecb35908680d81fb380584", null ],
+    [ "WIDTH", "classmUPnP_1_1Icon.html#a357a1f948402d6ce70e73db9c432fedd", null ]
 ];

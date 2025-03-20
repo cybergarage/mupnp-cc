@@ -1,12 +1,12 @@
 var classmUPnP_1_1HTTPUSocket =
 [
-    [ "HTTPUSocket", "classmUPnP_1_1HTTPUSocket.html#a0a1dea559269c099c7acd2afd7bf39a8", null ],
-    [ "~HTTPUSocket", "classmUPnP_1_1HTTPUSocket.html#ab8037efc3be292ae2f42654a71dbe30e", null ],
-    [ "close", "classmUPnP_1_1HTTPUSocket.html#a53c3336776b4d576ff4abb01663966d6", null ],
+    [ "HTTPUSocket", "classmUPnP_1_1HTTPUSocket.html#a04ceeb3fd6ea676b8b7e685ed0d53fc9", null ],
+    [ "~HTTPUSocket", "classmUPnP_1_1HTTPUSocket.html#ad18833c7e3d1388a4db93761f285cb9e", null ],
+    [ "close", "classmUPnP_1_1HTTPUSocket.html#a478b9df8f18fc146dfdf414bfe4305d1", null ],
     [ "getDatagramSocket", "classmUPnP_1_1HTTPUSocket.html#a203ac752e9d6d59fe831bc44a93b74a8", null ],
     [ "getLocalAddress", "classmUPnP_1_1HTTPUSocket.html#a9cb3823939a617576856cf6803fbb6d4", null ],
-    [ "open", "classmUPnP_1_1HTTPUSocket.html#a567e67c4b6c3f5a2087a9937e1a818de", null ],
-    [ "post", "classmUPnP_1_1HTTPUSocket.html#a93bbec612a095c5dfaa8641d1f02291e", null ],
-    [ "receive", "classmUPnP_1_1HTTPUSocket.html#aa3dcf2917eee8cd0a7f882a5c257a732", null ],
+    [ "open", "classmUPnP_1_1HTTPUSocket.html#a2d045679315e6cc9e5a26a48c29997e8", null ],
+    [ "post", "classmUPnP_1_1HTTPUSocket.html#a3a6447b9b42290139c787354a395e039", null ],
+    [ "receive", "classmUPnP_1_1HTTPUSocket.html#a995f789f1e3daba26bb9ea34c9ef9030", null ],
     [ "ssdpUniSock", "classmUPnP_1_1HTTPUSocket.html#a0bbecb788e46c97b7d2997ab4bc75dc0", null ]
 ];

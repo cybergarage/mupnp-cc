@@ -2,7 +2,7 @@ var HostInterface_8h =
 [
     [ "uHTTP::HostInterface", "classuHTTP_1_1HostInterface.html", "classuHTTP_1_1HostInterface" ],
     [ "GetHostAddress", "HostInterface_8h.html#a135d8609137be1c65da277e31da42130", null ],
-    [ "GetHostAddresses", "HostInterface_8h.html#a4357c696bed9a84da418e3a585839fea", null ],
+    [ "GetHostAddresses", "HostInterface_8h.html#ab2e4d89f4f876335023f2bd4f44dbef2", null ],
     [ "GetHostInterface", "HostInterface_8h.html#aef80a5282731394489936dbe47222437", null ],
     [ "GetIPv6ScopeID", "HostInterface_8h.html#a3bb4e4bca9349ef353a81c4dfd5c8c84", null ],
     [ "GetNHostAddresses", "HostInterface_8h.html#a730aaf6a11c549382ed96154b772e357", null ],
