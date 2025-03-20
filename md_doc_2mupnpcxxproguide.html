@@ -561,7 +561,7 @@ Implementaion Status</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">&lt;UPnP Device Advertisement Frequency&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">Y   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">Use Device::setWirelessMode() too.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">&lt;UPnP Discovery over Wireless&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">Y   </td><td class="markdownTableBodyNone">X   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">T h e s u b s c r i p t i on i s u p d a t e automatically when the NMPR mode is true.    </td></tr>
+<td class="markdownTableBodyNone">&lt;UPnP Discovery over Wireless&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">Y   </td><td class="markdownTableBodyNone">X   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">The subscription is update automatically when the NMPR mode is true.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">&lt;UPnP Device Sync Rules&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">Y   </td><td class="markdownTableBodyNone">X   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">Depend on your platform and device implemenation.    </td></tr>
 <tr class="markdownTableRowEven">
@@ -605,7 +605,7 @@ Implementaion Status</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">&lt;UPnP XML Comments&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">Y   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">O   </td><td class="markdownTableBodyNone">Depend on implementation.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">&lt;UPnP Boolean Type&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">Depend on your device implementation. Tonot implement theQuaryStateVariable, don't useDevice::setQueryListner.    </td></tr>
+<td class="markdownTableBodyNone">&lt;UPnP Boolean Type&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">Depend on your device implementation.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">&lt;UPnP QueryStateVariable&gt;   </td><td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone">-   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
@@ -623,8 +623,7 @@ Implementaion Status</h2>
 </table>
 <h1><a class="anchor" id="autotoc_md28"></a>
 IPv6</h1>
-<p><a class="el" href="namespacemUPnP.html">mUPnP</a> binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.</p>
-<p><a class="el" href="namespacemUPnP.html">mUPnP</a> supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following</p>
+<p><a class="el" href="namespacemUPnP.html">mUPnP</a> binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.mUPnP supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following</p>
 <p>method before the devices or control points are created.</p>
 <div class="fragment"><div class="line">UPnP::SetEnable(UPnP::USE_ONLY_IPV6_ADDR)</div>
 </div><!-- fragment --><p>Link local is the default scope for multicasting of <a class="el" href="namespacemUPnP.html">mUPnP</a>. Use UPnP::SetEnable() to change the scope. The following example changes the scope to the site local.</p>
