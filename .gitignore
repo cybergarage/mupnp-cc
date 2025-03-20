@@ -19,3 +19,6 @@ examples/clock/unix/upnpclock
 examples/tv/unix/upnptv
 examples/upnpdump/unix/upnpdump
 stamp-h2
+
+doc/html/
+plantuml.jar
