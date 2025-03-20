@@ -584,7 +584,7 @@ device->start().;
 | \<UPnP Auto-IP Support\> | M | - | - | - | Not support to the dynamic changes in network configuration. |
 | \<UPnP Device Reset\> | M | N | X | X | The inavtivity connection close and HTTP HEAD request are not supported yet. |
 | \<UPnP HTTP Support and General Rules\> | M | N | X | X | |
-| \<UPnP HTTP1.0 Rules\> | M | Y | O | O | Only HTTP1.0 is supported. |
+| \<UPnP HTTP 1.0 Rules\> | M | Y | O | O | Only HTTP 1.0 is supported. |
 | \<UPnP HTTP 1.1 Rules\> | M | N | X | X | The HTTP pipelining is not supported yet. |
 | \<UPnP HTTP Pipelining General Rules\> | M | N | X | X | |
 | \<UPnP Unknown Tag/Field Decoding\> | M | Y | O | O | |
