@@ -1,24 +1,29 @@
+# Autotools
 Makefile
 config.*
 autom4te.cache/
 configure.ac~
 configure~
-
+.deps/
 *.o
 *.a
 *.po
 
-.DS_Store
-*xcuserdata*
-*.dirstamp
-.deps/
-
+# Generated files
 test/unix/mupnptest
 test/unix/mupnptest.*
+test/unix/test-suite.log
 examples/clock/unix/upnpclock
 examples/tv/unix/upnptv
 examples/upnpdump/unix/upnpdump
 stamp-h2
 
+# Doxygen
 doc/html/
 plantuml.jar
+
+# Mac OS X
+.DS_Store
+*xcuserdata*
+*.dirstamp
+
