@@ -16,12 +16,14 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
-  
-Subscriber::Subscriber() {
+
+Subscriber::Subscriber()
+{
   renew();
 }
 
-Subscriber::~Subscriber() {
+Subscriber::~Subscriber()
+{
   renew();
 }
 
@@ -29,38 +31,41 @@ Subscriber::~Subscriber() {
 // SEQ
 ////////////////////////////////////////////////
 
-void Subscriber::incrementNotifyCount()  {
+void Subscriber::incrementNotifyCount()
+{
   if (notifyCount == LONG_MAX) {
     notifyCount = 1;
     return;
   }
   notifyCount++;
 }
-  
+
 ////////////////////////////////////////////////
 // Timeout
 ////////////////////////////////////////////////
 
-bool Subscriber::isExpired() {
+bool Subscriber::isExpired()
+{
   long currTime = time(NULL);
-    
+
   // Thanks for Oliver Newell (10/26/04)
-  if(timeOut == Subscription::INFINITE_VALUE) 
-    return false; 
-      
+  if (timeOut == Subscription::INFINITE_VALUE)
+    return false;
+
   // Thanks for Oliver Newell (10/26/04)
-  long expiredTime = getSubscriptionTime() + getTimeOut()*1000;
+  long expiredTime = getSubscriptionTime() + getTimeOut() * 1000;
   if (expiredTime < currTime)
     return true;
-      
+
   return false;
 }
 
 ////////////////////////////////////////////////
 // renew
 ////////////////////////////////////////////////
-  
-void Subscriber::renew() {
+
+void Subscriber::renew()
+{
   setSubscriptionTime(time(NULL));
   setNotifyCount(0);
 }

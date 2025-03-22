@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File : MPEGFormat.cpp
-*
-*	Revision:
-*
-*	06/08/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File : MPEGFormat.cpp
+ *
+ *	Revision:
+ *
+ *	06/08/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/object/format/MPEGFormat.h>
 #include <mupnp/upnp/media/server/object/item/ItemNode.h>
@@ -29,43 +29,42 @@ using namespace CyberLink;
 MPEGFormat::MPEGFormat()
 {
 }
-	
-MPEGFormat::MPEGFormat(CyberIO::File *file)
+
+MPEGFormat::MPEGFormat(CyberIO::File* file)
 {
-	setFile(file);
+  setFile(file);
 }
 
 ////////////////////////////////////////////////
 // equals
 ////////////////////////////////////////////////
-	
-bool MPEGFormat::equals(CyberIO::File *file)
-{
-	if (file == NULL)
-		return false;
 
-	string ext;
-	file->getSuffix(ext);
-	if (ext.compare("mpeg") == 0 || ext.compare("mpg") == 0)
-		return true;
-	return false;
+bool MPEGFormat::equals(CyberIO::File* file)
+{
+  if (file == NULL)
+    return false;
+
+  string ext;
+  file->getSuffix(ext);
+  if (ext.compare("mpeg") == 0 || ext.compare("mpg") == 0)
+    return true;
+  return false;
 }
 
 ////////////////////////////////////////////////
 // getAttributeList
 ////////////////////////////////////////////////
 
-int MPEGFormat::getAttributeList(CyberXML::AttributeList &attrList)
+int MPEGFormat::getAttributeList(CyberXML::AttributeList& attrList)
 {
-	File *file = getFile();
-	if (file == NULL)
-		return attrList.size();	
+  File* file = getFile();
+  if (file == NULL)
+    return attrList.size();
 
-	ostringstream os;
-	os << file->length();
-	Attribute *sizeStr = new Attribute(ItemNode::SIZE, os.str().c_str());
-	attrList.add(sizeStr);
-		
-	return attrList.size();	
+  ostringstream os;
+  os << file->length();
+  Attribute* sizeStr = new Attribute(ItemNode::SIZE, os.str().c_str());
+  attrList.add(sizeStr);
+
+  return attrList.size();
 }
-

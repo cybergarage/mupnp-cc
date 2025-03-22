@@ -11,36 +11,35 @@
 #ifndef _MUPMPCC_ACTIONLIST_H_
 #define _MUPMPCC_ACTIONLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/Action.h>
+#include <mupnp/util/Vector.h>
 
 namespace mUPnP {
 
-class ActionList : public Vector<Action>  {
+class ActionList : public Vector<Action> {
 
-public:
-    
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  ActionList() 
+
+  ActionList()
   {
   }
 
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  Action *getAction(size_t n) {
+
+  Action* getAction(size_t n)
+  {
     return get(n);
   }
 };

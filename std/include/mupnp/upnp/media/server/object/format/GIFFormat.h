@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : GIFPlugIn.h
-*
-*	Revision:
-*
-*	01/25/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : GIFPlugIn.h
+ *
+ *	Revision:
+ *
+ *	01/25/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_GIFFORMT_H_
 #define _CLINK_MEDIA_GIFFORMT_H_
@@ -20,34 +20,31 @@
 
 namespace CyberLink {
 
-class GIFFormat : public ImageFormat
-{
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+class GIFFormat : public ImageFormat {
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  GIFFormat();
+  GIFFormat(CyberIO::File* file);
 
-	GIFFormat();
-	GIFFormat(CyberIO::File *file);
+  ////////////////////////////////////////////////
+  // Abstract Methods
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Abstract Methods
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  bool equals(CyberIO::File* file);
 
-	bool equals(CyberIO::File *file);
-	
-	FormatObject *createObject(CyberIO::File *file)
-	{
-		return new GIFFormat(file);
-	}
-	
-	const char *getMimeType()
-	{
-		return "image/gif";
-	}
+  FormatObject* createObject(CyberIO::File* file)
+  {
+    return new GIFFormat(file);
+  }
+
+  const char* getMimeType()
+  {
+    return "image/gif";
+  }
 };
 
 }

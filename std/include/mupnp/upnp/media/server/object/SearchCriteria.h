@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: SearchCriteria.h
-*
-*	Revision:
-*
-*	08/06/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: SearchCriteria.h
+ *
+ *	Revision:
+ *
+ *	08/06/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_SEARCHCRITERIA_H_
 #define _CLINK_MEDIA_SEARCHCRITERIA_H_
@@ -20,226 +20,217 @@
 
 namespace CyberLink {
 
-class SearchCriteria
-{
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-public:
+class SearchCriteria {
+  ////////////////////////////////////////////////
+  //	Constants
+  ////////////////////////////////////////////////
 
-	static const char *ID;
-	static const char *PARENT_ID;
-	static const char *TITLE;
-	static const char *CREATOR;
-	static const char *CLASS;
-	static const char *DATE;
+  public:
+  static const char* ID;
+  static const char* PARENT_ID;
+  static const char* TITLE;
+  static const char* CREATOR;
+  static const char* CLASS;
+  static const char* DATE;
 
-	static const char *AND;
-	static const char *OR;
+  static const char* AND;
+  static const char* OR;
 
-	static const char *EQ;
-	static const char *NEQ;
-	static const char *LT;
-	static const char *LE;
-	static const char *GT;
-	static const char *GE;
+  static const char* EQ;
+  static const char* NEQ;
+  static const char* LT;
+  static const char* LE;
+  static const char* GT;
+  static const char* GE;
 
-	static const char *CONTAINS;
-	static const char *DOESNOTCONTAIN;
-	static const char *DERIVEDFROM;
-	static const char *EXISTS;
+  static const char* CONTAINS;
+  static const char* DOESNOTCONTAIN;
+  static const char* DERIVEDFROM;
+  static const char* EXISTS;
 
-	static const char *TRUE_STR;
-	static const char *FALSE_STR;
+  static const char* TRUE_STR;
+  static const char* FALSE_STR;
 
-	static const char *WCHARS;
+  static const char* WCHARS;
 
-	////////////////////////////////////////////////
-	// Member
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Member
+  ////////////////////////////////////////////////
 
-private:
+  private:
+  std::string property;
+  std::string operation;
+  std::string value;
+  std::string logic;
+  bool result;
 
-	std::string property;
-	std::string operation;
-	std::string value;
-	std::string logic;
-	bool		result;
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  SearchCriteria()
+  {
+    setResult(false);
+  }
 
-	SearchCriteria() 
-	{
-		setResult(false);
-	}
-	
-	SearchCriteria(SearchCriteria *searchCri) 
-	{
-		setProperty(searchCri->getProperty());
-		setOperation(searchCri->getOperation());
-		setValue(searchCri->getValue());
-		setLogic(searchCri->getLogic());
-		setResult(searchCri->getResult());
-	}
+  SearchCriteria(SearchCriteria* searchCri)
+  {
+    setProperty(searchCri->getProperty());
+    setOperation(searchCri->getOperation());
+    setValue(searchCri->getValue());
+    setLogic(searchCri->getLogic());
+    setResult(searchCri->getResult());
+  }
 
-	~SearchCriteria() 
-	{
-	}
+  ~SearchCriteria()
+  {
+  }
 
-	////////////////////////////////////////////////
-	// Propety
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Propety
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void setProperty(const char* val)
+  {
+    property = val;
+  }
 
-	void setProperty(const char * val)
-	{
-		property = val;
-	}
+  const char* getProperty()
+  {
+    return property.c_str();
+  }
 
-	const char *getProperty()
-	{
-		return property.c_str();
-	}
+  ////////////////////////////////////////////////
+  // Operation
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Operation
-	////////////////////////////////////////////////
+  public:
+  void setOperation(const char* val)
+  {
+    operation = val;
+  }
 
-public:
+  const char* getOperation()
+  {
+    return operation.c_str();
+  }
 
-	void setOperation(const char * val)
-	{
-		operation = val;
-	}
+  bool isEQ()
+  {
+    return (operation.compare(EQ) == 0) ? true : false;
+  }
 
-	const char *getOperation()
-	{
-		return operation.c_str();
-	}
+  bool isNEQ()
+  {
+    return (operation.compare(NEQ) == 0) ? true : false;
+  }
 
-	bool isEQ()
-	{
-		return (operation.compare(EQ) == 0) ? true : false;
-	}
+  bool isLT()
+  {
+    return (operation.compare(LT) == 0) ? true : false;
+  }
 
-	bool isNEQ()
-	{
-		return (operation.compare(NEQ) == 0) ? true : false;
-	}
+  bool isLE()
+  {
+    return (operation.compare(LE) == 0) ? true : false;
+  }
 
-	bool isLT()
-	{
-		return (operation.compare(LT) == 0) ? true : false;
-	}
+  bool isGT()
+  {
+    return (operation.compare(GT) == 0) ? true : false;
+  }
 
-	bool isLE()
-	{
-		return (operation.compare(LE) == 0) ? true : false;
-	}
+  bool isGE()
+  {
+    return (operation.compare(GE) == 0) ? true : false;
+  }
 
-	bool isGT()
-	{
-		return (operation.compare(GT) == 0) ? true : false;
-	}
+  bool isContains()
+  {
+    return (operation.compare(CONTAINS) == 0) ? true : false;
+  }
 
-	bool isGE()
-	{
-		return (operation.compare(GE) == 0) ? true : false;
-	}
+  bool isDoesNotContain()
+  {
+    return (operation.compare(DOESNOTCONTAIN) == 0) ? true : false;
+  }
 
-	bool isContains()
-	{
-		return (operation.compare(CONTAINS) == 0) ? true : false;
-	}
+  bool isDerivedFrom()
+  {
+    return (operation.compare(DERIVEDFROM) == 0) ? true : false;
+  }
 
-	bool isDoesNotContain()
-	{
-		return (operation.compare(DOESNOTCONTAIN) == 0) ? true : false;
-	}
+  bool isExists()
+  {
+    return (operation.compare(EXISTS) == 0) ? true : false;
+  }
 
-	bool isDerivedFrom()
-	{
-		return (operation.compare(DERIVEDFROM) == 0) ? true : false;
-	}
+  ////////////////////////////////////////////////
+  // Value
+  ////////////////////////////////////////////////
 
-	bool isExists()
-	{
-		return (operation.compare(EXISTS) == 0) ? true : false;
-	}
+  public:
+  void setValue(const char* val)
+  {
+    value = val;
+  }
 
-	////////////////////////////////////////////////
-	// Value
-	////////////////////////////////////////////////
+  const char* getValue()
+  {
+    return value.c_str();
+  }
 
-public:
+  bool isTrueValue()
+  {
+    return (value.compare(TRUE_STR) == 0) ? true : false;
+  }
 
-	void setValue(const char * val)
-	{
-		value = val;
-	}
+  bool isFalseValue()
+  {
+    return (value.compare(FALSE_STR) == 0) ? true : false;
+  }
 
-	const char *getValue()
-	{
-		return value.c_str();
-	}
+  ////////////////////////////////////////////////
+  // Logic
+  ////////////////////////////////////////////////
 
-	bool isTrueValue()
-	{
-		return (value.compare(TRUE_STR) == 0) ? true : false;
-	}
+  public:
+  void setLogic(const char* val)
+  {
+    logic = val;
+  }
 
-	bool isFalseValue()
-	{
-		return (value.compare(FALSE_STR) == 0) ? true : false;
-	}
+  const char* getLogic()
+  {
+    return logic.c_str();
+  }
 
-	////////////////////////////////////////////////
-	// Logic
-	////////////////////////////////////////////////
+  bool isLogicalAND()
+  {
+    return (logic.compare(AND) == 0) ? true : false;
+  }
 
-public:
+  bool isLogicalOR()
+  {
+    return (logic.compare(OR) == 0) ? true : false;
+  }
 
-	void setLogic(const char * val)
-	{
-		logic = val;
-	}
+  ////////////////////////////////////////////////
+  // Result
+  ////////////////////////////////////////////////
 
-	const char *getLogic()
-	{
-		return logic.c_str();
-	}
+  public:
+  void setResult(bool value)
+  {
+    result = value;
+  }
 
-	bool isLogicalAND()
-	{
-		return (logic.compare(AND) == 0) ? true : false;
-	}
-
-	bool isLogicalOR()
-	{
-		return (logic.compare(OR) == 0) ? true : false;
-	}
-
-	////////////////////////////////////////////////
-	// Result
-	////////////////////////////////////////////////
-
-public:
-
-	void setResult(bool value)
-	{
-		result = value;
-	}
-
-	bool getResult()
-	{
-		return result;
-	}
+  bool getResult()
+  {
+    return result;
+  }
 };
 
 }

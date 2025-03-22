@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : JPEGFormat.h
-*
-*	Revision:
-*
-*	04/18/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : JPEGFormat.h
+ *
+ *	Revision:
+ *
+ *	04/18/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_JPEGFORMT_H_
 #define _CLINK_MEDIA_JPEGFORMT_H_
@@ -20,34 +20,31 @@
 
 namespace CyberLink {
 
-class JPEGFormat : public ImageFormat
-{
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+class JPEGFormat : public ImageFormat {
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  JPEGFormat();
+  JPEGFormat(CyberIO::File* file);
 
-	JPEGFormat();
-	JPEGFormat(CyberIO::File *file);
+  ////////////////////////////////////////////////
+  // Abstract Methods
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Abstract Methods
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  bool equals(CyberIO::File* file);
 
-	bool equals(CyberIO::File *file);
-	
-	FormatObject *createObject(CyberIO::File *file)
-	{
-		return new JPEGFormat(file);
-	}
-	
-	const char *getMimeType()
-	{
-		return "image/jpeg";
-	}
+  FormatObject* createObject(CyberIO::File* file)
+  {
+    return new JPEGFormat(file);
+  }
+
+  const char* getMimeType()
+  {
+    return "image/jpeg";
+  }
 };
 
 }

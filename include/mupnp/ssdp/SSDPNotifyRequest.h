@@ -18,12 +18,13 @@
 namespace mUPnP {
 
 class SSDPNotifyRequest : public SSDPRequest {
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  SSDPNotifyRequest() {
+
+  SSDPNotifyRequest()
+  {
     setMethod(uHTTP::HTTP::NOTIFY);
     setURI("*");
   }
@@ -32,4 +33,3 @@ public:
 }
 
 #endif
-

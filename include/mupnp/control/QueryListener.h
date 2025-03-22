@@ -17,8 +17,8 @@ namespace mUPnP {
 class StateVariable;
 
 class QueryListener {
-public:
-  virtual bool queryControlReceived(StateVariable *stateVar) = 0;
+  public:
+  virtual bool queryControlReceived(StateVariable* stateVar) = 0;
 };
 
 }

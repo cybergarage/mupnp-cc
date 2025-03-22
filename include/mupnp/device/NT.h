@@ -15,14 +15,13 @@
 
 namespace mUPnP {
 namespace NT {
-const char ROOTDEVICE[] = "upnp:rootdevice";
-const char EVENT[] = "upnp:event";
-  
-bool IsRootDevice(const std::string &usnValue);
+  const char ROOTDEVICE[] = "upnp:rootdevice";
+  const char EVENT[] = "upnp:event";
+
+  bool IsRootDevice(const std::string& usnValue);
 
 }
 
 }
 
 #endif
-

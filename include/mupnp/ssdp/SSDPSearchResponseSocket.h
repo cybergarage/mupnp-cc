@@ -11,18 +11,18 @@
 #ifndef _MUPMPCC_SSDPSEARCHRESPONSESYSOCKET_H_
 #define _MUPMPCC_SSDPSEARCHRESPONSESYSOCKET_H_
 
-#include <mupnp/util/Thread.h>
 #include <mupnp/ssdp/HTTPUSocket.h>
-#include <mupnp/ssdp/SSDPSearchResponse.h>
 #include <mupnp/ssdp/SSDPSearchRequest.h>
+#include <mupnp/ssdp/SSDPSearchResponse.h>
+#include <mupnp/util/Thread.h>
 
 namespace mUPnP {
 class ControlPoint;
 
 class SSDPSearchResponseSocket : public HTTPUSocket, public uHTTP::Thread {
-  ControlPoint *controlPoint;
+  ControlPoint* controlPoint;
 
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -31,28 +31,31 @@ public:
   ~SSDPSearchResponseSocket();
 
   ////////////////////////////////////////////////
-  // ControlPoint  
+  // ControlPoint
   ////////////////////////////////////////////////
-  
-  void setControlPoint(ControlPoint *ctrlp) {
+
+  void setControlPoint(ControlPoint* ctrlp)
+  {
     controlPoint = ctrlp;
   }
 
-  ControlPoint *getControlPoint() {
+  ControlPoint* getControlPoint()
+  {
     return controlPoint;
   }
 
   ////////////////////////////////////////////////
-  // run  
+  // run
   ////////////////////////////////////////////////
 
   void run();
-  
+
   ////////////////////////////////////////////////
   // post
   ////////////////////////////////////////////////
 
-  bool post(const std::string &addr, int port, SSDPSearchResponse *res) {
+  bool post(const std::string& addr, int port, SSDPSearchResponse* res)
+  {
     std::string headerStr;
     return HTTPUSocket::post(addr, port, res->getHeader(headerStr));
   }
@@ -61,7 +64,8 @@ public:
   // post
   ////////////////////////////////////////////////
 
-  bool post(const std::string &addr, int port, SSDPSearchRequest *req) {
+  bool post(const std::string& addr, int port, SSDPSearchRequest* req)
+  {
     std::string buf;
     return HTTPUSocket::post(addr, port, req->toString(buf));
   }
@@ -70,5 +74,3 @@ public:
 }
 
 #endif
-
-

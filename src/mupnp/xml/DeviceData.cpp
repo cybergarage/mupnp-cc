@@ -10,7 +10,8 @@
 
 #include <mupnp/Device.h>
 
-mUPnP::DeviceData::DeviceData()  {
+mUPnP::DeviceData::DeviceData()
+{
   setDevice(NULL);
   setSSDPPacket(NULL);
   advertiser = NULL;

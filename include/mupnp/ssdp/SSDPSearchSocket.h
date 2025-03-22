@@ -13,16 +13,16 @@
 
 #include <string>
 
-#include <mupnp/util/Thread.h>
-#include <mupnp/net/HostInterface.h>
-#include <mupnp/ssdp/SSDP.h>
-#include <mupnp/ssdp/HTTPMUSocket.h>
 #include <mupnp/device/SearchListener.h>
+#include <mupnp/net/HostInterface.h>
+#include <mupnp/ssdp/HTTPMUSocket.h>
+#include <mupnp/ssdp/SSDP.h>
+#include <mupnp/util/Thread.h>
 
 namespace mUPnP {
-  
+
 typedef uHTTP::ListenerList<SearchListener> SearchListenerList;
-  
+
 class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
   bool useIPv6Address;
   SearchListenerList deviceSearchListenerList;
@@ -31,7 +31,7 @@ class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
   // Constructor
   ////////////////////////////////////////////////
 
- public:
+  public:
   SSDPSearchSocket();
   ~SSDPSearchSocket();
 
@@ -39,36 +39,34 @@ class SSDPSearchSocket : public HTTPMUSocket, public uHTTP::Thread {
   // Constructor
   ////////////////////////////////////////////////
 
- public:
-  bool open(const std::string &bindAddr);
+  public:
+  bool open(const std::string& bindAddr);
 
   ////////////////////////////////////////////////
   // deviceSearch
   ////////////////////////////////////////////////
 
- public:
-  void addSearchListener(SearchListener *listener) {
+  public:
+  void addSearchListener(SearchListener* listener)
+  {
     deviceSearchListenerList.add(listener);
-  }    
+  }
 
-  void removeSearchListener(SearchListener *listener) {
+  void removeSearchListener(SearchListener* listener)
+  {
     deviceSearchListenerList.remove(listener);
-  }    
+  }
 
-  bool performSearchListener(SSDPPacket *ssdpPacket);
+  bool performSearchListener(SSDPPacket* ssdpPacket);
 
   ////////////////////////////////////////////////
-  // run  
+  // run
   ////////////////////////////////////////////////
 
- public:
+  public:
   void run();
-
 };
 
 }
 
 #endif
-
-
-

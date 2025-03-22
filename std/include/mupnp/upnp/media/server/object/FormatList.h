@@ -1,71 +1,66 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: FormatList
-*
-*	Revision;
-*
-*	03/24/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: FormatList
+ *
+ *	Revision;
+ *
+ *	03/24/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_FORMATLIST_H_
 #define _CLINK_MEDIA_FORMATLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/io/File.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
 class Format;
 
-class FormatList : public CyberUtil::Vector
-{
+class FormatList : public CyberUtil::Vector {
 
-public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	FormatList() 
-	{
-	}
+  public:
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-	~FormatList() 
-	{
-		clear();
-	}
+  FormatList()
+  {
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ~FormatList()
+  {
+    clear();
+  }
 
-public:
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-	Format *getFormat(int n)
-	{
-		return (Format *)Vector::get(n);
-	}
+  public:
+  Format* getFormat(int n)
+  {
+    return (Format*)Vector::get(n);
+  }
 
-	Format *getFormat(const char *type);
+  Format* getFormat(const char* type);
 
-	Format *getFormat(CyberIO::File *file);
+  Format* getFormat(CyberIO::File* file);
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

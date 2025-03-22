@@ -11,8 +11,8 @@
 #ifndef _MUPMPCC_CONTROLREQUEST_H_
 #define _MUPMPCC_CONTROLREQUEST_H_
 
-#include <mupnp/soap/SOAPRequest.h>
 #include <mupnp/control/Control.h>
+#include <mupnp/soap/SOAPRequest.h>
 
 #include <sstream>
 
@@ -20,26 +20,31 @@ namespace mUPnP {
 class Service;
 
 class ControlRequest : public uSOAP::SOAPRequest {
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  ControlRequest() {
+
+  ControlRequest()
+  {
   }
 
-  ControlRequest(uHTTP::HTTPRequest *httpReq) : uSOAP::SOAPRequest(httpReq) {
+  ControlRequest(uHTTP::HTTPRequest* httpReq)
+      : uSOAP::SOAPRequest(httpReq)
+  {
   }
 
   ////////////////////////////////////////////////
   // Query
   ////////////////////////////////////////////////
 
-  bool isQueryControl() {
+  bool isQueryControl()
+  {
     return isSOAPAction(Control::QUERY_SOAPACTION);
   }
-  
-  bool isActionControl() {
+
+  bool isActionControl()
+  {
     return !isQueryControl();
   }
 
@@ -47,14 +52,10 @@ public:
   // setRequest
   ////////////////////////////////////////////////
 
-protected:
-  
-  void setRequestHost(Service *service);
-
+  protected:
+  void setRequestHost(Service* service);
 };
 
 }
 
 #endif
-
-

@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: ContentNodeList.cpp
-*
-*	Revision;
-*
-*	03/14/04
-*		- first revision
-*
-******************************************************************/
+ *
+ *	CyberLink for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: ContentNodeList.cpp
+ *
+ *	Revision;
+ *
+ *	03/14/04
+ *		- first revision
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/object/ContentNodeList.h>
 
@@ -21,32 +21,32 @@ using namespace CyberLink;
 // Constants
 ////////////////////////////////////////////////
 
-ContentNode *ContentNodeList::getContentNode(const char *name) 
+ContentNode* ContentNodeList::getContentNode(const char* name)
 {
-	if (name == NULL)
-		return NULL;
-	std::string nameStr = name;
-	int nLists = size(); 
-	for (int n=0; n<nLists; n++) {
-		ContentNode *node = getContentNode(n);
-		if (nameStr.compare(node->getName()) == 0)
-			return node;
-	}
-	return NULL;
+  if (name == NULL)
+    return NULL;
+  std::string nameStr = name;
+  int nLists = size();
+  for (int n = 0; n < nLists; n++) {
+    ContentNode* node = getContentNode(n);
+    if (nameStr.compare(node->getName()) == 0)
+      return node;
+  }
+  return NULL;
 }
 
 ////////////////////////////////////////////////
 //	Methods
 ////////////////////////////////////////////////
 
-void ContentNodeList::clear() 
+void ContentNodeList::clear()
 {
-	if (delElemFlag == true) {
-		int nNode = size();
-		for (int n=0; n<nNode; n++) {
-			ContentNode *cnode = getContentNode(n);
-			delete cnode;
-		}
-	}
-	Vector::clear();
+  if (delElemFlag == true) {
+    int nNode = size();
+    for (int n = 0; n < nNode; n++) {
+      ContentNode* cnode = getContentNode(n);
+      delete cnode;
+    }
+  }
+  Vector::clear();
 }

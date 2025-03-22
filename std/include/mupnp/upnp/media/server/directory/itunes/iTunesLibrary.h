@@ -1,124 +1,114 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File : iTunesLibrary.h
-*
-*	Revision:
-*
-*	02/22/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File : iTunesLibrary.h
+ *
+ *	Revision:
+ *
+ *	02/22/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ITUNES_LIBRARY_H_
 #define _CLINK_MEDIA_ITUNES_LIBRARY_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_ITUNES
 
-#include <string>
 #include <mupnp/io/File.h>
-#include <mupnp/xml/Parser.h>
-#include <mupnp/upnp/media/server/directory/itunes/iTunesTrackList.h>
 #include <mupnp/upnp/media/server/directory/itunes/iTunesPlaylistList.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesTrackList.h>
+#include <mupnp/xml/Parser.h>
+#include <string>
 
 namespace CyberLink {
 
-class iTunesLibrary
-{
-	CyberXML::Node *rootNode;
-	iTunesTrackList *itunesTrackList;
-	iTunesPlaylistList *itunesPlaylistList;
+class iTunesLibrary {
+  CyberXML::Node* rootNode;
+  iTunesTrackList* itunesTrackList;
+  iTunesPlaylistList* itunesPlaylistList;
 
-	////////////////////////////////////////////////
-	// Constant
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constant
+  ////////////////////////////////////////////////
 
-private:
+  private:
+  static const char* DICT_TAG;
+  static const char* KEY_TAG;
+  static const char* ARRAY_TAG;
+  static const char* KEY_TRACKS;
+  static const char* KEY_PLAYLISTS;
 
-	static const char *DICT_TAG;
-	static const char *KEY_TAG;
-	static const char *ARRAY_TAG;
-	static const char *KEY_TRACKS;
-	static const char *KEY_PLAYLISTS;
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  iTunesLibrary();
+  ~iTunesLibrary();
 
-	iTunesLibrary();
-	~iTunesLibrary();
-	
-	////////////////////////////////////////////////
-	// Music Library
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Music Library
+  ////////////////////////////////////////////////
 
-private:
+  private:
+  static const char* GetMusicLibraryXMLFileName(std::string& buf);
 
-	static const char *GetMusicLibraryXMLFileName(std::string &buf);
+  ////////////////////////////////////////////////
+  // Root Node
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Root Node
-	////////////////////////////////////////////////
+  public:
+  CyberXML::Node* getRootNode()
+  {
+    return rootNode;
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // Track List
+  ////////////////////////////////////////////////
 
-	CyberXML::Node *getRootNode()
-	{
-		return rootNode;
-	}
+  public:
+  iTunesTrackList* getTrackList()
+  {
+    return itunesTrackList;
+  }
 
-	////////////////////////////////////////////////
-	// Track List
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Track List
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  iTunesPlaylistList* getPlaylistList()
+  {
+    return itunesPlaylistList;
+  }
 
-	iTunesTrackList *getTrackList()
-	{
-		return itunesTrackList;
-	}
+  ////////////////////////////////////////////////
+  // equals
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Track List
-	////////////////////////////////////////////////
+  public:
+  bool equals(iTunesLibrary* otherLib);
 
-public:
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
 
-	iTunesPlaylistList *getPlaylistList()
-	{
-		return itunesPlaylistList;
-	}
+  private:
+  bool updateTracks();
+  bool updatePlaylists();
 
-	////////////////////////////////////////////////
-	// equals 
-	////////////////////////////////////////////////
-
-public:
-
-	bool equals(iTunesLibrary *otherLib);
-
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
-
-private:
-
-	bool updateTracks();
-	bool updatePlaylists();
-
-public:
-
-	void clear();
-	bool update();
+  public:
+  void clear();
+  bool update();
 };
 
 }
@@ -126,5 +116,3 @@ public:
 #endif
 
 #endif
-
-

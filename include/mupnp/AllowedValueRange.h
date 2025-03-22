@@ -13,7 +13,7 @@
 
 #include <mupnp/xml/Node.h>
 
-namespace mUPnP{
+namespace mUPnP {
 class AllowedValueRange {
   mupnp_shared_ptr<uXML::Node> allowedValueRangeNode;
 
@@ -21,25 +21,25 @@ class AllowedValueRange {
   // Constants
   ////////////////////////////////////////////////
 
-public:
-  
-  static const char *ELEM_NAME;
+  public:
+  static const char* ELEM_NAME;
 
-  static const char *MAXIMUM;
-  static const char *MINIMUM;
-  static const char *STEP;
+  static const char* MAXIMUM;
+  static const char* MINIMUM;
+  static const char* STEP;
 
-  
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
- public:
-  void setAllowedValueRangeNode(mupnp_shared_ptr<uXML::Node> node) {
+  public:
+  void setAllowedValueRangeNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     allowedValueRangeNode = node;
   }
 
-  mupnp_shared_ptr<uXML::Node> getAllowedValueRangeNode() {
+  mupnp_shared_ptr<uXML::Node> getAllowedValueRangeNode()
+  {
     return allowedValueRangeNode;
   }
 
@@ -47,13 +47,14 @@ public:
   // Constructor
   ////////////////////////////////////////////////
 
-public:
-  
-  AllowedValueRange() {
-    setAllowedValueRangeNode(mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr));
+  public:
+  AllowedValueRange()
+  {
+    setAllowedValueRangeNode(mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr));
   }
 
-  AllowedValueRange(mupnp_shared_ptr<uXML::Node> node) {
+  AllowedValueRange(mupnp_shared_ptr<uXML::Node> node)
+  {
     setAllowedValueRangeNode(node);
   }
 
@@ -61,8 +62,9 @@ public:
   // isIconNode
   ////////////////////////////////////////////////
 
- public:
-  static bool isAllowedValueRangeNode(uXML::Node *node) {
+  public:
+  static bool isAllowedValueRangeNode(uXML::Node* node)
+  {
     return node->isName(AllowedValueRange::ELEM_NAME);
   }
 
@@ -70,12 +72,14 @@ public:
   // minimum
   ////////////////////////////////////////////////
 
- public:
-  void setMinimum(const std::string &value) {
+  public:
+  void setMinimum(const std::string& value)
+  {
     getAllowedValueRangeNode()->setNode(MINIMUM, value);
   }
 
-  const char *getMinimum() {
+  const char* getMinimum()
+  {
     return getAllowedValueRangeNode()->getNodeValue(MINIMUM);
   }
 
@@ -83,12 +87,14 @@ public:
   // maximum
   ////////////////////////////////////////////////
 
- public:
-  void setMaximum(const std::string &value) {
+  public:
+  void setMaximum(const std::string& value)
+  {
     getAllowedValueRangeNode()->setNode(MAXIMUM, value);
   }
 
-  const char *getMaximum() {
+  const char* getMaximum()
+  {
     return getAllowedValueRangeNode()->getNodeValue(MAXIMUM);
   }
 
@@ -96,12 +102,14 @@ public:
   // width
   ////////////////////////////////////////////////
 
- public:
-  void setStep(const std::string &value) {
+  public:
+  void setStep(const std::string& value)
+  {
     getAllowedValueRangeNode()->setNode(STEP, value);
   }
 
-  const char *getStep() {
+  const char* getStep()
+  {
     return getAllowedValueRangeNode()->getNodeValue(STEP);
   }
 };
@@ -109,4 +117,3 @@ public:
 }
 
 #endif
-

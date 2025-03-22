@@ -11,9 +11,9 @@
 #ifndef _UHTTP_NET_SOCKETINPUTSTREAM_H_
 #define _UHTTP_NET_SOCKETINPUTSTREAM_H_
 
-#include <string>
 #include <mupnp/io/InputStream.h>
 #include <mupnp/net/Socket.h>
+#include <string>
 
 namespace uHTTP {
 const long SOCKET_RECV_WAIT_TIME = 100;

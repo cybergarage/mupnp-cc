@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: ID3Frame.h
-*
-*	Revision:
-*
-*	06/08/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: ID3Frame.h
+ *
+ *	Revision:
+ *
+ *	06/08/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ID3FRAME_H_
 #define _CLINK_MEDIA_ID3FRAME_H_
@@ -20,99 +20,96 @@
 
 namespace CyberLink {
 
-class ID3Frame
-{
-	std::string frameId;
-	int flag;
-	int size;
+class ID3Frame {
+  std::string frameId;
+  int flag;
+  int size;
 
-	unsigned char *data;
+  unsigned char* data;
 
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  static const char* TIT1;
+  static const char* TIT2;
+  static const char* TIT3;
 
-	static const char *TIT1;
-	static const char *TIT2;
-	static const char *TIT3;
+  static const char* TPE1;
+  static const char* TPE2;
+  static const char* TPE3;
+  static const char* TPE4;
 
-	static const char *TPE1;
-	static const char *TPE2;
-	static const char *TPE3;
-	static const char *TPE4;
-	
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  ID3Frame();
+  ~ID3Frame();
 
-	ID3Frame();
-	~ID3Frame();
+  ////////////////////////////////////////////////
+  // ID
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// ID
-	////////////////////////////////////////////////
+  public:
+  void setID(const char* val)
+  {
+    frameId = val;
+  }
 
-public:
+  const char* getID()
+  {
+    return frameId.c_str();
+  }
 
-	void setID(const char *val) {
-		frameId = val;
-	}
+  ////////////////////////////////////////////////
+  // Size
+  ////////////////////////////////////////////////
 
-	const char *getID() {
-		return frameId.c_str();
-	}
+  public:
+  void setFlag(int val)
+  {
+    flag = val;
+  }
 
-	////////////////////////////////////////////////
-	// Size
-	////////////////////////////////////////////////
-	
-public:
+  int getFlag()
+  {
+    return flag;
+  }
 
-	void setFlag(int val) {
-		flag = val;
-	}
+  ////////////////////////////////////////////////
+  // Size
+  ////////////////////////////////////////////////
 
-	int getFlag() {
-		return flag;
-	}
+  public:
+  void setSize(int val)
+  {
+    size = val;
+  }
 
-	////////////////////////////////////////////////
-	// Size
-	////////////////////////////////////////////////
-	
-public:
+  int getSize()
+  {
+    return size;
+  }
 
-	void setSize(int val) {
-		size = val;
-	}
+  ////////////////////////////////////////////////
+  // Data
+  ////////////////////////////////////////////////
 
-	int getSize() {
-		return size;
-	}
+  public:
+  void setData(unsigned char* val, int len);
 
-	////////////////////////////////////////////////
-	// Data
-	////////////////////////////////////////////////
-	
-public:
+  unsigned char* getData()
+  {
+    return data;
+  }
 
-	void setData(unsigned char *val, int len);
-
-	unsigned char *getData() 
-	{
-		return data;
-	}
-
-	const char *getData(std::string &buf);
-	const char *getStringData(std::string &buf);
+  const char* getData(std::string& buf);
+  const char* getStringData(std::string& buf);
 };
 
 }
 
 #endif
-
-

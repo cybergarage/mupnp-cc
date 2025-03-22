@@ -11,46 +11,46 @@
 #ifndef _MUPMPCC_ARGUMENTLIST_H_
 #define _MUPMPCC_ARGUMENTLIST_H_
 
-#include <mupnp/util/Vector.h>
-#include <mupnp/util/StringUtil.h>
 #include <mupnp/Argument.h>
+#include <mupnp/util/StringUtil.h>
+#include <mupnp/util/Vector.h>
 
 namespace mUPnP {
-    
-class ArgumentList : public Vector<Argument>  {
-public:
-    
+
+class ArgumentList : public Vector<Argument> {
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  ArgumentList(bool delElemFlag = true) {
+
+  ArgumentList(bool delElemFlag = true)
+  {
     setWeekContainer(!delElemFlag);
   }
-    
+
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  Argument *getArgument(size_t n) {
+
+  Argument* getArgument(size_t n)
+  {
     return get(n);
   }
 
-  Argument *getArgument(const std::string &name);
+  Argument* getArgument(const std::string& name);
 
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  void set(ArgumentList *inArgList);
+
+  void set(ArgumentList* inArgList);
 };
 
 }

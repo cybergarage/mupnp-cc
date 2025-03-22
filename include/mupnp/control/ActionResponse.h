@@ -11,9 +11,9 @@
 #ifndef _MUPMPCC_ACTIONRESPONSE_H_
 #define _MUPMPCC_ACTIONRESPONSE_H_
 
+#include <mupnp/ArgumentList.h>
 #include <mupnp/control/ControlResponse.h>
 #include <mupnp/http/HTTPStatus.h>
-#include <mupnp/ArgumentList.h>
 
 #include <sstream>
 
@@ -26,33 +26,30 @@ class ActionResponse : public ControlResponse {
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
- public:
+
+  public:
   ActionResponse();
-  ActionResponse(SOAPResponse *soapRes);
+  ActionResponse(SOAPResponse* soapRes);
 
   ////////////////////////////////////////////////
   // Response
   ////////////////////////////////////////////////
 
- public:
-  void setResponse(Action *action);
+  public:
+  void setResponse(Action* action);
 
-private:
-
-  uXML::Node *createResponseNode(Action *action);
+  private:
+  uXML::Node* createResponseNode(Action* action);
 
   ////////////////////////////////////////////////
   // getResponse
   ////////////////////////////////////////////////
 
-private:
-
+  private:
   mupnp_shared_ptr<uXML::Node> getActionResponseNode();
-  
- public:
-  ArgumentList *getResponse();
 
+  public:
+  ArgumentList* getResponse();
 };
 
 }

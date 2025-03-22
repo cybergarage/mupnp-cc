@@ -15,6 +15,5 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 // Constants
 ////////////////////////////////////////////////
-  
-const char *AllowedValue::ELEM_NAME = "allowedValue";
 
+const char* AllowedValue::ELEM_NAME = "allowedValue";

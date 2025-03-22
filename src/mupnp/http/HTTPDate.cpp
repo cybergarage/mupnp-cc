@@ -8,10 +8,10 @@
  *
  ******************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <mupnp/http/HTTPDate.h>
 #include <mupnp/platform.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 using namespace uHTTP;
 

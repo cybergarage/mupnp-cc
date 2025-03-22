@@ -10,13 +10,13 @@
 
 #include <string.h>
 
-#include <string>
 #include <sstream>
+#include <string>
 
-#include <mupnp/event/SubscriptionRequest.h>
-#include <mupnp/http/HTTP.h>
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
+#include <mupnp/event/SubscriptionRequest.h>
+#include <mupnp/http/HTTP.h>
 #include <mupnp/net/URL.h>
 
 using namespace std;
@@ -27,36 +27,37 @@ using namespace uHTTP;
 // CALLBACK
 ////////////////////////////////////////////////
 
-const char SubscriptionRequest::CALLBACK_START_WITH  = '<';
+const char SubscriptionRequest::CALLBACK_START_WITH = '<';
 const char SubscriptionRequest::CALLBACK_END_WITH = '>';
 
 ////////////////////////////////////////////////
 // setRequest
 ////////////////////////////////////////////////
 
-void SubscriptionRequest::setService(Service *service) {
-  const char *eventSubURL = service->getEventSubURL();
-    
+void SubscriptionRequest::setService(Service* service)
+{
+  const char* eventSubURL = service->getEventSubURL();
+
   // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (05/21/03)
   string relativeURL;
   HTTP::GetRelativeURL(eventSubURL, relativeURL);
   setURI(relativeURL);
 
-  const char *urlBaseStr = "";
+  const char* urlBaseStr = "";
 
-  Device *dev = service->getDevice();
+  Device* dev = service->getDevice();
   if (dev)
     urlBaseStr = dev->getURLBase();
 
   if (!urlBaseStr || strlen(urlBaseStr) <= 0) {
-    Device *rootDev = service->getRootDevice();
+    Device* rootDev = service->getRootDevice();
     if (rootDev)
       urlBaseStr = rootDev->getURLBase();
   }
-    
+
   // Thansk for Markus Thurner <markus.thurner@fh-hagenberg.at> (06/11/2004)
   if (!urlBaseStr || strlen(urlBaseStr) <= 0) {
-    Device *rootDev = service->getRootDevice();
+    Device* rootDev = service->getRootDevice();
     if (rootDev)
       urlBaseStr = rootDev->getLocation();
   }
@@ -68,15 +69,16 @@ void SubscriptionRequest::setService(Service *service) {
   }
 
   string reqHostBuf;
-  const char *reqHost = HTTP::GetHost(urlBaseStr, reqHostBuf);
+  const char* reqHost = HTTP::GetHost(urlBaseStr, reqHostBuf);
   int reqPort = HTTP::GetPort(urlBaseStr);
-  
+
   setHost(reqHost, reqPort);
   setRequestHost(reqHost);
   setRequestPort(reqPort);
 }
 
-void SubscriptionRequest::setSubscribeRequest(Service *service, const std::string &callback, long timeout) {
+void SubscriptionRequest::setSubscribeRequest(Service* service, const std::string& callback, long timeout)
+{
   setMethod(Subscription::SUBSCRIBE_METHOD);
   setService(service);
   setCallback(callback);
@@ -84,14 +86,16 @@ void SubscriptionRequest::setSubscribeRequest(Service *service, const std::strin
   setTimeout(timeout);
 }
 
-void SubscriptionRequest::setRenewRequest(Service *service, const std::string &uuid, long timeout) {
+void SubscriptionRequest::setRenewRequest(Service* service, const std::string& uuid, long timeout)
+{
   setMethod(Subscription::SUBSCRIBE_METHOD);
   setService(service);
   setSID(uuid);
   setTimeout(timeout);
 }
 
-void SubscriptionRequest::setUnsubscribeRequest(Service *service) {
+void SubscriptionRequest::setUnsubscribeRequest(Service* service)
+{
   setMethod(Subscription::UNSUBSCRIBE_METHOD);
   setService(service);
   setSID(service->getSID());

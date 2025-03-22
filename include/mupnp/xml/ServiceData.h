@@ -11,10 +11,10 @@
 #ifndef _MUPMPCC_SERVICEDATA_H_
 #define _MUPMPCC_SERVICEDATA_H_
 
+#include <mupnp/event/SubscriberList.h>
 #include <mupnp/util/Listener.h>
 #include <mupnp/xml/Node.h>
 #include <mupnp/xml/NodeData.h>
-#include <mupnp/event/SubscriberList.h>
 
 #include <string>
 
@@ -24,7 +24,7 @@ class QueryListener;
 class Service;
 
 class ServiceData : public ::uXML::NodeData {
-  Service *service;
+  Service* service;
 
   std::string sid;
   long timeout;
@@ -33,7 +33,7 @@ class ServiceData : public ::uXML::NodeData {
 
   mupnp_shared_ptr<uXML::Node> scpdNode;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -44,12 +44,14 @@ class ServiceData : public ::uXML::NodeData {
   // Service
   ////////////////////////////////////////////////
 
- public:
-  void setService(Service *serv) {
+  public:
+  void setService(Service* serv)
+  {
     service = serv;
   }
 
-  Service *getService() {
+  Service* getService()
+  {
     return service;
   }
 
@@ -57,11 +59,13 @@ class ServiceData : public ::uXML::NodeData {
   // scpdNode
   ////////////////////////////////////////////////
 
-  mupnp_shared_ptr<uXML::Node> getSCPDNode() {
+  mupnp_shared_ptr<uXML::Node> getSCPDNode()
+  {
     return scpdNode;
   }
 
-  void setSCPDNode(mupnp_shared_ptr<uXML::Node> node) {
+  void setSCPDNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     this->scpdNode = node;
   }
 
@@ -69,7 +73,8 @@ class ServiceData : public ::uXML::NodeData {
   // SubscriberList
   ////////////////////////////////////////////////
 
-  SubscriberList *getSubscriberList() {
+  SubscriberList* getSubscriberList()
+  {
     return &subscriberList;
   }
 
@@ -77,11 +82,13 @@ class ServiceData : public ::uXML::NodeData {
   // SID
   ////////////////////////////////////////////////
 
-  const char *getSID() {
+  const char* getSID()
+  {
     return sid.c_str();
   }
 
-  void setSID(const std::string &value) {
+  void setSID(const std::string& value)
+  {
     sid = value;
   }
 
@@ -89,16 +96,15 @@ class ServiceData : public ::uXML::NodeData {
   // Timeout
   ////////////////////////////////////////////////
 
-  long getTimeout() 
+  long getTimeout()
   {
     return timeout;
   }
 
-  void setTimeout(long value) 
+  void setTimeout(long value)
   {
     timeout = value;
   }
-
 };
 
 }

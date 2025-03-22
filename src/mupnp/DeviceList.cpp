@@ -17,4 +17,4 @@ using namespace mUPnP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *DeviceList::ELEM_NAME = "deviceList";
+const char* DeviceList::ELEM_NAME = "deviceList";

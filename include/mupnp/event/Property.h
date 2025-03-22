@@ -18,23 +18,26 @@ class Property {
   std::string name;
   std::string value;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  Property() {
+
+  Property()
+  {
   }
 
   ////////////////////////////////////////////////
   // name
   ////////////////////////////////////////////////
 
-  const char *getName() {
+  const char* getName()
+  {
     return name.c_str();
   }
 
-  void setName(const std::string &val) {
+  void setName(const std::string& val)
+  {
     name = val;
   }
 
@@ -42,11 +45,13 @@ class Property {
   // value
   ////////////////////////////////////////////////
 
-  const char *getValue() {
+  const char* getValue()
+  {
     return value.c_str();
   }
 
-  void setValue(const std::string &val) {
+  void setValue(const std::string& val)
+  {
     value = val;
   }
 };
@@ -54,4 +59,3 @@ class Property {
 }
 
 #endif
-

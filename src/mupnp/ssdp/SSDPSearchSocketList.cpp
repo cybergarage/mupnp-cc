@@ -17,33 +17,37 @@ using namespace mUPnP;
 // Constructor
 ////////////////////////////////////////////////
 
-SSDPSearchSocketList::SSDPSearchSocketList()  {
+SSDPSearchSocketList::SSDPSearchSocketList()
+{
 }
 
-SSDPSearchSocketList::~SSDPSearchSocketList()  {
+SSDPSearchSocketList::~SSDPSearchSocketList()
+{
   stop();
 }
 
 ////////////////////////////////////////////////
 // addSearchListener
 ////////////////////////////////////////////////
-  
-void SSDPSearchSocketList::addSearchListener(SearchListener *listener) {
+
+void SSDPSearchSocketList::addSearchListener(SearchListener* listener)
+{
   size_t nServers = size();
   for (size_t n = 0; n < nServers; n++) {
-    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
+    SSDPSearchSocket* sock = getSSDPSearchSocket(n);
     sock->addSearchListener(listener);
   }
-}    
+}
 
 ////////////////////////////////////////////////
 // removeSearchListener
 ////////////////////////////////////////////////
 
-void SSDPSearchSocketList::removeSearchListener(SearchListener *listener) {
+void SSDPSearchSocketList::removeSearchListener(SearchListener* listener)
+{
   size_t nServers = size();
   for (size_t n = 0; n < nServers; n++) {
-    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
+    SSDPSearchSocket* sock = getSSDPSearchSocket(n);
     sock->removeSearchListener(listener);
   }
 }
@@ -51,16 +55,17 @@ void SSDPSearchSocketList::removeSearchListener(SearchListener *listener) {
 ////////////////////////////////////////////////
 // open/close
 ////////////////////////////////////////////////
-  
-bool SSDPSearchSocketList::open()  {
+
+bool SSDPSearchSocketList::open()
+{
   bool areAllSocketsOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
   if (nHostAddrs == 0)
     return false;
   for (size_t n = 0; n < nHostAddrs; n++) {
     std::string bindAddrStr;
-    const char *bindAddr = uHTTP::GetHostAddress(n, bindAddrStr);
-    SSDPSearchSocket *ssdpSearchSocket = new SSDPSearchSocket();
+    const char* bindAddr = uHTTP::GetHostAddress(n, bindAddrStr);
+    SSDPSearchSocket* ssdpSearchSocket = new SSDPSearchSocket();
     if (ssdpSearchSocket->open(bindAddr) == false) {
       delete ssdpSearchSocket;
       areAllSocketsOpened = false;
@@ -71,11 +76,12 @@ bool SSDPSearchSocketList::open()  {
   return areAllSocketsOpened;
 }
 
-bool SSDPSearchSocketList::close() {
+bool SSDPSearchSocketList::close()
+{
   bool areAllSocketsClosed = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
+    SSDPSearchSocket* sock = getSSDPSearchSocket(n);
     if (sock->close() == false) {
       areAllSocketsClosed = false;
     }
@@ -83,16 +89,17 @@ bool SSDPSearchSocketList::close() {
   clear();
   return areAllSocketsClosed;
 }
-  
+
 ////////////////////////////////////////////////
 // start/stop
 ////////////////////////////////////////////////
-  
-bool SSDPSearchSocketList::start() {
+
+bool SSDPSearchSocketList::start()
+{
   bool areAllSocketsStarted = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
+    SSDPSearchSocket* sock = getSSDPSearchSocket(n);
     if (sock->start() == false) {
       areAllSocketsStarted = false;
     }
@@ -100,11 +107,12 @@ bool SSDPSearchSocketList::start() {
   return areAllSocketsStarted;
 }
 
-bool SSDPSearchSocketList::stop() {
+bool SSDPSearchSocketList::stop()
+{
   bool areAllSocketsStopped = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchSocket *sock = getSSDPSearchSocket(n);
+    SSDPSearchSocket* sock = getSSDPSearchSocket(n);
     if (sock->stop() == false) {
       areAllSocketsStopped = false;
     }

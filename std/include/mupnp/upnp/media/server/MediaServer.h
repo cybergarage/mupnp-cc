@@ -1,185 +1,171 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : MediaServer.h
-*
-*	04/03/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : MediaServer.h
+ *
+ *	04/03/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MEDIASERVER_H_
 #define _CLINK_MEDIA_MEDIASERVER_H_
 
-#include <mupnp/upnp/Device.h>
-#include <mupnp/upnp/media/server/ContentDirectory.h>
-#include <mupnp/upnp/media/server/ConnectionManager.h>
 #include <mupnp/net/HostInterface.h>
+#include <mupnp/upnp/Device.h>
+#include <mupnp/upnp/media/server/ConnectionManager.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
 
 namespace CyberLink {
 
-class MediaServer : public Device
-{
-	ContentDirectory *conDir;
-	ConnectionManager *conMan;
+class MediaServer : public Device {
+  ContentDirectory* conDir;
+  ConnectionManager* conMan;
 
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *DEVICE_TYPE;
+  public:
+  static const char* DEVICE_TYPE;
 
-	static const int DEFAULT_HTTP_PORT;
-	
-	static const char *DESCRIPTION;
+  static const int DEFAULT_HTTP_PORT;
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
-	
-	MediaServer();
+  static const char* DESCRIPTION;
 
-	~MediaServer();
-	
-	////////////////////////////////////////////////
-	//	setName
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	void setName(const char *name)
-	{
-		setFriendlyName(name);
-	}
-	
-	const char *getName()
-	{
-		getFriendlyName();
-	}
+  public:
+  MediaServer();
 
-	////////////////////////////////////////////////
-	// Memeber
-	////////////////////////////////////////////////
-	
-public:
+  ~MediaServer();
 
-	ConnectionManager *getConnectionManager()
-	{
-		return conMan;
-	}
+  ////////////////////////////////////////////////
+  //	setName
+  ////////////////////////////////////////////////
 
-	ContentDirectory *getContentDirectory()
-	{
-		return conDir;
-	}	
-	
-	////////////////////////////////////////////////
-	//	ContentDirectory	
-	////////////////////////////////////////////////
+  public:
+  void setName(const char* name)
+  {
+    setFriendlyName(name);
+  }
 
-public:
+  const char* getName()
+  {
+    getFriendlyName();
+  }
 
-	void addContentDirectory(Directory *dir)
-	{
-		getContentDirectory()->addDirectory(dir);
-	}
-	
-	void removeContentDirectory(const char *name)
-	{
-		getContentDirectory()->removeDirectory(name);
-	}
+  ////////////////////////////////////////////////
+  // Memeber
+  ////////////////////////////////////////////////
 
-	void removeContentDirectory(int n)
-	{
-		getContentDirectory()->removeDirectory(n);
-	}
+  public:
+  ConnectionManager* getConnectionManager()
+  {
+    return conMan;
+  }
 
-	int getNContentDirectories()
-	{
-		return getContentDirectory()->getNDirectories();
-	}
-	
-	Directory *getContentDirectory(int n)
-	{
-		return getContentDirectory()->getDirectory(n);
-	}
+  ContentDirectory* getContentDirectory()
+  {
+    return conDir;
+  }
 
-	////////////////////////////////////////////////
-	// PulgIn
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	ContentDirectory
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void addContentDirectory(Directory* dir)
+  {
+    getContentDirectory()->addDirectory(dir);
+  }
 
-	bool addPlugIn(Format *format)
-	{
-		return getContentDirectory()->addPlugIn(format);
-	}
+  void removeContentDirectory(const char* name)
+  {
+    getContentDirectory()->removeDirectory(name);
+  }
 
-	////////////////////////////////////////////////
-	// HostAddress
-	////////////////////////////////////////////////
+  void removeContentDirectory(int n)
+  {
+    getContentDirectory()->removeDirectory(n);
+  }
 
-public:
+  int getNContentDirectories()
+  {
+    return getContentDirectory()->getNDirectories();
+  }
 
-	void setInterfaceAddress(const char *ifaddr)
-	{
-		CyberNet::SetHostInterface(ifaddr);
-	}
+  Directory* getContentDirectory(int n)
+  {
+    return getContentDirectory()->getDirectory(n);
+  }
 
-	const char *getInterfaceAddress()
-	{
-		return CyberNet::GetHostInterface();
-	}			
+  ////////////////////////////////////////////////
+  // PulgIn
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// HttpRequestListner (Overridded)
-	////////////////////////////////////////////////
+  public:
+  bool addPlugIn(Format* format)
+  {
+    return getContentDirectory()->addPlugIn(format);
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // HostAddress
+  ////////////////////////////////////////////////
 
-	void httpRequestRecieved(CyberHTTP::HTTPRequest *httpReq);
+  public:
+  void setInterfaceAddress(const char* ifaddr)
+  {
+    CyberNet::SetHostInterface(ifaddr);
+  }
 
-	////////////////////////////////////////////////
-	// start/stop (Overided)
-	////////////////////////////////////////////////
-	
-public:
+  const char* getInterfaceAddress()
+  {
+    return CyberNet::GetHostInterface();
+  }
 
-	bool start()
-	{
-		getContentDirectory()->start();
-		Device::start();
-		return true;
-	}
-	
-	bool stop()
-	{
-		getContentDirectory()->stop();
-		Device::stop();
-		return true;
-	}
-	
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // HttpRequestListner (Overridded)
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void httpRequestRecieved(CyberHTTP::HTTPRequest* httpReq);
 
-	void update()
-	{
-	}			
+  ////////////////////////////////////////////////
+  // start/stop (Overided)
+  ////////////////////////////////////////////////
 
+  public:
+  bool start()
+  {
+    getContentDirectory()->start();
+    Device::start();
+    return true;
+  }
+
+  bool stop()
+  {
+    getContentDirectory()->stop();
+    Device::stop();
+    return true;
+  }
+
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
+
+  public:
+  void update()
+  {
+  }
 };
 
 }
 
 #endif
-
-

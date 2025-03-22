@@ -16,11 +16,10 @@
 namespace mUPnP {
 
 class EventListener : public uHTTP::Listener {
-public:
-  virtual bool eventNotifyReceived(const std::string &uuid, long seq, const std::string &varName, const std::string &value) = 0;
+  public:
+  virtual bool eventNotifyReceived(const std::string& uuid, long seq, const std::string& varName, const std::string& value) = 0;
 };
 
 }
 
 #endif
-

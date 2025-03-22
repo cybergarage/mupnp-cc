@@ -1,91 +1,84 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : MythRecordedItemNode.h
-*
-*	Revision:
-*
-*	06/07/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : MythRecordedItemNode.h
+ *
+ *	Revision:
+ *
+ *	06/07/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODET_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODET_H_
 
 #include <mupnp/io/File.h>
 #include <mupnp/io/FileInputStream.h>
-#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 #include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
+#include <mupnp/upnp/media/server/object/item/ItemNode.h>
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_MYTHTV
 
 namespace CyberLink {
 
-class MythRecordedItemNode : public ItemNode
-{
-	MythRecordedInfo recInfo;
-	
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
+class MythRecordedItemNode : public ItemNode {
+  MythRecordedInfo recInfo;
 
-public:
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *MIME_TYPE;
-	
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+  public:
+  static const char* MIME_TYPE;
 
-public:
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-	MythRecordedItemNode();
+  public:
+  MythRecordedItemNode();
 
-	~MythRecordedItemNode();
+  ~MythRecordedItemNode();
 
-	////////////////////////////////////////////////
-	// RecordedInfo
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // RecordedInfo
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  MythRecordedInfo* getRecordedInfo()
+  {
+    return &recInfo;
+  }
 
-	MythRecordedInfo *getRecordedInfo()
-	{
-		return &recInfo;
-	}
+  void setRecordedInfo(MythRecordedInfo* info);
 
-	void setRecordedInfo(MythRecordedInfo *info);
+  ////////////////////////////////////////////////
+  // equals
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// equals
-	////////////////////////////////////////////////
+  public:
+  bool equals(MythRecordedInfo* info);
 
-public:
+  ////////////////////////////////////////////////
+  // Abstract methods
+  ////////////////////////////////////////////////
 
-	bool equals(MythRecordedInfo *info);
+  public:
+  const char* getContent(std::string& buf);
 
-	////////////////////////////////////////////////
-	// Abstract methods
-	////////////////////////////////////////////////
+  long getContentLength();
 
-public:
+  CyberIO::InputStream* getContentInputStream();
 
-	const char *getContent(std::string &buf);
-
-	long getContentLength();
-
-	CyberIO::InputStream *getContentInputStream();
-
-	const char *getMimeType();
-
+  const char* getMimeType();
 };
 
 }

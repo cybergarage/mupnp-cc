@@ -8,17 +8,17 @@
  *
  ******************************************************************/
 
+#include <mupnp/Action.h>
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
-#include <mupnp/Action.h>
 #include <mupnp/UPnPStatus.h>
-#include <mupnp/device/ST.h>
-#include <mupnp/ssdp/SSDPNotifySocket.h>
-#include <mupnp/ssdp/SSDPNotifyRequest.h>
-#include <mupnp/control/QueryRequest.h>
 #include <mupnp/control/QueryListener.h>
-#include <mupnp/xml/Parser.h>
+#include <mupnp/control/QueryRequest.h>
+#include <mupnp/device/ST.h>
+#include <mupnp/ssdp/SSDPNotifyRequest.h>
+#include <mupnp/ssdp/SSDPNotifySocket.h>
 #include <mupnp/util/Debug.h>
+#include <mupnp/xml/Parser.h>
 #include <string>
 
 using namespace mUPnP;
@@ -29,34 +29,37 @@ using namespace std;
 // Constants
 ////////////////////////////////////////////////
 
-const char *Service::ELEM_NAME = "service";
-const char *Service::SERVICE_TYPE = "serviceType";
-const char *Service::SERVICE_ID = "serviceId";
-const char *Service::SCPDURL = "SCPDURL";
-const char *Service::CONTROL_URL = "controlURL";
-const char *Service::EVENT_SUB_URL = "eventSubURL";
+const char* Service::ELEM_NAME = "service";
+const char* Service::SERVICE_TYPE = "serviceType";
+const char* Service::SERVICE_ID = "serviceId";
+const char* Service::SCPDURL = "SCPDURL";
+const char* Service::CONTROL_URL = "controlURL";
+const char* Service::EVENT_SUB_URL = "eventSubURL";
 
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
 
-Service::Service(mupnp_shared_ptr<uXML::Node> node) {
+Service::Service(mupnp_shared_ptr<uXML::Node> node)
+{
   serviceNode = node;
-  
+
   initServiceData();
   initActionList();
   initServiceStateTable();
 }
 
-Service::~Service() {
+Service::~Service()
+{
 }
 
 ////////////////////////////////////////////////
 // Device
 ////////////////////////////////////////////////
 
-Device *Service::getRootDevice() {
-  Device *dev = getDevice();
+Device* Service::getRootDevice()
+{
+  Device* dev = getDevice();
   if (!dev)
     return nullptr;
   return dev->getRootDevice();
@@ -66,7 +69,8 @@ Device *Service::getRootDevice() {
 // deviceList
 ////////////////////////////////////////////////
 
-void Service::initActionList() {
+void Service::initActionList()
+{
   actionList.clear();
   mupnp_shared_ptr<uXML::Node> scdpNode = getSCPDNode();
   if (!scdpNode)
@@ -80,17 +84,18 @@ void Service::initActionList() {
     mupnp_shared_ptr<uXML::Node> node = actionListNode->getNode(n);
     if (Action::isActionNode(node) == false)
       continue;
-    Action *action = new Action(serviceNode, node);
+    Action* action = new Action(serviceNode, node);
     actionList.add(action);
-  } 
+  }
 }
 
-mUPnP::Action *Service::getAction(const std::string &actionName) {
-  ActionList *actionList = getActionList();
+mUPnP::Action* Service::getAction(const std::string& actionName)
+{
+  ActionList* actionList = getActionList();
   size_t nActions = actionList->size();
   for (size_t n = 0; n < nActions; n++) {
-    Action *action = actionList->getAction(n);
-    const char *name = action->getName();
+    Action* action = actionList->getAction(n);
+    const char* name = action->getName();
     if (!name)
       continue;
     string nameStr = name;
@@ -104,7 +109,8 @@ mUPnP::Action *Service::getAction(const std::string &actionName) {
 // serviceStateTable
 ////////////////////////////////////////////////
 
-void Service::initServiceStateTable() {
+void Service::initServiceStateTable()
+{
   serviceStateTable.clear();
   mupnp_shared_ptr<uXML::Node> scpdNode = getSCPDNode();
   if (!scpdNode)
@@ -118,17 +124,18 @@ void Service::initServiceStateTable() {
     mupnp_shared_ptr<uXML::Node> node = stateTableNode->getNode(n);
     if (StateVariable::isStateVariableNode(node) == false)
       continue;
-    StateVariable *serviceVar = new StateVariable(serviceNode, node);
+    StateVariable* serviceVar = new StateVariable(serviceNode, node);
     serviceStateTable.add(serviceVar);
-  } 
+  }
 }
 
-StateVariable *Service::getStateVariable(const std::string &name) {
-  ServiceStateTable *stateTable = getServiceStateTable();
+StateVariable* Service::getStateVariable(const std::string& name)
+{
+  ServiceStateTable* stateTable = getServiceStateTable();
   size_t tableSize = stateTable->size();
   for (size_t n = 0; n < tableSize; n++) {
-    StateVariable *var = stateTable->getStateVariable(n);
-    const char *varName = var->getName();
+    StateVariable* var = stateTable->getStateVariable(n);
+    const char* varName = var->getName();
     if (!varName)
       continue;
     string varNameStr = varName;
@@ -142,32 +149,36 @@ StateVariable *Service::getStateVariable(const std::string &name) {
 // SCPD node
 ////////////////////////////////////////////////
 
-mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(uHTTP::URL *url) {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(uHTTP::URL* url)
+{
   uXML::Parser parser;
   return parser.parse(url);
 }
 
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE)
 
-mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(uHTTP::File *file) {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(uHTTP::File* file)
+{
   uXML::Parser parser;
   return parser.parse(file);
 }
 
 #endif
 
-mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(const std::string &description) {
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode(const std::string& description)
+{
   uXML::Parser parser;
   return parser.parse(description);
 }
 
-mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
-  ServiceData *data = getServiceData();
+mupnp_shared_ptr<uXML::Node> Service::getSCPDNode()
+{
+  ServiceData* data = getServiceData();
   mupnp_shared_ptr<uXML::Node> scpdNode = data->getSCPDNode();
   if (scpdNode)
     return scpdNode;
-  
-  const char *scpdURLStr = getSCPDURL();
+
+  const char* scpdURLStr = getSCPDURL();
   URL scpdURL(scpdURLStr);
   scpdNode = getSCPDNode(&scpdURL);
   if (scpdNode) {
@@ -175,22 +186,22 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
     return scpdNode;
   }
 
-  Device *rootDev = getRootDevice();
+  Device* rootDev = getRootDevice();
   if (!rootDev)
-    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
 
   string urlBaseStr = rootDev->getURLBase();
   // Thanks for Steven Yen (2003/09/03)
   if (urlBaseStr.length() <= 0) {
     string location = rootDev->getLocation();
     if (location.length() <= 0)
-      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
     string locationHost;
     HTTP::GetHost(location, locationHost);
     int locationPort = HTTP::GetPort(location);
     HTTP::GetRequestHostURL(locationHost.c_str(), locationPort, urlBaseStr);
   }
-  
+
   string scpdURLStrBuf;
   scpdURLStr = HTTP::GetRelativeURL(scpdURLStr, scpdURLStrBuf);
   string newScpdURLStr;
@@ -225,10 +236,11 @@ mupnp_shared_ptr<uXML::Node> Service::getSCPDNode() {
   }
 #endif
 
-  return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+  return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
 }
 
-const char *Service::getSCPDData(string &buf) {
+const char* Service::getSCPDData(string& buf)
+{
   mupnp_shared_ptr<uXML::Node> scpdNode = getSCPDNode();
   buf = "";
   if (scpdNode) {
@@ -245,9 +257,10 @@ const char *Service::getSCPDData(string &buf) {
 // Load SCPD
 ////////////////////////////////////////////////
 
-bool Service::loadSCPD(const std::string &description) {
+bool Service::loadSCPD(const std::string& description)
+{
   mupnp_shared_ptr<uXML::Node> scpdNode;
-  
+
   try {
     scpdNode = getSCPDNode(description);
   }
@@ -256,14 +269,14 @@ bool Service::loadSCPD(const std::string &description) {
     msg = "Couldn't load description";
     Debug::warning(msg);
     Debug::warning(e);
-    //throw InvalidDescriptionException(msg.c_str()); 
+    // throw InvalidDescriptionException(msg.c_str());
     return false;
   }
 
   if (!scpdNode)
     return false;
 
-  ServiceData *data = getServiceData();
+  ServiceData* data = getServiceData();
   data->setSCPDNode(scpdNode);
 
   initServiceData();
@@ -273,9 +286,10 @@ bool Service::loadSCPD(const std::string &description) {
   return true;
 }
 
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE)
 
-bool Service::loadSCPD(uHTTP::File *file) {
+bool Service::loadSCPD(uHTTP::File* file)
+{
   string description;
 
   if (file->load(description) == false) {
@@ -284,7 +298,7 @@ bool Service::loadSCPD(uHTTP::File *file) {
     msg += file->getName();
     msg += ")";
     Debug::warning(msg);
-    //throw InvalidDescriptionException(msg.c_str()); 
+    // throw InvalidDescriptionException(msg.c_str());
     return false;
   }
 
@@ -300,29 +314,31 @@ bool Service::loadSCPD(uHTTP::File *file) {
 // Notify
 ////////////////////////////////////////////////
 
-bool Service::notify(Subscriber *sub, StateVariable *stateVar) {
-  const char *varName = stateVar->getName();
-  const char *value = stateVar->getValue();
-    
-  const char *host = sub->getDeliveryHost();
+bool Service::notify(Subscriber* sub, StateVariable* stateVar)
+{
+  const char* varName = stateVar->getName();
+  const char* value = stateVar->getValue();
+
+  const char* host = sub->getDeliveryHost();
   int port = sub->getDeliveryPort();
-    
+
   NotifyRequest notifyReq;
   notifyReq.setRequest(sub, varName, value);
-  
-  uHTTP::HTTPResponse *res = notifyReq.post(host, port);
+
+  uHTTP::HTTPResponse* res = notifyReq.post(host, port);
   if (res->isSuccessful() == false)
     return false;
-      
-  sub->incrementNotifyCount();    
-    
+
+  sub->incrementNotifyCount();
+
   return true;
 }
 
-void Service::notify(StateVariable *stateVar) {
-  SubscriberList *subList = getSubscriberList();
+void Service::notify(StateVariable* stateVar)
+{
+  SubscriberList* subList = getSubscriberList();
 
-  Subscriber **subArray;
+  Subscriber** subArray;
   size_t subArrayCnt, n;
 
   // Remove expired subArraycribers.
@@ -331,21 +347,21 @@ void Service::notify(StateVariable *stateVar) {
   for (n = 0; n < subArrayCnt; n++)
     subArray[n] = subList->getSubscriber(n);
   for (n = 0; n < subArrayCnt; n++) {
-    Subscriber *sub = subArray[n];
+    Subscriber* sub = subArray[n];
     if (!sub)
       continue;
     if (sub->isExpired() == true)
       removeSubscriber(sub);
   }
-  delete []subArray;
-    
+  delete[] subArray;
+
   // Notify to subArraycribers.
   subArrayCnt = subList->size();
   subArray = new Subscriber*[subArrayCnt];
   for (n = 0; n < subArrayCnt; n++)
     subArray[n] = subList->getSubscriber(n);
   for (n = 0; n < subArrayCnt; n++) {
-    Subscriber *sub = subArray[n];
+    Subscriber* sub = subArray[n];
     if (!sub)
       continue;
     if (notify(sub, stateVar) == false) {
@@ -354,14 +370,15 @@ void Service::notify(StateVariable *stateVar) {
       */
     }
   }
-  delete []subArray;
+  delete[] subArray;
 }
 
-void Service::notifyAllStateVariables() {
-  ServiceStateTable *stateTable = getServiceStateTable();
+void Service::notifyAllStateVariables()
+{
+  ServiceStateTable* stateTable = getServiceStateTable();
   size_t tableSize = stateTable->size();
   for (size_t n = 0; n < tableSize; n++) {
-    StateVariable *var = stateTable->getStateVariable(n);
+    StateVariable* var = stateTable->getStateVariable(n);
     if (var->isSendEvents() == true)
       notify(var);
   }
@@ -371,32 +388,35 @@ void Service::notifyAllStateVariables() {
 // annouce
 ////////////////////////////////////////////////
 
-const char *Service::getNotifyServiceTypeNT(std::string &buf) {
+const char* Service::getNotifyServiceTypeNT(std::string& buf)
+{
   buf = getServiceType();
   return buf.c_str();
 }
 
-const char *Service::getNotifyServiceTypeUSN(string &buf) {
-  Device *dev = getDevice();
+const char* Service::getNotifyServiceTypeUSN(string& buf)
+{
+  Device* dev = getDevice();
   buf = dev->getUDN();
   buf.append("::");
   buf.append(getServiceType());
-  return  buf.c_str();
+  return buf.c_str();
 }
 
-bool Service::announce(const std::string &ifAddr) {
-  // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
-  
+bool Service::announce(const std::string& ifAddr)
+{
+  // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v
+
   string devLocation;
-  Device *rootDev = getRootDevice();
+  Device* rootDev = getRootDevice();
   rootDev->getLocationURL(ifAddr, devLocation);
 
   string devNT, devUSN;
-  getNotifyServiceTypeNT(devNT);      
+  getNotifyServiceTypeNT(devNT);
   getNotifyServiceTypeUSN(devUSN);
 
-  Device *dev = getDevice();
-    
+  Device* dev = getDevice();
+
   SSDPNotifyRequest ssdpReq;
   string serverName;
   ssdpReq.setServer(UPnP::GetServerName(serverName));
@@ -407,25 +427,26 @@ bool Service::announce(const std::string &ifAddr) {
   ssdpReq.setUSN(devUSN.c_str());
 
   Device::notifyWait();
-  
+
   SSDPNotifySocket ssdpSock;
   return ssdpSock.post(&ssdpReq, ifAddr);
 }
 
-bool Service::byebye(const std::string &ifAddr) {
-  // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v 
-    
+bool Service::byebye(const std::string& ifAddr)
+{
+  // uuid:device-UUID::urn:schemas-upnp-org:service:serviceType:v
+
   string devNT, devUSN;
-  getNotifyServiceTypeNT(devNT);      
+  getNotifyServiceTypeNT(devNT);
   getNotifyServiceTypeUSN(devUSN);
-    
+
   SSDPNotifyRequest ssdpReq;
   ssdpReq.setNTS(NTS::BYEBYE);
   ssdpReq.setNT(devNT.c_str());
   ssdpReq.setUSN(devUSN.c_str());
 
   Device::notifyWait();
-  
+
   SSDPNotifySocket ssdpSock;
   return ssdpSock.post(&ssdpReq, ifAddr);
 }
@@ -434,11 +455,12 @@ bool Service::byebye(const std::string &ifAddr) {
 // queryAction
 ////////////////////////////////////////////////
 
-void Service::setQueryListener(QueryListener *listener) {
-  ServiceStateTable *stateTable = getServiceStateTable();
+void Service::setQueryListener(QueryListener* listener)
+{
+  ServiceStateTable* stateTable = getServiceStateTable();
   size_t tableSize = stateTable->size();
   for (size_t n = 0; n < tableSize; n++) {
-    StateVariable *var = stateTable->getStateVariable(n);
+    StateVariable* var = stateTable->getStateVariable(n);
     var->setQueryListener(listener);
   }
 }
@@ -446,9 +468,10 @@ void Service::setQueryListener(QueryListener *listener) {
 ////////////////////////////////////////////////
 // isURL
 ////////////////////////////////////////////////
-  
+
 // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/03/03)
-bool Service::isURL(const std::string &referenceUrl, const std::string &url) {
+bool Service::isURL(const std::string& referenceUrl, const std::string& url)
+{
   bool ret = StringEquals(referenceUrl, url);
   if (ret == true)
     return true;
@@ -464,29 +487,32 @@ bool Service::isURL(const std::string &referenceUrl, const std::string &url) {
 // Subscription
 ////////////////////////////////////////////////
 
-void Service::addSubscriber(Subscriber *sub)  {
+void Service::addSubscriber(Subscriber* sub)
+{
   lock();
-  SubscriberList *subList = getSubscriberList();
+  SubscriberList* subList = getSubscriberList();
   subList->add(sub);
   unlock();
 }
 
-void Service::removeSubscriber(Subscriber *sub)  {
+void Service::removeSubscriber(Subscriber* sub)
+{
   lock();
   getSubscriberList()->remove(sub);
   unlock();
 }
 
-Subscriber *Service::getSubscriberBySID(const std::string &name) {
-  SubscriberList *subList = getSubscriberList();
-  Subscriber *findSub = NULL;
+Subscriber* Service::getSubscriberBySID(const std::string& name)
+{
+  SubscriberList* subList = getSubscriberList();
+  Subscriber* findSub = NULL;
   lock();
   size_t subListCnt = subList->size();
-  //cout << "subListCnt = " << subListCnt << endl;
+  // cout << "subListCnt = " << subListCnt << endl;
   for (size_t n = 0; n < subListCnt; n++) {
-    Subscriber *sub = subList->getSubscriber(n);
-    const char *sid = sub->getSID();
-    //cout << "[" << n << "] = " << sid << endl;
+    Subscriber* sub = subList->getSubscriber(n);
+    const char* sid = sub->getSID();
+    // cout << "[" << n << "] = " << sid << endl;
     if (!sid)
       continue;
     string sidStr = sid;
@@ -499,16 +525,17 @@ Subscriber *Service::getSubscriberBySID(const std::string &name) {
   return findSub;
 }
 
-Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name) {
-  SubscriberList *subList = getSubscriberList();
-  Subscriber *findSub = NULL;
+Subscriber* Service::getSubscriberByDeliveryURL(const std::string& name)
+{
+  SubscriberList* subList = getSubscriberList();
+  Subscriber* findSub = NULL;
   lock();
   size_t subListCnt = subList->size();
   for (size_t n = 0; n < subListCnt; n++) {
-    Subscriber *sub = subList->getSubscriber(n);
+    Subscriber* sub = subList->getSubscriber(n);
     if (!sub)
       continue;
-    const char *url = sub->getDeliveryURL();
+    const char* url = sub->getDeliveryURL();
     if (!url)
       continue;
     string urlStr = url;
@@ -525,28 +552,29 @@ Subscriber *Service::getSubscriberByDeliveryURL(const std::string &name) {
 // serviceSearchResponse
 ////////////////////////////////////////////////
 
-bool Service::serviceSearchResponse(SSDPPacket *ssdpPacket) {
+bool Service::serviceSearchResponse(SSDPPacket* ssdpPacket)
+{
   string ssdpST;
   ssdpPacket->getST(ssdpST);
-  
+
   if (ssdpST.length() <= 0)
     return false;
-    
-  Device *dev = getDevice();
-      
+
+  Device* dev = getDevice();
+
   string serviceNT, serviceUSN;
-  getNotifyServiceTypeNT(serviceNT);      
+  getNotifyServiceTypeNT(serviceNT);
   getNotifyServiceTypeUSN(serviceUSN);
-  
+
   if (ST::IsAllDevice(ssdpST.c_str()) == true) {
     dev->postSearchResponse(ssdpPacket, serviceNT.c_str(), serviceUSN.c_str());
   }
   else if (ST::IsURNService(ssdpST.c_str()) == true) {
-    const char *serviceType = getServiceType();
+    const char* serviceType = getServiceType();
     if (ssdpST.compare(serviceType) == 0)
       dev->postSearchResponse(ssdpPacket, serviceType, serviceUSN.c_str());
   }
-  
+
   return true;
 }
 
@@ -554,12 +582,13 @@ bool Service::serviceSearchResponse(SSDPPacket *ssdpPacket) {
 // ActionListener
 ////////////////////////////////////////////////
 
-void Service::setActionListener(ActionListener *listener) {
+void Service::setActionListener(ActionListener* listener)
+{
   lock();
-  ActionList *actionList = getActionList();
+  ActionList* actionList = getActionList();
   size_t nActions = actionList->size();
   for (size_t n = 0; n < nActions; n++) {
-    Action *action = actionList->getAction(n);
+    Action* action = actionList->getAction(n);
     action->setActionListener(listener);
   }
   unlock();

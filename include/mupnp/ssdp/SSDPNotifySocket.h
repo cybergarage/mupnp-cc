@@ -12,59 +12,58 @@
 #define _MUPMPCC_SSDPNOTIFYSOCKET_H_
 
 #include <mupnp/net/HostInterface.h>
-#include <mupnp/util/Thread.h>
-#include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/HTTPMUSocket.h>
+#include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/SSDPNotifyRequest.h>
+#include <mupnp/util/Thread.h>
 
 namespace mUPnP {
 class ControlPoint;
 
 class SSDPNotifySocket : public HTTPMUSocket, public uHTTP::Thread {
-  ControlPoint *controlPoint;
+  ControlPoint* controlPoint;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
+
   SSDPNotifySocket();
   ~SSDPNotifySocket();
 
   ////////////////////////////////////////////////
-  // ControlPoint  
+  // ControlPoint
   ////////////////////////////////////////////////
-  
-  void setControlPoint(ControlPoint *ctrlp) {
+
+  void setControlPoint(ControlPoint* ctrlp)
+  {
     controlPoint = ctrlp;
   }
 
-  ControlPoint *getControlPoint() {
+  ControlPoint* getControlPoint()
+  {
     return controlPoint;
   }
 
   ////////////////////////////////////////////////
   // open
   ////////////////////////////////////////////////
-  
-  bool open(const std::string &bindAddr);
-  
+
+  bool open(const std::string& bindAddr);
+
   ////////////////////////////////////////////////
   // post
   ////////////////////////////////////////////////
 
-  bool post(SSDPNotifyRequest *req, const std::string &ifAddr);
+  bool post(SSDPNotifyRequest* req, const std::string& ifAddr);
 
   ////////////////////////////////////////////////
-  // run  
+  // run
   ////////////////////////////////////////////////
 
   void run();
-  
 };
 
 }
 
 #endif
-
-

@@ -11,73 +11,75 @@
 #ifndef _MUPMPCC_SERVICE_H_
 #define _MUPMPCC_SERVICE_H_
 
-#include <mupnp/net/HostInterface.h>
 #include <mupnp/io/File.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/net/URL.h>
 
-#include <mupnp/xml/DeviceData.h>
 #include <mupnp/ActionList.h>
-#include <mupnp/StateVariable.h>
 #include <mupnp/ServiceStateTable.h>
-#include <mupnp/xml/ServiceData.h>
+#include <mupnp/StateVariable.h>
+#include <mupnp/control/ActionListener.h>
+#include <mupnp/control/QueryRequest.h>
 #include <mupnp/event/NotifyRequest.h>
 #include <mupnp/event/SubscriberList.h>
-#include <mupnp/control/QueryRequest.h>
-#include <mupnp/control/ActionListener.h>
 #include <mupnp/util/Mutex.h>
-#include <mupnp/util/Vector.h>
 #include <mupnp/util/StringUtil.h>
+#include <mupnp/util/Vector.h>
+#include <mupnp/xml/DeviceData.h>
 #include <mupnp/xml/Node.h>
+#include <mupnp/xml/ServiceData.h>
 
 namespace mUPnP {
 class Device;
 
 class Service {
   mupnp_shared_ptr<uXML::Node> serviceNode;
-  
+
   ActionList actionList;
   ServiceStateTable serviceStateTable;
 
   uHTTP::Mutex mutex;
 
-public:
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
-  static const char *SERVICE_TYPE;
-  static const char *SERVICE_ID;
-  static const char *SCPDURL;
-  static const char *CONTROL_URL;
-  static const char *EVENT_SUB_URL;
 
- public:
+  static const char* ELEM_NAME;
+  static const char* SERVICE_TYPE;
+  static const char* SERVICE_ID;
+  static const char* SCPDURL;
+  static const char* CONTROL_URL;
+  static const char* EVENT_SUB_URL;
+
+  public:
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
-  mupnp_shared_ptr<uXML::Node> getServiceNode() {
+  mupnp_shared_ptr<uXML::Node> getServiceNode()
+  {
     return serviceNode;
   }
 
-  bool hasServiceNode() {
+  bool hasServiceNode()
+  {
     return (serviceNode) ? true : false;
   }
-  
+
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
- public:
+  public:
   Service(mupnp_shared_ptr<uXML::Node> node);
 
   ~Service();
 
-private:
-
-  void initServiceData() {
-    ServiceData *data = getServiceData();
+  private:
+  void initServiceData()
+  {
+    ServiceData* data = getServiceData();
     if (data)
       data->setService(this);
   }
@@ -85,13 +87,15 @@ private:
   ////////////////////////////////////////////////
   // Mutex
   ////////////////////////////////////////////////
-  
- public:
-  void lock() {
+
+  public:
+  void lock()
+  {
     mutex.lock();
   }
-  
-  void unlock() {
+
+  void unlock()
+  {
     mutex.unlock();
   }
 
@@ -99,30 +103,32 @@ private:
   // isServiceNode
   ////////////////////////////////////////////////
 
- public:
-  static bool isServiceNode(mupnp_shared_ptr<uXML::Node> node) {
+  public:
+  static bool isServiceNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     if (!node)
       return false;
     return node->isName(Service::ELEM_NAME);
   }
-  
+
   ////////////////////////////////////////////////
   // Device/Root Node
   ////////////////////////////////////////////////
 
-private:
-
-    uXML::Node *getDeviceNode() {
+  private:
+  uXML::Node* getDeviceNode()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return nullptr;
-    uXML::Node *parentNode = serviceNode->getParentNode();
+    uXML::Node* parentNode = serviceNode->getParentNode();
     if (!parentNode)
       return nullptr;
     return parentNode->getParentNode();
   }
 
-  uXML::Node* getRootNode() {
+  uXML::Node* getRootNode()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return nullptr;
@@ -133,33 +139,35 @@ private:
   // Device
   ////////////////////////////////////////////////
 
- public:
-  
-  Device *getDevice() {
-    uXML::Node *node = getDeviceNode();
+  public:
+  Device* getDevice()
+  {
+    uXML::Node* node = getDeviceNode();
     if (!node)
       return nullptr;
-    DeviceData *data = dynamic_cast<DeviceData *>(node->getUserData());
+    DeviceData* data = dynamic_cast<DeviceData*>(node->getUserData());
     if (!data)
       return nullptr;
     return data->getDevice();
   }
 
-  Device *getRootDevice();
+  Device* getRootDevice();
 
   ////////////////////////////////////////////////
   // serviceType
   ////////////////////////////////////////////////
 
- public:
-  void setServiceType(const std::string &value) {
+  public:
+  void setServiceType(const std::string& value)
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return;
     serviceNode->setNode(SERVICE_TYPE, value);
   }
 
-  const char *getServiceType() {
+  const char* getServiceType()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return "";
@@ -170,15 +178,17 @@ private:
   // serviceID
   ////////////////////////////////////////////////
 
- public:
-  void setServiceID(const std::string &value) {
+  public:
+  void setServiceID(const std::string& value)
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return;
     serviceNode->setNode(SERVICE_ID, value);
   }
 
-  const char *getServiceID() {
+  const char* getServiceID()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return "";
@@ -189,55 +199,60 @@ private:
   // isURL
   ////////////////////////////////////////////////
 
-private:
-
-  bool isURL(const std::string &referenceUrl, const std::string &url);
+  private:
+  bool isURL(const std::string& referenceUrl, const std::string& url);
 
   ////////////////////////////////////////////////
   // SCPDURL
   ////////////////////////////////////////////////
 
- public:
-  void setSCPDURL(const std::string &value) {
+  public:
+  void setSCPDURL(const std::string& value)
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return;
-   serviceNode->setNode(SCPDURL, value);
+    serviceNode->setNode(SCPDURL, value);
   }
 
-  const char *getSCPDURL() {
+  const char* getSCPDURL()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(SCPDURL);
   }
 
-  bool isSCPDURL(const std::string &url) {
+  bool isSCPDURL(const std::string& url)
+  {
     return isURL(getSCPDURL(), url);
   }
-  
-  const char *getSCPDData(std::string &buf);
+
+  const char* getSCPDData(std::string& buf);
 
   ////////////////////////////////////////////////
   // controlURL
   ////////////////////////////////////////////////
 
- public:
-  void setControlURL(const std::string &value) {
+  public:
+  void setControlURL(const std::string& value)
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return;
     serviceNode->setNode(CONTROL_URL, value);
   }
 
-  const char *getControlURL() {
+  const char* getControlURL()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(CONTROL_URL);
   }
 
-  bool isControlURL(const std::string &url) {
+  bool isControlURL(const std::string& url)
+  {
     return isURL(getControlURL(), url);
   }
 
@@ -245,22 +260,25 @@ private:
   // eventSubURL
   ////////////////////////////////////////////////
 
- public:
-  void setEventSubURL(const std::string &value) {
+  public:
+  void setEventSubURL(const std::string& value)
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return;
     serviceNode->setNode(EVENT_SUB_URL, value);
   }
 
-  const char *getEventSubURL() {
+  const char* getEventSubURL()
+  {
     mupnp_shared_ptr<uXML::Node> serviceNode = getServiceNode();
     if (!serviceNode)
       return "";
     return serviceNode->getNodeValue(EVENT_SUB_URL);
   }
 
-  bool isEventSubURL(const std::string &url) {
+  bool isEventSubURL(const std::string& url)
+  {
     return isURL(getEventSubURL(), url);
   }
 
@@ -268,60 +286,62 @@ private:
   // SCPD node
   ////////////////////////////////////////////////
 
- public:
-  bool loadSCPD(const std::string &descString);
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-  bool loadSCPD(uHTTP::File *file);
+  public:
+  bool loadSCPD(const std::string& descString);
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE)
+  bool loadSCPD(uHTTP::File* file);
 #endif
 
-private:
-  mupnp_shared_ptr<uXML::Node> getSCPDNode(uHTTP::URL *url);
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
-  mupnp_shared_ptr<uXML::Node> getSCPDNode(uHTTP::File *file);
+  private:
+  mupnp_shared_ptr<uXML::Node> getSCPDNode(uHTTP::URL* url);
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE)
+  mupnp_shared_ptr<uXML::Node> getSCPDNode(uHTTP::File* file);
 #endif
-  mupnp_shared_ptr<uXML::Node> getSCPDNode(const std::string &description);
+  mupnp_shared_ptr<uXML::Node> getSCPDNode(const std::string& description);
   mupnp_shared_ptr<uXML::Node> getSCPDNode();
 
-public:
+  public:
   ////////////////////////////////////////////////
   // actionList
   ////////////////////////////////////////////////
 
-private:
-
+  private:
   void initActionList();
 
- public:
-  ActionList *getActionList() {
+  public:
+  ActionList* getActionList()
+  {
     return &actionList;
   }
 
-  Action *getAction(const std::string &actionName);
-  
+  Action* getAction(const std::string& actionName);
+
   ////////////////////////////////////////////////
   // serviceStateTable
   ////////////////////////////////////////////////
 
-private:
-
+  private:
   void initServiceStateTable();
 
- public:
-  ServiceStateTable *getServiceStateTable() {
+  public:
+  ServiceStateTable* getServiceStateTable()
+  {
     return &serviceStateTable;
   }
 
-  StateVariable *getStateVariable(const std::string &name);
-  
-  bool hasStateVariable(const std::string &name) {
+  StateVariable* getStateVariable(const std::string& name);
+
+  bool hasStateVariable(const std::string& name)
+  {
     return (getStateVariable(name)) ? true : false;
   }
 
   ////////////////////////////////////////////////
   // isService
   ////////////////////////////////////////////////
-  
-  bool isService(const std::string &name) {
+
+  bool isService(const std::string& name)
+  {
     uHTTP::String nameStr(name);
     if (nameStr.endsWith(getServiceType()) == true)
       return true;
@@ -329,16 +349,17 @@ private:
       return true;
     return false;
   }
-   
+
   ////////////////////////////////////////////////
   // UserData
   ////////////////////////////////////////////////
 
-  ServiceData *getServiceData() {
+  ServiceData* getServiceData()
+  {
     mupnp_shared_ptr<uXML::Node> node = getServiceNode();
     if (!node)
       return nullptr;
-    ServiceData *userData = dynamic_cast<ServiceData *>(node->getUserData());
+    ServiceData* userData = dynamic_cast<ServiceData*>(node->getUserData());
     if (!userData) {
       userData = new ServiceData();
       node->setUserData(userData);
@@ -350,91 +371,92 @@ private:
   // Notify
   ////////////////////////////////////////////////
 
-private:
+  private:
+  const char* getNotifyServiceTypeNT(std::string& buf);
+  const char* getNotifyServiceTypeUSN(std::string& buf);
 
-  const char *getNotifyServiceTypeNT(std::string &buf);
-  const char *getNotifyServiceTypeUSN(std::string &buf);
-
- public:
-  bool announce(const std::string &ifAddr);
-  bool byebye(const std::string &ifAddr);
+  public:
+  bool announce(const std::string& ifAddr);
+  bool byebye(const std::string& ifAddr);
 
   ////////////////////////////////////////////////
-  // serviceSearchResponse  
+  // serviceSearchResponse
   ////////////////////////////////////////////////
 
- public:
-  bool serviceSearchResponse(SSDPPacket *ssdpPacket);
+  public:
+  bool serviceSearchResponse(SSDPPacket* ssdpPacket);
 
   ////////////////////////////////////////////////
   // queryAction
   ////////////////////////////////////////////////
 
- public:
-  void setQueryListener(QueryListener *listener);
+  public:
+  void setQueryListener(QueryListener* listener);
 
   ////////////////////////////////////////////////
   // Subscription
   ////////////////////////////////////////////////
 
- public:
-  SubscriberList *getSubscriberList() 
+  public:
+  SubscriberList* getSubscriberList()
   {
     return getServiceData()->getSubscriberList();
   }
 
-  void addSubscriber(Subscriber *sub);
-  void removeSubscriber(Subscriber *sub);
+  void addSubscriber(Subscriber* sub);
+  void removeSubscriber(Subscriber* sub);
 
-  Subscriber *getSubscriberBySID(const std::string &name);
-  Subscriber *getSubscriberByDeliveryURL(const std::string &name);
+  Subscriber* getSubscriberBySID(const std::string& name);
+  Subscriber* getSubscriberByDeliveryURL(const std::string& name);
 
-private:
-  
-  bool notify(Subscriber *sub, StateVariable *stateVar);
+  private:
+  bool notify(Subscriber* sub, StateVariable* stateVar);
 
- public:
-  void notify(StateVariable *stateVar);
+  public:
+  void notify(StateVariable* stateVar);
   void notifyAllStateVariables();
-  
+
   ////////////////////////////////////////////////
   // SID
   ////////////////////////////////////////////////
 
-  const char *getSID() 
+  const char* getSID()
   {
     return getServiceData()->getSID();
   }
 
-  void setSID(const std::string &sid) 
+  void setSID(const std::string& sid)
   {
     getServiceData()->setSID(sid);
   }
 
-  void clearSID() {
+  void clearSID()
+  {
     setSID("");
     setTimeout(0);
   }
-  
-  bool hasSID() {
-    return uHTTP::StringHasData(getSID());
-  }    
 
-  bool isSubscribed() {
+  bool hasSID()
+  {
+    return uHTTP::StringHasData(getSID());
+  }
+
+  bool isSubscribed()
+  {
     return hasSID();
   }
-  
+
   ////////////////////////////////////////////////
   // Timeout
   ////////////////////////////////////////////////
 
- public:
-  long getTimeout() 
+  public:
+  long getTimeout()
   {
     return getServiceData()->getTimeout();
   }
 
-  void setTimeout(long value) 
+  void setTimeout(long value)
   {
     getServiceData()->setTimeout(value);
   }
@@ -442,14 +464,11 @@ private:
   ////////////////////////////////////////////////
   // AcionListener
   ////////////////////////////////////////////////
-  
-public:
-  
-  void setActionListener(ActionListener *listener);
 
+  public:
+  void setActionListener(ActionListener* listener);
 };
 
 }
 
 #endif
-

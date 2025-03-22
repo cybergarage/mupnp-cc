@@ -11,8 +11,8 @@
 #ifndef _UHTTP_NET_URL_H_
 #define _UHTTP_NET_URL_H_
 
-#include <string>
 #include <mupnp/net/URI.h>
+#include <string>
 
 namespace uHTTP {
 class URL : public URI {

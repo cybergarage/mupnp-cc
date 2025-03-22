@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: DCTitleSortCap.java
-*
-*	Revision;
-*
-*	03/31/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: DCTitleSortCap.java
+ *
+ *	Revision;
+ *
+ *	03/31/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_DCTITLESORTCAP_H_
 #define _CLINK_MEDIA_DCTITLESORTCAP_H_
@@ -21,20 +21,18 @@
 
 namespace CyberLink {
 
-class DCTitleSortCap : public SortCap 
-{
-public:
+class DCTitleSortCap : public SortCap {
+  public:
+  DCTitleSortCap()
+  {
+  }
 
-	DCTitleSortCap() 
-	{
-	}
-	
-	const char *getType() 
-	{
-		return DC::TITLE;
-	}
+  const char* getType()
+  {
+    return DC::TITLE;
+  }
 
-	int compare(ContentNode *conNode1, ContentNode *conNode2);
+  int compare(ContentNode* conNode1, ContentNode* conNode2);
 };
 
 }

@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: UPnPClassSortCap.h
-*
-*	Revision;
-*
-*	03/31/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: UPnPClassSortCap.h
+ *
+ *	Revision;
+ *
+ *	03/31/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_UPNPCLADDSORTCAP_H_
 #define _CLINK_MEDIA_UPNPCLADDSORTCAP_H_
@@ -21,24 +21,20 @@
 
 namespace CyberLink {
 
-class UPnPClassSortCap : public SortCap 
-{
-public:
+class UPnPClassSortCap : public SortCap {
+  public:
+  UPnPClassSortCap()
+  {
+  }
 
-	UPnPClassSortCap() 
-	{
-	}
-	
-	const char *getType() 
-	{
-		return UPnP::CLASS;
-	}
+  const char* getType()
+  {
+    return UPnP::CLASS;
+  }
 
-	int compare(ContentNode *conNode1, ContentNode *conNode2);
+  int compare(ContentNode* conNode1, ContentNode* conNode2);
 };
 
 }
 
 #endif
-
-

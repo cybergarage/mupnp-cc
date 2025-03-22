@@ -17,9 +17,9 @@ namespace mUPnP {
 class Device;
 
 class DeviceChangeListener : public uHTTP::Listener {
-public:
-  virtual bool deviceAdded(Device *dev) = 0;
-  virtual bool deviceRemoved(Device *dev) = 0;
+  public:
+  virtual bool deviceAdded(Device* dev) = 0;
+  virtual bool deviceRemoved(Device* dev) = 0;
 };
 
 }

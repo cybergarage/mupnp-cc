@@ -12,21 +12,20 @@
 #define _MUPMPCC_SSDPSEARCHRESPONSESYSOCKETLIST_H_
 
 #include <mupnp/net/HostInterface.h>
-#include <mupnp/util/Vector.h>
 #include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/SSDPSearchResponseSocket.h>
+#include <mupnp/util/Vector.h>
 
 namespace mUPnP {
 class ControlPoint;
 
-class SSDPSearchResponseSocketList : public Vector<SSDPSearchResponseSocket>  {
+class SSDPSearchResponseSocketList : public Vector<SSDPSearchResponseSocket> {
 
-public:
-    
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
+
   SSDPSearchResponseSocketList();
   ~SSDPSearchResponseSocketList();
 
@@ -34,32 +33,34 @@ public:
   // ControlPoint
   ////////////////////////////////////////////////
 
-  void setControlPoint(ControlPoint *ctrlPoint);
+  void setControlPoint(ControlPoint* ctrlPoint);
 
   ////////////////////////////////////////////////
   // get
   ////////////////////////////////////////////////
-  
-  SSDPSearchResponseSocket *getSSDPSearchResponseSocket(size_t n) {
+
+  SSDPSearchResponseSocket* getSSDPSearchResponseSocket(size_t n)
+  {
     return get(n);
   }
-  
+
   ////////////////////////////////////////////////
   // open/close
   ////////////////////////////////////////////////
-  
+
   bool open(int port);
 
-  bool open()  {
+  bool open()
+  {
     return open(SSDP::PORT);
   }
-    
+
   bool close();
 
   ////////////////////////////////////////////////
   // start/stop
   ////////////////////////////////////////////////
-  
+
   bool start();
   bool stop();
 
@@ -67,12 +68,10 @@ public:
   // Methods
   ////////////////////////////////////////////////
 
- public:
-  bool post(SSDPSearchRequest *req);
+  public:
+  bool post(SSDPSearchRequest* req);
 };
 
 }
 
 #endif
-
-

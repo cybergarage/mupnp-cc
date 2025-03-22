@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : ImageFormat.h
-*
-*	Revision:
-*
-*	04/16/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : ImageFormat.h
+ *
+ *	Revision:
+ *
+ *	04/16/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_IMAGEFORMAT_H_
 #define _CLINK_MEDIA_IMAGEFORMAT_H_
@@ -20,50 +20,47 @@
 
 namespace CyberLink {
 
-class ImageFormat : public DefaultFormat
-{
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
-	
-public:
+class ImageFormat : public DefaultFormat {
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-	ImageFormat()
-	{	
-		setFile(NULL);
-	}
-	
-	ImageFormat(CyberIO::File *file)
-	{
-		setFile(file);
-	}
+  public:
+  ImageFormat()
+  {
+    setFile(NULL);
+  }
 
-	////////////////////////////////////////////////
-	// Abstract Methods
-	////////////////////////////////////////////////
-	
-public:
+  ImageFormat(CyberIO::File* file)
+  {
+    setFile(file);
+  }
 
-	virtual bool equals(CyberIO::File *file) = 0;
-	virtual FormatObject *createObject(CyberIO::File *file) = 0;
-	virtual const char *getMimeType() = 0;
-	
-	const char *getMediaClass()
-	{
-		return "object.item.imageItem.photo";
-	}
-	
-	virtual int getAttributeList(CyberXML::AttributeList &attrList)
-	{
-		attrList.clear();
-		return attrList.size();
-	}
+  ////////////////////////////////////////////////
+  // Abstract Methods
+  ////////////////////////////////////////////////
 
-	const char *getCreator(std::string &buf)
-	{
-		buf = "";
-		return buf.c_str();
-	}
+  public:
+  virtual bool equals(CyberIO::File* file) = 0;
+  virtual FormatObject* createObject(CyberIO::File* file) = 0;
+  virtual const char* getMimeType() = 0;
+
+  const char* getMediaClass()
+  {
+    return "object.item.imageItem.photo";
+  }
+
+  virtual int getAttributeList(CyberXML::AttributeList& attrList)
+  {
+    attrList.clear();
+    return attrList.size();
+  }
+
+  const char* getCreator(std::string& buf)
+  {
+    buf = "";
+    return buf.c_str();
+  }
 };
 
 }

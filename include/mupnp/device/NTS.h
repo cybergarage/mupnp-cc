@@ -15,16 +15,15 @@
 
 namespace mUPnP {
 namespace NTS {
-const char ALIVE[] = "ssdp:alive";
-const char BYEBYE[] = "ssdp:byebye";
-const char PROPCHANGE[] = "upnp:propchange";
-  
-bool IsAlive(const std::string &ntsValue);
-bool IsByeBye(const std::string &ntsValue);
+  const char ALIVE[] = "ssdp:alive";
+  const char BYEBYE[] = "ssdp:byebye";
+  const char PROPCHANGE[] = "upnp:propchange";
+
+  bool IsAlive(const std::string& ntsValue);
+  bool IsByeBye(const std::string& ntsValue);
 
 }
 
 }
 
 #endif
-

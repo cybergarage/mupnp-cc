@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: ConnectionInfo.cpp
-*
-*	Revision;
-*
-*	06/19/04
-*		- first revision
-*
-******************************************************************/
+ *
+ *	CyberLink for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: ConnectionInfo.cpp
+ *
+ *	Revision;
+ *
+ *	06/19/04
+ *		- first revision
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/ConnectionInfo.h>
 
@@ -20,11 +20,11 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 // Constants
 ////////////////////////////////////////////////
-	
-const char *ConnectionInfo::INPUT = "Input";
-const char *ConnectionInfo::OUTPUT = "Output";
-const char *ConnectionInfo::OK = "OK";
-const char *ConnectionInfo::UNKNOWN = "Unknown";
+
+const char* ConnectionInfo::INPUT = "Input";
+const char* ConnectionInfo::OUTPUT = "Output";
+const char* ConnectionInfo::OK = "OK";
+const char* ConnectionInfo::UNKNOWN = "Unknown";
 
 ////////////////////////////////////////////////
 //	Constructor
@@ -32,14 +32,14 @@ const char *ConnectionInfo::UNKNOWN = "Unknown";
 
 ConnectionInfo::ConnectionInfo(int id)
 {
-	setID(id);
-	setRcsID(-1);
-	setAVTransportID(-1);
-	setProtocolInfo("");
-	setPeerConnectionManager("");
-	setPeerConnectionID(-1);
-	setDirection(OUTPUT);
-	setStatus(UNKNOWN);
+  setID(id);
+  setRcsID(-1);
+  setAVTransportID(-1);
+  setProtocolInfo("");
+  setPeerConnectionManager("");
+  setPeerConnectionID(-1);
+  setDirection(OUTPUT);
+  setStatus(UNKNOWN);
 }
 
 ConnectionInfo::~ConnectionInfo()

@@ -11,27 +11,27 @@
 #ifndef _MUPMPCC_SUBSCRIBERLIST_H_
 #define _MUPMPCC_SUBSCRIBERLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/event/Subscriber.h>
+#include <mupnp/util/Vector.h>
 
 namespace mUPnP {
-    
-class SubscriberList : public Vector<Subscriber>  {
-public:
-    
+
+class SubscriberList : public Vector<Subscriber> {
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
+
   SubscriberList()
   {
   }
-  
+
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  Subscriber *getSubscriber(size_t n) {
+
+  Subscriber* getSubscriber(size_t n)
+  {
     return get(n);
   }
 };
@@ -39,5 +39,3 @@ public:
 }
 
 #endif
-
-

@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #include <stdlib.h>
@@ -18,15 +18,15 @@
 #include <windows.h>
 #include <winnls.h>
 #else
-#include <string.h>
 #include <locale.h>
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+#include <string.h>
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE)
 #include <iconv.h>
 #endif
 #endif
 
-#include <mupnp/xml/XML.h>
 #include <mupnp/util/StringUtil.h>
+#include <mupnp/xml/XML.h>
 #ifndef WIN32
 #include <mupnp/util/Mutex.h>
 #endif
@@ -41,22 +41,24 @@ static uHTTP::Mutex iconvMutex;
 // EscapeXMLChars
 ////////////////////////////////////////////////
 
-const char *uXML::XML::EscapeXMLChars(const std::string &in, std::string &out) {
+const char* uXML::XML::EscapeXMLChars(const std::string& in, std::string& out)
+{
   out = in;
-  
+
   // Thanks for Smolander Visa (09/06/05)
   uHTTP::StringReplaceChars(out, "&", "&amp;");
 
   uHTTP::StringReplaceChars(out, "<", "&lt;");
   uHTTP::StringReplaceChars(out, ">", "&gt;");
   uHTTP::StringReplaceChars(out, "\"", "&quot;");
-  
+
   // Thanks for Brian Owens (12/02/04)
   uHTTP::StringReplaceChars(out, "'", "&apos;");
-  
+
   return out.c_str();
 }
 
-const char *uXML::XML::EscapeXMLChars(std::string &in, std::string &out) {
+const char* uXML::XML::EscapeXMLChars(std::string& in, std::string& out)
+{
   return EscapeXMLChars(in.c_str(), out);
 }

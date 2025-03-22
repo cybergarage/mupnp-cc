@@ -16,10 +16,11 @@
 namespace uXML {
 
 class ParserException : public uHTTP::Exception {
- public:
-  ParserException(const std::string &msg) : Exception(msg) {
+  public:
+  ParserException(const std::string& msg)
+      : Exception(msg)
+  {
   }
-  
 };
 
 }

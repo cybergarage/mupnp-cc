@@ -1,33 +1,33 @@
 /******************************************************************
-*
-*	CyberNet for C++
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: SocketImp.h
-*
-*	Revision;
-*
-*	08/26/03
-*		- first revision
-*
-******************************************************************/
+ *
+ *	CyberNet for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002-2003
+ *
+ *	File: SocketImp.h
+ *
+ *	Revision;
+ *
+ *	08/26/03
+ *		- first revision
+ *
+ ******************************************************************/
 
 #ifndef _CNET_SOCKETIMP_H_
 #define _CNET_SOCKETIMP_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
-#if defined(WIN32) && defined(ITRON) && defined (_AFXDLL)
+#if defined(WIN32) && defined(ITRON) && defined(_AFXDLL)
 #include <afxwin.h>
 #endif
 
 #if (defined(WIN32) || defined(__CYGWIN__)) && !defined(ITRON)
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#elif defined(BTRON) || defined(TENGINE) 
+#elif defined(BTRON) || defined(TENGINE)
 #include <typedef.h>
 #elif defined(ITRON)
 #include <kernel.h>
@@ -40,7 +40,7 @@ typedef int socklen_t;
 #endif
 
 #if (!defined(WIN32) && !defined(__CYGWIN__)) || defined(ITRON)
-#if defined(BTRON) || defined(TENGINE) 
+#if defined(BTRON) || defined(TENGINE)
 typedef W SOCKET;
 #elif defined(ITRON)
 typedef ER SOCKET;
@@ -51,121 +51,109 @@ typedef int SOCKET;
 
 namespace CyberNet {
 
-class SocketImp
-{
-private:
+class SocketImp {
+  private:
+  int type;
+  std::string localAddr;
+  int localPort;
 
-	int type;
-	std::string localAddr;
-	int localPort;
+  public:
+  SOCKET sock;
 
-public:
+  public:
+  SocketImp();
+  ~SocketImp();
 
-	SOCKET	sock;
+  ////////////////////////////////////////////////
+  //	Socket
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  static const int STREAM;
+  static const int DGRAM;
 
-	SocketImp();
-	~SocketImp();
+  ////////////////////////////////////////////////
+  //	Socket
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	Socket
-	////////////////////////////////////////////////
+  public:
+  void setSocket(SOCKET value)
+  {
+    sock = value;
+  }
 
-public:
+  SOCKET getSocket()
+  {
+    return sock;
+  }
 
-	static const int STREAM;
-	static const int DGRAM;
+  ////////////////////////////////////////////////
+  // bind
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	Socket
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  bool isBound();
 
-	void setSocket(SOCKET value)
-	{
-		sock = value;
-	}
+  ////////////////////////////////////////////////
+  // close
+  ////////////////////////////////////////////////
 
-	SOCKET getSocket()
-	{
-		return sock;
-	}
+  public:
+  bool close();
 
-	////////////////////////////////////////////////
-	// bind
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  //	Local address/port
+  ////////////////////////////////////////////////
 
-	bool isBound();
-	
-	////////////////////////////////////////////////
-	// close
-	////////////////////////////////////////////////
+  public:
+  void setLocalAddress(const char* addr)
+  {
+    localAddr = (addr != NULL) ? addr : "";
+    // StripIPv6ScopeID(addr, localAddr);
+  }
 
-public:
-	
-	bool close();
-	
-	////////////////////////////////////////////////
-	//	Local address/port
-	////////////////////////////////////////////////
+  const char* getLocalAddress()
+  {
+    return localAddr.c_str();
+  }
 
-public:
+  void setLocalPort(int port)
+  {
+    localPort = port;
+  }
 
-	void setLocalAddress(const char *addr)
-	{
-		localAddr = (addr != NULL) ? addr : "";
-		//StripIPv6ScopeID(addr, localAddr);
-	}
+  int getLocalPort()
+  {
+    return localPort;
+  }
 
-	const char *getLocalAddress()
-	{
-		return localAddr.c_str();
-	}
+  ////////////////////////////////////////////////
+  // Type
+  ////////////////////////////////////////////////
 
-	void setLocalPort(int port)
-	{
-		localPort = port;
-	}
+  protected:
+  void setType(int value)
+  {
+    type = value;
+  }
 
-	int getLocalPort()
-	{
-		return localPort;
-	}
+  public:
+  int getType()
+  {
+    return type;
+  }
 
-	////////////////////////////////////////////////
-	// Type
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Socket Option
+  ////////////////////////////////////////////////
 
-protected:
-	
-	void setType(int value)
-	{
-		type = value;
-	}
+  public:
+  bool setReuseAddress(bool on);
+  void setTimeout(int timeout);
 
-public:
-
-	int getType()
-	{
-		return type;
-	}
-
-	////////////////////////////////////////////////
-	//	Socket Option
-	////////////////////////////////////////////////
-
-public:
-
-	bool setReuseAddress(bool on);
-	void setTimeout(int timeout);
-
-	#if defined(TENGINE) && defined(TENGINE_NET_KASAGO)
-	bool setMulticastInterface(const char *ifaddr);
-	#endif
+#if defined(TENGINE) && defined(TENGINE_NET_KASAGO)
+  bool setMulticastInterface(const char* ifaddr);
+#endif
 };
 
 void SocketStartup();

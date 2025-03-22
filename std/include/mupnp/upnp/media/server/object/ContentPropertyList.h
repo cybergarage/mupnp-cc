@@ -1,67 +1,61 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: ContentPropertyList.h
-*
-*	Revision;
-*
-*	03/14/04
-*		- first revision
-*
-******************************************************************/
+ *
+ *	CyberLink for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: ContentPropertyList.h
+ *
+ *	Revision;
+ *
+ *	03/14/04
+ *		- first revision
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_CONTENTPROPERTYLIST_H_
 #define _CLINK_MEDIA_CONTENTPROPERTYLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/ContentProperty.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class ContentPropertyList : public CyberUtil::Vector 
-{
+class ContentPropertyList : public CyberUtil::Vector {
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  ContentPropertyList();
 
-	ContentPropertyList();
-	
-	~ContentPropertyList();
+  ~ContentPropertyList();
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  bool addContentProperty(ContentProperty* prop);
+  bool removeContentProperty(ContentProperty* prop);
+  bool insertContentProperty(ContentProperty* prop, int index);
 
-	bool addContentProperty(ContentProperty *prop);
-	bool removeContentProperty(ContentProperty *prop);
-	bool insertContentProperty(ContentProperty *prop, int index);
+  ContentProperty* getContentProperty(int n)
+  {
+    return (ContentProperty*)Vector::get(n);
+  }
 
-	ContentProperty *getContentProperty(int n)
-	{
-		return (ContentProperty*)Vector::get(n);
-	}
+  ContentProperty* getContentProperty(const char* name);
 
-	ContentProperty *getContentProperty(const char *name);
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
-
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

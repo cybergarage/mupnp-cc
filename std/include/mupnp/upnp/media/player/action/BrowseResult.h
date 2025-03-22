@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : BrowseResult.h
-*
-*	Revision:
-*
-*	04/26/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : BrowseResult.h
+ *
+ *	Revision:
+ *
+ *	04/26/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_BROWSERESULT_H_
 #define _CLINK_MEDIA_BROWSERESULT_H_
@@ -20,57 +20,50 @@
 
 namespace CyberLink {
 
-class BrowseResult
-{
-	CyberXML::Node *resultNode;
+class BrowseResult {
+  CyberXML::Node* resultNode;
 
-	////////////////////////////////////////////////
-	// Constrictor
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constrictor
+  ////////////////////////////////////////////////
 
-	BrowseResult(CyberXML::Node *node)
-	{
-		setResultNode(node);
-	}
+  public:
+  BrowseResult(CyberXML::Node* node)
+  {
+    setResultNode(node);
+  }
 
-	////////////////////////////////////////////////
-	// Request
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Request
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void setResultNode(CyberXML::Node* node)
+  {
+    resultNode = node;
+  }
 
-	void setResultNode(CyberXML::Node *node)
-	{
-		resultNode = node;
-	}
+  CyberXML::Node* getResultNode()
+  {
+    return resultNode;
+  }
 
-	CyberXML::Node *getResultNode()
-	{
-		return resultNode;
-	}
+  ////////////////////////////////////////////////
+  // ContentNode
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// ContentNode
-	////////////////////////////////////////////////
+  public:
+  int getNContentNodes()
+  {
+    return resultNode->getNNodes();
+  }
 
-public:
-
-	int getNContentNodes()
-	{
-		return resultNode->getNNodes();
-	}
-
-	CyberXML::Node *getContentNode(int n)
-	{
-		return resultNode->getNode(n);
-	}
-
+  CyberXML::Node* getContentNode(int n)
+  {
+    return resultNode->getNode(n);
+  }
 };
 
 }
 
 #endif
-
-

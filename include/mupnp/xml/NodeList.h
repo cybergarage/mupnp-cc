@@ -19,40 +19,43 @@ namespace uXML {
 class Node;
 
 class NodeList : public mUPnP::SharedVector<Node> {
-public:
-  
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  NodeList() {
+
+  NodeList()
+  {
   }
-  
-public:
-  
+
+  public:
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  bool addNode(Node *node) {
+
+  bool addNode(Node* node)
+  {
     return add(node);
   }
-  
-  bool removeNode(mupnp_shared_ptr<Node> node) {
+
+  bool removeNode(mupnp_shared_ptr<Node> node)
+  {
     return remove(node);
   }
-  
-  bool insertNode(Node *node, size_t index) {
+
+  bool insertNode(Node* node, size_t index)
+  {
     return insertAt(node, index);
   }
-  
-  mupnp_shared_ptr<Node> getNode(size_t n) {
+
+  mupnp_shared_ptr<Node> getNode(size_t n)
+  {
     return get(n);
   }
-  
-  mupnp_shared_ptr<Node> getNode(const std::string &name);
-  mupnp_shared_ptr<Node> getEndsWith(const std::string &name);
-  mupnp_shared_ptr<Node> getNode(const std::string &name, const std::string &value);
+
+  mupnp_shared_ptr<Node> getNode(const std::string& name);
+  mupnp_shared_ptr<Node> getEndsWith(const std::string& name);
+  mupnp_shared_ptr<Node> getNode(const std::string& name, const std::string& value);
 };
 
 }

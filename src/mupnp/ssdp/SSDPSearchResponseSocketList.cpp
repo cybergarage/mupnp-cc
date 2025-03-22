@@ -16,11 +16,13 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
-  
-SSDPSearchResponseSocketList::SSDPSearchResponseSocketList()  {
+
+SSDPSearchResponseSocketList::SSDPSearchResponseSocketList()
+{
 }
 
-SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()  {
+SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()
+{
   stop();
 }
 
@@ -28,10 +30,11 @@ SSDPSearchResponseSocketList::~SSDPSearchResponseSocketList()  {
 // ControlPoint
 ////////////////////////////////////////////////
 
-void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
+void SSDPSearchResponseSocketList::setControlPoint(ControlPoint* ctrlPoint)
+{
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
+    SSDPSearchResponseSocket* sock = getSSDPSearchResponseSocket(n);
     sock->setControlPoint(ctrlPoint);
   }
 }
@@ -39,8 +42,9 @@ void SSDPSearchResponseSocketList::setControlPoint(ControlPoint *ctrlPoint) {
 ////////////////////////////////////////////////
 // Methods
 ////////////////////////////////////////////////
-  
-bool SSDPSearchResponseSocketList::open(int port) {
+
+bool SSDPSearchResponseSocketList::open(int port)
+{
   bool areAllHostsOpened = true;
   size_t nHostAddrs = uHTTP::GetNHostAddresses();
   if (nHostAddrs == 0)
@@ -48,7 +52,7 @@ bool SSDPSearchResponseSocketList::open(int port) {
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     uHTTP::GetHostAddress(n, bindAddr);
-    SSDPSearchResponseSocket *ssdpResSocket = new SSDPSearchResponseSocket();
+    SSDPSearchResponseSocket* ssdpResSocket = new SSDPSearchResponseSocket();
     if (ssdpResSocket->open(port, bindAddr) == false) {
       delete ssdpResSocket;
       areAllHostsOpened = false;
@@ -59,11 +63,12 @@ bool SSDPSearchResponseSocketList::open(int port) {
   return areAllHostsOpened;
 }
 
-bool SSDPSearchResponseSocketList::close() {
+bool SSDPSearchResponseSocketList::close()
+{
   bool areAllSocketsClosed = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
+    SSDPSearchResponseSocket* sock = getSSDPSearchResponseSocket(n);
     if (sock->close() == false) {
       areAllSocketsClosed = false;
     }
@@ -75,12 +80,13 @@ bool SSDPSearchResponseSocketList::close() {
 ////////////////////////////////////////////////
 // Methods
 ////////////////////////////////////////////////
-  
-bool SSDPSearchResponseSocketList::start() {
+
+bool SSDPSearchResponseSocketList::start()
+{
   bool areAllSocketsStarted = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
+    SSDPSearchResponseSocket* sock = getSSDPSearchResponseSocket(n);
     if (sock->start() == false) {
       areAllSocketsStarted = false;
     }
@@ -88,11 +94,12 @@ bool SSDPSearchResponseSocketList::start() {
   return areAllSocketsStarted;
 }
 
-bool SSDPSearchResponseSocketList::stop() {
+bool SSDPSearchResponseSocketList::stop()
+{
   bool areAllSocketsStopped = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
+    SSDPSearchResponseSocket* sock = getSSDPSearchResponseSocket(n);
     if (sock->stop() == false) {
       areAllSocketsStopped = false;
     }
@@ -105,14 +112,15 @@ bool SSDPSearchResponseSocketList::stop() {
 // Methods
 ////////////////////////////////////////////////
 
-bool SSDPSearchResponseSocketList::post(SSDPSearchRequest *req) {
+bool SSDPSearchResponseSocketList::post(SSDPSearchRequest* req)
+{
   bool areAllPostSuccess = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPSearchResponseSocket *sock = getSSDPSearchResponseSocket(n);
-    const char *bindAddr = sock->getLocalAddress();
+    SSDPSearchResponseSocket* sock = getSSDPSearchResponseSocket(n);
+    const char* bindAddr = sock->getLocalAddress();
     req->setLocalAddress(bindAddr);
-    const char *ssdpAddr = SSDP::ADDRESS;
+    const char* ssdpAddr = SSDP::ADDRESS;
     if (uHTTP::IsIPv6Address(bindAddr) == true)
       ssdpAddr = SSDP::GetIPv6Address();
     if (sock->post(ssdpAddr, SSDP::PORT, req) == false)

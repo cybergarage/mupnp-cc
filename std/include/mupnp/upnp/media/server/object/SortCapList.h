@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: SortCapList.h
-*
-*	Revision;
-*
-*	03/24/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: SortCapList.h
+ *
+ *	Revision;
+ *
+ *	03/24/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_SORTCAPLIST_H_
 #define _CLINK_MEDIA_SORTCAPLIST_H_
@@ -22,48 +22,42 @@ namespace CyberLink {
 
 class SortCap;
 
-class SortCapList : public CyberUtil::Vector 
-{
+class SortCapList : public CyberUtil::Vector {
 
-public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	SortCapList() 
-	{
-	}
+  public:
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-	~SortCapList() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  SortCapList()
+  {
+  }
 
-public:
+  ~SortCapList()
+  {
+    clear();
+  }
 
-	SortCap *getSortCap(int n)
-	{
-		return (SortCap*)Vector::get(n);
-	}
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-	SortCap *getSortCap(const char *type) ;
+  public:
+  SortCap* getSortCap(int n)
+  {
+    return (SortCap*)Vector::get(n);
+  }
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
+  SortCap* getSortCap(const char* type);
 
-public:
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-
-

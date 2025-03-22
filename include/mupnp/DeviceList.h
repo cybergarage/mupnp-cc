@@ -17,27 +17,28 @@ namespace mUPnP {
 class Device;
 
 class DeviceList : public SharedVector<Device> {
-public:
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  DeviceList() 
+
+  DeviceList()
   {
   }
-  
+
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  mupnp_shared_ptr<Device> getDevice(size_t n) {
+
+  mupnp_shared_ptr<Device> getDevice(size_t n)
+  {
     return get(n);
   }
 };
@@ -45,5 +46,3 @@ public:
 }
 
 #endif
-
-

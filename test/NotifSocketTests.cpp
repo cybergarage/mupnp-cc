@@ -22,11 +22,11 @@ BOOST_AUTO_TEST_CASE(NotifySocketPost)
   NetworkInterfaceList netIfList;
   GetHostAddresses(netIfList);
   BOOST_CHECK(0 < netIfList.size());
-  
-  NetworkInterface *netIf = netIfList.getNetworkInterface(0);
+
+  NetworkInterface* netIf = netIfList.getNetworkInterface(0);
   string ifAddr = netIf->getAddress();
 
-  for (int n=0; n<10; n++) {
+  for (int n = 0; n < 10; n++) {
     SSDPNotifySocket ssdpSock;
     SSDPNotifyRequest ssdpReq;
     ssdpReq.setNTS(NTS::ALIVE);

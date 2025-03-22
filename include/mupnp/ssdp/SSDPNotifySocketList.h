@@ -17,21 +17,22 @@
 namespace mUPnP {
 class ControlPoint;
 
-class SSDPNotifySocketList : public Vector<SSDPNotifySocket>  {
+class SSDPNotifySocketList : public Vector<SSDPNotifySocket> {
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
- public:
+
+  public:
   SSDPNotifySocketList();
   ~SSDPNotifySocketList();
 
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
- public:
-  SSDPNotifySocket *getSSDPNotifySocket(size_t n) {
+
+  public:
+  SSDPNotifySocket* getSSDPNotifySocket(size_t n)
+  {
     return get(n);
   }
 
@@ -39,22 +40,22 @@ class SSDPNotifySocketList : public Vector<SSDPNotifySocket>  {
   // ControlPoint
   ////////////////////////////////////////////////
 
- public:
-  void setControlPoint(ControlPoint *ctrlPoint);
+  public:
+  void setControlPoint(ControlPoint* ctrlPoint);
 
   ////////////////////////////////////////////////
   // open/close
   ////////////////////////////////////////////////
-  
- public:
+
+  public:
   bool open();
   bool close();
-  
+
   ////////////////////////////////////////////////
   // start/stop
   ////////////////////////////////////////////////
-  
- public:
+
+  public:
   bool start();
   bool stop();
 };
@@ -62,5 +63,3 @@ class SSDPNotifySocketList : public Vector<SSDPNotifySocket>  {
 }
 
 #endif
-
-

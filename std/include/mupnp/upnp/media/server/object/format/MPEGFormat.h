@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : GIFPlugIn.h
-*
-*	Revision:
-*
-*	06/08/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : GIFPlugIn.h
+ *
+ *	Revision:
+ *
+ *	06/08/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MPEGFORMT_H_
 #define _CLINK_MEDIA_MPEGFORMT_H_
@@ -20,40 +20,35 @@
 
 namespace CyberLink {
 
-class MPEGFormat : public MovieFormat
-{
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+class MPEGFormat : public MovieFormat {
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  MPEGFormat();
+  MPEGFormat(CyberIO::File* file);
 
-	MPEGFormat();
-	MPEGFormat(CyberIO::File *file);
+  ////////////////////////////////////////////////
+  // Abstract Methods
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Abstract Methods
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  bool equals(CyberIO::File* file);
 
-	bool equals(CyberIO::File *file);
-	
-	FormatObject *createObject(CyberIO::File *file)
-	{
-		return new MPEGFormat(file);
-	}
-	
-	const char *getMimeType()
-	{
-		return "video/mpeg";
-	}
+  FormatObject* createObject(CyberIO::File* file)
+  {
+    return new MPEGFormat(file);
+  }
 
-	int getAttributeList(CyberXML::AttributeList &attrList);
+  const char* getMimeType()
+  {
+    return "video/mpeg";
+  }
+
+  int getAttributeList(CyberXML::AttributeList& attrList);
 };
 
 }
 
 #endif
-
-

@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : BrowseAction.h
-*
-*	Revision:
-*
-*	04/03/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : BrowseAction.h
+ *
+ *	Revision:
+ *
+ *	04/03/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_BROWSEACTION_H_
 #define _CLINK_MEDIA_BROWSEACTION_H_
@@ -22,183 +22,172 @@
 
 namespace CyberLink {
 
-class BrowseAction
-{
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-public:
+class BrowseAction {
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *OBJECT_ID;
-	static const char *BROWSE_FLAG;
-	static const char *FILTER;
-	static const char *STARTING_INDEX;
-	static const char *REQUESTED_COUNT;
-	static const char *SORT_CRITERIA;
-	
-	static const char *BROWSE_METADATA;
-	static const char *BROWSE_DIRECT_CHILDREN;
+  public:
+  static const char* OBJECT_ID;
+  static const char* BROWSE_FLAG;
+  static const char* FILTER;
+  static const char* STARTING_INDEX;
+  static const char* REQUESTED_COUNT;
+  static const char* SORT_CRITERIA;
 
-	static const char *RESULT;
-	static const char *NUMBER_RETURNED;
-	static const char *TOTAL_MACHES;
-	static const char *UPDATE_ID;
+  static const char* BROWSE_METADATA;
+  static const char* BROWSE_DIRECT_CHILDREN;
 
-	////////////////////////////////////////////////
-	// Member
-	////////////////////////////////////////////////
+  static const char* RESULT;
+  static const char* NUMBER_RETURNED;
+  static const char* TOTAL_MACHES;
+  static const char* UPDATE_ID;
 
-public:
+  ////////////////////////////////////////////////
+  // Member
+  ////////////////////////////////////////////////
 
-	Action *action;
+  public:
+  Action* action;
 
-	////////////////////////////////////////////////
-	// Constrictor
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constrictor
+  ////////////////////////////////////////////////
 
-	BrowseAction(Action *action)
-	{
-		this->action = action;
-	}
+  public:
+  BrowseAction(Action* action)
+  {
+    this->action = action;
+  }
 
-	////////////////////////////////////////////////
-	// getArgument
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // getArgument
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  Argument* getArgument(const char* name)
+  {
+    return action->getArgument(name);
+  }
 
-	Argument *getArgument(const char *name)
-	{
-		return action->getArgument(name);
-	}
+  ////////////////////////////////////////////////
+  // Request
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Request
-	////////////////////////////////////////////////
+  public:
+  const char* getBrowseFlag()
+  {
+    return action->getArgumentValue(BROWSE_FLAG);
+  }
 
-public:
+  bool isMetadata()
+  {
+    std::string browseMetaData = BROWSE_METADATA;
+    return (browseMetaData.compare(getBrowseFlag()) == 0) ? true : false;
+  }
 
-	const char *getBrowseFlag()
-	{
-		return action->getArgumentValue(BROWSE_FLAG);
-	}
-	
-	bool isMetadata()
-	{
-		std::string browseMetaData= BROWSE_METADATA;
-		return (browseMetaData.compare(getBrowseFlag()) == 0) ? true : false;
-	}
+  bool isDirectChildren()
+  {
+    std::string browseDirectChildren = BROWSE_DIRECT_CHILDREN;
+    return (browseDirectChildren.compare(getBrowseFlag()) == 0) ? true : false;
+  }
 
-	bool isDirectChildren()
-	{
-		std::string browseDirectChildren = BROWSE_DIRECT_CHILDREN;
-		return (browseDirectChildren.compare(getBrowseFlag()) == 0) ? true : false;
-	}
-	
-	const char *getObjectID()
-	{
-		return action->getArgumentValue(OBJECT_ID);
-	}
+  const char* getObjectID()
+  {
+    return action->getArgumentValue(OBJECT_ID);
+  }
 
-	int getStartingIndex()
-	{
-		return action->getArgumentIntegerValue(STARTING_INDEX);
-	}
+  int getStartingIndex()
+  {
+    return action->getArgumentIntegerValue(STARTING_INDEX);
+  }
 
-	int getRequestedCount()
-	{
-		return action->getArgumentIntegerValue(REQUESTED_COUNT);
-	}
-	
-	const char *getSortCriteria()
-	{
-		return action->getArgumentValue(SORT_CRITERIA);
-	}
+  int getRequestedCount()
+  {
+    return action->getArgumentIntegerValue(REQUESTED_COUNT);
+  }
 
-	const char *getFilter()
-	{
-		return action->getArgumentValue(FILTER);
-	}
+  const char* getSortCriteria()
+  {
+    return action->getArgumentValue(SORT_CRITERIA);
+  }
 
-	////////////////////////////////////////////////
-	// Request
-	////////////////////////////////////////////////
+  const char* getFilter()
+  {
+    return action->getArgumentValue(FILTER);
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // Request
+  ////////////////////////////////////////////////
 
-	void setBrowseFlag(const char *browseFlag)
-	{
-		action->setArgumentValue(BROWSE_FLAG, browseFlag);
-	}
-	
-	void setObjectID(const char *objectID)
-	{
-		action->setArgumentValue(OBJECT_ID, objectID);
-	}
+  public:
+  void setBrowseFlag(const char* browseFlag)
+  {
+    action->setArgumentValue(BROWSE_FLAG, browseFlag);
+  }
 
-	void setStartingIndex(int idx)
-	{
-		action->setArgumentValue(STARTING_INDEX, idx);
-	}
+  void setObjectID(const char* objectID)
+  {
+    action->setArgumentValue(OBJECT_ID, objectID);
+  }
 
-	void setRequestedCount(int count)
-	{
-		action->setArgumentValue(REQUESTED_COUNT, count);
-	}
-	
-	void setFilter(const char *filter)
-	{
-		action->setArgumentValue(FILTER, filter);
-	}
+  void setStartingIndex(int idx)
+  {
+    action->setArgumentValue(STARTING_INDEX, idx);
+  }
 
-	void setSortCriteria(const char *sortCaiteria)
-	{
-		action->setArgumentValue(SORT_CRITERIA, sortCaiteria);
-	}
+  void setRequestedCount(int count)
+  {
+    action->setArgumentValue(REQUESTED_COUNT, count);
+  }
 
-	////////////////////////////////////////////////
-	// Result
-	////////////////////////////////////////////////
+  void setFilter(const char* filter)
+  {
+    action->setArgumentValue(FILTER, filter);
+  }
 
-public:
+  void setSortCriteria(const char* sortCaiteria)
+  {
+    action->setArgumentValue(SORT_CRITERIA, sortCaiteria);
+  }
 
-	void setResult(const char *value)
-	{
-		action->setArgumentValue(RESULT, value);
-	}
+  ////////////////////////////////////////////////
+  // Result
+  ////////////////////////////////////////////////
 
-	void setNumberReturned(int value)
-	{
-		action->setArgumentValue(NUMBER_RETURNED, value);
-	}
+  public:
+  void setResult(const char* value)
+  {
+    action->setArgumentValue(RESULT, value);
+  }
 
-	void setTotalMaches(int value)
-	{
-		action->setArgumentValue(TOTAL_MACHES, value);
-	}
+  void setNumberReturned(int value)
+  {
+    action->setArgumentValue(NUMBER_RETURNED, value);
+  }
 
-	void setUpdateID(int value)
-	{
-		action->setArgumentValue(UPDATE_ID, value);
-	}
+  void setTotalMaches(int value)
+  {
+    action->setArgumentValue(TOTAL_MACHES, value);
+  }
 
-	////////////////////////////////////////////////
-	// post
-	////////////////////////////////////////////////
+  void setUpdateID(int value)
+  {
+    action->setArgumentValue(UPDATE_ID, value);
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // post
+  ////////////////////////////////////////////////
 
-	bool postControlAction()
-	{
-		return action->postControlAction();
-	}
+  public:
+  bool postControlAction()
+  {
+    return action->postControlAction();
+  }
 };
 
 }
 
 #endif
-
-

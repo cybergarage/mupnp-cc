@@ -11,8 +11,8 @@
 #ifndef _UHTTP_HTTP_HTTP_H_
 #define _UHTTP_HTTP_HTTP_H_
 
-#include <string>
 #include <mupnp/net/URL.h>
+#include <string>
 
 namespace uHTTP {
 const char PRODUCT_NAME[] = "uhttp";

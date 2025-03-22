@@ -16,42 +16,45 @@
 
 namespace mUPnP {
 
-class PropertyList : public Vector<Property>  {
- public:
-    
+class PropertyList : public Vector<Property> {
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  PropertyList() {
+
+  PropertyList()
+  {
   }
-  
+
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
 
- public:
-  bool addProperty(Property *prop) {
-        return add(prop);
+  public:
+  bool addProperty(Property* prop)
+  {
+    return add(prop);
   }
-  
-  bool removeProperty(Property *prop) {
+
+  bool removeProperty(Property* prop)
+  {
     return remove(prop);
   }
-  
-  bool insertProperty(Property *prop, int index) {
+
+  bool insertProperty(Property* prop, int index)
+  {
     return insertAt(prop, index);
   }
 
-  Property *getProperty(size_t n) {
+  Property* getProperty(size_t n)
+  {
     return get(n);
   }
 };

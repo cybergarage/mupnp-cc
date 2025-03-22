@@ -11,9 +11,9 @@
 #ifndef _MUPMPCC_ACTIONREQUEST_H_
 #define _MUPMPCC_ACTIONREQUEST_H_
 
-#include <mupnp/control/ControlRequest.h>
-#include <mupnp/control/ActionResponse.h>
 #include <mupnp/ArgumentList.h>
+#include <mupnp/control/ActionResponse.h>
+#include <mupnp/control/ControlRequest.h>
 #include <mupnp/soap/SOAP.h>
 
 #include <sstream>
@@ -28,12 +28,15 @@ class ActionRequest : public ControlRequest {
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
- public:
-  ActionRequest() {
+
+  public:
+  ActionRequest()
+  {
   }
 
-  ActionRequest(uHTTP::HTTPRequest *httpReq) : ControlRequest(httpReq) {
+  ActionRequest(uHTTP::HTTPRequest* httpReq)
+      : ControlRequest(httpReq)
+  {
     initArgumentList();
   }
 
@@ -41,17 +44,17 @@ class ActionRequest : public ControlRequest {
   // Action
   ////////////////////////////////////////////////
 
- public:
+  public:
   mupnp_shared_ptr<uXML::Node> getActionNode();
 
-  const char *getActionName(std::string &buf);
+  const char* getActionName(std::string& buf);
 
-private:
-
+  private:
   void initArgumentList();
 
- public:
-  ArgumentList *getArgumentList() {
+  public:
+  ArgumentList* getArgumentList()
+  {
     return &argumentList;
   }
 
@@ -59,28 +62,27 @@ private:
   // setRequest
   ////////////////////////////////////////////////
 
- public:
-  void setRequest(Action *action, ArgumentList *argList);
+  public:
+  void setRequest(Action* action, ArgumentList* argList);
 
   ////////////////////////////////////////////////
   // Contents
   ////////////////////////////////////////////////
 
-private:
-
-  uXML::Node *createContentNode(Service *service, Action *action, ArgumentList *argList);
+  private:
+  uXML::Node* createContentNode(Service* service, Action* action, ArgumentList* argList);
 
   ////////////////////////////////////////////////
   // post
   ////////////////////////////////////////////////
 
- public:
-  ActionResponse *post(ActionResponse *actionRes);
+  public:
+  ActionResponse* post(ActionResponse* actionRes);
 
-  ActionResponse *post() {
+  ActionResponse* post()
+  {
     return post(&actionRes);
   }
-
 };
 
 }

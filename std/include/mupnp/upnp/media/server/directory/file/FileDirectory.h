@@ -1,102 +1,93 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2004
-*
-*	File : FileDirectory.h
-*
-*	Revision:
-*
-*	04/14/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2004
+ *
+ *	File : FileDirectory.h
+ *
+ *	Revision:
+ *
+ *	04/14/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_FILE_DIRECTORY_H_
 #define _CLINK_MEDIA_FILE_DIRECTORY_H_
 
-#include <string>
 #include <mupnp/io/File.h>
 #include <mupnp/upnp/media/server/Directory.h>
 #include <mupnp/upnp/media/server/object/item/file/FileItemNode.h>
 #include <mupnp/upnp/media/server/object/item/file/FileItemNodeList.h>
+#include <string>
 
 namespace CyberLink {
 
-class FileDirectory : public Directory
-{
-	std::string path;
-	
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
+class FileDirectory : public Directory {
+  std::string path;
 
-	FileDirectory(const char *name, const char *path);
-	
-	////////////////////////////////////////////////
-	// Path
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  FileDirectory(const char* name, const char* path);
 
-	void setPath(const char *value)
-	{
-		path = value;		
-	}
-	
-	const char *getPath()
-	{
-		return path.c_str();
-	}
+  ////////////////////////////////////////////////
+  // Path
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// create/updateItemNode
-	////////////////////////////////////////////////
+  public:
+  void setPath(const char* value)
+  {
+    path = value;
+  }
 
-private:
+  const char* getPath()
+  {
+    return path.c_str();
+  }
 
-	bool updateItemNode(FileItemNode *itemNode, CyberIO::File *file);
-	FileItemNode *createCompareItemNode(CyberIO::File *file);
-	
-	////////////////////////////////////////////////
-	// FileList
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // create/updateItemNode
+  ////////////////////////////////////////////////
 
-private:
+  private:
+  bool updateItemNode(FileItemNode* itemNode, CyberIO::File* file);
+  FileItemNode* createCompareItemNode(CyberIO::File* file);
 
-	int getDirectoryItemNodeList(CyberIO::File *dirFile, FileItemNodeList &itemNodeList);
-	int getCurrentDirectoryItemNodeList(FileItemNodeList &fileNodeList);
+  ////////////////////////////////////////////////
+  // FileList
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// updateItemNodeList
-	////////////////////////////////////////////////
+  private:
+  int getDirectoryItemNodeList(CyberIO::File* dirFile, FileItemNodeList& itemNodeList);
+  int getCurrentDirectoryItemNodeList(FileItemNodeList& fileNodeList);
 
-private:
+  ////////////////////////////////////////////////
+  // updateItemNodeList
+  ////////////////////////////////////////////////
 
-	FileItemNode *getItemNode(CyberIO::File *file);
+  private:
+  FileItemNode* getItemNode(CyberIO::File* file);
 
-	void addItemNode(FileItemNode *itemNode)
-	{
-		addContentNode(itemNode);
-	}
-	
-	bool updateItemNodeList(FileItemNode *newItemNode);
-	void updateItemNodeList();
+  void addItemNode(FileItemNode* itemNode)
+  {
+    addContentNode(itemNode);
+  }
 
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
-	
-public:
+  bool updateItemNodeList(FileItemNode* newItemNode);
+  void updateItemNodeList();
 
-	void update();
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
+
+  public:
+  void update();
 };
 
 }
 
 #endif
-
-

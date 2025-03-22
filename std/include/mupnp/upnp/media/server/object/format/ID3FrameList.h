@@ -1,67 +1,60 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: FormatList
-*
-*	Revision;
-*
-*	06/09/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: FormatList
+ *
+ *	Revision;
+ *
+ *	06/09/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ID3FRAMELIST_H_
 #define _CLINK_MEDIA_ID3FRAMELIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/format/ID3Frame.h>
+#include <mupnp/util/Vector.h>
 #include <string>
 
 namespace CyberLink {
 
-class ID3FrameList : public CyberUtil::Vector
-{
-	
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+class ID3FrameList : public CyberUtil::Vector {
 
-public:
-	
-	ID3FrameList();
-	~ID3FrameList();
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// get*
-	////////////////////////////////////////////////
+  public:
+  ID3FrameList();
+  ~ID3FrameList();
 
-public:
+  ////////////////////////////////////////////////
+  // get*
+  ////////////////////////////////////////////////
 
-	ID3Frame *getFrame(int n)
-	{
-		return (ID3Frame *)get(n);
-	}
+  public:
+  ID3Frame* getFrame(int n)
+  {
+    return (ID3Frame*)get(n);
+  }
 
-	ID3Frame *getFrame(const char *name);
-	unsigned char *getFrameData(const char *name);
-	const char *getFrameData(const char *name, std::string &buf);
-	const char *getFrameStringData(const char *name, std::string &buf);
+  ID3Frame* getFrame(const char* name);
+  unsigned char* getFrameData(const char* name);
+  const char* getFrameData(const char* name, std::string& buf);
+  const char* getFrameStringData(const char* name, std::string& buf);
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
-
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

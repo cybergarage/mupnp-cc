@@ -11,18 +11,17 @@
 #ifndef _MUPMPCC_DESCRIPTON_H_
 #define _MUPMPCC_DESCRIPTON_H_
 
-#include <sstream>
 #include <mupnp/util/StringUtil.h>
+#include <sstream>
 
 namespace mUPnP {
 namespace Description {
-const char LOADING_EXCEPTION[] = "Couldn't load a specified description file ";
-const char NOROOT_EXCEPTION[] = "Couldn't find a root node";
-const char NOROOTDEVICE_EXCEPTION[] = "Couldn't find a root device node";
+  const char LOADING_EXCEPTION[] = "Couldn't load a specified description file ";
+  const char NOROOT_EXCEPTION[] = "Couldn't find a root node";
+  const char NOROOTDEVICE_EXCEPTION[] = "Couldn't find a root device node";
 
 }
 
 }
 
 #endif
-

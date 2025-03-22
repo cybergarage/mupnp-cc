@@ -16,40 +16,42 @@
 
 namespace uXML {
 
-  class AttributeList : public mUPnP::Vector<Attribute> {
-public:
-  
+class AttributeList : public mUPnP::Vector<Attribute> {
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
-  AttributeList() {
+  AttributeList()
+  {
   }
-  
-public:
-  
+
+  public:
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  bool addAttribute(Attribute *attr) {
+
+  bool addAttribute(Attribute* attr)
+  {
     return Vector::add(attr);
   }
-  
-  bool insertAttribute(Attribute *attr, int index) {
+
+  bool insertAttribute(Attribute* attr, int index)
+  {
     return Vector::insertAt(attr, index);
-    
   }
-  
-  bool removeAttribute(Attribute *attr) {
+
+  bool removeAttribute(Attribute* attr)
+  {
     return Vector::remove(attr);
   }
 
-  Attribute *getAttribute(size_t n) {
+  Attribute* getAttribute(size_t n)
+  {
     return Vector::get(n);
   }
 
-  Attribute *getAttribute(const std::string &name);
+  Attribute* getAttribute(const std::string& name);
 };
 
 }

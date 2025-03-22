@@ -20,7 +20,7 @@ using namespace std;
 BOOST_AUTO_TEST_CASE(SSDPRequestTests)
 {
   // SSDPRequest::setLeaseTime
-  SSDPRequest *ssdpReq = new SSDPRequest();
+  SSDPRequest* ssdpReq = new SSDPRequest();
   ssdpReq->setLeaseTime(300);
   BOOST_CHECK(ssdpReq->getLeaseTime() == 300);
   delete ssdpReq;
@@ -37,9 +37,9 @@ BOOST_AUTO_TEST_CASE(STTests)
 
 BOOST_AUTO_TEST_CASE(SSDPTests)
 {
-  const char *UPNP_TEST_MAXAGE_STR = "max-age=60";
+  const char* UPNP_TEST_MAXAGE_STR = "max-age=60";
   const int UPNP_TEST_MAXAGE = 60;
-    
+
   int mx = SSDP::GetLeaseTime(UPNP_TEST_MAXAGE_STR);
   BOOST_CHECK_EQUAL(UPNP_TEST_MAXAGE, mx);
 }
@@ -50,4 +50,3 @@ BOOST_AUTO_TEST_CASE(BootIdTests)
   BOOST_CHECK(0 < bootId);
   BOOST_CHECK(bootId < INT_MAX);
 }
-

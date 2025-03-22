@@ -12,6 +12,7 @@
 #define _UHTTP_IO_BUFFEREDREADER_H_
 
 #include <string>
+
 #include <mupnp/io/Reader.h>
 
 namespace uHTTP {

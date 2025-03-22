@@ -11,13 +11,13 @@
 #if !defined(__MINGW32__)
 #include <stdio.h>
 #include <stdlib.h>
-#include <termios.h>
 #include <sys/ioctl.h>
+#include <termios.h>
 #endif
 
-#if defined (__CYGWIN__) && !defined(FIONREAD)
-#include <winsock2.h>
+#if defined(__CYGWIN__) && !defined(FIONREAD)
 #include <windows.h>
+#include <winsock2.h>
 #endif
 
 #if !defined(__MINGW32__)
@@ -27,36 +27,35 @@ static struct termios orgTermAttr;
 void kbinit()
 {
 #if !defined(__MINGW32__)
-	struct termios termAttr;
-	tcgetattr(0, &orgTermAttr);
-	termAttr = orgTermAttr;
-	termAttr.c_lflag &= ~(ICANON | ECHO);
-	termAttr.c_cc[VTIME] = 0;
-	termAttr.c_cc[VMIN] = 1;
-	tcsetattr(0, TCSANOW, &termAttr);
+  struct termios termAttr;
+  tcgetattr(0, &orgTermAttr);
+  termAttr = orgTermAttr;
+  termAttr.c_lflag &= ~(ICANON | ECHO);
+  termAttr.c_cc[VTIME] = 0;
+  termAttr.c_cc[VMIN] = 1;
+  tcsetattr(0, TCSANOW, &termAttr);
 #endif
 }
 
 int kbhit()
 {
 #if !defined(__MINGW32__)
-	int ret, n;
-	ret = ioctl(0, FIONREAD, &n);
-	if (ret != -1)
-		return n;
+  int ret, n;
+  ret = ioctl(0, FIONREAD, &n);
+  if (ret != -1)
+    return n;
 #endif
-	return 0;
+  return 0;
 }
 
 int kbkey()
 {
-	return 0;
+  return 0;
 }
 
 void kbexit()
 {
 #if !defined(__MINGW32__)
-	tcsetattr(0, TCSANOW, &orgTermAttr);
+  tcsetattr(0, TCSANOW, &orgTermAttr);
 #endif
 }
-

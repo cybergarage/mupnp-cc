@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: TitleSearchCap.h
-*
-*	Revision;
-*
-*	08/21/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: TitleSearchCap.h
+ *
+ *	Revision;
+ *
+ *	08/21/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_TITLESEARCHCAP_H_
 #define _CLINK_MEDIA_TITLESEARCHCAP_H_
@@ -22,24 +22,20 @@
 
 namespace CyberLink {
 
-class TitleSearchCap : public SearchCap 
-{
-public:
+class TitleSearchCap : public SearchCap {
+  public:
+  TitleSearchCap()
+  {
+  }
 
-	TitleSearchCap() 
-	{
-	}
-	
-	const char *getPropertyName() 
-	{
-		return SearchCriteria::TITLE;
-	}
+  const char* getPropertyName()
+  {
+    return SearchCriteria::TITLE;
+  }
 
-	bool compare(SearchCriteria *searchCri, ContentNode *conNode);
+  bool compare(SearchCriteria* searchCri, ContentNode* conNode);
 };
 
 }
 
 #endif
-
-

@@ -16,7 +16,6 @@
 #include <iostream>
 
 #include <stdio.h>
-#include <stdio.h>
 #if defined(WIN32) && !defined(__CYGWIN__)
 #include <conio.h>
 #else
@@ -35,44 +34,43 @@ using namespace mUPnP;
 
 void PrintKeyMessage()
 {
-	cout << "'p' : Print" << endl;
-	cout << "'q' : Quit" << endl;
+  cout << "'p' : Print" << endl;
+  cout << "'q' : Quit" << endl;
 }
 
 int main(int argc, char* argv[])
 {
-	//UPnP::SetEnable(UPnP::USE_ONLY_IPV6_ADDR);
+  // UPnP::SetEnable(UPnP::USE_ONLY_IPV6_ADDR);
 
-	Debug::on();
+  Debug::on();
 
-	PrintKeyMessage();
+  PrintKeyMessage();
 
-	CtrlPoint ctrlPoint;
-	ctrlPoint.start();
+  CtrlPoint ctrlPoint;
+  ctrlPoint.start();
 
 #if !defined(WIN32) || defined(__CYGWIN__)
-	kbinit();
+  kbinit();
 #endif
-	int ch;
-	do
-	{
+  int ch;
+  do {
 #if defined(WIN32) && !defined(__CYGWIN__)
-		ch = getch();
+    ch = getch();
 #else
-		ch = getchar();
+    ch = getchar();
 #endif
-		ch = toupper( ch );
-		if (ch == 'P')
-			ctrlPoint.print();
-		else if (ch != 'Q')
-			PrintKeyMessage();
-	} while( ch != 'Q');
+    ch = toupper(ch);
+    if (ch == 'P')
+      ctrlPoint.print();
+    else if (ch != 'Q')
+      PrintKeyMessage();
+  } while (ch != 'Q');
 
 #if !defined(WIN32) || defined(__CYGWIN__)
-	kbexit();
+  kbexit();
 #endif
 
-	ctrlPoint.stop();
+  ctrlPoint.stop();
 
-	return 0;
+  return 0;
 }

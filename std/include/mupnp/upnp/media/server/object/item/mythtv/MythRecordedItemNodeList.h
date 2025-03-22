@@ -1,70 +1,66 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-**
-*	File: MythRecordedItemNodeList.h
-*
-*	Revision;
-*
-*	06/07/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ **
+ *	File: MythRecordedItemNodeList.h
+ *
+ *	Revision;
+ *
+ *	06/07/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODELIST_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDITEMNODELIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/item/mythtv/MythRecordedItemNode.h>
+#include <mupnp/util/Vector.h>
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_MYTHTV
 
 namespace CyberLink {
 
-class MythRecordedItemNodeList : public CyberUtil::Vector
-{
-	bool delElemFlag;
+class MythRecordedItemNodeList : public CyberUtil::Vector {
+  bool delElemFlag;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  MythRecordedItemNodeList(bool delElemFlag = true)
+  {
+    this->delElemFlag = delElemFlag;
+  }
 
-	MythRecordedItemNodeList(bool delElemFlag = true) 
-	{
-		this->delElemFlag = delElemFlag;
-	}
-	
-	~MythRecordedItemNodeList() 
-	{
-		clear();
-	}
+  ~MythRecordedItemNodeList()
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  MythRecordedItemNode* getRecordedItemNode(int n)
+  {
+    return (MythRecordedItemNode*)Vector::get(n);
+  }
 
-	MythRecordedItemNode *getRecordedItemNode(int n)
-	{
-		return (MythRecordedItemNode *)Vector::get(n);
-	}
-	
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
@@ -72,5 +68,3 @@ public:
 #endif
 
 #endif
-
-

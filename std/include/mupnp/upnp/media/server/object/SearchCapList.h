@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: SearchCapList.h
-*
-*	Revision;
-*
-*	08/07/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: SearchCapList.h
+ *
+ *	Revision;
+ *
+ *	08/07/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_SEARCHCAPLIST_H_
 #define _CLINK_MEDIA_SEARCHCAPLIST_H_
@@ -22,48 +22,42 @@ namespace CyberLink {
 
 class SearchCap;
 
-class SearchCapList : public CyberUtil::Vector 
-{
+class SearchCapList : public CyberUtil::Vector {
 
-public:
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	SearchCapList() 
-	{
-	}
+  public:
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-	~SearchCapList() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  SearchCapList()
+  {
+  }
 
-public:
+  ~SearchCapList()
+  {
+    clear();
+  }
 
-	SearchCap *getSearchCap(int n)
-	{
-		return (SearchCap*)Vector::get(n);
-	}
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-	SearchCap *getSearchCap(const char *propertyName) ;
+  public:
+  SearchCap* getSearchCap(int n)
+  {
+    return (SearchCap*)Vector::get(n);
+  }
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
+  SearchCap* getSearchCap(const char* propertyName);
 
-public:
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-
-

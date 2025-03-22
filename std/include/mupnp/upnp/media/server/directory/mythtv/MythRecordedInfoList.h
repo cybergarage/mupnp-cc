@@ -1,67 +1,63 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-**
-*	File: MythRecordedInfoList.h
-*
-*	Revision;
-*
-*	06/07/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ **
+ *	File: MythRecordedInfoList.h
+ *
+ *	Revision;
+ *
+ *	06/07/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MYTHTV_RECORDEDINFOLIST_H_
 #define _CLINK_MEDIA_MYTHTV_RECORDEDINFOLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/directory/mythtv/MythRecordedInfo.h>
+#include <mupnp/util/Vector.h>
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_MYTHTV
 
 namespace CyberLink {
 
-class MythRecordedInfoList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+class MythRecordedInfoList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  MythRecordedInfoList()
+  {
+  }
 
-	MythRecordedInfoList() 
-	{
-	}
-	
-	~MythRecordedInfoList() 
-	{
-		clear();
-	}
+  ~MythRecordedInfoList()
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  MythRecordedInfo* getRecordedInfo(int n)
+  {
+    return (MythRecordedInfo*)Vector::get(n);
+  }
 
-	MythRecordedInfo *getRecordedInfo(int n)
-	{
-		return (MythRecordedInfo *)Vector::get(n);
-	}
-	
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
@@ -69,4 +65,3 @@ public:
 #endif
 
 #endif
-

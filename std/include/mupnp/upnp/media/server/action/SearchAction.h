@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : SearchAction.h
-*
-*	Revision:
-*
-*	04/03/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : SearchAction.h
+ *
+ *	Revision:
+ *
+ *	04/03/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_SEARCHACTION_H_
 #define _CLINK_MEDIA_SEARCHACTION_H_
@@ -22,169 +22,157 @@
 
 namespace CyberLink {
 
-class SearchAction
-{
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-public:
+class SearchAction {
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *CONTAINER_ID;
-	static const char *SEARCH_CRITERIA;
-	static const char *FILTER;
-	static const char *STARTING_INDEX;
-	static const char *REQUESTED_COUNT;
-	static const char *SORT_CRITERIA;
-	
-	static const char *RESULT;
-	static const char *NUMBER_RETURNED;
-	static const char *TOTAL_MACHES;
-	static const char *UPDATE_ID;
+  public:
+  static const char* CONTAINER_ID;
+  static const char* SEARCH_CRITERIA;
+  static const char* FILTER;
+  static const char* STARTING_INDEX;
+  static const char* REQUESTED_COUNT;
+  static const char* SORT_CRITERIA;
 
-	////////////////////////////////////////////////
-	// Member
-	////////////////////////////////////////////////
+  static const char* RESULT;
+  static const char* NUMBER_RETURNED;
+  static const char* TOTAL_MACHES;
+  static const char* UPDATE_ID;
 
-public:
+  ////////////////////////////////////////////////
+  // Member
+  ////////////////////////////////////////////////
 
-	Action *action;
+  public:
+  Action* action;
 
-	////////////////////////////////////////////////
-	// Constrictor
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constrictor
+  ////////////////////////////////////////////////
 
-	SearchAction(Action *action)
-	{
-		this->action = action;
-	}
+  public:
+  SearchAction(Action* action)
+  {
+    this->action = action;
+  }
 
-	////////////////////////////////////////////////
-	// getArgument
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // getArgument
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  Argument* getArgument(const char* name)
+  {
+    return action->getArgument(name);
+  }
 
-	Argument *getArgument(const char *name)
-	{
-		return action->getArgument(name);
-	}
+  ////////////////////////////////////////////////
+  // Request
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Request
-	////////////////////////////////////////////////
+  public:
+  const char* getContainerID()
+  {
+    return action->getArgumentValue(CONTAINER_ID);
+  }
 
-public:
+  const char* getSearchCriteria()
+  {
+    return action->getArgumentValue(SEARCH_CRITERIA);
+  }
 
-	const char *getContainerID()
-	{
-		return action->getArgumentValue(CONTAINER_ID);
-	}
+  int getStartingIndex()
+  {
+    return action->getArgumentIntegerValue(STARTING_INDEX);
+  }
 
-	const char *getSearchCriteria()
-	{
-		return action->getArgumentValue(SEARCH_CRITERIA);
-	}
+  int getRequestedCount()
+  {
+    return action->getArgumentIntegerValue(REQUESTED_COUNT);
+  }
 
+  const char* getSortCriteria()
+  {
+    return action->getArgumentValue(SORT_CRITERIA);
+  }
 
-	int getStartingIndex()
-	{
-		return action->getArgumentIntegerValue(STARTING_INDEX);
-	}
+  const char* getFilter()
+  {
+    return action->getArgumentValue(FILTER);
+  }
 
-	int getRequestedCount()
-	{
-		return action->getArgumentIntegerValue(REQUESTED_COUNT);
-	}
-	
-	const char *getSortCriteria()
-	{
-		return action->getArgumentValue(SORT_CRITERIA);
-	}
+  ////////////////////////////////////////////////
+  // Request
+  ////////////////////////////////////////////////
 
-	const char *getFilter()
-	{
-		return action->getArgumentValue(FILTER);
-	}
+  public:
+  void getContainerID(const char* containerID)
+  {
+    action->setArgumentValue(CONTAINER_ID, containerID);
+  }
 
-	////////////////////////////////////////////////
-	// Request
-	////////////////////////////////////////////////
+  void setSearchCriteria(const char* searchCaiteria)
+  {
+    action->setArgumentValue(SEARCH_CRITERIA, searchCaiteria);
+  }
 
-public:
+  void setStartingIndex(int idx)
+  {
+    action->setArgumentValue(STARTING_INDEX, idx);
+  }
 
-	void getContainerID(const char *containerID)
-	{
-		action->setArgumentValue(CONTAINER_ID, containerID);
-	}
+  void setRequestedCount(int count)
+  {
+    action->setArgumentValue(REQUESTED_COUNT, count);
+  }
 
-	void setSearchCriteria(const char *searchCaiteria)
-	{
-		action->setArgumentValue(SEARCH_CRITERIA, searchCaiteria);
-	}
+  void setFilter(const char* filter)
+  {
+    action->setArgumentValue(FILTER, filter);
+  }
 
-	void setStartingIndex(int idx)
-	{
-		action->setArgumentValue(STARTING_INDEX, idx);
-	}
+  void setSortCriteria(const char* sortCaiteria)
+  {
+    action->setArgumentValue(SORT_CRITERIA, sortCaiteria);
+  }
 
-	void setRequestedCount(int count)
-	{
-		action->setArgumentValue(REQUESTED_COUNT, count);
-	}
-	
-	void setFilter(const char *filter)
-	{
-		action->setArgumentValue(FILTER, filter);
-	}
+  ////////////////////////////////////////////////
+  // Result
+  ////////////////////////////////////////////////
 
-	void setSortCriteria(const char *sortCaiteria)
-	{
-		action->setArgumentValue(SORT_CRITERIA, sortCaiteria);
-	}
+  public:
+  void setResult(const char* value)
+  {
+    action->setArgumentValue(RESULT, value);
+  }
 
-	////////////////////////////////////////////////
-	// Result
-	////////////////////////////////////////////////
+  void setNumberReturned(int value)
+  {
+    action->setArgumentValue(NUMBER_RETURNED, value);
+  }
 
-public:
+  void setTotalMaches(int value)
+  {
+    action->setArgumentValue(TOTAL_MACHES, value);
+  }
 
-	void setResult(const char *value)
-	{
-		action->setArgumentValue(RESULT, value);
-	}
+  void setUpdateID(int value)
+  {
+    action->setArgumentValue(UPDATE_ID, value);
+  }
 
-	void setNumberReturned(int value)
-	{
-		action->setArgumentValue(NUMBER_RETURNED, value);
-	}
+  ////////////////////////////////////////////////
+  // post
+  ////////////////////////////////////////////////
 
-	void setTotalMaches(int value)
-	{
-		action->setArgumentValue(TOTAL_MACHES, value);
-	}
-
-	void setUpdateID(int value)
-	{
-		action->setArgumentValue(UPDATE_ID, value);
-	}
-
-	////////////////////////////////////////////////
-	// post
-	////////////////////////////////////////////////
-
-public:
-
-	bool postControlAction()
-	{
-		return action->postControlAction();
-	}
+  public:
+  bool postControlAction()
+  {
+    return action->postControlAction();
+  }
 };
 
 }
 
 #endif
-
-

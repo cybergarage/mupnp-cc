@@ -13,24 +13,26 @@
 
 using namespace mUPnP;
 
-
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
 
-HTTPUSocket::HTTPUSocket() {
+HTTPUSocket::HTTPUSocket()
+{
   open();
 }
 
-HTTPUSocket::~HTTPUSocket() {
+HTTPUSocket::~HTTPUSocket()
+{
   close();
 }
 
 ////////////////////////////////////////////////
 // open
 ////////////////////////////////////////////////
-  
-bool HTTPUSocket::open(int bindPort, const std::string &bindAddr) {
+
+bool HTTPUSocket::open(int bindPort, const std::string& bindAddr)
+{
   close();
   return ssdpUniSock.bind(bindPort, bindAddr);
 }
@@ -39,7 +41,8 @@ bool HTTPUSocket::open(int bindPort, const std::string &bindAddr) {
 // close
 ////////////////////////////////////////////////
 
-bool HTTPUSocket::close() {
+bool HTTPUSocket::close()
+{
   ssdpUniSock.close();
   return true;
 }
@@ -48,7 +51,8 @@ bool HTTPUSocket::close() {
 // post
 ////////////////////////////////////////////////
 
-bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg) {
+bool HTTPUSocket::post(const std::string& addr, int port, const std::string& msg)
+{
   ssdpUniSock.send(addr, port, msg);
   return true;
 }
@@ -57,7 +61,8 @@ bool HTTPUSocket::post(const std::string &addr, int port, const std::string &msg
 // reveive
 ////////////////////////////////////////////////
 
-bool HTTPUSocket::receive(SSDPPacket *ssdpPacket) {
+bool HTTPUSocket::receive(SSDPPacket* ssdpPacket)
+{
   ssdpPacket->setLocalAddress(getLocalAddress());
   ssize_t nRecv = ssdpUniSock.receive(ssdpPacket->getDatagramPacket());
   if (nRecv <= 0)
@@ -65,4 +70,3 @@ bool HTTPUSocket::receive(SSDPPacket *ssdpPacket) {
   ssdpPacket->setTimeStamp(time(NULL));
   return true;
 }
-

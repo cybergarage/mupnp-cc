@@ -12,8 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <mupnp/xml/XML.h>
 #include <mupnp/xml/Node.h>
+#include <mupnp/xml/XML.h>
 
 using namespace std;
 using namespace uXML;
@@ -22,24 +22,28 @@ using namespace uXML;
 // Node
 ////////////////////////////////////////////////
 
-Node::Node() {
+Node::Node()
+{
   userData = NULL;
   setParentNode(NULL);
 }
 
-Node::Node(const std::string &name)  {
+Node::Node(const std::string& name)
+{
   userData = NULL;
   setParentNode(NULL);
   setName(name);
 }
 
-Node::Node(const std::string &ns, const std::string &name)  {
+Node::Node(const std::string& ns, const std::string& name)
+{
   userData = NULL;
   setParentNode(NULL);
   setName(ns, name);
 }
 
-Node::~Node() {
+Node::~Node()
+{
   removeAllNodes();
   if (userData)
     delete userData;
@@ -49,7 +53,8 @@ Node::~Node() {
 // userData
 ////////////////////////////////////////////////
 
-void Node::setUserData(NodeData *data) {
+void Node::setUserData(NodeData* data)
+{
   if (userData)
     delete userData;
   userData = data;
@@ -61,13 +66,14 @@ void Node::setUserData(NodeData *data) {
 // value
 ////////////////////////////////////////////////
 
-void Node::setValue(int val) {
+void Node::setValue(int val)
+{
 #ifndef NO_USE_OSTRINGSTREAM
   std::ostringstream valStr;
   valStr << val;
   setValue(valStr.str().c_str());
 #else
-  //UINT_MAX : 4294967295U
+  // UINT_MAX : 4294967295U
   char strBuf[16];
 #ifdef HAVE_SNPRINTF
   snprintf(strBuf, sizeof(strBuf), "%d", val);
@@ -82,8 +88,9 @@ void Node::setValue(int val) {
 // Attribute (Extention)
 ////////////////////////////////////////////////
 
-void Node::setAttribute(const std::string & name, const std::string &value) {
-  Attribute *attr = getAttribute(name);
+void Node::setAttribute(const std::string& name, const std::string& value)
+{
+  Attribute* attr = getAttribute(name);
   if (!attr) {
     attr = new Attribute(name, value);
     addAttribute(attr);
@@ -91,14 +98,15 @@ void Node::setAttribute(const std::string & name, const std::string &value) {
   attr->setValue(value);
 }
 
-void Node::setAttribute(const std::string &name, int value) {
+void Node::setAttribute(const std::string& name, int value)
+{
 #ifndef NO_USE_OSTRINGSTREAM
   std::ostringstream os;
   os << value;
   std::string valStr = os.str();
   setAttribute(name, valStr.c_str());
 #else
-  //UINT_MAX : 4294967295U
+  // UINT_MAX : 4294967295U
   char valStr[16];
 #ifdef HAVE_SNPRINTF
   snprintf(strBuf, sizeof(strBuf), "%d", value);
@@ -109,14 +117,16 @@ void Node::setAttribute(const std::string &name, int value) {
 #endif
 }
 
-const char *Node::getAttributeValue(const std::string & name) {
-  Attribute *attr = getAttribute(name);
+const char* Node::getAttributeValue(const std::string& name)
+{
+  Attribute* attr = getAttribute(name);
   if (attr)
     return attr->getValue();
   return "";
 }
 
-int Node::getAttributeIntegerValue(const std::string &name) {
+int Node::getAttributeIntegerValue(const std::string& name)
+{
   std::string val = getAttributeValue(name);
   return atoi(val.c_str());
 }
@@ -126,18 +136,20 @@ int Node::getAttributeIntegerValue(const std::string &name) {
 ////////////////////////////////////////////////
 
 #ifndef NO_USE_OSTRINGSTREAM
-void Node::outputAttributes(std::ostream& ps) {
+void Node::outputAttributes(std::ostream& ps)
+{
 #else
-void Node::outputAttributes(std::string& ps) {
+void Node::outputAttributes(std::string& ps)
+{
 #endif
   std::string valBuf;
   int nAttributes = getNAttributes();
   for (int n = 0; n < nAttributes; n++) {
 #ifndef NO_USE_OSTRINGSTREAM
-    Attribute *attr = getAttribute(n);
+    Attribute* attr = getAttribute(n);
     ps << " " << attr->getName() << "=\"" << XML::EscapeXMLChars(attr->getValue(), valBuf) << "\"";
 #else
-    Attribute *attr = getAttribute(n);
+    Attribute* attr = getAttribute(n);
     ps += " ";
     ps += attr->getName();
     ps += "=\"";
@@ -147,21 +159,22 @@ void Node::outputAttributes(std::string& ps) {
   }
 }
 
-
 ////////////////////////////////////////////////
 // output
 ////////////////////////////////////////////////
 
 #ifndef NO_USE_OSTRINGSTREAM
-void Node::output(std::ostream& ps, int indentLevel, bool hasChildNode) {
+void Node::output(std::ostream& ps, int indentLevel, bool hasChildNode)
+{
 #else
-void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
+void Node::output(std::string& ps, int indentLevel, bool hasChildNode)
+{
 #endif
   std::string identStringBuf;
-  const char *indentString = getIndentLevelString(indentLevel, identStringBuf);
+  const char* indentString = getIndentLevelString(indentLevel, identStringBuf);
 
-  const char *name = getName();
-  const char *value = getValue();
+  const char* name = getName();
+  const char* value = getValue();
 
   if (hasNodes() == false || hasChildNode == false) {
 #ifndef NO_USE_OSTRINGSTREAM
@@ -216,7 +229,7 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
   size_t nChildNodes = getNNodes();
   for (size_t n = 0; n < nChildNodes; n++) {
     mupnp_shared_ptr<uXML::Node> cnode = getNode(n);
-    cnode->output(ps, indentLevel+1, true);
+    cnode->output(ps, indentLevel + 1, true);
   }
 
 #ifndef NO_USE_OSTRINGSTREAM
@@ -234,7 +247,8 @@ void Node::output(std::string& ps, int indentLevel, bool hasChildNode) {
 // toString
 ////////////////////////////////////////////////
 
-const char *Node::toString(std::string &buf, bool hasChildNode) {
+const char* Node::toString(std::string& buf, bool hasChildNode)
+{
 #ifndef NO_USE_OSTRINGSTREAM
   ostringstream strBuf;
   output(strBuf, 0, hasChildNode);
@@ -249,7 +263,8 @@ const char *Node::toString(std::string &buf, bool hasChildNode) {
 // print
 ////////////////////////////////////////////////
 
-void Node::print(bool hasChildNode) {
+void Node::print(bool hasChildNode)
+{
 #ifndef NO_USE_OSTRINGSTREAM
   output(std::cout, 0, hasChildNode);
 #else

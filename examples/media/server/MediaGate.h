@@ -18,120 +18,111 @@
 using namespace std;
 using namespace CyberLink;
 
-class MediaGate
-{
-	MediaServer *mediaServ;
-	int option;
-	
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
+class MediaGate {
+  MediaServer* mediaServ;
+  int option;
 
-public:
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *VER;
+  public:
+  static const char* VER;
 
-	/**** Mode Option ****/
-	static const int MODE_OPT_MASK;
-	static const int FILESYS_MODE;
-	static const int MYTHTV_MODE;
+  /**** Mode Option ****/
+  static const int MODE_OPT_MASK;
+  static const int FILESYS_MODE;
+  static const int MYTHTV_MODE;
 
-	/**** Support Option ****/
-	static const int SUPPORT_OPT_MASK;
-	static const int FLASH_SUPPORT;
+  /**** Support Option ****/
+  static const int SUPPORT_OPT_MASK;
+  static const int FLASH_SUPPORT;
 
-	static const char *MYTHTV_OPT_STRING;
-	static const char *MYTHTV_OPT_STRING_OLD;
-	static const char *FLASH_OPT_STRING;
+  static const char* MYTHTV_OPT_STRING;
+  static const char* MYTHTV_OPT_STRING_OLD;
+  static const char* FLASH_OPT_STRING;
 
-	static const char *DEFAULT_PREFERENCE_FILENAME;
+  static const char* DEFAULT_PREFERENCE_FILENAME;
 
-	static const char *PREFERENCE_CYBERGARAGE;
-	static const char *PREFERENCE_MEDIASERVER;
-	static const char *PREFERENCE_CONTENT_DIRECTORY;
-	static const char *PREFERENCE_DIRECTORY_LIST;
-	static const char *PREFERENCE_DIRECTORY;
-	static const char *PREFERENCE_NAME;
-	static const char *PREFERENCE_PATH;
-	
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
+  static const char* PREFERENCE_CYBERGARAGE;
+  static const char* PREFERENCE_MEDIASERVER;
+  static const char* PREFERENCE_CONTENT_DIRECTORY;
+  static const char* PREFERENCE_DIRECTORY_LIST;
+  static const char* PREFERENCE_DIRECTORY;
+  static const char* PREFERENCE_NAME;
+  static const char* PREFERENCE_PATH;
 
-public:
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	MediaGate(int mode);
+  public:
+  MediaGate(int mode);
 
-	~MediaGate();
+  ~MediaGate();
 
-	////////////////////////////////////////////////
-	// Mode
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Mode
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void setOption(int value)
+  {
+    option = value;
+  }
 
-	void setOption(int value)
-	{
-		option = value;
-	}
-	
-	int getOption()
-	{
-		return option;
-	}
-	
-	int getModeOption()
-	{
-		return (option & MODE_OPT_MASK);
-	}
-	
-	int getSupportOption()
-	{
-		return (option & SUPPORT_OPT_MASK);
-	}
+  int getOption()
+  {
+    return option;
+  }
 
-	////////////////////////////////////////////////
-	// Preferences (FileSystem)
-	////////////////////////////////////////////////
+  int getModeOption()
+  {
+    return (option & MODE_OPT_MASK);
+  }
 
-public:
+  int getSupportOption()
+  {
+    return (option & SUPPORT_OPT_MASK);
+  }
 
-	bool loadPreferences(const char *fname);
-	bool savePreferences(const char *fname);
-	
-	////////////////////////////////////////////////
-	// MediaServer
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Preferences (FileSystem)
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  bool loadPreferences(const char* fname);
+  bool savePreferences(const char* fname);
 
-	MediaServer *getMediaServer()
-	{
-		return mediaServ;
-	}
+  ////////////////////////////////////////////////
+  // MediaServer
+  ////////////////////////////////////////////////
 
-	ContentDirectory *getContentDirectory()
-	{
-		return mediaServ->getContentDirectory();
-	}
-	
-	////////////////////////////////////////////////
-	// start/stop
-	////////////////////////////////////////////////
+  public:
+  MediaServer* getMediaServer()
+  {
+    return mediaServ;
+  }
 
-public:
+  ContentDirectory* getContentDirectory()
+  {
+    return mediaServ->getContentDirectory();
+  }
 
-	void start();
-	void stop();
+  ////////////////////////////////////////////////
+  // start/stop
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// print
-	////////////////////////////////////////////////
+  public:
+  void start();
+  void stop();
 
-public:
+  ////////////////////////////////////////////////
+  // print
+  ////////////////////////////////////////////////
 
-	void print();
-
+  public:
+  void print();
 };
 
 #endif

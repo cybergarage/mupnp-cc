@@ -11,15 +11,15 @@
 #ifndef _MUPMPCC_ACTION_H_
 #define _MUPMPCC_ACTION_H_
 
+#include <mupnp/ArgumentList.h>
+#include <mupnp/UPnPStatus.h>
+#include <mupnp/control/ActionListener.h>
 #include <mupnp/control/ActionRequest.h>
 #include <mupnp/control/ActionResponse.h>
-#include <mupnp/xml/Node.h>
-#include <mupnp/UPnPStatus.h>
-#include <mupnp/xml/ServiceData.h>
-#include <mupnp/xml/ActionData.h>
-#include <mupnp/ArgumentList.h>
-#include <mupnp/control/ActionListener.h>
 #include <mupnp/util/Mutex.h>
+#include <mupnp/xml/ActionData.h>
+#include <mupnp/xml/Node.h>
+#include <mupnp/xml/ServiceData.h>
 
 #include <sstream>
 
@@ -29,10 +29,10 @@ class Service;
 class Action {
   mupnp_shared_ptr<uXML::Node> serviceNode;
   mupnp_shared_ptr<uXML::Node> actionNode;
-  
-  ArgumentList *argumentList;
-  ArgumentList *argumentInList;
-  ArgumentList *argumentOutList;
+
+  ArgumentList* argumentList;
+  ArgumentList* argumentInList;
+  ArgumentList* argumentOutList;
 
   UPnPStatus upnpStatus;
 
@@ -42,47 +42,49 @@ class Action {
   // Constants
   ////////////////////////////////////////////////
 
- public:
-  static const char *ELEM_NAME;
-  static const char *NAME;
+  public:
+  static const char* ELEM_NAME;
+  static const char* NAME;
 
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
-private:
-
-  mupnp_shared_ptr<uXML::Node> getServiceNode() {
+  private:
+  mupnp_shared_ptr<uXML::Node> getServiceNode()
+  {
     return serviceNode;
   }
 
-public:
-  
-  Service *getService();
-  
-  mupnp_shared_ptr<uXML::Node> getActionNode() {
+  public:
+  Service* getService();
+
+  mupnp_shared_ptr<uXML::Node> getActionNode()
+  {
     return actionNode;
   }
-  
+
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
   Action(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> actionNode);
-  Action(Action *action);
+  Action(Action* action);
 
   ~Action();
 
   ////////////////////////////////////////////////
   // Mutex
   ////////////////////////////////////////////////
-  
- public:
-  void lock() {
+
+  public:
+  void lock()
+  {
     mutex.lock();
   }
-  
-  void unlock() {
+
+  void unlock()
+  {
     mutex.unlock();
   }
 
@@ -90,7 +92,8 @@ public:
   // isActionNode
   ////////////////////////////////////////////////
 
-  static bool isActionNode(mupnp_shared_ptr<uXML::Node> node) {
+  static bool isActionNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     std::string nodeName = node->getName();
     if (nodeName.compare(Action::ELEM_NAME) == 0)
       return true;
@@ -101,11 +104,13 @@ public:
   // name
   ////////////////////////////////////////////////
 
-  void setName(const std::string &value) {
+  void setName(const std::string& value)
+  {
     getActionNode()->setNode(Action::NAME, value);
   }
 
-  const char *getName() {
+  const char* getName()
+  {
     return getActionNode()->getNodeValue(Action::NAME);
   }
 
@@ -113,103 +118,112 @@ public:
   // argumentList
   ////////////////////////////////////////////////
 
-private:
-
+  private:
   void initArgumentList();
   void clearOutputAgumentValues();
 
- public:
-  ArgumentList *getArgumentList() {
+  public:
+  ArgumentList* getArgumentList()
+  {
     return argumentList;
   }
 
-  ArgumentList *getInputArgumentList() {
+  ArgumentList* getInputArgumentList()
+  {
     return argumentInList;
   }
 
-  ArgumentList *getOutputArgumentList() {
+  ArgumentList* getOutputArgumentList()
+  {
     return argumentOutList;
   }
 
-  Argument *getArgument(const std::string &name);
+  Argument* getArgument(const std::string& name);
 
-  void setArgumentValues(ArgumentList *argList) {
+  void setArgumentValues(ArgumentList* argList)
+  {
     getArgumentList()->set(argList);
   }
-  
-  void setArgumentValue(const std::string &name, const std::string &value) {
-    Argument *arg = getArgument(name);
+
+  void setArgumentValue(const std::string& name, const std::string& value)
+  {
+    Argument* arg = getArgument(name);
     if (!arg)
       return;
     arg->setValue(value);
   }
 
-  void setArgumentValue(const std::string &name, int value) {
-    Argument *arg = getArgument(name);
+  void setArgumentValue(const std::string& name, int value)
+  {
+    Argument* arg = getArgument(name);
     if (!arg)
       return;
     arg->setValue(value);
   }
 
-  const char *getArgumentValue(const std::string &name) {
-    Argument *arg = getArgument(name);
+  const char* getArgumentValue(const std::string& name)
+  {
+    Argument* arg = getArgument(name);
     if (!arg)
       return "";
     return arg->getValue();
   }
 
-  int getArgumentIntegerValue(const std::string &name) {
-    Argument *arg = getArgument(name);
+  int getArgumentIntegerValue(const std::string& name)
+  {
+    Argument* arg = getArgument(name);
     if (!arg)
       return 0;
     return arg->getIntegerValue();
   }
-  
+
   ////////////////////////////////////////////////
   // UserData
   ////////////////////////////////////////////////
 
-  ActionData *getActionData() {
+  ActionData* getActionData()
+  {
     mupnp_shared_ptr<uXML::Node> node = getActionNode();
-    ActionData *userData = dynamic_cast<ActionData *>(node->getUserData());
+    ActionData* userData = dynamic_cast<ActionData*>(node->getUserData());
     if (!userData) {
       userData = new ActionData();
       node->setUserData(userData);
     }
     return userData;
   }
-  
+
   ////////////////////////////////////////////////
   // controlAction
   ////////////////////////////////////////////////
 
-  ActionListener *getActionListener() 
+  ActionListener* getActionListener()
   {
     return getActionData()->getActionListener();
   }
 
-  void setActionListener(ActionListener *listener) 
+  void setActionListener(ActionListener* listener)
   {
     getActionData()->setActionListener(listener);
   }
 
-  bool performActionListener(ActionRequest *actionReq);
+  bool performActionListener(ActionRequest* actionReq);
 
   ////////////////////////////////////////////////
   // ActionControl
   ////////////////////////////////////////////////
 
-  ControlResponse *getControlResponse() 
+  ControlResponse* getControlResponse()
   {
     return getActionData()->getControlResponse();
   }
 
-  void setControlResponse(ControlResponse *res) 
+  void setControlResponse(ControlResponse* res)
   {
     getActionData()->setControlResponse(res);
   }
-  
-  UPnPStatus *getControlStatus() {
+
+  UPnPStatus* getControlStatus()
+  {
     return getControlResponse()->getUPnPError();
   }
 
@@ -217,30 +231,31 @@ private:
   // postControlAction
   ////////////////////////////////////////////////
 
- public:
+  public:
   bool postControlAction();
 
   ////////////////////////////////////////////////
   // UPnPStatus
   ////////////////////////////////////////////////
 
- public:
-  void setStatus(int code, const std::string &descr) {
+  public:
+  void setStatus(int code, const std::string& descr)
+  {
     upnpStatus.setCode(code);
     upnpStatus.setDescription(descr);
   }
 
-  void setStatus(int code) {
+  void setStatus(int code)
+  {
     setStatus(code, UPnP::StatusCodeToString(code));
   }
-  
-  UPnPStatus *getStatus() {
+
+  UPnPStatus* getStatus()
+  {
     return &upnpStatus;
   }
-
 };
 
 }
 
 #endif
-

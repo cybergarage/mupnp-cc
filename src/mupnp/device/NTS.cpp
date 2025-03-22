@@ -10,14 +10,15 @@
 
 #include <mupnp/device/NTS.h>
 #include <mupnp/util/StringUtil.h>
-  
-bool mUPnP::NTS::IsAlive(const std::string &ntsValue) {
+
+bool mUPnP::NTS::IsAlive(const std::string& ntsValue)
+{
   uHTTP::String ntsStr = ntsValue;
   return ntsStr.startsWith(ALIVE);
 }
 
-bool mUPnP::NTS::IsByeBye(const std::string &ntsValue) {
+bool mUPnP::NTS::IsByeBye(const std::string& ntsValue)
+{
   uHTTP::String ntsStr = ntsValue;
   return ntsStr.startsWith(BYEBYE);
 }
-

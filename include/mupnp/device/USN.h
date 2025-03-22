@@ -15,15 +15,13 @@
 
 namespace mUPnP {
 namespace USN {
-const char ROOTDEVICE[] = "upnp:rootdevice";
-  
-bool IsRootDevice(const std::string &usnValue);
-const char *GetUDN(const std::string &usnValue, std::string &udn);
+  const char ROOTDEVICE[] = "upnp:rootdevice";
+
+  bool IsRootDevice(const std::string& usnValue);
+  const char* GetUDN(const std::string& usnValue, std::string& udn);
 
 }
 
 }
 
 #endif
-
-

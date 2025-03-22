@@ -17,7 +17,7 @@ namespace mUPnP {
 class ControlPoint;
 
 class RenewSubscriber : public uHTTP::Thread {
- public:
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
@@ -28,38 +28,38 @@ class RenewSubscriber : public uHTTP::Thread {
   // Constructor
   ////////////////////////////////////////////////
 
- public:
-  RenewSubscriber(ControlPoint *ctrlp) {
+  public:
+  RenewSubscriber(ControlPoint* ctrlp)
+  {
     setControlPoint(ctrlp);
   }
-  
+
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
-private:
-  
-  ControlPoint *controlPoint;
+  private:
+  ControlPoint* controlPoint;
 
- public:
-  void setControlPoint(ControlPoint *ctrlp) {
+  public:
+  void setControlPoint(ControlPoint* ctrlp)
+  {
     controlPoint = ctrlp;
   }
-  
-  ControlPoint *getControlPoint() {
+
+  ControlPoint* getControlPoint()
+  {
     return controlPoint;
   }
 
   ////////////////////////////////////////////////
   // Thread
   ////////////////////////////////////////////////
-  
- public:
-  void run();
 
+  public:
+  void run();
 };
 
 }
 
 #endif
-

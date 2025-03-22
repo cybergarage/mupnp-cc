@@ -11,18 +11,19 @@
 #ifndef _MUPMPCC_SSDPRESPONSE_H_
 #define _MUPMPCC_SSDPRESPONSE_H_
 
-#include <mupnp/http/HTTPResponse.h>
 #include <mupnp/http/HTTP.h>
+#include <mupnp/http/HTTPResponse.h>
 #include <mupnp/ssdp/SSDP.h>
 
 namespace mUPnP {
 class SSDPResponse : public uHTTP::HTTPResponse {
- public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  SSDPResponse() {
+
+  SSDPResponse()
+  {
     setVersion(uHTTP::HTTP::VER_11);
   }
 
@@ -30,11 +31,13 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   // ST (SearchTarget)
   ////////////////////////////////////////////////
 
-  void setST(const std::string &value) {
+  void setST(const std::string& value)
+  {
     setHeader(uHTTP::HTTP::ST, value);
   }
 
-  const char *getST() {
+  const char* getST()
+  {
     return getHeaderValue(uHTTP::HTTP::ST);
   }
 
@@ -42,11 +45,13 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   // Location
   ////////////////////////////////////////////////
 
-  void setLocation(const std::string &value) {
+  void setLocation(const std::string& value)
+  {
     setHeader(uHTTP::HTTP::LOCATION, value);
   }
 
-  const char *getLocation() {
+  const char* getLocation()
+  {
     return getHeaderValue(uHTTP::HTTP::LOCATION);
   }
 
@@ -54,11 +59,13 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   // USN
   ////////////////////////////////////////////////
 
-  void setUSN(const std::string &value) {
+  void setUSN(const std::string& value)
+  {
     setHeader(uHTTP::HTTP::USN, value);
   }
 
-  const char *getUSN() {
+  const char* getUSN()
+  {
     return getHeaderValue(uHTTP::HTTP::USN);
   }
 
@@ -66,23 +73,27 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   // BOOTID.UPNP.ORG
   ////////////////////////////////////////////////
 
-  void setBootID(int value) {
+  void setBootID(int value)
+  {
     setHeader(SSDP::BOOTID_UPNP_ORG, value);
   }
 
-  int getBootID() {
+  int getBootID()
+  {
     return getIntegerHeaderValue(SSDP::BOOTID_UPNP_ORG);
   }
 
   ////////////////////////////////////////////////
   // MYNAME
   ////////////////////////////////////////////////
-  
-  void setMYNAME(const std::string &value) {
+
+  void setMYNAME(const std::string& value)
+  {
     setHeader(uHTTP::HTTP::MYNAME, value);
   }
 
-  const char *getMYNAME() {
+  const char* getMYNAME()
+  {
     return getHeaderValue(uHTTP::HTTP::MYNAME);
   }
 
@@ -98,11 +109,9 @@ class SSDPResponse : public uHTTP::HTTPResponse {
   // getHeader
   ////////////////////////////////////////////////
 
-  const char *getHeader(std::string &headerStr);
-
+  const char* getHeader(std::string& headerStr);
 };
 
 }
 
 #endif
-

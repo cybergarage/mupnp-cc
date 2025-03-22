@@ -1,67 +1,61 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-**
-*	File: iTunesItemNodeList.h
-*
-*	Revision;
-*
-*	03/14/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ **
+ *	File: iTunesItemNodeList.h
+ *
+ *	Revision;
+ *
+ *	03/14/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ITUNESITEMNODELIST_H_
 #define _CLINK_MEDIA_ITUNESITEMNODELIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/item/itunes/iTunesItemNode.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class iTunesItemNodeList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+class iTunesItemNodeList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  iTunesItemNodeList()
+  {
+  }
 
-	iTunesItemNodeList() 
-	{
-	}
-	
-	~iTunesItemNodeList() 
-	{
-		clear();
-	}
+  ~iTunesItemNodeList()
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  iTunesItemNode* getiTunesItemNode(int n)
+  {
+    return (iTunesItemNode*)Vector::get(n);
+  }
 
-	iTunesItemNode *getiTunesItemNode(int n)
-	{
-		return (iTunesItemNode *)Vector::get(n);
-	}
-	
-	iTunesItemNode *getItemNode(CyberIO::File *file);
+  iTunesItemNode* getItemNode(CyberIO::File* file);
 
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

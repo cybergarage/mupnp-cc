@@ -15,13 +15,12 @@
 
 namespace mUPnP {
 namespace MAN {
-const char DISCOVER[] = "ssdp:discover";
-  
-bool IsDiscover(const std::string &value);
+  const char DISCOVER[] = "ssdp:discover";
+
+  bool IsDiscover(const std::string& value);
 
 }
 
 }
 
 #endif
-

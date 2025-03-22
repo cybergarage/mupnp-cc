@@ -1,77 +1,75 @@
 /******************************************************************
-*
-*	CyberSQL for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: UniMySQL.h
-*
-*	Revision;
-*
-*	03/27/03
-*		- first revision
-*
-******************************************************************/
+ *
+ *	CyberSQL for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: UniMySQL.h
+ *
+ *	Revision;
+ *
+ *	03/27/03
+ *		- first revision
+ *
+ ******************************************************************/
 
 #ifndef _CSQL_UNI_MYSQL_H_
 #define _CSQL_UNI_MYSQL_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_MYSQL
 
 #include <mupnp/sql/UniDatabase.h>
 #ifdef WIN32
-#include <windows.h>
 #include <mysql.h>
+#include <windows.h>
 #else
 #include <mysql/mysql.h>
 #endif
 
 namespace CyberSQL {
 
-class UniMySQL : public UniDatabase
-{
-	MYSQL mySQL;
-	MYSQL_RES *res;
-	MYSQL_ROW row;
-	unsigned int num_fields;
+class UniMySQL : public UniDatabase {
+  MYSQL mySQL;
+  MYSQL_RES* res;
+  MYSQL_ROW row;
+  unsigned int num_fields;
 
-	bool openFlag;
-	bool queryRes;
-	int fetchCnt;
-	int nTuples;
+  bool openFlag;
+  bool queryRes;
+  int fetchCnt;
+  int nTuples;
 
-public:
+  public:
+  UniMySQL();
+  virtual ~UniMySQL();
 
-	UniMySQL();
-	virtual ~UniMySQL();
+  bool open(
+      const char* host,
+      int port,
+      const char* dbname,
+      const char* user,
+      const char* passwd);
 
-	bool open(
-		const char *host,
-		int port,
-		const char *dbname,
-		const char *user,
-		const char *passwd);
+  bool close();
 
-	bool close();
+  bool isConnected();
 
-	bool isConnected();
+  const char* getConnectionErrorMessage();
 
-	const char *getConnectionErrorMessage();
+  bool query(const char* sql);
+  bool getQueryStatus();
+  const char* getQueryStatusMessage();
+  const char* getQueryErrorMessage();
+  int getResultSetNum();
 
-	bool query(const char *sql);
-	bool getQueryStatus();
-	const char *getQueryStatusMessage();
-	const char *getQueryErrorMessage();
-	int getResultSetNum();
+  bool fetch();
+  const char* getString(int n);
 
-	bool fetch();
-	const char *getString(int n);
-
-	long getTimestamp(int n);
+  long getTimestamp(int n);
 };
 
 }

@@ -1,67 +1,63 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File: iTunesPlaylistList.h
-*
-*	Revision:
-*
-*	03/13/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File: iTunesPlaylistList.h
+ *
+ *	Revision:
+ *
+ *	03/13/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ITUNES_PLAYLISTLIST_H_
 #define _CLINK_MEDIA_ITUNES_PLAYLISTLIST_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_ITUNES
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/directory/itunes/iTunesPlaylist.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class iTunesPlaylistList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+class iTunesPlaylistList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  iTunesPlaylistList()
+  {
+  }
 
-	iTunesPlaylistList() 
-	{
-	}
-	
-	~iTunesPlaylistList() 
-	{
-		clear();
-	}
+  ~iTunesPlaylistList()
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  iTunesPlaylist* getPlaylist(int n)
+  {
+    return (iTunesPlaylist*)Vector::get(n);
+  }
 
-	iTunesPlaylist *getPlaylist(int n)
-	{
-		return (iTunesPlaylist *)Vector::get(n);
-	}
-	
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }

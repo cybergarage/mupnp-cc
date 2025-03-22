@@ -11,19 +11,16 @@
 #ifndef _MUPMPCC_TESTHTTPSERVER_H_
 #define _MUPMPCC_TESTHTTPSERVER_H_
 
-#include <string>
 #include <mupnp/mUPnP.h>
+#include <string>
 
-class TestHTTPServer : public uHTTP::HTTPServer, public uHTTP::HTTPRequestListener
-{
-public:
+class TestHTTPServer : public uHTTP::HTTPServer, public uHTTP::HTTPRequestListener {
+  public:
+  static const char* TEST_URI;
+  static const char* TEST_INPUTSTREAM_URI;
+  static const char* TEST_CHUNKED_URI;
 
-  static const char *TEST_URI;
-  static const char *TEST_INPUTSTREAM_URI;
-  static const char *TEST_CHUNKED_URI;
-
-public:
-
+  public:
   TestHTTPServer();
 
   ////////////////////////////////////////////////
@@ -32,7 +29,7 @@ public:
 
   std::string content;
 
-  void setContent(const char *value)
+  void setContent(const char* value)
   {
     content = value;
   }
@@ -41,9 +38,9 @@ public:
   // HttpRequestListner
   ////////////////////////////////////////////////
 
-  uHTTP::HTTP::StatusCode httpRequestRecieved(uHTTP::HTTPRequest *httpReq);
-  uHTTP::HTTP::StatusCode httpInputStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
-  uHTTP::HTTP::StatusCode httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq);
+  uHTTP::HTTP::StatusCode httpRequestRecieved(uHTTP::HTTPRequest* httpReq);
+  uHTTP::HTTP::StatusCode httpInputStreamRequestRecieved(uHTTP::HTTPRequest* httpReq);
+  uHTTP::HTTP::StatusCode httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest* httpReq);
 
   ////////////////////////////////////////////////
   // update
@@ -53,4 +50,3 @@ public:
 };
 
 #endif
-

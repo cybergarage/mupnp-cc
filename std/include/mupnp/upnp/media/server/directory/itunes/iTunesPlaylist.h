@@ -1,23 +1,23 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File: iTunesPlaylist.h
-*
-*	Revision:
-*
-*	03/08/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File: iTunesPlaylist.h
+ *
+ *	Revision:
+ *
+ *	03/08/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ITUNES_PLAYLIST_H_
 #define _CLINK_MEDIA_ITUNES_PLAYLIST_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_ITUNES
@@ -27,40 +27,34 @@
 
 namespace CyberLink {
 
-class iTunesPlaylist : public iTunesNode
-{
-private:
+class iTunesPlaylist : public iTunesNode {
+  private:
+  iTunesPlaylistItemList* playlistItemList;
 
-	iTunesPlaylistItemList *playlistItemList;
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
+  public:
+  iTunesPlaylist(CyberXML::Node* node);
+  ~iTunesPlaylist();
 
-public:
+  ////////////////////////////////////////////////
+  // Playlist Item
+  ////////////////////////////////////////////////
 
-	iTunesPlaylist(CyberXML::Node *node);
-	~iTunesPlaylist();
+  public:
+  iTunesPlaylistItemList* getPlaylistItemList()
+  {
+    return playlistItemList;
+  }
 
-	////////////////////////////////////////////////
-	// Playlist Item
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // equals
+  ////////////////////////////////////////////////
 
-public:
-
-	iTunesPlaylistItemList *getPlaylistItemList()
-	{
-		return playlistItemList;
-	}
-
-	////////////////////////////////////////////////
-	// equals
-	////////////////////////////////////////////////
-
-public:
-
-	bool equals(iTunesPlaylist *otherPlaylist);
-
+  public:
+  bool equals(iTunesPlaylist* otherPlaylist);
 };
 
 }

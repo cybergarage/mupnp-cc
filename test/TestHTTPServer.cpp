@@ -10,8 +10,8 @@
 
 #include "TestHTTPServer.h"
 
-#include <mupnp/io/StringBufferInputStream.h>
 #include <iostream>
+#include <mupnp/io/StringBufferInputStream.h>
 #include <sstream>
 
 using namespace std;
@@ -21,9 +21,9 @@ using namespace uHTTP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *TestHTTPServer::TEST_URI = "/test";
-const char *TestHTTPServer::TEST_INPUTSTREAM_URI = "/testInStream";
-const char *TestHTTPServer::TEST_CHUNKED_URI = "/testChunked";
+const char* TestHTTPServer::TEST_URI = "/test";
+const char* TestHTTPServer::TEST_INPUTSTREAM_URI = "/testInStream";
+const char* TestHTTPServer::TEST_CHUNKED_URI = "/testChunked";
 
 ////////////////////////////////////////////////
 // Constructor
@@ -38,7 +38,7 @@ TestHTTPServer::TestHTTPServer()
 // HttpRequestListner
 ////////////////////////////////////////////////
 
-uHTTP::HTTP::StatusCode TestHTTPServer::httpRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestHTTPServer::httpRequestRecieved(HTTPRequest* httpReq)
 {
   string uri;
   httpReq->getURI(uri);
@@ -52,7 +52,7 @@ uHTTP::HTTP::StatusCode TestHTTPServer::httpRequestRecieved(HTTPRequest *httpReq
   return httpReq->post(&httpRes);
 }
 
-uHTTP::HTTP::StatusCode TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestHTTPServer::httpInputStreamRequestRecieved(HTTPRequest* httpReq)
 {
   StringBufferInputStream in(content.c_str());
 
@@ -63,7 +63,7 @@ uHTTP::HTTP::StatusCode TestHTTPServer::httpInputStreamRequestRecieved(HTTPReque
   return httpReq->post(&httpRes);
 }
 
-uHTTP::HTTP::StatusCode TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest *httpReq)
+uHTTP::HTTP::StatusCode TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::HTTPRequest* httpReq)
 {
   HTTPResponse httpRes;
   httpRes.setTransferEncoding(HTTP::CHUNKED);
@@ -79,4 +79,3 @@ uHTTP::HTTP::StatusCode TestHTTPServer::httpChunkedStreamRequestRecieved(uHTTP::
 void TestHTTPServer::update()
 {
 }
-

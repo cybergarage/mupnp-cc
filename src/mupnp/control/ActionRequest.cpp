@@ -1,30 +1,30 @@
 /******************************************************************
-*
-*  mUPnP for C++
-*
-*  Copyright (C) Satoshi Konno 2002
-*
-*  File: ControlRequest.cpp
-*
-*  Revision;
-*
-*  08/13/03
-*    - first revision
-*  04/25/04
-*    - Added post(ActionResponse *actionRes);
-*  05/19/04
-*    - Changed the header include order for Cygwin.
-*  05/09/05
-*    - Changed getActionName() to return when the delimiter is not found.
-*  08/21/05
-*    - Changed setRequest() using string instead of ostringstream.
-*
-******************************************************************/
+ *
+ *  mUPnP for C++
+ *
+ *  Copyright (C) Satoshi Konno 2002
+ *
+ *  File: ControlRequest.cpp
+ *
+ *  Revision;
+ *
+ *  08/13/03
+ *    - first revision
+ *  04/25/04
+ *    - Added post(ActionResponse *actionRes);
+ *  05/19/04
+ *    - Changed the header include order for Cygwin.
+ *  05/09/05
+ *    - Changed getActionName() to return when the delimiter is not found.
+ *  08/21/05
+ *    - Changed setRequest() using string instead of ostringstream.
+ *
+ ******************************************************************/
 
-#include <mupnp/control/ActionRequest.h>
+#include <mupnp/Action.h>
 #include <mupnp/Device.h>
 #include <mupnp/Service.h>
-#include <mupnp/Action.h>
+#include <mupnp/control/ActionRequest.h>
 
 #include <string>
 
@@ -35,14 +35,15 @@ using namespace mUPnP;
 // initArgumentList
 ////////////////////////////////////////////////
 
-void ActionRequest::initArgumentList() {
+void ActionRequest::initArgumentList()
+{
   mupnp_shared_ptr<uXML::Node> actNode = getActionNode();
   if (!actNode)
     return;
   size_t nArgNodes = actNode->getNNodes();
   argumentList.clear();
   for (size_t n = 0; n < nArgNodes; n++) {
-    Argument *arg = new Argument();
+    Argument* arg = new Argument();
     mupnp_shared_ptr<uXML::Node> argNode = actNode->getNode(n);
     arg->setName(argNode->getName());
     arg->setValue(argNode->getValue());
@@ -54,12 +55,13 @@ void ActionRequest::initArgumentList() {
 // getActionNode
 ////////////////////////////////////////////////
 
-mupnp_shared_ptr<uXML::Node> ActionRequest::getActionNode() {
+mupnp_shared_ptr<uXML::Node> ActionRequest::getActionNode()
+{
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
   if (!bodyNode)
-    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
   if (bodyNode->hasNodes() == false)
-    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
   return bodyNode->getNode(0);
 }
 
@@ -67,15 +69,16 @@ mupnp_shared_ptr<uXML::Node> ActionRequest::getActionNode() {
 // getActionName
 ////////////////////////////////////////////////
 
-const char *ActionRequest::getActionName(std::string &buf) {
+const char* ActionRequest::getActionName(std::string& buf)
+{
   mupnp_shared_ptr<uXML::Node> node = getActionNode();
   if (!node)
     return "";
-  const char *name = node->getName();
+  const char* name = node->getName();
   if (!name)
     return "";
   uHTTP::String nameStr(name);
-  int idx = nameStr.indexOf(uSOAP::SOAP::DELIM)+1;
+  int idx = nameStr.indexOf(uSOAP::SOAP::DELIM) + 1;
   if (idx < 0)
     return "";
   uHTTP::String actName;
@@ -87,20 +90,21 @@ const char *ActionRequest::getActionName(std::string &buf) {
 // setRequest
 ////////////////////////////////////////////////
 
-void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
-  Service *service = action->getService();
+void ActionRequest::setRequest(Action* action, ArgumentList* argList)
+{
+  Service* service = action->getService();
 
   setRequestHost(service);
 
   setEnvelopeNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
   mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
   mupnp_shared_ptr<uXML::Node> bodyNode = getBodyNode();
-  uXML::Node *argNode = createContentNode(service, action, argList);
+  uXML::Node* argNode = createContentNode(service, action, argList);
   bodyNode->addNode(argNode);
   setContent(envNode.get());
 
-  const char *serviceType = service->getServiceType();
-  const char *actionName = action->getName();
+  const char* serviceType = service->getServiceType();
+  const char* actionName = action->getName();
   string soapAction;
   soapAction.append("\"");
   soapAction.append(serviceType);
@@ -114,24 +118,25 @@ void ActionRequest::setRequest(Action *action, ArgumentList *argList) {
 // Contents
 ////////////////////////////////////////////////
 
-uXML::Node *ActionRequest::createContentNode(Service *service, mUPnP::Action *action, ArgumentList *argList) {
-  const char *actionName = action->getName();
-  const char *serviceType = service->getServiceType();
+uXML::Node* ActionRequest::createContentNode(Service* service, mUPnP::Action* action, ArgumentList* argList)
+{
+  const char* actionName = action->getName();
+  const char* serviceType = service->getServiceType();
 
-  uXML::Node *actionNode = new uXML::Node();
+  uXML::Node* actionNode = new uXML::Node();
   actionNode->setName(Control::NS, actionName);
   actionNode->setNameSpace(Control::NS, serviceType);
   size_t argListCnt = argList->size();
   for (size_t n = 0; n < argListCnt; n++) {
-    Argument *arg = argList->getArgument(n);
-    uXML::Node *argNode = new uXML::Node();
+    Argument* arg = argList->getArgument(n);
+    uXML::Node* argNode = new uXML::Node();
     string name = arg->getName();
     string value = arg->getValue();
     argNode->setName(name.c_str());
     argNode->setValue(value.c_str());
     actionNode->addNode(argNode);
   }
-    
+
   return actionNode;
 }
 
@@ -139,7 +144,8 @@ uXML::Node *ActionRequest::createContentNode(Service *service, mUPnP::Action *ac
 // post
 ////////////////////////////////////////////////
 
-ActionResponse *ActionRequest::post(ActionResponse *actionRes) {
+ActionResponse* ActionRequest::post(ActionResponse* actionRes)
+{
   postMessage(getRequestHost(), getRequestPort(), actionRes);
   return actionRes;
 }

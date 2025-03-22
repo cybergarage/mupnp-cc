@@ -14,44 +14,46 @@
 #include <stdlib.h>
 
 #include <mupnp/util/StringUtil.h>
-#include <mupnp/xml/Node.h>
 #include <mupnp/xml/ArgumentData.h>
+#include <mupnp/xml/Node.h>
 
-namespace mUPnP{
+namespace mUPnP {
 class Service;
 class StateVariable;
 
 class Argument {
-  
+
   mupnp_shared_ptr<uXML::Node> serviceNode;
   mupnp_shared_ptr<uXML::Node> argumentNode;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
 
-  static const char *ELEM_NAME;
-  static const char *IN_DIR;
-  static const char *OUT_DIR;
-  static const char *NAME;
-  static const char *DIRECTION;
-  static const char *RELATED_STATE_VARIABLE;
+  static const char* ELEM_NAME;
+  static const char* IN_DIR;
+  static const char* OUT_DIR;
+  static const char* NAME;
+  static const char* DIRECTION;
+  static const char* RELATED_STATE_VARIABLE;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
-  mupnp_shared_ptr<uXML::Node> getServiceNode() {
+  mupnp_shared_ptr<uXML::Node> getServiceNode()
+  {
     return serviceNode;
   }
 
-  mupnp_shared_ptr<uXML::Node> getArgumentNode() {
+  mupnp_shared_ptr<uXML::Node> getArgumentNode()
+  {
     return argumentNode;
   }
-  
-  Service *getService();
+
+  Service* getService();
 
   ////////////////////////////////////////////////
   // Constructor
@@ -59,7 +61,7 @@ class Argument {
 
   Argument();
   Argument(mupnp_shared_ptr<uXML::Node> servNode, mupnp_shared_ptr<uXML::Node> argNode);
-  Argument(const std::string &name, const std::string &value);
+  Argument(const std::string& name, const std::string& value);
 
   ~Argument();
 
@@ -67,7 +69,8 @@ class Argument {
   // isArgumentNode
   ////////////////////////////////////////////////
 
-  static bool isArgumentNode(uXML::Node *node) {
+  static bool isArgumentNode(uXML::Node* node)
+  {
     return node->isName(Argument::ELEM_NAME);
   }
 
@@ -75,11 +78,13 @@ class Argument {
   // name
   ////////////////////////////////////////////////
 
-  void setName(const std::string &value) {
+  void setName(const std::string& value)
+  {
     getArgumentNode()->setNode(NAME, value);
   }
 
-  const char *getName() {
+  const char* getName()
+  {
     return getArgumentNode()->getNodeValue(NAME);
   }
 
@@ -87,47 +92,54 @@ class Argument {
   // direction
   ////////////////////////////////////////////////
 
-  void setDirection(const std::string &value) {
+  void setDirection(const std::string& value)
+  {
     getArgumentNode()->setNode(DIRECTION, value);
   }
 
-  const char *getDirection() {
+  const char* getDirection()
+  {
     return getArgumentNode()->getNodeValue(DIRECTION);
   }
 
-  bool isInDirection() {
-    const char *dir = getDirection();
+  bool isInDirection()
+  {
+    const char* dir = getDirection();
     if (!dir)
       return false;
     uHTTP::String dirStr(dir);
     return dirStr.equalsIgnoreCase(IN_DIR);
   }
 
-  bool isOutDirection() {
+  bool isOutDirection()
+  {
     return !isInDirection();
   }
-  
+
   ////////////////////////////////////////////////
   // relatedStateVariable
   ////////////////////////////////////////////////
 
-  void setRelatedStateVariableName(const std::string &value) {
+  void setRelatedStateVariableName(const std::string& value)
+  {
     getArgumentNode()->setNode(RELATED_STATE_VARIABLE, value);
   }
 
-  const char *getRelatedStateVariableName() {
+  const char* getRelatedStateVariableName()
+  {
     return getArgumentNode()->getNodeValue(RELATED_STATE_VARIABLE);
   }
 
-  StateVariable *getRelatedStateVariable();
+  StateVariable* getRelatedStateVariable();
 
   ////////////////////////////////////////////////
   // UserData
   ////////////////////////////////////////////////
 
-  ArgumentData *getArgumentData() {
+  ArgumentData* getArgumentData()
+  {
     mupnp_shared_ptr<uXML::Node> node = getArgumentNode();
-    ArgumentData *userData = dynamic_cast<ArgumentData *>(node->getUserData());
+    ArgumentData* userData = dynamic_cast<ArgumentData*>(node->getUserData());
     if (!userData) {
       userData = new ArgumentData();
       node->setUserData(userData);
@@ -139,20 +151,22 @@ class Argument {
   // value
   ////////////////////////////////////////////////
 
-  void setValue(const std::string &value) {
+  void setValue(const std::string& value)
+  {
     getArgumentData()->setValue(value);
   }
 
   void setValue(int value);
 
-  const char *getValue() {
+  const char* getValue()
+  {
     return getArgumentData()->getValue();
   }
 
-  int getIntegerValue() {
+  int getIntegerValue()
+  {
     return atoi(getValue());
   }
-
 };
 
 }

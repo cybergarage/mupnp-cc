@@ -15,26 +15,21 @@
 
 using namespace mUPnP;
 
-class CtrlPoint : public ControlPoint , public NotifyListener, public EventListener, public SearchResponseListener
-{
+class CtrlPoint : public ControlPoint, public NotifyListener, public EventListener, public SearchResponseListener {
 
-public:
+  public:
+  CtrlPoint();
 
-	CtrlPoint();
-	
-	////////////////////////////////////////////////
-	//	Listener
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  //	Listener
+  ////////////////////////////////////////////////
 
-	bool deviceNotifyReceived(SSDPPacket *packet);
-	bool deviceSearchResponseReceived(SSDPPacket *packet);
-	bool eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value);
+  public:
+  bool deviceNotifyReceived(SSDPPacket* packet);
+  bool deviceSearchResponseReceived(SSDPPacket* packet);
+  bool eventNotifyReceived(const std::string& uuid, long seq, const std::string& name, const std::string& value);
 
-	void print();
-
+  void print();
 };
 
 #endif
-

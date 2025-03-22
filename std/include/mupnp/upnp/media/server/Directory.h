@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : Directory.h
-*
-*	Revision:
-*
-*	03/23/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : Directory.h
+ *
+ *	Revision:
+ *
+ *	03/23/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_DIRECTORY_H_
 #define _CLINK_MEDIA_DIRECTORY_H_
@@ -21,76 +21,67 @@
 
 namespace CyberLink {
 
-class Directory : public ContainerNode
-{
-private:
+class Directory : public ContainerNode {
+  private:
+  CyberUtil::Mutex* mutex;
 
-	CyberUtil::Mutex *mutex;
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  Directory(ContentDirectory* cdir, const char* name)
+  {
+    setContentDirectory(cdir);
+    setFriendlyName(name);
+    mutex = new CyberUtil::Mutex();
+  }
 
-	Directory(ContentDirectory *cdir, const char *name)
-	{
-		setContentDirectory(cdir);
-		setFriendlyName(name);
-		mutex = new CyberUtil::Mutex();
-	}
+  Directory(const char* name)
+  {
+    setContentDirectory(NULL);
+    setFriendlyName(name);
+    delete mutex;
+  }
 
-	Directory(const char *name)
-	{
-		setContentDirectory(NULL);
-		setFriendlyName(name);
-		delete mutex;
-	}
-	
-	////////////////////////////////////////////////
-	// Name
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Name
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void setFriendlyName(const char* name)
+  {
+    setTitle(name);
+  }
 
-	void setFriendlyName(const char *name)
-	{
-		setTitle(name);
-	}
-	
-	const char *getFriendlyName()
-	{
-		return getTitle();
-	}
-	
-	
-	////////////////////////////////////////////////
-	// Mutex
-	////////////////////////////////////////////////
+  const char* getFriendlyName()
+  {
+    return getTitle();
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // Mutex
+  ////////////////////////////////////////////////
 
-	void lock()
-	{
-		mutex->lock();
-	}
-	
-	void unlock()
-	{
-		mutex->unlock();
-	}
+  public:
+  void lock()
+  {
+    mutex->lock();
+  }
 
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
-	
-public:
+  void unlock()
+  {
+    mutex->unlock();
+  }
 
-	virtual void update() = 0;
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
+
+  public:
+  virtual void update() = 0;
 };
 
 }
 
 #endif
-
-

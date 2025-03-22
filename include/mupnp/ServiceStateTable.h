@@ -16,29 +16,29 @@
 namespace mUPnP {
 class StateVariable;
 
-class ServiceStateTable : public Vector<StateVariable>  {
-public:
+class ServiceStateTable : public Vector<StateVariable> {
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  ServiceStateTable() 
+
+  ServiceStateTable()
   {
   }
 
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  StateVariable *getStateVariable(size_t n) {
+
+  StateVariable* getStateVariable(size_t n)
+  {
     return get(n);
   }
 };
@@ -46,5 +46,3 @@ public:
 }
 
 #endif
-
-

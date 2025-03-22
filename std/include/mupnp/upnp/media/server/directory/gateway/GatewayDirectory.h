@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2004
-*
-*	File : GatewayDirectory.h
-*
-*	Revision:
-*
-*	11/15/05
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2004
+ *
+ *	File : GatewayDirectory.h
+ *
+ *	Revision:
+ *
+ *	11/15/05
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_GATEWAY_DIRECTORY_H_
 #define _CLINK_MEDIA_GATEWAY_DIRECTORY_H_
@@ -23,27 +23,22 @@
 
 namespace CyberLink {
 
-class GatewayDirectory : public Directory
-{
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
+class GatewayDirectory : public Directory {
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	GatewayDirectory(const char *name);
-	
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  GatewayDirectory(const char* name);
 
-	void update();
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
+
+  public:
+  void update();
 };
 
 }
 
 #endif
-
-

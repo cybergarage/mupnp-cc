@@ -11,35 +11,34 @@
 #ifndef _MUPMPCC_ICONLIST_H_
 #define _MUPMPCC_ICONLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/Icon.h>
+#include <mupnp/util/Vector.h>
 
-namespace mUPnP{
-    
+namespace mUPnP {
+
 class IconList : public Vector<Icon> {
- public:
-    
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
- public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  IconList() 
+
+  IconList()
   {
   }
-    
+
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  Icon *getIcon(size_t n) {
+
+  Icon* getIcon(size_t n)
+  {
     return get(n);
   }
 };
@@ -47,6 +46,3 @@ class IconList : public Vector<Icon> {
 }
 
 #endif
-
-
-

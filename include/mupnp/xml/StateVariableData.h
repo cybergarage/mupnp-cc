@@ -11,9 +11,9 @@
 #ifndef _MUPMPCC_STATEVARIABLEDATA_H_
 #define _MUPMPCC_STATEVARIABLEDATA_H_
 
-#include <string>
 #include <mupnp/xml/Node.h>
 #include <mupnp/xml/NodeData.h>
+#include <string>
 
 namespace mUPnP {
 
@@ -22,14 +22,14 @@ class QueryListener;
 
 class StateVariableData : public ::uXML::NodeData {
   std::string value;
-  QueryResponse *queryRes;
-  QueryListener *queryListener;
+  QueryResponse* queryRes;
+  QueryListener* queryListener;
 
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
- public:
+  public:
   StateVariableData();
 
   ~StateVariableData();
@@ -38,12 +38,14 @@ class StateVariableData : public ::uXML::NodeData {
   // value
   ////////////////////////////////////////////////
 
- public:
-  const char *getValue() {
+  public:
+  const char* getValue()
+  {
     return value.c_str();
   }
 
-  void setValue(const std::string &val) {
+  void setValue(const std::string& val)
+  {
     value = val;
   }
 
@@ -51,13 +53,13 @@ class StateVariableData : public ::uXML::NodeData {
   // QueryListener
   ////////////////////////////////////////////////
 
- public:
-  QueryListener *getQueryListener() 
+  public:
+  QueryListener* getQueryListener()
   {
     return queryListener;
   }
 
-  void setQueryListener(QueryListener *listener) 
+  void setQueryListener(QueryListener* listener)
   {
     queryListener = listener;
   }
@@ -66,14 +68,13 @@ class StateVariableData : public ::uXML::NodeData {
   // QueryResponse
   ////////////////////////////////////////////////
 
- public:
-  QueryResponse *getQueryResponse() 
+  public:
+  QueryResponse* getQueryResponse()
   {
     return queryRes;
   }
 
-  void setQueryResponse(QueryResponse *res);
-
+  void setQueryResponse(QueryResponse* res);
 };
 
 }

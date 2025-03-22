@@ -15,23 +15,23 @@
 #include <mupnp/ssdp/SSDPPacket.h>
 
 namespace mUPnP {
-class HTTPUSocket  {
+class HTTPUSocket {
   uHTTP::DatagramSocket ssdpUniSock;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
   HTTPUSocket();
-  
+
   ~HTTPUSocket();
 
   ////////////////////////////////////////////////
   // open
   ////////////////////////////////////////////////
-  
-  bool open(int bindPort = -1, const std::string &bindAddr = "");
+
+  bool open(int bindPort = -1, const std::string& bindAddr = "");
 
   ////////////////////////////////////////////////
   // close
@@ -43,7 +43,8 @@ class HTTPUSocket  {
   // DatagramSocket
   ////////////////////////////////////////////////
 
-  uHTTP::DatagramSocket &getDatagramSocket() {
+  uHTTP::DatagramSocket& getDatagramSocket()
+  {
     return ssdpUniSock;
   }
 
@@ -51,22 +52,20 @@ class HTTPUSocket  {
   // bindAddr
   ////////////////////////////////////////////////
 
-  const char *getLocalAddress() {
+  const char* getLocalAddress()
+  {
     return ssdpUniSock.getLocalAddress();
   }
 
   ////////////////////////////////////////////////
   // post/receive
   ////////////////////////////////////////////////
-  
-  bool post(const std::string &addr, int port, const std::string &msg);
 
-  bool receive(SSDPPacket *ssdpPacket);
+  bool post(const std::string& addr, int port, const std::string& msg);
 
+  bool receive(SSDPPacket* ssdpPacket);
 };
 
 }
 
 #endif
-
-

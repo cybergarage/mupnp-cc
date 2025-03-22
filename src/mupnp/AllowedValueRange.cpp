@@ -15,10 +15,9 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 // Constants
 ////////////////////////////////////////////////
-  
-const char *AllowedValueRange::ELEM_NAME = "allowedValueRange";
 
-const char *AllowedValueRange::MAXIMUM = "maximum";
-const char *AllowedValueRange::MINIMUM = "minimum";
-const char *AllowedValueRange::STEP = "step";
+const char* AllowedValueRange::ELEM_NAME = "allowedValueRange";
 
+const char* AllowedValueRange::MAXIMUM = "maximum";
+const char* AllowedValueRange::MINIMUM = "minimum";
+const char* AllowedValueRange::STEP = "step";

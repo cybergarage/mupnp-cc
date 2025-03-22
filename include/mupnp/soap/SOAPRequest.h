@@ -11,9 +11,9 @@
 #ifndef _MUPNP_SOAPREQUEST_H_
 #define _MUPNP_SOAPREQUEST_H_
 
+#include <mupnp/http/HTTP.h>
 #include <mupnp/http/HTTPRequest.h>
 #include <mupnp/http/HTTPResponse.h>
-#include <mupnp/http/HTTP.h>
 #include <mupnp/soap/SOAP.h>
 #include <mupnp/soap/SOAPResponse.h>
 #include <mupnp/xml/Node.h>
@@ -24,14 +24,14 @@ const char SOAPACTION[] = "SOAPACTION";
 class SOAPRequest : public uHTTP::HTTPRequest {
   mupnp_shared_ptr<uXML::Node> rootNode;
   SOAPResponse soapRes;
-    
+
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
- public:
+
+  public:
   SOAPRequest();
-  SOAPRequest(uHTTP::HTTPRequest *httpReq);
+  SOAPRequest(uHTTP::HTTPRequest* httpReq);
 
   ~SOAPRequest();
 
@@ -39,23 +39,26 @@ class SOAPRequest : public uHTTP::HTTPRequest {
   // SOAPACTION
   ////////////////////////////////////////////////
 
- public:
-  void setSOAPAction(const std::string &action) {
+  public:
+  void setSOAPAction(const std::string& action)
+  {
     setStringHeader(SOAPACTION, action);
   }
-  
-  const char *getSOAPAction(std::string &buf) {
+
+  const char* getSOAPAction(std::string& buf)
+  {
     return getStringHeaderValue(SOAPACTION, buf);
   }
 
-  bool isSOAPAction(const std::string &value);
- 
+  bool isSOAPAction(const std::string& value);
+
   ////////////////////////////////////////////////
   // Header
   ////////////////////////////////////////////////
 
- public:
-  const char *getHeader(std::string &buf) {
+  public:
+  const char* getHeader(std::string& buf)
+  {
     return SOAP::GetHeader(getContent(), buf);
   }
 
@@ -63,12 +66,14 @@ class SOAPRequest : public uHTTP::HTTPRequest {
   // Encoding
   ////////////////////////////////////////////////
 
- public:
-  const char *getEncording(std::string &buf) {
+  public:
+  const char* getEncording(std::string& buf)
+  {
     return SOAP::GetEncording(getContent(), buf);
   }
 
-  bool isEncording(const std::string &encType) {
+  bool isEncording(const std::string& encType)
+  {
     return SOAP::IsEncording(getContent(), encType);
   }
 
@@ -76,14 +81,14 @@ class SOAPRequest : public uHTTP::HTTPRequest {
   // post
   ////////////////////////////////////////////////
 
-private:
+  private:
+  mupnp_shared_ptr<uXML::Node> parseMessage(const std::string& content, size_t contentLen);
 
-  mupnp_shared_ptr<uXML::Node> parseMessage(const std::string &content, size_t contentLen);
+  public:
+  SOAPResponse* postMessage(const std::string& host, int port, SOAPResponse* soapRes);
 
- public:
-  SOAPResponse *postMessage(const std::string &host, int port, SOAPResponse *soapRes);
-
-  SOAPResponse *postMessage(const std::string &host, int port) {
+  SOAPResponse* postMessage(const std::string& host, int port)
+  {
     return postMessage(host, port, &soapRes);
   }
 
@@ -91,42 +96,45 @@ private:
   // Node
   ////////////////////////////////////////////////
 
-private:
-
-  void setRootNode(mupnp_shared_ptr<uXML::Node> node) {
+  private:
+  void setRootNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     rootNode = node;
   }
 
   mupnp_shared_ptr<uXML::Node> getRootNode();
-  
+
   ////////////////////////////////////////////////
   // XML
   ////////////////////////////////////////////////
 
- public:
-  void setEnvelopeNode(mupnp_shared_ptr<uXML::Node> node) {
+  public:
+  void setEnvelopeNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     setRootNode(node);
   }
-  
-  mupnp_shared_ptr<uXML::Node> getEnvelopeNode() {
+
+  mupnp_shared_ptr<uXML::Node> getEnvelopeNode()
+  {
     return getRootNode();
   }
-    
-  mupnp_shared_ptr<uXML::Node> getBodyNode() {
+
+  mupnp_shared_ptr<uXML::Node> getBodyNode()
+  {
     mupnp_shared_ptr<uXML::Node> envNode = getEnvelopeNode();
     if (!envNode)
-      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
     if (envNode->hasNodes() == false)
-      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
     return envNode->getNode(0);
   }
 
   ////////////////////////////////////////////////
   // SOAP UPnP
   ////////////////////////////////////////////////
-  
- public:
-  void setContent(uXML::Node *node);
+
+  public:
+  void setContent(uXML::Node* node);
 };
 
 }

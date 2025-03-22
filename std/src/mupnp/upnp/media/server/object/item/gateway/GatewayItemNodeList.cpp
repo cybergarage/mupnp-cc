@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: GatewayItemNodeList.cpp
-*
-*	Revision;
-*
-*	11/15/05
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: GatewayItemNodeList.cpp
+ *
+ *	Revision;
+ *
+ *	11/15/05
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/object/item/gateway/GatewayItemNodeList.h>
 
@@ -21,12 +21,12 @@ using namespace CyberLink;
 //	Methods
 ////////////////////////////////////////////////
 
-void GatewayItemNodeList::clear() 
+void GatewayItemNodeList::clear()
 {
-	int nNode = size();
-	for (int n=0; n<nNode; n++) {
-		GatewayItemNode *node = getGatewayItemNode(n);
-		delete node;
-	}
-	Vector::clear();
+  int nNode = size();
+  for (int n = 0; n < nNode; n++) {
+    GatewayItemNode* node = getGatewayItemNode(n);
+    delete node;
+  }
+  Vector::clear();
 }

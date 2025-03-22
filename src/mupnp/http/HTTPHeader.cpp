@@ -10,10 +10,10 @@
 
 #include <stdlib.h>
 
-#include <string>
 #include <mupnp/http/HTTPHeader.h>
 #include <mupnp/io/StringReader.h>
 #include <mupnp/util/StringUtil.h>
+#include <string>
 
 using namespace std;
 using namespace uHTTP;

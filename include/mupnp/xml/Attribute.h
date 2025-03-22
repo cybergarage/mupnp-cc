@@ -15,16 +15,16 @@
 
 namespace uXML {
 
-class Attribute  {
-  std::string name; 
-  std::string value; 
+class Attribute {
+  std::string name;
+  std::string value;
 
- public:
-  Attribute() 
+  public:
+  Attribute()
   {
   }
 
-  Attribute(const std::string &name, const std::string &value) 
+  Attribute(const std::string& name, const std::string& value)
   {
     setName(name);
     setValue(value);
@@ -34,12 +34,12 @@ class Attribute  {
   // name
   ////////////////////////////////////////////////
 
-  void setName(const std::string &val) 
+  void setName(const std::string& val)
   {
     name = val;
   }
 
-  const char *getName() 
+  const char* getName()
   {
     return name.c_str();
   }
@@ -48,12 +48,12 @@ class Attribute  {
   // value
   ////////////////////////////////////////////////
 
-  void setValue(const std::string &val) 
+  void setValue(const std::string& val)
   {
     value = val;
   }
 
-  const char *getValue() 
+  const char* getValue()
   {
     return value.c_str();
   }

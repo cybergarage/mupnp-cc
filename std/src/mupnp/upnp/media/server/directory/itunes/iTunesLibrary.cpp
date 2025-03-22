@@ -1,24 +1,24 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File : iTunesLibrary.cpp
-*
-*	Revision:
-*
-*	02/22/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File : iTunesLibrary.cpp
+ *
+ *	Revision:
+ *
+ *	02/22/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifdef SUPPORT_ITUNES
 
 #include <mupnp/upnp/media/server/directory/itunes/iTunesLibrary.h>
 
-#include <typeinfo>
 #include <sstream>
+#include <typeinfo>
 
 #if defined(WIN32)
 #include <shlobj.h>
@@ -33,80 +33,78 @@ using namespace CyberLink;
 //	Constants
 ////////////////////////////////////////////////
 
-const char *iTunesLibrary::DICT_TAG = "dict";
-const char *iTunesLibrary::KEY_TAG = "key";
-const char *iTunesLibrary::ARRAY_TAG = "array";
-const char *iTunesLibrary::KEY_TRACKS = "Tracks";
-const char *iTunesLibrary::KEY_PLAYLISTS = "Playlists";
+const char* iTunesLibrary::DICT_TAG = "dict";
+const char* iTunesLibrary::KEY_TAG = "key";
+const char* iTunesLibrary::ARRAY_TAG = "array";
+const char* iTunesLibrary::KEY_TRACKS = "Tracks";
+const char* iTunesLibrary::KEY_PLAYLISTS = "Playlists";
 
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
-	
+
 iTunesLibrary::iTunesLibrary()
 {
-	itunesTrackList = new iTunesTrackList();
-	itunesPlaylistList = new iTunesPlaylistList();
+  itunesTrackList = new iTunesTrackList();
+  itunesPlaylistList = new iTunesPlaylistList();
 
-	rootNode = NULL;
+  rootNode = NULL;
 }
 
 ////////////////////////////////////////////////
 // Destructor
 ////////////////////////////////////////////////
-	
+
 iTunesLibrary::~iTunesLibrary()
 {
-	clear();
+  clear();
 }
 
 ////////////////////////////////////////////////
 // Destructor
 ////////////////////////////////////////////////
-	
+
 void iTunesLibrary::clear()
 {
-	delete itunesTrackList;
-	delete itunesPlaylistList;
+  delete itunesTrackList;
+  delete itunesPlaylistList;
 
-	if (rootNode != NULL) {
-		delete rootNode;
-		rootNode = NULL;
-	}
+  if (rootNode != NULL) {
+    delete rootNode;
+    rootNode = NULL;
+  }
 }
-
 
 ////////////////////////////////////////////////
 // Music Library
 ////////////////////////////////////////////////
 
-const char *ITUNES_XML_DIR_NAME = "iTunes";
-const char *ITUNES_XML_FILE_NAME = "iTunes Music Library.xml";
+const char* ITUNES_XML_DIR_NAME = "iTunes";
+const char* ITUNES_XML_FILE_NAME = "iTunes Music Library.xml";
 
-const char *iTunesLibrary::GetMusicLibraryXMLFileName(std::string &buf)
+const char* iTunesLibrary::GetMusicLibraryXMLFileName(std::string& buf)
 {
 #if defined(WIN32)
-	TCHAR szPath[_MAX_PATH];
-    LPITEMIDLIST pidl;
-	IMalloc *pMalloc;
+  TCHAR szPath[_MAX_PATH];
+  LPITEMIDLIST pidl;
+  IMalloc* pMalloc;
 
-	szPath[0] = '\0';
-	SHGetMalloc( &pMalloc );
-    if(SHGetSpecialFolderLocation(NULL, CSIDL_MYMUSIC, &pidl) == S_OK)
-    { 
-        SHGetPathFromIDList(pidl,szPath);
-        pMalloc->Free(pidl);
-    }
-    pMalloc->Release();
+  szPath[0] = '\0';
+  SHGetMalloc(&pMalloc);
+  if (SHGetSpecialFolderLocation(NULL, CSIDL_MYMUSIC, &pidl) == S_OK) {
+    SHGetPathFromIDList(pidl, szPath);
+    pMalloc->Free(pidl);
+  }
+  pMalloc->Release();
 
-	buf = szPath;
-	buf += "\\";
-	buf += ITUNES_XML_DIR_NAME;
-	buf += "\\";
-	buf += ITUNES_XML_FILE_NAME;
+  buf = szPath;
+  buf += "\\";
+  buf += ITUNES_XML_DIR_NAME;
+  buf += "\\";
+  buf += ITUNES_XML_FILE_NAME;
 #else
 #endif
-	return buf.c_str();
+  return buf.c_str();
 }
 
 ////////////////////////////////////////////////
@@ -115,52 +113,52 @@ const char *iTunesLibrary::GetMusicLibraryXMLFileName(std::string &buf)
 
 bool iTunesLibrary::updateTracks()
 {
-	Node *rootNode = getRootNode();
-	if (rootNode == NULL)
-		return false;
-	
-	// Root Dict Node
-	Node *rootDictNode = rootNode->getNode(DICT_TAG);
-	if (rootDictNode == NULL)
-		return false;
+  Node* rootNode = getRootNode();
+  if (rootNode == NULL)
+    return false;
 
-	// Tracks Dict Node
-	Node *tracksDictNode = NULL;
-	int rootDictNodeCnt = rootDictNode->getNNodes();
-	for (int n=0; n<rootDictNodeCnt; n++) {
-		Node *node = rootDictNode->getNode(n);
-		if (node == NULL)
-			continue;
-		if (node->isName(KEY_TAG) == false)
-			continue;
-		if (node->isValue(KEY_TRACKS) == false)
-			continue;
-		if ((rootDictNodeCnt-1) <= n)
-			continue;
-		tracksDictNode = rootDictNode->getNode(n+1);
-		break;
-	}
-	if (tracksDictNode == NULL)
-		return false;
+  // Root Dict Node
+  Node* rootDictNode = rootNode->getNode(DICT_TAG);
+  if (rootDictNode == NULL)
+    return false;
 
-	// Track Dict Node
-	int tracksDictNodeCnt = tracksDictNode->getNNodes();
-	for (int n=0; n<tracksDictNodeCnt; n++) {
-		Node *node = rootDictNode->getNode(n);
-		if (node == NULL)
-			continue;
-		if (node->isName(KEY_TAG) == false)
-			continue;
-		if ((rootDictNodeCnt-1) <= n)
-			continue;
-		Node *trackDictNode = tracksDictNode->getNode(n+1);
-		if (trackDictNode == NULL)
-			continue;
-		iTunesTrack *track = new iTunesTrack(node);
-		itunesTrackList->add(track);
-	}
+  // Tracks Dict Node
+  Node* tracksDictNode = NULL;
+  int rootDictNodeCnt = rootDictNode->getNNodes();
+  for (int n = 0; n < rootDictNodeCnt; n++) {
+    Node* node = rootDictNode->getNode(n);
+    if (node == NULL)
+      continue;
+    if (node->isName(KEY_TAG) == false)
+      continue;
+    if (node->isValue(KEY_TRACKS) == false)
+      continue;
+    if ((rootDictNodeCnt - 1) <= n)
+      continue;
+    tracksDictNode = rootDictNode->getNode(n + 1);
+    break;
+  }
+  if (tracksDictNode == NULL)
+    return false;
 
-	return true;
+  // Track Dict Node
+  int tracksDictNodeCnt = tracksDictNode->getNNodes();
+  for (int n = 0; n < tracksDictNodeCnt; n++) {
+    Node* node = rootDictNode->getNode(n);
+    if (node == NULL)
+      continue;
+    if (node->isName(KEY_TAG) == false)
+      continue;
+    if ((rootDictNodeCnt - 1) <= n)
+      continue;
+    Node* trackDictNode = tracksDictNode->getNode(n + 1);
+    if (trackDictNode == NULL)
+      continue;
+    iTunesTrack* track = new iTunesTrack(node);
+    itunesTrackList->add(track);
+  }
+
+  return true;
 }
 
 ////////////////////////////////////////////////
@@ -169,117 +167,115 @@ bool iTunesLibrary::updateTracks()
 
 bool iTunesLibrary::updatePlaylists()
 {
-	Node *rootNode = getRootNode();
-	if (rootNode == NULL)
-		return false;
-	
-	// Root Dict Node
-	Node *rootDictNode = rootNode->getNode(DICT_TAG);
-	if (rootDictNode == NULL)
-		return false;
+  Node* rootNode = getRootNode();
+  if (rootNode == NULL)
+    return false;
 
-	// Playlists Array Node
-	Node *playlistArrayNode = NULL;
-	int rootDictNodeCnt = rootDictNode->getNNodes();
-	for (int n=0; n<rootDictNodeCnt; n++) {
-		Node *node = rootDictNode->getNode(n);
-		if (node == NULL)
-			continue;
-		if (node->isName(KEY_TAG) == false)
-			continue;
-		if (node->isValue(KEY_PLAYLISTS) == false)
-			continue;
-		if ((rootDictNodeCnt-1) <= n)
-			continue;
-		playlistArrayNode = rootDictNode->getNode(n+1);
-		break;
-	}
-	if (playlistArrayNode == NULL)
-		return false;
+  // Root Dict Node
+  Node* rootDictNode = rootNode->getNode(DICT_TAG);
+  if (rootDictNode == NULL)
+    return false;
 
-	// Playlist
-	int playlistArrayNodeCnt = playlistArrayNode->getNNodes();
-	for (int n=0; n<playlistArrayNodeCnt; n++) {
+  // Playlists Array Node
+  Node* playlistArrayNode = NULL;
+  int rootDictNodeCnt = rootDictNode->getNNodes();
+  for (int n = 0; n < rootDictNodeCnt; n++) {
+    Node* node = rootDictNode->getNode(n);
+    if (node == NULL)
+      continue;
+    if (node->isName(KEY_TAG) == false)
+      continue;
+    if (node->isValue(KEY_PLAYLISTS) == false)
+      continue;
+    if ((rootDictNodeCnt - 1) <= n)
+      continue;
+    playlistArrayNode = rootDictNode->getNode(n + 1);
+    break;
+  }
+  if (playlistArrayNode == NULL)
+    return false;
 
-		// Playlist
-		Node *node = playlistArrayNode->getNode(n);
-		if (node == NULL)
-			continue;
-		if (node->isName(DICT_TAG) == false)
-			continue;
-		iTunesPlaylist *playList = new iTunesPlaylist(node);
-		itunesTrackList->add(playList);
+  // Playlist
+  int playlistArrayNodeCnt = playlistArrayNode->getNNodes();
+  for (int n = 0; n < playlistArrayNodeCnt; n++) {
 
-		// Playlist Items
+    // Playlist
+    Node* node = playlistArrayNode->getNode(n);
+    if (node == NULL)
+      continue;
+    if (node->isName(DICT_TAG) == false)
+      continue;
+    iTunesPlaylist* playList = new iTunesPlaylist(node);
+    itunesTrackList->add(playList);
 
-		Node *playlistItemArrayNode = node->getNode(ARRAY_TAG);
-		if (playlistItemArrayNode == NULL)
-			continue;
+    // Playlist Items
 
-		iTunesPlaylistItemList *playlistItemList = playList->getPlaylistItemList();
-		if (playlistItemList == NULL)
-			continue;
+    Node* playlistItemArrayNode = node->getNode(ARRAY_TAG);
+    if (playlistItemArrayNode == NULL)
+      continue;
 
-		int playlistItemArrayNodeCnt = playlistItemArrayNode->getNNodes();
-		for (int i=0; i<playlistItemArrayNodeCnt; i++) {
-			Node *cnode = playlistItemArrayNode->getNode(n);
-			if (cnode == NULL)
-				continue;
-			if (cnode->isName(DICT_TAG) == false)
-				continue;
-			iTunesPlaylistItem *playlistItem = new iTunesPlaylistItem(cnode);
-			playlistItemList->add(playlistItem);
-		}
+    iTunesPlaylistItemList* playlistItemList = playList->getPlaylistItemList();
+    if (playlistItemList == NULL)
+      continue;
 
-	}
+    int playlistItemArrayNodeCnt = playlistItemArrayNode->getNNodes();
+    for (int i = 0; i < playlistItemArrayNodeCnt; i++) {
+      Node* cnode = playlistItemArrayNode->getNode(n);
+      if (cnode == NULL)
+        continue;
+      if (cnode->isName(DICT_TAG) == false)
+        continue;
+      iTunesPlaylistItem* playlistItem = new iTunesPlaylistItem(cnode);
+      playlistItemList->add(playlistItem);
+    }
+  }
 
-	return true;
+  return true;
 }
 
 ////////////////////////////////////////////////
 // update
 ////////////////////////////////////////////////
 
-bool iTunesLibrary::equals(iTunesLibrary *otherLib)
+bool iTunesLibrary::equals(iTunesLibrary* otherLib)
 {
-	// Tracks
-	iTunesTrackList *thisTrackList = getTrackList();
-	iTunesTrackList *otherTrackList = otherLib->getTrackList();
+  // Tracks
+  iTunesTrackList* thisTrackList = getTrackList();
+  iTunesTrackList* otherTrackList = otherLib->getTrackList();
 
-	return false;
+  return false;
 }
 
 ////////////////////////////////////////////////
 // update
 ////////////////////////////////////////////////
-	
+
 bool iTunesLibrary::update()
 {
-	string musicLibFileName;
+  string musicLibFileName;
 
-	GetMusicLibraryXMLFileName(musicLibFileName);
-	if (musicLibFileName.length() <= 0)
-		return false;
+  GetMusicLibraryXMLFileName(musicLibFileName);
+  if (musicLibFileName.length() <= 0)
+    return false;
 
-	File musicLibFile;
-	musicLibFile.setName(musicLibFileName.c_str());
+  File musicLibFile;
+  musicLibFile.setName(musicLibFileName.c_str());
 
-	Parser parser;
-	Node *newRootNode = parser.parse(&musicLibFile);
-	if (newRootNode == NULL)
-		return false;
+  Parser parser;
+  Node* newRootNode = parser.parse(&musicLibFile);
+  if (newRootNode == NULL)
+    return false;
 
-	clear();
+  clear();
 
-	rootNode = newRootNode;
+  rootNode = newRootNode;
 
-	if (updateTracks() == false)
-		return false;
-	if (updatePlaylists() == false)
-		return false;
-	
-	return true;
+  if (updateTracks() == false)
+    return false;
+  if (updatePlaylists() == false)
+    return false;
+
+  return true;
 }
 
 #endif
-

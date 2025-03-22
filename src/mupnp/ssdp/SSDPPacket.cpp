@@ -8,10 +8,10 @@
  *
  ******************************************************************/
 
-#include <string>
-#include <string.h>
 #include <mupnp/http/HTTP.h>
 #include <mupnp/ssdp/SSDPPacket.h>
+#include <string.h>
+#include <string>
 
 using namespace mUPnP;
 
@@ -21,10 +21,10 @@ using namespace mUPnP;
 
 bool SSDPPacket::isNotifyRequest()
 {
-  const char *dgmPackatData = getData();
+  const char* dgmPackatData = getData();
   if (!dgmPackatData)
     return false;
-  return (strncmp(dgmPackatData, uHTTP::HTTP::NOTIFY , strlen(uHTTP::HTTP::NOTIFY)) == 0) ? true : false;
+  return (strncmp(dgmPackatData, uHTTP::HTTP::NOTIFY, strlen(uHTTP::HTTP::NOTIFY)) == 0) ? true : false;
 }
 
 ////////////////////////////////////////////////
@@ -33,7 +33,7 @@ bool SSDPPacket::isNotifyRequest()
 
 bool SSDPPacket::isSearchRequest()
 {
-  const char *dgmPackatData = getData();
+  const char* dgmPackatData = getData();
   if (!dgmPackatData)
     return false;
   return (strncmp(dgmPackatData, uHTTP::HTTP::M_SEARCH, strlen(uHTTP::HTTP::M_SEARCH)) == 0) ? true : false;
@@ -43,7 +43,8 @@ bool SSDPPacket::isSearchRequest()
 // isRootDevice
 ////////////////////////////////////////////////
 
-bool SSDPPacket::isRootDevice() {
+bool SSDPPacket::isRootDevice()
+{
   std::string buf;
   if (NT::IsRootDevice(getNT(buf)) == true)
     return true;
@@ -56,7 +57,8 @@ bool SSDPPacket::isRootDevice() {
 // set
 ////////////////////////////////////////////////
 
-void SSDPPacket::set(SSDPPacket *ssdpPacket) {
+void SSDPPacket::set(SSDPPacket* ssdpPacket)
+{
   if (!ssdpPacket) {
     setLocalAddress("");
     setTimeStamp(0);

@@ -13,8 +13,8 @@
 
 #include <sstream>
 
-#include <mupnp/UPnP.h>
 #include <mupnp/Device.h>
+#include <mupnp/UPnP.h>
 #include <mupnp/ssdp/SSDPResponse.h>
 
 namespace mUPnP {
@@ -23,9 +23,9 @@ class SSDPSearchResponse : public SSDPResponse {
   // Constructor
   ////////////////////////////////////////////////
 
-public:
-  
-  SSDPSearchResponse() {
+  public:
+  SSDPSearchResponse()
+  {
     setStatusCode(uHTTP::HTTP::OK_REQUEST);
     setCacheControl(Device::DEFAULT_LEASE_TIME);
     std::string buf;

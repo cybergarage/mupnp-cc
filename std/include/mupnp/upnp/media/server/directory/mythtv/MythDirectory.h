@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: MythDirectory.h
-*
-*	Revision:
-*
-*	06/07/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: MythDirectory.h
+ *
+ *	Revision:
+ *
+ *	06/07/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MYTH_DIRECTORY_H_
 #define _CLINK_MEDIA_MYTH_DIRECTORY_H_
@@ -21,49 +21,43 @@
 #include <mupnp/upnp/media/server/object/item/mythtv/MythRecordedItemNodeList.h>
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_MYTHTV
 
 namespace CyberLink {
 
-class MythDirectory : public Directory
-{
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-public:
+class MythDirectory : public Directory {
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *NAME;
-	
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
+  public:
+  static const char* NAME;
 
-public:
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	MythDirectory(const char *name);
-	MythDirectory();
-	
-	////////////////////////////////////////////////
-	// get*
-	////////////////////////////////////////////////
+  public:
+  MythDirectory(const char* name);
+  MythDirectory();
 
-private:
+  ////////////////////////////////////////////////
+  // get*
+  ////////////////////////////////////////////////
 
-	int getAddedRecordedItemNodes(MythRecordedItemNodeList &itemNode);
-	int getCurrentRecordedInfos(MythRecordedInfoList &infoList);
+  private:
+  int getAddedRecordedItemNodes(MythRecordedItemNodeList& itemNode);
+  int getCurrentRecordedInfos(MythRecordedInfoList& infoList);
 
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
 
-public:
-
-	void update();
-
+  public:
+  void update();
 };
 
 }

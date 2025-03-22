@@ -1,23 +1,23 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File: iTunesTrack.h
-*
-*	Revision:
-*
-*	03/08/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File: iTunesTrack.h
+ *
+ *	Revision:
+ *
+ *	03/08/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ITUNES_TRACK_H_
 #define _CLINK_MEDIA_ITUNES_TRACK_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_ITUNES
@@ -26,46 +26,41 @@
 
 namespace CyberLink {
 
-class iTunesTrack : public iTunesNode
-{
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
+class iTunesTrack : public iTunesNode {
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  iTunesTrack(CyberXML::Node* node);
+  ~iTunesTrack();
 
-	iTunesTrack(CyberXML::Node *node);
-	~iTunesTrack();
+  ////////////////////////////////////////////////
+  // Tag Value
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Tag Value
-	////////////////////////////////////////////////
+  public:
+  int getTrackID()
+  {
+    return getKeyInteger("Track ID");
+  }
 
-public:
-	
-	int getTrackID()
-	{
-		return getKeyInteger("Track ID");
-	}
+  const char* getTrackName()
+  {
+    return getKeyValue("Name");
+  }
 
-	const char *getTrackName()
-	{
-		return getKeyValue("Name");
-	}
+  long getSize()
+  {
+    return getKeyLong("Size");
+  }
 
-	long getSize()
-	{
-		return getKeyLong("Size");
-	}
+  ////////////////////////////////////////////////
+  // equals
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// equals
-	////////////////////////////////////////////////
-
-public:
-
-	bool equals(iTunesTrack *otherTrack);
-
+  public:
+  bool equals(iTunesTrack* otherTrack);
 };
 
 }

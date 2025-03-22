@@ -14,7 +14,8 @@
 using namespace std;
 using namespace uHTTP;
 
-bool mUPnP::MAN::IsDiscover(const std::string &value) {
+bool mUPnP::MAN::IsDiscover(const std::string& value)
+{
   uHTTP::String manStr = value;
   if (manStr.equals(DISCOVER) == true)
     return true;

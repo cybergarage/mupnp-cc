@@ -1,171 +1,174 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2004
-*
-*	File: ContentProperty.h
-*
-*	Revision;
-*
-*	03/14/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2004
+ *
+ *	File: ContentProperty.h
+ *
+ *	Revision;
+ *
+ *	03/14/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_CONTENTPROPERTY_H_
 #define _CLINK_MEDIA_CONTENTPROPERTY_H_
 
 #include <stdlib.h>
 
-#include <string>
-#include <sstream>
 #include <mupnp/xml/AttributeList.h>
+#include <sstream>
+#include <string>
 
 namespace CyberLink {
 
-class ContentProperty
-{
-	std::string name; 
-	std::string value; 
+class ContentProperty {
+  std::string name;
+  std::string value;
 
-	CyberXML::AttributeList attrList;
+  CyberXML::AttributeList attrList;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  ContentProperty()
+  {
+  }
 
-	ContentProperty() 
-	{
-	}
+  ContentProperty(const char* name, const char* value)
+  {
+    setName(name);
+    setValue(value);
+  }
 
-	ContentProperty(const char *name, const char *value) 
-	{
-		setName(name);
-		setValue(value);
-	}
+  ////////////////////////////////////////////////
+  //	name
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	name
-	////////////////////////////////////////////////
+  public:
+  void setName(const char* val)
+  {
+    name = val;
+  }
 
-public:
+  const char* getName()
+  {
+    return name.c_str();
+  }
 
-	void setName(const char *val) 
-	{
-		name = val;
-	}
+  ////////////////////////////////////////////////
+  //	value
+  ////////////////////////////////////////////////
 
-	const char *getName() 
-	{
-		return name.c_str();
-	}
+  public:
+  void setValue(const char* val)
+  {
+    value = val;
+  }
 
-	////////////////////////////////////////////////
-	//	value
-	////////////////////////////////////////////////
+  const char* getValue()
+  {
+    return value.c_str();
+  }
 
-public:
+  ////////////////////////////////////////////////
+  //	Attribute (Basic)
+  ////////////////////////////////////////////////
 
-	void setValue(const char *val) 
-	{
-		value = val;
-	}
+  public:
+  int getNAttributes()
+  {
+    return (int)attrList.size();
+  }
 
-	const char *getValue() 
-	{
-		return value.c_str();
-	}
+  CyberXML::Attribute* getAttribute(int index)
+  {
+    return attrList.getAttribute(index);
+  }
 
-	////////////////////////////////////////////////
-	//	Attribute (Basic)
-	////////////////////////////////////////////////
+  CyberXML::Attribute* getAttribute(const char* name)
+  {
+    return attrList.getAttribute(name);
+  }
 
-public:
+  void addAttribute(CyberXML::Attribute* attr)
+  {
+    attrList.addAttribute(attr);
+  }
 
-	int getNAttributes() {
-		return (int)attrList.size();
-	}
+  void insertAttributeAt(CyberXML::Attribute* attr, int index)
+  {
+    attrList.insertAttribute(attr, index);
+  }
 
-	CyberXML::Attribute *getAttribute(int index) {
-		return attrList.getAttribute(index);
-	}
+  void addAttribute(const char* name, const char* value)
+  {
+    CyberXML::Attribute* attr = new CyberXML::Attribute(name, value);
+    addAttribute(attr);
+  }
 
-	CyberXML::Attribute *getAttribute(const char *name) 
-	{
-		return attrList.getAttribute(name);
-	}
+  bool removeAttribute(CyberXML::Attribute* attr)
+  {
+    return attrList.removeAttribute(attr);
+  }
 
-	void addAttribute(CyberXML::Attribute *attr) {
-		attrList.addAttribute(attr);
-	}
+  bool removeAttribute(const char* name)
+  {
+    return removeAttribute(getAttribute(name));
+  }
 
-	void insertAttributeAt(CyberXML::Attribute *attr, int index) {
-		attrList.insertAttribute(attr, index);
-	}
+  bool hasAttributes()
+  {
+    if (0 < getNAttributes())
+      return true;
+    return false;
+  }
 
-	void addAttribute(const char *name, const char *value) {
-		CyberXML::Attribute *attr = new CyberXML::Attribute(name, value);
-		addAttribute(attr);
-	}
+  ////////////////////////////////////////////////
+  //	Attribute (Extention)
+  ////////////////////////////////////////////////
 
-	bool removeAttribute(CyberXML::Attribute *attr) {
-		return attrList.removeAttribute(attr);
-	}
+  public:
+  void setAttribute(const char* name, const char* value)
+  {
+    CyberXML::Attribute* attr = getAttribute(name);
+    if (attr != NULL) {
+      attr->setValue(value);
+      return;
+    }
+    attr = new CyberXML::Attribute(name, value);
+    addAttribute(attr);
+  }
 
-	bool removeAttribute(const char *name) {
-		return removeAttribute(getAttribute(name));
-	}
+  void setAttribute(const char* name, int value)
+  {
+    std::ostringstream valBuf;
+    valBuf << value;
+    std::string valStr = valBuf.str();
+    setAttribute(name, valStr.c_str());
+  }
 
-	bool hasAttributes()
-	{
-		if (0 < getNAttributes())
-			return true;
-		return false;
-	}
+  const char* getAttributeValue(const char* name)
+  {
+    CyberXML::Attribute* attr = getAttribute(name);
+    if (attr != NULL)
+      return attr->getValue();
+    return "";
+  }
 
-	////////////////////////////////////////////////
-	//	Attribute (Extention)
-	////////////////////////////////////////////////
-
-public:
-
-	void setAttribute(const char *name, const char *value) {
-		CyberXML::Attribute *attr = getAttribute(name);
-		if (attr != NULL) {
-			attr->setValue(value);
-			return;
-		}
-		attr = new CyberXML::Attribute(name, value);
-		addAttribute(attr);
-	}
-
-	void setAttribute(const char *name, int value) {
-		std::ostringstream valBuf;
-		valBuf << value;
-		std::string valStr = valBuf.str();
-		setAttribute(name, valStr.c_str());
-	}
-
-	const char *getAttributeValue(const char *name) {
-		CyberXML::Attribute *attr = getAttribute(name);
-		if (attr != NULL)
-			return attr->getValue();
-		return "";
-	}
-
-	int getAttributeIntegerValue(const char *name) {
-		const char *val = getAttributeValue(name);
-		if (val == NULL)
-			return 0;
-		return atoi(val);
-	}
+  int getAttributeIntegerValue(const char* name)
+  {
+    const char* val = getAttributeValue(name);
+    if (val == NULL)
+      return 0;
+    return atoi(val);
+  }
 };
 
 }
 
 #endif
-
-

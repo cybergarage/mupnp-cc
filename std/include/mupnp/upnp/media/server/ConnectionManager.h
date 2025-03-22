@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : ConnectionManager.h
-*
-*	Revision:
-*
-*	04/03/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : ConnectionManager.h
+ *
+ *	Revision:
+ *
+ *	04/03/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_CONNECTIONMANAGER_H_
 #define _CLINK_MEDIA_CONNECTIONMANAGER_H_
@@ -26,158 +26,141 @@ namespace CyberLink {
 class MediaServer;
 class ContentDirectory;
 
-class ConnectionManager : public ActionListener, public QueryListener
-{
-	MediaServer *mediaServer;
-	CyberUtil::Mutex mutex;
-	int maxConnectionID;
-	ConnectionInfoList conInfoList;
-	
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
+class ConnectionManager : public ActionListener, public QueryListener {
+  MediaServer* mediaServer;
+  CyberUtil::Mutex mutex;
+  int maxConnectionID;
+  ConnectionInfoList conInfoList;
 
-public:
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *DESCRIPTION;
+  public:
+  static const char* DESCRIPTION;
 
-	static const char *SERVICE_TYPE;
+  static const char* SERVICE_TYPE;
 
-	static const char *HTTP_GET;
-	
-	static const char *GET_PROTOCOL_INFO;
-	static const char *SOURCE;
-	static const char *SINK;
+  static const char* HTTP_GET;
 
-	static const char *PREPARE_FOR_CONNECTION;
-	static const char *REMOTE_PROTOCOL_INFO;
-	static const char *PEER_CONNECTION_MANAGER;
-	static const char *PEER_CONNECTION_ID;
-	static const char *DIRECTION;
-	static const char *CONNECTION_ID;
-	static const char *AV_TRNSPORT_ID;
-	static const char *RCS_ID;
-	
-	static const char *CONNECTION_COMPLETE;
+  static const char* GET_PROTOCOL_INFO;
+  static const char* SOURCE;
+  static const char* SINK;
 
-	static const char *GET_CURRENT_CONNECTION_IDS;
-	static const char *CONNECTION_IDS;
+  static const char* PREPARE_FOR_CONNECTION;
+  static const char* REMOTE_PROTOCOL_INFO;
+  static const char* PEER_CONNECTION_MANAGER;
+  static const char* PEER_CONNECTION_ID;
+  static const char* DIRECTION;
+  static const char* CONNECTION_ID;
+  static const char* AV_TRNSPORT_ID;
+  static const char* RCS_ID;
 
-	static const char *GET_CURRENT_CONNECTION_INFO;
-	static const char *PROTOCOL_INFO;
-	static const char *STATUS;
-	static const char *INPUT;
-	static const char *OUTPUT;
-	static const char *OK;
-	
-	////////////////////////////////////////////////
-	// Constructor 
-	////////////////////////////////////////////////
-	
-public:
+  static const char* CONNECTION_COMPLETE;
 
-	ConnectionManager(MediaServer *mserver);
-	
-	virtual ~ConnectionManager();
-	
-	////////////////////////////////////////////////
-	// Media Server
-	////////////////////////////////////////////////
+  static const char* GET_CURRENT_CONNECTION_IDS;
+  static const char* CONNECTION_IDS;
 
+  static const char* GET_CURRENT_CONNECTION_INFO;
+  static const char* PROTOCOL_INFO;
+  static const char* STATUS;
+  static const char* INPUT;
+  static const char* OUTPUT;
+  static const char* OK;
 
-private:
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	void setMediaServer(MediaServer *mserver)
-	{
-		mediaServer = mserver;	
-	}
-	
-public:
+  public:
+  ConnectionManager(MediaServer* mserver);
 
-	MediaServer *getMediaServer()
-	{
-		return mediaServer;	
-	}
+  virtual ~ConnectionManager();
 
-	ContentDirectory *getContentDirectory();
-	
-	////////////////////////////////////////////////
-	// Mutex
-	////////////////////////////////////////////////
-	
-	
-public:
+  ////////////////////////////////////////////////
+  // Media Server
+  ////////////////////////////////////////////////
 
-	void lock()
-	{
-		mutex.lock();
-	}
-	
-	void unlock()
-	{
-		mutex.unlock();
-	}
-	
-	////////////////////////////////////////////////
-	// ConnectionID
-	////////////////////////////////////////////////
+  private:
+  void setMediaServer(MediaServer* mserver)
+  {
+    mediaServer = mserver;
+  }
 
-public:
+  public:
+  MediaServer* getMediaServer()
+  {
+    return mediaServer;
+  }
 
-	int getNextConnectionID();
-	
-	////////////////////////////////////////////////
-	// ConnectionInfoList
-	////////////////////////////////////////////////
+  ContentDirectory* getContentDirectory();
 
-public:
+  ////////////////////////////////////////////////
+  // Mutex
+  ////////////////////////////////////////////////
 
-	ConnectionInfoList *getConnectionInfoList()
-	{
-		return &conInfoList;
-	}
-	
-	ConnectionInfo *getConnectionInfo(int conId);
-	void addConnectionInfo(ConnectionInfo *conInfo);
-	void removeConnectionInfo(int conId);
-	void removeConnectionInfo(ConnectionInfo *conInfo);
-	
-	////////////////////////////////////////////////
-	// ActionListener
-	////////////////////////////////////////////////
+  public:
+  void lock()
+  {
+    mutex.lock();
+  }
 
-public:
+  void unlock()
+  {
+    mutex.unlock();
+  }
 
-	bool actionControlReceived(Action *action);
+  ////////////////////////////////////////////////
+  // ConnectionID
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// GetCurrentConnectionIDs
-	////////////////////////////////////////////////
-	
-private:
+  public:
+  int getNextConnectionID();
 
-	bool getCurrentConnectionIDs(Action *action);
-	
-	////////////////////////////////////////////////
-	// GetCurrentConnectionInfo
-	////////////////////////////////////////////////
-	
-private:
+  ////////////////////////////////////////////////
+  // ConnectionInfoList
+  ////////////////////////////////////////////////
 
-	bool getCurrentConnectionInfo(Action *action);
-	
-	////////////////////////////////////////////////
-	// QueryListener
-	////////////////////////////////////////////////
+  public:
+  ConnectionInfoList* getConnectionInfoList()
+  {
+    return &conInfoList;
+  }
 
-public:
+  ConnectionInfo* getConnectionInfo(int conId);
+  void addConnectionInfo(ConnectionInfo* conInfo);
+  void removeConnectionInfo(int conId);
+  void removeConnectionInfo(ConnectionInfo* conInfo);
 
-	bool queryControlReceived(StateVariable *stateVar);
+  ////////////////////////////////////////////////
+  // ActionListener
+  ////////////////////////////////////////////////
 
+  public:
+  bool actionControlReceived(Action* action);
+
+  ////////////////////////////////////////////////
+  // GetCurrentConnectionIDs
+  ////////////////////////////////////////////////
+
+  private:
+  bool getCurrentConnectionIDs(Action* action);
+
+  ////////////////////////////////////////////////
+  // GetCurrentConnectionInfo
+  ////////////////////////////////////////////////
+
+  private:
+  bool getCurrentConnectionInfo(Action* action);
+
+  ////////////////////////////////////////////////
+  // QueryListener
+  ////////////////////////////////////////////////
+
+  public:
+  bool queryControlReceived(StateVariable* stateVar);
 };
 
 }
 
 #endif
-
-

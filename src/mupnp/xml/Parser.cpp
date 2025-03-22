@@ -12,9 +12,9 @@
 #include <string.h>
 #include <string>
 
+#include <mupnp/http/HTTPRequest.h>
 #include <mupnp/net/HostInterface.h>
 #include <mupnp/xml/Parser.h>
-#include <mupnp/http/HTTPRequest.h>
 
 #if !defined(WIN32) && !defined(HAVE_FOPEN) && !defined(TENGINE) && !defined(ITRON) && !defined(BTRON)
 #include <fcntl.h>
@@ -29,41 +29,42 @@ using namespace uHTTP;
 // parse (File)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE)
 
-mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::File *file) {
-  const char *filename = file->getName();
+mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::File* file)
+{
+  const char* filename = file->getName();
 #if defined(WIN32) || defined(HAVE_FOPEN)
-  FILE *fp = fopen(filename, "r");
+  FILE* fp = fopen(filename, "r");
   if (!fp)
-    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
 #else
   int fd = open(filename, O_RDONLY);
   if (fd == -1)
-    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
 #endif
-  char readBuf[PARSER_DEFAULT_READ_BUF_SIZE+1];
+  char readBuf[PARSER_DEFAULT_READ_BUF_SIZE + 1];
   string contents;
 #if defined(WIN32) || defined(HAVE_FOPEN)
   int nRead = fread(readBuf, sizeof(char), PARSER_DEFAULT_READ_BUF_SIZE, fp);
   while (0 < nRead) {
     readBuf[nRead] = '\0';
-    //cout << readBuf << endl;
+    // cout << readBuf << endl;
     contents += readBuf;
     nRead = fread(readBuf, sizeof(char), PARSER_DEFAULT_READ_BUF_SIZE, fp);
-  }  
+  }
   fclose(fp);
 #else
   ssize_t nRead = read(fd, readBuf, PARSER_DEFAULT_READ_BUF_SIZE);
   while (0 < nRead) {
     readBuf[nRead] = '\0';
-    //cout << readBuf << endl;
+    // cout << readBuf << endl;
     contents += readBuf;
     nRead = read(fd, readBuf, PARSER_DEFAULT_READ_BUF_SIZE);
-  }  
+  }
   close(fd);
 #endif
-  //cout << contents << endl;
+  // cout << contents << endl;
   return parse(&contents);
 }
 
@@ -73,16 +74,17 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::File *file) {
 // parse (URL)
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::URL *url) {
-  const char *host = url->getHost();
+mupnp_shared_ptr<uXML::Node> Parser::parse(uHTTP::URL* url)
+{
+  const char* host = url->getHost();
   int port = url->getPort();
-  const char *uri = url->getPath();
+  const char* uri = url->getPath();
   HTTPRequest httpReq;
   httpReq.setMethod(HTTP::GET);
   httpReq.setURI(uri);
-  HTTPResponse *httpRes = httpReq.post(host, port);
+  HTTPResponse* httpRes = httpReq.post(host, port);
   if (httpRes->isSuccessful() == false)
-    return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
-  const char *contents = httpRes->getContent();
+    return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
+  const char* contents = httpRes->getContent();
   return parse(contents);
 }

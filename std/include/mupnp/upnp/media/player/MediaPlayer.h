@@ -1,107 +1,97 @@
 /******************************************************************
-*
-*	MediaPlayer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : MediaPlayer.h
-*
-*	04/20/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaPlayer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : MediaPlayer.h
+ *
+ *	04/20/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_MEDIAPLAYER_H_
 #define _CLINK_MEDIA_MEDIAPLAYER_H_
 
+#include <mupnp/upnp/ControlPoint.h>
 #include <mupnp/upnp/media/server/MediaServer.h>
 #include <mupnp/upnp/media/server/action/BrowseAction.h>
 #include <mupnp/xml/Node.h>
-#include <mupnp/upnp/ControlPoint.h>
 
 namespace CyberLink {
 
-class MediaPlayer : public ControlPoint
-{
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-public:
+class MediaPlayer : public ControlPoint {
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	static const char *DEVICE_TYPE;
+  public:
+  static const char* DEVICE_TYPE;
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
-	
-	MediaPlayer();
-	~MediaPlayer();
-	
-	////////////////////////////////////////////////
-	// start/stop (Overided)
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	bool start();
-	bool stop();
-	
-	////////////////////////////////////////////////
-	// Browse
-	////////////////////////////////////////////////
+  public:
+  MediaPlayer();
+  ~MediaPlayer();
 
-public:
+  ////////////////////////////////////////////////
+  // start/stop (Overided)
+  ////////////////////////////////////////////////
 
-	CyberXML::Node *browse(
-		Device *dev,
-		const char *objectID,
-		const char *browseFlag,
-		const char *filter,
-		int startIndex,
-		int requestedCount,
-		const char *sortCaiteria);
+  public:
+  bool start();
+  bool stop();
 
-	CyberXML::Node *browseMetaData(
-		Device *dev,
-		const char *objectID,
-		const char *filter,
-		int startIndex,
-		int requestedCount,
-		const char *sortCaiteria)
-	{
-		return browse(dev, objectID, BrowseAction::BROWSE_METADATA, filter, startIndex, requestedCount, sortCaiteria);
-	}
+  ////////////////////////////////////////////////
+  // Browse
+  ////////////////////////////////////////////////
 
-	CyberXML::Node *browseDirectChildren(
-		Device *dev,
-		const char *objectID,
-		const char *filter,
-		int startIndex,
-		int requestedCount,
-		const char *sortCaiteria)
-	{
-		return browse(dev, objectID, BrowseAction::BROWSE_DIRECT_CHILDREN, filter, startIndex, requestedCount, sortCaiteria);
-	}
+  public:
+  CyberXML::Node* browse(
+      Device* dev,
+      const char* objectID,
+      const char* browseFlag,
+      const char* filter,
+      int startIndex,
+      int requestedCount,
+      const char* sortCaiteria);
 
-	////////////////////////////////////////////////
-	// Content
-	////////////////////////////////////////////////
+  CyberXML::Node* browseMetaData(
+      Device* dev,
+      const char* objectID,
+      const char* filter,
+      int startIndex,
+      int requestedCount,
+      const char* sortCaiteria)
+  {
+    return browse(dev, objectID, BrowseAction::BROWSE_METADATA, filter, startIndex, requestedCount, sortCaiteria);
+  }
 
-public:
+  CyberXML::Node* browseDirectChildren(
+      Device* dev,
+      const char* objectID,
+      const char* filter,
+      int startIndex,
+      int requestedCount,
+      const char* sortCaiteria)
+  {
+    return browse(dev, objectID, BrowseAction::BROWSE_DIRECT_CHILDREN, filter, startIndex, requestedCount, sortCaiteria);
+  }
 
-	ContentNode *getContentDirectory(Device *dev);
+  ////////////////////////////////////////////////
+  // Content
+  ////////////////////////////////////////////////
 
-private:
+  public:
+  ContentNode* getContentDirectory(Device* dev);
 
-	int getContentDirectory(ContentNode *parentNode, Device *dev, const char *objectID);
-
+  private:
+  int getContentDirectory(ContentNode* parentNode, Device* dev, const char* objectID);
 };
 
 }
 
 #endif
-
-

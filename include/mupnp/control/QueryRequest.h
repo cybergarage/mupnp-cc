@@ -24,15 +24,17 @@ class StateVariable;
 class QueryRequest : public ControlRequest {
   QueryResponse queryRes;
 
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  QueryRequest() {
+
+  QueryRequest()
+  {
   }
 
-  QueryRequest(uHTTP::HTTPRequest *httpReq) {
+  QueryRequest(uHTTP::HTTPRequest* httpReq)
+  {
     set(httpReq);
   }
 
@@ -40,38 +42,36 @@ public:
   // Qyery
   ////////////////////////////////////////////////
 
-private:
-
+  private:
   mupnp_shared_ptr<uXML::Node> getVarNameNode();
-  
- public:
-  const char *getVarName();
+
+  public:
+  const char* getVarName();
 
   ////////////////////////////////////////////////
   // setRequest
   ////////////////////////////////////////////////
-  
-  void setRequest(StateVariable *stateVar);
+
+  void setRequest(StateVariable* stateVar);
 
   ////////////////////////////////////////////////
   // Contents
   ////////////////////////////////////////////////
 
-private:
-
-  uXML::Node *createContentNode(StateVariable *stateVar);
+  private:
+  uXML::Node* createContentNode(StateVariable* stateVar);
 
   ////////////////////////////////////////////////
   // post
   ////////////////////////////////////////////////
 
- public:
-  QueryResponse *post(QueryResponse *actionRes);
+  public:
+  QueryResponse* post(QueryResponse* actionRes);
 
-  QueryResponse *post() {
+  QueryResponse* post()
+  {
     return post(&queryRes);
   }
-
 };
 
 }

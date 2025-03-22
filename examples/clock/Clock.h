@@ -11,95 +11,86 @@
 #ifndef _MUPNP_CLOCK_H_
 #define _MUPNP_CLOCK_H_
 
-#include <time.h>
 #include <string>
+#include <time.h>
 
-class Clock
-{
+class Clock {
 
-	time_t currTime;
+  time_t currTime;
 
-public:
+  public:
+  Clock()
+  {
+    time(&currTime);
+  }
 
-	Clock()
-	{
-		time(&currTime);
-	}
+  ////////////////////////////////////////////////
+  //	Time
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	Time
-	////////////////////////////////////////////////
+  public:
+  int getYear()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_year + 1900;
+  }
 
-public:
+  int getMonth()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_mon;
+  }
 
-	int getYear()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_year + 1900;
-	}
+  int getWeek()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_wday;
+  }
 
-	int getMonth()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_mon;
-	}
+  int getDay()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_mday;
+  }
 
-	int getWeek()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_wday;
-	}
+  int getHour()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_hour;
+  }
 
-	int getDay()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_mday;
-	}
+  int getMinute()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_min;
+  }
 
-	int getHour()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_hour;
-	}
+  int getSecond()
+  {
+    struct tm* localTime = localtime(&currTime);
+    return localTime->tm_sec;
+  }
 
-	int getMinute()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_min;
-	}
+  ////////////////////////////////////////////////
+  //	getDateString
+  ////////////////////////////////////////////////
 
-	int getSecond()
-	{
-		struct tm *localTime = localtime(&currTime);
-		return localTime->tm_sec;
-	}
-	
-	////////////////////////////////////////////////
-	//	getDateString
-	////////////////////////////////////////////////
+  public:
+  const char* getDateString(std::string& buf);
 
-public:
+  ////////////////////////////////////////////////
+  //	getTimeString
+  ////////////////////////////////////////////////
 
-	const char *getDateString(std::string &buf);
+  public:
+  const char* getTimeString(std::string& sbuf);
 
-	////////////////////////////////////////////////
-	//	getTimeString
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  //	toString
+  ////////////////////////////////////////////////
 
-	const char *getTimeString(std::string &sbuf);
-
-	////////////////////////////////////////////////
-	//	toString
-	////////////////////////////////////////////////
-
-public:
-
-	const char *toString(std::string &buf);
-		
+  public:
+  const char* toString(std::string& buf);
 };
 
 #endif
-
-

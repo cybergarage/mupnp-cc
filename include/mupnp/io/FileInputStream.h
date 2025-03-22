@@ -11,10 +11,10 @@
 #ifndef _UHTTP_IO_FILEINPUTSTREAM_H_
 #define _UHTTP_IO_FILEINPUTSTREAM_H_
 
-#include <stdio.h>
-#include <string>
 #include <mupnp/io/File.h>
 #include <mupnp/io/InputStream.h>
+#include <stdio.h>
+#include <string>
 
 namespace uHTTP {
 const long FILE_INBUF_SIZE = 512 * 1024;

@@ -8,9 +8,9 @@
  *
  ******************************************************************/
 
-#include <sstream>
 #include <mupnp/http/HTTP.h>
 #include <mupnp/net/URI.h>
+#include <sstream>
 
 #ifdef NO_USE_OSTRINGSTREAM
 #include <mupnp/util/StringUtil.h>

@@ -11,13 +11,13 @@
 #ifndef _MUPMPCC_NOTIFYREQUEST_H_
 #define _MUPMPCC_NOTIFYREQUEST_H_
 
-#include <mupnp/soap/SOAPRequest.h>
 #include <mupnp/device/NT.h>
 #include <mupnp/device/NTS.h>
 #include <mupnp/event/Property.h>
-#include <mupnp/event/Subscription.h>
-#include <mupnp/event/Subscriber.h>
 #include <mupnp/event/PropertyList.h>
+#include <mupnp/event/Subscriber.h>
+#include <mupnp/event/Subscription.h>
+#include <mupnp/soap/SOAPRequest.h>
 
 #include <sstream>
 
@@ -25,20 +25,22 @@ namespace mUPnP {
 class NotifyRequest : public uSOAP::SOAPRequest {
   PropertyList propList;
 
- public:
-  static const char *XMLNS;
-  static const char *PROPERTY;
-  static const char *PROPERTYSET;
+  public:
+  static const char* XMLNS;
+  static const char* PROPERTY;
+  static const char* PROPERTYSET;
 
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
- public:
-  NotifyRequest() {
+
+  public:
+  NotifyRequest()
+  {
   }
 
-  NotifyRequest(uHTTP::HTTPRequest *httpReq) {
+  NotifyRequest(uHTTP::HTTPRequest* httpReq)
+  {
     set(httpReq);
   }
 
@@ -46,8 +48,9 @@ class NotifyRequest : public uSOAP::SOAPRequest {
   // NT
   ////////////////////////////////////////////////
 
- public:
-  void setNT(const std::string &value) {
+  public:
+  void setNT(const std::string& value)
+  {
     setHeader(uHTTP::HTTP::NT, value);
   }
 
@@ -55,8 +58,9 @@ class NotifyRequest : public uSOAP::SOAPRequest {
   // NTS
   ////////////////////////////////////////////////
 
- public:
-  void setNTS(const std::string &value) {
+  public:
+  void setNTS(const std::string& value)
+  {
     setHeader(uHTTP::HTTP::NTS, value);
   }
 
@@ -64,13 +68,15 @@ class NotifyRequest : public uSOAP::SOAPRequest {
   // SID
   ////////////////////////////////////////////////
 
- public:
-  void setSID(const std::string &sid) {
+  public:
+  void setSID(const std::string& sid)
+  {
     std::string buf;
     setHeader(uHTTP::HTTP::SID, Subscription::toSIDHeaderString(sid, buf));
   }
 
-  const char *getSID(std::string &buf) {
+  const char* getSID(std::string& buf)
+  {
     return Subscription::GetSID(getHeaderValue(uHTTP::HTTP::SID), buf);
   }
 
@@ -78,12 +84,14 @@ class NotifyRequest : public uSOAP::SOAPRequest {
   // SEQ
   ////////////////////////////////////////////////
 
- public:
-  void setSEQ(long value) {
+  public:
+  void setSEQ(long value)
+  {
     setHeader(uHTTP::HTTP::SEQ, value);
   }
 
-  long getSEQ() {
+  long getSEQ()
+  {
     return getLongHeaderValue(uHTTP::HTTP::SEQ);
   }
 
@@ -91,12 +99,11 @@ class NotifyRequest : public uSOAP::SOAPRequest {
   // Request
   ////////////////////////////////////////////////
 
- public:
-  bool setRequest(Subscriber *sub, const std::string &varName, const std::string &value);
+  public:
+  bool setRequest(Subscriber* sub, const std::string& varName, const std::string& value);
 
-private:
-  
-  uXML::Node *createPropertySetNode(const std::string &varName, const std::string &value);
+  private:
+  uXML::Node* createPropertySetNode(const std::string& varName, const std::string& value);
 
   mupnp_shared_ptr<uXML::Node> getVariableNode();
 
@@ -104,16 +111,13 @@ private:
   // Property
   ////////////////////////////////////////////////
 
-private:
-  
-  Property *getProperty(uXML::Node *varNode);
+  private:
+  Property* getProperty(uXML::Node* varNode);
 
- public:
-  PropertyList *getPropertyList();
-  
+  public:
+  PropertyList* getPropertyList();
 };
 
 }
 
 #endif
-

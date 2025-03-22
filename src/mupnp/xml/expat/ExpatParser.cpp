@@ -9,7 +9,7 @@
  ******************************************************************/
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 ////////////////////////////////////////////////
@@ -34,9 +34,9 @@
 
 #include <expat.h>
 
-#include <string>
 #include <sstream>
 #include <stdio.h>
+#include <string>
 
 using namespace std;
 using namespace uXML;
@@ -45,10 +45,12 @@ using namespace uXML;
 // Constructor
 ////////////////////////////////////////////////
 
-Parser::Parser() {
+Parser::Parser()
+{
 }
 
-Parser::~Parser() {
+Parser::~Parser()
+{
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,18 +58,19 @@ Parser::~Parser() {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 typedef struct _ExpatData {
-  Node *rootNode;
-  Node *currNode;
+  Node* rootNode;
+  Node* currNode;
 } ExpatData;
 
-static void XMLCALL ExpatElementStart(void *userData, const XML_Char *el, const XML_Char **attr) {
-  ExpatData *expatData = (ExpatData *)userData;
+static void XMLCALL ExpatElementStart(void* userData, const XML_Char* el, const XML_Char** attr)
+{
+  ExpatData* expatData = (ExpatData*)userData;
 
-  Node *node = new Node();
+  Node* node = new Node();
   node->setName(el);
 
   for (int n = 0; attr[n]; n += 2)
-    node->setAttribute(attr[n], attr[n+1]);
+    node->setAttribute(attr[n], attr[n + 1]);
 
   if (expatData->rootNode) {
     if (expatData->currNode)
@@ -81,14 +84,16 @@ static void XMLCALL ExpatElementStart(void *userData, const XML_Char *el, const 
   expatData->currNode = node;
 }
 
-static void XMLCALL ExpatElementEnd(void *userData, const XML_Char *el) {
-  ExpatData *expatData = (ExpatData *)userData;
+static void XMLCALL ExpatElementEnd(void* userData, const XML_Char* el)
+{
+  ExpatData* expatData = (ExpatData*)userData;
   if (expatData->currNode)
     expatData->currNode = expatData->currNode->getParentNode();
 }
 
-static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int len) {
-  ExpatData *expatData = (ExpatData *)userData;
+static void XMLCALL ExpatCharacterData(void* userData, const XML_Char* s, int len)
+{
+  ExpatData* expatData = (ExpatData*)userData;
 
   if (expatData->currNode)
     expatData->currNode->addValue(s, len);
@@ -98,7 +103,8 @@ static void XMLCALL ExpatCharacterData(void *userData, const XML_Char *s, int le
 // parse
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) {
+mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string& data, size_t len)
+{
   XML_Parser p = XML_ParserCreate(NULL);
   if (!p)
     return nullptr;
@@ -108,19 +114,19 @@ mupnp_shared_ptr<uXML::Node> Parser::parse(const std::string &data, size_t len) 
   expatData.currNode = NULL;
   XML_SetUserData(p, &expatData);
   XML_SetElementHandler(p, ExpatElementStart, ExpatElementEnd);
-  XML_SetCharacterDataHandler(p, ExpatCharacterData); 
+  XML_SetCharacterDataHandler(p, ExpatCharacterData);
 
   int parseRet = XML_Parse(p, data.c_str(), (int)len, 1);
   XML_ParserFree(p);
 
   if (parseRet == 0 /*XML_STATUS_ERROR*/) {
     if (expatData.rootNode)
-        delete expatData.rootNode;
+      delete expatData.rootNode;
     return nullptr;
   }
 
-  //if (expatData.rootNode)
-  // expatData.rootNode->print();
+  // if (expatData.rootNode)
+  //  expatData.rootNode->print();
 
   return mupnp_shared_ptr<uXML::Node>(expatData.rootNode);
 }

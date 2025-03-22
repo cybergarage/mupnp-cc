@@ -8,16 +8,22 @@
  *
  ******************************************************************/
 
-#include <mupnp/http/HTTP.h>
 #include <mupnp/UPnPStatus.h>
-  
-const char *mUPnP::UPnP::StatusCodeToString(int code) {
+#include <mupnp/http/HTTP.h>
+
+const char* mUPnP::UPnP::StatusCodeToString(int code)
+{
   switch (code) {
-  case UPnP::INVALID_ACTION: return "Invalid Action";
-  case UPnP::INVALID_ARGS: return "Invalid Args";
-  case UPnP::OUT_OF_SYNC: return "Out of Sync";
-  case UPnP::INVALID_VAR: return "Invalid Var";
-  case UPnP::ACTION_FAILED: return "Action Failed";
+  case UPnP::INVALID_ACTION:
+    return "Invalid Action";
+  case UPnP::INVALID_ARGS:
+    return "Invalid Args";
+  case UPnP::OUT_OF_SYNC:
+    return "Out of Sync";
+  case UPnP::INVALID_VAR:
+    return "Invalid Var";
+  case UPnP::ACTION_FAILED:
+    return "Action Failed";
   }
-   return "";
+  return "";
 }

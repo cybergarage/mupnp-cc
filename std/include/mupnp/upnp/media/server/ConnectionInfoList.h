@@ -1,66 +1,59 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: ConnectionInfoList.h
-*
-*	Revision:
-*
-*	06/19/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: ConnectionInfoList.h
+ *
+ *	Revision:
+ *
+ *	06/19/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_CONNECTIONINFOLIST_H_
 #define _CLINK_MEDIA_CONNECTIONINFOLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/ConnectionInfo.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class ConnectionInfoList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	// Constrictor
-	////////////////////////////////////////////////
-	
-public:
+class ConnectionInfoList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  // Constrictor
+  ////////////////////////////////////////////////
 
-	ConnectionInfoList() 
-	{
-	}
-	
-	~ConnectionInfoList() 
-	{
-		clear();
-	}
+  public:
+  ConnectionInfoList()
+  {
+  }
 
-	////////////////////////////////////////////////
-	// getConnectionInfo
-	////////////////////////////////////////////////
-	
-public:
+  ~ConnectionInfoList()
+  {
+    clear();
+  }
 
-	ConnectionInfo *getConnectionInfo(int n)
-	{
-		return (ConnectionInfo *)Vector::get(n);
-	}
+  ////////////////////////////////////////////////
+  // getConnectionInfo
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
+  public:
+  ConnectionInfo* getConnectionInfo(int n)
+  {
+    return (ConnectionInfo*)Vector::get(n);
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-	void clear();
-
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

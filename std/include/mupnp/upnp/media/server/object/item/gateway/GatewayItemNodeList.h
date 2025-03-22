@@ -1,65 +1,59 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-**
-*	File: GatewayItemNodeList.h
-*
-*	Revision;
-*
-*	11/15/05
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ **
+ *	File: GatewayItemNodeList.h
+ *
+ *	Revision;
+ *
+ *	11/15/05
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_GATEWAYITEMNODELIST_H_
 #define _CLINK_MEDIA_GATEWAYITEMNODELIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/item/gateway/GatewayItemNode.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class GatewayItemNodeList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+class GatewayItemNodeList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  GatewayItemNodeList()
+  {
+  }
 
-	GatewayItemNodeList() 
-	{
-	}
-	
-	~GatewayItemNodeList() 
-	{
-		clear();
-	}
+  ~GatewayItemNodeList()
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  GatewayItemNode* getGatewayItemNode(int n)
+  {
+    return (GatewayItemNode*)Vector::get(n);
+  }
 
-	GatewayItemNode *getGatewayItemNode(int n)
-	{
-		return (GatewayItemNode *)Vector::get(n);
-	}
-	
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

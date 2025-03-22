@@ -1,67 +1,61 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-**
-*	File: FileItemNodeList.h
-*
-*	Revision;
-*
-*	04/14/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ **
+ *	File: FileItemNodeList.h
+ *
+ *	Revision;
+ *
+ *	04/14/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_FILEITEMNODELIST_H_
 #define _CLINK_MEDIA_FILEITEMNODELIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/item/file/FileItemNode.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class FileItemNodeList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+class FileItemNodeList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  FileItemNodeList()
+  {
+  }
 
-	FileItemNodeList() 
-	{
-	}
-	
-	~FileItemNodeList() 
-	{
-		clear();
-	}
+  ~FileItemNodeList()
+  {
+    clear();
+  }
 
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  FileItemNode* getFileItemNode(int n)
+  {
+    return (FileItemNode*)Vector::get(n);
+  }
 
-	FileItemNode *getFileItemNode(int n)
-	{
-		return (FileItemNode *)Vector::get(n);
-	}
-	
-	FileItemNode *getItemNode(CyberIO::File *file);
+  FileItemNode* getItemNode(CyberIO::File* file);
 
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

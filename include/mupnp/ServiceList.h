@@ -17,29 +17,28 @@ namespace mUPnP {
 class Service;
 
 class ServiceList : public Vector<Service> {
-public:
-    
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  ServiceList() 
+
+  ServiceList()
   {
   }
 
   ////////////////////////////////////////////////
   // Methods
   ////////////////////////////////////////////////
-  
-  Service *getService(size_t n) {
+
+  Service* getService(size_t n)
+  {
     return get(n);
   }
 };
@@ -47,5 +46,3 @@ public:
 }
 
 #endif
-
-

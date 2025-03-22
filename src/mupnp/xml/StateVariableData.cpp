@@ -17,11 +17,13 @@ using namespace mUPnP;
 // value
 ////////////////////////////////////////////////
 
-StateVariableData::StateVariableData()  {
+StateVariableData::StateVariableData()
+{
   queryRes = NULL;
 }
 
-StateVariableData::~StateVariableData() {
+StateVariableData::~StateVariableData()
+{
   if (queryRes)
     delete queryRes;
 }
@@ -30,10 +32,9 @@ StateVariableData::~StateVariableData() {
 // QueryResponse
 ////////////////////////////////////////////////
 
-void StateVariableData::setQueryResponse(QueryResponse *res)  {
+void StateVariableData::setQueryResponse(QueryResponse* res)
+{
   if (queryRes)
     delete queryRes;
   queryRes = res;
 }
-
-

@@ -11,10 +11,10 @@
 #ifndef _UHTTP_IO_STRINGBUFFERINPUTSTREAM_H_
 #define _UHTTP_IO_STRINGBUFFERINPUTSTREAM_H_
 
-#include <stdio.h>
-#include <string>
 #include <mupnp/io/File.h>
 #include <mupnp/io/InputStream.h>
+#include <stdio.h>
+#include <string>
 
 namespace uHTTP {
 class StringBufferInputStream : public InputStream {

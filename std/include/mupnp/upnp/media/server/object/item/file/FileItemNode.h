@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : FileItemNode.java
-*
-*	Revision:
-*
-*	02/12/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : FileItemNode.java
+ *
+ *	Revision:
+ *
+ *	02/12/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_FILEITEMNODE_H_
 #define _CLINK_MEDIA_FILEITEMNODE_H_
@@ -22,66 +22,60 @@
 
 namespace CyberLink {
 
-class FileItemNode : public ItemNode
-{
-	CyberIO::File *itemFile;
+class FileItemNode : public ItemNode {
+  CyberIO::File* itemFile;
 
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  FileItemNode();
 
-	FileItemNode();
+  ////////////////////////////////////////////////
+  // File/TimeStamp
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// File/TimeStamp
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  void setFile(CyberIO::File* file)
+  {
+    itemFile = file;
+  }
 
-	void setFile(CyberIO::File *file)
-	{
-		itemFile = file;
-	}
-	
-	CyberIO::File *getFile()
-	{
-		return itemFile;
-	}
+  CyberIO::File* getFile()
+  {
+    return itemFile;
+  }
 
-	long getFileTimeStamp()
-	{
-		return itemFile->lastModified();
-	}
-	
-	bool equals(CyberIO::File *file)
-	{
-		if (itemFile == NULL)
-			return false;
-		return itemFile->equals(file);
-	}
+  long getFileTimeStamp()
+  {
+    return itemFile->lastModified();
+  }
 
-	////////////////////////////////////////////////
-	// Abstract methods
-	////////////////////////////////////////////////
+  bool equals(CyberIO::File* file)
+  {
+    if (itemFile == NULL)
+      return false;
+    return itemFile->equals(file);
+  }
 
-public:
+  ////////////////////////////////////////////////
+  // Abstract methods
+  ////////////////////////////////////////////////
 
-	const char *getContent(std::string &buf);
-	
-	long getContentLength()
-	{
-		return itemFile->length();
-	}
+  public:
+  const char* getContent(std::string& buf);
 
-	CyberIO::InputStream *getContentInputStream();
+  long getContentLength()
+  {
+    return itemFile->length();
+  }
 
-	const char *getMimeType();
+  CyberIO::InputStream* getContentInputStream();
+
+  const char* getMimeType();
 };
 
 }
 
 #endif
-
-

@@ -11,12 +11,14 @@
 #include <mupnp/device/USN.h>
 #include <mupnp/util/StringUtil.h>
 
-bool mUPnP::USN::IsRootDevice(const std::string &usnValue) {
+bool mUPnP::USN::IsRootDevice(const std::string& usnValue)
+{
   uHTTP::String usnStr = usnValue;
   return usnStr.endsWith(ROOTDEVICE);
 }
-  
-const char *mUPnP::USN::GetUDN(const std::string &usnValue, std::string &udn) {
+
+const char* mUPnP::USN::GetUDN(const std::string& usnValue, std::string& udn)
+{
   uHTTP::String usnStr = usnValue;
   int idx = usnStr.indexOf("::");
   if (idx < 0)

@@ -11,10 +11,10 @@
 #ifndef _MUPMPCC_DEVICEDATA_H_
 #define _MUPMPCC_DEVICEDATA_H_
 
-#include <mupnp/http/HTTPServerList.h>
-#include <mupnp/util/Listener.h>
-#include <mupnp/ssdp/SSDPSearchSocketList.h>
 #include <mupnp/device/Advertiser.h>
+#include <mupnp/http/HTTPServerList.h>
+#include <mupnp/ssdp/SSDPSearchSocketList.h>
+#include <mupnp/util/Listener.h>
 #include <mupnp/xml/NodeData.h>
 
 #include <string>
@@ -24,56 +24,61 @@ namespace mUPnP {
 class Device;
 
 class DeviceData : public ::uXML::NodeData {
-  Device *device;
+  Device* device;
 
-  std::string descriptionURI; 
+  std::string descriptionURI;
   std::string descriptionFile;
   std::string location;
   int leaseTime;
   int httpPort;
   size_t httpWorkerCount;
-  
-  uHTTP::HTTPServerList httpServerList;    
+
+  uHTTP::HTTPServerList httpServerList;
 
   SSDPSearchSocketList ssdpSearchSocketList;
   SSDPPacket ssdpPacket;
 
-  Advertiser *advertiser;
-  
-public:
-  
+  Advertiser* advertiser;
+
+  public:
   DeviceData();
 
   ////////////////////////////////////////////////
   // Device
   ////////////////////////////////////////////////
 
- public:
-  void setDevice(Device *dev) {
+  public:
+  void setDevice(Device* dev)
+  {
     device = dev;
   }
 
-  Device *getDevice() {
+  Device* getDevice()
+  {
     return device;
   }
 
   ////////////////////////////////////////////////
   // description
   ////////////////////////////////////////////////
-  
-  const char *getDescriptionFile() {
+
+  const char* getDescriptionFile()
+  {
     return descriptionFile.c_str();
   }
 
-  const char *getDescriptionURI() {
+  const char* getDescriptionURI()
+  {
     return descriptionURI.c_str();
   }
 
-  void setDescriptionFile(const std::string &descriptionFile) {
+  void setDescriptionFile(const std::string& descriptionFile)
+  {
     this->descriptionFile = descriptionFile;
   }
 
-  void setDescriptionURI(const std::string &descriptionURI) {
+  void setDescriptionURI(const std::string& descriptionURI)
+  {
     this->descriptionURI = descriptionURI;
   }
 
@@ -81,78 +86,88 @@ public:
   // description
   ////////////////////////////////////////////////
 
-  const char *getLocation() {
+  const char* getLocation()
+  {
     return location.c_str();
   }
 
-  void setLocation(const std::string &location) {
+  void setLocation(const std::string& location)
+  {
     this->location = location;
   }
 
   ////////////////////////////////////////////////
-  // LeaseTime 
+  // LeaseTime
   ////////////////////////////////////////////////
 
-  int getLeaseTime() {
+  int getLeaseTime()
+  {
     return leaseTime;
   }
 
-  void setLeaseTime(int leaseTime) {
+  void setLeaseTime(int leaseTime)
+  {
     this->leaseTime = leaseTime;
   }
 
   ////////////////////////////////////////////////
-  // HTTPServer 
+  // HTTPServer
   ////////////////////////////////////////////////
 
-  uHTTP::HTTPServerList *getHTTPServerList() {
+  uHTTP::HTTPServerList* getHTTPServerList()
+  {
     return &httpServerList;
   }
 
   ////////////////////////////////////////////////
-  // httpPort 
+  // httpPort
   ////////////////////////////////////////////////
 
-  int getHTTPPort() {
+  int getHTTPPort()
+  {
     return httpPort;
   }
 
-  void setHTTPPort(int port) {
+  void setHTTPPort(int port)
+  {
     httpPort = port;
   }
 
   ////////////////////////////////////////////////
   // httpPort
   ////////////////////////////////////////////////
-  
-  size_t getHTTPWorkerCount() {
+
+  size_t getHTTPWorkerCount()
+  {
     return httpWorkerCount;
   }
-  
-  void setHTTPWorkerCount(size_t num) {
+
+  void setHTTPWorkerCount(size_t num)
+  {
     httpWorkerCount = num;
   }
-  
+
   ////////////////////////////////////////////////
   // SSDPSearchSocket
   ////////////////////////////////////////////////
-  
-  SSDPSearchSocketList *getSSDPSearchSocketList() {
+
+  SSDPSearchSocketList* getSSDPSearchSocketList()
+  {
     return &ssdpSearchSocketList;
   }
 
   ////////////////////////////////////////////////
   // SSDPPacket
   ////////////////////////////////////////////////
-  
-  SSDPPacket *getSSDPPacket() 
+
+  SSDPPacket* getSSDPPacket()
   {
     if (ssdpPacket.isNull() == true)
       return nullptr;
     return &ssdpPacket;
   }
 
-  void setSSDPPacket(SSDPPacket *packet) 
+  void setSSDPPacket(SSDPPacket* packet)
   {
     ssdpPacket.set(packet);
   }
@@ -161,14 +176,14 @@ public:
   // Advertiser
   ////////////////////////////////////////////////
 
-  void setAdvertiser(Advertiser *adv) 
+  void setAdvertiser(Advertiser* adv)
   {
     if (advertiser)
       delete advertiser;
     advertiser = adv;
   }
-  
-  Advertiser *getAdvertiser() 
+
+  Advertiser* getAdvertiser()
   {
     return advertiser;
   }
@@ -177,6 +192,3 @@ public:
 }
 
 #endif
-
-
-

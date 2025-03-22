@@ -1,72 +1,67 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: SearchCriteriaList.h
-*
-*	Revision:
-*
-*	08/06/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: SearchCriteriaList.h
+ *
+ *	Revision:
+ *
+ *	08/06/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_SEARCHCRITERIALIST_H_
 #define _CLINK_MEDIA_SEARCHCRITERIALIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/SearchCriteria.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
 class SearchCapList;
 class ContentNode;
 
-class SearchCriteriaList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-public:
+class SearchCriteriaList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-	SearchCriteriaList() 
-	{
-	}
-	
-	~SearchCriteriaList() 
-	{
-		clear();
-	}
+  public:
+  SearchCriteriaList()
+  {
+  }
 
-	////////////////////////////////////////////////
-	//	get
-	////////////////////////////////////////////////
+  ~SearchCriteriaList()
+  {
+    clear();
+  }
 
-public:
+  ////////////////////////////////////////////////
+  //	get
+  ////////////////////////////////////////////////
 
-	SearchCriteria *getSearchCriteria(int n)
-	{
-		return (SearchCriteria *)Vector::get(n);
-	}
+  public:
+  SearchCriteria* getSearchCriteria(int n)
+  {
+    return (SearchCriteria*)Vector::get(n);
+  }
 
-	////////////////////////////////////////////////
-	// compare
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // compare
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  bool compare(ContentNode* cnode, SearchCapList* searchCapList);
 
-	bool compare(ContentNode *cnode, SearchCapList *searchCapList);
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
-
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }

@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: SortCapList.cpp
-*
-*	Revision;
-*
-*	03/24/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: SortCapList.cpp
+ *
+ *	Revision;
+ *
+ *	03/24/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #include <string>
 
@@ -25,31 +25,30 @@ using namespace CyberLink;
 // Constants
 ////////////////////////////////////////////////
 
-SortCap *SortCapList::getSortCap(const char *type) 
+SortCap* SortCapList::getSortCap(const char* type)
 {
-	if (type == NULL)
-		return NULL;
-	string typeStr = type;
-	int nLists = size(); 
-	for (int n=0; n<nLists; n++) {
-		SortCap *node = getSortCap(n);
-		if (typeStr.compare(node->getType()) == 0)
-			return node;
-	}
-	return NULL;
+  if (type == NULL)
+    return NULL;
+  string typeStr = type;
+  int nLists = size();
+  for (int n = 0; n < nLists; n++) {
+    SortCap* node = getSortCap(n);
+    if (typeStr.compare(node->getType()) == 0)
+      return node;
+  }
+  return NULL;
 }
 
 ////////////////////////////////////////////////
 //	Methods
 ////////////////////////////////////////////////
 
-void SortCapList::clear() 
+void SortCapList::clear()
 {
-	int nNode = size();
-	for (int n=0; n<nNode; n++) {
-		SortCap *scap = getSortCap(n);
-		delete scap;
-	}
-	Vector::clear();
+  int nNode = size();
+  for (int n = 0; n < nNode; n++) {
+    SortCap* scap = getSortCap(n);
+    delete scap;
+  }
+  Vector::clear();
 }
-

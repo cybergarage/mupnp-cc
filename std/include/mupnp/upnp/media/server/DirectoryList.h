@@ -1,76 +1,68 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: DirectoryList.h
-*
-*	Revision;
-*
-*	03/23/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: DirectoryList.h
+ *
+ *	Revision;
+ *
+ *	03/23/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_DIRECTORYLIST_H_
 #define _CLINK_MEDIA_DIRECTORYLIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/Directory.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class DirectoryList : public CyberUtil::Vector
-{
-	////////////////////////////////////////////////
-	// Constrictor
-	////////////////////////////////////////////////
-	
-public:
+class DirectoryList : public CyberUtil::Vector {
+  ////////////////////////////////////////////////
+  // Constrictor
+  ////////////////////////////////////////////////
 
-	DirectoryList() 
-	{
-	}
-	
-	~DirectoryList() 
-	{
-		clear();
-	}
+  public:
+  DirectoryList()
+  {
+  }
 
-	////////////////////////////////////////////////
-	// getDirectory
-	////////////////////////////////////////////////
-	
-public:
+  ~DirectoryList()
+  {
+    clear();
+  }
 
-	Directory *getDirectory(int n)
-	{
-		return (Directory *)Vector::get(n);
-	}
+  ////////////////////////////////////////////////
+  // getDirectory
+  ////////////////////////////////////////////////
 
-	Directory *getDirectory(const char *name);
+  public:
+  Directory* getDirectory(int n)
+  {
+    return (Directory*)Vector::get(n);
+  }
 
-	////////////////////////////////////////////////
-	// clear
-	////////////////////////////////////////////////
+  Directory* getDirectory(const char* name);
 
-public:
+  ////////////////////////////////////////////////
+  // clear
+  ////////////////////////////////////////////////
 
-	void clear();
+  public:
+  void clear();
 
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
 
-public:
-
-	void update();
-	
+  public:
+  void update();
 };
 
 }
 
 #endif
-
-

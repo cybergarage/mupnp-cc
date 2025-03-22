@@ -17,11 +17,13 @@ using namespace uHTTP;
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
-  
-SSDPNotifySocketList::SSDPNotifySocketList()  {
+
+SSDPNotifySocketList::SSDPNotifySocketList()
+{
 }
 
-SSDPNotifySocketList::~SSDPNotifySocketList()  {
+SSDPNotifySocketList::~SSDPNotifySocketList()
+{
   stop();
 }
 
@@ -29,10 +31,11 @@ SSDPNotifySocketList::~SSDPNotifySocketList()  {
 // ControlPoint
 ////////////////////////////////////////////////
 
-void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
+void SSDPNotifySocketList::setControlPoint(ControlPoint* ctrlPoint)
+{
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPNotifySocket *sock = getSSDPNotifySocket(n);
+    SSDPNotifySocket* sock = getSSDPNotifySocket(n);
     sock->setControlPoint(ctrlPoint);
   }
 }
@@ -40,8 +43,9 @@ void SSDPNotifySocketList::setControlPoint(ControlPoint *ctrlPoint) {
 ////////////////////////////////////////////////
 // open/close
 ////////////////////////////////////////////////
-  
-bool SSDPNotifySocketList::open() {
+
+bool SSDPNotifySocketList::open()
+{
   bool isAllHostOpened = true;
   size_t nHostAddrs = GetNHostAddresses();
   if (nHostAddrs == 0)
@@ -49,7 +53,7 @@ bool SSDPNotifySocketList::open() {
   for (size_t n = 0; n < nHostAddrs; n++) {
     string bindAddr;
     GetHostAddress(n, bindAddr);
-    SSDPNotifySocket *ssdpNotifySocket = new SSDPNotifySocket();
+    SSDPNotifySocket* ssdpNotifySocket = new SSDPNotifySocket();
     if (ssdpNotifySocket->open(bindAddr) == false) {
       delete ssdpNotifySocket;
       isAllHostOpened = false;
@@ -59,12 +63,13 @@ bool SSDPNotifySocketList::open() {
   }
   return isAllHostOpened;
 }
-  
-bool SSDPNotifySocketList::close() {
+
+bool SSDPNotifySocketList::close()
+{
   bool areAllSocketsClosed = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPNotifySocket *sock = getSSDPNotifySocket(n);
+    SSDPNotifySocket* sock = getSSDPNotifySocket(n);
     if (sock->close() == false) {
       areAllSocketsClosed = false;
     }
@@ -72,16 +77,17 @@ bool SSDPNotifySocketList::close() {
   clear();
   return areAllSocketsClosed;
 }
-  
+
 ////////////////////////////////////////////////
 // start/stop
 ////////////////////////////////////////////////
-  
-bool SSDPNotifySocketList::start() {
+
+bool SSDPNotifySocketList::start()
+{
   bool areAllSocketsStarted = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPNotifySocket *sock = getSSDPNotifySocket(n);
+    SSDPNotifySocket* sock = getSSDPNotifySocket(n);
     if (sock->start() == false) {
       areAllSocketsStarted = false;
     }
@@ -89,11 +95,12 @@ bool SSDPNotifySocketList::start() {
   return areAllSocketsStarted;
 }
 
-bool SSDPNotifySocketList::stop() {
+bool SSDPNotifySocketList::stop()
+{
   bool areAllSocketsStopped = true;
   size_t nSockets = size();
   for (size_t n = 0; n < nSockets; n++) {
-    SSDPNotifySocket *sock = getSSDPNotifySocket(n);
+    SSDPNotifySocket* sock = getSSDPNotifySocket(n);
     if (sock->stop() == false) {
       areAllSocketsStopped = false;
     }

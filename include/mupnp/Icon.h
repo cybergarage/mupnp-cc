@@ -11,38 +11,40 @@
 #ifndef _MUPMPCC_ICON_H_
 #define _MUPMPCC_ICON_H_
 
-#include <sstream>
 #include <mupnp/xml/Node.h>
+#include <sstream>
 
 namespace mUPnP {
 class Icon {
   mupnp_shared_ptr<uXML::Node> iconNode;
 
- public:
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
-  static const char *MIME_TYPE;
-  static const char *WIDTH;
-  static const char *HEIGHT;
-  static const char *DEPTH;
-  static const char *URL;
-  
+
+  static const char* ELEM_NAME;
+  static const char* MIME_TYPE;
+  static const char* WIDTH;
+  static const char* HEIGHT;
+  static const char* DEPTH;
+  static const char* URL;
+
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
-  mupnp_shared_ptr<uXML::Node> getIconNode() {
+  mupnp_shared_ptr<uXML::Node> getIconNode()
+  {
     return iconNode;
   }
-  
+
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
-  Icon(mupnp_shared_ptr<uXML::Node> node) {
+  Icon(mupnp_shared_ptr<uXML::Node> node)
+  {
     iconNode = node;
   }
 
@@ -50,7 +52,8 @@ class Icon {
   // isIconNode
   ////////////////////////////////////////////////
 
-  static bool isIconNode(mupnp_shared_ptr<uXML::Node> node) {
+  static bool isIconNode(mupnp_shared_ptr<uXML::Node> node)
+  {
     return node->isName(ELEM_NAME);
   }
 
@@ -58,11 +61,13 @@ class Icon {
   // mimeType
   ////////////////////////////////////////////////
 
-  void setMimeType(const std::string &value) {
+  void setMimeType(const std::string& value)
+  {
     getIconNode()->setNode(MIME_TYPE, value);
   }
 
-  const char *getMimeType() {
+  const char* getMimeType()
+  {
     return getIconNode()->getNodeValue(MIME_TYPE);
   }
 
@@ -70,11 +75,13 @@ class Icon {
   // width
   ////////////////////////////////////////////////
 
-  void setWidth(const std::string &value) {
+  void setWidth(const std::string& value)
+  {
     getIconNode()->setNode(WIDTH, value);
   }
 
-  const char *getWidth() {
+  const char* getWidth()
+  {
     return getIconNode()->getNodeValue(WIDTH);
   }
 
@@ -82,11 +89,13 @@ class Icon {
   // height
   ////////////////////////////////////////////////
 
-  void setHeight(const std::string &value) {
+  void setHeight(const std::string& value)
+  {
     getIconNode()->setNode(HEIGHT, value);
   }
 
-  const char *getHeight() {
+  const char* getHeight()
+  {
     return getIconNode()->getNodeValue(HEIGHT);
   }
 
@@ -94,11 +103,13 @@ class Icon {
   // depth
   ////////////////////////////////////////////////
 
-  void setDepth(const std::string &value) {
+  void setDepth(const std::string& value)
+  {
     getIconNode()->setNode(DEPTH, value);
   }
 
-  const char *getDepth() {
+  const char* getDepth()
+  {
     return getIconNode()->getNodeValue(DEPTH);
   }
 
@@ -106,11 +117,13 @@ class Icon {
   // URL
   ////////////////////////////////////////////////
 
-  void setURL(const std::string &value) {
+  void setURL(const std::string& value)
+  {
     getIconNode()->setNode(URL, value);
   }
 
-  const char *getURL() {
+  const char* getURL()
+  {
     return getIconNode()->getNodeValue(URL);
   }
 };

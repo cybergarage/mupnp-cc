@@ -17,16 +17,16 @@ using namespace uHTTP;
 ////////////////////////////////////////////////
 // Thread
 ////////////////////////////////////////////////
-  
-void Advertiser::run()  {
-  Device *dev = getDevice();
+
+void Advertiser::run()
+{
+  Device* dev = getDevice();
   long leaseTime = dev->getLeaseTime();
   long notifyInterval;
   while (isRunnable() == true) {
-    notifyInterval = (leaseTime/4) + (long)((float)leaseTime * (Random() * 0.25f));
+    notifyInterval = (leaseTime / 4) + (long)((float)leaseTime * (Random() * 0.25f));
     notifyInterval *= 1000;
     Wait(notifyInterval);
     dev->announce();
   }
 }
-

@@ -11,17 +11,16 @@
 #ifndef _MUPMPCC_SSDPRESPONSELISTENER_H_
 #define _MUPMPCC_SSDPRESPONSELISTENER_H_
 
-#include <mupnp/util/Listener.h>
 #include <mupnp/ssdp/SSDPPacket.h>
+#include <mupnp/util/Listener.h>
 
 namespace mUPnP {
 
 class SearchResponseListener : public uHTTP::Listener {
-public:
-  virtual bool deviceSearchResponseReceived(SSDPPacket *ssdpPacket) = 0;
+  public:
+  virtual bool deviceSearchResponseReceived(SSDPPacket* ssdpPacket) = 0;
 };
 
 }
 
 #endif
-

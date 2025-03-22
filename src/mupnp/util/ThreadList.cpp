@@ -8,8 +8,8 @@
  *
  ******************************************************************/
 
-#include <stdio.h>
 #include <mupnp/util/Thread.h>
+#include <stdio.h>
 
 uHTTP::ThreadList::ThreadList()
 {

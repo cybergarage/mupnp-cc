@@ -13,20 +13,23 @@
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
-  
-uSOAP::SOAPResponse::SOAPResponse() {
+
+uSOAP::SOAPResponse::SOAPResponse()
+{
   setRootNode(uSOAP::SOAP::CreateEnvelopeBodyNode());
   setContentType(uXML::XML::CONTENT_TYPE);
 }
 
-uSOAP::SOAPResponse::~SOAPResponse() {
+uSOAP::SOAPResponse::~SOAPResponse()
+{
 }
 
 ////////////////////////////////////////////////
 // setContent
 ////////////////////////////////////////////////
-  
-void uSOAP::SOAPResponse::setContent(uXML::Node *node) {
+
+void uSOAP::SOAPResponse::setContent(uXML::Node* node)
+{
   std::string nodeBuf;
   node->toString(nodeBuf);
   std::string buf;

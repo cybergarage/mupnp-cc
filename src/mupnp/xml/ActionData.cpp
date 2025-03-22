@@ -15,12 +15,14 @@
 // Constructor
 ////////////////////////////////////////////////
 
-mUPnP::ActionData::ActionData()  {
+mUPnP::ActionData::ActionData()
+{
   setActionListener(NULL);
   ctrlRes = NULL;
 }
 
-mUPnP::ActionData::~ActionData()  {
+mUPnP::ActionData::~ActionData()
+{
   if (ctrlRes)
     delete ctrlRes;
 }
@@ -29,7 +31,8 @@ mUPnP::ActionData::~ActionData()  {
 // ControlResponse
 ////////////////////////////////////////////////
 
-void mUPnP::ActionData::setControlResponse(ControlResponse *res)  {
+void mUPnP::ActionData::setControlResponse(ControlResponse* res)
+{
   if (ctrlRes)
     delete ctrlRes;
   ctrlRes = res;

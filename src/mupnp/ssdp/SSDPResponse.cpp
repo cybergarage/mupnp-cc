@@ -20,25 +20,27 @@ using namespace uHTTP;
 // CacheControl
 ////////////////////////////////////////////////
 
-void SSDPResponse::setLeaseTime(int value) {
+void SSDPResponse::setLeaseTime(int value)
+{
   string valueStr;
   string leaseTimeStr;
-  leaseTimeStr= "max-age=";
+  leaseTimeStr = "max-age=";
   leaseTimeStr.append(Integer2String(value, valueStr));
   setHeader(uHTTP::HTTP::CACHE_CONTROL, leaseTimeStr.c_str());
 }
 
-int SSDPResponse::getLeaseTime() {
-  const char *cacheCtrl = getHeaderValue(uHTTP::HTTP::CACHE_CONTROL);
+int SSDPResponse::getLeaseTime()
+{
+  const char* cacheCtrl = getHeaderValue(uHTTP::HTTP::CACHE_CONTROL);
   return SSDP::GetLeaseTime(cacheCtrl);
 }
-
 
 ////////////////////////////////////////////////
 // getHeader
 ////////////////////////////////////////////////
 
-const char *SSDPResponse::getHeader(string &headerStr) {
+const char* SSDPResponse::getHeader(string& headerStr)
+{
   string statusLineBuf;
   string headerBuf;
 
@@ -48,4 +50,3 @@ const char *SSDPResponse::getHeader(string &headerStr) {
 
   return headerStr.c_str();
 }
-

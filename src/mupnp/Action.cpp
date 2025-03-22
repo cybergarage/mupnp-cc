@@ -9,8 +9,8 @@
  ******************************************************************/
 
 #include <mupnp/Action.h>
-#include <mupnp/util/Debug.h>
 #include <mupnp/Service.h>
+#include <mupnp/util/Debug.h>
 
 #include <string>
 
@@ -22,28 +22,31 @@ using namespace mUPnP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *Action::ELEM_NAME = "action";
-const char *Action::NAME = "name";
+const char* Action::ELEM_NAME = "action";
+const char* Action::NAME = "name";
 
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
 
-Action::Action(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> actionNode) {
+Action::Action(mupnp_shared_ptr<uXML::Node> serviceNode, mupnp_shared_ptr<uXML::Node> actionNode)
+{
   this->serviceNode = serviceNode;
   this->actionNode = actionNode;
 
   initArgumentList();
 }
 
-Action::Action(Action *action) {
+Action::Action(Action* action)
+{
   this->serviceNode = action->getServiceNode();
   this->actionNode = action->getActionNode();
 
   initArgumentList();
 }
 
-Action::~Action() {
+Action::~Action()
+{
   delete argumentList;
   delete argumentInList;
   delete argumentOutList;
@@ -53,9 +56,10 @@ Action::~Action() {
 // getService
 ////////////////////////////////////////////////
 
-Service *Action::getService() {
+Service* Action::getService()
+{
   mupnp_shared_ptr<uXML::Node> node = getServiceNode();
-  ServiceData *data = dynamic_cast<ServiceData *>(node->getUserData());
+  ServiceData* data = dynamic_cast<ServiceData*>(node->getUserData());
   if (!data)
     return nullptr;
   return data->getService();
@@ -65,7 +69,8 @@ Service *Action::getService() {
 // argumentList
 ////////////////////////////////////////////////
 
-void Action::initArgumentList() {
+void Action::initArgumentList()
+{
   argumentList = new ArgumentList(true);
   argumentInList = new ArgumentList(false);
   argumentOutList = new ArgumentList(false);
@@ -80,21 +85,22 @@ void Action::initArgumentList() {
     mupnp_shared_ptr<uXML::Node> argNode = argumentListNode->getNode(n);
     if (Argument::isArgumentNode(argNode.get()) == false)
       continue;
-    Argument *arg = new Argument(serviceNode, argNode);
+    Argument* arg = new Argument(serviceNode, argNode);
     argumentList->add(arg);
-    if (arg->isInDirection() == true) 
+    if (arg->isInDirection() == true)
       argumentInList->add(arg);
     if (arg->isOutDirection() == true)
       argumentOutList->add(arg);
-  } 
+  }
 }
 
-Argument *Action::getArgument(const std::string &name) {
-  ArgumentList *argList = getArgumentList();
+Argument* Action::getArgument(const std::string& name)
+{
+  ArgumentList* argList = getArgumentList();
   size_t nArgs = argList->size();
   for (size_t n = 0; n < nArgs; n++) {
-    Argument *arg = argList->getArgument(n);
-    const char *argName = arg->getName();
+    Argument* arg = argList->getArgument(n);
+    const char* argName = arg->getName();
     if (!argName)
       continue;
     string argNameStr = argName;
@@ -104,11 +110,12 @@ Argument *Action::getArgument(const std::string &name) {
   return nullptr;
 }
 
-void Action::clearOutputAgumentValues() {
-  ArgumentList *outArgList = getOutputArgumentList();
+void Action::clearOutputAgumentValues()
+{
+  ArgumentList* outArgList = getOutputArgumentList();
   size_t nArgs = outArgList->size();
   for (size_t n = 0; n < nArgs; n++) {
-    Argument *arg = outArgList->getArgument(n);
+    Argument* arg = outArgList->getArgument(n);
     arg->setValue("");
   }
 }
@@ -117,8 +124,9 @@ void Action::clearOutputAgumentValues() {
 // controlAction
 ////////////////////////////////////////////////
 
-bool Action::performActionListener(ActionRequest *actionReq) {
-  ActionListener *listener = (ActionListener *)getActionListener();
+bool Action::performActionListener(ActionRequest* actionReq)
+{
+  ActionListener* listener = (ActionListener*)getActionListener();
   if (!listener)
     return false;
   ActionResponse actionRes;
@@ -128,12 +136,12 @@ bool Action::performActionListener(ActionRequest *actionReq) {
     actionRes.setResponse(this);
   }
   else {
-    UPnPStatus *upnpStatus = getStatus();
+    UPnPStatus* upnpStatus = getStatus();
     actionRes.setFaultResponse(upnpStatus->getCode(), upnpStatus->getDescription());
   }
   if (Debug::isOn() == true)
     actionRes.print();
-  ControlRequest *ctrlReq = actionReq;
+  ControlRequest* ctrlReq = actionReq;
   ctrlReq->post(&actionRes);
   return true;
 }
@@ -142,14 +150,15 @@ bool Action::performActionListener(ActionRequest *actionReq) {
 // postControlAction
 ////////////////////////////////////////////////
 
-bool Action::postControlAction() {
-  ArgumentList *actionArgList = getArgumentList();
-  ArgumentList *actionInputArgList = getInputArgumentList();
+bool Action::postControlAction()
+{
+  ArgumentList* actionArgList = getArgumentList();
+  ArgumentList* actionInputArgList = getInputArgumentList();
   ActionRequest ctrlReq;
   ctrlReq.setRequest(this, actionInputArgList);
   if (Debug::isOn() == true)
     ctrlReq.print();
-  ActionResponse *ctrlRes = new ActionResponse();
+  ActionResponse* ctrlRes = new ActionResponse();
   ctrlReq.post(ctrlRes);
   if (Debug::isOn() == true)
     ctrlRes->print();
@@ -159,7 +168,7 @@ bool Action::postControlAction() {
   setStatus(statCode);
   if (ctrlRes->isSuccessful() == false)
     return false;
-  ArgumentList *outArgList = ctrlRes->getResponse();
+  ArgumentList* outArgList = ctrlRes->getResponse();
   actionArgList->set(outArgList);
   return true;
 }

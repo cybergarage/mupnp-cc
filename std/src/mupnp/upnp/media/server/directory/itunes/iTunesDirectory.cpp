@@ -1,25 +1,25 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File : iTunesDirectory.cpp
-*
-*	Revision:
-*
-*	02/22/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File : iTunesDirectory.cpp
+ *
+ *	Revision:
+ *
+ *	02/22/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifdef SUPPORT_ITUNES
 
-#include <mupnp/upnp/media/server/ContentDirectory.h>
 #include <mupnp/upnp/media/server/ConnectionManager.h>
+#include <mupnp/upnp/media/server/ContentDirectory.h>
+#include <mupnp/upnp/media/server/directory/itunes/iTunesDirectory.h>
 #include <mupnp/upnp/media/server/object/Format.h>
 #include <mupnp/upnp/media/server/object/FormatObject.h>
-#include <mupnp/upnp/media/server/directory/itunes/iTunesDirectory.h>
 
 using namespace std;
 using namespace CyberLink;
@@ -29,58 +29,58 @@ using namespace CyberXML;
 ////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////
-	
-iTunesDirectory::iTunesDirectory(const char *name) : Directory(name)
+
+iTunesDirectory::iTunesDirectory(const char* name)
+    : Directory(name)
 {
-	iTunesLib = NULL;
+  iTunesLib = NULL;
 }
 
 ////////////////////////////////////////////////
 // Destructor
 ////////////////////////////////////////////////
-	
+
 iTunesDirectory::~iTunesDirectory()
 {
-	if (iTunesLib != NULL)
-		delete iTunesLib;
+  if (iTunesLib != NULL)
+    delete iTunesLib;
 }
 
 ////////////////////////////////////////////////
 // update
 ////////////////////////////////////////////////
 
-void iTunesDirectory::setLibrary(iTunesLibrary *newLib)
+void iTunesDirectory::setLibrary(iTunesLibrary* newLib)
 {
-	lock();
+  lock();
 
-	if (iTunesLib != NULL)
-		delete iTunesLib;
+  if (iTunesLib != NULL)
+    delete iTunesLib;
 
-	iTunesLib = newLib;
+  iTunesLib = newLib;
 
-	unlock();
+  unlock();
 }
 
 ////////////////////////////////////////////////
 // update
 ////////////////////////////////////////////////
-	
+
 void iTunesDirectory::update()
 {
-	iTunesLibrary *newiTunesLib = new iTunesLibrary();
+  iTunesLibrary* newiTunesLib = new iTunesLibrary();
 
-	if (newiTunesLib->update() == false) {
-		delete newiTunesLib;
-		return;
-	}
+  if (newiTunesLib->update() == false) {
+    delete newiTunesLib;
+    return;
+  }
 
-	iTunesLibrary *curriTunesLib = getLibrary();
+  iTunesLibrary* curriTunesLib = getLibrary();
 
-	if (curriTunesLib->equals(newiTunesLib) == true)
-		return;
+  if (curriTunesLib->equals(newiTunesLib) == true)
+    return;
 
-	setLibrary(newiTunesLib);
+  setLibrary(newiTunesLib);
 }
 
 #endif
-

@@ -17,4 +17,4 @@ using namespace mUPnP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *mUPnP::ActionList::ELEM_NAME = "actionList";
+const char* mUPnP::ActionList::ELEM_NAME = "actionList";

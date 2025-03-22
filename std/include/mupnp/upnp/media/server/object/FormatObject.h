@@ -1,51 +1,48 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: FormatObject.java
-*
-*	Revision;
-*
-*	03/24/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: FormatObject.java
+ *
+ *	Revision;
+ *
+ *	03/24/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_FORMATOBJECT_H_
 #define _CLINK_MEDIA_FORMATOBJECT_H_
 
-#include <string>
 #include <mupnp/xml/AttributeList.h>
+#include <string>
 
 namespace CyberLink {
 
-class FormatObject
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+class FormatObject {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  FormatObject()
+  {
+  }
 
-		FormatObject()
-		{
-		}
+  virtual ~FormatObject()
+  {
+  }
 
-		virtual ~FormatObject()
-		{
-		}
+  ////////////////////////////////////////////////
+  //	abstruct methods
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	abstruct methods
-	////////////////////////////////////////////////
-
-public:
-	
-	virtual int getAttributeList(CyberXML::AttributeList &attrList) = 0;
-	virtual const char *getTitle(std::string &buf) = 0;
-	virtual const char *getCreator(std::string &buf) = 0;
+  public:
+  virtual int getAttributeList(CyberXML::AttributeList& attrList) = 0;
+  virtual const char* getTitle(std::string& buf) = 0;
+  virtual const char* getCreator(std::string& buf) = 0;
 };
 
 }

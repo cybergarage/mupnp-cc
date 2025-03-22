@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : FileItemNode.java
-*
-*	Revision:
-*
-*	02/12/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : FileItemNode.java
+ *
+ *	Revision:
+ *
+ *	02/12/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/ContentDirectory.h>
 #include <mupnp/upnp/media/server/object/Format.h>
@@ -23,41 +23,38 @@ using namespace CyberIO;
 ////////////////////////////////////////////////
 // Constroctor
 ////////////////////////////////////////////////
-	
+
 FileItemNode::FileItemNode()
 {
-	setFile(NULL);
+  setFile(NULL);
 }
 
 ////////////////////////////////////////////////
 // Abstract methods
 ////////////////////////////////////////////////
 
-const char *FileItemNode::getContent(std::string &buf)
+const char* FileItemNode::getContent(std::string& buf)
 {
-	buf = "";
-	if (itemFile == NULL)
-		itemFile->load(buf);
-	return buf.c_str();
+  buf = "";
+  if (itemFile == NULL)
+    itemFile->load(buf);
+  return buf.c_str();
 }
 
-CyberIO::InputStream *FileItemNode::getContentInputStream()
+CyberIO::InputStream* FileItemNode::getContentInputStream()
 {
-	if (itemFile == NULL)
-		return NULL;
-	return new FileInputStream(itemFile, File::O_BINARY);
+  if (itemFile == NULL)
+    return NULL;
+  return new FileInputStream(itemFile, File::O_BINARY);
 }
 
-const char *FileItemNode::getMimeType()
+const char* FileItemNode::getMimeType()
 {
-	ContentDirectory *cdir = getContentDirectory();
-	CyberIO::File *itemFile = getFile();
-	Format *itemFormat = cdir->getFormat(itemFile);
-	if (itemFormat == NULL) {
-		return "*/*";
-	}
-	return itemFormat->getMimeType();
+  ContentDirectory* cdir = getContentDirectory();
+  CyberIO::File* itemFile = getFile();
+  Format* itemFormat = cdir->getFormat(itemFile);
+  if (itemFormat == NULL) {
+    return "*/*";
+  }
+  return itemFormat->getMimeType();
 }
-
-
-

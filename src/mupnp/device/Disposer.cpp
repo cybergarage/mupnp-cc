@@ -17,17 +17,17 @@ using namespace mUPnP;
 ////////////////////////////////////////////////
 // Thread
 ////////////////////////////////////////////////
-  
-void Disposer::run()  {
-  ControlPoint *ctrlPoint = getControlPoint();
+
+void Disposer::run()
+{
+  ControlPoint* ctrlPoint = getControlPoint();
   long monitorInterval = ctrlPoint->getExpiredDeviceMonitoringInterval() * 1000;
-  
+
   while (isRunnable() == true) {
     uHTTP::Wait(monitorInterval);
-    ControlPoint *ctrlPoint = getControlPoint();
+    ControlPoint* ctrlPoint = getControlPoint();
     if (!ctrlPoint)
       break;
     ctrlPoint->removeExpiredDevices();
   }
 }
-

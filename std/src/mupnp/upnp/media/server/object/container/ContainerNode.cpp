@@ -1,24 +1,24 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: ContainerNode.cpp
-*
-*	Revision;
-*
-*	03/23/04
-*		- first revision
-*	04/26/04
-*		- Added isContainerNode().
-*	04/27/04
-*		- Added set(Node *).
-*	04/27/04
-*		- Added setParentID(String).
-*		- Changed getParentID() to return the string value instead of interger.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: ContainerNode.cpp
+ *
+ *	Revision;
+ *
+ *	03/23/04
+ *		- first revision
+ *	04/26/04
+ *		- Added isContainerNode().
+ *	04/27/04
+ *		- Added set(Node *).
+ *	04/27/04
+ *		- Added setParentID(String).
+ *		- Changed getParentID() to return the string value instead of interger.
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/object/container/ContainerNode.h>
 
@@ -30,12 +30,12 @@ using namespace CyberXML;
 // Constants
 ////////////////////////////////////////////////
 
-const char *ContainerNode::NAME = "container";
+const char* ContainerNode::NAME = "container";
 
-const char *ContainerNode::CHILD_COUNT = "childCount";
-const char *ContainerNode::SEARCHABLE = "searchable";
+const char* ContainerNode::CHILD_COUNT = "childCount";
+const char* ContainerNode::SEARCHABLE = "searchable";
 
-const char *ContainerNode::OBJECT_CONTAINER = "object.container";
+const char* ContainerNode::OBJECT_CONTAINER = "object.container";
 
 ////////////////////////////////////////////////
 // Constroctor
@@ -43,43 +43,42 @@ const char *ContainerNode::OBJECT_CONTAINER = "object.container";
 
 ContainerNode::ContainerNode()
 {
-	setID(-1);
-	setName(NAME);
-	setSearchable(0);
-	setChildCount(0);
-	setUPnPClass(OBJECT_CONTAINER);
-	setWriteStatus(UNKNOWN);
+  setID(-1);
+  setName(NAME);
+  setSearchable(0);
+  setChildCount(0);
+  setUPnPClass(OBJECT_CONTAINER);
+  setWriteStatus(UNKNOWN);
 }
 
 ////////////////////////////////////////////////
 // isContainerNode
 ////////////////////////////////////////////////
 
-bool ContainerNode::isContainerNode(CyberXML::Node *node)
+bool ContainerNode::isContainerNode(CyberXML::Node* node)
 {
-	const char *name = node->getName();
-	if (name == NULL)
-		return false;
-	string nameStr = name;
-	return (nameStr.compare(NAME) == 0) ? true : false;
+  const char* name = node->getName();
+  if (name == NULL)
+    return false;
+  string nameStr = name;
+  return (nameStr.compare(NAME) == 0) ? true : false;
 }
 
 ////////////////////////////////////////////////
 //	Child node
 ////////////////////////////////////////////////
 
-void ContainerNode::addContentNode(ContentNode *node) 
+void ContainerNode::addContentNode(ContentNode* node)
 {
-	addNode(node);
-	node->setParentID(getID());
-	setChildCount(getNContentNodes());
-	node->setContentDirectory(getContentDirectory());
+  addNode(node);
+  node->setParentID(getID());
+  setChildCount(getNContentNodes());
+  node->setContentDirectory(getContentDirectory());
 }
 
-bool ContainerNode::removeContentNode(ContentNode *node) 
+bool ContainerNode::removeContentNode(ContentNode* node)
 {
-	bool ret = removeNode(node);
-	setChildCount(getNContentNodes());
-	return ret;
+  bool ret = removeNode(node);
+  setChildCount(getNContentNodes());
+  return ret;
 }
-

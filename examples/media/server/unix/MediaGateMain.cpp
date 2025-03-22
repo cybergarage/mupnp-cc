@@ -1,27 +1,25 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: MediaGateMain.cpp
-*
-*	Revision;
-*
-*	06/09/04
-*		- first revision
-*
-******************************************************************/
+ *
+ *	CyberLink for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: MediaGateMain.cpp
+ *
+ *	Revision;
+ *
+ *	06/09/04
+ *		- first revision
+ *
+ ******************************************************************/
 
+#include <iostream>
 #include <string.h>
 #include <string>
-#include <iostream>
 
 #include "MediaGate.h"
 #include <mupnp/util/Debug.h>
 
-
-#include <stdio.h>
 #include <stdio.h>
 #if defined(WIN32) && !defined(__CYGWIN__)
 #include <conio.h>
@@ -38,23 +36,23 @@ using namespace CyberLink;
 using namespace CyberXML;
 using namespace CyberUtil;
 
-static const char *VERBOSE_ARG = "-v";
+static const char* VERBOSE_ARG = "-v";
 
-MediaGate *gMediaGate;
+MediaGate* gMediaGate;
 
 /////////////////////////////////////////////////////////////////////////////////
 // PrintMessage
 /////////////////////////////////////////////////////////////////////////////////
 
-void PrintMessage(const char *msg)
+void PrintMessage(const char* msg)
 {
-	cout << msg << endl;
+  cout << msg << endl;
 }
 
 void PrintKeyMessage()
 {
-	cout << "'p' : Print" << endl;
-	cout << "'q' : Quit" << endl;
+  cout << "'p' : Print" << endl;
+  cout << "'q' : Quit" << endl;
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -63,43 +61,43 @@ void PrintKeyMessage()
 
 void InitApp(int argc, char* argv[])
 {
-	int option = MediaGate::FILESYS_MODE;
-	int n;
+  int option = MediaGate::FILESYS_MODE;
+  int n;
 
-	for (n=1; n<argc; n++) {
+  for (n = 1; n < argc; n++) {
 #ifdef SUPPORT_MYTHTV
-		if (strcmp(MediaGate::MYTHTV_OPT_STRING, argv[n]) == 0)
-			mode = MediaGate::MYTHTV_MODE;
-		if (strcmp(MediaGate::MYTHTV_OPT_STRING_OLD, argv[n]) == 0)
-			mode = MediaGate::MYTHTV_MODE;
+    if (strcmp(MediaGate::MYTHTV_OPT_STRING, argv[n]) == 0)
+      mode = MediaGate::MYTHTV_MODE;
+    if (strcmp(MediaGate::MYTHTV_OPT_STRING_OLD, argv[n]) == 0)
+      mode = MediaGate::MYTHTV_MODE;
 #endif
-		if (strcmp(VERBOSE_ARG, argv[n]) == 0)
-			Debug::on();
-	}
+    if (strcmp(VERBOSE_ARG, argv[n]) == 0)
+      Debug::on();
+  }
 
-	gMediaGate = new MediaGate(option);
+  gMediaGate = new MediaGate(option);
 
-	int mode = gMediaGate->getModeOption();
-	if (mode == MediaGate::FILESYS_MODE) {
-		string prefFileName = MediaGate::DEFAULT_PREFERENCE_FILENAME;
-		if (1 < argc)
-			prefFileName = argv[argc-1];
-		cout << "preference : " << prefFileName << endl;
-		bool ret = gMediaGate->loadPreferences(prefFileName.c_str());
-		if (ret == false)
-			cout << "Couldn't load " << prefFileName << endl;
-	}
+  int mode = gMediaGate->getModeOption();
+  if (mode == MediaGate::FILESYS_MODE) {
+    string prefFileName = MediaGate::DEFAULT_PREFERENCE_FILENAME;
+    if (1 < argc)
+      prefFileName = argv[argc - 1];
+    cout << "preference : " << prefFileName << endl;
+    bool ret = gMediaGate->loadPreferences(prefFileName.c_str());
+    if (ret == false)
+      cout << "Couldn't load " << prefFileName << endl;
+  }
 
-	cout << "mode : " << (mode == MediaGate::FILESYS_MODE ? "FileSystem" : "MythTV") << endl;
-	cout << "verbose : " << (Debug::isOn() ? "yes" : "no") << endl;
+  cout << "mode : " << (mode == MediaGate::FILESYS_MODE ? "FileSystem" : "MythTV") << endl;
+  cout << "verbose : " << (Debug::isOn() ? "yes" : "no") << endl;
 
-	gMediaGate->start();
+  gMediaGate->start();
 }
 
 void ExitApp()
 {
-	gMediaGate->stop();
-	delete gMediaGate;
+  gMediaGate->stop();
+  delete gMediaGate;
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -108,41 +106,40 @@ void ExitApp()
 
 int main(int argc, char* argv[])
 {
-	cout << "Cyber Media Gate " << endl;
-	cout << "version : " << MediaGate::VER << endl;
+  cout << "Cyber Media Gate " << endl;
+  cout << "version : " << MediaGate::VER << endl;
 
-	InitApp(argc, argv);
+  InitApp(argc, argv);
 
-	PrintKeyMessage();
+  PrintKeyMessage();
 
 #if !defined(WIN32) || defined(__CYGWIN__)
-	kbinit();
+  kbinit();
 #endif
-	int ch;
-	do
-	{
+  int ch;
+  do {
 #if defined(WIN32) && !defined(__CYGWIN__)
-		ch = getch();
+    ch = getch();
 #else
-		ch = getchar();
+    ch = getchar();
 #endif
-		ch = toupper( ch );
-		switch (ch) {
-		case 'P':
-			gMediaGate->print();
-			break;
-		case 'Q':
-			break;
-		default :
-			PrintKeyMessage();
-		}
-	} while( ch != 'Q');
+    ch = toupper(ch);
+    switch (ch) {
+    case 'P':
+      gMediaGate->print();
+      break;
+    case 'Q':
+      break;
+    default:
+      PrintKeyMessage();
+    }
+  } while (ch != 'Q');
 
 #if !defined(WIN32) || defined(__CYGWIN__)
-	kbexit();
+  kbexit();
 #endif
 
-	ExitApp();
+  ExitApp();
 
-	return 0;
+  return 0;
 }

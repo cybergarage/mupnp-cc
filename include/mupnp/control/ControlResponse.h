@@ -11,11 +11,11 @@
 #ifndef _MUPMPCC_CONTROLRESPONSE_H_
 #define _MUPMPCC_CONTROLRESPONSE_H_
 
-#include <mupnp/soap/SOAPResponse.h>
-#include <mupnp/xml/Node.h>
-#include <mupnp/soap/SOAP.h>
 #include <mupnp/UPnP.h>
 #include <mupnp/UPnPStatus.h>
+#include <mupnp/soap/SOAP.h>
+#include <mupnp/soap/SOAPResponse.h>
+#include <mupnp/xml/Node.h>
 
 #include <sstream>
 
@@ -23,25 +23,27 @@ namespace mUPnP {
 class ControlResponse : public uSOAP::SOAPResponse {
   UPnPStatus upnpErr;
 
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
-  static const char *FAULT_CODE;
-  static const char *FAULT_STRING;
+  static const char* FAULT_CODE;
+  static const char* FAULT_STRING;
 
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  ControlResponse() {
+
+  ControlResponse()
+  {
     std::string serverName;
     setServer(UPnP::GetServerName(serverName));
   }
 
-  ControlResponse(SOAPResponse *soapRes) {
+  ControlResponse(SOAPResponse* soapRes)
+  {
     set(soapRes);
   }
 
@@ -49,69 +51,71 @@ public:
   // FaultResponse
   ////////////////////////////////////////////////
 
-public:
-  
-  void setFaultResponse(int errCode, const std::string &errDescr);
-  void setFaultResponse(int errCode) {
+  public:
+  void setFaultResponse(int errCode, const std::string& errDescr);
+  void setFaultResponse(int errCode)
+  {
     setFaultResponse(errCode, UPnP::StatusCodeToString(errCode));
   }
 
-private:
-  
-  uXML::Node *createFaultResponseNode(int errCode, const std::string &errDescr);
+  private:
+  uXML::Node* createFaultResponseNode(int errCode, const std::string& errDescr);
 
   ////////////////////////////////////////////////
   // UPnP Error
   ////////////////////////////////////////////////
 
-private:
-
-  mupnp_shared_ptr<uXML::Node> getUPnPErrorNode() {
+  private:
+  mupnp_shared_ptr<uXML::Node> getUPnPErrorNode()
+  {
     mupnp_shared_ptr<uXML::Node> detailNode = getFaultDetailNode();
     if (!detailNode)
-      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
     return detailNode->getNodeEndsWith(uSOAP::SOAP::UPNP_ERROR);
   }
 
-  mupnp_shared_ptr<uXML::Node> getUPnPErrorCodeNode() {
+  mupnp_shared_ptr<uXML::Node> getUPnPErrorCodeNode()
+  {
     mupnp_shared_ptr<uXML::Node> errorNode = getUPnPErrorNode();
     if (!errorNode)
-      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
     return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_CODE);
   }
 
-  mupnp_shared_ptr<uXML::Node> getUPnPErrorDescriptionNode() {
+  mupnp_shared_ptr<uXML::Node> getUPnPErrorDescriptionNode()
+  {
     mupnp_shared_ptr<uXML::Node> errorNode = getUPnPErrorNode();
     if (!errorNode)
-      return mupnp_shared_ptr<uXML::Node>((uXML::Node *)nullptr);
+      return mupnp_shared_ptr<uXML::Node>((uXML::Node*)nullptr);
     return errorNode->getNodeEndsWith(uSOAP::SOAP::ERROR_DESCRIPTION);
   }
 
- public:
-  int getUPnPErrorCode() {
+  public:
+  int getUPnPErrorCode()
+  {
     mupnp_shared_ptr<uXML::Node> errorCodeNode = getUPnPErrorCodeNode();
     if (!errorCodeNode)
       return -1;
-    const char *errorCodeStr = errorCodeNode->getValue();
+    const char* errorCodeStr = errorCodeNode->getValue();
     return atoi(errorCodeStr);
   }
 
-  const char *getUPnPErrorDescription() {
+  const char* getUPnPErrorDescription()
+  {
     mupnp_shared_ptr<uXML::Node> errorDescNode = getUPnPErrorDescriptionNode();
     if (!errorDescNode)
       return "";
     return errorDescNode->getValue();
   }
 
-  UPnPStatus *getUPnPError() {
+  UPnPStatus* getUPnPError()
+  {
     upnpErr.setCode(getUPnPErrorCode());
     upnpErr.setDescription(getUPnPErrorDescription());
     return &upnpErr;
   }
-
 };
 
 }
 
 #endif
-

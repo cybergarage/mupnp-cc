@@ -20,15 +20,17 @@ namespace mUPnP {
 class StateVariable;
 
 class QueryResponse : public ControlResponse {
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
-  
-  QueryResponse() {
+
+  QueryResponse()
+  {
   }
 
-  QueryResponse(SOAPResponse *soapRes) {
+  QueryResponse(SOAPResponse* soapRes)
+  {
     set(soapRes);
   }
 
@@ -36,23 +38,21 @@ public:
   // Qyery
   ////////////////////////////////////////////////
 
-private:
-
+  private:
   mupnp_shared_ptr<uXML::Node> getReturnNode();
-  
- public:
-  const char *getReturnValue();
+
+  public:
+  const char* getReturnValue();
 
   ////////////////////////////////////////////////
   // Response
   ////////////////////////////////////////////////
 
- public:
-  void setResponse(StateVariable *stateVar);
+  public:
+  void setResponse(StateVariable* stateVar);
 
-private:
-
-  uXML::Node *createResponseNode(const std::string &value);
+  private:
+  uXML::Node* createResponseNode(const std::string& value);
 };
 
 }

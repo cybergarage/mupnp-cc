@@ -11,23 +11,21 @@
 #ifndef _MUPMPCC_ALLOWEDVALUELIST_H_
 #define _MUPMPCC_ALLOWEDVALUELIST_H_
 
-#include <string>
-#include <mupnp/util/Vector.h>
 #include <mupnp/AllowedValue.h>
+#include <mupnp/util/Vector.h>
+#include <string>
 
 namespace mUPnP {
-    
-class AllowedValueList : public Vector<AllowedValue>  {
-public:
-    
+
+class AllowedValueList : public Vector<AllowedValue> {
+  public:
   ////////////////////////////////////////////////
   // Constants
   ////////////////////////////////////////////////
-  
-  static const char *ELEM_NAME;
 
-public:
-    
+  static const char* ELEM_NAME;
+
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
@@ -36,13 +34,12 @@ public:
   {
   }
 
-  AllowedValue *getAllowedValue(size_t n) {
+  AllowedValue* getAllowedValue(size_t n)
+  {
     return get(n);
   }
-
 };
 
 }
 
 #endif
-

@@ -21,38 +21,38 @@ class Advertiser : public uHTTP::Thread {
   // Constructor
   ////////////////////////////////////////////////
 
- public:
-  Advertiser(Device *dev) {
+  public:
+  Advertiser(Device* dev)
+  {
     setDevice(dev);
   }
-  
+
   ////////////////////////////////////////////////
   // Member
   ////////////////////////////////////////////////
 
-private:
-  
-  Device *device;
+  private:
+  Device* device;
 
- public:
-  void setDevice(Device *dev) {
+  public:
+  void setDevice(Device* dev)
+  {
     device = dev;
   }
-  
-  Device *getDevice() {
+
+  Device* getDevice()
+  {
     return device;
   }
 
   ////////////////////////////////////////////////
   // Thread
   ////////////////////////////////////////////////
-  
- public:
-  void run();
 
+  public:
+  void run();
 };
 
 }
 
 #endif
-

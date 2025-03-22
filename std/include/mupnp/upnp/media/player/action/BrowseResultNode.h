@@ -1,17 +1,17 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : BrowseResultNode.h
-*
-*	Revision:
-*
-*	04/27/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : BrowseResultNode.h
+ *
+ *	Revision:
+ *
+ *	04/27/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_BROWSWRRESULTNODE_H_
 #define _CLINK_MEDIA_BROWSWRRESULTNODE_H_
@@ -20,48 +20,43 @@
 
 namespace CyberLink {
 
-class BrowseResultNode : public ItemNode
-{
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+class BrowseResultNode : public ItemNode {
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  BrowseResultNode()
+  {
+  }
 
-	BrowseResultNode()
-	{
-	}
+  ////////////////////////////////////////////////
+  // Abstract methods
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Abstract methods
-	////////////////////////////////////////////////
+  public:
+  const char* getContent(std::string& buf)
+  {
+    buf = "";
+    return buf.c_str();
+  }
 
-public:
+  long getContentLength()
+  {
+    return 0;
+  }
 
-	const char *getContent(std::string &buf)
-	{
-		buf = "";
-		return buf.c_str();
-	}
-	
-	long getContentLength()
-	{
-		return 0;
-	}
+  CyberIO::InputStream* getContentInputStream()
+  {
+    return NULL;
+  }
 
-	CyberIO::InputStream *getContentInputStream()
-	{
-		return NULL;
-	}
-
-	const char *getMimeType()
-	{
-		return "*/*";
-	}
+  const char* getMimeType()
+  {
+    return "*/*";
+  }
 };
 
 }
 
 #endif
-
-

@@ -1,70 +1,64 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File: ContentNodeList.h
-*
-*	Revision;
-*
-*	03/23/04
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File: ContentNodeList.h
+ *
+ *	Revision;
+ *
+ *	03/23/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_CONTENTNODELIST_H_
 #define _CLINK_MEDIA_CONTENTNODELIST_H_
 
-#include <mupnp/util/Vector.h>
 #include <mupnp/upnp/media/server/object/ContentNode.h>
+#include <mupnp/util/Vector.h>
 
 namespace CyberLink {
 
-class ContentNodeList : public CyberUtil::Vector
-{
-	bool delElemFlag;
+class ContentNodeList : public CyberUtil::Vector {
+  bool delElemFlag;
 
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  ContentNodeList(bool delElemFlag = true)
+  {
+    this->delElemFlag = delElemFlag;
+  }
 
-	ContentNodeList(bool delElemFlag = true) 
-	{
-		this->delElemFlag = delElemFlag;
-	}
+  ~ContentNodeList()
+  {
+    clear();
+  }
 
-	~ContentNodeList() 
-	{
-		clear();
-	}
-	
-	////////////////////////////////////////////////
-	//	Methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Methods
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  ContentNode* getContentNode(int n)
+  {
+    return (ContentNode*)Vector::get(n);
+  }
 
-	ContentNode *getContentNode(int n)
-	{
-		return (ContentNode *)Vector::get(n);
-	}
+  ContentNode* getContentNode(const char* name);
 
-	ContentNode *getContentNode(const char *name);
+  ////////////////////////////////////////////////
+  //	clear
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	clear
-	////////////////////////////////////////////////
-
-public:
-
-	void clear();
+  public:
+  void clear();
 };
 
 }
 
 #endif
-
-

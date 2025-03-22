@@ -18,17 +18,18 @@ using namespace mUPnP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *ArgumentList::ELEM_NAME = "argumentList";
+const char* ArgumentList::ELEM_NAME = "argumentList";
 
 ////////////////////////////////////////////////
 // getArgument
 ////////////////////////////////////////////////
 
-Argument *ArgumentList::getArgument(const std::string &name) {
+Argument* ArgumentList::getArgument(const std::string& name)
+{
   size_t nArgs = size();
   for (size_t n = 0; n < nArgs; n++) {
-    Argument *arg = getArgument(n);
-    const char *argName = arg->getName();
+    Argument* arg = getArgument(n);
+    const char* argName = arg->getName();
     if (!argName)
       continue;
     uHTTP::String argNameStr(argName);
@@ -41,13 +42,14 @@ Argument *ArgumentList::getArgument(const std::string &name) {
 ////////////////////////////////////////////////
 // set
 ////////////////////////////////////////////////
-  
-void ArgumentList::set(ArgumentList *inArgList) {
+
+void ArgumentList::set(ArgumentList* inArgList)
+{
   size_t nInArgs = inArgList->size();
   for (size_t n = 0; n < nInArgs; n++) {
-    Argument *inArg = inArgList->getArgument(n);
-    const char *inArgName = inArg->getName();
-    Argument *arg = getArgument(inArgName);
+    Argument* inArg = inArgList->getArgument(n);
+    const char* inArgName = inArg->getName();
+    Argument* arg = getArgument(inArgName);
     if (!arg)
       continue;
     string inArgValue = inArg->getValue();

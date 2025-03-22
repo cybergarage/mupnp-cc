@@ -1,76 +1,76 @@
 /******************************************************************
-*
-*	CyberLink for C++
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: ContentPropertyList.cpp
-*
-*	Revision;
-*
-*	03/14/04
-*		- first revision
-*	06/30/04
-*		- Added addContentProperty(), insertContentProperty() and removeContentProperty();
-*
-******************************************************************/
+ *
+ *	CyberLink for C++
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: ContentPropertyList.cpp
+ *
+ *	Revision;
+ *
+ *	03/14/04
+ *		- first revision
+ *	06/30/04
+ *		- Added addContentProperty(), insertContentProperty() and removeContentProperty();
+ *
+ ******************************************************************/
 
 #include <mupnp/upnp/media/server/object/ContentPropertyList.h>
 
 using namespace CyberLink;
 
-ContentPropertyList::ContentPropertyList() 
+ContentPropertyList::ContentPropertyList()
 {
-}
-	
-ContentPropertyList::~ContentPropertyList() 
-{
-	clear();
 }
 
-bool ContentPropertyList::addContentProperty(ContentProperty *prop) 
+ContentPropertyList::~ContentPropertyList()
 {
-	if (prop == NULL)
-		return false;
-	return add(prop);
+  clear();
 }
 
-bool ContentPropertyList::insertContentProperty(ContentProperty *prop, int index) 
+bool ContentPropertyList::addContentProperty(ContentProperty* prop)
 {
-	if (prop == NULL)
-		return false;
-	return insertAt(prop, index);
+  if (prop == NULL)
+    return false;
+  return add(prop);
 }
 
-bool ContentPropertyList::removeContentProperty(ContentProperty *prop) 
+bool ContentPropertyList::insertContentProperty(ContentProperty* prop, int index)
 {
-	if (prop == NULL)
-		return false;
-	bool ret = remove(prop);
-	delete prop;
-	return ret;
+  if (prop == NULL)
+    return false;
+  return insertAt(prop, index);
 }
 
-ContentProperty *ContentPropertyList::getContentProperty(const char *name) 
+bool ContentPropertyList::removeContentProperty(ContentProperty* prop)
 {
-	if (name == NULL)
-		return NULL;
-	std::string nameStr = name;
-	int nLists = size(); 
-	for (int n=0; n<nLists; n++) {
-		ContentProperty *elem = getContentProperty(n);
-		if (nameStr.compare(elem->getName()) == 0)
-			return elem;
-	}
-	return NULL;
+  if (prop == NULL)
+    return false;
+  bool ret = remove(prop);
+  delete prop;
+  return ret;
 }
 
-void ContentPropertyList::clear() 
+ContentProperty* ContentPropertyList::getContentProperty(const char* name)
 {
-	int nProp = size();
-	for (int n=0; n<nProp; n++) {
-		ContentProperty *prop = getContentProperty(n);
-		delete prop;
-	}
-	Vector::clear();
+  if (name == NULL)
+    return NULL;
+  std::string nameStr = name;
+  int nLists = size();
+  for (int n = 0; n < nLists; n++) {
+    ContentProperty* elem = getContentProperty(n);
+    if (nameStr.compare(elem->getName()) == 0)
+      return elem;
+  }
+  return NULL;
+}
+
+void ContentPropertyList::clear()
+{
+  int nProp = size();
+  for (int n = 0; n < nProp; n++) {
+    ContentProperty* prop = getContentProperty(n);
+    delete prop;
+  }
+  Vector::clear();
 }

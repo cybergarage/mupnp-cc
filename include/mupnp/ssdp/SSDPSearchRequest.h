@@ -13,35 +13,38 @@
 
 #include <string>
 
+#include <mupnp/device/MAN.h>
+#include <mupnp/device/ST.h>
+#include <mupnp/event/SubscriptionResponse.h>
+#include <mupnp/net/HostInterface.h>
 #include <mupnp/ssdp/SSDP.h>
 #include <mupnp/ssdp/SSDPRequest.h>
-#include <mupnp/device/ST.h>
-#include <mupnp/device/MAN.h>
-#include <mupnp/net/HostInterface.h>
-#include <mupnp/event/SubscriptionResponse.h>
 
 namespace mUPnP {
 class SSDPSearchRequest : public SSDPRequest {
-public:
+  public:
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
-  SSDPSearchRequest(const std::string &serachTarget, int mx) {
+  SSDPSearchRequest(const std::string& serachTarget, int mx)
+  {
     init(serachTarget, mx);
   }
-  
-  SSDPSearchRequest(const std::string &serachTarget) {
+
+  SSDPSearchRequest(const std::string& serachTarget)
+  {
     init(serachTarget, SSDP::DEFAULT_MSEARCH_MX);
   }
-  
-  SSDPSearchRequest() {
+
+  SSDPSearchRequest()
+  {
     init(ST::ROOT_DEVICE, SSDP::DEFAULT_MSEARCH_MX);
   }
 
-private:
-
-  void init(const std::string &serachTarget, int mx) {
+  private:
+  void init(const std::string& serachTarget, int mx)
+  {
     setMethod(uHTTP::HTTP::M_SEARCH);
     setURI("*");
 
@@ -58,15 +61,14 @@ private:
   // HOST
   ////////////////////////////////////////////////
 
-public:
-  
-  void setLocalAddress(const std::string &bindAddr) {
-    const char *ssdpAddr = SSDP::ADDRESS;
+  public:
+  void setLocalAddress(const std::string& bindAddr)
+  {
+    const char* ssdpAddr = SSDP::ADDRESS;
     if (uHTTP::IsIPv6Address(bindAddr) == true)
       ssdpAddr = SSDP::GetIPv6Address();
     setHost(ssdpAddr, SSDP::PORT);
   }
-
 };
 
 }

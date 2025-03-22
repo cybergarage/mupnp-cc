@@ -1,23 +1,23 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2006
-*
-*	File : iTunesDirectory.h
-*
-*	Revision:
-*
-*	02/22/06
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2006
+ *
+ *	File : iTunesDirectory.h
+ *
+ *	Revision:
+ *
+ *	02/22/06
+ *		- first revision.
+ *
+ ******************************************************************/
 
 #ifndef _CLINK_MEDIA_ITUNES_DIRECTORY_H_
 #define _CLINK_MEDIA_ITUNES_DIRECTORY_H_
 
 #ifdef HAVE_CONFIG_H
-#  include "config.h"
+#include "config.h"
 #endif
 
 #ifdef SUPPORT_ITUNES
@@ -27,39 +27,35 @@
 
 namespace CyberLink {
 
-class iTunesDirectory : public Directory
-{
-	iTunesLibrary *iTunesLib;
+class iTunesDirectory : public Directory {
+  iTunesLibrary* iTunesLib;
 
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-public:
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	iTunesDirectory(const char *name);
-	~iTunesDirectory();
-	
-	////////////////////////////////////////////////
-	// Library
-	////////////////////////////////////////////////
-	
-private:
+  public:
+  iTunesDirectory(const char* name);
+  ~iTunesDirectory();
 
-	void setLibrary(iTunesLibrary *newlib);
+  ////////////////////////////////////////////////
+  // Library
+  ////////////////////////////////////////////////
 
-	iTunesLibrary *getLibrary()
-	{
-		return iTunesLib;
-	}
+  private:
+  void setLibrary(iTunesLibrary* newlib);
 
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
-	
-public:
+  iTunesLibrary* getLibrary()
+  {
+    return iTunesLib;
+  }
 
-	void update();
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
+
+  public:
+  void update();
 };
 
 }
@@ -67,5 +63,3 @@ public:
 #endif
 
 #endif
-
-

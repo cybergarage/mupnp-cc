@@ -14,7 +14,8 @@
 using namespace std;
 using namespace uHTTP;
 
-bool mUPnP::ST::IsAllDevice(const std::string &value) {
+bool mUPnP::ST::IsAllDevice(const std::string& value)
+{
   String valStr = value;
   if (valStr.equals(ALL_DEVICE) == true)
     return true;
@@ -25,7 +26,8 @@ bool mUPnP::ST::IsAllDevice(const std::string &value) {
   return valStr.equals(quoteStr.c_str());
 }
 
-bool mUPnP::ST::IsRootDevice(const std::string &value) {
+bool mUPnP::ST::IsRootDevice(const std::string& value)
+{
   String valStr = value;
   if (valStr.equals(ROOT_DEVICE) == true)
     return true;
@@ -36,7 +38,8 @@ bool mUPnP::ST::IsRootDevice(const std::string &value) {
   return valStr.equals(quoteStr.c_str());
 }
 
-bool mUPnP::ST::IsUUIDDevice(const std::string &value) {
+bool mUPnP::ST::IsUUIDDevice(const std::string& value)
+{
   String valStr = value;
   if (valStr.startsWith(UUID_DEVICE) == true)
     return true;
@@ -47,7 +50,8 @@ bool mUPnP::ST::IsUUIDDevice(const std::string &value) {
   return valStr.startsWith(quoteStr.c_str());
 }
 
-bool mUPnP::ST::IsURNDevice(const std::string &value) {
+bool mUPnP::ST::IsURNDevice(const std::string& value)
+{
   String valStr = value;
   if (valStr.startsWith(URN_DEVICE) == true)
     return true;
@@ -58,7 +62,8 @@ bool mUPnP::ST::IsURNDevice(const std::string &value) {
   return valStr.startsWith(quoteStr.c_str());
 }
 
-bool mUPnP::ST::IsURNService(const std::string &value) {
+bool mUPnP::ST::IsURNService(const std::string& value)
+{
   String valStr = value;
   if (valStr.startsWith(URN_SERVICE) == true)
     return true;

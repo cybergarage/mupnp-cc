@@ -11,17 +11,16 @@
 #ifndef _MUPMPCC_ACTIONLISTENER_H_
 #define _MUPMPCC_ACTIONLISTENER_H_
 
-//#include <mupnp/Action.h>
+// #include <mupnp/Action.h>
 
 namespace mUPnP {
 class Action;
 
 class ActionListener {
-public:
-  virtual bool actionControlReceived(Action *action) = 0;
+  public:
+  virtual bool actionControlReceived(Action* action) = 0;
 };
 
 }
 
 #endif
-

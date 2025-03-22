@@ -18,4 +18,4 @@ using namespace mUPnP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *ServiceStateTable::ELEM_NAME = "serviceStateTable";
+const char* ServiceStateTable::ELEM_NAME = "serviceStateTable";

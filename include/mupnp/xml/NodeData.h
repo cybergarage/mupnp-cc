@@ -16,28 +16,30 @@ namespace uXML {
 class Node;
 
 class NodeData {
-  uXML::Node *node;
+  uXML::Node* node;
 
-public:
-  
-  NodeData() {
+  public:
+  NodeData()
+  {
   }
 
-  virtual ~NodeData() {
+  virtual ~NodeData()
+  {
   }
 
   ////////////////////////////////////////////////
   // node
   ////////////////////////////////////////////////
 
-  void setNode(uXML::Node *node) {
+  void setNode(uXML::Node* node)
+  {
     this->node = node;
   }
 
-  uXML::Node *getNode() {
+  uXML::Node* getNode()
+  {
     return node;
   }
-
 };
 
 }

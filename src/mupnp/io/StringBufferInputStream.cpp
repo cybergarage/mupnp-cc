@@ -8,8 +8,8 @@
  *
  ******************************************************************/
 
-#include <string.h>
 #include <mupnp/io/StringBufferInputStream.h>
+#include <string.h>
 
 using namespace uHTTP;
 

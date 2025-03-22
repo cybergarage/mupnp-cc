@@ -12,4 +12,4 @@
 
 using namespace mUPnP;
 
-const char *PropertyList::ELEM_NAME = "propertyList";
+const char* PropertyList::ELEM_NAME = "propertyList";

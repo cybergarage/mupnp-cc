@@ -8,12 +8,11 @@
  *
  ******************************************************************/
 
-
 #ifndef _MUPMPCC_ACTONDATA_H_
 #define _MUPMPCC_ACTONDATA_H_
 
-#include <string>
 #include <mupnp/xml/NodeData.h>
+#include <string>
 
 namespace mUPnP {
 
@@ -21,14 +20,14 @@ class ActionListener;
 class ControlResponse;
 
 class ActionData : public uXML::NodeData {
-  ActionListener *actionListener;
-  ControlResponse *ctrlRes;
+  ActionListener* actionListener;
+  ControlResponse* ctrlRes;
 
   ////////////////////////////////////////////////
   // Constructor
   ////////////////////////////////////////////////
 
- public:
+  public:
   ActionData();
 
   ~ActionData();
@@ -37,13 +36,13 @@ class ActionData : public uXML::NodeData {
   // ActionListener
   ////////////////////////////////////////////////
 
- public:
-  ActionListener *getActionListener() 
+  public:
+  ActionListener* getActionListener()
   {
     return actionListener;
   }
 
-  void setActionListener(ActionListener *listener) 
+  void setActionListener(ActionListener* listener)
   {
     actionListener = listener;
   }
@@ -52,17 +51,15 @@ class ActionData : public uXML::NodeData {
   // ControlResponse
   ////////////////////////////////////////////////
 
- public:
-  ControlResponse *getControlResponse() 
+  public:
+  ControlResponse* getControlResponse()
   {
     return ctrlRes;
   }
 
-  void setControlResponse(ControlResponse *res);
+  void setControlResponse(ControlResponse* res);
 };
 
 }
 
 #endif
-
-

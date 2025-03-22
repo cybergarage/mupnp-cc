@@ -17,4 +17,4 @@ using namespace mUPnP;
 // Constants
 ////////////////////////////////////////////////
 
-const char *IconList::ELEM_NAME = "iconList";
+const char* IconList::ELEM_NAME = "iconList";

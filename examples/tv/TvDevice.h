@@ -18,99 +18,92 @@ using namespace mUPnP;
 const char DESCRIPTION_FILE_NAME[] = "description/description.xml";
 const char CLOCK_DEVICE_TYPE[] = "urn:schemas-upnp-org:device:clock:1";
 const char CLOCK_SERVICE_TYPE[] = "urn:schemas-upnp-org:service:timer:1";
-	
+
 const char LIGHT_DEVICE_TYPE[] = "urn:schemas-upnp-org:device:light:1";
 const char LIGHT_SERVICE_TYPE[] = "urn:schemas-upnp-org:service:power:1";
 
 const char AIRCON_DEVICE_TYPE[] = "urn:schemas-upnp-org:device:aircon:1";
 const char AIRCON_SERVICE_TYPE[] = "urn:schemas-upnp-org:service:temp:1";
-	
+
 const char WASHER_DEVICE_TYPE[] = "urn:schemas-upnp-org:device:washer:1";
 const char WASHER_SERVICE_TYPE[] = "urn:schemas-upnp-org:service:state:1";
 
-class TVDevice : public ActionListener, public QueryListener, public NotifyListener, public EventListener, public SearchResponseListener
-{
-	ControlPoint *ctrlPoint;
-	Device *tvDev;
-public:
+class TVDevice : public ActionListener, public QueryListener, public NotifyListener, public EventListener, public SearchResponseListener {
+  ControlPoint* ctrlPoint;
+  Device* tvDev;
 
-	TVDevice();
-	virtual ~TVDevice();
+  public:
+  TVDevice();
+  virtual ~TVDevice();
 
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
 
-public:
+  public:
+  void update();
 
-	void update();
+  ////////////////////////////////////////////////
+  //	start/stop
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	start/stop
-	////////////////////////////////////////////////
+  public:
+  void start();
+  void stop();
 
-public:
+  ////////////////////////////////////////////////
+  //	Clock
+  ////////////////////////////////////////////////
 
-	void start();
-	void stop();
+  std::string clockTime;
 
-	////////////////////////////////////////////////
-	//	Clock
-	////////////////////////////////////////////////
+  const char* getClockTime()
+  {
+    return clockTime.c_str();
+  }
 
+  ////////////////////////////////////////////////
+  //	Aircon
+  ////////////////////////////////////////////////
 
-	std::string clockTime; 
-	
-	const char *getClockTime()
-	{
-		return clockTime.c_str();	
-	}
-	
-	////////////////////////////////////////////////
-	//	Aircon
-	////////////////////////////////////////////////
+  std::string airconTemp;
 
-	std::string airconTemp; 
-	
-	const char *getAirconTempture()
-	{
-		return airconTemp.c_str();	
-	}
+  const char* getAirconTempture()
+  {
+    return airconTemp.c_str();
+  }
 
-	////////////////////////////////////////////////
-	//	Device (Common)
-	////////////////////////////////////////////////
-	
-	bool isDevice(SSDPPacket *packet, const char * deviceType);
-	Service *getDeviceService(const char * deviceType, const char * serviceType);
-	bool subscribeService(SSDPPacket *packet, const char * deviceType, const char * serviceType);
+  ////////////////////////////////////////////////
+  //	Device (Common)
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	SSDP Listener
-	////////////////////////////////////////////////
-	
-	void checkNewDevices(SSDPPacket *packet);
-	void checkRemoveDevices(SSDPPacket *packet);
+  bool isDevice(SSDPPacket* packet, const char* deviceType);
+  Service* getDeviceService(const char* deviceType, const char* serviceType);
+  bool subscribeService(SSDPPacket* packet, const char* deviceType, const char* serviceType);
 
-	////////////////////////////////////////////////
-	//	Device Listener
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	SSDP Listener
+  ////////////////////////////////////////////////
 
-public:
+  void checkNewDevices(SSDPPacket* packet);
+  void checkRemoveDevices(SSDPPacket* packet);
 
-	bool actionControlReceived(Action *action);
-	bool queryControlReceived(StateVariable *stateVar);
+  ////////////////////////////////////////////////
+  //	Device Listener
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	Listener
-	////////////////////////////////////////////////
-	
-public:
+  public:
+  bool actionControlReceived(Action* action);
+  bool queryControlReceived(StateVariable* stateVar);
 
-	bool deviceNotifyReceived(SSDPPacket *packet);
-	bool deviceSearchResponseReceived(SSDPPacket *packet);
-	bool eventNotifyReceived(const std::string &uuid, long seq, const std::string &name, const std::string &value);
+  ////////////////////////////////////////////////
+  //	Listener
+  ////////////////////////////////////////////////
+
+  public:
+  bool deviceNotifyReceived(SSDPPacket* packet);
+  bool deviceSearchResponseReceived(SSDPPacket* packet);
+  bool eventNotifyReceived(const std::string& uuid, long seq, const std::string& name, const std::string& value);
 };
 
 #endif
-
