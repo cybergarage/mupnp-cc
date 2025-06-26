@@ -12,19 +12,19 @@ check_PROGRAMS = mupnptest
 AM_CPPFLAGS = -I$(top_srcdir)/include -I../
 
 noinst_HEADERS = \
-	../TestHTTPServer.h \
 	../TestDevice.h \
-	../TestCtrlPoint.h
+	../TestCtrlPoint.h \
+	../TestHTTPServer.h
 
 mupnptest_SOURCES = \
+	../TestCtrlPoint.cpp \
 	../TestDevice.cpp \
-	../TestMain.cpp \
-	../XMLParserTests.cpp \
-	../UPnPDeviceTests.cpp \
-	../TestHTTPServer.cpp \
+	../UPnPDeviceParseTests.cpp \
 	../UPnPMiscTests.cpp \
 	../NotifSocketTests.cpp \
-	../TestCtrlPoint.cpp \
-	../UPnPDeviceParseTests.cpp
+	../UPnPDeviceTests.cpp \
+	../XMLParserTests.cpp \
+	../TestMain.cpp \
+	../TestHTTPServer.cpp
 
 mupnptest_LDADD = ../../lib/unix/libmupnp++.a -ldl @XML_LIBS@
