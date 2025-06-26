@@ -9,6 +9,7 @@ configure~
 *.a
 *.po
 conftest.*
+confdefs.h
 
 # Generated files
 test/unix/mupnptest
