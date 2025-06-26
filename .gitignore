@@ -8,6 +8,7 @@ configure~
 *.o
 *.a
 *.po
+conftest.*
 
 # Generated files
 test/unix/mupnptest
