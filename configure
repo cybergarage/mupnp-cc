@@ -765,6 +765,7 @@ enable_xercescc
 enable_expat
 enable_libxml2
 enable_test
+enable_coverage
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1411,6 +1412,7 @@ Optional Features:
   --enable-expat       enable Expat support default=no
   --enable-libxml2	enable Libxml2 support default=no
   --enable-test           build test (default = no)
+  --enable-coverage       Enable code coverage using gcov
 
 Some influential environment variables:
   CC          C compiler command
@@ -6791,6 +6793,26 @@ printf "%s\n" "no" >&6; }
 
 fi
 rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+
+##############################
+# Coverage
+##############################
+
+# Check whether --enable-coverage was given.
+if test ${enable_coverage+y}
+then :
+  enableval=$enable_coverage; enable_coverage=yes
+else $as_nop
+  enable_coverage=no
+fi
+
+
+if test "x$enable_coverage" = "xyes"; then
+  CFLAGS="$CFLAGS -O0 -fprofile-arcs -ftest-coverage"
+  LDFLAGS="$LDFLAGS -fprofile-arcs -ftest-coverage"
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: Code coverage enabled" >&5
+printf "%s\n" "$as_me: Code coverage enabled" >&6;}
+fi
 
 ##############################
 # Checks for other functions.
