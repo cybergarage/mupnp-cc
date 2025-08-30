@@ -16,10 +16,22 @@ jobs:
     - name: setup
       run: |
         sudo apt update
-        sudo apt install -y libboost-all-dev libedit-dev pkg-config
+        sudo apt install -y libboost-all-dev libedit-dev pkg-config lcov
     - name: configure
-      run: ./configure --enable-test
+      run: ./configure --enable-test --enable-coverage
     - name: make
       run: make
     - name: make check
-      run: make check || more test/unix/test-suite.log 
+      run: make check || more test/unix/test-suite.log
+    - name: generate coverage report
+      run: |
+        lcov --capture --directory . --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' --output-file coverage.info
+        lcov --list coverage.info
+    - name: upload coverage to codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true 
