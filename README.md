@@ -22,9 +22,9 @@ cd mupnp-cc
 make install
 ```
 
-### macOS
+### Homebrew (macOS, Linux)
 
-For macOS platforms, you can easily install using Homebrew with the following `brew` commands:
+For platforms that support [Homebrew](https://brew.sh/), you can easily install using the following `brew` commands:
 
 ```
 brew tap cybergarage/homebrew
