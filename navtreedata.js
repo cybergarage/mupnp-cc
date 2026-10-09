@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "mUPnP for C++", "index.html", [
     [ "Building and Installation", "index.html#autotoc_md34", [
-      [ "macOS", "index.html#autotoc_md35", null ]
+      [ "Homebrew (macOS, Linux)", "index.html#autotoc_md35", null ]
     ] ],
     [ "References", "index.html#autotoc_md36", null ],
     [ "Examples", "index.html#autotoc_md37", null ],
