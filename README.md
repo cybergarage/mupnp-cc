@@ -4,48 +4,83 @@
 [![build](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/mupnp-cc/actions/workflows/make.yml)
 [![doxygen](https://github.com/cybergarage/mupnp-cc/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/mupnp-cc/)
 
-mUPnP for C++ is a development package for UPnP™ [^1] (Universal Plug and Play) developers. It provides a set of APIs to create UPnP™ devices and control points quickly and easily. This README file provides an overview of the package, its contents, and instructions on how to set up and use it.
+mUPnP for C++ is a library for creating UPnP devices and control points. It provides discovery, device and service descriptions, action invocation, and event subscriptions for applications that communicate with devices on a local network.
 
-The UPnP™ architecture is designed to enable the discovery and control of networked devices and services, such as media servers and players, within a home network. UPnP™ is based on several standard protocols, including GENA, SSDP, SOAP, HTTPU, and HTTP. To create UPnP™ devices, you need to understand and implement these protocols.
+A control point discovers and controls devices; a device application exposes services, actions, and state variables. The library supplies protocol machinery so applications can focus on those behaviors.
 
 ![UPnP applications](doc/img/upnpapp.png)
 
-mUPnP for C++ simplifies this process by handling these protocols automatically. It allows developers to focus on creating their devices and control points without worrying about the underlying protocol details.
+## Features and architecture
 
-## Building and Installation
+- SSDP discovery and device advertisement.
+- XML device/service descriptions and SOAP action messages.
+- GENA event subscription and notification handling.
+- Supporting HTTP, socket, and threading utilities.
 
-mUPnP for C++ is distributed as an Automake project, and so you can install the libary from the source codes with the following commands:
+Public APIs are in [`include/mupnp/`](include/mupnp/), with implementations in [`src/mupnp/`](src/mupnp/). The Automake build produces `libmupnp++.a`. This repository is the C++ implementation; the separate [mUPnP for C](https://github.com/cybergarage/mupnp) project has its own history and capabilities.
 
-```
+## Build from source
+
+The Unix build requires a C++ compiler, Make, POSIX threads, and an XML parser. The default parser is libxml2, located through `xml2-config`. Configuration also offers Expat and Xerces-C++ options; use `./configure --help` to inspect them. Boost headers support configurations that use Boost shared pointers, and the test build requires Boost unit-test, system, and filesystem libraries.
+
+```sh
+git clone https://github.com/cybergarage/mupnp-cc.git
 cd mupnp-cc
-./configure
+./configure --prefix="$HOME/.local"
+make
 make install
 ```
 
+The generated `configure` script is included. Regenerating the build system with `./bootstrap` requires Autoconf and Automake. Review the selected compiler and XML library settings if configuring on a new platform.
+
 ### Homebrew (macOS, Linux)
 
-For platforms that support [Homebrew](https://brew.sh/), you can easily install using the following `brew` commands:
-
-```
+```sh
 brew tap cybergarage/homebrew
 brew install mupnp++
 ```
 
-## References
+The [project tap](https://github.com/cybergarage/homebrew) provides the formula.
 
-- [Programming Guide (Doxygen)](http://cybergarage.github.io/mupnp-cc/)
+## Try a control point
+
+After `make`, run the discovery example:
+
+```sh
+./examples/upnpdump/unix/upnpdump
+```
+
+Press `p` to print discovered devices and `q` to quit. SSDP discovery needs multicast connectivity to UPnP devices on the local network; firewalls and interface selection can affect results.
 
 ## Examples
 
-- UPnP control point examples
-  - UPnP controller for UPnP devices
-    - [UPnP multicast dump utility](https://github.com/cybergarage/mupnp-cc/tree/master/examples/upnpdump)
-  - UPnP controller for UPnP stardard devices
-    - [UPnP/AV media server utility ](https://github.com/cybergarage/mupnp-cc/tree/master/examples/media/serverdump)
- 
-- UPnP device examples
-  - UPnP stardard devices
-    - [UPnP/AV media sever](https://github.com/cybergarage/mupnp-cc/tree/master/examples/media/server)
-  - UPnP non-standard devices
-    - [UPnP clock device](https://github.com/cybergarage/mupnp-cc/tree/master/examples/clock)
-    - [UPnP television device](https://github.com/cybergarage/mupnp-cc/tree/master/examples/tv)
+The default [`examples/Makefile.am`](examples/Makefile.am) builds these examples:
+
+| Example | Purpose |
+| --- | --- |
+| [`upnpdump`](examples/upnpdump/) | Discover and inspect UPnP devices as a control point |
+| [`clock`](examples/clock/) | Implement a custom clock device |
+| [`tv`](examples/tv/) | Implement a custom television device |
+
+Additional [media server](examples/media/server/) and [media server inspection](examples/media/serverdump/) sources are available under `examples/media/`. They are outside the default example build and may need additional setup.
+
+## Testing
+
+With the XML parser and Boost dependencies installed:
+
+```sh
+./configure --enable-test
+make
+make check
+```
+
+Tests live in [`test/`](test/) and include XML parsing, device behavior, and networking. Network tests need usable local interfaces and permission to open sockets. See the [CI workflow](.github/workflows/make.yml) for the Linux dependency setup and coverage configuration.
+
+## Scope and limitations
+
+UPnP discovery and control assume a suitable local network. Included examples are starting points for application development; they do not establish certification, interoperability with every UPnP device, or readiness for public-network deployment. Validate the service profiles, parser configuration, and network behavior required by your application.
+
+## Documentation and license
+
+- [Programming guide and API reference (Doxygen)](https://cybergarage.github.io/mupnp-cc/)
+- [BSD-style license](COPYING)
