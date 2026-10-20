@@ -25,11 +25,15 @@
 var NAVTREE =
 [
   [ "mUPnP for C++", "index.html", [
-    [ "Building and Installation", "index.html#autotoc_md34", [
-      [ "Homebrew (macOS, Linux)", "index.html#autotoc_md35", null ]
+    [ "Features and architecture", "index.html#autotoc_md34", null ],
+    [ "Build from source", "index.html#autotoc_md35", [
+      [ "Homebrew (macOS, Linux)", "index.html#autotoc_md36", null ]
     ] ],
-    [ "References", "index.html#autotoc_md36", null ],
-    [ "Examples", "index.html#autotoc_md37", null ],
+    [ "Try a control point", "index.html#autotoc_md37", null ],
+    [ "Examples", "index.html#autotoc_md38", null ],
+    [ "Testing", "index.html#autotoc_md39", null ],
+    [ "Scope and limitations", "index.html#autotoc_md40", null ],
+    [ "Documentation and license", "index.html#autotoc_md41", null ],
     [ "Programming Guide", "md_doc_2mupnpcxxproguide.html", [
       [ "Introduction", "md_doc_2mupnpcxxproguide.html#autotoc_md1", null ],
       [ "Setup", "md_doc_2mupnpcxxproguide.html#autotoc_md2", [
@@ -125,8 +129,8 @@ var NAVTREEINDEX =
 "classuHTTP_1_1String.html#ae719be2d0568148f3c7ec3dd708d7809",
 "classuSOAP_1_1SOAPRequest.html",
 "classuXML_1_1NodeList.html#a28a2852c768f2d46db96747ab031df8c",
-"namespacemUPnP_1_1Subscription.html#a762b345063912b68d728044c62703d3d",
-"namespaceuSOAP_1_1SOAP.html#a875b028faf892859a2ae3cd31a3ced58"
+"namespacemUPnP_1_1Subscription.html",
+"namespaceuSOAP_1_1SOAP.html#a5f830f9adc951baa3a889c979846cfab"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
